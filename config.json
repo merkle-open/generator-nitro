@@ -1,0 +1,32 @@
+{
+    "assets": {
+        "app.css": [
+            "assets/css/variables.less",
+            "assets/css/mixins.less",
+            "assets/vendor/bootstrap/less/**/*.less",
+            "components/modules/**/*.less"
+        ],
+        "app.js": [
+            "!**/somefile.*",
+            "!components/modules/Test*/*",
+            "assets/js/jquery-1.11.1.min.js",
+            "assets/js/terrific-2.1.0.js",
+            "assets/js/*.js",
+            "components/modules/*/js/*.js",
+            "components/modules/*/js/skins/*.js"
+        ]
+    },
+    "micro": {
+        "components": {
+            "module": {
+                "template": "project/templates/module",
+                "path": "components/modules",
+                "component_prefix": "mod",
+                "skin_prefix": "skin"
+            }
+        },
+        "view_file_extension": "html",
+        "view_directory": "views",
+        "view_partials_directory": "views/_partials"
+    }
+}

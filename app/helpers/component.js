@@ -1,4 +1,5 @@
 var fs = require('fs'),
+    hbs = require('hbs'),
     path = require('path'),
     cfg = require('../core/config.js');
 
@@ -6,13 +7,16 @@ function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-module.exports = function (hbs) {
-    hbs.registerHelper('component', function (modName, variant) {
-
+var Helper = {
+    register: function (hbs) {
+        hbs.registerHelper('component', this.component);
+    },
+    component: function (modName, variant) {
         for (var key in cfg.micro.components) {
             var component = cfg.micro.components[key];
             if (component.hasOwnProperty('path')) {
-                var filename = modName.toLowerCase() + '.' + cfg.micro.view_file_extension;;
+                var filename = modName.toLowerCase() + '.' + cfg.micro.view_file_extension;
+                ;
 
                 if ('string' === typeof variant) {
                     filename = modName.toLowerCase() + '-' + variant.toLowerCase() + '.' + cfg.micro.view_file_extension;
@@ -38,5 +42,7 @@ module.exports = function (hbs) {
         }
 
         throw new Error('Component ' + modName + ' not found. (Hint: have you added it to config.json?)');
-    });
+    }
 };
+
+module.exports = Helper;

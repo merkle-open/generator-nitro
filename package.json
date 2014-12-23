@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Robert Vogt",
   "license": "MIT",
+  "scripts": {
+    "test": "jasmine"
+  },
   "devDependencies": {
     "gulp": "^3.8.10"
   },

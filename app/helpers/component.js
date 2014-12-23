@@ -4,23 +4,43 @@ var fs = require('fs'),
 
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-};
+}
 
-module.exports = function(hbs) {
+module.exports = function (hbs) {
     hbs.registerHelper('component', function (modName) {
-        var fullModPath = path.join(
-            cfg.micro.base_path,
-            cfg.micro.components.module.path,
-            '/',
-            capitalize(modName),
-            '/',
-            modName.toLowerCase() + '.' + cfg.micro.view_file_extension
-        );
 
-        return new hbs.handlebars.SafeString(
-            hbs.handlebars.compile(
-                fs.readFileSync(fullModPath, 'utf8')
-            ).call()
-        );
+        for (var key in cfg.micro.components) {
+            var component = cfg.micro.components[key];
+            if (component.hasOwnProperty('path')) {
+                var filename = modName.toLowerCase() + '.' + cfg.micro.view_file_extension;;
+
+                //console.log(modName, variant);
+                //
+                //if (!!variant) {
+                //    filename = modName.toLowerCase() + '-' + variant.toLowerCase() + '.' + cfg.micro.view_file_extension;
+                //} else {
+                //    filename = modName.toLowerCase() + '.' + cfg.micro.view_file_extension;
+                //}
+
+                var fullPath = path.join(
+                    cfg.micro.base_path,
+                    component.path,
+                    '/',
+                    capitalize(modName),
+                    '/',
+                    filename
+                );
+
+                if (fs.existsSync(fullPath)) {
+                    return new hbs.handlebars.SafeString(
+                        hbs.handlebars.compile(
+                            fs.readFileSync(fullPath, 'utf8')
+                        ).call()
+                    );
+                }
+            }
+        }
+
+        throw new Error('Component not found. (Hint: have you added it to config.json?)');
     });
 };

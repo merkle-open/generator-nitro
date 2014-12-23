@@ -18,6 +18,12 @@
     },
     "micro": {
         "components": {
+            "element": {
+                "template": "project/templates/element",
+                "path": "components/elements",
+                "component_prefix": "e",
+                "skin_prefix": "skin"
+            },
             "module": {
                 "template": "project/templates/module",
                 "path": "components/modules",

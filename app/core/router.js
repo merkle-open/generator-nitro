@@ -7,6 +7,7 @@ var path = require('path'),
         strict: false
     });
 
+router.use('/', express.static(cfg.micro.base_path + '/public/'));
 router.use('/', express.static(cfg.micro.base_path + '/assets/'));
 
 /**

@@ -7,20 +7,16 @@ function capitalize(string) {
 }
 
 module.exports = function (hbs) {
-    hbs.registerHelper('component', function (modName) {
+    hbs.registerHelper('component', function (modName, variant) {
 
         for (var key in cfg.micro.components) {
             var component = cfg.micro.components[key];
             if (component.hasOwnProperty('path')) {
                 var filename = modName.toLowerCase() + '.' + cfg.micro.view_file_extension;;
 
-                //console.log(modName, variant);
-                //
-                //if (!!variant) {
-                //    filename = modName.toLowerCase() + '-' + variant.toLowerCase() + '.' + cfg.micro.view_file_extension;
-                //} else {
-                //    filename = modName.toLowerCase() + '.' + cfg.micro.view_file_extension;
-                //}
+                if ('string' === typeof variant) {
+                    filename = modName.toLowerCase() + '-' + variant.toLowerCase() + '.' + cfg.micro.view_file_extension;
+                }
 
                 var fullPath = path.join(
                     cfg.micro.base_path,
@@ -41,6 +37,6 @@ module.exports = function (hbs) {
             }
         }
 
-        throw new Error('Component not found. (Hint: have you added it to config.json?)');
+        throw new Error('Component ' + modName + ' not found. (Hint: have you added it to config.json?)');
     });
 };

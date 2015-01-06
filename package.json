@@ -1,13 +1,32 @@
 {
   "name": "terrific-node",
-  "version": "0.0.1",
-  "description": "A proof of concept alternative in node for terrific micro",
-  "main": "index.js",
-  "author": "Robert Vogt",
+  "version": "0.1.0",
+  "description": "Sentinel is a Node.js application for simple and complex frontend development with a tiny footprint.",
+  "author": "Namics AG (http://www.namics.com)",
+  "contributors": [
+    "René Bach <rene.bach@namics.com> (https://github.com/aalibaabaa)",
+    "Remo Brunschwiler <remo.brunschwiler@namics.com> (https://github.com/brunschgi)",
+    "Robert Vogt <robert.vogt@namics.com> (https://github.com/deniaz)"
+  ],
+  "homepage": "https://github.com/namics/sentinel",
+  "keywords": [
+    "terrific",
+    "frontend",
+    "modular"
+  ],
   "license": "MIT",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "start": "node sentinel.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:namics/sentinel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/namics/sentinel/issues"
+  },
+  "private": true,
   "dependencies": {
     "express": "^4.10.4",
     "gulp": "^3.8.10",
@@ -25,5 +44,8 @@
     "jasmine": "^2.1.1",
     "jshint-stylish": "^1.0.0",
     "merge": "^1.2.0"
+  },
+  "devDependencies": {
+    "gulp-debug": "^2.0.0"
   }
 }

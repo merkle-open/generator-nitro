@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    path = require('path'),
     less = require('gulp-less'),
     minify = require('gulp-minify-css'),
     concat = require('gulp-concat'),
@@ -6,51 +7,70 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     plumber = require('gulp-plumber'),
     jshint = require('gulp-jshint'),
-    imagemin = require('gulp-imagemin');
+    imagemin = require('gulp-imagemin'),
+    debug = require('gulp-debug');
 
-gulp.task('compile-css', function() {
-    gulp.src(
-        [
-            './assets/css/variables.less',
-            './assets/css/mixins.less',
-            './assets/vendor/bootstrap/less/bootstrap.less',
-            './components/**/*.less'
-        ]
-    )
-        .pipe(plumber())
-        .pipe(less())
-        .pipe(minify())
-        .pipe(concat('app.css'))
-        .pipe(gulp.dest('./public/latest/'));
+gulp.task('compile-less', function() {
+    var assets = require('./config.json').assets;
+
+    for (var key in assets) {
+        if (assets.hasOwnProperty(key)) {
+            var asset = assets[key];
+            if ('.css' === path.extname(key)) {
+                gulp
+                    .src(asset)
+                    .pipe(debug())
+                    .pipe(plumber())
+                    .pipe(less())
+                    .pipe(minify())
+                    .pipe(concat(key))
+                    .pipe(
+                        gulp.dest('./public/latest/')
+                    );
+            }
+        }
+    }
 });
 
 gulp.task('compile-js', function() {
-    gulp.src('./components/**/*.js').pipe(jshint()).pipe(jshint.reporter('jshint-stylish'));
-    gulp.src(
-        [
-            './assets/vendor/jquery/dist/jquery.min.js',
-            './assets/vendor/bootstrap/js/*.jsg',
-            './assets/js/**/*.js',
-            './components/**/*.js'
-        ]
-    )
+    var assets = require('./config.json').assets;
+
+    for (var key in assets) {
+        if (assets.hasOwnProperty(key)) {
+            var asset = assets[key];
+            if ('.js' === path.extname(key)) {
+                gulp
+                    .src(asset)
+                    .pipe(debug())
+                    .pipe(plumber())
+                    .pipe(jshint())
+                    .pipe(jshint.reporter('jshint-stylish'))
+                    .pipe(concat(key))
+                    .pipe(uglify())
+                    .pipe(
+                        gulp.dest('./public/latest')
+                    );
+            }
+        }
+    }
+});
+
+gulp.task('minify-img', function() {
+    gulp
+        .src('./assets/img/**/*.*')
+        .pipe(debug())
         .pipe(plumber())
-        .pipe(concat('app.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('./public/latest'));
+        .pipe(imagemin({
+            progressive: true
+        }))
+        .pipe(gulp.dest('./assets/img'));
 });
 
-gulp.task('image-minify', function() {
-    gulp.src('./assets/img/**/*.*')
-        .pipe(imagemin())
-        .pipe(gulp.desct('./public/latest/img'));
-});
-
-gulp.task('watch', ['compile-css', 'compile-js'], function() {
+gulp.task('watch', ['compile-less', 'compile-js', 'minify-img'], function() {
     watch(
         ['./assets/**/*.css', './assets/**/*.less', './components/**/*.css', './components/**/*.less'],
         function(files, cb) {
-            gulp.start('compile-css', cb);
+            gulp.start('compile-less', cb);
         }
     );
 
@@ -62,4 +82,4 @@ gulp.task('watch', ['compile-css', 'compile-js'], function() {
     );
 });
 
-gulp.task('default', ['compile-css', 'compile-js']);
+gulp.task('default', ['compile-less', 'compile-js']);

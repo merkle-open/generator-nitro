@@ -8,6 +8,7 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     jshint = require('gulp-jshint'),
     imagemin = require('gulp-imagemin'),
+    cache = require('gulp-cached'),
     debug = require('gulp-debug');
 
 gulp.task('compile-less', function() {
@@ -19,6 +20,7 @@ gulp.task('compile-less', function() {
             if ('.css' === path.extname(key)) {
                 gulp
                     .src(asset)
+                    .pipe(cache('less-compile'))
                     .pipe(debug())
                     .pipe(plumber())
                     .pipe(less())
@@ -41,6 +43,7 @@ gulp.task('compile-js', function() {
             if ('.js' === path.extname(key)) {
                 gulp
                     .src(asset)
+                    .pipe(cache('js-compile'))
                     .pipe(debug())
                     .pipe(plumber())
                     .pipe(jshint())
@@ -56,6 +59,7 @@ gulp.task('compile-js', function() {
 });
 
 gulp.task('minify-img', function() {
+    // TODO: Move files to resources/original before minify
     gulp
         .src('./assets/img/**/*.*')
         .pipe(debug())

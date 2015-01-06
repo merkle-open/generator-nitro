@@ -4,20 +4,11 @@ var fs = require('fs'),
     cfg = require('./config'),
     helpersDir = path.normalize(__dirname + '../../helpers/');
 
-module.exports = function(hbs, cb) {
-    hbs.registerPartials(cfg.micro.base_path + cfg.micro.view_partials_directory);
+hbs.registerPartials(cfg.micro.base_path + cfg.micro.view_partials_directory);
 
-    fs.readdir(helpersDir, function(err, files) {
-        if (err) throw err;
-
-        files.forEach(function(file) {
-            require(helpersDir + file).register(hbs);
-        });
-
-        if ('function' === typeof cb) {
-            cb();
-        }
-    });
-
-};
-
+var files = fs.readdirSync(helpersDir);
+files.forEach(function(file) {
+    var name = path.basename(helpersDir + file, '.js');
+    hbs.registerHelper(name, require(helpersDir + file));
+});
+module.exports = hbs;

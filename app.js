@@ -1,11 +1,8 @@
 var express = require('express'),
     app = express(),
-    fs = require('fs'),
     cfg = require('./app/core/config'),
     router = require('./app/core/router'),
-    hbs = require('hbs');
-
-require('./app/core/hbs')(hbs);
+    hbs = require('./app/core/hbs');
 
 app.use(router);
 app.set('view engine', cfg.micro.view_file_extension);

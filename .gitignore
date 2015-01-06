@@ -37,3 +37,6 @@ npm-debug.log
 
 # Project #####################
 !.gitkeep
+
+public/latest/*
+!public/latest/.gitkeep

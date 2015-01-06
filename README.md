@@ -10,13 +10,16 @@ production environment.
 To run sentinel you only need [node](http://nodejs.org/).
 
 1. Clone repo to a `project`-folder.
-    git clone git@github.com:namics/sentinel.git
+
+        git clone git@github.com:namics/sentinel.git
 
 2. Run the Yeoman Project Generator
-    yo sentinel
+ 
+        yo sentinel
 
 3. Watch your assets
-    gulp watch
+ 
+        gulp watch
 
 More about that when we've actually implemented it :)
 

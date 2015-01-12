@@ -9,7 +9,8 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     imagemin = require('gulp-imagemin'),
     cache = require('gulp-cached'),
-    debug = require('gulp-debug');
+    debug = require('gulp-debug'),
+    karma = require('karma').server;
 
 gulp.task('compile-less', function() {
     var assets = require('./config.json').assets;
@@ -84,6 +85,16 @@ gulp.task('watch', ['compile-less', 'compile-js', 'minify-img'], function() {
             gulp.start('compile-js', cb);
         }
     );
+});
+
+/**
+ * Run test once and exit
+ */
+gulp.task('test', function (done) {
+    karma.start({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, done);
 });
 
 gulp.task('default', ['compile-less', 'compile-js']);

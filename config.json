@@ -1,8 +1,8 @@
 {
     "assets": {
         "app.css": [
-            "assets/css/variables.less",
-            "assets/css/mixins.less",
+            "+assets/css/variables.less",
+            "+assets/css/mixins.less",
             "assets/vendor/bootstrap/less/bootstrap.less",
             "components/modules/**/*.less"
         ],

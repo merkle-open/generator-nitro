@@ -11,6 +11,7 @@ var gulp = require('gulp'),
     cache = require('gulp-cached'),
     remember = require('gulp-remember'),
     debug = require('gulp-debug'),
+    karma = require('karma').server,
     header = require('gulp-header'),
     fs = require('fs');
 
@@ -42,25 +43,26 @@ function getSourceFiles(ext) {
 }
 
 gulp.task('compile-less', function() {
-    var assets = getSourceFiles('.css'),
-        imports = '';
+    var assets = require('./config.json').assets;
 
-    assets.deps.forEach(function(src) {
-        imports += fs.readFileSync(src)
-    });
-
-    return gulp
-        .src(assets.src)
-        .pipe(debug())
-        .pipe(header(imports))
-        .pipe(cache(assets.name))
-        .pipe(less())
-        .pipe(remember(assets.name))
-        .pipe(minify())
-        .pipe(concat(assets.name))
-        .pipe(
-            gulp.dest('public/latest/')
-        );
+    for (var key in assets) {
+        if (assets.hasOwnProperty(key)) {
+            var asset = assets[key];
+            if ('.css' === path.extname(key)) {
+                gulp
+                    .src(asset)
+                    .pipe(cache('less-compile'))
+                    .pipe(debug())
+                    .pipe(plumber())
+                    .pipe(less())
+                    .pipe(minify())
+                    .pipe(concat(key))
+                    .pipe(
+                        gulp.dest('./public/latest/')
+                    );
+            }
+        }
+    }
 });
 
 gulp.task('compile-js', function() {
@@ -74,7 +76,7 @@ gulp.task('compile-js', function() {
                     .src(asset)
                     .pipe(debug())
                     .pipe(plumber())
-                    .pipe(cache(key))
+                    .pipe(cache(key)
                     .pipe(jshint())
                     .pipe(jshint.reporter('jshint-stylish'))
                     .pipe(concat(key))
@@ -106,23 +108,24 @@ gulp.task('watch', ['compile-less'], function() {
             delete cache.caches.scripts[e.path];
             remember.forget('scripts', e.path);
         }
-    });
+    );
+
+    watch(
+        ['./assets/**/*.js', './components/**/*.js'],
+        function(files, cb) {
+            gulp.start('compile-js', cb);
+        }
+    );
 });
 
-//gulp.task('watch', ['css', 'compile-js', 'minify-img'], function() {
-//    watch(
-//        ['./assets/**/*.css', './assets/**/*.less', './components/**/*.css', './components/**/*.less'],
-//        function(files, cb) {
-//            gulp.start('css', cb);
-//        }
-//    );
-//
-//    watch(
-//        ['./assets/**/*.js', './components/**/*.js'],
-//        function(files, cb) {
-//            gulp.start('compile-js', cb);
-//        }
-//    );
-//});
+/**
+ * Run test once and exit
+ */
+gulp.task('test', function (done) {
+    karma.start({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, done);
+});
 
 gulp.task('default', ['compile-less', 'compile-js']);

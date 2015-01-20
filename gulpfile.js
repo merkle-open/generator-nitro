@@ -11,8 +11,8 @@ var gulp = require('gulp'),
     cache = require('gulp-cached'),
     remember = require('gulp-remember'),
     debug = require('gulp-debug'),
-    karma = require('karma').server,
     header = require('gulp-header'),
+    karma = require('karma').server,
     fs = require('fs');
 
 function getSourceFiles(ext) {
@@ -43,50 +43,40 @@ function getSourceFiles(ext) {
 }
 
 gulp.task('compile-less', function() {
-    var assets = require('./config.json').assets;
+    var assets = getSourceFiles('.css'),
+        imports = '';
 
-    for (var key in assets) {
-        if (assets.hasOwnProperty(key)) {
-            var asset = assets[key];
-            if ('.css' === path.extname(key)) {
-                gulp
-                    .src(asset)
-                    .pipe(cache('less-compile'))
-                    .pipe(debug())
-                    .pipe(plumber())
-                    .pipe(less())
-                    .pipe(minify())
-                    .pipe(concat(key))
-                    .pipe(
-                        gulp.dest('./public/latest/')
-                    );
-            }
-        }
-    }
+    assets.deps.forEach(function(src) {
+        imports += fs.readFileSync(src)
+    });
+
+    return gulp
+        .src(assets.src)
+        .pipe(debug())
+        .pipe(header(imports))
+        .pipe(cache(assets.name))
+        .pipe(less())
+        .pipe(remember(assets.name))
+        .pipe(minify())
+        .pipe(concat(assets.name))
+        .pipe(
+        gulp.dest('public/latest/')
+    );
 });
 
 gulp.task('compile-js', function() {
-    var assets = require('./config.json').assets;
-
-    for (var key in assets) {
-        if (assets.hasOwnProperty(key)) {
-            var asset = assets[key];
-            if ('.js' === path.extname(key)) {
-                gulp
-                    .src(asset)
-                    .pipe(debug())
-                    .pipe(plumber())
-                    .pipe(cache(key)
-                    .pipe(jshint())
-                    .pipe(jshint.reporter('jshint-stylish'))
-                    .pipe(concat(key))
-                    .pipe(uglify())
-                    .pipe(
-                        gulp.dest('./public/latest')
-                    );
-            }
-        }
-    }
+    var assets = getSourceFiles('.js');
+    return gulp
+        .src(assets.src)
+        .pipe(debug())
+        .pipe(plumber())
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(concat(key))
+        .pipe(uglify())
+        .pipe(
+        gulp.dest('./public/latest')
+    );
 });
 
 gulp.task('minify-img', function() {
@@ -108,14 +98,7 @@ gulp.task('watch', ['compile-less'], function() {
             delete cache.caches.scripts[e.path];
             remember.forget('scripts', e.path);
         }
-    );
-
-    watch(
-        ['./assets/**/*.js', './components/**/*.js'],
-        function(files, cb) {
-            gulp.start('compile-js', cb);
-        }
-    );
+    });
 });
 
 /**
@@ -127,5 +110,6 @@ gulp.task('test', function (done) {
         singleRun: true
     }, done);
 });
+
 
 gulp.task('default', ['compile-less', 'compile-js']);

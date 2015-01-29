@@ -1,0 +1,7 @@
+Description:
+    Creates a default Sentinel app
+
+Example:
+    yo sentinel [--sass|less]
+
+    This will create a new sentinel project.

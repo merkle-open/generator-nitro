@@ -1,0 +1,29 @@
+{
+  "name": "sentinel",
+  "version": "0.0.1",
+  "authors": [
+    "Robert Vogt <robert.vogt@namics.com>"
+  ],
+  "description": "Sentinel is micro power on Node.js",
+  "keywords": [
+    "terrific",
+    "sentinel",
+    "terrifically"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/deniaz/terrific-node",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~1.11.1",
+    "terrificjs": "~2.1.0",
+    "bootstrap": "~3.3.1"
+  }
+}

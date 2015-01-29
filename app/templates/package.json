@@ -1,0 +1,57 @@
+{
+  "name": "sentinel",
+  "version": "0.0.1",
+  "description": "Sentinel is a Node.js application for simple and complex frontend development with a tiny footprint.",
+  "author": "Namics AG (http://www.namics.com)",
+  "contributors": [
+    "René Bach <rene.bach@namics.com> (https://github.com/aalibaabaa)",
+    "Remo Brunschwiler <remo.brunschwiler@namics.com> (https://github.com/brunschgi)",
+    "Robert Vogt <robert.vogt@namics.com> (https://github.com/deniaz)"
+  ],
+  "homepage": "https://github.com/namics/sentinel",
+  "keywords": [
+    "terrific",
+    "frontend",
+    "modular"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "test": "karma start karma.conf.js",
+    "start": "node sentinel.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:namics/sentinel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/namics/sentinel/issues"
+  },
+  "private": true,
+  "dependencies": {
+    "express": "^4.10.4",
+    "gulp": "^3.8.10",
+    "gulp-cached": "^1.0.1",
+    "gulp-concat": "^2.4.2",
+    "gulp-header": "^1.2.2",
+    "gulp-imagemin": "^2.0.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-less": "^1.3.6",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-plumber": "^0.6.6",
+    "gulp-remember": "^0.3.0",
+    "gulp-sourcemaps": "^1.2.8",
+    "gulp-uglify": "^1.0.1",
+    "gulp-watch": "^2.0.0",
+    "hbs": "^2.7.0",
+    "jasmine": "^2.1.1",
+    "jshint-stylish": "^1.0.0",
+    "merge": "^1.2.0"
+  },
+  "devDependencies": {
+    "gulp-debug": "^2.0.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-jasmine": "~0.2.0",
+    "gulp-karma": "~0.0.1"
+  }
+}

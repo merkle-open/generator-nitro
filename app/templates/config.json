@@ -1,0 +1,39 @@
+{
+  "assets": {
+    "app.css": [
+      "+assets/css/variables.less",
+      "+assets/css/mixins.less",
+      "assets/vendor/bootstrap/less/bootstrap.less",
+      "components/modules/**/*.less"
+    ],
+    "app.js": [
+      "!components/modules/Test*/*",
+      "assets/vendor/jquery/dist/jquery.min.js",
+      "assets/vendor/terrificjs/dist/terrific.min.js",
+      "assets/vendor/bootstrap/dist/js/bootstrap.min.js",
+      "assets/js/*.js",
+      "components/modules/*/js/*.js",
+      "components/modules/*/js/skins/*.js"
+    ]
+  },
+  "sentinel": {
+    "components": {
+      "element": {
+        "template": "project/blueprints/component",
+        "path": "components/elements",
+        "component_prefix": "e"
+      },
+      "group": {
+        "template": "project/blueprints/component",
+        "path": "components/groups",
+        "component_prefix": "g"
+      },
+      "module": {
+        "template": "project/blueprints/component",
+        "path": "components/modules",
+        "component_prefix": "mod",
+        "skin_prefix": "skin"
+      }
+    }
+  }
+}

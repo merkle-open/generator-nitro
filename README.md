@@ -1,0 +1,1 @@
+# Yeoman Sentinel Generator

@@ -1,0 +1,41 @@
+{
+  "name": "generator-sentinel",
+  "version": "0.0.1",
+  "description": "Yeoman generator for the sentinel frontend framework",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "brunschgi/generator-sentinel",
+  "author": {
+    "name": "Remo Brunschwiler",
+    "email": "remo@terrifically.org",
+    "url": "https://github.com/brunschgi"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "adm-zip": "^0.4.4",
+    "chalk": "^0.5.0",
+    "git-config": "0.0.6",
+    "lodash": "^3.0.0",
+    "request": "^2.51.0",
+    "rimraf": "^2.2.8",
+    "yeoman-generator": "^0.18.0",
+    "yosay": "^0.3.0"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0"
+  }
+}

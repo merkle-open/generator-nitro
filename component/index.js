@@ -7,7 +7,7 @@ var request = require('request');
 var path = require('path');
 var fs = require('fs');
 var gitconfig = require('git-config');
-var lodash = require('lodash');
+var _ = require('lodash');
 
 module.exports = generators.Base.extend({
 	constructor: function () {
@@ -23,7 +23,7 @@ module.exports = generators.Base.extend({
 		this.cfg = require(this.destinationPath('config.json'));
 
 		// Get the component types
-		this.types = lodash.map(this.cfg.sentinel.components, function (value, key) {
+		this.types = _.map(this.cfg.sentinel.components, function (value, key) {
 			return key;
 		});
 	},
@@ -42,7 +42,7 @@ module.exports = generators.Base.extend({
 				message: 'What\'s the name of your component?',
 				default: this.name,
 				validate: function validateString(value) {
-					return lodash.isString(value) && !lodash.isBlank(value);
+					return _.isString(value) && !_.isBlank(value);
 				}
 			},
 			{
@@ -79,7 +79,7 @@ module.exports = generators.Base.extend({
 
 			var gitConfig = gitconfig.sync();
 
-			if(!lodash.isEmpty(gitConfig)) {
+			if(!_.isEmpty(gitConfig)) {
 				user.name = gitConfig.user.name;
 				user.email = gitConfig.user.email;
 			}
@@ -87,15 +87,15 @@ module.exports = generators.Base.extend({
 			var replacements = {
 				user: user,
 				component : {
-					name: lodash.humanize(this.name),					// Component name, eg. Main navigation
-					js: lodash.capitalize(lodash.camelize(this.name)), 	// Component name for use in JS files, eg. MainNavigation
-					css: lodash.kebabCase(this.name),					// Component name for use in CSS files, eg. main-navigation
+					name: _.humanize(this.name),					// Component name, eg. Main navigation
+					js: _.capitalize(_.camelize(this.name)), 	// Component name for use in JS files, eg. MainNavigation
+					css: _.kebabCase(this.name),					// Component name for use in CSS files, eg. main-navigation
 					prefix: component.component_prefix || null 			// CSS class prefix, eg. mod
 				},
 				skin : {
-					name: lodash.humanize(this.name),					// Skin name, eg. Highlight
-					js: lodash.capitalize(lodash.camelize(this.name)), 	// Skin name for use in JS files, eg. Highlight
-					css: lodash.kebabCase(this.name),					// Skin name for use in CSS files, eg. highlight
+					name: _.humanize(this.name),					// Skin name, eg. Highlight
+					js: _.capitalize(_.camelize(this.name)), 	// Skin name for use in JS files, eg. Highlight
+					css: _.kebabCase(this.name),					// Skin name for use in CSS files, eg. highlight
 					prefix: component.component_prefix || null 			// CSS class prefix, eg. skin
 				}
 			};
@@ -112,12 +112,12 @@ module.exports = generators.Base.extend({
 
 				// filename replacements
 				var fileReplacements = {
-					component :  lodash.kebabCase(this.name).replace('-', ''),
-					skin:  lodash.kebabCase(this.name).replace('-', '')
+					component :  _.kebabCase(this.name).replace('-', ''),
+					skin:  _.kebabCase(this.name).replace('-', '')
 				};
 
 				var filename = file;
-				lodash.forOwn(fileReplacements, function(value, key) {
+				_.forOwn(fileReplacements, function(value, key) {
 					filename = filename.replace(key, value);
 				});
 

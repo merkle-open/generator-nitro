@@ -1,7 +1,7 @@
 Description:
-    Creates a default Sentinel app
+    Creates a Sentinel app
 
 Example:
-    yo sentinel [--sass|less]
+    yo sentinel --pre=less
 
-    This will create a new sentinel project.
+    This will create a new sentinel project with less support.

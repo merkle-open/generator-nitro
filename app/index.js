@@ -6,6 +6,7 @@ var yosay = require('yosay');
 var request = require('request');
 var path = require('path');
 var fs = require('fs');
+var admzip = require('adm-zip');
 var _ = require('lodash');
 
 module.exports = generators.Base.extend({
@@ -25,6 +26,10 @@ module.exports = generators.Base.extend({
 	initializing: function () {
 		this.pkg = require('../package.json');
 		this.cfg = require('../config.json');
+
+		// namics frontend-defaults
+		this.srcZip = 'http://github.com/namics/frontend-defaults/archive/master.zip';
+		this.destZip = this.templatePath('frontend-defaults.zip');
 	},
 
 	prompting: function () {
@@ -55,6 +60,52 @@ module.exports = generators.Base.extend({
 		}.bind(this));
 	},
 
+	configuring: {
+		download: function () {
+			var self = this;
+			var done = this.async();
+
+			this.log('Download ' + chalk.cyan(this.srcZip));
+
+			var dl = request
+				.get(this.srcZip)
+				.on('error', function (err) {
+					self.log(chalk.red(err));
+				})
+				.pipe(fs.createWriteStream(this.destZip));
+
+			dl.on('finish', function () {
+				done();
+			});
+		},
+		extract: function () {
+			var done = this.async();
+
+			this.log('Extracting frontend-defaults templates');
+			var zip = new admzip(this.destZip);
+
+			try {
+				// extract entrys
+				zip.extractEntryTo('frontend-defaults-master/editorconfig/frontend.editorconfig', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/gitignore/frontend.gitignore', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/gitattributes/.gitattributes', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/jshintrc/.jshintrc', this.sourceRoot(), false, true);
+
+				// rename files
+				fs.renameSync(this.templatePath('frontend.editorconfig'), this.templatePath('.editorconfig'));
+				fs.renameSync(this.templatePath('frontend.gitignore'), this.templatePath('.gitignore'));
+			}
+			catch (e) {
+				this.log(chalk.red(e.message));
+			}
+
+			// remove zip
+			fs.unlinkSync(this.destZip);
+
+			done();
+		}
+	},
+
 	writing: {
 		app: function () {
 			this.log('Scaffolding your app');
@@ -66,7 +117,8 @@ module.exports = generators.Base.extend({
 			];
 			var ignores = [
 				// files to ignore
-				'.DS_Store'
+				'.DS_Store',
+				'frontend-defaults.zip'
 			];
 
 			var data = {

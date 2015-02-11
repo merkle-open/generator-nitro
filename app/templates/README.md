@@ -1,4 +1,4 @@
-sentinel ![Travis CI Build](https://travis-ci.org/namics/sentinel.svg?branch=develop)
+Sentinel ![Travis CI Build](https://travis-ci.org/namics/sentinel.svg?branch=develop)
 ========
 Sentinel is a Node.js application for simple and complex frontend development with a tiny footprint. It provides a
 proven but flexible structure to develop your frontend code, even in a large team. Keep track of your code with a

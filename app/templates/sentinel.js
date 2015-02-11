@@ -11,5 +11,5 @@ app.engine(cfg.sentinel.view_file_extension, hbs.__express);
 
 
 var server = app.listen(8080, function() {
-    console.log('Terrific Micro listening on *:8080');
+    console.log('Sentinel listening on *:8080');
 });

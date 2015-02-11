@@ -13,7 +13,7 @@ describe('sentinel:app', function () {
             .on('end', done);
     });
 
-    it('creates files', function () {
+    it('create blueprint files', function () {
         assert.file([
             'app',
             'assets',

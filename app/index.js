@@ -14,9 +14,9 @@ module.exports = generators.Base.extend({
 		// Calling the super constructor
 		generators.Base.apply(this, arguments);
 
-		this.argument('name', {desc: 'the name of your app', type: String, required: false});
-		this.name = this.name || path.basename(process.cwd());
-		this.name = _.kebabCase(this.name);
+		this.option('name', {desc: 'the name of your app', type: String });
+		this.options.name = this.options.name || path.basename(process.cwd());
+		this.options.name = _.kebabCase(this.options.name);
 
 		this.preOptions = ['less', 'scss'];
 		this.option('pre', {desc: 'your desired preprocessor [' + this.preOptions.join('|') + ']', type: String, defaults: this.preOptions[0]});
@@ -38,7 +38,7 @@ module.exports = generators.Base.extend({
 			{
 				name: 'name',
 				message: 'What\'s the name of your app?',
-				default: this.name
+				default: this.options.name
 			},
 			{
 				name: 'pre',
@@ -48,7 +48,7 @@ module.exports = generators.Base.extend({
 				default: _.indexOf(this.preOptions, this.options.pre) || 0
 			}
 		], function (props) {
-			this.name = props.name;
+			this.options.name = props.name;
 			this.options.pre = props.pre;
 
 			done();
@@ -70,7 +70,7 @@ module.exports = generators.Base.extend({
 			];
 
 			var data = {
-				name: this.name,
+				name: this.options.name,
 				options: this.options
 			};
 

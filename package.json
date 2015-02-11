@@ -33,6 +33,7 @@
     "yosay": "^0.3.0"
   },
   "devDependencies": {
+    "fs-extra": "^0.16.3",
     "mocha": "*"
   },
   "peerDependencies": {

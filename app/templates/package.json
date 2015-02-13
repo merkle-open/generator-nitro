@@ -53,6 +53,7 @@
     "karma": "^0.12.31",
     "karma-chrome-launcher": "^0.1.7",
     "karma-jasmine": "~0.2.0",
-    "gulp-karma": "~0.0.1"
+    "gulp-karma": "~0.0.1",
+    "gulp-livereload": "^3.7.0"
   }
 }

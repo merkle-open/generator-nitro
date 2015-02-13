@@ -13,6 +13,7 @@ var gulp = require('gulp'),
     debug = require('gulp-debug'),
     header = require('gulp-header'),
     karma = require('karma').server,
+    livereload = require('gulp-livereload');
     fs = require('fs');
 
 function getSourceFiles(ext) {
@@ -59,9 +60,8 @@ gulp.task('compile-less', function() {
         .pipe(remember(assets.name))
         .pipe(minify())
         .pipe(concat(assets.name))
-        .pipe(
-        gulp.dest('public/latest/')
-    );
+        .pipe(gulp.dest('public/latest/'))
+        .pipe(livereload());
 });
 
 gulp.task('compile-js', function() {
@@ -74,9 +74,8 @@ gulp.task('compile-js', function() {
         .pipe(jshint.reporter('jshint-stylish'))
         .pipe(concat(key))
         .pipe(uglify())
-        .pipe(
-        gulp.dest('./public/latest')
-    );
+        .pipe(gulp.dest('./public/latest'))
+        .pipe(livereload());
 });
 
 gulp.task('minify-img', function() {
@@ -92,6 +91,8 @@ gulp.task('minify-img', function() {
 });
 
 gulp.task('watch', ['compile-less'], function() {
+    livereload.listen();
+
     var watcher = gulp.watch(['./assets/**/*.less', './components/**/*.less'], ['compile-less']);
     watcher.on('change', function(e) {
         if ('delete' === e.type) {

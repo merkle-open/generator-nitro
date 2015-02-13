@@ -1,5 +1,5 @@
 (function($) {
-	"use strict";
+	'use strict';
 	/**
 	 * <%= skin.name %> skin implementation for the <%= component.name %> module.
 	 *

@@ -1,5 +1,5 @@
 (function($) {
-	"use strict";
+	'use strict';
 	/**
 	 * <%= component.name %> module implementation.
 	 *

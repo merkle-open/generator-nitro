@@ -13,7 +13,7 @@ describe('sentinel:app', function () {
             .on('end', done);
     });
 
-    it('creates files', function () {
+    it('creates blueprint files', function () {
         assert.file([
             'app',
             'assets',
@@ -21,8 +21,16 @@ describe('sentinel:app', function () {
             'project',
             'views',
             'bower.json',
-            'package.json',
-            '.editorconfig'
+            'package.json'
+        ]);
+    });
+
+    it('includes namics frontend-defaults', function () {
+        assert.file([
+            '.editorconfig',
+            '.gitignore',
+            '.gitattributes',
+            '.jshintrc'
         ]);
     });
 

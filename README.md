@@ -4,6 +4,11 @@
 
 ## Usage
 
+Install `yo` and other required tools
+```
+npm install -g yo bower grunt-cli gulp mocha
+```
+
 Install `generator-sentinel`:
 ```
 npm install -g generator-sentinel
@@ -29,7 +34,7 @@ Open `http://localhost:8080/` in your browser to see the action.
 
 Available generators:
 
-* [sentinel](#name) (aka [sentinel:app](#name))
+* [sentinel] (aka [sentinel:app])
 * [sentinel:component](#name)
 
 **Note: Generators are to be run from the root directory of your app.**

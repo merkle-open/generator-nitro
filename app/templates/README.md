@@ -1,8 +1,8 @@
-sentinel ![Travis CI Build](https://travis-ci.org/namics/sentinel.svg?branch=develop)
+Sentinel ![Travis CI Build](https://travis-ci.org/namics/sentinel.svg?branch=develop)
 ========
 Sentinel is a Node.js application for simple and complex frontend development with a tiny footprint. It provides a
-proven but flexible structure to develop your frontend cod,e even in a large team. Keep track of your code with a
-modularized frontend. This app and the suggested [terrific concept](http://terrifically.org) could help. Terrific Micro
+proven but flexible structure to develop your frontend code, even in a large team. Keep track of your code with a
+modularized frontend. This app and the suggested [terrific concept](http://terrifically.org) could help. Sentinel
 is simple, fast and flexible. Use this app for all your frontend work, but keep in mind it's not intended to use in
 production environment.
 
@@ -28,7 +28,7 @@ More about that when we've actually implemented it :)
 * CSS/JS concatenation and minification
 * LESS/SCSS support
 * Caching (LESS/SCSS) for optimal performance
-* GUI to create components
+* Yeoman component generator
 
 ## Daily Work - Creating Components & Pages
 
@@ -51,11 +51,8 @@ Create additional content templates directly in the component folder:
 
     /Example/example-variant.html
 
-### Creating Components & Skins with yo!
-tbd
-
-### Creating Components & Skins by GUI
-tbd
+### Creating Components & Skins with yo
+    yo sentinel:component
 
 #### Components Configuration
 tbd
@@ -193,7 +190,7 @@ tbd
 * [jQuery 1.11.2](http://jquery.com/)
 * [TerrificJS 2.1.0](http://terrifically.org/api/)
 * [YUI CSS Reset 3.18.1](http://yuilibrary.com/yui/docs/cssreset/)
-* Favicon & Home-Icons from Terrific Micro (replace with your own)
+* Favicon & Home-Icons from Sentinel (replace with your own)
 * Component `Example` and some styles in assets/css (you don't need them)
 
 

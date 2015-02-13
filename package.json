@@ -28,11 +28,11 @@
     "git-config": "0.0.6",
     "lodash": "^3.0.0",
     "request": "^2.51.0",
-    "rimraf": "^2.2.8",
     "yeoman-generator": "^0.18.0",
     "yosay": "^0.3.0"
   },
   "devDependencies": {
+    "fs-extra": "^0.16.3",
     "mocha": "*"
   },
   "peerDependencies": {

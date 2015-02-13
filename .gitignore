@@ -10,3 +10,8 @@ node_modules/
 
 # Project
 
+# Namics frontend-defaults
+app/templates/.jshintrc
+app/templates/.gitignore
+app/templates/.gitattributes
+app/templates/.editorconfig

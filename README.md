@@ -6,7 +6,7 @@
 
 Install `yo` and other required tools
 ```
-npm install -g yo bower grunt-cli gulp mocha
+npm install -g yo bower gulp mocha
 ```
 
 Install `generator-sentinel`:

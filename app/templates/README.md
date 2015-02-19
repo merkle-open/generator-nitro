@@ -9,18 +9,14 @@ production environment.
 ## Quickstart
 To run sentinel you only need [node](http://nodejs.org/).
 
-1. Clone repo to a `project`-folder.
-
-        git clone git@github.com:namics/sentinel.git
-
-2. Run the Yeoman Project Generator
+1. Run the Yeoman Project Generator (you probably have already done this)
  
-        yo sentinel
+        yo sentinel 
 
-3. Watch your assets
- 
-        gulp watch
+2. Start building your app
 
+        gulp develop
+        
 More about that when we've actually implemented it :)
 
 ### Features
@@ -156,8 +152,8 @@ To stay portable you should favour the use of relative paths. Link to resources 
     <a href="content.html">Contentpage</a>
 
 ### Upper & lower case letters
-
 Use all lowercase if possible.
+
 Exceptions:
 
 * Component folders must match terrific classes, therefore they are case-sensitive.

@@ -10,9 +10,11 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     cache = require('gulp-cached'),
     remember = require('gulp-remember'),
-    debug = require('gulp-debug'),
     header = require('gulp-header'),
     karma = require('karma').server,
+    server = require('gulp-express'),
+    browserSync = require('browser-sync'),
+    rename = require("gulp-rename"),
     fs = require('fs');
 
 function getSourceFiles(ext) {
@@ -42,48 +44,64 @@ function getSourceFiles(ext) {
     return [];
 }
 
-gulp.task('compile-less', function() {
+gulp.task('compile-css', function () {
     var assets = getSourceFiles('.css'),
         imports = '';
 
-    assets.deps.forEach(function(src) {
+    assets.deps.forEach(function (src) {
         imports += fs.readFileSync(src)
     });
 
     return gulp
         .src(assets.src)
-        .pipe(debug())
         .pipe(header(imports))
         .pipe(cache(assets.name))
         .pipe(less())
         .pipe(remember(assets.name))
-        .pipe(minify())
         .pipe(concat(assets.name))
-        .pipe(
-        gulp.dest('public/latest/')
-    );
+        .pipe(gulp.dest('public/latest/'))
+        .pipe(browserSync.reload({ stream: true }));
 });
 
-gulp.task('compile-js', function() {
+gulp.task('compile-js', function () {
     var assets = getSourceFiles('.js');
+    var condition = '*.min.js';
+
     return gulp
         .src(assets.src)
-        .pipe(debug())
         .pipe(plumber())
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
-        .pipe(concat(key))
-        .pipe(uglify())
-        .pipe(
-        gulp.dest('./public/latest')
-    );
+        .pipe(concat(assets.name))
+        .pipe(gulp.dest('./public/latest'))
+        .pipe(browserSync.reload({ stream: true }));
 });
 
-gulp.task('minify-img', function() {
+
+gulp.task('minify-css', ['compile-css'], function () {
+    var assets = getSourceFiles('.css');
+
+    return gulp
+        .src('./public/latest/' + assets.name)
+        .pipe(minify())
+        .pipe(rename(assets.name.replace('.css', '.min.css')))
+        .pipe(gulp.dest('public/latest/'));
+});
+
+gulp.task('minify-js', ['compile-js'], function () {
+    var assets = getSourceFiles('.js');
+
+    return gulp
+        .src('./public/latest/' + assets.name)
+        .pipe(uglify())
+        .pipe(rename(assets.name.replace('.js', '.min.js')))
+        .pipe(gulp.dest('public/latest/'));
+});
+
+gulp.task('minify-img', function () {
     // TODO: Move files to resources/original before minify
     gulp
         .src('./assets/img/**/*.*')
-        .pipe(debug())
         .pipe(plumber())
         .pipe(imagemin({
             progressive: true
@@ -91,19 +109,56 @@ gulp.task('minify-img', function() {
         .pipe(gulp.dest('./assets/img'));
 });
 
-gulp.task('watch', ['compile-less'], function() {
-    var watcher = gulp.watch(['./assets/**/*.less', './components/**/*.less'], ['compile-less']);
-    watcher.on('change', function(e) {
+gulp.task('watch', ['compile-css', 'compile-js'], function () {
+    var clearCache = function (e) {
         if ('delete' === e.type) {
             delete cache.caches.scripts[e.path];
             remember.forget('scripts', e.path);
         }
+    };
+
+    gulp.watch([
+        './assets/**/*.less',
+        './components/**/*.less'
+    ], ['compile-css'])
+        .on('change', function (e) {
+            clearCache(e)
+        });
+
+    gulp.watch([
+        './assets/**/*.js',
+        './components/**/*.js'
+    ], ['compile-js'])
+        .on('change', function (e) {
+            clearCache(e)
+        });
+});
+
+gulp.task('browser-sync', ['server-watch'], function () {
+    browserSync({
+        proxy: 'localhost:8080',
+        port: 8081
+    }, function(err) {
+        if (!err) {
+            browserSync.notify('Compiling your assets, please wait!');
+        }
     });
 });
 
-/**
- * Run test once and exit
- */
+gulp.task('server-run', function () {
+    server.run({
+        file: 'sentinel.js'
+    });
+});
+
+gulp.task('server-watch', ['server-run'], function () {
+    gulp.watch(['sentinel.js', 'app/core/*.js'], function () {
+        server.run({
+            file: 'sentinel.js'
+        });
+    });
+});
+
 gulp.task('test', function (done) {
     karma.start({
         configFile: __dirname + '/karma.conf.js',
@@ -111,5 +166,5 @@ gulp.task('test', function (done) {
     }, done);
 });
 
-
-gulp.task('default', ['compile-less', 'compile-js']);
+gulp.task('develop', ['browser-sync', 'watch']);
+gulp.task('production', ['minify-css', 'minify-js', 'server-run']);

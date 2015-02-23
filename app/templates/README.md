@@ -1,17 +1,18 @@
-Sentinel ![Travis CI Build](https://travis-ci.org/namics/sentinel.svg?branch=develop)
+Splendid
 ========
-Sentinel is a Node.js application for simple and complex frontend development with a tiny footprint. It provides a
+
+Splendid is a Node.js application for simple and complex frontend development with a tiny footprint. It provides a
 proven but flexible structure to develop your frontend code, even in a large team. Keep track of your code with a
-modularized frontend. This app and the suggested [terrific concept](http://terrifically.org) could help. Sentinel
+modularized frontend. This app and the suggested [terrific concept](http://terrifically.org) could help. Splendid
 is simple, fast and flexible. Use this app for all your frontend work, but keep in mind it's not intended to use in
 production environment.
 
 ## Quickstart
-To run sentinel you only need [node](http://nodejs.org/).
+To run splendid you only need [node](http://nodejs.org/).
 
 1. Run the Yeoman Project Generator (you probably have already done this)
  
-        yo sentinel 
+        yo splendid 
 
 2. Start building your app
 
@@ -48,7 +49,7 @@ Create additional content templates directly in the component folder:
     /Example/example-variant.html
 
 ### Creating Components & Skins with yo
-    yo sentinel:component
+    yo splendid:component
 
 #### Components Configuration
 tbd
@@ -72,7 +73,7 @@ Your new page can then be called by the according URL (with or without an extens
 Pages are meant to be compositions of your components. Use the component's name as the first parameter. Be aware, the
 component name is case-sensitive
 
-Sentinel uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
+Splendid uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
 
 Render the Example component. (file: `example.html`)
 
@@ -89,7 +90,7 @@ Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*
 
 ## Assets
 
-Sentinel's main feature is asset concatenation for CSS and JavaScript files. If changed, the files will be updated on
+Splendid's main feature is asset concatenation for CSS and JavaScript files. If changed, the files will be updated on
 every request, therefore you'll always get the latest version.
 
 ### Assets Configuration
@@ -171,14 +172,14 @@ Note that camel case ComponentNames are represented in CSS with dashes.
 
 ## Commandline
 
-Sentinel uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used on the CLI.
+Splendid uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used on the CLI.
 
 ## Security
 tbd
 
 ## Contributing
 
-* For Bugs and Features please use [GitHub](https://github.com/namics/sentinel/issues)
+* For Bugs and Features please use [GitHub](https://github.com/namics/splendid/issues)
 * Feel free to fork and send PRs. That's the best way to discuss your ideas.
 
 ## Example Project Includes
@@ -186,7 +187,7 @@ tbd
 * [jQuery 1.11.2](http://jquery.com/)
 * [TerrificJS 2.1.0](http://terrifically.org/api/)
 * [YUI CSS Reset 3.18.1](http://yuilibrary.com/yui/docs/cssreset/)
-* Favicon & Home-Icons from Sentinel (replace with your own)
+* Favicon & Home-Icons from Splendid (replace with your own)
 * Component `Example` and some styles in assets/css (you don't need them)
 
 
@@ -194,7 +195,7 @@ tbd
 tbd
 
 ## Credits
-Sentinel is an alternative to [Terrific Micro](https://github.com/namics/terrific-micro) initiated by
+Splendid is an alternative to [Terrific Micro](https://github.com/namics/terrific-micro) initiated by
 [Roger Dudler](https://github.com/rogerdudler) and maintained by Namics AG.
 
 ## License

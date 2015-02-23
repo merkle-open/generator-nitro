@@ -1,7 +1,7 @@
 Description:
-    Creates a Sentinel app
+    Creates a Splendid app
 
 Example:
-    yo sentinel --pre=less
+    yo splendid --pre=less
 
-    This will create a new sentinel project with less support.
+    This will create a new splendid project with less support.

@@ -21,7 +21,7 @@ module.exports = generators.Base.extend({
 		// Component type
 		this.cfg = require(this.destinationPath('config.json'));
 
-		this.types = _.map(this.cfg.sentinel.components, function (value, key) {
+		this.types = _.map(this.cfg.splendid.components, function (value, key) {
 			return key;
 		});
 
@@ -67,7 +67,7 @@ module.exports = generators.Base.extend({
 			this.options.type = props.type;
 
 			// Check whether the choosen type support skins (skin_prefix in config)
-			this.supportSkin = _.has(this.cfg.sentinel.components[this.options.type], 'skin_prefix');
+			this.supportSkin = _.has(this.cfg.splendid.components[this.options.type], 'skin_prefix');
 
 			done();
 		}.bind(this));
@@ -101,7 +101,7 @@ module.exports = generators.Base.extend({
 			}
 			this.log(msg);
 
-			var component = this.cfg.sentinel.components[this.options.type];
+			var component = this.cfg.splendid.components[this.options.type];
 
 			var files = this.expandFiles('**/*', {cwd: this.destinationPath(component.template), dot: true});
 			var ignores = [

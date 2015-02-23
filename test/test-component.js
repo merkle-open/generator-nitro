@@ -6,7 +6,7 @@ var helpers = require('yeoman-generator').test;
 var os = require('os');
 var fs = require('fs-extra');
 
-describe('sentinel:component', function () {
+describe('splendid:component', function () {
     describe('when creating a component "Test" that does not support skins', function () {
         before(function (done) {
             helpers.run(path.join( __dirname, '../component'))

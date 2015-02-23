@@ -7,11 +7,11 @@ var express = require('express'),
 
 app.use(router);
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set('view engine', cfg.sentinel.view_file_extension);
-app.set('views', cfg.sentinel.view_directory);
-app.engine(cfg.sentinel.view_file_extension, hbs.__express);
+app.set('view engine', cfg.splendid.view_file_extension);
+app.set('views', cfg.splendid.view_directory);
+app.engine(cfg.splendid.view_file_extension, hbs.__express);
 
 
 var server = app.listen(8080, function() {
-    console.log('Sentinel listening on *:8080');
+    console.log('Splendid listening on *:8080');
 });

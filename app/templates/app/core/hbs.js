@@ -2,10 +2,10 @@ var fs = require('fs'),
 	path = require('path'),
 	hbs = require('hbs'),
 	cfg = require('./config'),
-	coreHelpersDir = cfg.sentinel.base_path + 'app/helpers/',
-	projectHelpersDir = cfg.sentinel.base_path + 'project/helpers/';
+	coreHelpersDir = cfg.splendid.base_path + 'app/helpers/',
+	projectHelpersDir = cfg.splendid.base_path + 'project/helpers/';
 
-hbs.registerPartials(cfg.sentinel.base_path + cfg.sentinel.view_partials_directory);
+hbs.registerPartials(cfg.splendid.base_path + cfg.splendid.view_partials_directory);
 
 var files = {},
 	coreFiles = fs.readdirSync(coreHelpersDir),

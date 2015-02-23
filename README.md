@@ -1,6 +1,6 @@
-# Yeoman Sentinel Generator
+# Yeoman Splendid Generator
 
-> Yeoman generator for Sentinel - lets you quickly set up a project with sensible defaults and best practices.
+> Yeoman generator for Splendid - lets you quickly set up a project with sensible defaults and best practices.
 
 ## Usage
 
@@ -9,9 +9,9 @@ Install `yo` and other required tools
 npm install -g yo bower gulp mocha
 ```
 
-Install `generator-sentinel`:
+Install `generator-splendid`:
 ```
-npm install -g generator-sentinel
+npm install -g generator-splendid
 ```
 
 Make a new directory, and `cd` into it:
@@ -19,14 +19,14 @@ Make a new directory, and `cd` into it:
 mkdir my-new-project && cd $_
 ```
 
-Run `yo sentinel`, optionally passing an app name:
+Run `yo splendid`, optionally passing an app name:
 ```
-yo sentinel [name]
+yo splendid [name]
 ```
 
 Run `gulp watch` for building and watching your asset changes.
 
-Run `node sentinel` to start your application. 
+Run `node app` to start your application. 
 
 Open `http://localhost:8080/` in your browser to see the action.
 
@@ -34,17 +34,17 @@ Open `http://localhost:8080/` in your browser to see the action.
 
 Available generators:
 
-* [sentinel] (aka [sentinel:app])
-* [sentinel:component](#name)
+* [splendid] (aka [splendid:app])
+* [splendid:component](#name)
 
 **Note: Generators are to be run from the root directory of your app.**
 
 ### App
-Sets up a new sentinel app, generating all the boilerplate you need to get started. 
+Sets up a new splendid app, generating all the boilerplate you need to get started. 
 
 Example:
 ```bash
-yo sentinel
+yo splendid
 ```
 
 ### Component
@@ -52,7 +52,7 @@ Generates a frontend component.
 
 Example:
 ```bash
-yo sentinel:component
+yo splendid:component
 ```
 
 ## Bower Components
@@ -88,7 +88,7 @@ When submitting a new feature, add tests that cover the feature.
 
 ## Changelog
 
-Recent changes can be viewed on Github on the [Releases Page](https://github.com/namics/generator-sentinel/releases)
+Recent changes can be viewed on Github on the [Releases Page](https://github.com/namics/generator-splendid/releases)
 
 ## License
 

@@ -4,17 +4,17 @@ var fs = require('fs'),
 	cfg = require('../core/config.js');
 
 module.exports = function(modName, variant) {
-	for (var key in cfg.sentinel.components) {
-		var component = cfg.sentinel.components[key];
+	for (var key in cfg.splendid.components) {
+		var component = cfg.splendid.components[key];
 		if (component.hasOwnProperty('path')) {
-			var filename = modName.toLowerCase() + '.' + cfg.sentinel.view_file_extension;
+			var filename = modName.toLowerCase() + '.' + cfg.splendid.view_file_extension;
 
 			if ('string' === typeof variant) {
-				filename = modName.toLowerCase() + '-' + variant.toLowerCase() + '.' + cfg.sentinel.view_file_extension;
+				filename = modName.toLowerCase() + '-' + variant.toLowerCase() + '.' + cfg.splendid.view_file_extension;
 			}
 
 			var fullPath = path.join(
-				cfg.sentinel.base_path,
+				cfg.splendid.base_path,
 				component.path,
 				'/',
 				modName,

@@ -10,8 +10,8 @@ var defaultConfig = {
     view_partials_directory: 'views/_partials'
 };
 
-config.sentinel = config.sentinel || defaultConfig;
+config.splendid = config.splendid || defaultConfig;
 
-config.sentinel = merge(defaultConfig, config.sentinel);
+config.splendid = merge(defaultConfig, config.splendid);
 
 module.exports = config;

@@ -1,32 +1,22 @@
 {
-  "name": "sentinel",
-  "version": "0.0.1",
-  "description": "Sentinel is a Node.js application for simple and complex frontend development with a tiny footprint.",
-  "author": "Namics AG (http://www.namics.com)",
-  "contributors": [
-    "René Bach <rene.bach@namics.com> (https://github.com/aalibaabaa)",
-    "Remo Brunschwiler <remo.brunschwiler@namics.com> (https://github.com/brunschgi)",
-    "Robert Vogt <robert.vogt@namics.com> (https://github.com/deniaz)"
-  ],
-  "homepage": "https://github.com/namics/sentinel",
+  "name": "splendid",
+  "version": "0.1.0",
+  "description": "Splendid is micro power on Node.js",
+  "license": "MIT",
+  "repository": "namics/generator-splendid",
+  "author": "The Splendid Team",
   "keywords": [
     "terrific",
+    "component",
     "frontend",
-    "modular"
+    "modular",
+    "app",
+    "splendid"
   ],
-  "license": "MIT",
   "scripts": {
     "test": "karma start karma.conf.js",
-    "start": "node sentinel.js"
+    "start": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:namics/sentinel.git"
-  },
-  "bugs": {
-    "url": "https://github.com/namics/sentinel/issues"
-  },
-  "private": true,
   "dependencies": {
     "express": "^4.10.4",
     "gulp": "^3.8.10",
@@ -56,5 +46,9 @@
     "karma": "^0.12.31",
     "karma-chrome-launcher": "^0.1.7",
     "karma-jasmine": "~0.2.0"
+  },
+  "peerDependencies": {
+    "bower": "1.x",
+    "gulp": "3.x"
   }
 }

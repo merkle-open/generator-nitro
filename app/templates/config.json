@@ -16,7 +16,7 @@
       "components/modules/*/js/skins/*.js"
     ]
   },
-  "sentinel": {
+  "splendid": {
     "components": {
       "element": {
         "template": "project/blueprints/component",

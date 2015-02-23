@@ -147,14 +147,14 @@ gulp.task('browser-sync', ['server-watch'], function () {
 
 gulp.task('server-run', function () {
     server.run({
-        file: 'sentinel.js'
+        file: './app.js'
     });
 });
 
 gulp.task('server-watch', ['server-run'], function () {
-    gulp.watch(['sentinel.js', 'app/core/*.js'], function () {
+    gulp.watch(['./app.js', 'app/core/*.js'], function () {
         server.run({
-            file: 'sentinel.js'
+            file: './app.js'
         });
     });
 });

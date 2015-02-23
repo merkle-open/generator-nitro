@@ -3,10 +3,18 @@
 Thumbs.db
 
 # IDE
+_.*
+.project
 .idea
-
-# Node
-node_modules/
+.cache
+.settings
+.config
+.buildpath
+.metadata
+.tmp*
+*.prefs
+.deployables
+atlassian-ide-plugin.xml
 
 # Namics frontend-defaults
 app/templates/.jshintrc
@@ -15,4 +23,7 @@ app/templates/.gitattributes
 app/templates/.editorconfig
 
 # Project
+node_modules/
 
+# allow
+!.gitkeep

@@ -1,18 +1,17 @@
 {
-  "name": "sentinel",
-  "version": "0.0.1",
-  "authors": [
-    "Robert Vogt <robert.vogt@namics.com>"
-  ],
-  "description": "Sentinel is micro power on Node.js",
+  "name": "splendid",
+  "version": "0.1.0",
+  "author": "The Splendid Team",
+  "description": "Splendid is micro power on Node.js",
   "keywords": [
     "terrific",
-    "sentinel",
-    "terrifically"
+    "component",
+    "frontend",
+    "modular",
+    "app",
+    "splendid"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/deniaz/terrific-node",
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",

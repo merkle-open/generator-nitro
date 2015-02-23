@@ -3,4 +3,4 @@ node_js:
   - '0.10'
 before_install:
   - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-sentinel' ]; then cd .. && eval "mv $currentfolder generator-sentinel" && cd generator-sentinel; fi
+  - if [ "$currentfolder" != 'generator-splendid' ]; then cd .. && eval "mv $currentfolder generator-splendid" && cd generator-splendid; fi

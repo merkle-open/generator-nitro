@@ -25,7 +25,6 @@ module.exports = generators.Base.extend({
 
 	initializing: function () {
 		this.pkg = require('../package.json');
-		this.cfg = require('../config.json');
 
 		// namics frontend-defaults
 		this.srcZip = 'http://github.com/namics/frontend-defaults/archive/master.zip';
@@ -36,7 +35,7 @@ module.exports = generators.Base.extend({
 		var done = this.async();
 
 		this.log(yosay(
-			'Welcome to the awe-inspiring ' + chalk.cyan('Sentinel') + ' generator!'
+			'Welcome to the awe-inspiring ' + chalk.cyan('Splendid') + ' generator!'
 		));
 
 		this.prompt([

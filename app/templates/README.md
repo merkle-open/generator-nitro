@@ -11,14 +11,14 @@ production environment.
 To run splendid you only need [node](http://nodejs.org/).
 
 1. Run the Yeoman Project Generator (you probably have already done this)
- 
-        yo splendid 
+ ```
+yo splendid
+```
 
-2. Start building your app
-
-        gulp develop
-        
-More about that when we've actually implemented it :)
+2. Start your app
+```
+gulp develop
+```
 
 ### Features
 * Simple project structure

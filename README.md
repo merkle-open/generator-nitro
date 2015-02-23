@@ -24,11 +24,10 @@ Run `yo splendid`, optionally passing an app name:
 yo splendid [name]
 ```
 
-Run `gulp watch` for building and watching your asset changes.
-
-Run `node app` to start your application. 
-
-Open `http://localhost:8080/` in your browser to see the action.
+Start your app
+```
+gulp develop
+```
 
 ## Generators
 

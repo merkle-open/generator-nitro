@@ -87,13 +87,13 @@ module.exports = generators.Base.extend({
 			try {
 				// extract entrys
 				zip.extractEntryTo('frontend-defaults-master/editorconfig/frontend.editorconfig', this.sourceRoot(), false, true);
-				zip.extractEntryTo('frontend-defaults-master/gitignore/frontend.gitignore', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/gitignore/splendid.gitignore', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/gitattributes/.gitattributes', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/jshintrc/.jshintrc', this.sourceRoot(), false, true);
 
 				// rename files
 				fs.renameSync(this.templatePath('frontend.editorconfig'), this.templatePath('.editorconfig'));
-				fs.renameSync(this.templatePath('frontend.gitignore'), this.templatePath('.gitignore'));
+				fs.renameSync(this.templatePath('splendid.gitignore'), this.templatePath('.gitignore'));
 			}
 			catch (e) {
 				this.log(chalk.red(e.message));

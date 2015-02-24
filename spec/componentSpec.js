@@ -30,7 +30,8 @@ describe('splendid:component', function () {
                 'components/elements/Test',
                 'components/elements/Test/test.html',
                 'components/elements/Test/css/test.less',
-                'components/elements/Test/js/test.js'
+                'components/elements/Test/js/test.js',
+                'components/elements/Test/spec/testSpec.js'
             ]);
         });
     });
@@ -59,7 +60,8 @@ describe('splendid:component', function () {
                     'components/modules/Test',
                     'components/modules/Test/test.html',
                     'components/modules/Test/css/test.less',
-                    'components/modules/Test/js/test.js'
+                    'components/modules/Test/js/test.js',
+                    'components/modules/Test/spec/testSpec.js'
                 ]);
             });
         });
@@ -83,7 +85,8 @@ describe('splendid:component', function () {
                     'components/modules/Test/css/test.less',
                     'components/modules/Test/css/skins/test-more.less',
                     'components/modules/Test/js/test.js',
-                    'components/modules/Test/js/skins/test-more.js'
+                    'components/modules/Test/js/skins/test-more.js',
+                    'components/modules/Test/spec/testSpec.js'
                 ]);
             });
 
@@ -124,7 +127,8 @@ describe('splendid:component', function () {
                 'components/modules/NavMain/css/navmain.less',
                 'components/modules/NavMain/css/skins/navmain-specialcase.less',
                 'components/modules/NavMain/js/navmain.js',
-                'components/modules/NavMain/js/skins/navmain-specialcase.js'
+                'components/modules/NavMain/js/skins/navmain-specialcase.js',
+                'components/modules/NavMain/spec/navmainSpec.js'
             ]);
         });
 
@@ -164,7 +168,8 @@ describe('splendid:component', function () {
                 'components/modules/nav-main/css/navmain.less',
                 'components/modules/nav-main/css/skins/navmain-specialcase.less',
                 'components/modules/nav-main/js/navmain.js',
-                'components/modules/nav-main/js/skins/navmain-specialcase.js'
+                'components/modules/nav-main/js/skins/navmain-specialcase.js',
+                'components/modules/nav-main/spec/navmainSpec.js'
             ]);
         });
 

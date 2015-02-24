@@ -14,10 +14,11 @@
     "splendid"
   ],
   "scripts": {
-    "test": "karma start karma.conf.js",
-    "start": "node app.js"
+    "test": "karma start --single-run --no-auto-watch",
+    "start": "node app"
   },
   "dependencies": {
+    "body-parser": "^1.12.0",
     "express": "^4.10.4",
     "gulp": "^3.8.10",
     "gulp-cached": "^1.0.1",
@@ -49,6 +50,8 @@
   },
   "peerDependencies": {
     "bower": "1.x",
-    "gulp": "3.x"
+    "gulp": "3.x",
+    "jasmine": "2.x",
+    "karma-cli": ">=0.0.4"
   }
 }

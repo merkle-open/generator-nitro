@@ -4,16 +4,16 @@
       "+assets/css/variables.less",
       "+assets/css/mixins.less",
       "assets/vendor/bootstrap/less/bootstrap.less",
-      "components/modules/**/*.less"
+      "components/**/css/*.less",
+      "components/**/css/skins/*.js"
     ],
     "app.js": [
-      "!components/modules/Test*/*",
       "assets/vendor/jquery/dist/jquery.min.js",
       "assets/vendor/terrificjs/dist/terrific.min.js",
       "assets/vendor/bootstrap/dist/js/bootstrap.min.js",
       "assets/js/*.js",
-      "components/modules/*/js/*.js",
-      "components/modules/*/js/skins/*.js"
+      "components/**/js/*.js",
+      "components/**/js/skins/*.js"
     ]
   },
   "splendid": {

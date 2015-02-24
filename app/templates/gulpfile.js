@@ -59,13 +59,12 @@ gulp.task('compile-css', function () {
         .pipe(less())
         .pipe(remember(assets.name))
         .pipe(concat(assets.name))
-        .pipe(gulp.dest('public/latest/'))
+        .pipe(gulp.dest('./public/latest/'))
         .pipe(browserSync.reload({ stream: true }));
 });
 
 gulp.task('compile-js', function () {
     var assets = getSourceFiles('.js');
-    var condition = '*.min.js';
 
     return gulp
         .src(assets.src)
@@ -85,7 +84,7 @@ gulp.task('minify-css', ['compile-css'], function () {
         .src('./public/latest/' + assets.name)
         .pipe(minify())
         .pipe(rename(assets.name.replace('.css', '.min.css')))
-        .pipe(gulp.dest('public/latest/'));
+        .pipe(gulp.dest('./public/latest/'));
 });
 
 gulp.task('minify-js', ['compile-js'], function () {
@@ -95,11 +94,10 @@ gulp.task('minify-js', ['compile-js'], function () {
         .src('./public/latest/' + assets.name)
         .pipe(uglify())
         .pipe(rename(assets.name.replace('.js', '.min.js')))
-        .pipe(gulp.dest('public/latest/'));
+        .pipe(gulp.dest('./public/latest/'));
 });
 
 gulp.task('minify-img', function () {
-    // TODO: Move files to resources/original before minify
     gulp
         .src('./assets/img/**/*.*')
         .pipe(plumber())
@@ -118,6 +116,7 @@ gulp.task('watch', ['compile-css', 'compile-js'], function () {
     };
 
     gulp.watch([
+        './config.json',
         './assets/**/*.less',
         './components/**/*.less'
     ], ['compile-css'])
@@ -126,6 +125,7 @@ gulp.task('watch', ['compile-css', 'compile-js'], function () {
         });
 
     gulp.watch([
+        './config.json',
         './assets/**/*.js',
         './components/**/*.js'
     ], ['compile-js'])
@@ -152,17 +152,18 @@ gulp.task('server-run', function () {
 });
 
 gulp.task('server-watch', ['server-run'], function () {
-    gulp.watch(['./app.js', 'app/core/*.js'], function () {
+    gulp.watch(['./app.js', './app/core/*.js'], function () {
         server.run({
             file: './app.js'
         });
     });
 });
 
-gulp.task('test', function (done) {
+gulp.task('test', ['compile-css', 'compile-js'], function (done) {
     karma.start({
-        configFile: __dirname + '/karma.conf.js',
-        singleRun: true
+        configFile: path.join(__dirname, 'karma.conf.js'),
+        singleRun: true,
+        autoWatch: false
     }, done);
 });
 

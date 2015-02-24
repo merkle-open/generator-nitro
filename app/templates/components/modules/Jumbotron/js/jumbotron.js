@@ -1,16 +1,33 @@
 (function($) {
+    'use strict';
+    /**
+     * <%= component.name %> module implementation.
+     *
+     * @author <%= user.name %> <<%= user.email %>>
+     * @namespace Tc.Module
+     * @class <%= component.js %>
+     * @extends Tc.Module
+     */
+    Tc.Module.Jumbotron = Tc.Module.extend({
 
-    var bar = 'huh';
+        init: function($ctx, sandbox, modId) {
+            this._super($ctx, sandbox, modId);
 
-    var foo = {
-        bang: function() {
-            if (!!bar) {
-                console.log('bang');
-            } else {
-                console.warn('BANG!');
-            }
+
+        },
+
+        on: function(callback) {
+            var mod = this,
+                $ctx = mod.$ctx;
+
+            callback();
+        },
+
+        after: function() {
+            var mod = this,
+                $ctx = mod.$ctx;
+
+
         }
-    };
-
-    foo.bang();
-})(jQuery);
+    });
+}(Tc.$));

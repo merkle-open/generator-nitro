@@ -1,5 +1,4 @@
 // Karma configuration
-// Generated on Mon Jan 12 2015 16:20:54 GMT+0100 (CET)
 
 module.exports = function(config) {
   config.set({
@@ -15,8 +14,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      //'path/to/app.js',
-      'components/**/*Spec.js'
+      'public/latest/app.js',
+      'components/**/spec/*Spec.js'
     ],
 
 
@@ -51,7 +50,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // start these browsers
@@ -62,6 +61,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    singleRun: false
   });
 };

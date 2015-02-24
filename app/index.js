@@ -21,6 +21,7 @@ module.exports = generators.Base.extend({
 
 		this.preOptions = ['less', 'scss'];
 		this.option('pre', {desc: 'your desired preprocessor [' + this.preOptions.join('|') + ']', type: String, defaults: this.preOptions[0]});
+		this.update = false;
 	},
 
 	initializing: function () {
@@ -38,25 +39,40 @@ module.exports = generators.Base.extend({
 			'Welcome to the awe-inspiring ' + chalk.cyan('Splendid') + ' generator!'
 		));
 
-		this.prompt([
-			{
-				name: 'name',
-				message: 'What\'s the name of your app?',
-				default: this.options.name
-			},
-			{
-				name: 'pre',
-				type: 'list',
-				message: 'What\'s your desired preprocessor?',
-				choices: this.preOptions,
-				default: _.indexOf(this.preOptions, this.options.pre) || 0
-			}
-		], function (props) {
-			this.options.name = props.name;
-			this.options.pre = props.pre;
+		// check whether there is already a splendid application in place and we only have to update the application
+		var json = this.fs.readJSON(this.destinationPath('package.json'), { defaults : { "new" : true } });
 
+		if(!json.new && _.indexOf(json.keywords, 'splendid') !== -1) {
+			// update existing application
+			this.log(yosay(
+				'There is already a ' + chalk.cyan('Splendid') + ' application in place! I\'m going to serve you an update…'
+			));
+
+			this.update = true;
 			done();
-		}.bind(this));
+		}
+		else {
+			// create new application
+			this.prompt([
+				{
+					name: 'name',
+					message: 'What\'s the name of your app?',
+					default: this.options.name
+				},
+				{
+					name: 'pre',
+					type: 'list',
+					message: 'What\'s your desired preprocessor?',
+					choices: this.preOptions,
+					default: _.indexOf(this.preOptions, this.options.pre) || 0
+				}
+			], function (props) {
+				this.options.name = props.name;
+				this.options.pre = props.pre;
+
+				done();
+			}.bind(this));
+		}
 	},
 
 	configuring: {
@@ -129,6 +145,16 @@ module.exports = generators.Base.extend({
 				// exclude ignores
 				if (_.indexOf(ignores, file) !== -1) {
 					return;
+				}
+
+				// ignore everything under assets, components, project and views
+				if(this.update) {
+					if(_.startsWith(file, 'assets')
+						|| _.startsWith(file, 'components')
+						|| _.startsWith(file, 'project')
+						|| _.startsWith(file, 'views')) {
+						return;
+					}
 				}
 
 				// exclude unecessary preprocessor files

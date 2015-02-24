@@ -6,7 +6,7 @@ var helpers = require('yeoman-generator').test;
 var os = require('os');
 
 describe('splendid:app', function () {
-    before(function (done) {
+    beforeEach(function (done) {
         helpers.run(path.join(__dirname, '../app'))
             .inDir(path.join(os.tmpdir(), './temp-test')) // Clear the directory and set it as the CWD
             .withOptions({'skip-install': true})  // Mock options passed in
@@ -35,7 +35,7 @@ describe('splendid:app', function () {
     });
 
     describe('when using less', function () {
-        before(function (done) {
+        beforeEach(function (done) {
             helpers.run(path.join(__dirname, '../app'))
                 .inDir(path.join(os.tmpdir(), './temp-test'))
                 .withOptions({'skip-install': true })
@@ -54,7 +54,7 @@ describe('splendid:app', function () {
     });
 
     describe('when using scss', function () {
-        before(function (done) {
+        beforeEach(function (done) {
             helpers.run(path.join(__dirname, '../app'))
                 .inDir(path.join(os.tmpdir(), './temp-test'))
                 .withOptions({'skip-install': true })

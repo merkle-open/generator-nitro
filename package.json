@@ -10,7 +10,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "jasmine"
   },
   "files": [
     "app",
@@ -45,6 +45,6 @@
   },
   "peerDependencies": {
     "yo": "1.x",
-    "mocha": "2.x"
+    "jasmine": "2.x"
   }
 }

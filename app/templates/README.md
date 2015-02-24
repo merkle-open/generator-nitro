@@ -15,7 +15,7 @@ To run splendid you only need [node](http://nodejs.org/).
 yo splendid
 ```
 
-2. Start your app
+2. Start your app and build amazing things
 ```
 gulp develop
 ```
@@ -25,6 +25,8 @@ gulp develop
 * CSS/JS concatenation and minification
 * LESS/SCSS support
 * Caching (LESS/SCSS) for optimal performance
+* Jasmine tests with Karma test runner
+* Bower support
 * Yeoman component generator
 
 ## Daily Work - Creating Components & Pages
@@ -139,6 +141,7 @@ tbd - or kill it?
 ### JavaScript Debugging
 tbd - or kill it? or source maps?
 
+
 ## Conventions
 
 ### Resource linking
@@ -184,18 +187,22 @@ tbd
 
 ## Example Project Includes
 
-* [jQuery 1.11.2](http://jquery.com/)
-* [TerrificJS 2.1.0](http://terrifically.org/api/)
 * [YUI CSS Reset 3.18.1](http://yuilibrary.com/yui/docs/cssreset/)
 * Favicon & Home-Icons from Splendid (replace with your own)
 * Component `Example` and some styles in assets/css (you don't need them)
 
+## Bower Components
 
-## Libraries
-tbd
+The following packages are always installed by the [app](#name) generator:
+
+* [jQuery 1.11.2](http://jquery.com/)
+* [TerrificJS 2.1.0](http://terrifically.org/api/)
+
+All of these can be updated with `bower update` as new versions are released.
+
 
 ## Credits
-Splendid is an alternative to [Terrific Micro](https://github.com/namics/terrific-micro) initiated by
+Splendid is an alternative to [Terrific Micro](https://github.com/namics/terrific-micro) which was initiated by
 [Roger Dudler](https://github.com/rogerdudler) and maintained by Namics AG.
 
 ## License

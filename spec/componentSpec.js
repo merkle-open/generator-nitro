@@ -8,7 +8,7 @@ var fs = require('fs-extra');
 
 describe('splendid:component', function () {
     describe('when creating a component "Test" that does not support skins', function () {
-        before(function (done) {
+        beforeEach(function (done) {
             helpers.run(path.join( __dirname, '../component'))
                 .inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
                     fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
@@ -37,7 +37,7 @@ describe('splendid:component', function () {
 
     describe('when creating a component "Test" that does support skins', function () {
         describe('but no skin is given', function () {
-            before(function (done) {
+            beforeEach(function (done) {
                 helpers.run(path.join(__dirname, '../component'))
                     .inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
                         fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
@@ -65,7 +65,7 @@ describe('splendid:component', function () {
         });
 
         describe('and a skin "More" is given', function () {
-            before(function (done) {
+            beforeEach(function (done) {
                 helpers.run(path.join(__dirname, '../component'))
                     .inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
                         fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
@@ -106,7 +106,7 @@ describe('splendid:component', function () {
     });
 
     describe('when creating a component "NavMain" with a skin "SpecialCase"', function () {
-        before(function (done) {
+        beforeEach(function (done) {
             helpers.run(path.join(__dirname, '../component'))
                 .inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
                     fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
@@ -146,7 +146,7 @@ describe('splendid:component', function () {
     });
 
     describe('when creating a component "nav-main" with a skin "special-case"', function () {
-        before(function (done) {
+        beforeEach(function (done) {
             helpers.run(path.join(__dirname, '../component'))
                 .inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
                     fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));

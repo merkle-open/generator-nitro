@@ -6,7 +6,7 @@
 
 Install `yo` and other required tools
 ```
-npm install -g yo bower gulp mocha
+npm install -g yo bower gulp jasmine
 ```
 
 Install `generator-splendid`:
@@ -54,26 +54,12 @@ Example:
 yo splendid:component
 ```
 
-## Bower Components
-
-The following packages are always installed by the [app](#name) generator:
-
-* jquery
-* terrific-js
-
-
-The following additional modules are available as components on bower, and installable via `bower install`:
-
-* …
-
-All of these can be updated with `bower update` as new versions are released.
-
 ## Configuration
 Yeoman generated projects can be further tweaked according to your needs by modifying project files appropriately.
 
 ## Testing
 
-Running `gulp test` will run the unit tests with karma.
+Running `jasmine` will run the unit tests.
 
 ## Contribute
 

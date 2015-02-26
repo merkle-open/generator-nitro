@@ -42,9 +42,5 @@
   },
   "devDependencies": {
     "fs-extra": "^0.16.3"
-  },
-  "peerDependencies": {
-    "yo": "1.x",
-    "jasmine": "2.x"
   }
 }

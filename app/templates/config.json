@@ -1,16 +1,16 @@
 {
   "assets": {
     "app.css": [
-      "+assets/css/variables.less",
-      "+assets/css/mixins.less",
-      "assets/vendor/bootstrap/less/bootstrap.less",
-      "components/**/css/*.less",
-      "components/**/css/skins/*.js"
+      "+assets/css/variables.<%= options.pre %>",
+      "+assets/css/mixins.<%= options.pre %>",
+      "assets/css/reset.css",
+      "assets/css/basic.<%= options.pre %>",
+      "components/**/css/*.<%= options.pre %>",
+      "components/**/css/skins/*.<%= options.pre %>"
     ],
     "app.js": [
       "assets/vendor/jquery/dist/jquery.min.js",
       "assets/vendor/terrificjs/dist/terrific.min.js",
-      "assets/vendor/bootstrap/dist/js/bootstrap.min.js",
       "assets/js/*.js",
       "components/**/js/*.js",
       "components/**/js/skins/*.js"

@@ -10,12 +10,17 @@ production environment.
 ## Quickstart
 To run splendid you only need [node](http://nodejs.org/).
 
-1. Run the Yeoman Project Generator (you probably have already done this)
+Make sure you have the following global dependencies installed
+```
+npm install -g yo bower gulp jasmine karma karma-cli browser-sync
+```
+
+Run the Yeoman Project Generator (you probably have already done this)
  ```
 yo splendid
 ```
 
-2. Start your app and build amazing things
+Start your app and build amazing things
 ```
 gulp develop
 ```

@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
-    path = require('path'),
-    less = require('gulp-less'),
+    path = require('path'), <% if (options.pre === 'less') { %>
+    precompile = require('gulp-less'), <% } %><% if (options.pre === 'scss') { %>
+    precompile = require('gulp-sass'), <% } %>
     minify = require('gulp-minify-css'),
     concat = require('gulp-concat'),
     watch = require('gulp-watch'),
@@ -54,9 +55,10 @@ gulp.task('compile-css', function () {
 
     return gulp
         .src(assets.src)
+        .pipe(plumber())
         .pipe(header(imports))
         .pipe(cache(assets.name))
-        .pipe(less())
+        .pipe(precompile())
         .pipe(remember(assets.name))
         .pipe(concat(assets.name))
         .pipe(gulp.dest('./public/latest/'))
@@ -117,8 +119,8 @@ gulp.task('watch', ['compile-css', 'compile-js'], function () {
 
     gulp.watch([
         './config.json',
-        './assets/**/*.less',
-        './components/**/*.less'
+        './assets/**/*.<%= options.pre %>',
+        './components/**/*.<%= options.pre %>'
     ], ['compile-css'])
         .on('change', function (e) {
             clearCache(e)
@@ -146,16 +148,12 @@ gulp.task('browser-sync', ['server-watch'], function () {
 });
 
 gulp.task('server-run', function () {
-    server.run({
-        file: './app.js'
-    });
+    server.run(['./server.js']);
 });
 
 gulp.task('server-watch', ['server-run'], function () {
-    gulp.watch(['./app.js', './app/core/*.js'], function () {
-        server.run({
-            file: './app.js'
-        });
+    gulp.watch(['./server.js', './app/core/*.js'], function () {
+        server.run(['./server.js']);
     });
 });
 

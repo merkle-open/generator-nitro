@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "test": "karma start --single-run --no-auto-watch",
-    "start": "node app"
+    "start": "node server"
   },
   "dependencies": {
     "body-parser": "^1.12.0",
@@ -41,17 +41,9 @@
     "merge": "^1.2.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.0.1",
     "gulp-express": "^0.1.7",
     "gulp-karma": "~0.0.1",
-    "karma": "^0.12.31",
     "karma-chrome-launcher": "^0.1.7",
     "karma-jasmine": "~0.2.0"
-  },
-  "peerDependencies": {
-    "bower": "1.x",
-    "gulp": "3.x",
-    "jasmine": "2.x",
-    "karma-cli": ">=0.0.4"
   }
 }

@@ -9,10 +9,10 @@ describe('Component Helper', function() {
     });
 
     it('returns an object containing a string if module was found', function() {
-        expect(helper('button').hasOwnProperty('string')).toBe(true);
+        expect(helper('example').hasOwnProperty('string')).toBe(true);
     });
 
     it('has a non-emtpy return value', function() {
-        expect(helper('button').string.length).toBeGreaterThan(0);
+        expect(helper('example').string.length).toBeGreaterThan(0);
     });
 });

@@ -1,76 +1,18 @@
-// .vertical-linear-gradient goes from @start-color (top) to @end-color (middle) to @start-color (bottom) again
-// It's main use are buttons
-.vertical-linear-background(@start-color, @end-color) {
-	background: @start-color;
-	background: -moz-linear-gradient(top,  @start-color 0%, @end-color 50%, @end-color 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @start-color), color-stop(50%, @end-color), color-stop(100%, @start-color));
-	background: -webkit-linear-gradient(top, @start-color 0%, @end-color 50%, @start-color 100%);
-	background: -o-linear-gradient(top,  @start-color 0%,@end-color 50%,@start-color 100%);
-	background: -ms-linear-gradient(top,  @start-color 0%,@end-color 50%,@start-color 100%);
-	background: linear-gradient(to bottom,  @start-color 0%,@end-color 50%,@start-color 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@{start-color}', endColorstr='@{end-color}',GradientType=0 );
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient( startColorstr='@{start-color}', endColorstr='@{end-color}',GradientType=0 )";
-}
-
-// .horizontal-lienar-gradient goes from @start-color (left) to @end-color (centre) to @start-collor (right) again
-// It's main use is the "active" flag on coupons
-.horizontal-linear-background(@start-color, @end-color) {
-	background: @start-color;
-	background: -moz-linear-gradient(left,  @start-color 0%, @end-color 50%, @end-color 100%);
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%, @start-color), color-stop(50%, @end-color), color-stop(100%, @start-color));
-	background: -webkit-linear-gradient(left, @start-color 0%, @end-color 50%, @start-color 100%);
-	background: -o-linear-gradient(left,  @start-color 0%,@end-color 50%,@start-color 100%);
-	background: -ms-linear-gradient(left,  @start-color 0%,@end-color 50%,@start-color 100%);
-	background: linear-gradient(to right,  @start-color 0%,@end-color 50%,@start-color 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@{start-color}', endColorstr='@{end-color}',GradientType=0 );
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient( startColorstr='@{start-color}', endColorstr='@{end-color}',GradientType=0 )";
-}
-
-// .horizonta-linear-gradient goes from @start-color (top left corner) to @end-color (bottom right corner)
-// It's main use is the background of coupons
-.diagonal-linear-background(@start-color, @end-color) {
-	background: @start-color;
-	background: -moz-linear-gradient(-45deg, @start-color 0%, @end-color 50%, @end-color 100%);
-	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, @start-color), color-stop(50%, @end-color), color-stop(100%, @start-color));
-	background: -webkit-linear-gradient(-45deg, @start-color 0%, @end-color 50%, @start-color 100%);
-	background: -o-linear-gradient(-45deg,  @start-color 0%,@end-color 50%,@start-color 100%);
-	background: -ms-linear-gradient(-45deg,  @start-color 0%,@end-color 50%,@start-color 100%);
-	background: linear-gradient(135deg,  @start-color 0%,@end-color 50%,@start-color 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@{start-color}', endColorstr='@{end-color}');
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient( startColorstr='@{start-color}', endColorstr='@{end-color}')";
-}
-
-.hex-rgba(@color,@alpha){
-	@rgba: rgba(red(@color),green(@color),blue(@color),@alpha);
-	@argb: argb(@rgba);
-	background-color: @color;
-	background-color: @rgba;
-	filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{argb}, endColorstr=@{argb})";
-	-ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{argb}, endColorstr=@{argb})";
-}
-
-.text-overflow-ellipsis() {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-
-// Box Sizing
+// -----------------------------------------
+// Helper
+// -----------------------------------------
 .box-sizing (@type: border-box) {
 	-webkit-box-sizing: @type;
 	-moz-box-sizing: @type;
 	box-sizing: @type;
 }
 
-// Border Radius
 .border-radius(@radius) {
 	-webkit-border-radius: @radius;
 	-moz-border-radius: @radius;
 	border-radius: @radius;
 }
 
-// Drop shadows
 .box-shadow(@shadow) {
 	-webkit-box-shadow: @shadow;
 	-moz-box-shadow: @shadow;
@@ -79,20 +21,64 @@
 
 .opacity(@opacity) {
 	opacity: @opacity / 100;
-//	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{opacity})";     // first for IE 5-7
-//	filter: ~"alpha(opacity=@{opacity})";                                           // second for IE8
+	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{opacity})"; // first for IE 5-7
+	filter: ~"alpha(opacity=@{opacity})"; // second for IE8
 }
 
 .user-select(@select: none) {
 	// none | text | all
 	-webkit-user-select: @select; // Chrome all / Safari all
-	-moz-user-select: @select;    // Firefox all
-	-ms-user-select: @select;     // IE 10+
+	-moz-user-select: @select; // Firefox all
+	-ms-user-select: @select; // IE 10+
 	-o-user-select: @select;
 	user-select: @select;
 }
 
-// Transformations
+.ellipsis() {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+// -----------------------------------------
+// Transisiton, Transformation, Animation
+// -----------------------------------------
+.transition(@transition) {
+	-webkit-transition: @transition;
+	-moz-transition: @transition;
+	-ms-transition: @transition;
+	-o-transition: @transition;
+	transition: @transition;
+}
+
+.transform(@transformation) {
+	-webkit-transform: @transformation;
+	-moz-transform: @transformation;
+	-ms-transform: @transformation;
+	-o-transform: @transformation;
+	transform: @transformation;
+}
+
+.transform-style(@style: preserve-3d) {
+	-webkit-transform-style: @style;
+	-moz-transform-style: @style;
+	transform-style: @style;
+}
+
+.transform-origin (@origin) {
+	-webkit-transform-origin: @origin;
+	-moz-transform-origin: @origin;
+	-ms-transform-origin: @origin;
+	-o-transform-origin: @origin;
+	transform-origin: @origin;
+}
+
+.backface-visibility(@visibility: hidden) {
+	-webkit-backface-visibility: @visibility;
+	-moz-backface-visibility: @visibility;
+	backface-visibility: @visibility;
+}
+
 .rotate(@degrees) {
 	-webkit-transform: rotate(@degrees);
 	-moz-transform: rotate(@degrees);
@@ -126,23 +112,32 @@
 }
 
 .translate3d(@x, @y, @z) {
-	-webkit-transform: translate(@x, @y, @z);
-	-moz-transform: translate(@x, @y, @z);
-	-ms-transform: translate(@x, @y, @z);
-	-o-transform: translate(@x, @y, @z);
-	transform: translate(@x, @y, @z);
+	-webkit-transform: translate3d(@x, @y, @z);
+	-moz-transform: translate3d(@x, @y, @z);
+	-ms-transform: translate3d(@x, @y, @z);
+	-o-transform: translate3d(@x, @y, @z);
+	transform: translate3d(@x, @y, @z);
 }
 
-// Transition
-.transition(@property, @duration, @easing) {
-	-webkit-transition: @property @duration @easing;
-	-moz-transition: @property @duration @easing;
-	-ms-transition: @property @duration @easing;
-	-o-transition: @property @duration @easing;
-	transition: @property @duration @easing;
+.animation(@animation) {
+	-webkit-animation: @animation;
+	-moz-animation: @animation;
+	-ms-animation: @animation;
+	-o-animation: @animation;
+	animation: @animation;
 }
 
-// Linear Gradient
+.keyframes(@name, @frames) {
+	@-webkit-keyframes @name { @frames(); }
+	@-moz-keyframes @name { @frames(); }
+	@-ms-keyframes @name { @frames(); }
+	@-o-keyframes @name { @frames(); }
+	@keyframes @name { @frames(); }
+}
+
+// -----------------------------------------
+// Gradient
+// -----------------------------------------
 .linear-gradient(@dir, @start-color, @end-color) { // https://gist.github.com/kelle-connolly/2364273
 	background: -webkit-linear-gradient(@dir, @start-color 0%, @end-color 100%);
 	background: -moz-linear-gradient(@dir, @start-color 0%, @end-color 100%);

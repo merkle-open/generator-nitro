@@ -21,12 +21,9 @@ module.exports = generators.Base.extend({
 
 		this.preOptions = ['less', 'scss'];
 		this.option('pre', {desc: 'your desired preprocessor [' + this.preOptions.join('|') + ']', type: String, defaults: this.preOptions[0]});
-		this.update = false;
 	},
 
 	initializing: function () {
-		this.pkg = require('../package.json');
-
 		// namics frontend-defaults
 		this.srcZip = 'http://github.com/namics/frontend-defaults/archive/master.zip';
 		this.destZip = this.templatePath('frontend-defaults.zip');
@@ -44,12 +41,22 @@ module.exports = generators.Base.extend({
 
 		if(!json.new && _.indexOf(json.keywords, 'splendid') !== -1) {
 			// update existing application
-			this.log(yosay(
-				'There is already a ' + chalk.cyan('Splendid') + ' application in place! I\'m going to serve you an update…'
-			));
+			this.prompt([
+				{
+					name: 'update',
+					type: 'confirm',
+					message: 'There is already a ' + chalk.cyan('Splendid') + ' application in place! Should I serve you an update?',
+					default: true
+				}
+			], function (props) {
+				this.update = props.update;
 
-			this.update = true;
-			done();
+				if(!this.update) {
+					return;
+				}
+
+				done();
+			}.bind(this));
 		}
 		else {
 			// create new application
@@ -128,7 +135,9 @@ module.exports = generators.Base.extend({
 			var files = this.expandFiles('**/*', {cwd: this.sourceRoot(), dot: true});
 			var tplFiles = [
 				// files to process with copyTpl
-				'package.json'
+				'package.json',
+				'config.json',
+				'gulpfile.js'
 			];
 			var ignores = [
 				// files to ignore

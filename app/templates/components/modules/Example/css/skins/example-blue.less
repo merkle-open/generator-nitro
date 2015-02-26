@@ -1,0 +1,28 @@
+.skin-example-blue {
+	background: @blue;
+	-webkit-animation: blue-background-change 10s infinite; // Safari 4+
+	-moz-animation:    blue-background-change 10s infinite; // Fx 5+
+	-o-animation:      blue-background-change 10s infinite; // Opera 12+
+	animation:         blue-background-change 10s infinite; // IE 10+
+}
+
+@-webkit-keyframes blue-background-change {
+	0%,100% { background-color: lightslategray; }
+	30% { background-color: lightblue; }
+	60% { background-color: cornflowerblue; }
+}
+@-moz-keyframes blue-background-change {
+	0%,100% { background-color: lightslategray; }
+	30% { background-color: lightblue; }
+	60% { background-color: cornflowerblue; }
+}
+@-o-keyframes blue-background-change {
+	0%,100% { background-color: lightslategray; }
+	30% { background-color: lightblue; }
+	60% { background-color: cornflowerblue; }
+}
+@keyframes blue-background-change {
+	0%,100% { background-color: lightslategray; }
+	30% { background-color: lightblue; }
+	60% { background-color: cornflowerblue; }
+}

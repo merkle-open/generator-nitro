@@ -47,6 +47,14 @@ describe('splendid:app', function () {
             assert.fileContent('package.json', /gulp-less/);
         });
 
+        it('gulpfile.js requires gulp-less dependency', function () {
+            assert.fileContent('gulpfile.js', /gulp-less/);
+        });
+
+        it('config.json loads .less files', function () {
+            assert.fileContent('config.json', /\.less/);
+        });
+
         it('component blueprint does not contain .scss files', function () {
             assert.noFile('project/blueprints/component/css/component.scss');
             assert.noFile('project/blueprints/component/css/skins/component-skin.scss');
@@ -64,6 +72,14 @@ describe('splendid:app', function () {
 
         it('package.json contains gulp-sass dependency', function () {
             assert.fileContent('package.json', /gulp-sass/);
+        });
+
+        it('gulpfile.js requires gulp-sass dependency', function () {
+            assert.fileContent('gulpfile.js', /gulp-sass/);
+        });
+
+        it('config.json loads .scss files', function () {
+            assert.fileContent('config.json', /\.scss/);
         });
 
         it('component blueprint does not contain .less files', function () {

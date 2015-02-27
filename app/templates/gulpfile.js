@@ -122,18 +122,26 @@ gulp.task('watch', ['compile-css', 'compile-js'], function () {
         './assets/**/*.<%= options.pre %>',
         './components/**/*.<%= options.pre %>'
     ], ['compile-css'])
-        .on('change', function (e) {
-            clearCache(e)
-        });
+    .on('change', function (e) {
+        clearCache(e)
+    });
 
     gulp.watch([
         './config.json',
         './assets/**/*.js',
         './components/**/*.js'
     ], ['compile-js'])
-        .on('change', function (e) {
-            clearCache(e)
-        });
+    .on('change', function (e) {
+        clearCache(e)
+    });
+
+    gulp.watch([
+        './views/**/*.html',
+        './components/**/*.html'
+    ])
+    .on('change', function (e) {
+        browserSync.reload();
+    });
 });
 
 gulp.task('browser-sync', ['server-watch'], function () {

@@ -6,7 +6,7 @@
 
 Install `yo` and other required tools
 ```
-npm install -g yo bower gulp jasmine karma karma-cli browser-sync
+npm install -g yo bower gulp jasmine karma-cli
 ```
 
 Install `generator-splendid`:

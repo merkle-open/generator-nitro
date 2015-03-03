@@ -57,6 +57,45 @@ yo splendid:component
 ## Configuration
 Yeoman generated projects can be further tweaked according to your needs by modifying project files appropriately.
 
+### Handlebars helpers
+Custom handlebars will be automatically loaded if put into to `project/helpers` directory. An example could look like 
+this:
+
+```js
+module.exports = function(foo) {
+    // Helper Logic
+};
+```
+
+The helper name will automatically match the filename, so if you name your file `foo.js` your helper will be called  
+`foo`.
+
+### JSON Endpoints
+If you need to mock service endpoints, you can put JSON files into a directory inside the `/public` directory as 
+those are directly exposed.
+
+`/public/service/posts.json` will be available under `/service/posts.json` and can be used for things like AJAX 
+requests.
+
+### Custom Routes
+If you need more custom functionality in endpoints you can put your custom routes with their logic into the 
+`project/routes` directory. The filename is irrelevant and the content can look like this:
+
+```js
+var express = require('router'),
+    router = express.Router({
+        caseSensitive: false,
+        strict: false
+    });
+
+router.get('/example', function(req, res) {
+    res.send('Example');
+});
+```
+
+These routes will be loaded into Splendid automatically.
+ 
+
 ## Testing
 
 Running `jasmine` will run the unit tests.

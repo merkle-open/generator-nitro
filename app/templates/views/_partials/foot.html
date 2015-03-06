@@ -1,1 +1,10 @@
 <script src="/latest/app.js"></script>
+<script>
+	(function ($) {
+		$(document).ready(function () {
+			var application = new Tc.Application($(document), {});
+			application.registerModules();
+			application.start();
+		});
+	})(Tc.$);
+</script>

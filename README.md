@@ -81,16 +81,24 @@ requests.
 If you need more custom functionality in endpoints you can put your custom routes with their logic into the 
 `project/routes` directory. The filename is irrelevant and the content can look like this:
 
-```js
-var express = require('router'),
-    router = express.Router({
-        caseSensitive: false,
-        strict: false
+```javascript
+function getData(req, res, next){
+    return res.json({
+        data: 'empty'
     });
+}
 
-router.get('/example', function(req, res) {
-    res.send('Example');
-});
+function postData(req, res, next){
+    return res.json({
+        data: req.body
+    });
+}
+
+exports = module.exports = function(app){
+    app.route('/api/data')
+        .get(getData)
+        .post(postData);
+};
 ```
 
 These routes will be loaded into Splendid automatically.

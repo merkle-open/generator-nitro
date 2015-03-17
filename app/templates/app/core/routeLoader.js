@@ -11,8 +11,8 @@ additionalRoutes.forEach(function(el) {
     }
 });
 
-module.exports = function(app) {
-    routers.forEach(function(el) {
-        app.use(el);
+exports = module.exports = function(app) {
+    routers.forEach(function(routedefinition) {
+        routedefinition(app);
     });
 };

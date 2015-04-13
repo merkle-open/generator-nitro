@@ -19,7 +19,7 @@ coreFiles.map(function(file) {
 
 projectFiles.map(function(file) {
 	if ('.js' === path.extname(file)) {
-		files[path.basename(file, '.js')] = projectFiles + file;
+		files[path.basename(file, '.js')] = projectHelpersDir + file;
 	}
 });
 

@@ -145,9 +145,12 @@ gulp.task('watch', ['compile-css', 'compile-js'], function () {
 });
 
 gulp.task('browser-sync', ['server-watch'], function () {
+	var port = process.env.PORT || 8080,
+		proxy = process.env.PROXY || 8081;
+
     browserSync({
-        proxy: 'localhost:8080',
-        port: 8081
+        proxy: 'localhost:' + port,
+        port: proxy
     }, function(err) {
         if (!err) {
             browserSync.notify('Compiling your assets, please wait!');
@@ -156,12 +159,14 @@ gulp.task('browser-sync', ['server-watch'], function () {
 });
 
 gulp.task('server-run', function () {
-    server.run(['./server.js']);
+	var port = process.env.PORT || 8080;
+    server.run(['./server.js'], {env: {PORT: port}});
 });
 
 gulp.task('server-watch', ['server-run'], function () {
+	var port = process.env.PORT || 8080;
     gulp.watch(['./server.js', './app/core/*.js'], function () {
-        server.run(['./server.js']);
+        server.run(['./server.js'], {env: {PORT: port}});
     });
 });
 

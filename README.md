@@ -28,6 +28,15 @@ Start your app
 ```
 gulp develop
 ```
+The default port is 8080, proxy (develop only) is 8081.  If you want other ports, just add it before gulp task:
+```
+PORT=8000 PROXY=8001 gulp develop
+```
+
+The port for production can be changed the same way:
+```
+PORT=3000 gulp production
+``
 
 ## Generators
 

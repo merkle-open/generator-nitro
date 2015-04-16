@@ -90,20 +90,50 @@ requests.
 If you need more custom functionality in endpoints you can put your custom routes with their logic into the 
 `project/routes` directory. The filename is irrelevant and the content can look like this:
 
-```js
-var express = require('router'),
-    router = express.Router({
-        caseSensitive: false,
-        strict: false
+```javascript
+function getData(req, res, next){
+    return res.json({
+        data: 'empty'
     });
+}
 
-router.get('/example', function(req, res) {
-    res.send('Example');
-});
+function postData(req, res, next){
+    return res.json({
+        data: req.body
+    });
+}
+
+exports = module.exports = function(app){
+    app.route('/api/data')
+        .get(getData)
+        .post(postData);
+};
 ```
 
 These routes will be loaded into Splendid automatically.
- 
+
+### Using another Template Engine
+If you don't want to use [Handlebars](http://handlebarsjs.com/) as Splendid's Template Engine you can configure your own Engine.
+This example shows how to replace Handlebars with [Nunjucks](https://mozilla.github.io/nunjucks/) as an example.
+
+All these steps need to be performed in `server.js`.
+
+1. Replace the line `hbs = require('./app/core/hbs')` with `nunjucks = require('nunjucks')`
+2. Remove the line `app.engine(cfg.splendid.view_file_extension, hbs.__express);`
+3. Configure nunjucks as Express' Template Engine with the following block:
+```js
+nunjucks.configure(
+    cfg.splendid.view_directory,
+    {
+        autoescape: true,
+        express: app
+    }
+);
+```
+Now Restart Splendid and it'll run with Nunjucks.
+
+**Be aware**, you'll need to adjust all your views and components to work with the new engine. 
+Splendid only provides a `component` helper for handlebars.
 
 ## Testing
 

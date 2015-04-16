@@ -19,10 +19,12 @@ var gulp = require('gulp'),
     fs = require('fs');
 
 function getSourceFiles(ext) {
-    var assets = require('./config.json').assets;
-    for (var key in assets) {
-        if (assets.hasOwnProperty(key) && ext === path.extname(key)) {
-            var asset = assets[key],
+    var assetsConfig = require('./config.json').assets,
+        assets = [];
+
+    for (var key in assetsConfig) {
+        if (assetsConfig.hasOwnProperty(key) && ext === path.extname(key)) {
+            var asset = assetsConfig[key],
                 result = {
                     name: key,
                     deps: [],
@@ -38,44 +40,49 @@ function getSourceFiles(ext) {
                 }
             }
 
-            return result;
+            assets.push(result);
         }
     }
 
-    return [];
+    return assets;
 }
 
 gulp.task('compile-css', function () {
-    var assets = getSourceFiles('.css'),
-        imports = '';
+    var assets = getSourceFiles('.css');
 
-    assets.deps.forEach(function (src) {
-        imports += fs.readFileSync(src)
+    assets.forEach(function(asset) {
+        var imports = '';
+
+        asset.deps.forEach(function (src) {
+            imports += fs.readFileSync(src);
+        });
+
+        return gulp
+            .src(asset.src)
+            .pipe(plumber())
+            .pipe(header(imports))
+            .pipe(cache(asset.name))
+            .pipe(precompile())
+            .pipe(remember(asset.name))
+            .pipe(concat(asset.name))
+            .pipe(gulp.dest('./public/latest/'))
+            .pipe(browserSync.reload({ stream: true }));
     });
-
-    return gulp
-        .src(assets.src)
-        .pipe(plumber())
-        .pipe(header(imports))
-        .pipe(cache(assets.name))
-        .pipe(precompile())
-        .pipe(remember(assets.name))
-        .pipe(concat(assets.name))
-        .pipe(gulp.dest('./public/latest/'))
-        .pipe(browserSync.reload({ stream: true }));
 });
 
 gulp.task('compile-js', function () {
     var assets = getSourceFiles('.js');
 
-    return gulp
-        .src(assets.src)
-        .pipe(plumber())
-        .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'))
-        .pipe(concat(assets.name))
-        .pipe(gulp.dest('./public/latest'))
-        .pipe(browserSync.reload({ stream: true }));
+    assets.forEach(function(asset) {
+        return gulp
+            .src(asset.src)
+            .pipe(plumber())
+            .pipe(jshint())
+            .pipe(jshint.reporter('jshint-stylish'))
+            .pipe(concat(asset.name))
+            .pipe(gulp.dest('./public/latest'))
+            .pipe(browserSync.reload({ stream: true }));
+    });
 });
 
 

@@ -89,6 +89,11 @@ Render the Example component. (file: `example.html`)
 Render the "variant" template from the Example component. (file: `example-variant.html`)
     {{component 'Example' 'variant'}}
 
+Render template with custom variables (named parameters are passed to handlebar templates, usage in template e.g. {{param}} )
+    {{component 'Example' null param='value'}}
+
+
+
 ### Render Partials
 
 Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.html` files (e.g. `head.html`).

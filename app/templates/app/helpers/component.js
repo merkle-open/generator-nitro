@@ -3,7 +3,7 @@ var fs = require('fs'),
 	path = require('path'),
 	cfg = require('../core/config.js');
 
-module.exports = function(modName, variant) {
+module.exports = function(modName, variant, options) {
 	for (var key in cfg.splendid.components) {
 		var component = cfg.splendid.components[key];
 		if (component.hasOwnProperty('path')) {
@@ -23,10 +23,16 @@ module.exports = function(modName, variant) {
 			);
 
 			if (fs.existsSync(fullPath)) {
+				var dataObj = {};
+				if(options && options.hash){
+					for (var attributeName in options.hash) {
+						dataObj[attributeName] = options.hash[attributeName];
+					}
+				}
 				return new hbs.handlebars.SafeString(
 					hbs.handlebars.compile(
 						fs.readFileSync(fullPath, 'utf8')
-					).call()
+					)(dataObj)
 				);
 			}
 		}

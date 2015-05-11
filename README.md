@@ -6,7 +6,7 @@
 
 Install `yo` and other required tools
 ```
-npm install -g yo bower gulp jasmine karma-cli
+npm install -g yo bower gulp karma-cli
 ```
 
 Install `generator-nitro`:

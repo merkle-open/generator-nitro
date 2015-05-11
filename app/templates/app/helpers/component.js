@@ -1,38 +1,52 @@
 var fs = require('fs'),
 	hbs = require('hbs'),
 	path = require('path'),
+	merge = require('merge'),
 	cfg = require('../core/config.js');
 
-module.exports = function (modName, variant) {
+module.exports = function(name, data) {
+
+	var lastArgument = arguments[arguments.length - 1],
+		componentData = lastArgument && lastArgument.data ? lastArgument.data.root : {}; // default component data from controller
+
 	for (var key in cfg.nitro.components) {
 		if (cfg.nitro.components.hasOwnProperty(key)) {
 			var component = cfg.nitro.components[key];
 			if (component.hasOwnProperty('path')) {
-				var filename = modName.toLowerCase() + '.' + cfg.nitro.view_file_extension;
+				var templateFilename = name.toLowerCase(),
+					templatePath = path.join(
+						cfg.nitro.base_path,
+						component.path,
+						'/',
+						name,
+						'/',
+						templateFilename + '.' + cfg.nitro.view_file_extension
+					);
 
-				if ('string' === typeof variant) {
-					filename = modName.toLowerCase() + '-' + variant.toLowerCase() + '.' + cfg.nitro.view_file_extension;
-				}
+				if (fs.existsSync(templatePath)) { // TODO: existsSynch marked as deprecated - https://nodejs.org/api/fs.html#fs_fs_existssync_path
+					var jsonFilename = ('string' === typeof data) ? data.toLowerCase() + '.json' : templateFilename + '.json',
+						jsonPath = path.join(
+							cfg.nitro.base_path,
+							component.path,
+							'/',
+							name,
+							'/data/',
+							jsonFilename
+						);
+					if (fs.existsSync(jsonPath)) {
+						merge.recursive(componentData, JSON.parse(fs.readFileSync(jsonPath, 'utf8')));
+					}
 
-				var fullPath = path.join(
-					cfg.nitro.base_path,
-					component.path,
-					'/',
-					modName,
-					'/',
-					filename
-				);
-
-				if (fs.existsSync(fullPath)) {
 					return new hbs.handlebars.SafeString(
 						hbs.handlebars.compile(
-							fs.readFileSync(fullPath, 'utf8')
-						).call()
+							fs.readFileSync(templatePath, 'utf8')
+						)(componentData)
 					);
 				}
 			}
 		}
+
 	}
 
-	throw new Error('Component ' + modName + ' not found. (Hint: have you added it to config.json?)');
+	throw new Error('Component ' + name + ' not found.');
 };

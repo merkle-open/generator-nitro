@@ -1,10 +1,8 @@
-<div class="mod mod-example">
-	<h2 class="example-headline">Example Module</h2>
+<div class="o-example{{#if skin}} skin-example-{{skin}}{{/if}}" data-t-name="example"{{#if skin}} data-t-skin="{{skin}}{{/if}}">
+	<h2 class="example-headline">{{title}}</h2>
 	<ul>
-		<li><a class="example-link" href="#">Example 1</a></li>
-		<li><a class="example-link" href="#">Example 2</a></li>
-		<li><a class="example-link" href="#">Example 3</a></li>
-		<li><a class="example-link" href="#">Example 4</a></li>
-		<li><a class="example-link" href="#">Example 5</a></li>
+		{{#each links}}
+		<li><a class="example-link" href="{{uri}}">{{text}}</a></li>
+		{{/each}}
 	</ul>
 </div>

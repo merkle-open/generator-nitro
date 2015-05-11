@@ -1,0 +1,18 @@
+{
+	"skin": "blue",
+	"title": "Example Module with Skin Blue",
+	"links": [
+		{
+			"uri": "index",
+			"text": "Example One"
+		},
+		{
+			"uri": "index",
+			"text": "Example Two"
+		},
+		{
+			"uri": "index",
+			"text": "Example Three"
+		}
+	]
+}

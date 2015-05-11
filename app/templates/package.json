@@ -23,7 +23,7 @@
 		"hbs": "^2.7.0",
 		"merge": "^1.2.0"
 	},
-  	"devDependencies": {
+	"devDependencies": {
 		"browser-sync": "^2.2.1",
 		"gulp": "^3.8.10",
 		"gulp-cached": "^1.0.1",

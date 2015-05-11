@@ -11,13 +11,13 @@ var files = {},
 	coreFiles = fs.readdirSync(coreHelpersDir),
 	projectFiles = fs.readdirSync(projectHelpersDir);
 
-coreFiles.map(function(file) {
+coreFiles.map(function (file) {
 	if ('.js' === path.extname(file)) {
 		files[path.basename(file, '.js')] = coreHelpersDir + file;
 	}
 });
 
-projectFiles.map(function(file) {
+projectFiles.map(function (file) {
 	if ('.js' === path.extname(file)) {
 		files[path.basename(file, '.js')] = projectHelpersDir + file;
 	}

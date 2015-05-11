@@ -160,7 +160,7 @@ module.exports = generators.Base.extend({
 
 				var filename = file;
 				_.forOwn(fileReplacements, function (value, key) {
-					filename = path.join(path.dirname(filename), path.basename(filename).replace(key, value))
+					filename = path.join(path.dirname(filename), path.basename(filename).replace(key, value));
 				});
 
 				this.fs.copyTpl(this.destinationPath(component.template + '/' + file), this.destinationPath(component.path + '/' + this.name + '/' + filename), replacements);

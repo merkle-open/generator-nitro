@@ -8,18 +8,17 @@
 	 * @class <%= component.js %>
 	 * @extends Tc.Module
 	 */
-	Tc.Module.<%= component.js %> = Tc.Module.extend({
+	function <%= component.js %>(ctx, sandbox) {
+		T.Module.call(this, ctx, sandbox);
+	}
 
-		init: function($ctx, sandbox, modId) {
-			this._super($ctx, sandbox, modId);
+	util.inherits(<%= component.js %>, T.Module);
 
-		},
+	<%= component.js %>.prototype.start = function(callback) {
+		var $ctx = $(this.ctx);
 
-		start: function(callback) {
-			var mod = this,
-				$ctx = mod.$ctx;
+		callback();
+	};
 
-			callback();
-		}
-	});
-}(Tc.$));
+	T.Module.<%= component.js %> = <%= component.js %>;
+}(jQuery));

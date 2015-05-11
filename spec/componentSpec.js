@@ -14,24 +14,24 @@ describe('nitro:component', function () {
                     fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
                     fs.copySync(path.join(__dirname, '../app/templates/config.json'), path.join(dir, 'config.json'));
                 })
-                .withPrompts({ name: 'Test', type: 'element' })
+                .withPrompts({ name: 'Test', type: 'atom' })
                 .on('end', done);
         });
 
         it('the skin files are not created', function () {
             assert.noFile([
-                'components/elements/Test/css/skins',
-                'components/elements/Test/js/skins'
+                'components/atoms/Test/css/skins',
+                'components/atoms/Test/js/skins'
             ]);
         });
 
         it('the component files are created', function () {
             assert.file([
-                'components/elements/Test',
-                'components/elements/Test/test.html',
-                'components/elements/Test/css/test.less',
-                'components/elements/Test/js/test.js',
-                'components/elements/Test/spec/testSpec.js'
+                'components/atoms/Test',
+                'components/atoms/Test/test.html',
+                'components/atoms/Test/css/test.less',
+                'components/atoms/Test/js/test.js',
+                'components/atoms/Test/spec/testSpec.js'
             ]);
         });
     });
@@ -44,24 +44,24 @@ describe('nitro:component', function () {
                         fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
                         fs.copySync(path.join(__dirname, '../app/templates/config.json'), path.join(dir, 'config.json'));
                     })
-                    .withPrompts({name: 'Test', type: 'module'})
+                    .withPrompts({name: 'Test', type: 'organism'})
                     .on('end', done);
             });
 
             it('the skin files are not created', function () {
                 assert.noFile([
-                    'components/elements/Test/css/skins',
-                    'components/elements/Test/js/skins'
+                    'components/organisms/Test/css/skins',
+                    'components/organisms/Test/js/skins'
                 ]);
             });
 
             it('the component files are created', function () {
                 assert.file([
-                    'components/modules/Test',
-                    'components/modules/Test/test.html',
-                    'components/modules/Test/css/test.less',
-                    'components/modules/Test/js/test.js',
-                    'components/modules/Test/spec/testSpec.js'
+                    'components/organisms/Test',
+                    'components/organisms/Test/test.html',
+                    'components/organisms/Test/css/test.less',
+                    'components/organisms/Test/js/test.js',
+                    'components/organisms/Test/spec/testSpec.js'
                 ]);
             });
         });
@@ -73,37 +73,37 @@ describe('nitro:component', function () {
                         fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
                         fs.copySync(path.join(__dirname, '../app/templates/config.json'), path.join(dir, 'config.json'));
                     })
-                    .withPrompts({name: 'Test', type: 'module', skin: 'More'})
+                    .withPrompts({name: 'Test', type: 'organism', skin: 'More'})
                     .on('end', done);
             });
 
             it('the component and skin files are created', function () {
                 assert.file([
-                    'components/modules/Test',
-                    'components/modules/Test/test.html',
-                    'components/modules/Test/test-more.html',
-                    'components/modules/Test/css/test.less',
-                    'components/modules/Test/css/skins/test-more.less',
-                    'components/modules/Test/js/test.js',
-                    'components/modules/Test/js/skins/test-more.js',
-                    'components/modules/Test/spec/testSpec.js'
+                    'components/organisms/Test',
+                    'components/organisms/Test/test.html',
+                    'components/organisms/Test/test-more.html',
+                    'components/organisms/Test/css/test.less',
+                    'components/organisms/Test/css/skins/test-more.less',
+                    'components/organisms/Test/js/test.js',
+                    'components/organisms/Test/js/skins/test-more.js',
+                    'components/organisms/Test/spec/testSpec.js'
                 ]);
             });
 
             it('the component css class is mod-test', function () {
-                assert.fileContent([['components/modules/Test/css/test.less', /\.mod-test \{/]])
+                assert.fileContent([['components/organisms/Test/css/test.less', /\.o-test \{/]]);
             });
 
             it('the skin css class is skin-test-more', function () {
-                assert.fileContent([['components/modules/Test/css/skins/test-more.less', /\.skin-test-more \{/]])
+                assert.fileContent([['components/organisms/Test/css/skins/test-more.less', /\.skin-test-more \{/]]);
             });
 
-            it('the component js class is Tc.Module.Test', function () {
-                assert.fileContent([['components/modules/Test/js/test.js', /Tc\.Module\.Test = Tc\.Module\.extend\(\{/]])
+            it('the component js class is T.Module.Test', function () {
+                assert.fileContent([['components/organisms/Test/js/test.js', /T\.Module\.Test =/]]);
             });
 
-            it('the skin js class is Tc.Module.Test.More', function () {
-                assert.fileContent([['components/modules/Test/js/skins/test-more.js', /Tc\.Module\.Test\.More = function\(parent\) \{/]])
+            it('the skin js class is T.Module.Test.More', function () {
+                assert.fileContent([['components/organisms/Test/js/skins/test-more.js', /T\.Module\.Test\.More =/]]);
             });
         });
     });
@@ -115,37 +115,37 @@ describe('nitro:component', function () {
                     fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
                     fs.copySync(path.join(__dirname, '../app/templates/config.json'), path.join(dir, 'config.json'));
                 })
-                .withPrompts({name: 'NavMain', type: 'module', skin: 'SpecialCase'})
+                .withPrompts({name: 'NavMain', type: 'organism', skin: 'SpecialCase'})
                 .on('end', done);
         });
 
         it('the component and skin files are created', function () {
             assert.file([
-                'components/modules/NavMain',
-                'components/modules/NavMain/navmain.html',
-                'components/modules/NavMain/navmain-specialcase.html',
-                'components/modules/NavMain/css/navmain.less',
-                'components/modules/NavMain/css/skins/navmain-specialcase.less',
-                'components/modules/NavMain/js/navmain.js',
-                'components/modules/NavMain/js/skins/navmain-specialcase.js',
-                'components/modules/NavMain/spec/navmainSpec.js'
+                'components/organisms/NavMain',
+                'components/organisms/NavMain/navmain.html',
+                'components/organisms/NavMain/navmain-specialcase.html',
+                'components/organisms/NavMain/css/navmain.less',
+                'components/organisms/NavMain/css/skins/navmain-specialcase.less',
+                'components/organisms/NavMain/js/navmain.js',
+                'components/organisms/NavMain/js/skins/navmain-specialcase.js',
+                'components/organisms/NavMain/spec/navmainSpec.js'
             ]);
         });
 
         it('the component css class is mod-nav-main', function () {
-            assert.fileContent([['components/modules/NavMain/css/navmain.less', /\.mod-nav-main \{/]])
+            assert.fileContent([['components/organisms/NavMain/css/navmain.less', /\.o-nav-main \{/]]);
         });
 
         it('the skin css class is skin-nav-main-special-case', function () {
-            assert.fileContent([['components/modules/NavMain/css/skins/navmain-specialcase.less', /\.skin-nav-main-special-case \{/]])
+            assert.fileContent([['components/organisms/NavMain/css/skins/navmain-specialcase.less', /\.skin-nav-main-special-case \{/]]);
         });
 
-        it('the component js class is Tc.Module.NavMain', function () {
-            assert.fileContent([['components/modules/NavMain/js/navmain.js', /Tc\.Module\.NavMain = Tc\.Module\.extend\(\{/]])
+        it('the component js class is T.Module.NavMain', function () {
+            assert.fileContent([['components/organisms/NavMain/js/navmain.js', /T\.Module\.NavMain =/]]);
         });
 
-        it('the skin js class is Tc.Module.NavMain.SpecialCase', function () {
-            assert.fileContent([['components/modules/NavMain/js/skins/navmain-specialcase.js', /Tc\.Module\.NavMain\.SpecialCase = function\(parent\) \{/]])
+        it('the skin js class is T.Module.NavMain.SpecialCase', function () {
+            assert.fileContent([['components/organisms/NavMain/js/skins/navmain-specialcase.js', /T\.Module\.NavMain\.SpecialCase =/]]);
         });
     });
 
@@ -156,37 +156,37 @@ describe('nitro:component', function () {
                     fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
                     fs.copySync(path.join(__dirname, '../app/templates/config.json'), path.join(dir, 'config.json'));
                 })
-                .withPrompts({name: 'nav-main', type: 'module', skin: 'special-case'})
+                .withPrompts({name: 'nav-main', type: 'organism', skin: 'special-case'})
                 .on('end', done);
         });
 
         it('the component and skin files are created', function () {
             assert.file([
-                'components/modules/nav-main',
-                'components/modules/nav-main/navmain.html',
-                'components/modules/nav-main/navmain-specialcase.html',
-                'components/modules/nav-main/css/navmain.less',
-                'components/modules/nav-main/css/skins/navmain-specialcase.less',
-                'components/modules/nav-main/js/navmain.js',
-                'components/modules/nav-main/js/skins/navmain-specialcase.js',
-                'components/modules/nav-main/spec/navmainSpec.js'
+                'components/organisms/nav-main',
+                'components/organisms/nav-main/navmain.html',
+                'components/organisms/nav-main/navmain-specialcase.html',
+                'components/organisms/nav-main/css/navmain.less',
+                'components/organisms/nav-main/css/skins/navmain-specialcase.less',
+                'components/organisms/nav-main/js/navmain.js',
+                'components/organisms/nav-main/js/skins/navmain-specialcase.js',
+                'components/organisms/nav-main/spec/navmainSpec.js'
             ]);
         });
 
         it('the component css class is mod-nav-main', function () {
-            assert.fileContent([['components/modules/nav-main/css/navmain.less', /\.mod-nav-main \{/]])
+            assert.fileContent([['components/organisms/nav-main/css/navmain.less', /\.o-nav-main \{/]]);
         });
 
         it('the skin css class is skin-nav-main-special-case', function () {
-            assert.fileContent([['components/modules/nav-main/css/skins/navmain-specialcase.less', /\.skin-nav-main-special-case \{/]])
+            assert.fileContent([['components/organisms/nav-main/css/skins/navmain-specialcase.less', /\.skin-nav-main-special-case \{/]]);
         });
 
-        it('the component js class is Tc.Module.NavMain', function () {
-            assert.fileContent([['components/modules/nav-main/js/navmain.js', /Tc\.Module\.NavMain = Tc\.Module\.extend\(\{/]])
+        it('the component js class is T.Module.NavMain', function () {
+            assert.fileContent([['components/organisms/nav-main/js/navmain.js', /T\.Module\.NavMain =/]]);
         });
 
-        it('the skin js class is Tc.Module.NavMain.SpecialCase', function () {
-            assert.fileContent([['components/modules/nav-main/js/skins/navmain-specialcase.js', /Tc\.Module\.NavMain\.SpecialCase = function\(parent\) \{/]])
+        it('the skin js class is T.Module.NavMain.SpecialCase', function () {
+            assert.fileContent([['components/organisms/nav-main/js/skins/navmain-specialcase.js', /T\.Module\.NavMain\.SpecialCase =/]]);
         });
     });
 });

@@ -10,7 +10,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "jasmine"
+    "test": "node_modules/.bin/jasmine"
   },
   "files": [
     "app",

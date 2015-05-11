@@ -15,19 +15,11 @@
 
 		},
 
-		on: function(callback) {
+		start: function(callback) {
 			var mod = this,
 				$ctx = mod.$ctx;
-
 
 			callback();
-		},
-
-		after: function() {
-			var mod = this,
-				$ctx = mod.$ctx;
-
-
 		}
 	});
 }(Tc.$));

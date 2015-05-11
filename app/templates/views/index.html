@@ -4,11 +4,12 @@
 	{{> head}}
 </head>
 <body>
-<div class="container">
-	{{component 'example'}}
-	{{component 'example' 'blue'}}
+<div id="app">
+	<div class="container">
+		{{component 'Example'}}
+		{{component 'Example' 'blue' }}
+	</div>
+	{{> foot}}
 </div>
-
-{{> foot}}
 </body>
 </html>

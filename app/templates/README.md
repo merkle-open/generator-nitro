@@ -1,14 +1,14 @@
-Splendid
-========
+Nitro
+=====
 
-Splendid is a Node.js application for simple and complex frontend development with a tiny footprint. It provides a
+Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. It provides a
 proven but flexible structure to develop your frontend code, even in a large team. Keep track of your code with a
-modularized frontend. This app and the suggested [terrific concept](http://terrifically.org) could help. Splendid
+modularized frontend. This app and the suggested [terrific concept](http://terrifically.org) could help. Nitro
 is simple, fast and flexible. Use this app for all your frontend work, but keep in mind it's not intended to use in
 production environment.
 
 ## Quickstart
-To run splendid you only need [node](http://nodejs.org/).
+To run nitro you only need [node](http://nodejs.org/).
 
 Make sure you have the following global dependencies installed
 ```
@@ -17,7 +17,7 @@ npm install -g yo bower gulp jasmine karma-cli
 
 Run the Yeoman Project Generator (you probably have already done this)
  ```
-yo splendid
+yo nitro
 ```
 
 Start your app and build amazing things
@@ -56,7 +56,7 @@ Create additional content templates directly in the component folder:
     /Example/example-variant.html
 
 ### Creating Components & Skins with yo
-    yo splendid:component
+    yo nitro:component
 
 #### Components Configuration
 tbd
@@ -80,7 +80,7 @@ Your new page can then be called by the according URL (with or without an extens
 Pages are meant to be compositions of your components. Use the component's name as the first parameter. Be aware, the
 component name is case-sensitive
 
-Splendid uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
+Nitro uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
 
 Render the Example component. (file: `example.html`)
 
@@ -97,7 +97,7 @@ Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*
 
 ## Assets
 
-Splendid's main feature is asset concatenation for CSS and JavaScript files. If changed, the files will be updated on
+Nitro's main feature is asset concatenation for CSS and JavaScript files. If changed, the files will be updated on
 every request, therefore you'll always get the latest version.
 
 ### Assets Configuration
@@ -180,20 +180,20 @@ Note that camel case ComponentNames are represented in CSS with dashes.
 
 ## Commandline
 
-Splendid uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used on the CLI.
+Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used on the CLI.
 
 ## Security
 tbd
 
 ## Contributing
 
-* For Bugs and Features please use [GitHub](https://github.com/namics/splendid/issues)
+* For Bugs and Features please use [GitHub](https://github.com/namics/nitro/issues)
 * Feel free to fork and send PRs. That's the best way to discuss your ideas.
 
 ## Example Project Includes
 
 * [YUI CSS Reset 3.18.1](http://yuilibrary.com/yui/docs/cssreset/)
-* Favicon & Home-Icons from Splendid (replace with your own)
+* Favicon & Home-Icons from Nitro (replace with your own)
 * Component `Example` and some styles in assets/css (you don't need them)
 
 ## Bower Components
@@ -207,7 +207,7 @@ All of these can be updated with `bower update` as new versions are released.
 
 
 ## Credits
-Splendid is an alternative to [Terrific Micro](https://github.com/namics/terrific-micro) which was initiated by
+Nitro is an alternative to [Terrific Micro](https://github.com/namics/terrific-micro) which was initiated by
 [Roger Dudler](https://github.com/rogerdudler) and maintained by Namics AG.
 
 ## License

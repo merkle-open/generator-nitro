@@ -33,19 +33,19 @@ module.exports = generators.Base.extend({
 		var done = this.async();
 
 		this.log(yosay(
-			'Welcome to the awe-inspiring ' + chalk.cyan('Splendid') + ' generator!'
+			'Welcome to the awe-inspiring ' + chalk.cyan('Nitro') + ' generator!'
 		));
 
-		// check whether there is already a splendid application in place and we only have to update the application
+		// check whether there is already a nitro application in place and we only have to update the application
 		var json = this.fs.readJSON(this.destinationPath('package.json'), { defaults : { "new" : true } });
 
-		if(!json.new && _.indexOf(json.keywords, 'splendid') !== -1) {
+		if(!json.new && _.indexOf(json.keywords, 'nitro') !== -1) {
 			// update existing application
 			this.prompt([
 				{
 					name: 'update',
 					type: 'confirm',
-					message: 'There is already a ' + chalk.cyan('Splendid') + ' application in place! Should I serve you an update?',
+					message: 'There is already a ' + chalk.cyan('Nitro') + ' application in place! Should I serve you an update?',
 					default: true
 				}
 			], function (props) {
@@ -109,13 +109,13 @@ module.exports = generators.Base.extend({
 			try {
 				// extract entrys
 				zip.extractEntryTo('frontend-defaults-master/editorconfig/frontend.editorconfig', this.sourceRoot(), false, true);
-				zip.extractEntryTo('frontend-defaults-master/gitignore/splendid.gitignore', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/gitignore/nitro.gitignore', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/gitattributes/.gitattributes', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/jshintrc/.jshintrc', this.sourceRoot(), false, true);
 
 				// rename files
 				fs.renameSync(this.templatePath('frontend.editorconfig'), this.templatePath('.editorconfig'));
-				fs.renameSync(this.templatePath('splendid.gitignore'), this.templatePath('.gitignore'));
+				fs.renameSync(this.templatePath('nitro.gitignore'), this.templatePath('.gitignore'));
 			}
 			catch (e) {
 				this.log(chalk.red(e.message));

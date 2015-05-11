@@ -1,7 +1,7 @@
 var cfg = require('./config'),
     fs = require('fs'),
     path = require('path'),
-    routePath = cfg.splendid.base_path + 'project/routes/',
+    routePath = cfg.nitro.base_path + 'project/routes/',
     additionalRoutes = fs.readdirSync(routePath),
     routers = [];
 

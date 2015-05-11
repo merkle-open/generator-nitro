@@ -1,51 +1,51 @@
 {
-  "name": "splendid",
-  "version": "0.1.0",
-  "description": "Splendid is micro power on Node.js",
-  "license": "MIT",
-  "repository": "namics/generator-splendid",
-  "author": "The Splendid Team",
-  "keywords": [
-    "terrific",
-    "component",
-    "frontend",
-    "modular",
-    "app",
-    "splendid"
-  ],
-  "scripts": {
-    "test": "karma start --single-run --no-auto-watch",
-    "start": "node server"
-  },
-  "dependencies": {
-    "body-parser": "^1.12.0",
-    "express": "^4.10.4",
-    "hbs": "^2.7.0",
-    "merge": "^1.2.0"
-  },
-  "devDependencies": {
-    "browser-sync": "^2.2.1",
-    "gulp": "^3.8.10",
-    "gulp-cached": "^1.0.1",
-    "gulp-concat": "^2.4.2",
-    "gulp-header": "^1.2.2",
-    "gulp-imagemin": "^2.0.0",
-    "gulp-jshint": "^1.9.0",<% if (options.pre === 'less') { %>
-    "gulp-less": "^1.3.6",<% } %><% if (options.pre === 'scss') { %>
-    "gulp-sass": "^1.3.2",<% } %>
-    "gulp-minify-css": "^0.3.11",
-    "gulp-plumber": "^0.6.6",
-    "gulp-remember": "^0.3.0",
-    "gulp-rename": "^1.2.0",
-    "gulp-sourcemaps": "^1.2.8",
-    "gulp-uglify": "^1.0.1",
-    "gulp-watch": "^2.0.0",
-    "gulp-express": "^0.1.7",
-    "gulp-karma": "~0.0.1",
-    "jasmine": "^2.1.1",
-    "karma": "^0.12.31",
-    "karma-chrome-launcher": "^0.1.7",
-    "karma-jasmine": "~0.2.0",
-    "jshint-stylish": "^1.0.0"
-  }
+	"name": "nitro",
+	"version": "0.1.0",
+	"description": "Nitro is micro power on Node.js",
+	"license": "MIT",
+	"repository": "namics/generator-nitro",
+	"author": "The Nitro Team",
+	"keywords": [
+		"terrific",
+		"component",
+		"frontend",
+		"modular",
+		"app",
+		"nitro"
+	],
+	"scripts": {
+		"test": "karma start --single-run --no-auto-watch",
+		"start": "node server"
+	},
+	"dependencies": {
+		"body-parser": "^1.12.0",
+		"express": "^4.10.4",
+		"hbs": "^2.7.0",
+		"merge": "^1.2.0"
+	},
+  	"devDependencies": {
+		"browser-sync": "^2.2.1",
+		"gulp": "^3.8.10",
+		"gulp-cached": "^1.0.1",
+		"gulp-concat": "^2.4.2",
+		"gulp-header": "^1.2.2",
+		"gulp-imagemin": "^2.0.0",
+		"gulp-jshint": "^1.9.0",<% if (options.pre === 'less') { %>
+		"gulp-less": "^1.3.6",<% } %><% if (options.pre === 'scss') { %>
+		"gulp-sass": "^1.3.2",<% } %>
+		"gulp-minify-css": "^0.3.11",
+		"gulp-plumber": "^0.6.6",
+		"gulp-remember": "^0.3.0",
+		"gulp-rename": "^1.2.0",
+		"gulp-sourcemaps": "^1.2.8",
+		"gulp-uglify": "^1.0.1",
+		"gulp-watch": "^2.0.0",
+		"gulp-express": "^0.1.7",
+		"gulp-karma": "~0.0.1",
+		"jasmine": "^2.1.1",
+		"karma": "^0.12.31",
+		"karma-chrome-launcher": "^0.1.7",
+		"karma-jasmine": "~0.2.0",
+		"jshint-stylish": "^1.0.0"
+	}
 }

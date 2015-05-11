@@ -1,11 +1,11 @@
 {
-  "name": "generator-splendid",
+  "name": "generator-nitro",
   "version": "0.1.0",
-  "description": "Yeoman generator for the splendid frontend framework",
+  "description": "Yeoman generator for the nitro frontend framework",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "namics/generator-splendid",
-  "author": "The Splendid Team",
+  "repository": "namics/generator-nitro",
+  "author": "The Nitro Team",
   "engines": {
     "node": ">=0.10.0"
   },
@@ -24,7 +24,7 @@
     "frontend",
     "modular",
     "app",
-    "splendid"
+    "nitro"
   ],
   "dependencies": {
     "adm-zip": "^0.4.4",

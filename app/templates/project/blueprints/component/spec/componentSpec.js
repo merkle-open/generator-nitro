@@ -5,18 +5,18 @@ describe('<%= component.name %> module', function(){
 
 	beforeEach(function(){
 		var application = new Tc.Application();
-		mod = new Tc.Module.<%= component.js %>($(), application.sandbox, 1);
+		mod = new Tc.Module.<%= component.js %>(document.createElement('div'), application.sandbox);
 	});
 
-	it('should have an "on" method', function(){
-		expect(mod.on).toBeDefined();
+	it('should have a "start" method', function(){
+		expect(mod.start).toBeDefined();
 	});
 
-	it('should execute the callback in the "on" method', function(){
+	it('should execute the callback in the "start" method', function(){
 		var called = false;
-		spyOn(mod, 'on').and.callThrough();
-
-		mod.on(function() { called = true; });
+		spyOn(mod, 'start').and.callFake(function() {
+			called = true;
+		});
 
 		expect(mod.on).toHaveBeenCalled();
 		expect(called).toBeTruthy();

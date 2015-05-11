@@ -1,7 +1,7 @@
 Description:
-    Creates a Splendid app
+    Creates a Nitro app
 
 Example:
-    yo splendid --pre=less
+    yo nitro --pre=less
 
-    This will create a new splendid project with less support.
+    This will create a new nitro project with less support.

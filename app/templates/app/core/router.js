@@ -7,16 +7,16 @@ var path = require('path'),
         strict: false
     });
 
-router.use('/', express.static(cfg.splendid.base_path + '/public/'));
-router.use('/', express.static(cfg.splendid.base_path + '/assets/'));
+router.use('/', express.static(cfg.nitro.base_path + '/public/'));
+router.use('/', express.static(cfg.nitro.base_path + '/assets/'));
 
 /**
  * TODO: List views if no index
  */
 router.get('/', function(req, res) {
     var tplPath = path.join(
-        cfg.splendid.view_directory,
-        'index.' + cfg.splendid.view_file_extension
+        cfg.nitro.view_directory,
+        'index.' + cfg.nitro.view_file_extension
     );
 
     fs.exists(tplPath, function(exists) {
@@ -35,9 +35,9 @@ router.get('/', function(req, res) {
 router.get('/:view', function(req, res) {
     var tplName = req.params.view.toLowerCase().replace(/-/g, '/'),
         tplPath = path.join(
-            cfg.splendid.view_directory,
+            cfg.nitro.view_directory,
             '/',
-            tplName + '.' + cfg.splendid.view_file_extension
+            tplName + '.' + cfg.nitro.view_file_extension
         );
 
     fs.exists(tplPath, function(exists) {

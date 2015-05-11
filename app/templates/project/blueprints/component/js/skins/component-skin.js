@@ -8,22 +8,14 @@
 	 * @class <%= skin.js %>
 	 * @extends Tc.Module
 	 */
-	Tc.Module.<%= component.js %>.<%= skin.js %> = function(parent) {
+	Tc.Module.<%= component.js %>.<%= skin.js %> = function(module) {
+		var start = module.start;
 
-		this.on = function(callback) {
+		module.start = function(callback) {
 			var mod = this,
 				$ctx = mod.$ctx;
 
-
-			parent.on(callback);
-		};
-
-		this.after = function() {
-			var mod = this,
-				$ctx = mod.$ctx;
-
-
-			parent.after();
+			start(callback);
 		};
 	};
 }(Tc.$));

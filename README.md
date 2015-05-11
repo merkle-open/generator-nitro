@@ -1,6 +1,6 @@
-# Yeoman Splendid Generator
+# Yeoman Nitro Generator
 
-> Yeoman generator for Splendid - lets you quickly set up a project with sensible defaults and best practices.
+> Yeoman generator for Nitro - lets you quickly set up a project with sensible defaults and best practices.
 
 ## Usage
 
@@ -9,9 +9,9 @@ Install `yo` and other required tools
 npm install -g yo bower gulp jasmine karma-cli
 ```
 
-Install `generator-splendid`:
+Install `generator-nitro`:
 ```
-npm install -g generator-splendid
+npm install -g generator-nitro
 ```
 
 Make a new directory, and `cd` into it:
@@ -19,9 +19,9 @@ Make a new directory, and `cd` into it:
 mkdir my-new-project && cd $_
 ```
 
-Run `yo splendid`, optionally passing an app name:
+Run `yo nitro`, optionally passing an app name:
 ```
-yo splendid [name]
+yo nitro [name]
 ```
 
 Start your app
@@ -42,17 +42,17 @@ PORT=3000 gulp production
 
 Available generators:
 
-* [splendid] (aka [splendid:app])
-* [splendid:component](#name)
+* [nitro] (aka [nitro:app])
+* [nitro:component](#name)
 
 **Note: Generators are to be run from the root directory of your app.**
 
 ### App
-Sets up a new splendid app, generating all the boilerplate you need to get started. 
+Sets up a new nitro app, generating all the boilerplate you need to get started. 
 
 Example:
 ```bash
-yo splendid
+yo nitro
 ```
 
 ### Component
@@ -60,7 +60,7 @@ Generates a frontend component.
 
 Example:
 ```bash
-yo splendid:component
+yo nitro:component
 ```
 
 ## Configuration
@@ -110,30 +110,30 @@ exports = module.exports = function(app){
 };
 ```
 
-These routes will be loaded into Splendid automatically.
+These routes will be loaded into Nitro automatically.
 
 ### Using another Template Engine
-If you don't want to use [Handlebars](http://handlebarsjs.com/) as Splendid's Template Engine you can configure your own Engine.
+If you don't want to use [Handlebars](http://handlebarsjs.com/) as Nitro's Template Engine you can configure your own Engine.
 This example shows how to replace Handlebars with [Nunjucks](https://mozilla.github.io/nunjucks/) as an example.
 
 All these steps need to be performed in `server.js`.
 
 1. Replace the line `hbs = require('./app/core/hbs')` with `nunjucks = require('nunjucks')`
-2. Remove the line `app.engine(cfg.splendid.view_file_extension, hbs.__express);`
+2. Remove the line `app.engine(cfg.nitro.view_file_extension, hbs.__express);`
 3. Configure nunjucks as Express' Template Engine with the following block:
 ```js
 nunjucks.configure(
-    cfg.splendid.view_directory,
+    cfg.nitro.view_directory,
     {
         autoescape: true,
         express: app
     }
 );
 ```
-Now Restart Splendid and it'll run with Nunjucks.
+Now Restart Nitro and it'll run with Nunjucks.
 
 **Be aware**, you'll need to adjust all your views and components to work with the new engine. 
-Splendid only provides a `component` helper for handlebars.
+Nitro only provides a `component` helper for handlebars.
 
 ## Testing
 
@@ -151,7 +151,7 @@ When submitting a new feature, add tests that cover the feature.
 
 ## Changelog
 
-Recent changes can be viewed on Github on the [Releases Page](https://github.com/namics/generator-splendid/releases)
+Recent changes can be viewed on Github on the [Releases Page](https://github.com/namics/generator-nitro/releases)
 
 ## License
 

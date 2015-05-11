@@ -5,7 +5,7 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var os = require('os');
 
-describe('splendid:app', function () {
+describe('nitro:app', function () {
     beforeEach(function (done) {
         helpers.run(path.join(__dirname, '../app'))
             .inDir(path.join(os.tmpdir(), './temp-test')) // Clear the directory and set it as the CWD

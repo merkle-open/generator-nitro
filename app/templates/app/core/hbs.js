@@ -2,10 +2,10 @@ var fs = require('fs'),
 	path = require('path'),
 	hbs = require('hbs'),
 	cfg = require('./config'),
-	coreHelpersDir = cfg.splendid.base_path + 'app/helpers/',
-	projectHelpersDir = cfg.splendid.base_path + 'project/helpers/';
+	coreHelpersDir = cfg.nitro.base_path + 'app/helpers/',
+	projectHelpersDir = cfg.nitro.base_path + 'project/helpers/';
 
-hbs.registerPartials(cfg.splendid.base_path + cfg.splendid.view_partials_directory);
+hbs.registerPartials(cfg.nitro.base_path + cfg.nitro.view_partials_directory);
 
 var files = {},
 	coreFiles = fs.readdirSync(coreHelpersDir),

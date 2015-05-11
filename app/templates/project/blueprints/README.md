@@ -1,6 +1,6 @@
 # Replacements Patterns
 
-Splendid provides the following [Lodash](https://lodash.com/docs#template) replacement patterns for your blueprints. 
+Nitro provides the following [Lodash](https://lodash.com/docs#template) replacement patterns for your blueprints. 
 
 ```
 <%= user.name %>		// Your name, eg. John Doe

@@ -10,8 +10,8 @@ var defaultConfig = {
     view_partials_directory: 'views/_partials'
 };
 
-config.splendid = config.splendid || defaultConfig;
+config.nitro = config.nitro || defaultConfig;
 
-config.splendid = merge(defaultConfig, config.splendid);
+config.nitro = merge(defaultConfig, config.nitro);
 
 module.exports = config;

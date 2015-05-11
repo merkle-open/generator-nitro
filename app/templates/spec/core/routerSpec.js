@@ -1,4 +1,4 @@
-describe('Splendid Router', function() {
+describe('Nitro Router', function() {
     var router = require('../../app/core/router');
 
     it('contains default route', function() {

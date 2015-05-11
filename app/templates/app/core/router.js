@@ -15,13 +15,16 @@ router.use('/', express.static(cfg.nitro.base_path + '/assets/'));
  */
 router.get('/', function (req, res) {
 	var tplPath = path.join(
-		cfg.nitro.view_directory,
-		'index.' + cfg.nitro.view_file_extension
-	);
+			cfg.nitro.view_directory,
+			'index.' + cfg.nitro.view_file_extension
+		),
+		data = {
+			pageTitle: 'Page Title: Index'
+		};
 
 	fs.exists(tplPath, function (exists) {
 		if (exists) {
-			res.render('index');
+			res.render('index', data);
 		}
 		else {
 			res.status(404);
@@ -39,11 +42,14 @@ router.get('/:view', function (req, res) {
 			cfg.nitro.view_directory,
 			'/',
 			tplName + '.' + cfg.nitro.view_file_extension
-		);
+		),
+		data = {
+			pageTitle: 'Page Title: ' + tplName
+		};
 
 	fs.exists(tplPath, function (exists) {
 		if (exists) {
-			res.render(tplName);
+			res.render(tplName, data);
 		}
 		else {
 			res.status(404);

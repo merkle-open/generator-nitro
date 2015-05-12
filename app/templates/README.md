@@ -38,27 +38,30 @@ gulp develop
 
 ### Creating Components
 
-Components are created in the `components` folder. A component is an encapsulated block of markup with corresponding styles and scripts.
+Components are created in the `components` folder. A component is an encapsulated block of markup with corresponding data, styles and scripts.
 A terrific module uses the following structure:
 
     /Example
     /Example/example.html
     /Example/css/example.css
     /Example/js/example.js
+    /Example/data/example.json
 
 Terrific Skins (css or js) are created using the following conventions:
 
     /Example/css/skins/example-skinname.css
     /Example/js/skins/example-skinname.js
 
-Create additional content templates directly in the component folder:
+Different data variantions has to be placed in the `data` folder:
 
-    /Example/example-variant.html
+    /Example/data/example-variant.json
 
 ### Creating Components & Skins with yo
+
     yo nitro:component
 
 #### Components Configuration
+
 tbd
 
 ### Creating pages
@@ -78,16 +81,18 @@ Your new page can then be called by the according URL (with or without an extens
 ### Render Components
 
 Pages are meant to be compositions of your components. Use the component's name as the first parameter. Be aware, the
-component name is case-sensitive
+component name is case-sensitive.
 
 Nitro uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
 
-Render the Example component. (file: `example.html`)
+Render the Example component. (file: `example.html`, data-file: `example.json`)
 
     {{component 'Example'}}
+    {{component 'Example', 'example'}}
 
-Render the "variant" template from the Example component. (file: `example-variant.html`)
-    {{component 'Example' 'variant'}}
+Render a "variant" from the Example component. (file: `example.html`, data-file: `example-variant.json`)
+
+    {{component 'Example' 'example-variant'}}
 
 ### Render Partials
 
@@ -161,6 +166,7 @@ To stay portable you should favour the use of relative paths. Link to resources 
     <a href="content.html">Contentpage</a>
 
 ### Upper & lower case letters
+
 Use all lowercase if possible.
 
 Exceptions:
@@ -183,6 +189,7 @@ Note that camel case ComponentNames are represented in CSS with dashes.
 Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used on the CLI.
 
 ## Security
+
 tbd
 
 ## Contributing

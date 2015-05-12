@@ -3,6 +3,7 @@ var gulp = require('gulp'),
 	precompile = require('gulp-less'), <% } %><% if (options.pre === 'scss') { %>
 	precompile = require('gulp-sass'), <% } %>
 	minify = require('gulp-minify-css'),
+	autoprefixer = require('gulp-autoprefixer'),
 	concat = require('gulp-concat'),
 	watch = require('gulp-watch'),
 	uglify = require('gulp-uglify'),
@@ -66,6 +67,10 @@ gulp.task('compile-css', function () {
 			.pipe(header(imports))
 			.pipe(cache(asset.name))
 			.pipe(precompile())
+			.pipe(autoprefixer({
+				browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1'],
+				cascade: true
+			}))
 			.pipe(remember(asset.name))
 			.pipe(concat(asset.name))
 			.pipe(gulp.dest('./public/latest/'))

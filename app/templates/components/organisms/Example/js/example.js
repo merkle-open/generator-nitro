@@ -1,5 +1,5 @@
 (function ($) {
-	"use strict";
+	'use strict';
 	/**
 	 * Example module implementation.
 	 *
@@ -13,23 +13,22 @@
 	}
 
 	util.inherits(Example, T.Module);
+	T.Module.Example = Example;
 
 	Example.prototype.start = function(callback) {
-		var $ctx = $(this.ctx);
+		var $ctx = $(this._ctx);
 
 		console.log('Example - start [id:' + $ctx.data('t-id') + ']');
 
-		this._events.on('t.sync', this.sync);
+		this._events.on('t.sync', this.sync.bind(this));
 
 		callback();
 	};
 
 
 	Example.prototype.sync = function() {
-		var $ctx = $(this.ctx);
+		var $ctx = $(this._ctx);
 
 		console.log('Example - sync [id:' + $ctx.data('t-id') + ']');
-	}.bind(this);
-
-	T.Module.Example = Example;
+	};
 }(jQuery));

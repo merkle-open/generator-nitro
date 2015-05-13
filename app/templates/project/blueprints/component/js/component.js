@@ -13,12 +13,11 @@
 	}
 
 	util.inherits(<%= component.js %>, T.Module);
+	T.Module.<%= component.js %> = <%= component.js %>;
 
 	<%= component.js %>.prototype.start = function(callback) {
 		var $ctx = $(this.ctx);
 
 		callback();
 	};
-
-	T.Module.<%= component.js %> = <%= component.js %>;
 }(jQuery));

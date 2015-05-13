@@ -9,12 +9,11 @@
 	 * @extends Tc.Module
 	 */
 	T.Module.<%= component.js %>.<%= skin.js %> = function(module) {
-		var start = module.start;
-
+		var start = module.start.bind(module);
 		module.start = function(callback) {
 			var $ctx = $(this.ctx);
 
-			start(callback);
+			start(callback); // calling original
 		};
 	};
 }(Tc.$));

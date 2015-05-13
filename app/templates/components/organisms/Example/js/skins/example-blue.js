@@ -1,5 +1,5 @@
 (function($) {
-	"use strict";
+	'use strict';
 	/**
 	 * Blue skin implementation for the Example module.
 	 *
@@ -13,22 +13,22 @@
 		/**
 		 * Override the appropriate methods from the decorated module (ie. module.get = function()).
 		 */
-		var start = module.start;
+		var start = module.start.bind(module);
 		module.start = function (callback) {
-			var $ctx = $(this.ctx);
+			var $ctx = $(this._ctx);
 
-			console.log('Example Skin Blue - start id:' + $ctx.data('t-id') + ']');
+			console.log('Example Skin Blue - start id: [' + $ctx.data('t-id') + ']');
 
 			start(callback); // calling original method
 		};
 
-		var sync = module.sync;
+		var sync = module.sync.bind(module);
 		module.sync = function() {
-			var $ctx = $(this.ctx);
+			var $ctx = $(this._ctx);
 
-			console.log('Example Skin Blue - start id:' + $ctx.data('t-id') + ']');
+			console.log('Example Skin Blue - sync id: [' + $ctx.data('t-id') + ']');
 
 			sync(); // calling original method
-		}.bind(this);
+		};
 	};
 }(jQuery));

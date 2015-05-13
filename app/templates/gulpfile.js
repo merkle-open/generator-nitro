@@ -96,21 +96,25 @@ gulp.task('compile-js', function () {
 gulp.task('minify-css', ['compile-css'], function () {
 	var assets = getSourceFiles('.css');
 
-	return gulp
-		.src('./public/latest/' + assets.name)
-		.pipe(minify())
-		.pipe(rename(assets.name.replace('.css', '.min.css')))
-		.pipe(gulp.dest('./public/latest/'));
+	assets.forEach(function (asset) {
+		return gulp
+			.src('./public/latest/' + asset.name)
+			.pipe(minify())
+			.pipe(rename(asset.name.replace('.css', '.min.css')))
+			.pipe(gulp.dest('./public/latest/'));
+	});
 });
 
 gulp.task('minify-js', ['compile-js'], function () {
 	var assets = getSourceFiles('.js');
 
-	return gulp
-		.src('./public/latest/' + assets.name)
-		.pipe(uglify())
-		.pipe(rename(assets.name.replace('.js', '.min.js')))
-		.pipe(gulp.dest('./public/latest/'));
+	assets.forEach(function (asset) {
+		return gulp
+			.src('./public/latest/' + asset.name)
+			.pipe(uglify())
+			.pipe(rename(asset.name.replace('.js', '.min.js')))
+			.pipe(gulp.dest('./public/latest/'));
+	});
 });
 
 gulp.task('minify-img', function () {

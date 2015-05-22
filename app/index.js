@@ -202,6 +202,11 @@ module.exports = generators.Base.extend({
 		this.installDependencies({
 			skipInstall: this.options['skip-install']
 		});
+
+		if(this.options.js === 'TypeScript'){
+			this.spawnCommand('tsd', ['reinstall']);
+			this.spawnCommand('tsd', ['rebundle']);
+		}
 	},
 
 	end: function () {

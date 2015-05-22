@@ -1,7 +1,9 @@
 /// <reference path="../../../../../assets/vendor/terrific/dist/Terrific.d.ts" />
+/// <reference path="../../../../../typings/tsd.d.ts" />
+/// <reference path="../example.ts" />
 
 module T {
-    function ExampleBlue(mod:Module) {
+    function ExampleBlue(mod:Example) {
         var start = mod.start.bind(mod);
         mod.start = function (resolve:(value?:any) => void, reject:(error?:any) => void) {
             var $ctx = $(this._ctx);

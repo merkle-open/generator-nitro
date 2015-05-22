@@ -1,4 +1,5 @@
 /// <reference path="../../../../assets/vendor/terrific/dist/Terrific.d.ts" />
+/// <reference path="../../../../typings/tsd.d.ts" />
 
 module T {
     class Example extends Module {

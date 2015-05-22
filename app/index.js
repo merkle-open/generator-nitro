@@ -204,8 +204,10 @@ module.exports = generators.Base.extend({
 		});
 
 		if(this.options.js === 'TypeScript'){
-			this.spawnCommand('tsd', ['reinstall']);
-			this.spawnCommand('tsd', ['rebundle']);
+			var that = this;
+			this.spawnCommand('tsd', ['reinstall']).on('close', function(){
+				that.spawnCommand('tsd', ['rebundle']);
+			});
 		}
 	},
 

@@ -23,5 +23,5 @@ module T {
         };
     }
 
-    Module['<%= component.js %>']['<%= skin.js %>'] = ExampleBlue;
+    Module['Example']['Blue'] = ExampleBlue;
 }

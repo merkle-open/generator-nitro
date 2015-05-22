@@ -2,7 +2,7 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
 
 module T {
-    class <%= component.js %> extends Module {
+    export class <%= component.js %> extends Module {
         constructor(ctx:Node, sandbox:Sandbox){
             super(ctx, sandbox);
         }

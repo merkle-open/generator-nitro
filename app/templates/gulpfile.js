@@ -61,7 +61,7 @@ gulp.task('compile-css', function () {
 			imports += fs.readFileSync(src);
 		});
 
-		return gulp
+		gulp
 			.src(asset.src)
 			.pipe(plumber())
 			.pipe(header(imports))
@@ -76,13 +76,15 @@ gulp.task('compile-css', function () {
 			.pipe(gulp.dest('./public/latest/'))
 			.pipe(browserSync.reload({stream: true}));
 	});
+
+	return gulp;
 });
 
 gulp.task('compile-js', function () {
 	var assets = getSourceFiles('.js');
 
 	assets.forEach(function (asset) {
-		return gulp
+		gulp
 			.src(asset.src)
 			.pipe(plumber())
 			.pipe(jshint())
@@ -91,34 +93,40 @@ gulp.task('compile-js', function () {
 			.pipe(gulp.dest('./public/latest'))
 			.pipe(browserSync.reload({stream: true}));
 	});
+
+	return gulp;
 });
 
 gulp.task('minify-css', ['compile-css'], function () {
 	var assets = getSourceFiles('.css');
 
 	assets.forEach(function (asset) {
-		return gulp
+		gulp
 			.src('./public/latest/' + asset.name)
 			.pipe(minify())
 			.pipe(rename(asset.name.replace('.css', '.min.css')))
 			.pipe(gulp.dest('./public/latest/'));
 	});
+
+	return gulp;
 });
 
 gulp.task('minify-js', ['compile-js'], function () {
 	var assets = getSourceFiles('.js');
 
 	assets.forEach(function (asset) {
-		return gulp
+		gulp
 			.src('./public/latest/' + asset.name)
 			.pipe(uglify())
 			.pipe(rename(asset.name.replace('.js', '.min.js')))
 			.pipe(gulp.dest('./public/latest/'));
 	});
+
+	return gulp;
 });
 
 gulp.task('minify-img', function () {
-	gulp
+	return gulp
 		.src('./assets/img/**/*.*')
 		.pipe(plumber())
 		.pipe(imagemin({

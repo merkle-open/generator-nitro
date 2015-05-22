@@ -9,6 +9,11 @@ Install `yo` and other required tools
 npm install -g yo bower gulp karma-cli
 ```
 
+If you want to use typescript, you need to install "tsd" (typescript definition repository) as well.
+```
+npm install -g tsd
+```
+
 Install `generator-nitro`:
 ```
 npm install -g generator-nitro

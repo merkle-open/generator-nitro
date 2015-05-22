@@ -184,7 +184,7 @@ module.exports = generators.Base.extend({
 					return;
 				}
 
-				if((ext === 'js' || ext === 'ts') && this.options.js === 'JavaScript' && ext !== 'js' || this.options.js === 'TypeScript' && ext !== '.ts'){
+				if((_.startsWith(file, 'project') || _.startsWith(file, 'components')) && (ext === 'js' || ext === 'ts') && (this.options.js === 'JavaScript' && ext !== 'js' || this.options.js === 'TypeScript' && ext !== '.ts')){
 					return;
 				}
 

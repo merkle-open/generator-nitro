@@ -16,7 +16,8 @@ var gulp = require('gulp'),
 	karma = require('karma').server,
 	server = require('gulp-express'),
 	browserSync = require('browser-sync'),
-	rename = require('gulp-rename'),
+	rename = require('gulp-rename'),<% if (options.js === 'TypeScript') { %>
+	ts = require('gulp-typescript'), <% } %>
 	fs = require('fs');
 
 function getSourceFiles(ext) {
@@ -80,12 +81,62 @@ gulp.task('compile-css', function () {
 	return gulp;
 });
 
-gulp.task('compile-js', function () {
+<% if (options.js === 'TypeScript') { %>
+	function splitJsAssets(asset) {
+		var tsAssets = [],
+			jsAssets = [];
+
+		asset.src.forEach(function (value) {
+			if (value.indexOf('.ts') !== -1) {
+				tsAssets.push(value);
+			} else {
+				jsAssets.push(value);
+			}
+		});
+
+		return {
+			ts: tsAssets,
+			js: jsAssets
+		};
+	}
+
+	gulp.task('compile-ts', function(){
+		var assets = getSourceFiles('.js');
+
+		var tsDefinition = {
+			typescript: require('typescript'),
+			declarationFiles: false,
+			removeComments: true
+		};
+
+		assets.forEach(function (asset) {
+			var assets = splitJsAssets(asset);
+
+			gulp.src(assets.ts)
+				.pipe(plumber())
+				.pipe(ts(tsDefinition))
+				.js
+				.pipe(concat(asset.name.replace('.js', '.ts.js')))
+				.pipe(gulp.dest('./public/latest'))
+		});
+
+		return gulp;
+	});
+<% } %>
+
+gulp.task('compile-js', <% if (options.js === 'TypeScript') { %> ['compile-ts'], <% } %>  function () {
 	var assets = getSourceFiles('.js');
 
 	assets.forEach(function (asset) {
+		<% if (options.js === 'TypeScript') { %>
+		var assets = splitJsAssets(asset);
+		assets.js.push('public/latest/' + asset.name.replace('.js', '.ts.js'));
+		gulp
+			.src(assets.js)
+		<% } else { %>
 		gulp
 			.src(asset.src)
+		<% } %>
 			.pipe(plumber())
 			.pipe(jshint())
 			.pipe(jshint.reporter('jshint-stylish'))
@@ -155,7 +206,9 @@ gulp.task('watch', ['compile-css', 'compile-js'], function () {
 	gulp.watch([
 		'./config.json',
 		'./assets/**/*.js',
-		'./components/**/*.js'
+		'./components/**/*.js',
+		'./assets/**/*.ts',
+		'./components/**/*.ts'
 	], ['compile-js'])
 		.on('change', function (e) {
 			clearCache(e);

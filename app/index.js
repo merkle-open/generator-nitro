@@ -21,6 +21,9 @@ module.exports = generators.Base.extend({
 
 		this.preOptions = ['less', 'scss'];
 		this.option('pre', {desc: 'your desired preprocessor [' + this.preOptions.join('|') + ']', type: String, defaults: this.preOptions[0]});
+
+		this.jsOptions = ['JavaScript', 'TypeScript'];
+		this.option('js', {desc: 'your desired js compiler [' + this.jsOptions.join('|') + ']', type: String, defaults: this.preOptions[0]});
 	},
 
 	initializing: function () {
@@ -72,10 +75,18 @@ module.exports = generators.Base.extend({
 					message: 'What\'s your desired preprocessor?',
 					choices: this.preOptions,
 					default: _.indexOf(this.preOptions, this.options.pre) || 0
+				},
+				{
+					name: 'js',
+					type: 'list',
+					message: 'What\'s your desired javascript compiler?',
+					choices: this.jsOptions,
+					default: _.indexOf(this.jsOptions, this.options.js) || 0
 				}
 			], function (props) {
 				this.options.name = props.name;
 				this.options.pre = props.pre;
+				this.options.js = props.js;
 
 				done();
 			}.bind(this));
@@ -168,7 +179,12 @@ module.exports = generators.Base.extend({
 
 				// exclude unecessary preprocessor files
 				var ext = path.extname(file).substring(1);
+
 				if(_.indexOf(this.preOptions, ext) !== -1 && this.options.pre !== ext) {
+					return;
+				}
+
+				if((ext === 'js' || ext === 'ts') && this.options.js === 'JavaScript' && ext !== 'js' || this.options.js === 'TypeScript' && ext !== '.ts'){
 					return;
 				}
 

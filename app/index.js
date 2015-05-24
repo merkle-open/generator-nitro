@@ -155,6 +155,10 @@ module.exports = generators.Base.extend({
 				'.DS_Store',
 				'frontend-defaults.zip'
 			];
+			var typeScriptFiles = [
+				// files only for this.options.js==='TypeScript'
+				'tsd.json'
+			];
 
 			var data = {
 				name: this.options.name,
@@ -165,6 +169,13 @@ module.exports = generators.Base.extend({
 				// exclude ignores
 				if (_.indexOf(ignores, file) !== -1) {
 					return;
+				}
+
+				// TypeScript only Files
+				if (this.options.js !== 'TypeScript') {
+					if (_.indexOf(typeScriptFiles, file) !== -1) {
+						return;
+					}
 				}
 
 				// ignore everything under assets, components, project and views

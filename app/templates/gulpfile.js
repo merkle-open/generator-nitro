@@ -206,9 +206,10 @@ gulp.task('watch', ['compile-css', 'compile-js'], function () {
 	gulp.watch([
 		'./config.json',
 		'./assets/**/*.js',
-		'./components/**/*.js',
+		'./components/**/*.js'<% if (options.js === 'TypeScript') { %>,
 		'./assets/**/*.ts',
 		'./components/**/*.ts'
+		<% } %>
 	], ['compile-js'])
 		.on('change', function (e) {
 			clearCache(e);

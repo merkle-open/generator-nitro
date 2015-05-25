@@ -16,4 +16,4 @@
 			start(callback); // calling original
 		};
 	};
-}(Tc.$));
+}(jQuery));

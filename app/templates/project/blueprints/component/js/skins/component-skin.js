@@ -11,7 +11,7 @@
 	T.Module.<%= component.js %>.<%= skin.js %> = function(module) {
 		var start = module.start.bind(module);
 		module.start = function(callback) {
-			var $ctx = $(this.ctx);
+			var $ctx = $(this._ctx);
 
 			start(callback); // calling original
 		};

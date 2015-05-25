@@ -16,7 +16,7 @@
 	T.Module.<%= component.js %> = <%= component.js %>;
 
 	<%= component.js %>.prototype.start = function(callback) {
-		var $ctx = $(this.ctx);
+		var $ctx = $(this._ctx);
 
 		callback();
 	};

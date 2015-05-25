@@ -4,8 +4,8 @@ describe('<%= component.name %> module', function(){
 	var mod;
 
 	beforeEach(function(){
-		var application = new Tc.Application();
-		mod = new Tc.Module.<%= component.js %>(document.createElement('div'), application.sandbox);
+		var application = new T.Application();
+		mod = new T.Module.<%= component.js %>(document.createElement('div'), application.sandbox);
 	});
 
 	it('should have a "start" method', function(){

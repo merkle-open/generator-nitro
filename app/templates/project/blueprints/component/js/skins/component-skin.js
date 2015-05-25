@@ -4,9 +4,9 @@
 	 * <%= skin.name %> skin implementation for the <%= component.name %> module.
 	 *
 	 * @author <%= user.name %> <<%= user.email %>>
-	 * @namespace Tc.Module.<%= component.js %>
+	 * @namespace T.Module.<%= component.js %>
 	 * @class <%= skin.js %>
-	 * @extends Tc.Module
+	 * @extends T.Module
 	 */
 	T.Module.<%= component.js %>.<%= skin.js %> = function(module) {
 		var start = module.start.bind(module);

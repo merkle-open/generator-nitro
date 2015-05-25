@@ -4,9 +4,9 @@
 	 * Blue skin implementation for the Example module.
 	 *
 	 * @author Pre Name <pre.name@domain.com>
-	 * @namespace Tc.Module.Example
+	 * @namespace T.Module.Example
 	 * @class Blue
-	 * @extends Tc.Module
+	 * @extends T.Module
 	 * @constructor
 	 */
 	T.Module.Example.Blue = function(module) {

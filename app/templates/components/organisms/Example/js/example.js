@@ -4,9 +4,9 @@
 	 * Example module implementation.
 	 *
 	 * @author Pre Name <pre.name@domain.com>
-	 * @namespace Tc.Module
+	 * @namespace T.Module
 	 * @class Example
-	 * @extends Tc.Module
+	 * @extends T.Module
 	 */
 	function Example(ctx, sandbox) {
 		T.Module.call(this, ctx, sandbox);

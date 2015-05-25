@@ -4,9 +4,9 @@
 	 * <%= component.name %> module implementation.
 	 *
 	 * @author <%= user.name %> <<%= user.email %>>
-	 * @namespace Tc.Module
+	 * @namespace T.Module
 	 * @class <%= component.js %>
-	 * @extends Tc.Module
+	 * @extends T.Module
 	 */
 	function <%= component.js %>(ctx, sandbox) {
 		T.Module.call(this, ctx, sandbox);

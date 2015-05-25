@@ -172,7 +172,7 @@ Use all lowercase if possible.
 Exceptions:
 
 * Component folders must match terrific classes, therefore they are case-sensitive.
-* TerrificJS uses upper case for its namespace `Tc` and class names `Tc.Module.Example`
+* TerrificJS uses upper case for its namespace `T` and class names `T.Module.Example`
 
 Use the component helper with the *exact* component name:
 
@@ -180,9 +180,9 @@ Use the component helper with the *exact* component name:
 
 Note that camel case ComponentNames are represented in CSS with dashes.
 
-    Navigation   -> Tc.Module.Navigation   -> mod-navigation
-    NavMain      -> Tc.Module.NavMain      -> mod-nav-main
-    AdminNavMain -> Tc.Module.AdminNavMain -> mod-admin-nav-main
+    Navigation   -> T.Module.Navigation   -> mod-navigation
+    NavMain      -> T.Module.NavMain      -> mod-nav-main
+    AdminNavMain -> T.Module.AdminNavMain -> mod-admin-nav-main
 
 ## Commandline
 

@@ -217,6 +217,7 @@ gulp.task('watch', ['compile-css', 'compile-js'], function () {
 
 	gulp.watch([
 		'./views/**/*.html',
+		'./views/**/*.json',
 		'./components/**/*.html',
 		'./components/**/data/*.json'
 	])

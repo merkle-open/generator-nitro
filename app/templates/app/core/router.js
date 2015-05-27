@@ -1,6 +1,7 @@
 var path = require('path'),
 	fs = require('fs'),
 	cfg = require('./config'),
+	merge = require('merge'),
 	express = require('express'),
 	router = express.Router({
 		caseSensitive: false,
@@ -25,6 +26,10 @@ router.get('/', function (req, res) {
 
 	fs.exists(tplPath, function (exists) {
 		if (exists) {
+			var dataPath = tplPath.replace('.' + cfg.nitro.view_file_extension, '.json' );
+			if (fs.existsSync(dataPath)) {
+				merge.recursive(data, JSON.parse(fs.readFileSync(dataPath, 'utf8')));
+			}
 			res.render('index', data);
 		}
 		else {
@@ -99,6 +104,10 @@ router.get('/:view', function (req, res, next) {
 			);
 
 			if (fs.existsSync(tplPath)) {
+				var dataPath = tplPath.replace('.' + cfg.nitro.view_file_extension, '.json' );
+				if (fs.existsSync(dataPath)) {
+					merge.recursive(data, JSON.parse(fs.readFileSync(dataPath, 'utf8')));
+				}
 				res.render(tplPath, data);
 				rendered = true;
 			}

@@ -18,37 +18,37 @@
 		"start": "node server"
 	},
 	"dependencies": {
-		"body-parser": "^1.12.0",
-		"express": "^4.10.4",
+		"body-parser": "^1.12.4",
+		"express": "^4.12.4",
 		"hbs": "^3.0.1",
 		"merge": "^1.2.0"
 	},
 	"devDependencies": {
-		"browser-sync": "^2.2.1",
-		"gulp": "^3.8.10",
-		"gulp-cached": "^1.0.1",
-		"gulp-concat": "^2.4.2",
+		"browser-sync": "^2.7.5",
+		"gulp": "^3.8.11",
+		"gulp-autoprefixer": "^2.3.0",
+		"gulp-cached": "^1.1.0",
+		"gulp-concat": "^2.5.2",
+		"gulp-express": "^0.1.7",
 		"gulp-header": "^1.2.2",
-		"gulp-imagemin": "^2.0.0",
-		"gulp-jshint": "^1.9.0",<% if (options.pre === 'less') { %>
-		"gulp-less": "^1.3.6",<% } %><% if (options.pre === 'scss') { %>
-		"gulp-sass": "^1.3.2",<% } %>
-		"gulp-autoprefixer": "^2.2.0",<% if (options.js === 'TypeScript') { %>
+		"gulp-imagemin": "^2.2.1",
+		"gulp-jshint": "^1.11.0",
+		"gulp-karma": "~0.0.1",<% if (options.pre === 'less') { %>
+		"gulp-less": "^3.0.3",<% } %><% if (options.pre === 'scss') { %>
+		"gulp-sass": "^1.3.2",<% } %><% if (options.js === 'TypeScript') { %>
 		"typescript": "^1.5.0-beta",
 		"gulp-typescript": "^2.7.5", <% } %>
-		"gulp-minify-css": "^0.3.11",
+		"gulp-minify-css": "^1.1.1",
 		"gulp-plumber": "^0.6.6",
 		"gulp-remember": "^0.3.0",
-		"gulp-rename": "^1.2.0",
+		"gulp-rename": "^1.2.2",
 		"gulp-sourcemaps": "^1.2.8",
-		"gulp-uglify": "^1.0.1",
+		"gulp-uglify": "^1.2.0",
 		"gulp-watch": "^2.0.0",
-		"gulp-express": "^0.1.7",
-		"gulp-karma": "~0.0.1",
 		"jasmine": "^2.1.1",
+		"jshint-stylish": "^2.0.0",
 		"karma": "^0.12.31",
 		"karma-chrome-launcher": "^0.1.7",
-		"karma-jasmine": "~0.2.0",
-		"jshint-stylish": "^1.0.0"
+		"karma-jasmine": "~0.2.0"
 	}
 }

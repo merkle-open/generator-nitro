@@ -8,49 +8,16 @@ var path = require('path'),
 		strict:        false
 	});
 
+/**
+ * static routes
+ */
 router.use('/', express.static(cfg.nitro.base_path + '/public/'));
 router.use('/', express.static(cfg.nitro.base_path + '/assets/'));
 
 /**
- * index
- * TODO: List views if no index
+ * views
  */
-router.get('/', function (req, res) {
-	var tplPath = path.join(
-			cfg.nitro.view_directory,
-			'index.' + cfg.nitro.view_file_extension
-		),
-		data = {
-			pageTitle: 'Index'
-		};
-
-	fs.exists(tplPath, function (exists) {
-		if (exists) {
-			var dataPath = tplPath.replace('.' + cfg.nitro.view_file_extension, '.json' );
-			if (fs.existsSync(dataPath)) {
-				merge.recursive(data, JSON.parse(fs.readFileSync(dataPath, 'utf8')));
-			}
-			res.render('index', data);
-		}
-		else {
-			res.status(404);
-			res.send('Not Found. (Please add an index template)');
-		}
-	});
-});
-
-/**
- * TODO: Terrific Template in /app
- */
-router.get('/terrific', function (req, res) {
-	res.send('Terrific GUI');
-});
-
-/**
- * view templates
- */
-router.get('/:view', function (req, res, next) {
-
+function getView (req, res, next) {
 	var getViewCombinations = function getViewCombinations (action) {
 		var pathes = [action],
 			positions = [],
@@ -88,7 +55,7 @@ router.get('/:view', function (req, res, next) {
 		return string.substr(0, index) + character + string.substr(index+character.length);
 	};
 
-	var tpl = req.params.view.toLowerCase(),
+	var tpl = req.params.view ? req.params.view.toLowerCase() : 'index',
 		data = {
 			pageTitle: tpl
 		},
@@ -117,7 +84,9 @@ router.get('/:view', function (req, res, next) {
 	if (!rendered) {
 		next();
 	}
-});
+}
+router.get('/', getView);
+router.get('/:view', getView);
 
 /**
  * everything else gets a 404

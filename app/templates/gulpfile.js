@@ -20,6 +20,7 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),<% if (options.js === 'TypeScript') { %>
 	ts = require('gulp-typescript'), <% } %>
 	fs = require('fs'),
+    Promise = require('es6-promise').Promise,
 	cfg = require('./app/core/config');
 
 
@@ -112,18 +113,25 @@ gulp.task('compile-css', function () {
 			removeComments: true
 		};
 
+		var promises = [];
+
 		assets.forEach(function (asset) {
 			var assets = splitJsAssets(asset);
 
-			gulp.src(assets.ts)
-				.pipe(plumber())
-				.pipe(ts(tsDefinition))
-				.js
-				.pipe(concat(asset.name.replace('.js', '.ts.js')))
-				.pipe(gulp.dest('./public/assets/js'))
+			promises.push(new Promise(function(resolve) {
+				gulp.src(assets.ts)
+					.pipe(plumber())
+					.pipe(ts(tsDefinition))
+					.js
+					.pipe(concat(asset.name.replace('.js', '.ts.js')))
+					.pipe(gulp.dest('./public/assets/js'))
+					.on('end', function() {
+						resolve();
+					})
+			}));
 		});
 
-		return gulp;
+		return Promise.all(promises);
 	});
 <% } %>
 

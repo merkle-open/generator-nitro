@@ -18,7 +18,7 @@ describe('<%= component.name %> module', function(){
 			called = true;
 		});
 
-		expect(mod.on).toHaveBeenCalled();
+		expect(mod.start).toHaveBeenCalled();
 		expect(called).toBeTruthy();
 	});
 });

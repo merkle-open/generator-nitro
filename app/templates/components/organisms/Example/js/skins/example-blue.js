@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
 	'use strict';
 	/**
 	 * Blue skin implementation for the Example module.
@@ -9,7 +9,7 @@
 	 * @extends T.Module
 	 * @constructor
 	 */
-	T.Module.Example.Blue = function(module) {
+	T.Module.Example.Blue = function (module) {
 		/**
 		 * Override the appropriate methods from the decorated module (ie. module.get = function()).
 		 */
@@ -23,7 +23,7 @@
 		};
 
 		var sync = module.sync.bind(module);
-		module.sync = function() {
+		module.sync = function () {
 			var $ctx = $(this._ctx);
 
 			console.log('Example Skin Blue - sync id: [' + $ctx.data('t-id') + ']');

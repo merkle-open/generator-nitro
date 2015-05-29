@@ -12,7 +12,6 @@
 			"assets/vendor/es6-promise/promise.min.js",
 			"assets/vendor/jquery/dist/jquery.min.js",
 			"assets/vendor/terrific/dist/terrific.min.js",
-			"assets/js/util.inherits.js",
 			"assets/js/*.js"<% if (options.js === 'TypeScript') { %> ,
 		    "assets/js/*.ts",
 		    "components/**/js/*.ts",

@@ -3,8 +3,12 @@ var express = require('express'),
 	cfg = require('./app/core/config'),
 	router = require('./app/core/router'),
 	hbs = require('./app/core/hbs'),
+	compression = require('compression'),
 	bodyParser = require('body-parser'),
 	port = process.env.PORT || 8080;
+
+// compress all requests
+app.use(compression());
 
 // Loads custom project routes
 require('./app/core/routeLoader')(app);

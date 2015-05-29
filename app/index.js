@@ -15,15 +15,23 @@ module.exports = generators.Base.extend({
 		// Calling the super constructor
 		generators.Base.apply(this, arguments);
 
-		this.option('name', {desc: 'the name of your app', type: String });
+		this.option('name', {desc: 'the name of your app', type: String});
 		this.options.name = this.options.name || path.basename(process.cwd());
 		this.options.name = _.kebabCase(this.options.name);
 
 		this.preOptions = ['less', 'scss'];
-		this.option('pre', {desc: 'your desired preprocessor [' + this.preOptions.join('|') + ']', type: String, defaults: this.preOptions[0]});
+		this.option('pre', {
+			desc: 'your desired preprocessor [' + this.preOptions.join('|') + ']',
+			type: String,
+			defaults: this.preOptions[0]
+		});
 
 		this.jsOptions = ['JavaScript', 'TypeScript'];
-		this.option('js', {desc: 'your desired js compiler [' + this.jsOptions.join('|') + ']', type: String, defaults: this.preOptions[0]});
+		this.option('js', {
+			desc: 'your desired js compiler [' + this.jsOptions.join('|') + ']',
+			type: String,
+			defaults: this.preOptions[0]
+		});
 	},
 
 	initializing: function () {
@@ -40,9 +48,9 @@ module.exports = generators.Base.extend({
 		));
 
 		// check whether there is already a nitro application in place and we only have to update the application
-		var json = this.fs.readJSON(this.destinationPath('package.json'), { defaults : { "new" : true } });
+		var json = this.fs.readJSON(this.destinationPath('package.json'), {defaults: {"new": true}});
 
-		if(!json.new && _.indexOf(json.keywords, 'nitro') !== -1) {
+		if (!json.new && _.indexOf(json.keywords, 'nitro') !== -1) {
 			// update existing application
 			this.prompt([
 				{
@@ -54,7 +62,7 @@ module.exports = generators.Base.extend({
 			], function (props) {
 				this.update = props.update;
 
-				if(!this.update) {
+				if (!this.update) {
 					return;
 				}
 
@@ -178,12 +186,11 @@ module.exports = generators.Base.extend({
 					}
 				}
 
-				// ignore everything under assets, components, project and views
-				if(this.update) {
-					if(_.startsWith(file, 'assets')
-						|| _.startsWith(file, 'components')
-						|| _.startsWith(file, 'project')
-						|| _.startsWith(file, 'views')) {
+				// ignore everything under assets, components and views
+				if (this.update) {
+					if (_.startsWith(file, 'assets') ||
+						_.startsWith(file, 'components') ||
+						_.startsWith(file, 'views')) {
 						return;
 					}
 				}
@@ -191,11 +198,11 @@ module.exports = generators.Base.extend({
 				// exclude unecessary preprocessor files
 				var ext = path.extname(file).substring(1);
 
-				if(_.indexOf(this.preOptions, ext) !== -1 && this.options.pre !== ext) {
+				if (_.indexOf(this.preOptions, ext) !== -1 && this.options.pre !== ext) {
 					return;
 				}
 
-				if((_.startsWith(file, 'project') || _.startsWith(file, 'components')) && (ext === 'js' || ext === 'ts') && (this.options.js === 'JavaScript' && ext !== 'js' || this.options.js === 'TypeScript' && ext !== 'ts')){
+				if ((_.startsWith(file, 'project') || _.startsWith(file, 'components')) && (ext === 'js' || ext === 'ts') && (this.options.js === 'JavaScript' && ext !== 'js' || this.options.js === 'TypeScript' && ext !== 'ts')) {
 					return;
 				}
 
@@ -214,9 +221,9 @@ module.exports = generators.Base.extend({
 			skipInstall: this.options['skip-install']
 		});
 
-		if(this.options.js === 'TypeScript'){
+		if (this.options.js === 'TypeScript') {
 			var that = this;
-			this.spawnCommand('tsd', ['reinstall']).on('close', function(){
+			this.spawnCommand('tsd', ['reinstall']).on('close', function () {
 				that.spawnCommand('tsd', ['rebundle']);
 			});
 		}

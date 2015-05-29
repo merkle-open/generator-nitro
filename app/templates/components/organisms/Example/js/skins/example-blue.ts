@@ -1,4 +1,4 @@
-/// <reference path="../../../../../assets/vendor/terrific/dist/Terrific.d.ts" />
+/// <reference path="../../../../../assets/vendor/terrific/dist/terrific.d.ts" />
 /// <reference path="../../../../../typings/tsd.d.ts" />
 /// <reference path="../example.ts" />
 

@@ -5,25 +5,24 @@ var path = require('path'),
 	express = require('express'),
 	router = express.Router({
 		caseSensitive: false,
-		strict:        false
+		strict: false
 	});
 
 /**
  * static routes
  */
 router.use('/', express.static(cfg.nitro.base_path + '/public/'));
-router.use('/', express.static(cfg.nitro.base_path + '/assets/'));
 
 /**
  * views
  */
-function getView (req, res, next) {
-	var getViewCombinations = function getViewCombinations (action) {
+function getView(req, res, next) {
+	var getViewCombinations = function getViewCombinations(action) {
 		var pathes = [action],
 			positions = [],
 			i, j;
 
-		for(i=0; i<action.length;i++) {
+		for (i = 0; i < action.length; i++) {
 			if (action[i] === '-') {
 				positions.push(i);
 			}
@@ -32,27 +31,27 @@ function getView (req, res, next) {
 		var len = positions.length;
 		var combinations = [];
 
-		for ( i = 1; i < ( 1 << len ); i ++ ) {
+		for (i = 1; i < ( 1 << len ); i++) {
 			var c = [];
-			for ( j = 0; j < len; j ++ ) {
-				if ( i & ( 1 << j ) ) {
+			for (j = 0; j < len; j++) {
+				if (i & ( 1 << j )) {
 					c.push(positions[j]);
 				}
 			}
 			combinations.push(c);
 		}
 
-		combinations.forEach(function(combination){
+		combinations.forEach(function (combination) {
 			var path = action;
-			combination.forEach(function(pos){
+			combination.forEach(function (pos) {
 				path = replaceAt(path, pos, '/');
 			});
 			pathes.push(path);
 		});
 		return pathes;
 	};
-	var replaceAt = function replaceAt (string, index, character) {
-		return string.substr(0, index) + character + string.substr(index+character.length);
+	var replaceAt = function replaceAt(string, index, character) {
+		return string.substr(0, index) + character + string.substr(index + character.length);
 	};
 
 	var tpl = req.params.view ? req.params.view.toLowerCase() : 'index',
@@ -62,7 +61,7 @@ function getView (req, res, next) {
 		viewPathes = getViewCombinations(tpl),
 		rendered = false;
 
-	viewPathes.forEach(function(viewPath){
+	viewPathes.forEach(function (viewPath) {
 		if (!rendered) {
 			var tplPath = path.join(
 				cfg.nitro.view_directory,
@@ -71,7 +70,7 @@ function getView (req, res, next) {
 			);
 
 			if (fs.existsSync(tplPath)) {
-				var dataPath = tplPath.replace('.' + cfg.nitro.view_file_extension, '.json' );
+				var dataPath = tplPath.replace('.' + cfg.nitro.view_file_extension, '.json');
 				if (fs.existsSync(dataPath)) {
 					merge.recursive(data, JSON.parse(fs.readFileSync(dataPath, 'utf8')));
 				}
@@ -92,7 +91,7 @@ router.get('/:view', getView);
  * everything else gets a 404
  * TODO: Nice looking 404?
  */
-router.use(function(req, res, next) {
+router.use(function (req, res, next) {
 	res.status(404).send('Sorry, Not Found!');
 });
 

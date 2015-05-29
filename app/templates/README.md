@@ -222,18 +222,6 @@ Nitro is an alternative to [Terrific Micro](https://github.com/namics/terrific-m
 Released under the [MIT license](LICENSE)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 ## Should I check in dependencies?
 
 [What npm says](https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-):

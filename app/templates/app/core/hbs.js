@@ -1,11 +1,12 @@
 var fs = require('fs'),
 	path = require('path'),
 	hbs = require('hbs'),
+	hbsutils = require('hbs-utils')(hbs),
 	cfg = require('./config'),
 	coreHelpersDir = cfg.nitro.base_path + 'app/helpers/',
 	projectHelpersDir = cfg.nitro.base_path + 'project/helpers/';
 
-hbs.registerPartials(cfg.nitro.base_path + cfg.nitro.view_partials_directory);
+hbsutils.registerWatchedPartials(cfg.nitro.base_path + cfg.nitro.view_partials_directory);
 
 var files = {},
 	coreFiles = fs.readdirSync(coreHelpersDir),

@@ -110,7 +110,8 @@ gulp.task('compile-css', function () {
 		var tsDefinition = {
 			typescript: require('typescript'),
 			declarationFiles: false,
-			removeComments: true
+			removeComments: true,
+			target: 'ES5'
 		};
 
 		var promises = [];

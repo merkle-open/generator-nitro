@@ -1,1 +1,2 @@
 assets/vendor/**/*.js
+public/assets/js/*.ts.js

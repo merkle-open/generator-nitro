@@ -78,7 +78,7 @@ gulp.task('compile-css', function () {
 			}))
 			.pipe(remember(asset.name))
 			.pipe(concat(asset.name))
-			.pipe(gulp.dest('./public/assets/css/'))
+			.pipe(gulp.dest('public/assets/css/'))
 			.pipe(browserSync.reload({stream: true}));
 	});
 
@@ -125,7 +125,7 @@ gulp.task('compile-css', function () {
 					.pipe(ts(tsDefinition))
 					.js
 					.pipe(concat(asset.name.replace('.js', '.ts.js')))
-					.pipe(gulp.dest('./public/assets/js'))
+					.pipe(gulp.dest('public/assets/js'))
 					.on('end', function() {
 						resolve();
 					})
@@ -153,7 +153,7 @@ gulp.task('compile-js', <% if (options.js === 'TypeScript') { %> ['compile-ts'],
 			.pipe(jshint())
 			.pipe(jshint.reporter('jshint-stylish'))
 			.pipe(concat(asset.name))
-			.pipe(gulp.dest('./public/assets/js'))
+			.pipe(gulp.dest('public/assets/js'))
 			.pipe(browserSync.reload({stream: true}));
 	});
 
@@ -165,10 +165,10 @@ gulp.task('minify-css', ['compile-css'], function () {
 
 	assets.forEach(function (asset) {
 		gulp
-			.src('./public/assets/css/' + asset.name)
+			.src('public/assets/css/' + asset.name)
 			.pipe(minify())
 			.pipe(rename(asset.name.replace('.css', '.min.css')))
-			.pipe(gulp.dest('./public/assets/css/'));
+			.pipe(gulp.dest('public/assets/css/'));
 	});
 
 	return gulp;
@@ -179,10 +179,10 @@ gulp.task('minify-js', ['compile-js'], function () {
 
 	assets.forEach(function (asset) {
 		gulp
-			.src('./public/assets/img/' + asset.name)
+			.src('public/assets/js/' + asset.name)
 			.pipe(uglify())
 			.pipe(rename(asset.name.replace('.js', '.min.js')))
-			.pipe(gulp.dest('./public/assets/img/'));
+			.pipe(gulp.dest('public/assets/js/'));
 	});
 
 	return gulp;
@@ -190,7 +190,7 @@ gulp.task('minify-js', ['compile-js'], function () {
 
 gulp.task('minify-img', function () {
 	return gulp
-		.src('./assets/img/**/*')
+		.src('assets/img/**/*')
 		.pipe(plumber())
 		.pipe(imagemin({
 			optimizationLevel: 7,
@@ -198,11 +198,11 @@ gulp.task('minify-img', function () {
 			multipass: true,
 			svgoPlugins: [{cleanupIDs: false}, {removeUnknownsAndDefaults: false}, {removeViewBox: false}]
 		}))
-		.pipe(gulp.dest('./assets/img'));
+		.pipe(gulp.dest('public/assets/img'));
 });
 
 gulp.task('copy-assets',   function () {
-	gulp.src(['./assets/font/**/*']).pipe(gulp.dest('./public/assets/font'));
+	gulp.src(['assets/font/**/*']).pipe(gulp.dest('public/assets/font'));
 });
 
 gulp.task('assets', ['copy-assets', 'minify-img', 'minify-css', 'minify-js']);
@@ -216,20 +216,20 @@ gulp.task('watch', ['assets'], function () {
 	};
 
 	gulp.watch([
-		'./config.json',
-		'./assets/**/*.<%= options.pre %>',
-		'./components/**/*.<%= options.pre %>'
+		'config.json',
+		'assets/**/*.<%= options.pre %>',
+		'components/**/*.<%= options.pre %>'
 	], ['compile-css'])
 		.on('change', function (e) {
 			clearCache(e);
 		});
 
 	gulp.watch([
-		'./config.json',
-		'./assets/**/*.js',
-		'./components/**/*.js'<% if (options.js === 'TypeScript') { %>,
-		'./assets/**/*.ts',
-		'./components/**/*.ts'
+		'config.json',
+		'assets/**/*.js',
+		'components/**/*.js'<% if (options.js === 'TypeScript') { %>,
+		'assets/**/*.ts',
+		'components/**/*.ts'
 		<% } %>
 	], ['compile-js'])
 		.on('change', function (e) {
@@ -237,22 +237,22 @@ gulp.task('watch', ['assets'], function () {
 		});
 
 	gulp.watch([
-		'./views/**/*.html',
-		'!./' + cfg.nitro.view_partials_directory + '/*.html', // exclude partials
-		'./views/**/*.json',
-		'./components/**/*.html',
-		'./components/**/data/*.json'
+		'views/**/*.html',
+		'!' + cfg.nitro.view_partials_directory + '/*.html', // exclude partials
+		'views/**/*.json',
+		'components/**/*.html',
+		'components/**/data/*.json'
 	])
 		.on('change', function (e) {
 			browserSync.reload();
 		});
 
 	gulp.watch([
-		'./assets/img/**/*'
+		'assets/img/**/*'
 	], ['minify-img']);
 
 	gulp.watch([
-		'./assets/font/**/*'
+		'assets/font/**/*'
 	], ['copy-assets']);
 });
 

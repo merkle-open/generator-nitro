@@ -9,6 +9,7 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	plumber = require('gulp-plumber'),
 	jshint = require('gulp-jshint'),
+	newer = require('gulp-newer'),
 	imagemin = require('gulp-imagemin'),
 	pngquant = require('imagemin-pngquant'),
 	cache = require('gulp-cached'),
@@ -192,7 +193,7 @@ gulp.task('minify-js', ['compile-js'], function () {
 gulp.task('minify-img', function () {
 	return gulp
 		.src('assets/img/**/*')
-		.pipe(plumber())
+		.pipe(newer('public/assets/img'))
 		.pipe(imagemin({
 			optimizationLevel: 7,
 			progressive: true,
@@ -204,7 +205,12 @@ gulp.task('minify-img', function () {
 });
 
 gulp.task('copy-assets',   function () {
-	gulp.src(['assets/font/**/*']).pipe(gulp.dest('public/assets/font'));
+	gulp
+		.src(['assets/font/**/*'])
+		.pipe(newer('public/assets/font'))
+		.pipe(gulp.dest('public/assets/font'));
+
+	return gulp;
 });
 
 gulp.task('assets', ['copy-assets', 'minify-img', 'minify-css', 'minify-js']);

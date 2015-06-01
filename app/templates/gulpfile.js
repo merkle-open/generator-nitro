@@ -10,6 +10,7 @@ var gulp = require('gulp'),
 	plumber = require('gulp-plumber'),
 	jshint = require('gulp-jshint'),
 	imagemin = require('gulp-imagemin'),
+	pngquant = require('imagemin-pngquant'),
 	cache = require('gulp-cached'),
 	remember = require('gulp-remember'),
 	header = require('gulp-header'),
@@ -196,7 +197,8 @@ gulp.task('minify-img', function () {
 			optimizationLevel: 7,
 			progressive: true,
 			multipass: true,
-			svgoPlugins: [{cleanupIDs: false}, {removeUnknownsAndDefaults: false}, {removeViewBox: false}]
+			svgoPlugins: [{cleanupIDs: false}, {removeUnknownsAndDefaults: false}, {removeViewBox: false}],
+			use: [pngquant()]
 		}))
 		.pipe(gulp.dest('public/assets/img'));
 });

@@ -20,7 +20,7 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),<% if (options.js === 'TypeScript') { %>
 	ts = require('gulp-typescript'), <% } %>
 	fs = require('fs'),
-    Promise = require('es6-promise').Promise,
+	Promise = require('es6-promise').Promise,
 	cfg = require('./app/core/config');
 
 
@@ -190,20 +190,24 @@ gulp.task('minify-js', ['compile-js'], function () {
 
 gulp.task('minify-img', function () {
 	return gulp
-		.src('./assets/img/**/*.*')
+		.src('./assets/img/**/*')
 		.pipe(plumber())
 		.pipe(imagemin({
-			progressive: true
+			optimizationLevel: 7,
+			progressive: true,
+			multipass: true,
+			svgoPlugins: [{cleanupIDs: false}, {removeUnknownsAndDefaults: false}, {removeViewBox: false}]
 		}))
 		.pipe(gulp.dest('./assets/img'));
 });
 
 gulp.task('copy-assets',   function () {
 	gulp.src(['./assets/font/**/*']).pipe(gulp.dest('./public/assets/font'));
-	gulp.src(['./assets/img/**/*']).pipe(gulp.dest('./public/assets/img'));
 });
 
-gulp.task('watch', ['compile-css', 'compile-js'], function () {
+gulp.task('assets', ['copy-assets', 'minify-img', 'minify-css', 'minify-js']);
+
+gulp.task('watch', ['assets'], function () {
 	var clearCache = function (e) {
 		if ('delete' === e.type) {
 			delete cache.caches.scripts[e.path];
@@ -242,6 +246,14 @@ gulp.task('watch', ['compile-css', 'compile-js'], function () {
 		.on('change', function (e) {
 			browserSync.reload();
 		});
+
+	gulp.watch([
+		'./assets/img/**/*'
+	], ['minify-img']);
+
+	gulp.watch([
+		'./assets/font/**/*'
+	], ['copy-assets']);
 });
 
 gulp.task('browser-sync', ['server-watch'], function () {
@@ -281,6 +293,10 @@ gulp.task('test', ['compile-css', 'compile-js'], function (done) {
 	}, done);
 });
 
-gulp.task('develop', ['copy-assets', 'watch', 'browser-sync']);
-gulp.task('production', ['copy-assets', 'minify-css', 'minify-js', 'server-run']);
-gulp.task('assets', ['copy-assets', 'minify-css', 'minify-js']);
+gulp.task('clean', function(){});
+
+gulp.task('develop', ['watch', 'browser-sync']);
+gulp.task('production', ['assets', 'server-run']);
+gulp.task('build', ['clean'], function() {
+	gulp.start('assets');
+});

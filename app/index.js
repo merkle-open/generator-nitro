@@ -171,7 +171,8 @@ module.exports = generators.Base.extend({
 				// files to process with copyTpl
 				'package.json',
 				'config.json',
-				'gulpfile.js'
+				'gulpfile.js',
+				'.jshintignore'
 			];
 			var ignores = [
 				// files to ignore

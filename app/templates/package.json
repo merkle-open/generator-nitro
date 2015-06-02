@@ -39,7 +39,7 @@
 		"gulp-jshint": "^1.11.0",
 		"gulp-karma": "~0.0.1",<% if (options.pre === 'less') { %>
 		"gulp-less": "^3.0.3",<% } %><% if (options.pre === 'scss') { %>
-		"gulp-sass": "^1.3.2",<% } %><% if (options.js === 'TypeScript') { %>
+		"gulp-sass": "^2.0.1",<% } %><% if (options.js === 'TypeScript') { %>
 		"typescript": "^1.5.0-beta",
 		"gulp-typescript": "^2.7.5", <% } %>
 		"gulp-minify-css": "^1.1.1",

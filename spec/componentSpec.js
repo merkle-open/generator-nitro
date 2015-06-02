@@ -5,6 +5,14 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var os = require('os');
 var fs = require('fs-extra');
+var ejs = require('ejs');
+
+var configData = {
+	options: {
+		pre: 'less',
+		js: 'JavaScript'
+	}
+};
 
 describe('nitro:component', function () {
 	describe('when creating a component "Test" that does not support skins', function () {
@@ -12,7 +20,7 @@ describe('nitro:component', function () {
 			helpers.run(path.join(__dirname, '../component'))
 				.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
 					fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
-					fs.copySync(path.join(__dirname, '../app/templates/config.json'), path.join(dir, 'config.json'));
+					fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../app/templates/config.json'), 'utf8'), configData));
 				})
 				.withPrompts({name: 'Test', type: 'atom'})
 				.on('end', done);
@@ -42,7 +50,7 @@ describe('nitro:component', function () {
 				helpers.run(path.join(__dirname, '../component'))
 					.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
 						fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
-						fs.copySync(path.join(__dirname, '../app/templates/config.json'), path.join(dir, 'config.json'));
+						fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../app/templates/config.json'), 'utf8'), configData));
 					})
 					.withPrompts({name: 'Test', type: 'organism'})
 					.on('end', done);
@@ -71,7 +79,7 @@ describe('nitro:component', function () {
 				helpers.run(path.join(__dirname, '../component'))
 					.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
 						fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
-						fs.copySync(path.join(__dirname, '../app/templates/config.json'), path.join(dir, 'config.json'));
+						fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../app/templates/config.json'), 'utf8'), configData));
 					})
 					.withPrompts({name: 'Test', type: 'organism', skin: 'More'})
 					.on('end', done);
@@ -81,7 +89,6 @@ describe('nitro:component', function () {
 				assert.file([
 					'components/organisms/Test',
 					'components/organisms/Test/test.html',
-					'components/organisms/Test/test-more.html',
 					'components/organisms/Test/css/test.less',
 					'components/organisms/Test/css/skins/test-more.less',
 					'components/organisms/Test/js/test.js',
@@ -123,7 +130,6 @@ describe('nitro:component', function () {
 			assert.file([
 				'components/organisms/NavMain',
 				'components/organisms/NavMain/navmain.html',
-				'components/organisms/NavMain/navmain-specialcase.html',
 				'components/organisms/NavMain/css/navmain.less',
 				'components/organisms/NavMain/css/skins/navmain-specialcase.less',
 				'components/organisms/NavMain/js/navmain.js',
@@ -154,7 +160,7 @@ describe('nitro:component', function () {
 			helpers.run(path.join(__dirname, '../component'))
 				.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
 					fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
-					fs.copySync(path.join(__dirname, '../app/templates/config.json'), path.join(dir, 'config.json'));
+					fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../app/templates/config.json'), 'utf8'), configData));
 				})
 				.withPrompts({name: 'nav-main', type: 'organism', skin: 'special-case'})
 				.on('end', done);
@@ -164,7 +170,6 @@ describe('nitro:component', function () {
 			assert.file([
 				'components/organisms/nav-main',
 				'components/organisms/nav-main/navmain.html',
-				'components/organisms/nav-main/navmain-specialcase.html',
 				'components/organisms/nav-main/css/navmain.less',
 				'components/organisms/nav-main/css/skins/navmain-specialcase.less',
 				'components/organisms/nav-main/js/navmain.js',

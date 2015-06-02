@@ -67,6 +67,13 @@ module.exports = generators.Base.extend({
 					return;
 				}
 
+				var config = this.config.getAll();
+				if (config) {
+					this.options.name = config.name || this.options.name;
+					this.options.pre = config.preprocessor || this.options.pre;
+					this.options.js = config.jscompiler || this.options.js;
+				}
+
 				done();
 			}.bind(this));
 		}
@@ -96,6 +103,12 @@ module.exports = generators.Base.extend({
 				this.options.name = props.name;
 				this.options.pre = props.pre;
 				this.options.js = props.js;
+
+				this.config.set('name', this.options.name);
+				this.config.set('preprocessor', this.options.pre);
+				this.config.set('jscompiler', this.options.js);
+
+				this.config.save();
 
 				done();
 			}.bind(this));
@@ -215,6 +228,7 @@ module.exports = generators.Base.extend({
 
 				this.fs.copy(this.templatePath(file), this.destinationPath(file));
 			}, this);
+
 		}
 	},
 

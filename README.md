@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/namics/generator-nitro.svg?branch=develop)](https://travis-ci.org/namics/generator-nitro)
+
 # Yeoman Nitro Generator
 
 > Yeoman generator for Nitro - lets you quickly set up a project with sensible defaults and best practices.

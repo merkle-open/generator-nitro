@@ -2,26 +2,26 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
 
 module T {
-    export class Example extends Module {
-        constructor(ctx:Node, sandbox:Sandbox) {
-            super(ctx, sandbox);
-        }
+    export module Module {
+        export class Example extends Module {
+            constructor(ctx:Node, sandbox:Sandbox) {
+                super(ctx, sandbox);
+            }
 
-        start(resolve:(value?:any) => void, reject:(error?:any) => void):void {
-            var $ctx = $(this._ctx);
+            start(resolve:(value?:any) => void, reject:(error?:any) => void):void {
+                var $ctx = $(this._ctx);
 
-            console.log('Example - start [id:' + $ctx.data('t-id') + ']');
+                console.log('Example - start [id:' + $ctx.data('t-id') + ']');
 
-            this._events.on('t.sync', this.sync.bind(this));
-            resolve();
-        }
+                this._events.on('t.sync', this.sync.bind(this));
+                resolve();
+            }
 
-        sync() {
-            var $ctx = $(this._ctx);
+            sync() {
+                var $ctx = $(this._ctx);
 
-            console.log('Example - sync [id:' + $ctx.data('t-id') + ']');
+                console.log('Example - sync [id:' + $ctx.data('t-id') + ']');
+            }
         }
     }
-
-    Module['Example'] = Example;
 }

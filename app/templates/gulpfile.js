@@ -15,6 +15,7 @@ var gulp = require('gulp'),
 	cache = require('gulp-cached'),
 	remember = require('gulp-remember'),
 	header = require('gulp-header'),
+	globby = require('globby'),
 	karma = require('karma').server,
 	server = require('gulp-express'),
 	browserSync = require('browser-sync'),
@@ -62,29 +63,31 @@ gulp.task('compile-css', function () {
 	var assets = getSourceFiles('.css');
 
 	assets.forEach(function (asset) {
-		var imports = '';
+		globby(asset.deps, function(err, paths) {
+			var imports = '';
 
-		asset.deps.forEach(function (src) {
-			imports += fs.readFileSync(src);
+			paths.forEach(function(path) {
+				imports += fs.readFileSync(path);
+			});
+
+			gulp
+				.src(asset.src)
+				.pipe(plumber())
+				.pipe(header(imports))
+				.pipe(cache(asset.name))
+				.pipe(precompile())
+				.pipe(autoprefixer({
+					browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1'],
+					cascade: true
+				}))
+				.pipe(remember(asset.name))
+				.pipe(concat(asset.name))
+				.pipe(gulp.dest('public/assets/css/'))
+				.pipe(browserSync.reload({stream: true}));
+
+			return gulp;
 		});
-
-		gulp
-			.src(asset.src)
-			.pipe(plumber())
-			.pipe(header(imports))
-			.pipe(cache(asset.name))
-			.pipe(precompile())
-			.pipe(autoprefixer({
-				browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1'],
-				cascade: true
-			}))
-			.pipe(remember(asset.name))
-			.pipe(concat(asset.name))
-			.pipe(gulp.dest('public/assets/css/'))
-			.pipe(browserSync.reload({stream: true}));
 	});
-
-	return gulp;
 });
 
 <% if (options.js === 'TypeScript') { %>

@@ -20,10 +20,11 @@
 	"dependencies": {
 		"body-parser": "^1.12.4",
 		"compression": "^1.4.4",
+		"es6-promise": "^2.1.1",
 		"express": "^4.12.4",
+		"globby": "^2.0.0",
 		"hbs": "^3.0.1",
 		"hbs-utils": "0.0.3",
-		"es6-promise": "^2.1.1",
 		"merge": "^1.2.0"
 	},
 	"devDependencies": {

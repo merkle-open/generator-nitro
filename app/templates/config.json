@@ -13,11 +13,11 @@
 			"assets/vendor/jquery/dist/jquery.min.js",
 			"assets/vendor/terrific/dist/terrific.min.js",
 			"assets/js/*.js"<% if (options.js === 'TypeScript') { %> ,
-		    "assets/js/*.ts",
-		    "components/**/js/*.ts",
-		    "components/**/js/skins/*.ts"<% } else { %>,
-		    "components/**/js/*.js",
-		    "components/**/js/skins/*.js"<% } %>
+			"assets/js/*.ts",
+			"components/**/js/*.ts",
+			"components/**/js/skins/*.ts"<% } else { %>,
+			"components/**/js/*.js",
+			"components/**/js/skins/*.js"<% } %>
 		]
 	},
 	"nitro": {

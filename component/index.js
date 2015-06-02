@@ -7,6 +7,7 @@ var request = require('request');
 var path = require('path');
 var fs = require('fs');
 var gitconfig = require('git-config');
+var glob = require('glob');
 var _ = require('lodash');
 
 module.exports = generators.Base.extend({
@@ -103,7 +104,7 @@ module.exports = generators.Base.extend({
 
 			var component = this.cfg.nitro.components[this.options.type];
 
-			var files = this.expandFiles('**/*', {cwd: this.destinationPath(component.template), dot: true});
+			var files = glob.sync('**/*', {cwd: this.destinationPath(component.template), nodir: true, dot: true});
 			var ignores = [
 				// files to ignore
 				'.DS_Store'

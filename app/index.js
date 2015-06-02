@@ -7,6 +7,7 @@ var request = require('request');
 var path = require('path');
 var fs = require('fs');
 var admzip = require('adm-zip');
+var glob = require('glob');
 var _ = require('lodash');
 
 module.exports = generators.Base.extend({
@@ -151,7 +152,8 @@ module.exports = generators.Base.extend({
 		app: function () {
 			this.log('Scaffolding your app');
 
-			var files = this.expandFiles('**/*', {cwd: this.sourceRoot(), dot: true});
+			var files = glob.sync('**/*', {cwd: this.sourceRoot(), nodir: true, dot: true});
+
 			var tplFiles = [
 				// files to process with copyTpl
 				'package.json',

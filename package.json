@@ -30,9 +30,10 @@
     "adm-zip": "^0.4.4",
     "chalk": "^0.5.0",
     "git-config": "0.0.6",
+    "glob": "^5.0.10",
     "lodash": "^3.0.0",
     "request": "^2.51.0",
-    "yeoman-generator": "^0.18.0",
+    "yeoman-generator": "^0.20.0",
     "yosay": "^0.3.0"
   },
   "devDependencies": {

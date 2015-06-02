@@ -117,7 +117,7 @@ module.exports = generators.Base.extend({
 
 			var gitConfig = gitconfig.sync();
 
-			if (!_.isEmpty(gitConfig)) {
+			if (!_.isEmpty(gitConfig) && !_.isEmpty(gitConfig.user)) {
 				user.name = gitConfig.user.name;
 				user.email = gitConfig.user.email;
 			}

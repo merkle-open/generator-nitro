@@ -5,7 +5,7 @@ describe('Component Helper', function () {
 	it('throws an error if module name is unknown', function () {
 		expect(function () {
 			helper('inexistent')
-		}).toThrow(new Error('Component inexistent not found. (Hint: have you added it to config.json?)'));
+		}).toThrow(new Error('Component inexistent not found.'));
 	});
 
 	it('returns an object containing a string if module was found', function () {

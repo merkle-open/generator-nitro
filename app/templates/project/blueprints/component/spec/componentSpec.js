@@ -1,24 +1,18 @@
 'use strict';
 
 describe('<%= component.name %> module', function(){
-	var mod;
-
 	beforeEach(function(){
 		var application = new T.Application();
-		mod = new T.Module.<%= component.js %>(document.createElement('div'), application.sandbox);
+		this.mod = new T.Module.<%= component.js %>(document.createElement('div'), application._sandbox);
 	});
 
-	it('should have a "start" method', function(){
-		expect(mod.start).toBeDefined();
+	it('should have a .start() method', function(){
+		expect(this.mod.start).toBeDefined();
 	});
 
-	it('should execute the callback in the "start" method', function(){
-		var called = false;
-		spyOn(mod, 'start').and.callFake(function() {
-			called = true;
-		});
-
-		expect(mod.start).toHaveBeenCalled();
-		expect(called).toBeTruthy();
+	it('should execute promise.resolve callback in the .start() method', function(){
+		var resolve = jasmine.createSpy('resolve');
+		this.mod.start(resolve);
+		expect(resolve).toHaveBeenCalled();
 	});
 });

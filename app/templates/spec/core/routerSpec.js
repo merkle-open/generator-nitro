@@ -25,19 +25,7 @@ describe('Nitro Router', function () {
 		expect(contains).toBe(true);
 	});
 
-	it('contains terrific module generator route', function () {
-		var contains = false;
-
-		router.stack.forEach(function (route) {
-			if (!!route.route && route.route.path === '/terrific/') {
-				contains = true;
-			}
-		});
-
-		expect(contains).toBe(true);
-	});
-
-	it('contains two static routes', function () {
+	it('contains one static routes', function () {
 		var noOfStaticRoutes = 0;
 
 		router.stack.forEach(function (route) {
@@ -46,6 +34,6 @@ describe('Nitro Router', function () {
 			}
 		});
 
-		expect(noOfStaticRoutes).toBe(2);
+		expect(noOfStaticRoutes).toBe(1);
 	});
 });

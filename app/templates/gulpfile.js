@@ -28,12 +28,11 @@ var gulp = require('gulp'),
 
 
 function getSourceFiles(ext) {
-	var assetsConfig = require('./config.json').assets,
-		assets = [];
+	var assets = [];
 
-	for (var key in assetsConfig) {
-		if (assetsConfig.hasOwnProperty(key) && ext === path.extname(key)) {
-			var asset = assetsConfig[key],
+	for (var key in cfg.assets) {
+		if (cfg.assets.hasOwnProperty(key) && ext === path.extname(key)) {
+			var asset = cfg.assets[key],
 				result = {
 					name: key,
 					deps: [],
@@ -226,8 +225,18 @@ gulp.task('watch', ['assets'], function () {
 		}
 	};
 
+
 	gulp.watch([
 		'config.json',
+	]).on('change', function(e) {
+		if ('changed' === e.type) {
+			cfg = cfg.reload();
+			gulp.start('compile-css');
+			gulp.start('compile-js');
+		}
+	});
+
+	gulp.watch([
 		'assets/**/*.<%= options.pre %>',
 		'components/**/*.<%= options.pre %>'
 	], ['compile-css'])
@@ -236,7 +245,6 @@ gulp.task('watch', ['assets'], function () {
 		});
 
 	gulp.watch([
-		'config.json',
 		'assets/**/*.js',
 		'components/**/*.js'<% if (options.js === 'TypeScript') { %>,
 		'assets/**/*.ts',

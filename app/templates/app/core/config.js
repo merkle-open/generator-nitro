@@ -1,16 +1,27 @@
 var path = require('path'),
-	merge = require('merge'),
-	config = require('../../config.json');
+	fs = require('fs'),
+	merge = require('merge');
 
-var defaultConfig = {
-	base_path:               path.normalize(__dirname + '../../../'),
-	view_directory:          path.normalize(__dirname + '../../../') + 'views',
-	view_file_extension:     'html',
-	view_partials_directory: 'views/_partials'
-};
+function factory() {
+	var base_path = path.normalize(__dirname + '../../../'),
+		options = {
+			encoding: 'utf-8',
+			flag: 'r'
+		};
 
-config.nitro = config.nitro || defaultConfig;
+	var config = JSON.parse(fs.readFileSync(base_path + 'config.json', options));
+	config.nitro = merge({
+		base_path: path.normalize(__dirname + '../../../'),
+		view_directory: path.normalize(__dirname + '../../../') + 'views',
+		view_file_extension: 'html',
+		view_partials_directory: 'views/_partials'
+	}, config.nitro);
 
-config.nitro = merge(defaultConfig, config.nitro);
+	config.reload = function() {
+		return factory();
+	};
 
-module.exports = config;
+	return config;
+}
+
+module.exports = factory();

@@ -9,14 +9,13 @@
 	 * @extends T.Module
 	 */
 	T.Module.Example = T.createModule({
-		start: function (callback) {
+		start: function (resolve) {
 			var $ctx = $(this._ctx);
+			this._events.on('t.sync', this.sync.bind(this));
 
 			console.log('Example - start [id:' + $ctx.data('t-id') + ']');
 
-			this._events.on('t.sync', this.sync.bind(this));
-
-			callback();
+			resolve();
 		},
 		sync: function () {
 			var $ctx = $(this._ctx);

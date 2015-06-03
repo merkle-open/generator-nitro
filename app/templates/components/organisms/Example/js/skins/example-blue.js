@@ -9,26 +9,20 @@
 	 * @extends T.Module
 	 * @constructor
 	 */
-	T.Module.Example.Blue = function (module) {
-		/**
-		 * Override the appropriate methods from the decorated module (ie. module.get = function()).
-		 */
-		var start = module.start.bind(module);
-		module.start = function (callback) {
+	T.Module.Example.Blue = T.createSkin({
+		start: function (resolve) {
 			var $ctx = $(this._ctx);
 
 			console.log('Example Skin Blue - start id: [' + $ctx.data('t-id') + ']');
 
-			start(callback); // calling original method
-		};
-
-		var sync = module.sync.bind(module);
-		module.sync = function () {
+			this._parent.start(resolve); // calling original method
+		},
+		sync: function () {
 			var $ctx = $(this._ctx);
 
 			console.log('Example Skin Blue - sync id: [' + $ctx.data('t-id') + ']');
 
-			sync(); // calling original method
-		};
-	};
+			this._parent.sync(); // calling original method
+		}
+	});
 }(jQuery));

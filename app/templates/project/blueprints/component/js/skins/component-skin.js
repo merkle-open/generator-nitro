@@ -8,12 +8,11 @@
 	 * @class <%= skin.js %>
 	 * @extends T.Module
 	 */
-	T.Module.<%= component.js %>.<%= skin.js %> = function(module) {
-		var start = module.start.bind(module);
-		module.start = function(callback) {
+	T.Module.<%= component.js %>.<%= skin.js %> = T.createSkin({
+		start: function (resolve) {
 			var $ctx = $(this._ctx);
 
-			start(callback); // calling original
-		};
-	};
+			this._parent.start(resolve);
+		}
+	});
 }(jQuery));

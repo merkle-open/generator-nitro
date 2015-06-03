@@ -9,10 +9,10 @@
 	 * @extends T.Module
 	 */
 	T.Module.<%= component.js %> = T.createModule({
-		start: function(callback) {
+		start: function(resolve) {
 			var $ctx = $(this._ctx);
 
-			callback();
+			resolve();
 		}
 	});
 }(jQuery));

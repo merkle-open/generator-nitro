@@ -1,8 +1,6 @@
 'use strict';
 
 describe('Example module', function(){
-	var mod;
-
 	beforeEach(function(){
 		var application = new T.Application();
 		this.mod = new T.Module.Example(document.createElement('div'), application._sandbox);

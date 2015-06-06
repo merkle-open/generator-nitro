@@ -23,6 +23,7 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),<% if (options.js === 'TypeScript') { %>
 	ts = require('gulp-typescript'), <% } %>
 	fs = require('fs'),
+	del = require('del'),
 	Promise = require('es6-promise').Promise,
 	cfg = require('./app/core/config');
 
@@ -312,7 +313,9 @@ gulp.task('test', ['compile-css', 'compile-js'], function (done) {
 	}, done);
 });
 
-gulp.task('clean', function(){});
+gulp.task('clean', function() {
+	del.bind( null, ['public/assets/*'] );
+});
 
 gulp.task('develop', ['watch', 'browser-sync']);
 gulp.task('production', ['assets', 'server-run']);

@@ -16,7 +16,7 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 ### Frontend files
-[*.{css,scss,less,js,json,sass,php,html,phtml,html.twig}]
+[*.{css,scss,less,js,json,ts,sass,php,html,phtml,html.twig}]
 
 # Tab indentation
 indent_style = tab

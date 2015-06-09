@@ -38,8 +38,9 @@ gulp develop
 
 ### Creating Components
 
-Components are created in the `components` folder. A component is an encapsulated block of markup with corresponding data, styles and scripts.
-A terrific module uses the following structure:
+Components are created in the `components` folder. A component is an encapsulated block of markup with corresponding styles, scripts and data.  
+For a better overview it is useful to define different types of components. It is recommended to make subfolders like `atoms`, `molecules` & `organisms`
+A component uses the following structure:
 
     /Example
     /Example/example.html
@@ -220,7 +221,6 @@ Nitro is an alternative to [Terrific Micro](https://github.com/namics/terrific-m
 ## License
 
 Released under the [MIT license](LICENSE)
-
 
 ## Should I check in dependencies?
 

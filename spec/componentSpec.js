@@ -15,36 +15,7 @@ var configData = {
 };
 
 describe('nitro:component', function () {
-	describe('when creating a component "Test" that does not support skins', function () {
-		beforeEach(function (done) {
-			helpers.run(path.join(__dirname, '../component'))
-				.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
-					fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
-					fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../app/templates/config.json'), 'utf8'), configData));
-				})
-				.withPrompts({name: 'Test', type: 'atom'})
-				.on('end', done);
-		});
-
-		it('the skin files are not created', function () {
-			assert.noFile([
-				'components/atoms/Test/css/skins',
-				'components/atoms/Test/js/skins'
-			]);
-		});
-
-		it('the component files are created', function () {
-			assert.file([
-				'components/atoms/Test',
-				'components/atoms/Test/test.html',
-				'components/atoms/Test/css/test.less',
-				'components/atoms/Test/js/test.js',
-				'components/atoms/Test/spec/testSpec.js'
-			]);
-		});
-	});
-
-	describe('when creating a component "Test" that does support skins', function () {
+	describe('when creating a component "Test"', function () {
 		describe('but no skin is given', function () {
 			beforeEach(function (done) {
 				helpers.run(path.join(__dirname, '../component'))
@@ -97,12 +68,12 @@ describe('nitro:component', function () {
 				]);
 			});
 
-			it('the component css class is mod-test', function () {
+			it('the component css class is o-test', function () {
 				assert.fileContent([['components/organisms/Test/css/test.less', /\.o-test \{/]]);
 			});
 
 			it('the skin css class is skin-test-more', function () {
-				assert.fileContent([['components/organisms/Test/css/skins/test-more.less', /\.skin-test-more \{/]]);
+				assert.fileContent([['components/organisms/Test/css/skins/test-more.less', /\.o-test--more \{/]]);
 			});
 
 			it('the component js class is T.Module.Test', function () {
@@ -138,12 +109,12 @@ describe('nitro:component', function () {
 			]);
 		});
 
-		it('the component css class is mod-nav-main', function () {
+		it('the component css class is o-nav-main', function () {
 			assert.fileContent([['components/organisms/NavMain/css/navmain.less', /\.o-nav-main \{/]]);
 		});
 
-		it('the skin css class is skin-nav-main-special-case', function () {
-			assert.fileContent([['components/organisms/NavMain/css/skins/navmain-specialcase.less', /\.skin-nav-main-special-case \{/]]);
+		it('the skin css class is o-nav-main--special-case', function () {
+			assert.fileContent([['components/organisms/NavMain/css/skins/navmain-specialcase.less', /\.o-nav-main--special-case \{/]]);
 		});
 
 		it('the component js class is T.Module.NavMain', function () {
@@ -183,7 +154,7 @@ describe('nitro:component', function () {
 		});
 
 		it('the skin css class is skin-nav-main-special-case', function () {
-			assert.fileContent([['components/organisms/nav-main/css/skins/navmain-specialcase.less', /\.skin-nav-main-special-case \{/]]);
+			assert.fileContent([['components/organisms/nav-main/css/skins/navmain-specialcase.less', /\.o-nav-main--special-case \{/]]);
 		});
 
 		it('the component js class is T.Module.NavMain', function () {

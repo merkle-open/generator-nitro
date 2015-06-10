@@ -67,30 +67,25 @@ module.exports = generators.Base.extend({
 			this.name = props.name;
 			this.options.type = props.type;
 
-			// Check whether the choosen type support skins (skin_prefix in config)
-			this.supportSkin = _.has(this.cfg.nitro.components[this.options.type], 'skin_prefix');
-
 			done();
 		}.bind(this));
 	},
 
 	configuring: {
 		skin: function () {
-			if(this.supportSkin) {
-				var done = this.async();
+			var done = this.async();
 
-				this.prompt([
-					{
-						name: 'skin',
-						message: 'Would you like to create a skin? Type your desired name or leave empty.',
-						default: this.options.skin || ''
-					}
-				], function (props) {
-					this.options.skin = props.skin;
+			this.prompt([
+				{
+					name: 'skin',
+					message: 'Would you like to create a skin? Type your desired name or leave empty.',
+					default: this.options.skin || ''
+				}
+			], function (props) {
+				this.options.skin = props.skin;
 
-					done();
-				}.bind(this));
-			}
+				done();
+			}.bind(this));
 		}
 	},
 
@@ -133,8 +128,7 @@ module.exports = generators.Base.extend({
 				skin: {
 					name: this.options.skin, // Skin name, eg. Highlight
 					js: _.capitalize(_.camelCase(this.options.skin)), // Skin name for use in JS files, eg. Highlight
-					css: _.kebabCase(this.options.skin), // Skin name for use in CSS files, eg. highlight
-					prefix: component.skin_prefix || null // CSS class prefix, eg. skin
+					css: _.kebabCase(this.options.skin) // Skin name for use in CSS files, eg. highlight
 				}
 			};
 
@@ -143,11 +137,8 @@ module.exports = generators.Base.extend({
 					return;
 				}
 
-				// exclude skin files if skin is not set or not supported
+				// exclude skin files if skin is not set
 				if (file.indexOf('skin') !== -1) {
-					if(!this.supportSkin) {
-						return;
-					}
 					if(_.isEmpty(this.options.skin)) {
 						return;
 					}

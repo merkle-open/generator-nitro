@@ -14,6 +14,5 @@ Nitro provides the following [Lodash](https://lodash.com/docs#template) replacem
 <%= skin.name %>		// Skin name, eg. Highlight
 <%= skin.js %> 			// Skin name for use in JS files, eg. Highlight
 <%= skin.css %> 		// Skin name for use in CSS files, eg. highlight
-<%= skin.prefix %>		// CSS class prefix, eg. skin 
 
 ```

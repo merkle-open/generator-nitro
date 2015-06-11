@@ -6,46 +6,72 @@
 
 ## Usage
 
-Install `yo` and other required tools
+Install `yo` and other required tools:
+
 ```
-npm install -g yo bower gulp karma-cli
+npm install -g yo bower gulp jasmine karma-cli
 ```
 
-If you want to use typescript, you need to install "tsd" (typescript definition repository) as well.
+If you want to use TypeScript, you need to install "tsd" (typescript definition repository) as well.
+
 ```
 npm install -g tsd
 ```
 
 Install `generator-nitro`:
+
 ```
 npm install -g generator-nitro
 ```
 
+## Project Generation
+
 Make a new directory, and `cd` into it:
+
 ```
-mkdir my-new-project && cd $_
+mkdir my-new-project && cd my-new-project
 ```
 
-Run `yo nitro`, optionally passing an app name:
+Run:
+
 ```
-yo nitro [name]
+yo nitro
 ```
 
-Start your app
+You will be guided through some configuration options:
+
+* Desired Name (default: current directory name)
+* Desired CSS preprocessor (`less` or `scss`; default: `less`)
+* Desired JavaScript compiler (`JavaScript` or `TypeScript`; default: `JavaScript`)
+
+It's possible to pass in these options through the command line
+
+```
+yo nitro --name=myproject --pre=scss --js=JavaScript
+```
+
+------------
+todo: move #16
+
+Start your app:
+
 ```
 gulp develop
 ```
+
 The default port is 8080, proxy (develop only) is 8081.  If you want other ports, just add it before gulp task:
+
 ```
 PORT=8000 PROXY=8001 gulp develop
 ```
 
 The port for production can be changed the same way:
+
 ```
 PORT=3000 gulp production
 ``
 
-On Windows command prompt:
+On Windows command prompt use:
 
 ```
 set PORT=8000 && set PROXY=8001 && gulp develop

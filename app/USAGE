@@ -1,7 +1,16 @@
 Description:
-    Creates a Nitro app
+    Creates (or updates) a Nitro frontend app
 
-Example:
-    yo nitro --pre=less
+Options (for creation):
+    name (optional): project name
+    pre (optional): less or scss preprocessor
+    js (optional): JavaScript or TypeScript compiler
 
-    This will create a new nitro project with less support.
+Examples:
+    yo nitro
+
+        This will create or update a Nitro project
+
+    yo nitro --name=myproject --pre=scss --js=JavaScript
+
+        This will create a new Nitro project with scss support

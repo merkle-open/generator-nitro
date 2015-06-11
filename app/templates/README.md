@@ -1,26 +1,29 @@
 Nitro
 =====
 
-Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. It provides a
-proven but flexible structure to develop your frontend code, even in a large team. Keep track of your code with a
-modularized frontend. This app and the suggested [terrific concept](http://terrifically.org) could help. Nitro
-is simple, fast and flexible. Use this app for all your frontend work, but keep in mind it's not intended to use in
-production environment.
+Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.  
+It provides a proven but flexible structure to develop your frontend code, even in a large team.  
+Keep track of your code with a modularized frontend. This app, the suggested [terrific concept](http://terrifically.org) could help.
+Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 ## Quickstart
+
 To run nitro you only need [node](http://nodejs.org/).
 
 Make sure you have the following global dependencies installed
+
 ```
 npm install -g yo bower gulp jasmine karma-cli
 ```
 
 Run the Yeoman Project Generator (you probably have already done this)
+
  ```
 yo nitro
 ```
 
 Start your app and build amazing things
+
 ```
 gulp develop
 ```
@@ -146,25 +149,20 @@ You can configure as many different assets as you wish.
         "assets/css/reset.css",
         ...
 
-### Asset Minification
-tbd - or kill it?
-
-### JavaScript Debugging
-tbd - or kill it? or source maps?
-
+### Todo: ev. Source Maps #24
 
 ## Conventions
 
 ### Resource linking
 
-To stay portable you should favour the use of relative paths. Link to resources relatively to the `project`-folder **without** a leading slash.
+To stay consistent you should favour the use of relative paths with a leading slash. 
+Link to resources relatively to the `project`-folder **with** a leading slash.
 
-    <link rel="stylesheet" href="app.css" type="text/css" />
-    <link rel="shortcut icon" href="assets/img/icon/favicon.ico" type="image/x-icon" />
-    <script src="app.js"></script>
-    <img src="components/modules/Example/img/example.png" alt="" />
-    background: url(assets/img/bg/texture.png) scroll 0 0 no-repeat;
-    <a href="content.html">Contentpage</a>
+    <link rel="stylesheet" href="/assets/app.css" type="text/css" />
+    <link rel="shortcut icon" href="/assets/img/icon/favicon.ico" type="image/x-icon" />
+    <script src="/assets/app.js"></script>
+    background: url(/assets/img/bg/texture.png) scroll 0 0 no-repeat;
+    <a href="/content.html">Contentpage</a>
 
 ### Upper & lower case letters
 
@@ -181,9 +179,9 @@ Use the component helper with the *exact* component name:
 
 Note that camel case ComponentNames are represented in CSS with dashes.
 
-    Navigation   -> T.Module.Navigation   -> mod-navigation
-    NavMain      -> T.Module.NavMain      -> mod-nav-main
-    AdminNavMain -> T.Module.AdminNavMain -> mod-admin-nav-main
+    Navigation   -> T.Module.Navigation   -> m-navigation
+    NavMain      -> T.Module.NavMain      -> m-nav-main
+    AdminNavMain -> T.Module.AdminNavMain -> m-admin-nav-main
 
 ## Commandline
 
@@ -195,7 +193,7 @@ tbd
 
 ## Contributing
 
-* For Bugs and Features please use [GitHub](https://github.com/namics/nitro/issues)
+* For Bugs and Features please use [GitHub](https://github.com/namics/generator-nitro/issues)
 * Feel free to fork and send PRs. That's the best way to discuss your ideas.
 
 ## Example Project Includes
@@ -208,21 +206,20 @@ tbd
 
 The following packages are always installed by the [app](#name) generator:
 
-* [jQuery 1.11.2](http://jquery.com/)
-* [TerrificJS 2.1.0](http://terrifically.org/api/)
+* [jQuery 2.1.4](http://jquery.com/)
+* [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)
 
 All of these can be updated with `bower update` as new versions are released.
 
 
 ## Credits
-Nitro is an alternative to [Terrific Micro](https://github.com/namics/terrific-micro) which was initiated by
-[Roger Dudler](https://github.com/rogerdudler) and maintained by Namics AG.
+Nitro is an alternative to [Terrific Micro](https://github.com/namics/terrific-micro) which is developed by Namics AG.
 
 ## License
 
 Released under the [MIT license](LICENSE)
 
-## Should I check in dependencies?
+## Should I check in dependencies? Todo: #23
 
 [What npm says](https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-):
 Usually, no. Allow npm to resolve dependencies for your packages.

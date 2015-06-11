@@ -45,6 +45,13 @@ The port for production can be changed the same way:
 PORT=3000 gulp production
 ``
 
+On Windows command prompt:
+
+```
+set PORT=8000 && set PROXY=8001 && gulp develop
+set PORT=3000 && gulp production
+```
+
 ## Generators
 
 Available generators:

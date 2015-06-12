@@ -56,9 +56,9 @@ Terrific Skins (css or js) are created using the following conventions:
     /Example/css/skins/example-skinname.css
     /Example/js/skins/example-skinname.js
 
-Different data variantions has to be placed in the `data` folder:
+Different data variantions has to be placed in the `_data` folder:
 
-    /Example/data/example-variant.json
+    /Example/_data/example-variant.json
 
 ### Creating Components & Skins with yo
 

@@ -70,7 +70,11 @@ function getView(req, res, next) {
 			);
 
 			if (fs.existsSync(tplPath)) {
-				var dataPath = tplPath.replace('.' + cfg.nitro.view_file_extension, '.json');
+				var dataPath = path.join(
+					cfg.nitro.view_directory,
+					'/_data/',
+					viewPath + '.json'
+				);
 				if (fs.existsSync(dataPath)) {
 					merge.recursive(data, JSON.parse(fs.readFileSync(dataPath, 'utf8')));
 				}

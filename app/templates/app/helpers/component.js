@@ -7,7 +7,7 @@ var fs = require('fs'),
 module.exports = function(name, data) {
 
 	var lastArgument = arguments[arguments.length - 1],
-		componentData = lastArgument && lastArgument.data ? lastArgument.data.root : {}; // default component data from controller
+		componentData = lastArgument && lastArgument.data ? lastArgument.data.root : {}; // default component data from controller & view
 
 	for (var key in cfg.nitro.components) {
 		if (cfg.nitro.components.hasOwnProperty(key)) {
@@ -30,7 +30,7 @@ module.exports = function(name, data) {
 							component.path,
 							'/',
 							name,
-							'/data/',
+							'/_data/',
 							jsonFilename
 						);
 					if (fs.existsSync(jsonPath)) {

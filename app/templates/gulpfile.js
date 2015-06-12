@@ -256,9 +256,9 @@ gulp.task('watch', ['assets'], function () {
 	watch([
 		'views/**/*.html',
 		'!' + cfg.nitro.view_partials_directory + '/*.html', // exclude partials
-		'views/**/*.json',
+		'views/_data/**/*.json',
 		'components/**/*.html',
-		'components/**/data/*.json'
+		'components/**/_data/*.json'
 	], function(e) {
 		browserSync.reload();
 	});

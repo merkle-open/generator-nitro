@@ -1,6 +1,7 @@
 {
-	"skin": "blue",
-	"title": "Example Module with Skin Blue",
+	"modifier": "blue",
+	"decorator": "blue",
+	"title": "Example Module with Modifier & Decorator Blue",
 	"links": [
 		{
 			"uri": "index",

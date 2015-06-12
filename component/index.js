@@ -32,8 +32,11 @@ module.exports = generators.Base.extend({
 			defaults: this.types[0]
 		});
 
-		// Component skin
-		this.option('skin', {desc: 'the name of your skin', type: String});
+		// Component modifier
+		this.option('modifier', {desc: 'the name of your modifier', type: String});
+
+		// Component decorator
+		this.option('decorator', {desc: 'the name of your decorator', type: String});
 	},
 
 	initializing: function () {
@@ -62,39 +65,49 @@ module.exports = generators.Base.extend({
 				message: 'And what\'s your desired type?',
 				choices: this.types,
 				default: _.indexOf(this.types, this.options.type) || 0
+			},
+			{
+				name: 'modifier',
+				message: 'Would you like to create a CSS modifier? Type your desired name or leave empty.',
+				default: this.options.modifier || ''
+			},
+			{
+				name: 'decorator',
+				message: 'Would you like to create a JS decorator? Type your desired name or leave empty.',
+				default: this.options.decorator || ''
 			}
 		], function (props) {
 			this.name = props.name;
 			this.options.type = props.type;
+			this.options.modifier = props.modifier;
+			this.options.decorator = props.decorator;
 
 			done();
 		}.bind(this));
 	},
 
-	configuring: {
-		skin: function () {
-			var done = this.async();
-
-			this.prompt([
-				{
-					name: 'skin',
-					message: 'Would you like to create a skin? Type your desired name or leave empty.',
-					default: this.options.skin || ''
-				}
-			], function (props) {
-				this.options.skin = props.skin;
-
-				done();
-			}.bind(this));
-		}
-	},
-
 	writing: {
 		app: function () {
+			var hasModifier = !_.isEmpty(this.options.modifier);
+			var hasDecorator = !_.isEmpty(this.options.decorator);
 			var msg = 'Creating ' + chalk.cyan(this.name) + ' ' + this.options.type;
-			if(!_.isEmpty(this.options.skin)) {
-				msg += ' with skin ' + chalk.cyan(this.options.skin);
+
+			if(hasModifier || hasDecorator) {
+				msg += ' with ';
 			}
+
+			if(hasModifier) {
+				msg += 'CSS modifier ' + chalk.cyan(this.options.modifier);
+
+				if(hasDecorator) {
+					msg += ' and ';
+				}
+			}
+
+			if(hasDecorator) {
+				msg += 'JS decorator ' + chalk.cyan(this.options.decorator);
+			}
+
 			this.log(msg);
 
 			var component = this.cfg.nitro.components[this.options.type];
@@ -125,10 +138,13 @@ module.exports = generators.Base.extend({
 					css: _.kebabCase(this.name), // Component name for use in CSS files, eg. main-navigation
 					prefix: component.component_prefix || null // CSS class prefix, eg. mod
 				},
-				skin: {
-					name: this.options.skin, // Skin name, eg. Highlight
-					js: _.capitalize(_.camelCase(this.options.skin)), // Skin name for use in JS files, eg. Highlight
-					css: _.kebabCase(this.options.skin) // Skin name for use in CSS files, eg. highlight
+				modifier: {
+					name: this.options.modifier, // Modifier name, eg. Highlight
+					css: _.kebabCase(this.options.modifier) // Modifier name for use in CSS files, eg. highlight
+				},
+				decorator: {
+					name: this.options.decorator, // Decorator name, eg. Highlight
+					js: _.capitalize(_.camelCase(this.options.decorator)) // Decorator name for use in JS files, eg. Highlight
 				}
 			};
 
@@ -137,9 +153,16 @@ module.exports = generators.Base.extend({
 					return;
 				}
 
-				// exclude skin files if skin is not set
-				if (file.indexOf('skin') !== -1) {
-					if(_.isEmpty(this.options.skin)) {
+				// exclude modifier files if modifier is not set
+				if (file.indexOf('modifier') !== -1) {
+					if(_.isEmpty(this.options.modifier)) {
+						return;
+					}
+				}
+
+				// exclude decorator files if decorator is not set
+				if (file.indexOf('decorator') !== -1) {
+					if(_.isEmpty(this.options.decorator)) {
 						return;
 					}
 				}
@@ -147,7 +170,8 @@ module.exports = generators.Base.extend({
 				// filename replacements
 				var fileReplacements = {
 					component: _.kebabCase(this.name).replace('-', ''),
-					skin: _.kebabCase(this.options.skin).replace('-', '')
+					modifier: _.kebabCase(this.options.modifier).replace('-', ''),
+					decorator: _.kebabCase(this.options.decorator).replace('-', '')
 				};
 
 				var filename = file;

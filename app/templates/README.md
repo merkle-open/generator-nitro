@@ -51,16 +51,16 @@ A component uses the following structure:
     /Example/js/example.js
     /Example/data/example.json
 
-Terrific Skins (css or js) are created using the following conventions:
+Terrific modifiers & decorators are created using the following conventions:
 
-    /Example/css/skins/example-skinname.css
-    /Example/js/skins/example-skinname.js
+    /Example/css/modifier/example-<modifier>.css
+    /Example/js/decorator/example-<decorator>.js
 
 Different data variantions has to be placed in the `_data` folder:
 
     /Example/_data/example-variant.json
 
-### Creating Components & Skins with yo
+### Creating Components with yo
 
     yo nitro:component
 
@@ -119,7 +119,7 @@ You can configure the include order of your assets by defining patterns in `conf
             "assets/css/cssreset.css",
             "assets/css/*.*",
             "components/modules/*/css/*.*",
-            "components/modules/*/css/skins/*.*"
+            "components/modules/*/css/modifier/*.*"
         ],
         "app.js": [
             "!assets/js/somefile.js",
@@ -127,7 +127,7 @@ You can configure the include order of your assets by defining patterns in `conf
             "assets/js/terrific-2-1.0.js",
             "assets/js/*.js",
             "components/modules/*/js/*.js",
-            "components/modules/*/js/skins/*.js"
+            "components/modules/*/js/decorator/*.js"
         ]
     }
 

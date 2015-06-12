@@ -16,7 +16,7 @@ var configData = {
 
 describe('nitro:component', function () {
 	describe('when creating a component "Test"', function () {
-		describe('but no skin is given', function () {
+		describe('but no modifier and decorator is given', function () {
 			beforeEach(function (done) {
 				helpers.run(path.join(__dirname, '../component'))
 					.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
@@ -27,10 +27,15 @@ describe('nitro:component', function () {
 					.on('end', done);
 			});
 
-			it('the skin files are not created', function () {
+			it('the modifier files are not created', function () {
 				assert.noFile([
-					'components/organisms/Test/css/skins',
-					'components/organisms/Test/js/skins'
+					'components/organisms/Test/css/modifier'
+				]);
+			});
+
+			it('the decorator files are not created', function () {
+				assert.noFile([
+					'components/organisms/Test/js/decorator'
 				]);
 			});
 
@@ -45,25 +50,24 @@ describe('nitro:component', function () {
 			});
 		});
 
-		describe('and a skin "More" is given', function () {
+		describe('and a modifier "More" is given', function () {
 			beforeEach(function (done) {
 				helpers.run(path.join(__dirname, '../component'))
 					.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
 						fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
 						fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../app/templates/config.json'), 'utf8'), configData));
 					})
-					.withPrompts({name: 'Test', type: 'organism', skin: 'More'})
+					.withPrompts({name: 'Test', type: 'organism', modifier: 'More'})
 					.on('end', done);
 			});
 
-			it('the component and skin files are created', function () {
+			it('the component and modifier files are created', function () {
 				assert.file([
 					'components/organisms/Test',
 					'components/organisms/Test/test.html',
 					'components/organisms/Test/css/test.less',
-					'components/organisms/Test/css/skins/test-more.less',
+					'components/organisms/Test/css/modifier/test-more.less',
 					'components/organisms/Test/js/test.js',
-					'components/organisms/Test/js/skins/test-more.js',
 					'components/organisms/Test/spec/testSpec.js'
 				]);
 			});
@@ -72,39 +76,62 @@ describe('nitro:component', function () {
 				assert.fileContent([['components/organisms/Test/css/test.less', /\.o-test \{/]]);
 			});
 
-			it('the skin css class is skin-test-more', function () {
-				assert.fileContent([['components/organisms/Test/css/skins/test-more.less', /\.o-test--more \{/]]);
+			it('the modifier css class is o-test--more', function () {
+				assert.fileContent([['components/organisms/Test/css/modifier/test-more.less', /\.o-test--more \{/]]);
+			});
+		});
+
+		describe('and a decorator "More" is given', function () {
+			beforeEach(function (done) {
+				helpers.run(path.join(__dirname, '../component'))
+					.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
+						fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
+						fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../app/templates/config.json'), 'utf8'), configData));
+					})
+					.withPrompts({name: 'Test', type: 'organism', decorator: 'More'})
+					.on('end', done);
+			});
+
+			it('the component and decorator files are created', function () {
+				assert.file([
+					'components/organisms/Test',
+					'components/organisms/Test/test.html',
+					'components/organisms/Test/css/test.less',
+					'components/organisms/Test/js/test.js',
+					'components/organisms/Test/js/decorator/test-more.js',
+					'components/organisms/Test/spec/testSpec.js'
+				]);
 			});
 
 			it('the component js class is T.Module.Test', function () {
 				assert.fileContent([['components/organisms/Test/js/test.js', /T\.Module\.Test =/]]);
 			});
 
-			it('the skin js class is T.Module.Test.More', function () {
-				assert.fileContent([['components/organisms/Test/js/skins/test-more.js', /T\.Module\.Test\.More =/]]);
+			it('the decorator js class is T.Module.Test.More', function () {
+				assert.fileContent([['components/organisms/Test/js/decorator/test-more.js', /T\.Module\.Test\.More =/]]);
 			});
 		});
 	});
 
-	describe('when creating a component "NavMain" with a skin "SpecialCase"', function () {
+	describe('when creating a component "NavMain" with a modifier and decorator "SpecialCase"', function () {
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../component'))
 				.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
 					fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
 					fs.copySync(path.join(__dirname, '../app/templates/config.json'), path.join(dir, 'config.json'));
 				})
-				.withPrompts({name: 'NavMain', type: 'organism', skin: 'SpecialCase'})
+				.withPrompts({name: 'NavMain', type: 'organism', modifier: 'SpecialCase', decorator: 'SpecialCase'})
 				.on('end', done);
 		});
 
-		it('the component and skin files are created', function () {
+		it('the component and modifier/decorator files are created', function () {
 			assert.file([
 				'components/organisms/NavMain',
 				'components/organisms/NavMain/navmain.html',
 				'components/organisms/NavMain/css/navmain.less',
-				'components/organisms/NavMain/css/skins/navmain-specialcase.less',
+				'components/organisms/NavMain/css/modifier/navmain-specialcase.less',
 				'components/organisms/NavMain/js/navmain.js',
-				'components/organisms/NavMain/js/skins/navmain-specialcase.js',
+				'components/organisms/NavMain/js/decorator/navmain-specialcase.js',
 				'components/organisms/NavMain/spec/navmainSpec.js'
 			]);
 		});
@@ -113,38 +140,38 @@ describe('nitro:component', function () {
 			assert.fileContent([['components/organisms/NavMain/css/navmain.less', /\.o-nav-main \{/]]);
 		});
 
-		it('the skin css class is o-nav-main--special-case', function () {
-			assert.fileContent([['components/organisms/NavMain/css/skins/navmain-specialcase.less', /\.o-nav-main--special-case \{/]]);
+		it('the modifier css class is o-nav-main--special-case', function () {
+			assert.fileContent([['components/organisms/NavMain/css/modifier/navmain-specialcase.less', /\.o-nav-main--special-case \{/]]);
 		});
 
 		it('the component js class is T.Module.NavMain', function () {
 			assert.fileContent([['components/organisms/NavMain/js/navmain.js', /T\.Module\.NavMain =/]]);
 		});
 
-		it('the skin js class is T.Module.NavMain.SpecialCase', function () {
-			assert.fileContent([['components/organisms/NavMain/js/skins/navmain-specialcase.js', /T\.Module\.NavMain\.SpecialCase =/]]);
+		it('the decorator js class is T.Module.NavMain.SpecialCase', function () {
+			assert.fileContent([['components/organisms/NavMain/js/decorator/navmain-specialcase.js', /T\.Module\.NavMain\.SpecialCase =/]]);
 		});
 	});
 
-	describe('when creating a component "nav-main" with a skin "special-case"', function () {
+	describe('when creating a component "nav-main" with a modifier and decorator "special-case"', function () {
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../component'))
 				.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
 					fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
 					fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../app/templates/config.json'), 'utf8'), configData));
 				})
-				.withPrompts({name: 'nav-main', type: 'organism', skin: 'special-case'})
+				.withPrompts({name: 'nav-main', type: 'organism', modifier: 'special-case', decorator: 'special-case'})
 				.on('end', done);
 		});
 
-		it('the component and skin files are created', function () {
+		it('the component and modifier/decorator files are created', function () {
 			assert.file([
 				'components/organisms/nav-main',
 				'components/organisms/nav-main/navmain.html',
 				'components/organisms/nav-main/css/navmain.less',
-				'components/organisms/nav-main/css/skins/navmain-specialcase.less',
+				'components/organisms/nav-main/css/modifier/navmain-specialcase.less',
 				'components/organisms/nav-main/js/navmain.js',
-				'components/organisms/nav-main/js/skins/navmain-specialcase.js',
+				'components/organisms/nav-main/js/decorator/navmain-specialcase.js',
 				'components/organisms/nav-main/spec/navmainSpec.js'
 			]);
 		});
@@ -153,16 +180,16 @@ describe('nitro:component', function () {
 			assert.fileContent([['components/organisms/nav-main/css/navmain.less', /\.o-nav-main \{/]]);
 		});
 
-		it('the skin css class is skin-nav-main-special-case', function () {
-			assert.fileContent([['components/organisms/nav-main/css/skins/navmain-specialcase.less', /\.o-nav-main--special-case \{/]]);
+		it('the modifier css class is o-nav-main--special-case', function () {
+			assert.fileContent([['components/organisms/nav-main/css/modifier/navmain-specialcase.less', /\.o-nav-main--special-case \{/]]);
 		});
 
 		it('the component js class is T.Module.NavMain', function () {
 			assert.fileContent([['components/organisms/nav-main/js/navmain.js', /T\.Module\.NavMain =/]]);
 		});
 
-		it('the skin js class is T.Module.NavMain.SpecialCase', function () {
-			assert.fileContent([['components/organisms/nav-main/js/skins/navmain-specialcase.js', /T\.Module\.NavMain\.SpecialCase =/]]);
+		it('the decorator js class is T.Module.NavMain.SpecialCase', function () {
+			assert.fileContent([['components/organisms/nav-main/js/decorator/navmain-specialcase.js', /T\.Module\.NavMain\.SpecialCase =/]]);
 		});
 	});
 });

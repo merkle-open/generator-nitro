@@ -1,7 +1,7 @@
 (function ($) {
 	'use strict';
 	/**
-	 * Blue skin implementation for the Example module.
+	 * Blue decorator implementation for the Example module.
 	 *
 	 * @author Pre Name <pre.name@domain.com>
 	 * @namespace T.Module.Example
@@ -9,7 +9,7 @@
 	 * @extends T.Module
 	 * @constructor
 	 */
-	T.Module.Example.Blue = T.createSkin({
+	T.Module.Example.Blue = T.createDecorator({
 		start: function (resolve) {
 			var $ctx = $(this._ctx);
 

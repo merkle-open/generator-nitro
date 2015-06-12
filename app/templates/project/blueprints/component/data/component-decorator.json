@@ -1,0 +1,4 @@
+{
+	"modifier": "",
+	"decorator": "<%= decorator.js %>"
+}

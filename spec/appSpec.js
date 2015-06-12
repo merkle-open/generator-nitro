@@ -57,7 +57,7 @@ describe('nitro:app', function () {
 
 		it('component blueprint does not contain .scss files', function () {
 			assert.noFile('project/blueprints/component/css/component.scss');
-			assert.noFile('project/blueprints/component/css/skins/component-skin.scss');
+			assert.noFile('project/blueprints/component/css/modifier/component-modifier.scss');
 		});
 	});
 
@@ -84,7 +84,7 @@ describe('nitro:app', function () {
 
 		it('component blueprint does not contain .less files', function () {
 			assert.noFile('project/blueprints/component/css/component.less');
-			assert.noFile('project/blueprints/component/css/skins/component-skin.less');
+			assert.noFile('project/blueprints/component/css/modifier/component-modifier.less');
 		});
 	});
 });

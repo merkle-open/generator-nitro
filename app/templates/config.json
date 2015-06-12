@@ -6,7 +6,7 @@
 			"assets/css/reset.css",
 			"assets/css/basic.<%= options.pre %>",
 			"components/**/css/*.<%= options.pre %>",
-			"components/**/css/skins/*.<%= options.pre %>"
+			"components/**/css/modifier/*.<%= options.pre %>"
 		],
 		"app.js": [
 			"assets/vendor/es6-promise/promise.min.js",
@@ -15,9 +15,9 @@
 			"assets/js/*.js"<% if (options.js === 'TypeScript') { %> ,
 			"assets/js/*.ts",
 			"components/**/js/*.ts",
-			"components/**/js/skins/*.ts"<% } else { %>,
+			"components/**/js/decorator/*.ts"<% } else { %>,
 			"components/**/js/*.js",
-			"components/**/js/skins/*.js"<% } %>
+			"components/**/js/decorator/*.js"<% } %>
 		]
 	},
 	"nitro": {

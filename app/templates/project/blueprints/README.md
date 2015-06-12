@@ -11,8 +11,10 @@ Nitro provides the following [Lodash](https://lodash.com/docs#template) replacem
 <%= component.css %> 	// Component name for use in CSS files, eg. main-navigation
 <%= component.prefix %>	// CSS class prefix, eg. o
 
-<%= skin.name %>		// Skin name, eg. Highlight
-<%= skin.js %> 			// Skin name for use in JS files, eg. Highlight
-<%= skin.css %> 		// Skin name for use in CSS files, eg. highlight
+<%= modifier.name %>	// Modifier name, eg. Highlight 
+<%= modifier.css %> 	// Modifier name for use in CSS files, eg. highlight
+
+<%= decorator.name %>	// Decorator name, eg. Highlight 
+<%= decorator.js %> 	// Decorator name for use in JS files, eg. Highlight
 
 ```

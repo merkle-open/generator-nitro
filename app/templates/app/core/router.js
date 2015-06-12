@@ -75,7 +75,16 @@ function getView(req, res, next) {
 					'/_data/',
 					viewPath + '.json'
 				);
-				if (fs.existsSync(dataPath)) {
+				var customDataPath = req.query._data ? path.join(
+					cfg.nitro.view_directory,
+					'/_data/',
+					req.query._data + '.json'
+				) : false;
+
+				if (customDataPath && fs.existsSync(customDataPath)) {
+					merge.recursive(data, JSON.parse(fs.readFileSync(customDataPath, 'utf8')));
+				}
+				else if (fs.existsSync(dataPath)) {
 					merge.recursive(data, JSON.parse(fs.readFileSync(dataPath, 'utf8')));
 				}
 				res.render(tplPath, data);

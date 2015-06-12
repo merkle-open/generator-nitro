@@ -78,9 +78,9 @@ Create a new `*.html` file in the `views` folder. You can make as many subfolder
 
 Your new page can then be called by the according URL (with or without an extension). Subfolders are represented with a dash.
 
-    http://localhost/project/index
-    http://localhost/project/content
-    http://localhost/project/content-variant
+    http://localhost:8080/index
+    http://localhost:8080/content
+    http://localhost:8080/content-variant
 
 ### Render Components
 
@@ -103,6 +103,25 @@ Render a "variant" from the Example component. (file: `example.html`, data-file:
 Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.html` files (e.g. `head.html`).
 
     {{> head}}
+
+### Passing data
+
+You may pass data to your templates (view, partial, component) per view.  
+Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`. (Use the same folder structure as in `views`)
+
+    /views/index.html
+    /views/_data/index.json
+    http://localhost:8080/index
+    
+    /views/content/variant.html
+    /views/_data/content/variant.json
+    http://localhost:8080/content-variant
+
+It's also possilbe to use a custom data file by requesting with a query param `?_data=...`:
+
+    /views/index.html
+    /views/_data/index-test.json
+    http://localhost:8080/index?_data=index-test
 
 ## Assets
 

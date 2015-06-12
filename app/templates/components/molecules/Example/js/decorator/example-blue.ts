@@ -9,7 +9,7 @@ module T {
 			mod.start = function (resolve:(value?:any) => void, reject:(error?:any) => void) {
 				var $ctx = $(this._ctx);
 
-				console.log('Example Skin Blue - start id: [' + $ctx.data('t-id') + ']');
+				console.log('Example Decorator Blue - start id: [' + $ctx.data('t-id') + ']');
 
 				start(resolve, reject); // calling original method
 			};
@@ -18,7 +18,7 @@ module T {
 			mod.sync = function() {
 				var $ctx = $(this._ctx);
 
-				console.log('Example Skin Blue - sync id: [' + $ctx.data('t-id') + ']');
+				console.log('Example Decorator Blue - sync id: [' + $ctx.data('t-id') + ']');
 
 				sync(); // calling original method
 			};

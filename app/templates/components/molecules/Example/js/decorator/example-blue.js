@@ -13,14 +13,14 @@
 		start: function (resolve) {
 			var $ctx = $(this._ctx);
 
-			console.log('Example Skin Blue - start id: [' + $ctx.data('t-id') + ']');
+			console.log('Example Decorator Blue - start id: [' + $ctx.data('t-id') + ']');
 
 			this._parent.start(resolve); // calling original method
 		},
 		sync: function () {
 			var $ctx = $(this._ctx);
 
-			console.log('Example Skin Blue - sync id: [' + $ctx.data('t-id') + ']');
+			console.log('Example Decorator Blue - sync id: [' + $ctx.data('t-id') + ']');
 
 			this._parent.sync(); // calling original method
 		}

@@ -37,6 +37,11 @@ module.exports = function(name, data) {
 						merge.recursive(componentData, JSON.parse(fs.readFileSync(jsonPath, 'utf8')));
 					}
 
+
+					if (componentData._query) {
+						merge.recursive(componentData, componentData._query);
+					}
+
 					return new hbs.handlebars.SafeString(
 						hbs.handlebars.compile(
 							fs.readFileSync(templatePath, 'utf8')

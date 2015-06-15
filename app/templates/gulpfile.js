@@ -61,33 +61,38 @@ function getSourceFiles(ext) {
 
 gulp.task('compile-css', function () {
 	var assets = getSourceFiles('.css');
+	var promises = [];
 
 	assets.forEach(function (asset) {
-		globby(asset.deps, function(err, paths) {
-			var imports = '';
+		promises.push(new Promise(function(resolve) {
+			globby(asset.deps, function(err, paths) {
+				var imports = '';
 
-			paths.forEach(function(path) {
-				imports += fs.readFileSync(path);
+				paths.forEach(function(path) {
+					imports += fs.readFileSync(path);
+				});
+
+				gulp.src(asset.src)
+					.pipe(plumber())
+					.pipe(header(imports))
+					.pipe(cache(asset.name))
+					.pipe(precompile())
+					.pipe(autoprefixer({
+						browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1'],
+						cascade: true
+					}))
+					.pipe(remember(asset.name))
+					.pipe(concat(asset.name))
+					.pipe(gulp.dest('public/assets/css/'))
+					.on('end', function() {
+						resolve();
+					})
+					.pipe(browserSync.reload({stream: true}));
 			});
-
-			gulp
-				.src(asset.src)
-				.pipe(plumber())
-				.pipe(header(imports))
-				.pipe(cache(asset.name))
-				.pipe(precompile())
-				.pipe(autoprefixer({
-					browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1'],
-					cascade: true
-				}))
-				.pipe(remember(asset.name))
-				.pipe(concat(asset.name))
-				.pipe(gulp.dest('public/assets/css/'))
-				.pipe(browserSync.reload({stream: true}));
-
-			return gulp;
-		});
+		}));
 	});
+
+	return Promise.all(promises);
 });
 
 <% if (options.js === 'TypeScript') { %>
@@ -133,7 +138,7 @@ gulp.task('compile-css', function () {
 					.pipe(gulp.dest('public/assets/js'))
 					.on('end', function() {
 						resolve();
-					})
+					});
 			}));
 		});
 
@@ -143,26 +148,28 @@ gulp.task('compile-css', function () {
 
 gulp.task('compile-js', <% if (options.js === 'TypeScript') { %> ['compile-ts'], <% } %>  function () {
 	var assets = getSourceFiles('.js');
+	var promises = [];
 
 	assets.forEach(function (asset) {
 		<% if (options.js === 'TypeScript') { %>
-		var assets = splitJsAssets(asset);
-		assets.js.push('public/assets/js/' + asset.name.replace('.js', '.ts.js'));
-		gulp
-			.src(assets.js)
-		<% } else { %>
-		gulp
-			.src(asset.src)
+			var tsAssets = splitJsAssets(asset);
+			tsAssets.js.push('public/assets/js/' + asset.name.replace('.js', '.ts.js'));
 		<% } %>
-			.pipe(plumber())
-			.pipe(jshint())
-			.pipe(jshint.reporter('jshint-stylish'))
-			.pipe(concat(asset.name))
-			.pipe(gulp.dest('public/assets/js'))
-			.pipe(browserSync.reload({stream: true}));
+		promises.push(new Promise(function(resolve) {
+			gulp<% if (options.js === 'TypeScript') { %>.src(tsAssets.js)<% } else { %>.src(asset.src)<% } %>
+				.pipe(plumber())
+				.pipe(jshint())
+				.pipe(jshint.reporter('jshint-stylish'))
+				.pipe(concat(asset.name))
+				.pipe(gulp.dest('public/assets/js'))
+				.on('end', function () {
+					resolve();
+				})
+				.pipe(browserSync.reload({stream: true}));
+		}));
 	});
 
-	return gulp;
+	return Promise.all(promises);
 });
 
 gulp.task('minify-css', ['compile-css'], function () {

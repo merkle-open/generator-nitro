@@ -4,6 +4,7 @@ var gulp = require('gulp'),
 	precompile = require('gulp-sass'), <% } %>
 	minify = require('gulp-minify-css'),
 	autoprefixer = require('gulp-autoprefixer'),
+	install = require('gulp-install'),
 	concat = require('gulp-concat'),
 	watch = require('gulp-watch'),
 	uglify = require('gulp-uglify'),
@@ -146,7 +147,7 @@ gulp.task('compile-css', function () {
 	});
 <% } %>
 
-gulp.task('compile-js', <% if (options.js === 'TypeScript') { %> ['compile-ts'], <% } %>  function () {
+gulp.task('compile-js', <% if (options.js === 'TypeScript') { %> ['compile-ts'], <% } %> function () {
 	var assets = getSourceFiles('.js');
 	var promises = [];
 
@@ -300,16 +301,25 @@ gulp.task('browser-sync', ['server-watch'], function () {
 	});
 });
 
-gulp.task('server-run', function () {
-	var port = process.env.PORT || 8080;
-	server.run(['./server.js'], {env: {PORT: port}});
-});
-
 gulp.task('server-watch', ['server-run'], function () {
 	var port = process.env.PORT || 8080;
 	watch(['./server.js', './app/core/*.js'], function () {
 		server.run(['./server.js'], {env: {PORT: port}});
 	});
+});
+
+gulp.task('server-run', function () {
+	var port = process.env.PORT || 8080;
+	server.run(['./server.js'], {env: {PORT: port}});
+});
+
+gulp.task('install', function () {
+	return gulp.src(['./bower.json', './package.json'])
+		.pipe(install());
+});
+
+gulp.task('clean', function() {
+	del.bind( null, ['public/assets/*'] );
 });
 
 gulp.task('test', ['compile-css', 'compile-js'], function (done) {
@@ -320,12 +330,8 @@ gulp.task('test', ['compile-css', 'compile-js'], function (done) {
 	}, done);
 });
 
-gulp.task('clean', function() {
-	del.bind( null, ['public/assets/*'] );
-});
-
-gulp.task('develop', ['watch', 'browser-sync']);
-gulp.task('production', ['assets', 'server-run']);
-gulp.task('build', ['clean'], function() {
+gulp.task('develop', ['install', 'watch', 'browser-sync']);
+gulp.task('production', ['install', 'assets', 'server-run']);
+gulp.task('build', ['install', 'clean'], function() {
 	gulp.start('assets');
 });

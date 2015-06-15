@@ -37,6 +37,7 @@
 		"gulp-express": "^0.3.5",
 		"gulp-header": "^1.2.2",
 		"gulp-imagemin": "^2.2.1",
+		"gulp-install": "^0.4.0",
 		"gulp-jshint": "^1.11.0",
 		"gulp-karma": "~0.0.1",<% if (options.pre === 'less') { %>
 		"gulp-less": "^3.0.3",<% } %><% if (options.pre === 'scss') { %>

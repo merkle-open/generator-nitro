@@ -114,7 +114,8 @@ router.get('/:view', getView);
  * TODO: Nice looking 404?
  */
 router.use(function (req, res, next) {
-	res.status(404).send('Sorry, Not Found!');
+	res.status(404);
+	res.render('404');
 });
 
 module.exports = router;

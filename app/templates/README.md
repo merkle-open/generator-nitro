@@ -49,7 +49,7 @@ A component uses the following structure:
     /Example/example.html
     /Example/css/example.css
     /Example/js/example.js
-    /Example/data/example.json
+    /Example/_data/example.json
 
 Terrific modifiers & decorators are created using the following conventions:
 

@@ -4,6 +4,11 @@
 
 > Yeoman generator for Nitro - lets you quickly set up a project with sensible defaults and best practices.
 
+Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.  
+It provides a proven but flexible structure to develop your frontend code, even in a large team.  
+Keep track of your code with a modularized frontend. This app, the suggested [terrific concept](http://terrifically.org) 
+could help. Nitro is simple, fast and flexible. Use this app for all your frontend work.
+
 ## Usage
 
 Install `yo` and other required tools:
@@ -50,34 +55,6 @@ It's possible to pass in these options through the command line
 yo nitro --name=myproject --pre=scss --js=JavaScript
 ```
 
-------------
-todo: move #16
-
-Start your app:
-
-```
-gulp develop
-```
-
-The default port is 8080, proxy (develop only) is 8081.  If you want other ports, just add it before gulp task:
-
-```
-PORT=8000 PROXY=8001 gulp develop
-```
-
-The port for production can be changed the same way:
-
-```
-PORT=3000 gulp production
-``
-
-On Windows command prompt use:
-
-```
-set PORT=8000 && set PROXY=8001 && gulp develop
-set PORT=3000 && gulp production
-```
-
 ## Generators
 
 Available generators:
@@ -86,94 +63,6 @@ Available generators:
 * [nitro:component](#name)
 
 **Note: Generators are to be run from the root directory of your app.**
-
-### App
-Sets up a new nitro app, generating all the boilerplate you need to get started. 
-
-Example:
-```bash
-yo nitro
-```
-
-### Component
-Generates a frontend component.
-
-Example:
-```bash
-yo nitro:component
-```
-
-## Configuration
-Yeoman generated projects can be further tweaked according to your needs by modifying project files appropriately.
-
-### Handlebars helpers
-Custom handlebars will be automatically loaded if put into to `project/helpers` directory. An example could look like 
-this:
-
-```js
-module.exports = function(foo) {
-    // Helper Logic
-};
-```
-
-The helper name will automatically match the filename, so if you name your file `foo.js` your helper will be called  
-`foo`.
-
-### JSON Endpoints
-If you need to mock service endpoints, you can put JSON files into a directory inside the `/public` directory as 
-those are directly exposed.
-
-`/public/service/posts.json` will be available under `/service/posts.json` and can be used for things like AJAX 
-requests.
-
-### Custom Routes
-If you need more custom functionality in endpoints you can put your custom routes with their logic into the 
-`project/routes` directory. The filename is irrelevant and the content can look like this:
-
-```javascript
-function getData(req, res, next){
-    return res.json({
-        data: 'empty'
-    });
-}
-
-function postData(req, res, next){
-    return res.json({
-        data: req.body
-    });
-}
-
-exports = module.exports = function(app){
-    app.route('/api/data')
-        .get(getData)
-        .post(postData);
-};
-```
-
-These routes will be loaded into Nitro automatically.
-
-### Using another Template Engine
-If you don't want to use [Handlebars](http://handlebarsjs.com/) as Nitro's Template Engine you can configure your own Engine.
-This example shows how to replace Handlebars with [Nunjucks](https://mozilla.github.io/nunjucks/) as an example.
-
-All these steps need to be performed in `server.js`.
-
-1. Replace the line `hbs = require('./app/core/hbs')` with `nunjucks = require('nunjucks')`
-2. Remove the line `app.engine(cfg.nitro.view_file_extension, hbs.__express);`
-3. Configure nunjucks as Express' Template Engine with the following block:
-```js
-nunjucks.configure(
-    cfg.nitro.view_directory,
-    {
-        autoescape: true,
-        express: app
-    }
-);
-```
-Now Restart Nitro and it'll run with Nunjucks.
-
-**Be aware**, you'll need to adjust all your views and components to work with the new engine. 
-Nitro only provides a `component` helper for handlebars.
 
 ## Testing
 

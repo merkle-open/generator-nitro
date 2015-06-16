@@ -31,7 +31,7 @@ module.exports = generators.Base.extend({
 		this.option('js', {
 			desc: 'your desired js compiler [' + this.jsOptions.join('|') + ']',
 			type: String,
-			defaults: this.preOptions[0]
+			defaults: this.jsOptions[0]
 		});
 	},
 

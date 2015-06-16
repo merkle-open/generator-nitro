@@ -169,9 +169,9 @@ module.exports = generators.Base.extend({
 
 				// filename replacements
 				var fileReplacements = {
-					component: _.kebabCase(this.name).replace('-', ''),
-					modifier: _.kebabCase(this.options.modifier).replace('-', ''),
-					decorator: _.kebabCase(this.options.decorator).replace('-', '')
+					component: _.kebabCase(this.name).replace(/-/g, ''),
+					modifier: _.kebabCase(this.options.modifier).replace(/-/g, ''),
+					decorator: _.kebabCase(this.options.decorator).replace(/-/g, '')
 				};
 
 				var filename = file;

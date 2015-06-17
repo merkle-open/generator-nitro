@@ -54,7 +54,7 @@
 		"gulp-uglify": "^1.2.0",
 		"gulp-watch": "^4.2.4",
 		"imagemin-pngquant": "^4.1.0",
-		"jasmine": "^2.1.1",
+		"jasmine-core": "^2.3.4",
 		"jshint-stylish": "^2.0.0",
 		"karma": "^0.12.36",
 		"karma-chrome-launcher": "^0.1.12",

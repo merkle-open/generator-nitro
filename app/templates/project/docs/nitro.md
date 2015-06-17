@@ -40,7 +40,6 @@ Different data variantions has to be placed in the `_data` folder:
 
     yo nitro:component
 
-
 ### Using gulp
 
 #### Starting the app
@@ -100,6 +99,8 @@ Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*
 
 ### Passing data
 
+#### Data per view
+
 You may pass data to your templates (view, partial, component) per view.  
 Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`. (Use the same folder structure as in `views`)
 
@@ -116,6 +117,16 @@ It's also possilbe to use a custom data file by requesting with a query param `?
     /views/index.html
     /views/_data/index-test.json
     http://localhost:8080/index?_data=index-test
+
+#### Data in request
+
+You may overwrite data in request parameters.
+
+`?pageTitle=Testpage` will overwrite the the data for the handlebars expression `{{pageTitle}}`
+
+It's also possilbe to use dot notation for object data:
+
+`?page.title=Testpage` will overwrite the value for `{{page.title}}` 
 
 ## Assets
 

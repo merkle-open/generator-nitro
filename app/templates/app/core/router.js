@@ -1,6 +1,7 @@
 var path = require('path'),
 	fs = require('fs'),
 	cfg = require('./config'),
+	dot = require('dot-object'),
 	merge = require('merge'),
 	express = require('express'),
 	router = express.Router({
@@ -90,9 +91,11 @@ function getView(req, res, next) {
 					merge.recursive(data, JSON.parse(fs.readFileSync(dataPath, 'utf8')));
 				}
 
-				if (Object.keys(req.query).length !== 0) {
-					merge.recursive(data, req.query);
-					data._query = req.query;
+				if (Object.keys(req.query).length !== 0) { // handle query string parameters
+					var reqQuery = JSON.parse(JSON.stringify(req.query)); // simple clone
+					dot.object(reqQuery);
+					merge.recursive(data, reqQuery);
+					data._query = reqQuery;
 				}
 
 				// render
@@ -111,7 +114,6 @@ router.get('/:view', getView);
 
 /**
  * everything else gets a 404
- * TODO: Nice looking 404?
  */
 router.use(function (req, res, next) {
 	res.status(404);

@@ -77,7 +77,7 @@ gulp.task('compile-css', ['install-bower'], function () {
 					.pipe(plumber())
 					.pipe(header(imports))
 					.pipe(cache(asset.name))
-					.pipe(precompile())
+					.pipe(precompile()<% if (options.pre === 'scss') { %>.on('error', precompile.logError)<% } %>)
 					.pipe(autoprefixer({
 						browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1'],
 						cascade: true

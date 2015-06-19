@@ -18,7 +18,7 @@ var gulp = require('gulp'),
 	header = require('gulp-header'),
 	globby = require('globby'),
 	karma = require('karma').server,
-	server = require('gulp-express'),
+	liveServer = require('gulp-live-server'),
 	browserSync = require('browser-sync'),
 	compression = require('compression'),
 	rename = require('gulp-rename'),<% if (options.js === 'TypeScript') { %>
@@ -284,7 +284,7 @@ gulp.task('watch', ['assets'], function () {
 	});
 });
 
-gulp.task('browser-sync', ['server-watch'], function () {
+gulp.task('browser-sync', ['serve'], function () {
 	var port = process.env.PORT || 8080,
 		proxy = process.env.PROXY || 8081;
 
@@ -301,16 +301,20 @@ gulp.task('browser-sync', ['server-watch'], function () {
 	});
 });
 
-gulp.task('server-watch', ['server-run'], function () {
-	var port = process.env.PORT || 8080;
-	watch(['./server.js', './app/core/*.js'], function () {
-		server.run(['./server.js'], {env: {PORT: port}});
-	});
-});
+gulp.task('serve', ['install-npm'], function() {
+	var port = process.env.PORT || 8080,
+		server = liveServer(
+			'server.js',
+			{
+				env: {
+					PORT: port
+				}
+			}
+		);
 
-gulp.task('server-run', ['install-npm'], function () {
-	var port = process.env.PORT || 8080;
-	server.run(['./server.js'], {env: {PORT: port}});
+	server.start();
+
+	watch(['server.js', 'app/core/*.js'], server.start);
 });
 
 gulp.task('install-bower', function () {
@@ -336,7 +340,7 @@ gulp.task('test', ['compile-css', 'compile-js'], function (done) {
 });
 
 gulp.task('develop', ['watch', 'browser-sync']);
-gulp.task('production', ['assets', 'server-run']);
+gulp.task('production', ['assets', 'serve']);
 gulp.task('build', ['clean'], function() {
 	gulp.start('assets');
 });

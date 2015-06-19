@@ -115,9 +115,15 @@ router.get('/:view', getView);
 /**
  * everything else gets a 404
  */
-router.use(function (req, res, next) {
+router.use(function (req, res) {
 	res.status(404);
-	res.render('404');
+	res.render('404', function(err, html) {
+		if (err) {
+			res.send('Not Found');
+		}
+
+		res.send(html);
+	});
 });
 
 module.exports = router;

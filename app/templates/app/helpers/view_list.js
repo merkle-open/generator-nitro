@@ -35,7 +35,7 @@ function walk(dir) {
 		} else if (stat && stat.isFile() && excludes.files.indexOf(file) === -1) {
 			var name = path.basename(file, '.' + cfg.nitro.view_file_extension),
 				relativePath = path.relative(cfg.nitro.view_directory, filePath),
-				url = relativePath.toLowerCase().replace(/\//g, '-'),
+				url = relativePath.toLowerCase().replace(/\//g, '-').replace(/\\/g, '-'),
 				extLength = path.extname(url).length;
 
 			url = url.substring(0, url.length - extLength);

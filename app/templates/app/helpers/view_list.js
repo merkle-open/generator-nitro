@@ -23,22 +23,24 @@ var excludes = {
  * @returns {Array} All allowed views
  */
 function walk(dir) {
-	var results = [];
+	var results = [],
+		files = fs.readdirSync(dir);
 
-	var files = fs.readdirSync(dir);
 	files.forEach(function(file) {
 		var filePath = dir + '/' + file,
 			stat = fs.statSync(filePath);
 
 		if (stat && stat.isDirectory() && excludes.directories.indexOf(file) === -1) {
 			results = results.concat(walk(filePath));
-		} else if (stat && stat.isFile() && excludes.files.indexOf(file) === -1) {
-			var name = path.basename(file, '.' + cfg.nitro.view_file_extension),
-				relativePath = path.relative(cfg.nitro.view_directory, filePath),
-				url = relativePath.toLowerCase().replace(/\//g, '-').replace(/\\/g, '-'),
-				extLength = path.extname(url).length;
-
-			url = url.substring(0, url.length - extLength);
+		}
+		else if (stat && stat.isFile() && excludes.files.indexOf(file) === -1) {
+			var relativePath = path.relative(cfg.nitro.view_directory, filePath),
+				ext = path.extname(filePath),
+				extReg = new RegExp(ext + '$'),
+				name = relativePath.replace(extReg, '').replace(/\//g, ' ').replace(/\\/g, ' ').replace(/\b\w/g, function (w) {
+					return w.toUpperCase();
+				}),
+				url = relativePath.replace(extReg, '').replace(/\//g, '-').replace(/\\/g, '-');
 
 			results.push({
 				view_name: name,
@@ -55,7 +57,7 @@ module.exports = function() {
 		markup = ['<ul>'];
 
 	views.forEach(function(view) {
-		markup.push('<li><a href="' + view.view_url + '">' + view.view_name + '</a></li>');
+		markup.push('<li><a href="/' + view.view_url + '">' + view.view_name + '</a></li>');
 	});
 
 	markup.push('</ul>');

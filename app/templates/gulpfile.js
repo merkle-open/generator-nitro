@@ -60,7 +60,7 @@ function getSourceFiles(ext) {
 	return assets;
 }
 
-gulp.task('compile-css', ['install-bower'], function () {
+gulp.task('compile-css', function () {
 	var assets = getSourceFiles('.css');
 	var promises = [];
 
@@ -147,7 +147,7 @@ gulp.task('compile-css', ['install-bower'], function () {
 	});
 <% } %>
 
-gulp.task('compile-js', ['install-bower'<% if (options.js === 'TypeScript') { %> ,'compile-ts'<% } %>], function () {
+gulp.task('compile-js', <% if (options.js === 'TypeScript') { %>['compile-ts'], <% } %>function () {
 	var assets = getSourceFiles('.js');
 	var promises = [];
 
@@ -301,7 +301,7 @@ gulp.task('browser-sync', ['serve'], function () {
 	});
 });
 
-gulp.task('serve', ['install-npm'], function() {
+gulp.task('serve', function () {
 	var port = process.env.PORT || 8080,
 		server = liveServer(
 			'server.js',
@@ -340,7 +340,9 @@ gulp.task('test', ['compile-css', 'compile-js'], function (done) {
 });
 
 gulp.task('develop', ['watch', 'browser-sync']);
-gulp.task('production', ['assets', 'serve']);
+gulp.task('production', ['assets'], function(){
+	gulp.start('serve');
+});
 gulp.task('build', ['clean'], function() {
 	gulp.start('assets');
 });

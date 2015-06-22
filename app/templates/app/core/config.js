@@ -1,6 +1,6 @@
 var path = require('path'),
 	fs = require('fs'),
-	merge = require('merge');
+	extend = require('extend');
 
 function factory() {
 	var base_path = path.normalize(__dirname + '../../../'),
@@ -10,14 +10,14 @@ function factory() {
 		};
 
 	var config = JSON.parse(fs.readFileSync(base_path + 'config.json', options));
-	config.nitro = merge({
+	config.nitro = extend(true, {
 		base_path: path.normalize(__dirname + '../../../'),
 		view_directory: path.normalize(__dirname + '../../../') + 'views',
 		view_file_extension: 'html',
 		view_partials_directory: 'views/_partials'
 	}, config.nitro);
 
-	config.reload = function() {
+	config.reload = function () {
 		return factory();
 	};
 

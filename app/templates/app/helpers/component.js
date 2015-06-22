@@ -1,10 +1,10 @@
 var fs = require('fs'),
 	hbs = require('hbs'),
 	path = require('path'),
-	merge = require('merge'),
+	extend = require('extend'),
 	cfg = require('../core/config.js');
 
-module.exports = function(name, data) {
+module.exports = function (name, data) {
 
 	var lastArgument = arguments[arguments.length - 1],
 		componentData = lastArgument && lastArgument.data ? lastArgument.data.root : {}; // default component data from controller & view
@@ -34,12 +34,11 @@ module.exports = function(name, data) {
 							jsonFilename
 						);
 					if (fs.existsSync(jsonPath)) {
-						merge.recursive(componentData, JSON.parse(fs.readFileSync(jsonPath, 'utf8')));
+						extend(true, componentData, JSON.parse(fs.readFileSync(jsonPath, 'utf8')));
 					}
 
-
 					if (componentData._query) {
-						merge.recursive(componentData, componentData._query);
+						extend(true, componentData, componentData._query);
 					}
 
 					return new hbs.handlebars.SafeString(
@@ -50,7 +49,6 @@ module.exports = function(name, data) {
 				}
 			}
 		}
-
 	}
 
 	throw new Error('Component ' + name + ' not found.');

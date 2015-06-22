@@ -23,11 +23,11 @@
 		"dot-object": "^0.11.0",
 		"es6-promise": "^2.3.0",
 		"express": "^4.12.4",
+		"extend": "^2.0.1",
 		"gulp-live-server": "^0.0.20",
 		"globby": "^2.0.0",
 		"hbs": "^3.1.0",
-		"hbs-utils": "0.0.3",
-		"merge": "^1.2.0"
+		"hbs-utils": "0.0.3"
 	},
 	"devDependencies": {
 		"browser-sync": "^2.7.12",

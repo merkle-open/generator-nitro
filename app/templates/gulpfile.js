@@ -77,7 +77,10 @@ gulp.task('compile-css', function () {
 					.pipe(plumber())
 					.pipe(header(imports))
 					.pipe(cache(asset.name))
-					.pipe(precompile()<% if (options.pre === 'scss') { %>.on('error', precompile.logError)<% } %>)
+					.pipe(precompile().on('error', function(err) {
+						<% if (options.pre === 'scss') { %>precompile.logError(err)<% } else { %>console.log(err.message)<% } %>;
+						this.emit('end');
+					}))
 					.pipe(autoprefixer({
 						browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1'],
 						cascade: true

@@ -6,8 +6,9 @@ var fs = require('fs'),
 
 module.exports = function (name, data) {
 
-	var lastArgument = arguments[arguments.length - 1],
-		componentData = lastArgument && lastArgument.data ? lastArgument.data.root : {}; // default component data from controller & view
+	var context = arguments[arguments.length - 1],
+		contextDataRoot = context && context.data ? context.data.root : {}, // default component data from controller & view
+		componentData = {};
 
 	for (var key in cfg.nitro.components) {
 		if (cfg.nitro.components.hasOwnProperty(key)) {
@@ -33,18 +34,23 @@ module.exports = function (name, data) {
 							'/_data/',
 							jsonFilename
 						);
+
+					if (contextDataRoot._locals) {
+						extend(true, componentData, contextDataRoot._locals);
+					}
+
 					if (fs.existsSync(jsonPath)) {
 						extend(true, componentData, JSON.parse(fs.readFileSync(jsonPath, 'utf8')));
 					}
 
-					if (componentData._query) {
-						extend(true, componentData, componentData._query);
+					if (contextDataRoot._query) {
+						extend(true, componentData, contextDataRoot._query);
 					}
 
 					return new hbs.handlebars.SafeString(
 						hbs.handlebars.compile(
 							fs.readFileSync(templatePath, 'utf8')
-						)(componentData)
+						)(componentData, context)
 					);
 				}
 			}

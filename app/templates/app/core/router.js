@@ -95,11 +95,13 @@ function getView(req, res, next) {
 					var reqQuery = JSON.parse(JSON.stringify(req.query)); // simple clone
 					dot.object(reqQuery);
 					extend(true, data, reqQuery);
-					data._query = reqQuery;
+					data._query = reqQuery; // save query for use in components
 				}
 
+				res.locals = data;
+
 				// render
-				res.render(tplPath, data);
+				res.render(tplPath);
 				rendered = true;
 			}
 		}

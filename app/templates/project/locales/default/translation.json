@@ -1,0 +1,10 @@
+{
+	"test": {
+		"example": {
+			"string" : "example string",
+			"interpolation1" : "The first three letters of %s are: %s, %s and %s",
+			"interpolation2" : "The last two letters of {1} are: {3} and {2}",
+			"interpolation3" : "The first letter of {word} is: {one}"
+		}
+	}
+}

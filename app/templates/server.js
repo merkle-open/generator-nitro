@@ -10,6 +10,9 @@ var express = require('express'),
 // compress all requests
 app.use(compression());
 
+// translations
+require('./app/core/i18n')(app);
+
 // Loads custom project routes
 require('./app/core/routeLoader')(app);
 

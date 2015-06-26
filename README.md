@@ -6,8 +6,8 @@
 
 Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.  
 It provides a proven but flexible structure to develop your frontend code, even in a large team.  
-Keep track of your code with a modularized frontend. This app, the suggested [terrific concept](http://terrifically.org) 
-could help. Nitro is simple, fast and flexible. Use this app for all your frontend work.
+Keep track of your code with a modularized frontend. This app and the suggested [atomic design](http://bradfrost.com/blog/post/atomic-web-design/), [BEM](https://en.bem.info/method/definitions/) and [terrific](http://terrifically.org) concepts could help.  
+Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 ## Usage
 
@@ -63,6 +63,10 @@ Available generators:
 * [nitro:component](#name)
 
 **Note: Generators are to be run from the root directory of your app.**
+
+## Generated app
+
+See how tho use the [generated app](app/templates/project/docs/nitro.md)
 
 ## Testing
 

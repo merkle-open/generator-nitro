@@ -1,5 +1,10 @@
 # Nitro Usage
 
+Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.  
+It provides a proven but flexible structure to develop your frontend code, even in a large team.  
+Keep track of your code with a modularized frontend. This app and the suggested [atomic design](http://bradfrost.com/blog/post/atomic-web-design/), [BEM](https://en.bem.info/method/definitions/) and [terrific](http://terrifically.org) concepts could help.  
+Nitro is simple, fast and flexible. Use this app for all your frontend work.
+
 ## Features
 
 * Simple project structure
@@ -9,6 +14,12 @@
 * Jasmine tests with Karma test runner
 * Bower support
 * Yeoman component generator
+
+## What you need
+
+You need the yeoman [`generator-nitro`](https://www.npmjs.com/package/generator-nitro) and its dependencies installed globally.
+
+    npm install -g yo bower gulp jasmine karma-cli generator-nitro
 
 ## Daily Work - Creating Components & Pages
 
@@ -24,17 +35,14 @@ A component uses the following structure:
     /Example/js/example.js
     /Example/_data/example.json
 
-
 Terrific modifiers & decorators are created using the following conventions:
 
     /Example/css/modifier/example-<modifier>.css
     /Example/js/decorator/example-<decorator>.js
 
-
 Different data variantions has to be placed in the `_data` folder:
 
     /Example/_data/example-variant.json
-
 
 ### Creating Components with yo
 
@@ -43,6 +51,7 @@ Different data variantions has to be placed in the `_data` folder:
 ### Using gulp
 
 #### Starting the app
+
 The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `develop` task). If you want the
 app to run on another port put them before the gulp task like this:
 
@@ -118,9 +127,13 @@ It's also possilbe to use a custom data file by requesting with a query param `?
     /views/_data/index-test.json
     http://localhost:8080/index?_data=index-test
 
+#### Data per component
+
+Component data will overwrite data from views. (Use as described above.)
+
 #### Data in request
 
-You may overwrite data in request parameters.
+You may overwrite data from views & components in request parameters.
 
 `?pageTitle=Testpage` will overwrite the the data for the handlebars expression `{{pageTitle}}`
 
@@ -142,30 +155,43 @@ You can configure the include order of your assets by defining patterns in `conf
             "!assets/css/somefile.*",
             "assets/css/cssreset.css",
             "assets/css/*.*",
-            "components/modules/*/css/*.*",
-            "components/modules/*/css/modifier/*.*"
+            "components/**/css/*.*",
+            "components/**/css/modifier/*.*"
         ],
         "app.js": [
             "!assets/js/somefile.js",
-            "assets/js/jquery-1.11.2.min.js",
-            "assets/js/terrific-2-1.0.js",
+            "assets/vendor/terrific/dist/terrific.min.js",
+            "assets/vendor/terrific/dist/terrific.min.js",
             "assets/js/*.js",
-            "components/modules/*/js/*.js",
-            "components/modules/*/js/decorator/*.js"
+            "components/**/js/*.js",
+            "components/**/js/decorator/*.js"
         ]
     }
 
 #### Pattern
 
-The matching patterns follow the standard glob patterns.
-Glob patterns are similar to regular expression but simplified. They are used by several shells.
-You should always try to keep the patterns simple. Usually you only need the asterisk `*` which
-matches zero or more characters.
+The matching patterns follow the standard node glob patterns.  
+Glob patterns are similar to regular expression but simplified. They are used by several shells.  
+You should always try to keep the patterns simple. Usually you only need the asterisks `*` `**` and the exclamation mark `!` for negation.
 
-You can read more on standard glob patterns on [php.net](http://www.php.net/manual/en/function.glob.php) and
-[cowburn.info](http://cowburn.info/2010/04/30/glob-patterns/).
+You can read more on the standard [node glob patterns](https://github.com/isaacs/node-glob#glob-primer).
 
-#### Other Asset Files
+#### Special Pattern Prefixes
+
+* You can negate a pattern by starting with an exclamation mark `!`.
+  `!` = exclude pattern
+* Define all your dependencies for the compiling-process with the `+` prefix
+  `+` = exclude file but prepend it to every compile call for files with the same file extension.
+
+The order of these special patterns does not matter.
+
+#### Examples
+
+* `"!components/*/Test*"          Exclude all components starting with `Test`
+* `"!**/*-test.*"`                Exclude all filenames ending with `-test`.
+* `"+assets/css/mixins.less"`     Exclude `assets/css/mixins.less` but prepend to every compile call of every .less file
+
+### Other Asset Files
 
 You can configure as many different assets as you wish.
 

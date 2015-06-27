@@ -2,7 +2,9 @@
 
 Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.  
 It provides a proven but flexible structure to develop your frontend code, even in a large team.  
-Keep track of your code with a modularized frontend. This app and the suggested [atomic design](http://bradfrost.com/blog/post/atomic-web-design/), [BEM](https://en.bem.info/method/definitions/) and [terrific](http://terrifically.org) concepts could help.  
+Keep track of your code with a modularized frontend. This app and the suggested concepts could help - 
+[atomic design](http://bradfrost.com/blog/post/atomic-web-design/), [BEM](https://en.bem.info/method/definitions/) 
+and [terrific](http://terrifically.org).  
 Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 ## Features
@@ -15,9 +17,12 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 * Bower support
 * Yeoman component generator
 
-## What you need
+## Preparation
 
-You need the yeoman [`generator-nitro`](https://www.npmjs.com/package/generator-nitro) and its dependencies installed globally.
+This application was created by the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro).  
+Before using, you need of course [node and npm](https://nodejs.org/) installed.  
+And also you need the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro) 
+and some dependencies installed globally.
 
     npm install -g yo bower gulp jasmine karma-cli generator-nitro
 
@@ -25,8 +30,10 @@ You need the yeoman [`generator-nitro`](https://www.npmjs.com/package/generator-
 
 ### Creating Components
 
-Components are created in the `components` folder. A component is an encapsulated block of markup with corresponding styles, scripts and data.  
-For a better overview it is useful to define different types of components. It is recommended to make subfolders like `atoms`, `molecules` & `organisms`
+Components are created in the `components` folder. A component is an encapsulated block of markup 
+with corresponding styles, scripts and data.  
+For a better overview it is useful to define different types of components. It is recommended to make 
+subfolders like `atoms`, `molecules` & `organisms`  
 A component uses the following structure:
 
     /Example
@@ -66,10 +73,6 @@ This works a bit different on **Windows**. Use the following commands in prompt:
     set PORT=8000 && set PROXY=8001 && gulp develop
     set PORT=3000 && gulp production
 
-#### Components Configuration
-
-tbd
-
 ### Creating pages
 
 Create a new `*.html` file in the `views` folder. You can make as many subfolders as you want.
@@ -78,7 +81,8 @@ Create a new `*.html` file in the `views` folder. You can make as many subfolder
     /views/content.html
     /views/content/variant.html
 
-Your new page can then be called by the according URL (with or without an extension). Subfolders are represented with a dash.
+Your new page can then be called by the according URL (with or without an extension). 
+Subfolders are represented with a dash.
 
     http://localhost:8080/index
     http://localhost:8080/content
@@ -111,7 +115,8 @@ Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*
 #### Data per view
 
 You may pass data to your templates (view, partial, component) per view.  
-Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`. (Use the same folder structure as in `views`)
+Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`. 
+(Use the same folder structure as in `views`)
 
     /views/index.html
     /views/_data/index.json
@@ -172,7 +177,8 @@ You can configure the include order of your assets by defining patterns in `conf
 
 The matching patterns follow the standard node glob patterns.  
 Glob patterns are similar to regular expression but simplified. They are used by several shells.  
-You should always try to keep the patterns simple. Usually you only need the asterisks `*` `**` and the exclamation mark `!` for negation.
+You should always try to keep the patterns simple. Usually you only need the asterisks `*` `**` 
+and the exclamation mark `!` for negation.
 
 You can read more on the standard [node glob patterns](https://github.com/isaacs/node-glob#glob-primer).
 
@@ -198,6 +204,10 @@ You can configure as many different assets as you wish.
     "brand.css": [
         "assets/css/reset.css",
         ...
+
+## Translations
+
+todo:
 
 ## Conventions
 
@@ -232,6 +242,7 @@ Note that camel case ComponentNames are represented in CSS with dashes.
     AdminNavMain -> T.Module.AdminNavMain -> m-admin-nav-main
     
 ### Custom Handlebars helpers
+
 Custom handlebars will be automatically loaded if put into to `project/helpers` directory. An example could look like 
 this:
 
@@ -243,6 +254,7 @@ The helper name will automatically match the filename, so if you name your file 
 `foo`.
 
 ### JSON Endpoints
+
 If you need to mock service endpoints, you can put JSON files into a directory inside the `/public` directory as 
 those are directly exposed.
 
@@ -250,6 +262,7 @@ those are directly exposed.
 requests.
 
 ### Custom Routes
+
 If you need more custom functionality in endpoints you can put your custom routes with their logic into the 
 `project/routes` directory. The filename is irrelevant and the content can look like this:
 
@@ -274,7 +287,9 @@ If you need more custom functionality in endpoints you can put your custom route
 These routes will be loaded into Nitro automatically.
 
 ### Using another Template Engine
-If you don't want to use [Handlebars](http://handlebarsjs.com/) as Nitro's Template Engine you can configure your own Engine.
+
+If you don't want to use [Handlebars](http://handlebarsjs.com/) as Nitro's Template Engine 
+you can configure your own Engine.  
 This example shows how to replace Handlebars with [Nunjucks](https://mozilla.github.io/nunjucks/) as an example.
 
 All these steps need to be performed in `server.js`.

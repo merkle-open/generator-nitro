@@ -19,9 +19,9 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 ## Preparation
 
-This application was created by the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro).  
+This application was created by the yeoman [nitro generator](https://www.npmjs.com/package/generator-nitro).  
 Before using, you need of course [node and npm](https://nodejs.org/) installed.  
-And also you need the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro) 
+And also you need the yeoman [nitro generator](https://www.npmjs.com/package/generator-nitro) 
 and some dependencies installed globally.
 
     npm install -g yo bower gulp jasmine karma-cli generator-nitro
@@ -207,7 +207,53 @@ You can configure as many different assets as you wish.
 
 ## Translations
 
-todo:
+Nitro uses [i18next](http://i18next.com/node/index.html) as Translation Library 
+and gives you the Handlebars helper `{{t}}`.  
+Translations are stored in `project/locales/[lang]/translation.json`.
+
+Express Middleware configuration:
+
+* Fallback language: `default`
+* Language detection from request header
+* Language switch with query parameter: `?lang=de`
+
+### Translation handlebars helper
+
+The helper combines the given [library features](http://i18next.com/node/pages/doc_features.html) with a second system of translation features.
+
+The library needs one object to transfer data and uses two underscores as interpolation pre- and suffixes.  
+Some examples:
+
+    data = {
+       name: "developer"
+    }
+    
+    "test": {
+        "example": {
+            "string" : "gold",
+            "nested": "All that glitters is not $t(test.example.string).",
+            "interpolation" : "Hello __name__"
+        }
+    }
+
+    {{t "test.example.string"}}
+    {{t "test.example.nested"}}
+    {{t "test.example.interpolation" data}}
+
+The Second system uses `%s` placeholders or brackets as interpolation pre- and suffixes:
+
+    "test": {
+        "example": {
+            "interpolation1" : "The first three letters of %s are: %s, %s and %s",
+            "interpolation2" : "The last two letters of {1} are: {3} and {2}",
+            "interpolation3" : "The first letter of {word} is: {one}"
+        }
+    }
+
+    {{t "test.example.interpolation1" "alphabet" "a" "l" "p"}}
+    {{t "test.example.interpolation2" "alphabet" "e" "t"}}
+    {{t "test.example.interpolation3" word="alphabet" one="a"}}
+
 
 ## Conventions
 

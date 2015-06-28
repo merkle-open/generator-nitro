@@ -1,3 +1,16 @@
+/**
+ * Init Translation Library i18next
+ * http://i18next.com/node/index.html
+ *
+ * Configuration:
+ * Fallback translation file: project/locales/default/translation.json
+ * Other languages in project/locales/[lang]/translation.json
+ * Language detection from request header
+ * Language switch with query parameter: ?lang=de
+ *
+ * Use with handlebars translation helper t: `../helpers/t.js`
+ */
+
 var i18n = require('i18next');
 
 var options = {

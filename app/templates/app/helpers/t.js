@@ -8,11 +8,11 @@
  * default translation file in project/locales/default/translation.json
  *
  * {{t "test.example.string"}}
- * {{t "test.example.interpolation1" "alphabet" "a" "l" "p"}}
- * {{t "test.example.interpolation2" "alphabet" "e" "t"}}
- * {{t "test.example.interpolation3" word="alphabet" one="a"}}
+ * {{t "test.example.sprintf" "alphabet" "a" "l" "p"}}
+ * {{t "test.example.interpolation1" "alphabet" "e" "t"}}
+ * {{t "test.example.interpolation2" word="alphabet" one="a"}}
  *
- * It is also possible to use the translation features from i18next (http://i18next.com/node/pages/doc_features.html)
+ * It is also possible to use other translation features from i18next (http://i18next.com/node/pages/doc_features.html)
  */
 var i18n = require('i18next'),
 	hbs = require('hbs');

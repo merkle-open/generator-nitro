@@ -221,7 +221,9 @@ Express Middleware configuration:
 
 The helper combines the given [library features](http://i18next.com/node/pages/doc_features.html) with a second system of translation features.
 
-The library needs one object to transfer data and uses two underscores as interpolation pre- and suffixes.  
+The library needs one object to transfer data and uses two underscores as interpolation pre- and suffixes 
+or uses `%s` placeholders for sprintf functionality.
+
 Some examples:
 
     data = {
@@ -232,28 +234,27 @@ Some examples:
         "example": {
             "string" : "gold",
             "nested": "All that glitters is not $t(test.example.string).",
+            "sprintf" : "The first three letters of %s are: %s, %s and %s",
             "interpolation" : "Hello __name__"
         }
     }
 
     {{t "test.example.string"}}
     {{t "test.example.nested"}}
+    {{t "test.example.sprintf" "alphabet" "a" "l" "p"}}
     {{t "test.example.interpolation" data}}
 
-The Second system uses `%s` placeholders or brackets as interpolation pre- and suffixes:
+The Second system uses brackets as interpolation pre- and suffixes and numbered or named placeholders:
 
     "test": {
         "example": {
-            "interpolation1" : "The first three letters of %s are: %s, %s and %s",
-            "interpolation2" : "The last two letters of {1} are: {3} and {2}",
-            "interpolation3" : "The first letter of {word} is: {one}"
+            "interpolation1" : "The last two letters of {1} are: {3} and {2}",
+            "interpolation2" : "The first letter of {word} is: {one}"
         }
     }
-
-    {{t "test.example.interpolation1" "alphabet" "a" "l" "p"}}
-    {{t "test.example.interpolation2" "alphabet" "e" "t"}}
-    {{t "test.example.interpolation3" word="alphabet" one="a"}}
-
+    
+    {{t "test.example.interpolation1" "alphabet" "e" "t"}}
+    {{t "test.example.interpolation2" word="alphabet" one="a"}}
 
 ## Conventions
 

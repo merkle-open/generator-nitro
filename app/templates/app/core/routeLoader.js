@@ -2,14 +2,19 @@ var cfg = require('./config'),
 	fs = require('fs'),
 	path = require('path'),
 	routePath = cfg.nitro.base_path + 'project/routes/',
-	additionalRoutes = fs.readdirSync(routePath),
+	viewDataPath = cfg.nitro.base_path + 'project/viewData/',
 	routers = [];
 
-additionalRoutes.forEach(function (el) {
-	if ('.js' === path.extname(el)) {
-		routers.push(require(routePath + path.basename(el, '.js')));
-	}
-});
+function readRoutes(routes){
+	fs.readdirSync(routes).forEach(function (el) {
+		if ('.js' === path.extname(el)) {
+			routers.push(require(routes + path.basename(el, '.js')));
+		}
+	});
+}
+
+readRoutes(routePath);
+readRoutes(viewDataPath);
 
 exports = module.exports = function (app) {
 	routers.forEach(function (routedefinition) {

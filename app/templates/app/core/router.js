@@ -98,6 +98,7 @@ function getView(req, res, next) {
 					data._query = reqQuery; // save query for use in components
 				}
 
+				extend(true, data, res.locals);
 				res.locals = data;
 
 				// render

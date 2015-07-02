@@ -31,16 +31,16 @@
 	],
 	"dependencies": {
 		"adm-zip": "^0.4.4",
-		"chalk": "^1.0.0",
+		"chalk": "^1.1.0",
 		"git-config": "0.0.7",
-		"glob": "^5.0.10",
-		"lodash": "^3.9.3",
+		"glob": "^5.0.13",
+		"lodash": "^3.10.0",
 		"request": "^2.58.0",
 		"yeoman-generator": "^0.20.0",
 		"yosay": "^1.0.4"
 	},
 	"devDependencies": {
-		"ejs": "^2.3.1",
+		"ejs": "^2.3.2",
 		"fs-extra": "^0.20.1",
 		"jasmine": "^2.3.1"
 	}

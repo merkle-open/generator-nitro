@@ -17,7 +17,6 @@ module.exports = generators.Base.extend({
 
 		// Component name
 		this.argument('name', {desc: 'the name of your component?', type: String, required: false, defaults: ''});
-		this.name = this.name;
 
 		// Component type
 		this.cfg = require(this.destinationPath('config.json'));
@@ -136,7 +135,9 @@ module.exports = generators.Base.extend({
 					name: this.name, // Component name, eg. Main navigation
 					js: _.capitalize(_.camelCase(this.name)), // Component name for use in JS files, eg. MainNavigation
 					css: _.kebabCase(this.name), // Component name for use in CSS files, eg. main-navigation
-					prefix: component.component_prefix || null // CSS class prefix, eg. mod
+					prefix: component.component_prefix || null, // CSS class prefix, eg. mod
+					type: this.options.type, // Component type, eg. atom, molecule etc.
+					file: _.kebabCase(this.name).replace(/-/g, '') // Component filename, eg. mainnavigation
 				},
 				modifier: {
 					name: this.options.modifier, // Modifier name, eg. Highlight

@@ -10,6 +10,8 @@ Nitro provides the following [Lodash](https://lodash.com/docs#template) replacem
 <%= component.js %> 	// Component name for use in JS files, eg. MainNavigation
 <%= component.css %> 	// Component name for use in CSS files, eg. main-navigation
 <%= component.prefix %>	// CSS class prefix, eg. o
+<%= component.type %>	// Component type as specified in config.json, eg. atom, molecule etc. 
+<%= component.file %>	// Component filename, eg. mainnavigation
 
 <%= modifier.name %>	// Modifier name, eg. Highlight 
 <%= modifier.css %> 	// Modifier name for use in CSS files, eg. highlight

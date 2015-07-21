@@ -212,7 +212,7 @@ gulp.task('minify-img', function () {
 			optimizationLevel: 7,
 			progressive: true,
 			multipass: true,
-			svgoPlugins: [{cleanupIDs: false}, {removeUnknownsAndDefaults: false}, {removeViewBox: false}],
+			svgoPlugins: [{collapseGroups: false}, {cleanupIDs: false}, {removeUnknownsAndDefaults: false}, {removeViewBox: false}],
 			use: [pngquant()]
 		}))
 		.pipe(gulp.dest('public/assets/img'));

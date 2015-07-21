@@ -18,20 +18,20 @@
 		"start": "node server"
 	},
 	"dependencies": {
-		"body-parser": "^1.12.4",
-		"compression": "^1.5.0",
+		"body-parser": "^1.13.2",
+		"compression": "^1.5.1",
 		"dot-object": "^0.11.0",
 		"es6-promise": "^2.3.0",
-		"express": "^4.13.0",
+		"express": "^4.13.1",
 		"extend": "^3.0.0",
 		"globby": "^2.1.0",
-		"gulp-live-server": "^0.0.21",
+		"gulp-live-server": "^0.0.23",
 		"hbs": "^3.1.0",
 		"hbs-utils": "0.0.3",
-		"i18next": "^1.10.2"
+		"i18next": "^1.10.3"
 	},
 	"devDependencies": {
-		"browser-sync": "^2.7.13",
+		"browser-sync": "^2.8.0",
 		"del": "^1.2.0",
 		"gulp": "^3.9.0",
 		"gulp-autoprefixer": "^2.3.1",
@@ -43,7 +43,7 @@
 		"gulp-jshint": "^1.11.2",
 		"gulp-karma": "~0.0.1",<% if (options.pre === 'less') { %>
 		"gulp-less": "^3.0.3",<% } %><% if (options.pre === 'scss') { %>
-		"gulp-sass": "^2.0.3",<% } %><% if (options.js === 'TypeScript') { %>
+		"gulp-sass": "^2.0.4",<% } %><% if (options.js === 'TypeScript') { %>
 		"typescript": "^1.5.0-beta",
 		"gulp-typescript": "^2.7.5", <% } %>
 		"gulp-minify-css": "^1.2.0",
@@ -53,11 +53,11 @@
 		"gulp-rename": "^1.2.2",
 		"gulp-sourcemaps": "^1.2.8",
 		"gulp-uglify": "^1.2.0",
-		"gulp-watch": "^4.2.4",
-		"imagemin-pngquant": "^4.1.0",
+		"gulp-watch": "^4.3.3",
+		"imagemin-pngquant": "^4.1.2",
 		"jasmine-core": "^2.3.4",
 		"jshint-stylish": "^2.0.1",
-		"karma": "^0.12.37",
+		"karma": "^0.13.2",
 		"karma-chrome-launcher": "^0.2.0",
 		"karma-jasmine": "~0.3.6"
 	}

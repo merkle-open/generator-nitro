@@ -1,6 +1,6 @@
 {
 	"name": "nitro",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Nitro is micro power on Node.js",
 	"license": "MIT",
 	"repository": "namics/generator-nitro",

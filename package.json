@@ -31,17 +31,17 @@
   ],
   "dependencies": {
     "adm-zip": "^0.4.4",
-    "chalk": "^1.1.0",
+    "chalk": "^1.1.1",
     "git-config": "0.0.7",
     "glob": "^5.0.14",
-    "lodash": "^3.10.0",
-    "request": "^2.59.0",
-    "yeoman-generator": "^0.20.2",
+    "lodash": "^3.10.1",
+    "request": "^2.61.0",
+    "yeoman-generator": "^0.20.3",
     "yosay": "^1.0.5"
   },
   "devDependencies": {
-    "ejs": "^2.3.3",
-    "fs-extra": "^0.22.1",
-    "jasmine": "^2.3.1"
+    "ejs": "^2.3.4",
+    "fs-extra": "^0.24.0",
+    "jasmine": "^2.3.2"
   }
 }

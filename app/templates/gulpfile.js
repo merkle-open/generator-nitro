@@ -320,13 +320,8 @@ gulp.task('serve', function () {
 	watch(['server.js', 'app/core/*.js'], server.start);
 });
 
-gulp.task('install-bower', function () {
-	return gulp.src(['./bower.json'])
-		.pipe(install());
-});
-
-gulp.task('install-npm', function () {
-	return gulp.src(['./package.json'])
+gulp.task('install', function () {
+	return gulp.src(['./bower.json', './package.json'])
 		.pipe(install());
 });
 

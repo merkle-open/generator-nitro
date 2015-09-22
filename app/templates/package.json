@@ -24,14 +24,14 @@
 		"es6-promise": "^3.0.2",
 		"express": "^4.13.3",
 		"extend": "^3.0.0",
-		"globby": "^2.1.0",
+		"globby": "^3.0.1",
 		"gulp-live-server": "^0.0.28",
 		"hbs": "^3.1.1",
 		"hbs-utils": "0.0.3",
 		"i18next": "^1.10.4"
 	},
 	"devDependencies": {
-		"browser-sync": "^2.9.3",
+		"browser-sync": "^2.9.4",
 		"del": "^2.0.2",
 		"gulp": "^3.9.0",
 		"gulp-autoprefixer": "^3.0.1",
@@ -57,7 +57,7 @@
 		"imagemin-pngquant": "^4.2.0",
 		"jasmine-core": "^2.3.4",
 		"jshint-stylish": "^2.0.1",
-		"karma": "^0.13.9",
+		"karma": "^0.13.10",
 		"karma-chrome-launcher": "^0.2.0",
 		"karma-jasmine": "~0.3.6"
 	}

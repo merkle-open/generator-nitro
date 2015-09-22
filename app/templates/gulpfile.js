@@ -66,7 +66,7 @@ gulp.task('compile-css', function () {
 
 	assets.forEach(function (asset) {
 		promises.push(new Promise(function(resolve) {
-			globby(asset.deps, function(err, paths) {
+			globby(asset.deps).then(function(paths) {
 				var imports = '';
 
 				paths.forEach(function(path) {

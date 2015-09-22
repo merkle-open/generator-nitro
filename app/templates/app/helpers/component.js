@@ -14,7 +14,7 @@ module.exports = function (name, data) {
 		if (cfg.nitro.components.hasOwnProperty(key)) {
 			var component = cfg.nitro.components[key];
 			if (component.hasOwnProperty('path')) {
-				var templateFilename = name.toLowerCase(),
+				var templateFilename = name.toLowerCase().replace(/-/g, ''),
 					templatePath = path.join(
 						cfg.nitro.base_path,
 						component.path,

@@ -66,7 +66,7 @@ gulp.task('compile-css', function () {
 
 	assets.forEach(function (asset) {
 		promises.push(new Promise(function(resolve) {
-			globby(asset.deps, function(err, paths) {
+			globby(asset.deps).then(function(paths) {
 				var imports = '';
 
 				paths.forEach(function(path) {
@@ -77,10 +77,10 @@ gulp.task('compile-css', function () {
 					.pipe(plumber())
 					.pipe(header(imports))
 					.pipe(cache(asset.name))
-					.pipe(precompile().on('error', function(err) {
-						<% if (options.pre === 'scss') { %>precompile.logError(err)<% } else { %>console.log(err.message)<% } %>;
+					<% if (options.pre === 'scss') { %>.pipe(precompile().on('error', precompile.logError ))<% } else { %>.pipe(precompile().on('error', function(err) {
+						console.log(err.message);
 						this.emit('end');
-					}))
+					}))<% } %>
 					.pipe(autoprefixer({
 						browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1'],
 						cascade: true
@@ -212,7 +212,7 @@ gulp.task('minify-img', function () {
 			optimizationLevel: 7,
 			progressive: true,
 			multipass: true,
-			svgoPlugins: [{cleanupIDs: false}, {removeUnknownsAndDefaults: false}, {removeViewBox: false}],
+			svgoPlugins: [{collapseGroups: false}, {cleanupIDs: false}, {removeUnknownsAndDefaults: false}, {removeViewBox: false}],
 			use: [pngquant()]
 		}))
 		.pipe(gulp.dest('public/assets/img'));
@@ -320,13 +320,8 @@ gulp.task('serve', function () {
 	watch(['server.js', 'app/core/*.js'], server.start);
 });
 
-gulp.task('install-bower', function () {
-	return gulp.src(['./bower.json'])
-		.pipe(install());
-});
-
-gulp.task('install-npm', function () {
-	return gulp.src(['./package.json'])
+gulp.task('install', function () {
+	return gulp.src(['./bower.json', './package.json'])
 		.pipe(install());
 });
 

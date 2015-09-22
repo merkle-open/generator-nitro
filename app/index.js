@@ -177,6 +177,7 @@ module.exports = generators.Base.extend({
 			var ignores = [
 				// files to ignore
 				'.DS_Store',
+				'.npmignore',
 				'frontend-defaults.zip'
 			];
 			var typeScriptFiles = [

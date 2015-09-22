@@ -98,6 +98,7 @@ function getView(req, res, next) {
 					data._query = reqQuery; // save query for use in components
 				}
 
+				extend(true, data, res.locals);
 				res.locals = data;
 
 				// render
@@ -118,7 +119,7 @@ router.get('/:view', getView);
  * everything else gets a 404
  */
 router.use(function (req, res) {
-	res.locals = {pageTitle: '404 - Not Found'};
+	res.locals.pageTitle = '404 - Not Found';
 	res.status(404);
 	res.render('404', function (err, html) {
 		if (err) {

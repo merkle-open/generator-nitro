@@ -146,6 +146,28 @@ It's also possilbe to use dot notation for object data:
 
 `?page.title=Testpage` will overwrite the value for `{{page.title}}` 
 
+#### Dynamic view data
+
+If you want to use dynamic view data (i.e. from a database), you can define those routes in here. Like the "routes" folder, any file will be used, as long as it is a javascript file. You can add data to the "res.locals" property which will be synchronized later with the *.json data files from the _data folders. This data supersede the data from the json files. 
+
+The following code is an example of such a view data route:
+```javascript
+function getUser(req, res, next){
+    database.getUser()
+        .then(function(user){
+            res.locals.user = user;
+            next();
+        });
+}
+
+exports = module.exports = function(app){
+    app.route('/')
+        .get(getUser);
+};
+```
+
+Now the called index.html view can use the userprofile for rendering userspecific content.
+
 ## Assets
 
 Nitro's main feature is asset concatenation for CSS and JavaScript files. If changed, the files will be updated on

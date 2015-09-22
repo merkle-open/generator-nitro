@@ -406,7 +406,7 @@ All of these can be updated with `bower update` as new versions are released.
 
 ## Credits
 
-Nitro is an alternative to [Terrific Micro](https://github.com/namics/terrific-micro) which is developed by Namics AG.
+Nitro is an alternative to [Terrific Micro](http://namics.github.io/terrific-micro/) which is developed by Namics AG.
 
 ## License
 

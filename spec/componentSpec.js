@@ -176,7 +176,7 @@ describe('nitro:component', function () {
 			]);
 		});
 
-		it('the component css class is mod-nav-main', function () {
+		it('the component css class is o-nav-main', function () {
 			assert.fileContent([['components/organisms/nav-main/css/navmain.less', /\.o-nav-main \{/]]);
 		});
 

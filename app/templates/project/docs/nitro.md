@@ -132,9 +132,14 @@ It's also possilbe to use a custom data file by requesting with a query param `?
     /views/_data/index-test.json
     http://localhost:8080/index?_data=index-test
 
+#### Dynamic view data
+
+If you want to use dynamic view data (i.e. using data from a database or data which is available in different views), 
+you can define those "routes" in the directory [`project/viewData`](project/viewData/). 
+
 #### Data per component
 
-Component data will overwrite data from views. (Use as described above.)
+Component data will overwrite data from views. (Use as described above)
 
 #### Data in request
 
@@ -145,28 +150,6 @@ You may overwrite data from views & components in request parameters.
 It's also possilbe to use dot notation for object data:
 
 `?page.title=Testpage` will overwrite the value for `{{page.title}}` 
-
-#### Dynamic view data
-
-If you want to use dynamic view data (i.e. from a database), you can define those routes in here. Like the "routes" folder, any file will be used, as long as it is a javascript file. You can add data to the "res.locals" property which will be synchronized later with the *.json data files from the _data folders. This data supersede the data from the json files. 
-
-The following code is an example of such a view data route:
-```javascript
-function getUser(req, res, next){
-    database.getUser()
-        .then(function(user){
-            res.locals.user = user;
-            next();
-        });
-}
-
-exports = module.exports = function(app){
-    app.route('/')
-        .get(getUser);
-};
-```
-
-Now the called index.html view can use the userprofile for rendering userspecific content.
 
 ## Assets
 
@@ -333,27 +316,7 @@ requests.
 ### Custom Routes
 
 If you need more custom functionality in endpoints you can put your custom routes with their logic into the 
-`project/routes` directory. The filename is irrelevant and the content can look like this:
-
-    function getData(req, res, next) {
-        return res.json({
-            data: 'empty'
-        });
-    }
-    
-    function postData(req, res, next){
-        return res.json({
-            data: req.body
-        });
-    }
-    
-    exports = module.exports = function(app){
-        app.route('/api/data')
-            .get(getData)
-            .post(postData);
-    };
-
-These routes will be loaded into Nitro automatically.
+[`project/routes` directory](project/routes/).
 
 ### Using another Template Engine
 
@@ -406,7 +369,7 @@ All of these can be updated with `bower update` as new versions are released.
 
 ## Credits
 
-Nitro is an alternative to [Terrific Micro](http://namics.github.io/terrific-micro/) which is developed by Namics AG.
+Nitro is an alternative to [Terrific Micro](https://github.com/namics/terrific-micro) which is developed by Namics AG.
 
 ## License
 

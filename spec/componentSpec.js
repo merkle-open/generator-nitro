@@ -43,6 +43,7 @@ describe('nitro:component', function () {
 				assert.file([
 					'components/organisms/Test',
 					'components/organisms/Test/test.html',
+					'components/organisms/Test/_data/test.json',
 					'components/organisms/Test/css/test.less',
 					'components/organisms/Test/js/test.js',
 					'components/organisms/Test/spec/testSpec.js'
@@ -65,6 +66,8 @@ describe('nitro:component', function () {
 				assert.file([
 					'components/organisms/Test',
 					'components/organisms/Test/test.html',
+					'components/organisms/Test/_data/test.json',
+					'components/organisms/Test/_data/test-more.json',
 					'components/organisms/Test/css/test.less',
 					'components/organisms/Test/css/modifier/test-more.less',
 					'components/organisms/Test/js/test.js',
@@ -96,6 +99,8 @@ describe('nitro:component', function () {
 				assert.file([
 					'components/organisms/Test',
 					'components/organisms/Test/test.html',
+					'components/organisms/Test/_data/test.json',
+					'components/organisms/Test/_data/test-more.json',
 					'components/organisms/Test/css/test.less',
 					'components/organisms/Test/js/test.js',
 					'components/organisms/Test/js/decorator/test-more.js',
@@ -128,6 +133,8 @@ describe('nitro:component', function () {
 			assert.file([
 				'components/organisms/NavMain',
 				'components/organisms/NavMain/navmain.html',
+				'components/organisms/NavMain/_data/navmain.json',
+				'components/organisms/NavMain/_data/navmain-specialcase.json',
 				'components/organisms/NavMain/css/navmain.less',
 				'components/organisms/NavMain/css/modifier/navmain-specialcase.less',
 				'components/organisms/NavMain/js/navmain.js',
@@ -168,6 +175,8 @@ describe('nitro:component', function () {
 			assert.file([
 				'components/organisms/nav-main',
 				'components/organisms/nav-main/navmain.html',
+				'components/organisms/nav-main/_data/navmain.json',
+				'components/organisms/nav-main/_data/navmain-specialcase.json',
 				'components/organisms/nav-main/css/navmain.less',
 				'components/organisms/nav-main/css/modifier/navmain-specialcase.less',
 				'components/organisms/nav-main/js/navmain.js',

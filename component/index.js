@@ -141,11 +141,13 @@ module.exports = generators.Base.extend({
 				},
 				modifier: {
 					name: this.options.modifier, // Modifier name, eg. Highlight
-					css: _.kebabCase(this.options.modifier) // Modifier name for use in CSS files, eg. highlight
+					css: _.kebabCase(this.options.modifier), // Modifier name for use in CSS files, eg. highlight
+					file: _.kebabCase(this.options.modifier).replace(/-/g, '')  // Modifier filename, eg.highlight
 				},
 				decorator: {
 					name: this.options.decorator, // Decorator name, eg. Highlight
-					js: _.capitalize(_.camelCase(this.options.decorator)) // Decorator name for use in JS files, eg. Highlight
+					js: _.capitalize(_.camelCase(this.options.decorator)), // Decorator name for use in JS files, eg. Highlight
+					file: _.kebabCase(this.options.decorator).replace(/-/g, '')  // Modifier filename, eg.highlight
 				}
 			};
 
@@ -170,9 +172,9 @@ module.exports = generators.Base.extend({
 
 				// filename replacements
 				var fileReplacements = {
-					component: _.kebabCase(this.name).replace(/-/g, ''),
-					modifier: _.kebabCase(this.options.modifier).replace(/-/g, ''),
-					decorator: _.kebabCase(this.options.decorator).replace(/-/g, '')
+					component: replacements.component.file,
+					modifier: replacements.modifier.file,
+					decorator: replacements.decorator.file
 				};
 
 				var filename = file;

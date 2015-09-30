@@ -33,9 +33,9 @@
     "adm-zip": "^0.4.4",
     "chalk": "^1.1.1",
     "git-config": "0.0.7",
-    "glob": "^5.0.14",
+    "glob": "^5.0.15",
     "lodash": "^3.10.1",
-    "request": "^2.61.0",
+    "request": "^2.64.0",
     "yeoman-generator": "^0.20.3",
     "yosay": "^1.0.5"
   },

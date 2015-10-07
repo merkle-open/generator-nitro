@@ -4,58 +4,75 @@ var fs = require('fs'),
 	extend = require('extend'),
 	cfg = require('../core/config.js');
 
+function logAndRenderError(e) {
+	console.info(e.message);
+	return new hbs.handlebars.SafeString(
+		'<p class="t-nitro-error">' + e.message +'</p>'
+	);
+}
+
 module.exports = function (name, data) {
+	try {
+		var context = arguments[arguments.length - 1],
+			contextDataRoot = context && context.data ? context.data.root : {}, // default component data from controller & view
+			componentData = {};
 
-	var context = arguments[arguments.length - 1],
-		contextDataRoot = context && context.data ? context.data.root : {}, // default component data from controller & view
-		componentData = {};
-
-	for (var key in cfg.nitro.components) {
-		if (cfg.nitro.components.hasOwnProperty(key)) {
-			var component = cfg.nitro.components[key];
-			if (component.hasOwnProperty('path')) {
-				var templateFilename = name.toLowerCase().replace(/-/g, ''),
-					templatePath = path.join(
-						cfg.nitro.base_path,
-						component.path,
-						'/',
-						name,
-						'/',
-						templateFilename + '.' + cfg.nitro.view_file_extension
-					);
-
-				if (fs.existsSync(templatePath)) { // TODO: existsSynch marked as deprecated - https://nodejs.org/api/fs.html#fs_fs_existssync_path
-					var jsonFilename = ('string' === typeof data) ? data.toLowerCase() + '.json' : templateFilename + '.json',
-						jsonPath = path.join(
+		for (var key in cfg.nitro.components) {
+			if (cfg.nitro.components.hasOwnProperty(key)) {
+				var component = cfg.nitro.components[key];
+				if (component.hasOwnProperty('path')) {
+					var templateFilename = name.toLowerCase(),
+						templatePath = path.join(
 							cfg.nitro.base_path,
 							component.path,
 							'/',
 							name,
-							'/_data/',
-							jsonFilename
+							'/',
+							templateFilename + '.' + cfg.nitro.view_file_extension
 						);
 
-					if (contextDataRoot._locals) {
-						extend(true, componentData, contextDataRoot._locals);
-					}
+					if (fs.existsSync(templatePath)) { // TODO: existsSynch marked as deprecated - https://nodejs.org/api/fs.html#fs_fs_existssync_path
+						var jsonFilename = ('string' === typeof data) ? data.toLowerCase() + '.json' : templateFilename + '.json',
+							jsonPath = path.join(
+								cfg.nitro.base_path,
+								component.path,
+								'/',
+								name,
+								'/_data/',
+								jsonFilename
+							);
 
-					if (fs.existsSync(jsonPath)) {
-						extend(true, componentData, JSON.parse(fs.readFileSync(jsonPath, 'utf8')));
-					}
+						try {
+							if (contextDataRoot._locals) {
+								extend(true, componentData, contextDataRoot._locals);
+							}
 
-					if (contextDataRoot._query) {
-						extend(true, componentData, contextDataRoot._query);
-					}
+							if (fs.existsSync(jsonPath)) {
+								extend(true, componentData, JSON.parse(fs.readFileSync(jsonPath, 'utf8')));
+							}
 
-					return new hbs.handlebars.SafeString(
-						hbs.handlebars.compile(
-							fs.readFileSync(templatePath, 'utf8')
-						)(componentData, context)
-					);
+							if (contextDataRoot._query) {
+								extend(true, componentData, contextDataRoot._query);
+							}
+
+							return new hbs.handlebars.SafeString(
+								hbs.handlebars.compile(
+									fs.readFileSync(templatePath, 'utf8')
+								)(componentData, context)
+							);
+
+							template;
+						} catch(e) {
+							throw new Error('Parse Error in Component ' + name + ': ' + e.message);
+						}
+
+					}
 				}
 			}
 		}
-	}
 
-	throw new Error('Component ' + name + ' not found.');
+		throw new Error('Component ' + name + ' not found.');
+	} catch(e) {
+		return logAndRenderError(e);
+	}
 };

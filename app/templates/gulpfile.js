@@ -255,7 +255,8 @@ gulp.task('watch', ['assets'], function () {
 
 	watch([
 		'assets/**/*.js',
-		'components/**/*.js'<% if (options.js === 'TypeScript') { %>,
+		'components/**/*.js',
+		'!components/**/spec/*.js'<% if (options.js === 'TypeScript') { %>,
 		'assets/**/*.ts',
 		'components/**/*.ts'
 		<% } %>

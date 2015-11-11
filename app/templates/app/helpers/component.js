@@ -15,7 +15,17 @@ module.exports = function (name, data) {
 	try {
 		var context = arguments[arguments.length - 1],
 			contextDataRoot = context && context.data ? context.data.root : {}, // default component data from controller & view
-			componentData = {};
+			componentData = {},
+			fileExistsSync = function fileExistsSync(filename) {
+				// Fix for the deprecation of the fs.existsSync() method
+				// @see https://nodejs.org/api/fs.html#fs_fs_existssync_path
+				try {
+					fs.accessSync(filename);
+					return true;
+				} catch(ex) {
+					return false;
+				}
+			};
 
 		for (var key in cfg.nitro.components) {
 			if (cfg.nitro.components.hasOwnProperty(key)) {
@@ -31,7 +41,7 @@ module.exports = function (name, data) {
 							templateFilename + '.' + cfg.nitro.view_file_extension
 						);
 
-					if (fs.existsSync(templatePath)) { // TODO: existsSynch marked as deprecated - https://nodejs.org/api/fs.html#fs_fs_existssync_path
+					if (fileExistsSync(templatePath)) {
 						var jsonFilename = ('string' === typeof data) ? data.toLowerCase() + '.json' : templateFilename + '.json',
 							jsonPath = path.join(
 								cfg.nitro.base_path,
@@ -47,7 +57,7 @@ module.exports = function (name, data) {
 								extend(true, componentData, contextDataRoot._locals);
 							}
 
-							if (fs.existsSync(jsonPath)) {
+							if (fileExistsSync(jsonPath)) {
 								extend(true, componentData, JSON.parse(fs.readFileSync(jsonPath, 'utf8')));
 							}
 

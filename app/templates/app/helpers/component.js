@@ -4,28 +4,29 @@ var fs = require('fs'),
 	extend = require('extend'),
 	cfg = require('../core/config.js');
 
-function logAndRenderError(e) {
-	console.info(e.message);
-	return new hbs.handlebars.SafeString(
-		'<p class="t-nitro-error">' + e.message +'</p>'
-	);
-}
-
 module.exports = function (name, data) {
+
+	var logAndRenderError = function logAndRenderError(e) {
+		console.info(e.message);
+		return new hbs.handlebars.SafeString(
+			'<p class="t-nitro-error">' + e.message + '</p>'
+		);
+	};
+	var fileExistsSync = function fileExistsSync(filename) {
+		// Substitution for the deprecated fs.existsSync() method @see https://nodejs.org/api/fs.html#fs_fs_existssync_path
+		try {
+			fs.accessSync(filename);
+			return true;
+		}
+		catch (ex) {
+			return false;
+		}
+	};
+
 	try {
 		var context = arguments[arguments.length - 1],
 			contextDataRoot = context && context.data ? context.data.root : {}, // default component data from controller & view
-			componentData = {},
-			fileExistsSync = function fileExistsSync(filename) {
-				// Fix for the deprecation of the fs.existsSync() method
-				// @see https://nodejs.org/api/fs.html#fs_fs_existssync_path
-				try {
-					fs.accessSync(filename);
-					return true;
-				} catch(ex) {
-					return false;
-				}
-			};
+			componentData = {};
 
 		for (var key in cfg.nitro.components) {
 			if (cfg.nitro.components.hasOwnProperty(key)) {
@@ -70,9 +71,8 @@ module.exports = function (name, data) {
 									fs.readFileSync(templatePath, 'utf8')
 								)(componentData, context)
 							);
-
-							template;
-						} catch(e) {
+						}
+						catch (e) {
 							throw new Error('Parse Error in Component ' + name + ': ' + e.message);
 						}
 
@@ -82,7 +82,8 @@ module.exports = function (name, data) {
 		}
 
 		throw new Error('Component ' + name + ' not found.');
-	} catch(e) {
+	}
+	catch (e) {
 		return logAndRenderError(e);
 	}
 };

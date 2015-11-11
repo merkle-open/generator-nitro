@@ -54,6 +54,16 @@ function getView(req, res, next) {
 	var replaceAt = function replaceAt(string, index, character) {
 		return string.substr(0, index) + character + string.substr(index + character.length);
 	};
+	var fileExistsSync = function fileExistsSync(filename) {
+		// Substitution for the deprecated fs.existsSync() method @see https://nodejs.org/api/fs.html#fs_fs_existssync_path
+		try {
+			fs.accessSync(filename);
+			return true;
+		}
+		catch (ex) {
+			return false;
+		}
+	};
 
 	var tpl = req.params.view ? req.params.view.toLowerCase() : 'index',
 		data = {
@@ -70,7 +80,7 @@ function getView(req, res, next) {
 				viewPath + '.' + cfg.nitro.view_file_extension
 			);
 
-			if (fs.existsSync(tplPath)) {
+			if (fileExistsSync(tplPath)) {
 
 				// collect data
 				var dataPath = path.join(
@@ -84,10 +94,10 @@ function getView(req, res, next) {
 					req.query._data + '.json'
 				) : false;
 
-				if (customDataPath && fs.existsSync(customDataPath)) {
+				if (customDataPath && fileExistsSync(customDataPath)) {
 					extend(true, data, JSON.parse(fs.readFileSync(customDataPath, 'utf8')));
 				}
-				else if (fs.existsSync(dataPath)) {
+				else if (fileExistsSync(dataPath)) {
 					extend(true, data, JSON.parse(fs.readFileSync(dataPath, 'utf8')));
 				}
 

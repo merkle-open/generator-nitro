@@ -3,7 +3,6 @@
 var generators = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
-var request = require('request');
 var path = require('path');
 var fs = require('fs');
 var gitconfig = require('git-config');

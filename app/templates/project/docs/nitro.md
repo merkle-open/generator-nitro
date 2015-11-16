@@ -103,6 +103,14 @@ Render the Example component. (file: `example.html`, data-file: `example.json`)
 Render a "variant" from the Example component. (file: `example.html`, data-file: `example-variant.json`)
 
     {{component 'Example' 'example-variant'}}
+    
+Another possibility to use the component helper is by providing hash options.
+
+    {{component name='Example' data='example-variant'}}
+
+...and if you really need this you may provide a second template file. (file: `example-2.html`, data-file: `example-variant.json`)
+
+    {{component name='Example' data='example-variant' template='example-2'}}
 
 ### Render Partials
 

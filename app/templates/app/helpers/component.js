@@ -4,7 +4,7 @@ var fs = require('fs'),
 	extend = require('extend'),
 	cfg = require('../core/config.js');
 
-module.exports = function (name, data) {
+module.exports = function () {
 
 	var logAndRenderError = function logAndRenderError(e) {
 		console.info(e.message);
@@ -25,25 +25,27 @@ module.exports = function (name, data) {
 
 	try {
 		var context = arguments[arguments.length - 1],
-			contextDataRoot = context && context.data ? context.data.root : {}, // default component data from controller & view
-			componentData = {};
+			contextDataRoot = context && context.data && context.data.root ? context.data.root : {}, // default component data from controller & view
+			componentData = {},
+			name = 'string' === typeof arguments[0] ? arguments[0] : context.hash.name,
+			templateFile = context.hash.template || name.replace(/\s/g, '').replace(/-/g, '').toLowerCase(),
+			dataFile = 'string' === typeof arguments[1] ? arguments[1].toLowerCase() : context.hash.data || name.replace(/\s/g, '').replace(/-/g, '').toLowerCase();
 
 		for (var key in cfg.nitro.components) {
 			if (cfg.nitro.components.hasOwnProperty(key)) {
 				var component = cfg.nitro.components[key];
 				if (component.hasOwnProperty('path')) {
-					var templateFilename = name.toLowerCase(),
-						templatePath = path.join(
-							cfg.nitro.base_path,
-							component.path,
-							'/',
-							name,
-							'/',
-							templateFilename + '.' + cfg.nitro.view_file_extension
-						);
+					var templatePath = path.join(
+						cfg.nitro.base_path,
+						component.path,
+						'/',
+						name,
+						'/',
+						templateFile + '.' + cfg.nitro.view_file_extension
+					);
 
 					if (fileExistsSync(templatePath)) {
-						var jsonFilename = ('string' === typeof data) ? data.toLowerCase() + '.json' : templateFilename + '.json',
+						var jsonFilename = dataFile + '.json',
 							jsonPath = path.join(
 								cfg.nitro.base_path,
 								component.path,

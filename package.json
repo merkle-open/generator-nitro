@@ -37,7 +37,7 @@
     "lodash": "^3.10.1",
     "request": "^2.65.0",
     "yeoman-generator": "^0.21.1",
-    "yosay": "^1.0.5"
+    "yosay": "^1.1.0"
   },
   "devDependencies": {
     "ejs": "^2.3.4",

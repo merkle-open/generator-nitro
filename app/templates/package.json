@@ -1,6 +1,6 @@
 {
 	"name": "nitro",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Nitro is micro power on Node.js",
 	"license": "MIT",
 	"repository": "namics/generator-nitro",
@@ -28,11 +28,11 @@
 		"gulp-live-server": "^0.0.28",
 		"hbs": "^3.1.1",
 		"hbs-utils": "0.0.3",
-		"i18next": "^1.10.5"
+		"i18next": "^1.10.6"
 	},
 	"devDependencies": {
-		"browser-sync": "^2.9.12",
-		"del": "^2.0.2",
+		"browser-sync": "^2.10.0",
+		"del": "^2.1.0",
 		"gulp": "^3.9.0",
 		"gulp-autoprefixer": "^3.1.0",
 		"gulp-cached": "^1.1.0",
@@ -42,7 +42,7 @@
 		"gulp-install": "^0.5.0",
 		"gulp-jshint": "^1.12.0",
 		"gulp-karma": "~0.0.5",<% if (options.pre === 'less') { %>
-		"gulp-less": "^3.0.3",<% } %><% if (options.pre === 'scss') { %>
+		"gulp-less": "^3.0.5",<% } %><% if (options.pre === 'scss') { %>
 		"gulp-sass": "^2.0.4",<% } %><% if (options.js === 'TypeScript') { %>
 		"typescript": "^1.5.0-beta",
 		"gulp-typescript": "^2.7.5", <% } %>
@@ -52,11 +52,11 @@
 		"gulp-remember": "^0.3.0",
 		"gulp-rename": "^1.2.2",
 		"gulp-sourcemaps": "^1.6.0",
-		"gulp-uglify": "^1.4.2",
+		"gulp-uglify": "^1.5.1",
 		"gulp-watch": "^4.3.5",
 		"imagemin-pngquant": "^4.2.0",
 		"jasmine-core": "^2.3.4",
-		"jshint-stylish": "^2.0.1",
+		"jshint-stylish": "^2.1.0",
 		"karma": "^0.13.15",
 		"karma-chrome-launcher": "^0.2.1",
 		"karma-jasmine": "~0.3.6"

@@ -9,7 +9,7 @@ module.exports = function () {
 	var logAndRenderError = function logAndRenderError(e) {
 		console.info(e.message);
 		return new hbs.handlebars.SafeString(
-			'<p class="t-nitro-error">' + e.message + '</p>'
+			'<p class="nitro-msg nitro-msg--error" style="padding:1rem;text-align:center;background-color:rgba(200,0,0,.2);background-image:repeating-linear-gradient(315deg ,transparent, transparent 25px, rgba(200,0,0,.3) 25px, rgba(200,0,0,.3) 50px);">' + e.message + '</p>'
 		);
 	};
 	var fileExistsSync = function fileExistsSync(filename) {

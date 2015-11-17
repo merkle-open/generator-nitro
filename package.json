@@ -3,15 +3,13 @@
   "version": "0.1.2",
   "description": "Yeoman generator for the nitro frontend framework",
   "license": "MIT",
-  "main": "app/index.js",
-  "repository": {
-    "type": "git",
-    "url": "namics/generator-nitro"
-  },
+  "repository": "namics/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.12 <5",
+    "npm": ">=1.3 <4"
   },
+  "main": "app/index.js",
   "scripts": {
     "test": "node_modules/.bin/jasmine"
   },

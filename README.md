@@ -59,8 +59,8 @@ yo nitro --name=myproject --pre=scss --js=JavaScript
 
 Available generators:
 
-* [nitro] (aka [nitro:app])
-* [nitro:component](#name)
+* `yo nitro` (aka `nitro:app`)
+* `yo nitro:component [name]`
 
 **Note: Generators are to be run from the root directory of your app.**
 

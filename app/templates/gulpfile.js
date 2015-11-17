@@ -17,7 +17,7 @@ var gulp = require('gulp'),
 	remember = require('gulp-remember'),
 	header = require('gulp-header'),
 	globby = require('globby'),
-	karma = require('karma').server,
+	Karma = require('karma').Server,
 	liveServer = require('gulp-live-server'),
 	browserSync = require('browser-sync'),
 	compression = require('compression'),
@@ -331,11 +331,11 @@ gulp.task('clean', function() {
 });
 
 gulp.task('test', ['compile-css', 'compile-js'], function (done) {
-	karma.start({
+	new Karma({
 		configFile: path.join(__dirname, 'karma.conf.js'),
 		singleRun:  true,
 		autoWatch:  false
-	}, done);
+	}, done).start();
 });
 
 gulp.task('develop', ['watch', 'browser-sync']);

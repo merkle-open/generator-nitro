@@ -112,6 +112,11 @@ Another possibility to use the component helper is by providing hash options.
 
     {{component name='Example' data='example-variant' template='example-2'}}
 
+There also is a possibility to pass data to subcomponents by providing a data object as second parameter or as hash option.
+
+    {{component 'Example' exampleContent}}
+    {{component 'Example' data=exampleContent}}
+
 ### Render Partials
 
 Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.html` files (e.g. `head.html`).

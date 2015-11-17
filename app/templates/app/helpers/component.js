@@ -25,11 +25,29 @@ module.exports = function () {
 
 	try {
 		var context = arguments[arguments.length - 1],
-			contextDataRoot = context && context.data && context.data.root ? context.data.root : {}, // default component data from controller & view
-			componentData = {},
+			contextDataRoot = context && context.data && context.data.root ? context.data.root : {},            // default component data from controller & view
 			name = 'string' === typeof arguments[0] ? arguments[0] : context.hash.name,
 			templateFile = context.hash.template || name.replace(/\s/g, '').replace(/-/g, '').toLowerCase(),
-			dataFile = 'string' === typeof arguments[1] ? arguments[1].toLowerCase() : context.hash.data || name.replace(/\s/g, '').replace(/-/g, '').toLowerCase();
+			dataFile = name.replace(/\s/g, '').replace(/-/g, '').toLowerCase(),                                 // default data file
+			passedData = null,                                                                                  // passed data to component helper
+			componentData = {};                                                                                 // collected component data
+
+		if (arguments.length >= 3) {
+			if ('object' === typeof arguments[1]) {
+				passedData = arguments[1];
+			}
+			else if('string' === typeof arguments[1]) {
+				dataFile = arguments[1].replace(/\.json$/i, '').toLowerCase();
+			}
+		}
+		else if (context.hash.data) {
+			if ('object' === typeof context.hash.data) {
+				passedData = context.hash.data;
+			}
+			else if ('string' === typeof context.hash.data) {
+				dataFile = context.hash.data;
+			}
+		}
 
 		for (var key in cfg.nitro.components) {
 			if (cfg.nitro.components.hasOwnProperty(key)) {
@@ -60,7 +78,10 @@ module.exports = function () {
 								extend(true, componentData, contextDataRoot._locals);
 							}
 
-							if (fileExistsSync(jsonPath)) {
+							if (passedData) {
+								extend(true, componentData, passedData);
+							}
+							else if (fileExistsSync(jsonPath)) {
 								extend(true, componentData, JSON.parse(fs.readFileSync(jsonPath, 'utf8')));
 							}
 

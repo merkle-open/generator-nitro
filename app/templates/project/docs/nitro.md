@@ -19,9 +19,10 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 ## Preparation
 
-This application was created by the yeoman [nitro generator](https://www.npmjs.com/package/generator-nitro).  
-Before using, you need of course [node and npm](https://nodejs.org/) installed.  
-And also you need the yeoman [nitro generator](https://www.npmjs.com/package/generator-nitro) 
+This application was created by the yeoman generator for nitro.  
+Before using, you need of course [node and npm](https://nodejs.org/) installed. 
+Currently supported node.js versions are 0.12.x, and 4.x. So everything between should work.  
+And also you need the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro) 
 and some dependencies installed globally.
 
     npm install -g yo bower gulp jasmine karma-cli generator-nitro

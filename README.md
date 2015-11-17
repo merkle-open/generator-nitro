@@ -11,6 +11,10 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 ## Usage
 
+Before using, you need of course [node and npm](https://nodejs.org/) installed.  
+Nitro and the Nitro generator are tested with the current versions of the node.js releases 0.12 and 4 (LTS). So everything between should work.
+The node.js release 0.10 is no longer supported and it's not recommended to update node.js to release 5.
+
 Install `yo` and other required tools:
 
 ```

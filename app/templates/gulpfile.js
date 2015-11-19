@@ -26,8 +26,8 @@ var gulp = require('gulp'),
 	fs = require('fs'),
 	del = require('del'),
 	Promise = require('es6-promise').Promise,
-	cfg = require('./app/core/config');
-
+	cfg = require('./app/core/config'),
+	size = require('gulp-size');
 
 function getSourceFiles(ext) {
 	var assets = [];
@@ -184,6 +184,7 @@ gulp.task('minify-css', ['compile-css'], function () {
 			.src('public/assets/css/' + asset.name)
 			.pipe(minify())
 			.pipe(rename(asset.name.replace('.css', '.min.css')))
+			.pipe(size({showFiles:true,gzip:true,title:'CSS minified'}))
 			.pipe(gulp.dest('public/assets/css/'));
 	});
 
@@ -198,6 +199,7 @@ gulp.task('minify-js', ['compile-js'], function () {
 			.src('public/assets/js/' + asset.name)
 			.pipe(uglify())
 			.pipe(rename(asset.name.replace('.js', '.min.js')))
+			.pipe(size({showFiles:true,gzip:true,title:'JavaScript minified'}))
 			.pipe(gulp.dest('public/assets/js/'));
 	});
 

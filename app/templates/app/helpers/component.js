@@ -25,12 +25,13 @@ module.exports = function () {
 
 	try {
 		var context = arguments[arguments.length - 1],
-			contextDataRoot = context && context.data && context.data.root ? context.data.root : {},            // default component data from controller & view
+			contextDataRoot = context && context.data && context.data.root ? context.data.root : {},   // default component data from controller & view
 			name = 'string' === typeof arguments[0] ? arguments[0] : context.hash.name,
-			templateFile = context.hash.template || name.replace(/\s/g, '').replace(/-/g, '').toLowerCase(),
-			dataFile = name.replace(/\s/g, '').replace(/-/g, '').toLowerCase(),                                 // default data file
-			passedData = null,                                                                                  // passed data to component helper
-			componentData = {};                                                                                 // collected component data
+			folder = name.replace(/[^A-Za-z0-9-]/g, ''),
+			templateFile = context.hash.template || folder.toLowerCase(),
+			dataFile = folder.toLowerCase(),                                                           // default data file
+			passedData = null,                                                                         // passed data to component helper
+			componentData = {};                                                                        // collected component data
 
 		if (arguments.length >= 3) {
 			if ('object' === typeof arguments[1]) {
@@ -57,7 +58,7 @@ module.exports = function () {
 						cfg.nitro.base_path,
 						component.path,
 						'/',
-						name,
+						folder,
 						'/',
 						templateFile + '.' + cfg.nitro.view_file_extension
 					);
@@ -68,7 +69,7 @@ module.exports = function () {
 								cfg.nitro.base_path,
 								component.path,
 								'/',
-								name,
+								folder,
 								'/_data/',
 								jsonFilename
 							);

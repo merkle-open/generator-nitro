@@ -2,7 +2,7 @@
 
 # Yeoman Nitro Generator
 
-> Yeoman generator for Nitro - lets you quickly set up a project with sensible defaults and best practices.
+> Yeoman generator for Nitro - lets you quickly set up a frontend project with sensible defaults and best practices.
 
 Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.  
 It provides a proven but flexible structure to develop your frontend code, even in a large team.  

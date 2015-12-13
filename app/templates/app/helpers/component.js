@@ -25,10 +25,10 @@ module.exports = function () {
 
 	try {
 		var context = arguments[arguments.length - 1],
-			contextDataRoot = context && context.data && context.data.root ? context.data.root : {},   // default component data from controller & view
+			contextDataRoot = context.data && context.data.root ? context.data.root : {},   // default component data from controller & view
 			name = 'string' === typeof arguments[0] ? arguments[0] : context.hash.name,
 			folder = name.replace(/[^A-Za-z0-9-]/g, ''),
-			templateFile = context.hash.template || folder.toLowerCase(),
+			templateFile = context.hash && context.hash.template ? context.hash.template : folder.toLowerCase(),
 			dataFile = folder.toLowerCase(),                                                           // default data file
 			passedData = null,                                                                         // passed data to component helper
 			componentData = {};                                                                        // collected component data
@@ -41,7 +41,7 @@ module.exports = function () {
 				dataFile = arguments[1].replace(/\.json$/i, '').toLowerCase();
 			}
 		}
-		else if (context.hash.data) {
+		else if (context.hash && context.hash.data) {
 			if ('object' === typeof context.hash.data) {
 				passedData = context.hash.data;
 			}

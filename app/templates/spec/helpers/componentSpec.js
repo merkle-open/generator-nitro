@@ -2,17 +2,16 @@ var helper = require('../../app/helpers/component');
 
 describe('Component Helper', function () {
 
-	it('throws an error if module name is unknown', function () {
-		expect(function () {
-			helper('inexistent');
-		}).toThrow(new Error('Component inexistent not found.'));
+	it('returns an error message if module is unknown', function () {
+		expect(helper('Inexistent')).toMatch('<p class="nitro-msg nitro-msg--error">Component Inexistent not found.</p>');
 	});
 
 	it('returns an object containing a string if module was found', function () {
-		expect(helper('example').hasOwnProperty('string')).toBe(true);
+		expect(helper('Example').hasOwnProperty('string')).toBe(true);
 	});
 
 	it('has a non-emtpy return value', function () {
-		expect(helper('example').string.length).toBeGreaterThan(0);
+		expect(helper('Example').string.length).toBeGreaterThan(0);
 	});
+
 });

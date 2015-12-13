@@ -329,7 +329,7 @@ gulp.task('install', function () {
 });
 
 gulp.task('clean', function() {
-	del.bind( null, ['public/assets/*'] );
+	return del(['public/assets/*/**']);
 });
 
 gulp.task('test', ['compile-css', 'compile-js'], function (done) {

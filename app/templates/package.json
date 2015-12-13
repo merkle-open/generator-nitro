@@ -36,7 +36,7 @@
 	},
 	"devDependencies": {
 		"browser-sync": "^2.10.0",
-		"del": "^2.1.0",
+		"del": "^2.2.0",
 		"gulp": "^3.9.0",
 		"gulp-autoprefixer": "^3.1.0",
 		"gulp-cached": "^1.1.0",
@@ -60,10 +60,11 @@
 		"gulp-uglify": "^1.5.1",
 		"gulp-watch": "^4.3.5",
 		"imagemin-pngquant": "^4.2.0",
-		"jasmine-core": "^2.3.4",
+		"jasmine-core": "^2.4.1",
+		"jshint": "^2.8.0",
 		"jshint-stylish": "^2.1.0",
 		"karma": "^0.13.15",
-		"karma-chrome-launcher": "^0.2.1",
+		"karma-chrome-launcher": "^0.2.2",
 		"karma-jasmine": "~0.3.6"
 	}
 }

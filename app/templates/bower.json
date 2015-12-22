@@ -1,8 +1,10 @@
 {
 	"name": "nitro",
-	"version": "0.1.0",
-	"author": "The Nitro Team",
-	"description": "Nitro is micro power on Node.js",
+	"description": "Bower frontend dependencies for Nitro",
+	"main": "",
+	"authors": [
+		"The Nitro Team"
+	],
 	"keywords": [
 		"terrific",
 		"component",
@@ -23,5 +25,6 @@
 	"dependencies": {
 		"jquery": "~2.1.4",
 		"terrific": "~3.0.0-beta.9"
-	}
+	},
+	"private": true
 }

@@ -1,5 +1,5 @@
 {
-	"name": "nitro",
+	"name": "nitro-dev",
 	"version": "0.2.1",
 	"description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.",
 	"license": "MIT",
@@ -22,7 +22,7 @@
 		"nitro"
 	],
 	"dependencies": {
-		"body-parser": "^1.14.1",
+		"body-parser": "^1.14.2",
 		"compression": "^1.6.0",
 		"dot-object": "^1.3.0",
 		"es6-promise": "^3.0.2",
@@ -35,7 +35,7 @@
 		"i18next": "^1.10.6"
 	},
 	"devDependencies": {
-		"browser-sync": "^2.10.0",
+		"browser-sync": "^2.10.1",
 		"del": "^2.2.0",
 		"gulp": "^3.9.0",
 		"gulp-autoprefixer": "^3.1.0",

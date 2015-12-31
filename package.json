@@ -40,6 +40,8 @@
 	"devDependencies": {
 		"ejs": "^2.3.4",
 		"fs-extra": "^0.26.3",
-		"jasmine": "^2.4.1"
+		"jasmine": "^2.4.1",
+		"yeoman-assert": "^2.1.1",
+		"yeoman-test": "^1.0.0"
 	}
 }

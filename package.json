@@ -31,10 +31,10 @@
 		"adm-zip": "^0.4.4",
 		"chalk": "^1.1.1",
 		"git-config": "0.0.7",
-		"glob": "^6.0.1",
+		"glob": "^6.0.3",
 		"lodash": "^3.10.1",
 		"request": "^2.67.0",
-		"yeoman-generator": "^0.22.1",
+		"yeoman-generator": "^0.22.2",
 		"yosay": "^1.1.0"
 	},
 	"devDependencies": {

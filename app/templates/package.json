@@ -41,6 +41,7 @@
 		"gulp-autoprefixer": "^3.1.0",
 		"gulp-cached": "^1.1.0",
 		"gulp-concat": "^2.6.0",
+		"gulp-cssnano": "^2.0.0",
 		"gulp-header": "^1.7.1",
 		"gulp-imagemin": "^2.4.0",
 		"gulp-install": "^0.6.0",
@@ -50,7 +51,6 @@
 		"gulp-sass": "^2.1.0",<% } %><% if (options.js === 'TypeScript') { %>
 		"typescript": "^1.5.0-beta",
 		"gulp-typescript": "^2.7.5", <% } %>
-		"gulp-minify-css": "^1.2.2",
 		"gulp-newer": "^1.1.0",
 		"gulp-plumber": "^1.0.1",
 		"gulp-remember": "^0.3.0",

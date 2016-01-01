@@ -182,7 +182,7 @@ gulp.task('minify-css', ['compile-css'], function () {
 	assets.forEach(function (asset) {
 		gulp
 			.src('public/assets/css/' + asset.name)
-			.pipe(cssnano())
+			.pipe(cssnano({mergeRules:false}))
 			.pipe(rename(asset.name.replace('.css', '.min.css')))
 			.pipe(size({showFiles:true,gzip:true,title:'CSS minified'}))
 			.pipe(gulp.dest('public/assets/css/'));

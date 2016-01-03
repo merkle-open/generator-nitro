@@ -47,6 +47,7 @@
 		"gulp-install": "^0.6.0",
 		"gulp-jshint": "^2.0.0",<% if (options.pre === 'less') { %>
 		"gulp-less": "^3.0.5",<% } %>
+		"gulp-load-plugins": "^1.1.0",
 		"gulp-newer": "^1.1.0",
 		"gulp-plumber": "^1.0.1",
 		"gulp-remember": "^0.3.0",

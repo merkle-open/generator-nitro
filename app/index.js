@@ -172,6 +172,10 @@ module.exports = generators.Base.extend({
 				'package.json',
 				'config.json',
 				'gulpfile.js',
+				'gulp/compile-css.js',
+				'gulp/compile-js.js',
+				'gulp/utils.js',
+				'gulp/watch-assets.js',
 				'.jshintignore'
 			];
 			var ignores = [
@@ -182,7 +186,8 @@ module.exports = generators.Base.extend({
 			];
 			var typeScriptFiles = [
 				// files only for this.options.js==='TypeScript'
-				'tsd.json'
+				'tsd.json',
+				'gulp/compile-ts.js'
 			];
 
 			var data = {

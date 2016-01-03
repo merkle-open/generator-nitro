@@ -47,8 +47,8 @@ describe('nitro:app', function () {
 			assert.fileContent('package.json', /gulp-less/);
 		});
 
-		it('gulpfile.js requires gulp-less dependency', function () {
-			assert.fileContent('gulpfile.js', /gulp-less/);
+		it('compile-css uses gulp-less dependency', function () {
+			assert.fileContent('gulp/compile-css.js', /plugins.less/);
 		});
 
 		it('config.json loads .less files', function () {
@@ -74,8 +74,8 @@ describe('nitro:app', function () {
 			assert.fileContent('package.json', /gulp-sass/);
 		});
 
-		it('gulpfile.js requires gulp-sass dependency', function () {
-			assert.fileContent('gulpfile.js', /gulp-sass/);
+		it('compile-css uses gulp-sass dependency', function () {
+			assert.fileContent('gulp/compile-css.js', /plugins.sass/);
 		});
 
 		it('config.json loads .scss files', function () {

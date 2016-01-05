@@ -33,6 +33,13 @@ module.exports = generators.Base.extend({
 			type: String,
 			defaults: this.jsOptions[0]
 		});
+
+		this.tplOptions = ['html', 'hbs', 'mustache'];
+		this.option('tpl', {
+			desc: 'your desired template file extension [' + this.tplOptions.join('|') + ']',
+			type: String,
+			defaults: this.tplOptions[0]
+		});
 	},
 
 	initializing: function () {
@@ -72,6 +79,7 @@ module.exports = generators.Base.extend({
 					this.options.name = config.name || this.options.name;
 					this.options.pre = config.preprocessor || this.options.pre;
 					this.options.js = config.jscompiler || this.options.js;
+					this.options.tpl = config.templates || this.options.tpl;
 				}
 
 				done();
@@ -98,15 +106,24 @@ module.exports = generators.Base.extend({
 					message: 'What\'s your desired javascript compiler?',
 					choices: this.jsOptions,
 					default: _.indexOf(this.jsOptions, this.options.js) || 0
+				},
+				{
+					name: 'tpl',
+					type: 'list',
+					message: 'What\'s your desired template file extension?',
+					choices: this.tplOptions,
+					default: _.indexOf(this.tplOptions, this.options.tpl) || 0
 				}
 			], function (props) {
 				this.options.name = props.name;
 				this.options.pre = props.pre;
 				this.options.js = props.js;
+				this.options.tpl = props.tpl;
 
 				this.config.set('name', this.options.name);
 				this.config.set('preprocessor', this.options.pre);
 				this.config.set('jscompiler', this.options.js);
+				this.config.set('templates', this.options.tpl);
 
 				this.config.save();
 
@@ -140,7 +157,7 @@ module.exports = generators.Base.extend({
 			var zip = new admzip(this.destZip);
 
 			try {
-				// extract entrys
+				// extract entries
 				zip.extractEntryTo('frontend-defaults-master/editorconfig/frontend.editorconfig', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/gitignore/nitro.gitignore', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/gitattributes/.gitattributes', this.sourceRoot(), false, true);
@@ -217,10 +234,15 @@ module.exports = generators.Base.extend({
 					}
 				}
 
-				// exclude unecessary preprocessor files
 				var ext = path.extname(file).substring(1);
 
+				// exclude unnecessary preprocessor files
 				if (_.indexOf(this.preOptions, ext) !== -1 && this.options.pre !== ext) {
+					return;
+				}
+
+				// exclude unnecessary template files
+				if(_.indexOf(this.tplOptions, ext) !== -1 && this.options.tpl !== ext) {
 					return;
 				}
 

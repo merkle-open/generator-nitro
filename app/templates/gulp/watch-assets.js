@@ -39,10 +39,10 @@ module.exports = function (gulp, plugins) {
 		});
 
 		plugins.watch([
-			'views/**/*.html',
-			'!' + cfg.nitro.view_partials_directory + '/*.html', // exclude partials
+			'views/**/*.' + cfg.nitro.view_file_extension,
+			'!' + cfg.nitro.view_partials_directory + '/*.' + cfg.nitro.view_file_extension, // exclude partials
 			'views/_data/**/*.json',
-			'components/**/*.html',
+			'components/**/*.' + cfg.nitro.view_file_extension,
 			'components/**/_data/*.json'
 		], function () {
 			browserSync.reload();

@@ -42,10 +42,11 @@ You will be guided through some configuration options:
 * Desired Name (default: current directory name)
 * Desired CSS preprocessor (`less` or `scss`; default: `less`)
 * Desired JavaScript compiler (`JavaScript` or `TypeScript`; default: `JavaScript`)
+* Desired template file extension (`html`, `hbs` or `mustache`; default: `html`)
 
 It's possible to pass in these options through the command line
 
-    yo nitro --name=myproject --pre=scss --js=JavaScript
+    yo nitro --name=myproject --pre=scss --js=JavaScript --ext=hbs
 
 ### Update a project
 

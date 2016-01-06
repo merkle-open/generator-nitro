@@ -4,7 +4,7 @@ var generators = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var request = require('request');
-var path = require('path');
+var path = require('upath');
 var fs = require('fs');
 var admzip = require('adm-zip');
 var glob = require('glob');
@@ -34,11 +34,11 @@ module.exports = generators.Base.extend({
 			defaults: this.jsOptions[0]
 		});
 
-		this.tplOptions = ['html', 'hbs', 'mustache'];
-		this.option('tpl', {
-			desc: 'your desired template file extension [' + this.tplOptions.join('|') + ']',
+		this.extOptions = ['html', 'hbs', 'mustache'];
+		this.option('ext', {
+			desc: 'your desired template file extension [' + this.extOptions.join('|') + ']',
 			type: String,
-			defaults: this.tplOptions[0]
+			defaults: this.extOptions[0]
 		});
 	},
 
@@ -79,7 +79,7 @@ module.exports = generators.Base.extend({
 					this.options.name = config.name || this.options.name;
 					this.options.pre = config.preprocessor || this.options.pre;
 					this.options.js = config.jscompiler || this.options.js;
-					this.options.tpl = config.templates || this.options.tpl;
+					this.options.ext = config.extension || this.options.ext;
 				}
 
 				done();
@@ -108,22 +108,22 @@ module.exports = generators.Base.extend({
 					default: _.indexOf(this.jsOptions, this.options.js) || 0
 				},
 				{
-					name: 'tpl',
+					name: 'ext',
 					type: 'list',
 					message: 'What\'s your desired template file extension?',
-					choices: this.tplOptions,
-					default: _.indexOf(this.tplOptions, this.options.tpl) || 0
+					choices: this.extOptions,
+					default: _.indexOf(this.extOptions, this.options.ext) || 0
 				}
 			], function (props) {
 				this.options.name = props.name;
 				this.options.pre = props.pre;
 				this.options.js = props.js;
-				this.options.tpl = props.tpl;
+				this.options.ext = props.ext;
 
 				this.config.set('name', this.options.name);
 				this.config.set('preprocessor', this.options.pre);
 				this.config.set('jscompiler', this.options.js);
-				this.config.set('templates', this.options.tpl);
+				this.config.set('extension', this.options.ext);
 
 				this.config.save();
 
@@ -242,21 +242,24 @@ module.exports = generators.Base.extend({
 					return;
 				}
 
-				// exclude unnecessary template files
-				if(_.indexOf(this.tplOptions, ext) !== -1 && this.options.tpl !== ext) {
-					return;
-				}
-
 				if ((_.startsWith(file, 'project') || _.startsWith(file, 'components')) && (ext === 'js' || ext === 'ts') && (this.options.js === 'JavaScript' && ext !== 'js' || this.options.js === 'TypeScript' && ext !== 'ts')) {
 					return;
 				}
 
+				var sourcePath = this.templatePath(file),
+					destinationPath = this.destinationPath(file);
+
+				// adjust destination template file extension
+				if(_.indexOf(this.extOptions, ext) !== -1) {
+					destinationPath = path.changeExt(destinationPath, this.options.ext);
+				}
+
 				if (_.indexOf(tplFiles, file) !== -1) {
-					this.fs.copyTpl(this.templatePath(file), this.destinationPath(file), data);
+					this.fs.copyTpl(sourcePath, destinationPath, data);
 					return;
 				}
 
-				this.fs.copy(this.templatePath(file), this.destinationPath(file));
+				this.fs.copy(sourcePath, destinationPath);
 			}, this);
 
 		}

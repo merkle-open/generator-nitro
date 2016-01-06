@@ -193,6 +193,7 @@ module.exports = generators.Base.extend({
 				'gulp/compile-js.js',
 				'gulp/utils.js',
 				'gulp/watch-assets.js',
+				'app/core/config.js',
 				'.jshintignore'
 			];
 			var ignores = [

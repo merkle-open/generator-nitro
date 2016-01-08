@@ -1,8 +1,8 @@
 'use strict';
 
 var path = require('path');
-var assert = require('yeoman-generator').assert;
-var helpers = require('yeoman-generator').test;
+var assert = require('yeoman-assert');
+var helpers = require('yeoman-test');
 var os = require('os');
 var fs = require('fs-extra');
 var ejs = require('ejs');
@@ -15,7 +15,7 @@ var configData = {
 };
 
 describe('nitro:component', function () {
-	describe('when creating a component "Test"', function () {
+	describe('when creating a component "Test" (organism)', function () {
 		describe('but no modifier and decorator is given', function () {
 			beforeEach(function (done) {
 				helpers.run(path.join(__dirname, '../component'))
@@ -118,88 +118,125 @@ describe('nitro:component', function () {
 		});
 	});
 
-	describe('when creating a component "NavMain" with a modifier and decorator "SpecialCase"', function () {
+	describe('when creating a component "NavMain" (molecule) with a modifier and decorator "SpecialCase"', function () {
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../component'))
 				.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
 					fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
 					fs.copySync(path.join(__dirname, '../app/templates/config.json'), path.join(dir, 'config.json'));
 				})
-				.withPrompts({name: 'NavMain', type: 'organism', modifier: 'SpecialCase', decorator: 'SpecialCase'})
+				.withPrompts({name: 'NavMain', type: 'molecule', modifier: 'SpecialCase', decorator: 'SpecialCase'})
 				.on('end', done);
 		});
 
 		it('the component and modifier/decorator files are created', function () {
 			assert.file([
-				'components/organisms/NavMain',
-				'components/organisms/NavMain/navmain.html',
-				'components/organisms/NavMain/_data/navmain.json',
-				'components/organisms/NavMain/_data/navmain-specialcase.json',
-				'components/organisms/NavMain/css/navmain.less',
-				'components/organisms/NavMain/css/modifier/navmain-specialcase.less',
-				'components/organisms/NavMain/js/navmain.js',
-				'components/organisms/NavMain/js/decorator/navmain-specialcase.js',
-				'components/organisms/NavMain/spec/navmainSpec.js'
+				'components/molecules/NavMain',
+				'components/molecules/NavMain/navmain.html',
+				'components/molecules/NavMain/_data/navmain.json',
+				'components/molecules/NavMain/_data/navmain-specialcase.json',
+				'components/molecules/NavMain/css/navmain.less',
+				'components/molecules/NavMain/css/modifier/navmain-specialcase.less',
+				'components/molecules/NavMain/js/navmain.js',
+				'components/molecules/NavMain/js/decorator/navmain-specialcase.js',
+				'components/molecules/NavMain/spec/navmainSpec.js'
 			]);
 		});
 
-		it('the component css class is o-nav-main', function () {
-			assert.fileContent([['components/organisms/NavMain/css/navmain.less', /\.o-nav-main \{/]]);
+		it('the component css class is m-nav-main', function () {
+			assert.fileContent([['components/molecules/NavMain/css/navmain.less', /\.m-nav-main \{/]]);
 		});
 
-		it('the modifier css class is o-nav-main--special-case', function () {
-			assert.fileContent([['components/organisms/NavMain/css/modifier/navmain-specialcase.less', /\.o-nav-main--special-case \{/]]);
+		it('the modifier css class is m-nav-main--special-case', function () {
+			assert.fileContent([['components/molecules/NavMain/css/modifier/navmain-specialcase.less', /\.m-nav-main--special-case \{/]]);
 		});
 
 		it('the component js class is T.Module.NavMain', function () {
-			assert.fileContent([['components/organisms/NavMain/js/navmain.js', /T\.Module\.NavMain =/]]);
+			assert.fileContent([['components/molecules/NavMain/js/navmain.js', /T\.Module\.NavMain =/]]);
 		});
 
 		it('the decorator js class is T.Module.NavMain.SpecialCase', function () {
-			assert.fileContent([['components/organisms/NavMain/js/decorator/navmain-specialcase.js', /T\.Module\.NavMain\.SpecialCase =/]]);
+			assert.fileContent([['components/molecules/NavMain/js/decorator/navmain-specialcase.js', /T\.Module\.NavMain\.SpecialCase =/]]);
 		});
 	});
 
-	describe('when creating a component "nav-main" with a modifier and decorator "special-case"', function () {
+	describe('when creating a component "nav-main" (molecule) with a modifier and decorator "special-case"', function () {
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../component'))
 				.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
 					fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
 					fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../app/templates/config.json'), 'utf8'), configData));
 				})
-				.withPrompts({name: 'nav-main', type: 'organism', modifier: 'special-case', decorator: 'special-case'})
+				.withPrompts({name: 'nav-main', type: 'molecule', modifier: 'special-case', decorator: 'special-case'})
 				.on('end', done);
 		});
 
 		it('the component and modifier/decorator files are created', function () {
 			assert.file([
-				'components/organisms/nav-main',
-				'components/organisms/nav-main/navmain.html',
-				'components/organisms/nav-main/_data/navmain.json',
-				'components/organisms/nav-main/_data/navmain-specialcase.json',
-				'components/organisms/nav-main/css/navmain.less',
-				'components/organisms/nav-main/css/modifier/navmain-specialcase.less',
-				'components/organisms/nav-main/js/navmain.js',
-				'components/organisms/nav-main/js/decorator/navmain-specialcase.js',
-				'components/organisms/nav-main/spec/navmainSpec.js'
+				'components/molecules/nav-main',
+				'components/molecules/nav-main/nav-main.html',
+				'components/molecules/nav-main/_data/nav-main.json',
+				'components/molecules/nav-main/_data/nav-main-special-case.json',
+				'components/molecules/nav-main/css/nav-main.less',
+				'components/molecules/nav-main/css/modifier/nav-main-special-case.less',
+				'components/molecules/nav-main/js/nav-main.js',
+				'components/molecules/nav-main/js/decorator/nav-main-special-case.js',
+				'components/molecules/nav-main/spec/nav-mainSpec.js'
 			]);
 		});
 
-		it('the component css class is o-nav-main', function () {
-			assert.fileContent([['components/organisms/nav-main/css/navmain.less', /\.o-nav-main \{/]]);
+		it('the component css class is m-nav-main', function () {
+			assert.fileContent([['components/molecules/nav-main/css/nav-main.less', /\.m-nav-main \{/]]);
 		});
 
-		it('the modifier css class is o-nav-main--special-case', function () {
-			assert.fileContent([['components/organisms/nav-main/css/modifier/navmain-specialcase.less', /\.o-nav-main--special-case \{/]]);
+		it('the modifier css class is m-nav-main--special-case', function () {
+			assert.fileContent([['components/molecules/nav-main/css/modifier/nav-main-special-case.less', /\.m-nav-main--special-case \{/]]);
 		});
 
 		it('the component js class is T.Module.NavMain', function () {
-			assert.fileContent([['components/organisms/nav-main/js/navmain.js', /T\.Module\.NavMain =/]]);
+			assert.fileContent([['components/molecules/nav-main/js/nav-main.js', /T\.Module\.NavMain =/]]);
 		});
 
 		it('the decorator js class is T.Module.NavMain.SpecialCase', function () {
-			assert.fileContent([['components/organisms/nav-main/js/decorator/navmain-specialcase.js', /T\.Module\.NavMain\.SpecialCase =/]]);
+			assert.fileContent([['components/molecules/nav-main/js/decorator/nav-main-special-case.js', /T\.Module\.NavMain\.SpecialCase =/]]);
 		});
 	});
-});
 
+	describe('when creating a component "Nav Main" (molecule) with a modifier "Light.Blue"', function () {
+		beforeEach(function (done) {
+			helpers.run(path.join(__dirname, '../component'))
+				.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
+					fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
+					fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../app/templates/config.json'), 'utf8'), configData));
+				})
+				.withPrompts({name: 'Nav Main', type: 'molecule', modifier: 'Light.Blue'})
+				.on('end', done);
+		});
+
+		it('the component and decorator files are created', function () {
+			assert.file([
+				'components/molecules/NavMain',
+				'components/molecules/NavMain/navmain.html',
+				'components/molecules/NavMain/_data/navmain.json',
+				'components/molecules/NavMain/_data/navmain-lightblue.json',
+				'components/molecules/NavMain/css/navmain.less',
+				'components/molecules/NavMain/css/modifier/navmain-lightblue.less',
+				'components/molecules/NavMain/js/navmain.js',
+				'components/molecules/NavMain/spec/navmainSpec.js'
+			]);
+		});
+
+		it('the component css class is m-nav-main', function () {
+			assert.fileContent([['components/molecules/NavMain/css/navmain.less', /\.m-nav-main \{/]]);
+		});
+
+		it('the modifier css class is m-nav-main--light-blue', function () {
+			assert.fileContent([['components/molecules/NavMain/css/modifier/navmain-lightblue.less', /\.m-nav-main--light-blue \{/]]);
+		});
+
+		it('the component js class is T.Module.NavMain', function () {
+			assert.fileContent([['components/molecules/NavMain/js/navmain.js', /T\.Module\.NavMain =/]]);
+		});
+
+	});
+});

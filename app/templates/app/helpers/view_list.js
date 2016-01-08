@@ -10,10 +10,14 @@ var hbs = require('hbs'),
 var excludes = {
 	directories: [
 		'_data',
-		path.basename(cfg.nitro.view_partials_directory)
+		path.basename(cfg.nitro.view_partials_directory),
+		'.svn'
 	],
 	files: [
-		'404.' + cfg.nitro.view_file_extension
+		'404.' + cfg.nitro.view_file_extension,
+		'.DS_Store',
+		'Thumbs.db',
+		'Desktop.ini'
 	]
 };
 

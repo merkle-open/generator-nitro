@@ -3,7 +3,6 @@
 var generators = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
-var request = require('request');
 var path = require('path');
 var fs = require('fs');
 var gitconfig = require('git-config');
@@ -55,7 +54,13 @@ module.exports = generators.Base.extend({
 				message: 'What\'s the name of your component?',
 				default: this.name,
 				validate: function validateString(value) {
-					return _.isString(value) && !_.isEmpty(value);
+					if (!_.isString(value) || _.isEmpty(value)) {
+						return 'Component name has to be a valid string';
+					}
+					if (/^[0-9]/.test(value)) {
+						return 'Component name must not start with a Number';
+					}
+					return true;
 				}
 			},
 			{
@@ -73,7 +78,13 @@ module.exports = generators.Base.extend({
 			{
 				name: 'decorator',
 				message: 'Would you like to create a JS decorator? Type your desired name or leave empty.',
-				default: this.options.decorator || ''
+				default: this.options.decorator || '',
+				validate: function validateString(value) {
+					if (_.isString(value) && /^[0-9]/.test(value)) {
+						return 'Component decorator must not start with a Number';
+					}
+					return true;
+				}
 			}
 		], function (props) {
 			this.name = props.name;
@@ -110,18 +121,16 @@ module.exports = generators.Base.extend({
 			this.log(msg);
 
 			var component = this.cfg.nitro.components[this.options.type];
-
+			var folder = this.name.replace(/[^A-Za-z0-9-]/g, '');
 			var files = glob.sync('**/*', {cwd: this.destinationPath(component.template), nodir: true, dot: true});
 			var ignores = [
 				// files to ignore
 				'.DS_Store'
 			];
-
 			var user = {
 				name: '',
 				email: ''
 			};
-
 			var gitConfig = gitconfig.sync();
 
 			if (!_.isEmpty(gitConfig) && !_.isEmpty(gitConfig.user)) {
@@ -133,21 +142,21 @@ module.exports = generators.Base.extend({
 				user: user,
 				component: {
 					name: this.name, // Component name, eg. Main navigation
-					js: _.capitalize(_.camelCase(this.name)), // Component name for use in JS files, eg. MainNavigation
+					js: _.capitalize(_.camelCase(this.name.replace(/^[0-9]+/, ''))), // Component name for use in JS files, eg. MainNavigation
 					css: _.kebabCase(this.name), // Component name for use in CSS files, eg. main-navigation
-					prefix: component.component_prefix || null, // CSS class prefix, eg. mod
+					prefix: component.component_prefix || null, // CSS class prefix, eg. m
 					type: this.options.type, // Component type, eg. atom, molecule etc.
-					file: _.kebabCase(this.name).replace(/-/g, '') // Component filename, eg. mainnavigation
+					file: this.name.replace(/[^A-Za-z0-9-]/g, '').toLowerCase() // Component filename, eg. main-navigation
 				},
 				modifier: {
 					name: this.options.modifier, // Modifier name, eg. Highlight
 					css: _.kebabCase(this.options.modifier), // Modifier name for use in CSS files, eg. highlight
-					file: _.kebabCase(this.options.modifier).replace(/-/g, '')  // Modifier filename, eg.highlight
+					file: this.options.modifier.replace(/[^A-Za-z0-9-]/g, '').toLowerCase()  // Modifier filename, eg.highlight
 				},
 				decorator: {
 					name: this.options.decorator, // Decorator name, eg. Highlight
-					js: _.capitalize(_.camelCase(this.options.decorator)), // Decorator name for use in JS files, eg. Highlight
-					file: _.kebabCase(this.options.decorator).replace(/-/g, '')  // Modifier filename, eg.highlight
+					js: _.capitalize(_.camelCase(this.options.decorator.replace(/^[0-9]+/, ''))), // Decorator name for use in JS files, eg. Highlight
+					file: this.options.decorator.replace(/[^A-Za-z0-9-]/g, '').toLowerCase()  // Modifier filename, eg.highlight
 				}
 			};
 
@@ -182,7 +191,7 @@ module.exports = generators.Base.extend({
 					filename = path.join(path.dirname(filename), path.basename(filename).replace(key, value));
 				});
 
-				this.fs.copyTpl(this.destinationPath(component.template + '/' + file), this.destinationPath(component.path + '/' + this.name + '/' + filename), replacements);
+				this.fs.copyTpl(this.destinationPath(component.template + '/' + file), this.destinationPath(component.path + '/' + folder + '/' + filename), replacements);
 			}, this);
 		}
 	}

@@ -34,6 +34,7 @@
 		"glob": "^6.0.3",
 		"lodash": "^3.10.1",
 		"request": "^2.67.0",
+		"upath": "^0.1.6",
 		"yeoman-generator": "^0.22.2",
 		"yosay": "^1.1.0"
 	},

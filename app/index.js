@@ -4,7 +4,7 @@ var generators = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var request = require('request');
-var path = require('path');
+var path = require('upath');
 var fs = require('fs');
 var admzip = require('adm-zip');
 var glob = require('glob');
@@ -32,6 +32,13 @@ module.exports = generators.Base.extend({
 			desc: 'your desired js compiler [' + this.jsOptions.join('|') + ']',
 			type: String,
 			defaults: this.jsOptions[0]
+		});
+
+		this.extOptions = ['html', 'hbs', 'mustache'];
+		this.option('ext', {
+			desc: 'your desired template file extension [' + this.extOptions.join('|') + ']',
+			type: String,
+			defaults: this.extOptions[0]
 		});
 	},
 
@@ -72,6 +79,7 @@ module.exports = generators.Base.extend({
 					this.options.name = config.name || this.options.name;
 					this.options.pre = config.preprocessor || this.options.pre;
 					this.options.js = config.jscompiler || this.options.js;
+					this.options.ext = config.extension || this.options.ext;
 				}
 
 				done();
@@ -98,15 +106,24 @@ module.exports = generators.Base.extend({
 					message: 'What\'s your desired javascript compiler?',
 					choices: this.jsOptions,
 					default: _.indexOf(this.jsOptions, this.options.js) || 0
+				},
+				{
+					name: 'ext',
+					type: 'list',
+					message: 'What\'s your desired template file extension?',
+					choices: this.extOptions,
+					default: _.indexOf(this.extOptions, this.options.ext) || 0
 				}
 			], function (props) {
 				this.options.name = props.name;
 				this.options.pre = props.pre;
 				this.options.js = props.js;
+				this.options.ext = props.ext;
 
 				this.config.set('name', this.options.name);
 				this.config.set('preprocessor', this.options.pre);
 				this.config.set('jscompiler', this.options.js);
+				this.config.set('extension', this.options.ext);
 
 				this.config.save();
 
@@ -140,7 +157,7 @@ module.exports = generators.Base.extend({
 			var zip = new admzip(this.destZip);
 
 			try {
-				// extract entrys
+				// extract entries
 				zip.extractEntryTo('frontend-defaults-master/editorconfig/frontend.editorconfig', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/gitignore/nitro.gitignore', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/gitattributes/.gitattributes', this.sourceRoot(), false, true);
@@ -176,6 +193,7 @@ module.exports = generators.Base.extend({
 				'gulp/compile-js.js',
 				'gulp/utils.js',
 				'gulp/watch-assets.js',
+				'app/core/config.js',
 				'.jshintignore'
 			];
 			var ignores = [
@@ -217,9 +235,9 @@ module.exports = generators.Base.extend({
 					}
 				}
 
-				// exclude unecessary preprocessor files
 				var ext = path.extname(file).substring(1);
 
+				// exclude unnecessary preprocessor files
 				if (_.indexOf(this.preOptions, ext) !== -1 && this.options.pre !== ext) {
 					return;
 				}
@@ -228,12 +246,20 @@ module.exports = generators.Base.extend({
 					return;
 				}
 
+				var sourcePath = this.templatePath(file),
+					destinationPath = this.destinationPath(file);
+
+				// adjust destination template file extension
+				if(_.indexOf(this.extOptions, ext) !== -1) {
+					destinationPath = path.changeExt(destinationPath, this.options.ext);
+				}
+
 				if (_.indexOf(tplFiles, file) !== -1) {
-					this.fs.copyTpl(this.templatePath(file), this.destinationPath(file), data);
+					this.fs.copyTpl(sourcePath, destinationPath, data);
 					return;
 				}
 
-				this.fs.copy(this.templatePath(file), this.destinationPath(file));
+				this.fs.copy(sourcePath, destinationPath);
 			}, this);
 
 		}

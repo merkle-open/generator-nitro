@@ -1,27 +1,16 @@
-var express = require('express'),
-	app = express(),
-	cfg = require('./app/core/config'),
-	router = require('./app/core/router'),
-	hbs = require('./app/core/hbs'),
-	compression = require('compression'),
-	bodyParser = require('body-parser'),
-	port = process.env.PORT || 8080;
+var fs = require('fs');
+var hbs = require('hbs');
+var config = require('nitro/config')(
+	require('nitro/config-reader')(__dirname)
+);
+var nitro = require('nitro')(config);
+var hbs = require('nitro/hbs');
 
-// compress all requests
-app.use(compression());
+var port = 8080;
 
-// translations
-require('./app/core/i18n')(app);
+nitro.addHelper('i18n');
 
-// Loads custom project routes
-require('./app/core/routeLoader')(app);
-
-app.use(router);
-app.use(bodyParser.urlencoded({extended: true}));
-app.set('view engine', cfg.nitro.view_file_extension);
-app.set('views', cfg.nitro.view_directory);
-app.engine(cfg.nitro.view_file_extension, hbs.__express);
-
-app.listen(port, function () {
+nitro.start(port, function(app) {
+	hbs(app, config);
 	console.log('Nitro listening on *:%s', port);
 });

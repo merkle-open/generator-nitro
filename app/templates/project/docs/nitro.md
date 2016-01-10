@@ -67,12 +67,12 @@ app to run on another port put them before the gulp task like this:
 
 The port to be used in production can be set the same way:
  
-    PORT 3000 gulp production 
+    PORT=3000 node server.js
 
 This works a bit different on **Windows**. Use the following commands in prompt:
  
     set PORT=8000 && set PROXY=8001 && gulp develop
-    set PORT=3000 && gulp production
+    set PORT=3000 && node server.js
 
 ### Creating pages
 

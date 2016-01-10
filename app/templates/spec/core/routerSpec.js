@@ -25,7 +25,7 @@ describe('Nitro Router', function () {
 		expect(contains).toBe(true);
 	});
 
-	it('contains one static routes', function () {
+	it('contains one static route', function () {
 		var noOfStaticRoutes = 0;
 
 		router.stack.forEach(function (route) {

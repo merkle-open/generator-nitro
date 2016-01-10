@@ -11,7 +11,7 @@
 	},
 	"scripts": {
 		"test": "karma start --single-run --no-auto-watch",
-		"start": "node server"
+		"start": "node index"
 	},
 	"keywords": [
 		"terrific",

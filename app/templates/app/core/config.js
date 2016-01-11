@@ -13,7 +13,7 @@ function factory() {
 	config.nitro = extend(true, {
 		base_path: path.normalize(__dirname + '../../../'),
 		view_directory: path.normalize(__dirname + '../../../') + 'views',
-		view_file_extension: 'html',
+		view_file_extension: '<%= options.viewExt %>',
 		view_partials_directory: 'views/_partials'
 	}, config.nitro);
 

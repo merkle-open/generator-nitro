@@ -15,7 +15,6 @@ describe('nitro:app', function () {
 
 	it('creates blueprint files', function () {
 		assert.file([
-			'app',
 			'assets',
 			'components',
 			'project',
@@ -41,6 +40,10 @@ describe('nitro:app', function () {
 				.withOptions({'skip-install': true})
 				.withPrompts({pre: 'less'})
 				.on('end', done);
+		});
+
+		it('package.json contains express-nitro dependency', function() {
+			assert.fileContent('package.json', /express-nitro/);
 		});
 
 		it('package.json contains gulp-less dependency', function () {

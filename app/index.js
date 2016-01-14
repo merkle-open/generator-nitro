@@ -90,14 +90,16 @@ module.exports = generators.Base.extend({
 					type: 'list',
 					message: 'What\'s your desired preprocessor?',
 					choices: this.preOptions,
-					default: _.indexOf(this.preOptions, this.options.pre) || 0
+					default: _.indexOf(this.preOptions, this.options.pre) || 0,
+					store: true
 				},
 				{
 					name: 'js',
 					type: 'list',
 					message: 'What\'s your desired javascript compiler?',
 					choices: this.jsOptions,
-					default: _.indexOf(this.jsOptions, this.options.js) || 0
+					default: _.indexOf(this.jsOptions, this.options.js) || 0,
+					store: true
 				}
 			], function (props) {
 				this.options.name = props.name;

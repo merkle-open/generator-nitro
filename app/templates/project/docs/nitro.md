@@ -27,6 +27,22 @@ and some dependencies installed globally.
 
     npm install -g yo bower gulp jasmine karma-cli generator-nitro
 
+## Starting the app
+
+The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `develop` task). If you want the
+app to run on another port put them before the gulp task like this:
+
+    PORT=8000 PROXY=8001 gulp develop
+
+The port to be used in production can be set the same way:
+ 
+    PORT=3000 node server.js
+
+This works a bit different on **Windows**. Use the following commands in prompt:
+ 
+    set PORT=8000 && set PROXY=8001 && gulp develop
+    set PORT=3000 && node server.js
+
 ## Daily Work - Creating Components & Pages
 
 ### Creating Components
@@ -55,24 +71,6 @@ Different data variantions has to be placed in the `_data` folder:
 ### Creating Components with yo
 
     yo nitro:component
-
-### Using gulp
-
-#### Starting the app
-
-The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `develop` task). If you want the
-app to run on another port put them before the gulp task like this:
-
-    PORT=8000 PROXY=8001 gulp develop
-
-The port to be used in production can be set the same way:
- 
-    PORT=3000 node server.js
-
-This works a bit different on **Windows**. Use the following commands in prompt:
- 
-    set PORT=8000 && set PROXY=8001 && gulp develop
-    set PORT=3000 && node server.js
 
 ### Creating pages
 
@@ -376,7 +374,7 @@ Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used o
 
 The following packages are always installed by the [app](#name) generator:
 
-* [jQuery 2.1.4](http://jquery.com/)
+* [jQuery 2.2.0](http://jquery.com/)
 * [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)
 
 All of these can be updated with `bower update` as new versions are released.

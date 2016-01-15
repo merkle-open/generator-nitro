@@ -82,8 +82,7 @@ module.exports = generators.Base.extend({
 				user: user,
 				view: {
 					name: this.name, // View name, eg. Index
-					title: this.title, // Page title, eg. "The Index Page"
-					file: this.name.replace(/[^A-Za-z0-9-]/g, '').toLowerCase() // View filename, eg. index
+					title: this.title // Page title, eg. "The Index Page"
 				}
 			};
 

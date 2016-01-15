@@ -31,15 +31,15 @@
 		"adm-zip": "^0.4.4",
 		"chalk": "^1.1.1",
 		"git-config": "0.0.7",
-		"glob": "^6.0.3",
+		"glob": "^6.0.4",
 		"lodash": "^3.10.1",
 		"request": "^2.67.0",
-		"yeoman-generator": "^0.22.2",
+		"yeoman-generator": "^0.22.3",
 		"yosay": "^1.1.0"
 	},
 	"devDependencies": {
 		"ejs": "^2.3.4",
-		"fs-extra": "^0.26.3",
+		"fs-extra": "^0.26.4",
 		"jasmine": "^2.4.1",
 		"yeoman-assert": "^2.1.1",
 		"yeoman-test": "^1.0.0"

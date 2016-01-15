@@ -20,7 +20,8 @@ module.exports = generators.Base.extend({
 		// View title
 		this.argument('title', {desc: 'the page title of your view?', type: String, required: false});
 
-		this.cfg = require(this.destinationPath('config.json'));
+		// we need to get the merged config with nitro defaults
+		this.cfg = require(this.destinationPath('app/core/config.js'));
 	},
 
 	initializing: function () {
@@ -65,8 +66,8 @@ module.exports = generators.Base.extend({
 
 			this.log(msg);
 
-			var view = this.cfg.nitro.views;
-			var files = glob.sync('**/*', {cwd: this.destinationPath(view.template), nodir: true, dot: true});
+			var views = this.cfg.nitro.views;
+			var files = glob.sync('**/*', {cwd: this.destinationPath(views.template), nodir: true, dot: true});
 			var user = {
 				name: '',
 				email: ''
@@ -97,7 +98,7 @@ module.exports = generators.Base.extend({
 					filename = path.join(path.dirname(filename), path.basename(filename).replace(key, value));
 				});
 
-				this.fs.copyTpl(this.destinationPath(view.template + '/' + file), this.destinationPath(view.path + '/' + filename), replacements);
+				this.fs.copyTpl(this.destinationPath(views.template + '/' + file), this.destinationPath(this.cfg.nitro.view_directory + '/' + filename), replacements);
 			}, this);
 		}
 	}

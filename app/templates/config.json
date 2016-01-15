@@ -22,8 +22,7 @@
 	},
 	"nitro": {
 		"views": {
-			"template": "project/blueprints/views",
-			"path": "views"
+			"template": "project/blueprints/views"
 		},
 		"components": {
 			"atom": {

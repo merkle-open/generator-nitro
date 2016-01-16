@@ -1,6 +1,6 @@
 {
 	"name": "nitro",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.",
 	"license": "MIT",
 	"repository": "namics/generator-nitro",

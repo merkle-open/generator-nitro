@@ -87,5 +87,80 @@ describe('nitro:app', function () {
 			assert.noFile('project/blueprints/component/css/modifier/component-modifier.less');
 		});
 	});
+
+	describe('when using view file extension html', function () {
+		beforeEach(function (done) {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({'skip-install': true})
+				.withPrompts({viewExt: 'html'})
+				.on('end', done);
+		});
+
+		it('files have the .html file extension', function() {
+			assert.file([
+				'views/index.html',
+				'views/404.html',
+				'views/_partials/head.html',
+				'views/_partials/foot.html',
+				'components/molecules/Example/example.html',
+				'project/blueprints/component/component.html'
+			]);
+		});
+
+		it('config.js defaults contain the correct view file extension', function () {
+			assert.fileContent('app/core/config.js', /view_file_extension: 'html'/);
+		});
+	});
+
+	describe('when using view file extension hbs', function () {
+		beforeEach(function (done) {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({'skip-install': true})
+				.withPrompts({viewExt: 'hbs'})
+				.on('end', done);
+		});
+
+		it('files have the .hbs file extension', function() {
+			assert.file([
+				'views/index.hbs',
+				'views/404.hbs',
+				'views/_partials/head.hbs',
+				'views/_partials/foot.hbs',
+				'components/molecules/Example/example.hbs',
+				'project/blueprints/component/component.hbs'
+			]);
+		});
+
+		it('config.js defaults contain the correct view file extension', function () {
+			assert.fileContent('app/core/config.js', /view_file_extension: 'hbs'/);
+		});
+	});
+
+	describe('when using view file extension mustache', function () {
+		beforeEach(function (done) {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({'skip-install': true})
+				.withPrompts({viewExt: 'mustache'})
+				.on('end', done);
+		});
+
+		it('files have the .mustache file extension', function() {
+			assert.file([
+				'views/index.mustache',
+				'views/404.mustache',
+				'views/_partials/head.mustache',
+				'views/_partials/foot.mustache',
+				'components/molecules/Example/example.mustache',
+				'project/blueprints/component/component.mustache'
+			]);
+		});
+
+		it('config.js defaults contain the correct view file extension', function () {
+			assert.fileContent('app/core/config.js', /view_file_extension: 'mustache'/);
+		});
+	});
 });
 

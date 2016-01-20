@@ -33,6 +33,13 @@ module.exports = generators.Base.extend({
 			type: String,
 			defaults: this.jsOptions[0]
 		});
+
+		this.viewExtOptions = ['html', 'hbs', 'mustache'];
+		this.option('viewExt', {
+			desc: 'your desired view file extension [' + this.viewExtOptions.join('|') + ']',
+			type: String,
+			defaults: this.viewExtOptions[0]
+		});
 	},
 
 	initializing: function () {
@@ -72,6 +79,7 @@ module.exports = generators.Base.extend({
 					this.options.name = config.name || this.options.name;
 					this.options.pre = config.preprocessor || this.options.pre;
 					this.options.js = config.jscompiler || this.options.js;
+					this.options.viewExt = config.viewExtension || this.options.viewExt;
 				}
 
 				done();
@@ -90,23 +98,35 @@ module.exports = generators.Base.extend({
 					type: 'list',
 					message: 'What\'s your desired preprocessor?',
 					choices: this.preOptions,
-					default: _.indexOf(this.preOptions, this.options.pre) || 0
+					default: _.indexOf(this.preOptions, this.options.pre) || 0,
+					store: true
 				},
 				{
 					name: 'js',
 					type: 'list',
 					message: 'What\'s your desired javascript compiler?',
 					choices: this.jsOptions,
-					default: _.indexOf(this.jsOptions, this.options.js) || 0
+					default: _.indexOf(this.jsOptions, this.options.js) || 0,
+					store: true
+				},
+				{
+					name: 'viewExt',
+					type: 'list',
+					message: 'What\'s your desired view file extension?',
+					choices: this.viewExtOptions,
+					default: _.indexOf(this.viewExtOptions, this.options.viewExt) || 0,
+					store: true
 				}
 			], function (props) {
 				this.options.name = props.name;
 				this.options.pre = props.pre;
 				this.options.js = props.js;
+				this.options.viewExt = props.viewExt;
 
 				this.config.set('name', this.options.name);
 				this.config.set('preprocessor', this.options.pre);
 				this.config.set('jscompiler', this.options.js);
+				this.config.set('viewExtension', this.options.viewExt);
 
 				this.config.save();
 
@@ -140,7 +160,7 @@ module.exports = generators.Base.extend({
 			var zip = new admzip(this.destZip);
 
 			try {
-				// extract entrys
+				// extract entries
 				zip.extractEntryTo('frontend-defaults-master/editorconfig/frontend.editorconfig', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/gitignore/nitro.gitignore', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/gitattributes/.gitattributes', this.sourceRoot(), false, true);
@@ -176,6 +196,7 @@ module.exports = generators.Base.extend({
 				'gulp/compile-js.js',
 				'gulp/utils.js',
 				'gulp/watch-assets.js',
+				'app/core/config.js',
 				'.jshintignore'
 			];
 			var ignores = [
@@ -188,6 +209,15 @@ module.exports = generators.Base.extend({
 				// files only for this.options.js==='TypeScript'
 				'tsd.json',
 				'gulp/compile-ts.js'
+			];
+			var viewFiles = [
+				// files that might change file extension
+				'views/404.html',
+				'views/index.html',
+				'views/_partials/foot.html',
+				'views/_partials/head.html',
+				'components/molecules/Example/example.html',
+				'project/blueprints/component/component.html'
 			];
 
 			var data = {
@@ -217,9 +247,9 @@ module.exports = generators.Base.extend({
 					}
 				}
 
-				// exclude unecessary preprocessor files
 				var ext = path.extname(file).substring(1);
 
+				// exclude unnecessary preprocessor files
 				if (_.indexOf(this.preOptions, ext) !== -1 && this.options.pre !== ext) {
 					return;
 				}
@@ -228,12 +258,22 @@ module.exports = generators.Base.extend({
 					return;
 				}
 
+				var sourcePath = this.templatePath(file),
+					destinationPath = this.destinationPath(file);
+
+				// adjust destination template file extension for view files
+				if(_.indexOf(this.viewExtOptions, ext) !== -1 && _.indexOf(viewFiles, file) !== -1) {
+					var targetExt = '.' + (this.options.viewExt !== 0 ? this.options.viewExt : this.viewExtOptions[0]);
+
+					destinationPath = destinationPath.replace(path.extname(destinationPath), targetExt);
+				}
+
 				if (_.indexOf(tplFiles, file) !== -1) {
-					this.fs.copyTpl(this.templatePath(file), this.destinationPath(file), data);
+					this.fs.copyTpl(sourcePath, destinationPath, data);
 					return;
 				}
 
-				this.fs.copy(this.templatePath(file), this.destinationPath(file));
+				this.fs.copy(sourcePath, destinationPath);
 			}, this);
 
 		}

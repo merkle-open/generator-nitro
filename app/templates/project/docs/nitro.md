@@ -64,7 +64,7 @@ Terrific modifiers & decorators are created using the following conventions:
     /Example/css/modifier/example-<modifier>.css
     /Example/js/decorator/example-<decorator>.js
 
-Different data variantions has to be placed in the `_data` folder:
+Different data variations has to be placed in the `_data` folder:
 
     /Example/_data/example-variant.json
 
@@ -159,7 +159,7 @@ You may overwrite data from views & components in request parameters.
 
 `?pageTitle=Testpage` will overwrite the the data for the handlebars expression `{{pageTitle}}`
 
-It's also possilbe to use dot notation for object data:
+It's also possible to use dot notation for object data:
 
 `?page.title=Testpage` will overwrite the value for `{{page.title}}` 
 
@@ -210,7 +210,7 @@ The order of these special patterns does not matter.
 
 #### Examples
 
-* `"!components/*/Test*"          Exclude all components starting with `Test`
+* `"!components/*/Test*"`         Exclude all components starting with `Test`
 * `"!**/*-test.*"`                Exclude all filenames ending with `-test`.
 * `"+assets/css/mixins.less"`     Exclude `assets/css/mixins.less` but prepend to every compile call of every .less file
 
@@ -341,6 +341,7 @@ All these steps need to be performed in `server.js`.
 1. Replace the line `hbs = require('./app/core/hbs')` with `nunjucks = require('nunjucks')`
 2. Remove the line `app.engine(cfg.nitro.view_file_extension, hbs.__express);`
 3. Configure nunjucks as Express' Template Engine with the following block:
+
 
     nunjucks.configure(
         cfg.nitro.view_directory,

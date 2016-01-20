@@ -197,6 +197,7 @@ module.exports = generators.Base.extend({
 				'gulp/utils.js',
 				'gulp/watch-assets.js',
 				'app/core/config.js',
+				'project/docs/nitro.md',
 				'.jshintignore'
 			];
 			var ignores = [

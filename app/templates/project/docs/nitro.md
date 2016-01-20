@@ -54,7 +54,7 @@ subfolders like `atoms`, `molecules` & `organisms`
 A component uses the following structure:
 
     /Example
-    /Example/example.html
+    /Example/example.<%= options.viewExt %>
     /Example/css/example.css
     /Example/js/example.js
     /Example/_data/example.json
@@ -74,11 +74,11 @@ Different data variations has to be placed in the `_data` folder:
 
 ### Creating pages
 
-Create a new `*.html` file in the `views` folder. You can make as many subfolders as you want.
+Create a new `*.<%= options.viewExt %>` file in the `views` folder. You can make as many subfolders as you want.
 
-    /views/index.html
-    /views/content.html
-    /views/content/variant.html
+    /views/index.<%= options.viewExt %>
+    /views/content.<%= options.viewExt %>
+    /views/content/variant.<%= options.viewExt %>
 
 Your new page can then be called by the according URL (with or without an extension). 
 Subfolders are represented with a dash.
@@ -94,12 +94,12 @@ component name is case-sensitive.
 
 Nitro uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
 
-Render the Example component. (file: `example.html`, data-file: `example.json`)
+Render the Example component. (file: `example.<%= options.viewExt %>`, data-file: `example.json`)
 
     {{component 'Example'}}
     {{component 'Example', 'example'}}
 
-Render a "variant" from the Example component. (file: `example.html`, data-file: `example-variant.json`)
+Render a "variant" from the Example component. (file: `example.<%= options.viewExt %>`, data-file: `example-variant.json`)
 
     {{component 'Example' 'example-variant'}}
     
@@ -107,7 +107,7 @@ Another possibility to use the component helper is by providing hash options.
 
     {{component name='Example' data='example-variant'}}
 
-...and if you really need this you may provide a second template file. (file: `example-2.html`, data-file: `example-variant.json`)
+...and if you really need this you may provide a second template file. (file: `example-2.<%= options.viewExt %>`, data-file: `example-variant.json`)
 
     {{component name='Example' data='example-variant' template='example-2'}}
 
@@ -118,7 +118,7 @@ There also is a possibility to pass data to subcomponents by providing a data ob
 
 ### Render Partials
 
-Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.html` files (e.g. `head.html`).
+Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.<%= options.viewExt %>` files (e.g. `head.<%= options.viewExt %>`).
 
     {{> head}}
 
@@ -130,17 +130,17 @@ You may pass data to your templates (view, partial, component) per view.
 Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`. 
 (Use the same folder structure as in `views`)
 
-    /views/index.html
+    /views/index.<%= options.viewExt %>
     /views/_data/index.json
     http://localhost:8080/index
 
-    /views/content/variant.html
+    /views/content/variant.<%= options.viewExt %>
     /views/_data/content/variant.json
     http://localhost:8080/content-variant
 
 It's also possilbe to use a custom data file by requesting with a query param `?_data=...`:
 
-    /views/index.html
+    /views/index.<%= options.viewExt %>
     /views/_data/index-test.json
     http://localhost:8080/index?_data=index-test
 

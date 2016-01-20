@@ -28,13 +28,13 @@
 		"nitro"
 	],
 	"dependencies": {
-		"adm-zip": "^0.4.4",
+		"adm-zip": "^0.4.7",
 		"chalk": "^1.1.1",
 		"git-config": "0.0.7",
 		"glob": "^6.0.4",
 		"lodash": "^3.10.1",
 		"request": "^2.67.0",
-		"yeoman-generator": "^0.22.3",
+		"yeoman-generator": "^0.22.4",
 		"yosay": "^1.1.0"
 	},
 	"devDependencies": {

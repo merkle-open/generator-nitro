@@ -19,7 +19,7 @@ require('./app/core/routeLoader')(app);
 app.use(router);
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', cfg.nitro.view_file_extension);
-app.set('views', cfg.nitro.view_directory);
+app.set('views', cfg.nitro.base_path + cfg.nitro.view_directory);
 app.engine(cfg.nitro.view_file_extension, hbs.__express);
 
 app.listen(port, function () {

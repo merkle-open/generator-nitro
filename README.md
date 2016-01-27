@@ -58,6 +58,7 @@ Available generators:
 
 * `yo nitro` (aka `nitro:app`)
 * `yo nitro:component [name]`
+* `yo nitro:view [name]`
 
 Note: Generators are to be run from the root directory of your project.
 

@@ -86,7 +86,11 @@ Subfolders are represented with a dash.
     http://localhost:8080/index
     http://localhost:8080/content
     http://localhost:8080/content-variant
+    
+### Creating pages with yo
 
+    yo nitro:view
+    
 ### Render Components
 
 Pages are meant to be compositions of your components. Use the component's name as the first parameter. Be aware, the

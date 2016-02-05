@@ -2,7 +2,8 @@ var fs = require('fs'),
 	hbs = require('hbs'),
 	path = require('path'),
 	extend = require('extend'),
-	cfg = require('../core/config.js');
+	cfg = require('../core/config'),
+	utils = require('../core/utils');
 
 module.exports = function () {
 
@@ -11,16 +12,6 @@ module.exports = function () {
 		return new hbs.handlebars.SafeString(
 			'<p class="nitro-msg nitro-msg--error">' + e.message + '</p>'
 		);
-	};
-	var fileExistsSync = function fileExistsSync(filename) {
-		// Substitution for the deprecated fs.existsSync() method @see https://nodejs.org/api/fs.html#fs_fs_existssync_path
-		try {
-			fs.accessSync(filename);
-			return true;
-		}
-		catch (ex) {
-			return false;
-		}
 	};
 
 	try {
@@ -63,7 +54,7 @@ module.exports = function () {
 						templateFile + '.' + cfg.nitro.view_file_extension
 					);
 
-					if (fileExistsSync(templatePath)) {
+					if (utils.fileExistsSync(templatePath)) {
 						var jsonFilename = dataFile + '.json',
 							jsonPath = path.join(
 								cfg.nitro.base_path,
@@ -82,7 +73,7 @@ module.exports = function () {
 							if (passedData) {
 								extend(true, componentData, passedData);
 							}
-							else if (fileExistsSync(jsonPath)) {
+							else if (utils.fileExistsSync(jsonPath)) {
 								extend(true, componentData, JSON.parse(fs.readFileSync(jsonPath, 'utf8')));
 							}
 

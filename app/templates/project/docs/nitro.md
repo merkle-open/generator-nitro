@@ -344,7 +344,7 @@ All these steps need to be performed in `server.js`.
 
 
     nunjucks.configure(
-        cfg.nitro.view_directory,
+        cfg.nitro.base_path + cfg.nitro.view_directory,
         {
             autoescape: true,
             express: app

@@ -11,10 +11,11 @@ function factory() {
 
 	var config = JSON.parse(fs.readFileSync(base_path + 'config.json', options));
 	config.nitro = extend(true, {
-		base_path: path.normalize(__dirname + '../../../'),
-		view_directory: path.normalize(__dirname + '../../../') + 'views',
+		base_path: base_path,
+		view_directory: 'views',
 		view_file_extension: '<%= options.viewExt %>',
-		view_partials_directory: 'views/_partials'
+		view_partials_directory: 'views/_partials',
+		view_data_directory: 'views/_data'
 	}, config.nitro);
 
 	config.reload = function () {

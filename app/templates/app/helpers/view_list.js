@@ -9,7 +9,7 @@ var hbs = require('hbs'),
  */
 var excludes = {
 	directories: [
-		'_data',
+		path.basename(cfg.nitro.view_data_directory),
 		path.basename(cfg.nitro.view_partials_directory),
 		'.svn'
 	],
@@ -38,7 +38,7 @@ function walk(dir) {
 			results = results.concat(walk(filePath));
 		}
 		else if (stat && stat.isFile() && excludes.files.indexOf(file) === -1) {
-			var relativePath = path.relative(cfg.nitro.view_directory, filePath),
+			var relativePath = path.relative(cfg.nitro.base_path + cfg.nitro.view_directory, filePath),
 				ext = path.extname(filePath),
 				extReg = new RegExp(ext + '$'),
 				name = relativePath.replace(extReg, '').replace(/\//g, ' ').replace(/\\/g, ' ').replace(/\b\w/g, function (w) {
@@ -57,7 +57,7 @@ function walk(dir) {
 }
 
 module.exports = function() {
-	var views = walk(cfg.nitro.view_directory),
+	var views = walk(cfg.nitro.base_path + cfg.nitro.view_directory),
 		markup = ['<ul>'];
 
 	views.forEach(function(view) {

@@ -147,7 +147,7 @@ It's also possilbe to use a custom data file by requesting with a query param `?
 #### Dynamic view data
 
 If you want to use dynamic view data (i.e. using data from a database or data which is available in different views), 
-you can define those "routes" in the directory [`project/routes`](../routes). 
+you can define those "routes" in the directory [`project/viewData`](project/viewData/). 
 
 #### Data per component
 

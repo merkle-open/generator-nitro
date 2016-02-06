@@ -40,6 +40,12 @@ module.exports = generators.Base.extend({
 			type: String,
 			defaults: this.viewExtOptions[0]
 		});
+
+		this.option('clientTpl', {
+			desc: 'do you need client side templates',
+			type: Boolean,
+			defaults: false
+		});
 	},
 
 	initializing: function () {
@@ -80,6 +86,7 @@ module.exports = generators.Base.extend({
 					this.options.pre = config.preprocessor || this.options.pre;
 					this.options.js = config.jscompiler || this.options.js;
 					this.options.viewExt = config.viewExtension || this.options.viewExt;
+					this.options.clientTpl = config.clientTemplates || this.options.clientTpl;
 				}
 
 				done();
@@ -116,17 +123,27 @@ module.exports = generators.Base.extend({
 					choices: this.viewExtOptions,
 					default: _.indexOf(this.viewExtOptions, this.options.viewExt) || 0,
 					store: true
+				},
+				{
+					name: 'clientTpl',
+					type: 'confirm',
+					message: 'Do you need client side templates?',
+					choices: this.clientTplOptions,
+					default: this.options.clientTpl || false,
+					store: true
 				}
 			], function (props) {
 				this.options.name = props.name;
 				this.options.pre = props.pre;
 				this.options.js = props.js;
 				this.options.viewExt = props.viewExt;
+				this.options.clientTpl = props.clientTpl;
 
 				this.config.set('name', this.options.name);
 				this.config.set('preprocessor', this.options.pre);
 				this.config.set('jscompiler', this.options.js);
 				this.config.set('viewExtension', this.options.viewExt);
+				this.config.set('clientTemplates', this.options.clientTpl);
 
 				this.config.save();
 
@@ -191,6 +208,7 @@ module.exports = generators.Base.extend({
 				// files to process with copyTpl
 				'package.json',
 				'config.json',
+				'bower.json',
 				'gulpfile.js',
 				'gulp/compile-css.js',
 				'gulp/compile-js.js',
@@ -198,6 +216,8 @@ module.exports = generators.Base.extend({
 				'gulp/watch-assets.js',
 				'app/core/config.js',
 				'project/docs/nitro.md',
+				'components/molecules/Example/js/example.js',
+				'components/molecules/Example/js/example.ts',
 				'.jshintignore'
 			];
 			var ignores = [
@@ -210,6 +230,13 @@ module.exports = generators.Base.extend({
 				// files only for this.options.js==='TypeScript'
 				'tsd.json',
 				'gulp/compile-ts.js'
+			];
+			var clientTplFiles = [
+				// files only for this.options.clientTpl is true
+				'components/molecules/Example/template/example.hbs',
+				'project/docs/client-templates.md',
+				'project/blueprints/component/template/component.hbs',
+				'gulp/client-templates.js'
 			];
 			var viewFiles = [
 				// files that might change file extension
@@ -235,6 +262,13 @@ module.exports = generators.Base.extend({
 				// TypeScript only Files
 				if (this.options.js !== 'TypeScript') {
 					if (_.indexOf(typeScriptFiles, file) !== -1) {
+						return;
+					}
+				}
+
+				// Client side templates only Files
+				if (!this.options.clientTpl) {
+					if (_.indexOf(clientTplFiles, file) !== -1) {
 						return;
 					}
 				}

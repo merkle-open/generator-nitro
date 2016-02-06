@@ -15,7 +15,8 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 * Caching (LESS/SCSS) for optimal performance
 * Jasmine tests with Karma test runner
 * Bower support
-* Yeoman component generator
+* Yeoman component generator<% if (options.clientTpl) { %>
+* [Client side templates](client-templates.md)<% } %>
 
 ## Preparation
 

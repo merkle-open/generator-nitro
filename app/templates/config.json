@@ -11,13 +11,15 @@
 		"app.js": [
 			"assets/vendor/es6-promise/promise.min.js",
 			"assets/vendor/jquery/dist/jquery.min.js",
-			"assets/vendor/terrific/dist/terrific.min.js",
-			"assets/js/*.js"<% if (options.js === 'TypeScript') { %> ,
+			"assets/vendor/terrific/dist/terrific.min.js",<% if (options.clientTpl) { %>
+			"assets/vendor/handlebars/handlebars.runtime.min.js",<% } %>
+			"assets/js/*.js"<% if (options.js === 'TypeScript') { %>,
 			"assets/js/*.ts",
 			"components/**/js/*.ts",
 			"components/**/js/decorator/*.ts"<% } else { %>,
 			"components/**/js/*.js",
-			"components/**/js/decorator/*.js"<% } %>
+			"components/**/js/decorator/*.js"<% } if (options.clientTpl) { %>,
+			"components/**/template/*.js"<% } %>
 		]
 	},
 	"nitro": {

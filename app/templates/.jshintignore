@@ -1,2 +1,4 @@
 assets/vendor/**/*.js<% if (options.js === 'TypeScript') { %>
-public/assets/js/*.ts.js<% } %>
+public/assets/js/*.ts.js<% } if (options.js === 'TypeScript') { %>
+components/**/template/*.js
+<% } %>

@@ -128,7 +128,6 @@ module.exports = generators.Base.extend({
 					name: 'clientTpl',
 					type: 'confirm',
 					message: 'Do you need client side templates?',
-					choices: this.clientTplOptions,
 					default: this.options.clientTpl || false,
 					store: true
 				}

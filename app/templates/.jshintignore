@@ -1,4 +1,4 @@
 assets/vendor/**/*.js<% if (options.js === 'TypeScript') { %>
-public/assets/js/*.ts.js<% } if (options.js === 'TypeScript') { %>
+public/assets/js/*.ts.js<% } if (options.clientTpl) { %>
 components/**/template/*.js
 <% } %>

@@ -18,35 +18,30 @@ module T {
 			}
 
 			sync() {
-				var $ctx = $(this._ctx)<% if (!options.clientTpl) { %>;<% } else { %>,
-                    data = {
-                        'modifier': '',
-                        'decorator': '',
-                        'title': 'Client Side Template Example'+ $ctx.data('t-id') + ']',
-                        'links': [
-                            {
-                                'uri': 'index',
-                                'text': 'Client Side Template Example 1'
-                            },
-                            {
-                                'uri': 'index',
-                                'text': 'Client Side Template Example 2'
-                            }
-                        ]
-                    };
+				var $ctx = $(this._ctx);<% if (options.clientTpl) { %>
+				var data = {
+					'links': [
+						{
+							'uri': 'index',
+							'text': 'Client Side Template Example 1'
+						},
+						{
+							'uri': 'index',
+							'text': 'Client Side Template Example 2'
+						}
+					]
+				};
 
-                    if (T.tpl && T.tpl.example) {
-                        var example = T.tpl.example(data),
-                            $example = $(example);
+				if (T.tpl && T.tpl.example && T.tpl.example.links) {
+					var links = T.tpl.example.links(data);
+					var $links = $(links);
 
-                        // Don't use this._sandbox.addModules($example.get(0)); here,
-                        // it would generate an endless loop!
-                        $ctx.after($example);
+					this._sandbox.addModules(links.get(0));
+					$ctx.after($links);
 
-                        console.log('Client Side Template Example [id:' + $ctx.data('t-id') + ']');
-                    }
-                <% } %>
-
+					console.log('Client Side Template Example rendered [id:' + $ctx.data('t-id') + ']');
+				}
+				<% } %>
 				console.log('Example - sync [id:' + $ctx.data('t-id') + ']');
 			}
 		}

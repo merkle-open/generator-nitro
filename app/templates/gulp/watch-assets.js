@@ -31,12 +31,11 @@ module.exports = function (gulp, plugins) {
 			'components/**/*.js',
 			'!components/**/spec/*.js'<% if (options.js === 'TypeScript') { %>,
 			'assets/**/*.ts',
-			'components/**/*.ts'<% } if (options.clientTpl) { %>,
+			'components/**/*.ts'<% } %><% if (options.clientTpl) { %>,
 			'!components/**/template/*.js',
-			'components/**/template/*.hbs'
-			<% } %>
-		], function () {
-			<% if (options.js === 'TypeScript') { %>clearCache(e);<% } %>
+			'components/**/template/*.hbs'<% } %>
+		], function () {<% if (options.js === 'TypeScript') { %>
+			clearCache(e);<% } %>
 			gulp.start('compile-js');
 		});
 

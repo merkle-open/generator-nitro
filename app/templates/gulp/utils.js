@@ -37,28 +37,24 @@ function getSourceFiles(ext) {
 function getTask(task) {
 	return require('./' + task)(gulp, plugins);
 }
-
 <% if (options.js === 'TypeScript') { %>
-	function splitJsAssets(asset) {
-		var tsAssets = [],
-			jsAssets = [];
+function splitJsAssets(asset) {
+	var tsAssets = [],
+		jsAssets = [];
 
-		asset.src.forEach(function (value) {
-			if (value.indexOf('.ts') !== -1) {
-				tsAssets.push(value);
-			} else {
-				jsAssets.push(value);
-			}
-		});
+	asset.src.forEach(function (value) {
+		if (value.indexOf('.ts') !== -1) {
+			tsAssets.push(value);
+		} else {
+			jsAssets.push(value);
+		}
+	});
 
-		return {
-			ts: tsAssets,
-			js: jsAssets
-		};
-	}
-<% } %>
-
-
+	return {
+		ts: tsAssets,
+		js: jsAssets
+	};
+}<% } %>
 module.exports = {
 	getSourceFiles: getSourceFiles,
 	getTask: getTask<% if (options.js === 'TypeScript') { %>,

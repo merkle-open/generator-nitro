@@ -141,7 +141,8 @@ module.exports = generators.Base.extend({
 			var replacements = {
 				user: user,
 				component: {
-					name: this.name, // Component name, eg. Main navigation
+					name: this.name, // Component name, eg. Main Navigation
+					folder: folder, // Component folder, eg. MainNavigation
 					js: _.upperFirst(_.camelCase(this.name.replace(/^[0-9]+/, ''))), // Component name for use in JS files, eg. MainNavigation
 					css: _.kebabCase(this.name), // Component name for use in CSS files, eg. main-navigation
 					prefix: component.component_prefix || null, // CSS class prefix, eg. m

@@ -1,36 +1,36 @@
 # Precompiled handlebars templates for Nitro
 
 Precompiled templates allow markup to be precompiled on the server to be used on the client side to render dynamic data.
-For this to work you need a handlebars runtime on the client side (already configured in bower.json).
+For this to work you need a handlebars runtime on the client side.
 
-## Template source
+## Generating Templates
 
-The templates are generated from all files located in the directory `template` within a component with the file type `.hbs`.  
+### Template source
+
+The templates are generated from all files with the file type `.hbs` located in the directory `template` within a component.  
 The template name has not to contain slashes or special characters. Use only names with lowercase letters, dashes and dots.  
-All handlebars helpers will be precompiled unchanged and have to be handled on the client side.
 
-## Template output
+### Precompiled template
 
-The precompiled template will be placed in the same `template` directory as the source.  
-The name of this output is the same as the one of the source.  
-The file type of the precompiled template is `.js`.
+The precompiled template will be placed in the same directory as the source with the same name and the file extension `js`.
 
-## Precompiled template namespace
+### Naming and namespace
 
+`T.tpl` is used as the namespace for the precompiled templates by default and is conifgured in `gulp/compile-templates.js`
 The name of the source file defines the key to access the precompiled template.  
 Hence the generated precompiled template can be accessed via the JavaScript object `T.tpl.<name>`.
 
 Example:
 
 * example.hbs --> example.js --> `T.tpl.example`
-* example.sub.hbs --> example.sub.js --> `T.tpl.example.sub`
+* example.links.hbs --> example.links.js --> `T.tpl.example.links`
 
-## Usage
+### Usage
 
-The following js code shows an example to use the template of a test component with the source file `Test/template/test.hbs`.
+The following js code shows an example how to use a precompiled template.
 
     // check whether the precompiled template exists
-    if (T.tpl && T.tpl.test) {
+    if (T.tpl && T.tpl.example) {
     
         // define the data
         var data = {
@@ -40,18 +40,35 @@ The following js code shows an example to use the template of a test component w
         },
         
         // compile the template with data
-        test = T.tpl.test(data),
+        var example = T.tpl.example(data),
         
         // transform it into a jquery object
-        $test = $(test);
+        var $example = $(example);
         
         // use it
-        $ctx.append($test);
+        $ctx.append($example);
     }
+
+## Partials and helpers
+
+### Partials
+
+Place your partials in the folder `partial` inside the `template` folder and nitro will do the registration for you.  
+Precompiled partials will be stored in the same manner as templates.
+
+### Helpers
+
+Clientside handlebars helpers can be stored as normal JavaScript files in the components folder or in `assets/js`.
+
+### Using the component one to one
+
+If you want to use the code of a serverside component unchanged for your clientside template you may use the nitro `component` helper for this. 
+
+    {{ component 'Example'}}
 
 ## Handlebars versions
 
-Two handlebars versions are in use at the moment. They should bave similar versions ;-)
+Two handlebars versions are in use at the moment. They should have similar versions ;-)
 
 * One to render views for nitro and to precompile the templates on the server side (`hbs.handlebars` currently 4.0.3)
 * A handlebars runtime to render the precompiled template on the client side (`handlebars` currently 4.0.5 through bower)

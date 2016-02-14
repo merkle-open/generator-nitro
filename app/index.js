@@ -215,8 +215,8 @@ module.exports = generators.Base.extend({
 				'gulp/watch-assets.js',
 				'app/core/config.js',
 				'project/docs/nitro.md',
-				'components/molecules/Example/js/example.js',
-				'components/molecules/Example/js/example.ts',
+				'components/molecules/Example/example.html',
+				'views/index.html',
 				'.jshintignore'
 			];
 			var ignores = [
@@ -231,11 +231,15 @@ module.exports = generators.Base.extend({
 				'gulp/compile-ts.js'
 			];
 			var clientTplFiles = [
-				// files only for this.options.clientTpl is true
+				// files only for this.options.clientTpl===true
+				'components/molecules/Example/_data/example-template.json',
+				'components/molecules/Example/js/decorator/example-template.js',
 				'components/molecules/Example/template/example.hbs',
+				'components/molecules/Example/template/example.links.hbs',
+				'components/molecules/Example/template/partial/example.link.hbs',
 				'project/docs/client-templates.md',
 				'project/blueprints/component/template/component.hbs',
-				'gulp/client-templates.js'
+				'gulp/compile-templates.js'
 			];
 			var viewFiles = [
 				// files that might change file extension
@@ -272,7 +276,7 @@ module.exports = generators.Base.extend({
 					}
 				}
 
-				// ignore everything under assets, components and views
+				// ignore everything under assets, components and views on updating project
 				if (this.update) {
 					if (_.startsWith(file, 'assets') ||
 						_.startsWith(file, 'components') ||

@@ -18,8 +18,9 @@
 			"components/**/js/*.ts",
 			"components/**/js/decorator/*.ts"<% } else { %>,
 			"components/**/js/*.js",
-			"components/**/js/decorator/*.js"<% } if (options.clientTpl) { %>,
-			"components/**/template/*.js"<% } %>
+			"components/**/js/decorator/*.js"<% } %><% if (options.clientTpl) { %>,
+			"components/**/template/*.js",
+			"components/**/template/partial/*.js"<% } %>
 		]
 	},
 	"nitro": {

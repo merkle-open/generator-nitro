@@ -6,7 +6,8 @@
 <body>
 <div class="container">
 	{{component 'Example'}}
-	{{component 'Example' 'example-blue' }}
+	{{component 'Example' 'example-blue'}}<% if (options.clientTpl) { %>
+	{{component 'Example' 'example-template'}}<% } %>
 </div>
 {{> foot}}
 </body>

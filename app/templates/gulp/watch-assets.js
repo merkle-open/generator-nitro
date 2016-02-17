@@ -57,7 +57,7 @@ module.exports = function (gulp, plugins) {
 		plugins.watch([
 			'assets/font/**/*'
 		], function () {
-			gulp.start('assets-copy');
+			gulp.start('copy-assets');
 		});
 	};
 };

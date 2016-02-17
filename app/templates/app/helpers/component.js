@@ -90,13 +90,12 @@ module.exports = function () {
 						catch (e) {
 							throw new Error('Parse Error in Component ' + name + ': ' + e.message);
 						}
-
 					}
 				}
 			}
 		}
 
-		throw new Error('Component ' + name + ' not found.');
+		throw new Error('Component `' + name + '` with template file `'+ templateFile + '.' + cfg.nitro.view_file_extension + '` not found in folder `' + folder + '`. ');
 	}
 	catch (e) {
 		return logAndRenderError(e);

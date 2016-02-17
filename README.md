@@ -43,10 +43,13 @@ You will be guided through some configuration options:
 * Desired CSS preprocessor (`less` or `scss`; default: `less`)
 * Desired JavaScript compiler (`JavaScript` or `TypeScript`; default: `JavaScript`)
 * Desired view file extension (`html`, `hbs` or `mustache`; default: `html`)
+* Using client side templates (default: false)
 
-It's possible to pass in these options through the command line
+The choosen options will be stored for the next project generation.
 
-    yo nitro --name=myproject --pre=scss --js=JavaScript --viewExt=hbs
+It's possible to pass in these options through the command line:
+
+    yo nitro --name=myproject --pre=less --js=JavaScript --viewExt=hbs --clientTpl
 
 ### Update a project
 

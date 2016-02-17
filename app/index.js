@@ -16,35 +16,46 @@ module.exports = generators.Base.extend({
 		// Calling the super constructor
 		generators.Base.apply(this, arguments);
 
-		this.option('name', {desc: 'the name of your app', type: String});
-		this.options.name = this.options.name || path.basename(process.cwd());
+		this.passedInOptions = {
+			name: this.options.name,
+			pre: this.options.pre,
+			js: this.options.js,
+			viewExt: this.options.viewExt,
+			clientTpl: this.options.clientTpl
+		};
+
+		this.option('name', {
+			desc: 'the name of your app',
+			type: String,
+			defaults: this.passedInOptions.name || path.basename(process.cwd())
+		});
 		this.options.name = _.kebabCase(this.options.name);
 
 		this.preOptions = ['less', 'scss'];
 		this.option('pre', {
 			desc: 'your desired preprocessor [' + this.preOptions.join('|') + ']',
 			type: String,
-			defaults: this.preOptions[0]
+			defaults: this.passedInOptions.pre || this.preOptions[1]
 		});
 
 		this.jsOptions = ['JavaScript', 'TypeScript'];
 		this.option('js', {
 			desc: 'your desired js compiler [' + this.jsOptions.join('|') + ']',
 			type: String,
-			defaults: this.jsOptions[0]
+			defaults: this.passedInOptions.js || this.jsOptions[0]
 		});
 
 		this.viewExtOptions = ['html', 'hbs', 'mustache'];
 		this.option('viewExt', {
 			desc: 'your desired view file extension [' + this.viewExtOptions.join('|') + ']',
 			type: String,
-			defaults: this.viewExtOptions[0]
+			defaults: this.passedInOptions.viewExt || this.viewExtOptions[0]
 		});
 
 		this.option('clientTpl', {
 			desc: 'do you need client side templates',
 			type: Boolean,
-			defaults: false
+			defaults: this.passedInOptions.clientTpl || false
 		});
 	},
 
@@ -98,45 +109,60 @@ module.exports = generators.Base.extend({
 				{
 					name: 'name',
 					message: 'What\'s the name of your app?',
-					default: this.options.name
+					default: this.options.name,
+					when: function() {
+						return !this.passedInOptions.name;
+					}.bind(this)
 				},
 				{
 					name: 'pre',
 					type: 'list',
 					message: 'What\'s your desired preprocessor?',
 					choices: this.preOptions,
-					default: _.indexOf(this.preOptions, this.options.pre) || 0,
-					store: true
+					default: this.options.pre,
+					store: true,
+					when: function() {
+						return !this.passedInOptions.pre;
+					}.bind(this)
 				},
 				{
 					name: 'js',
 					type: 'list',
 					message: 'What\'s your desired javascript compiler?',
 					choices: this.jsOptions,
-					default: _.indexOf(this.jsOptions, this.options.js) || 0,
-					store: true
+					default: this.options.js,
+					store: true,
+					when: function() {
+						return !this.passedInOptions.js;
+					}.bind(this)
 				},
 				{
 					name: 'viewExt',
 					type: 'list',
 					message: 'What\'s your desired view file extension?',
 					choices: this.viewExtOptions,
-					default: _.indexOf(this.viewExtOptions, this.options.viewExt) || 0,
-					store: true
+					default: this.options.viewExt,
+					store: true,
+					when: function() {
+						return !this.passedInOptions.viewExt;
+					}.bind(this)
 				},
 				{
 					name: 'clientTpl',
 					type: 'confirm',
-					message: 'Do you need client side templates?',
-					default: this.options.clientTpl || false,
-					store: true
+					message: 'Would you like to include client side templates?',
+					default: this.options.clientTpl,
+					store: true,
+					when: function() {
+						return typeof this.passedInOptions.clientTpl !== 'boolean';
+					}.bind(this)
 				}
 			], function (props) {
-				this.options.name = props.name;
-				this.options.pre = props.pre;
-				this.options.js = props.js;
-				this.options.viewExt = props.viewExt;
-				this.options.clientTpl = props.clientTpl;
+				this.options.name = props.name || this.options.name;
+				this.options.pre = props.pre || this.options.pre;
+				this.options.js = props.js || this.options.js;
+				this.options.viewExt = props.viewExt || this.options.viewExt;
+				this.options.clientTpl = props.clientTpl !== undefined ? props.clientTpl : this.options.clientTpl;
 
 				this.config.set('name', this.options.name);
 				this.config.set('preprocessor', this.options.pre);

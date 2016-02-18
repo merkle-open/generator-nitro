@@ -37,7 +37,7 @@
 		"gulp-change": "^1.0.0",<% } %>
 		"gulp-concat": "^2.6.0",
 		"gulp-cssnano": "^2.1.1",<% if (options.clientTpl) { %>
-		"gulp-declare": "^0.3.0",<% } %><% if (options.clientTpl) { %>
+		"gulp-declare": "^0.3.0",
 		"gulp-handlebars": "^4.0.0",<% } %>
 		"gulp-header": "^1.7.1",
 		"gulp-imagemin": "^2.4.0",

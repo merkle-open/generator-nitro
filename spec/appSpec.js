@@ -168,4 +168,116 @@ describe('nitro:app', function () {
 		});
 	});
 
+	describe('when including client templates', function () {
+		beforeAll(function (done) {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({'skip-install': true})
+				.withPrompts({clientTpl: true})
+				.on('end', done);
+		});
+
+		it('package.json contains some specific dependencies', function () {
+			assert.fileContent([
+				['package.json', /gulp-change/],
+				['package.json', /gulp-declare/],
+				['package.json', /gulp-handlebars/],
+				['package.json', /gulp-wrap/],
+				['package.json', /merge-stream/]
+			]);
+		});
+
+		it('component blueprint contains template file', function () {
+			assert.file('project/blueprints/component/template/component.hbs');
+		});
+
+		it('example component contains template files', function () {
+			assert.file([
+				'components/molecules/Example/template/example.hbs',
+				'components/molecules/Example/template/example.links.hbs',
+				'components/molecules/Example/template/partial/example.link.hbs',
+				'components/molecules/Example/_data/example-template.json',
+				'components/molecules/Example/js/decorator/example-template.js'
+			]);
+		});
+
+		it('.jshintignore contains some specific ignores', function () {
+			assert.fileContent([
+				['.jshintignore', 'components/**/template/*.js'],
+				['.jshintignore', 'components/**/template/partial/*.js']
+			]);
+		});
+
+		it('config.json loads template files', function () {
+			assert.fileContent([
+				['config.json', 'components/**/template/*.js'],
+				['config.json', 'components/**/template/partial/*.js']
+			]);
+		});
+
+		it('gulpfile has compile-templates task', function () {
+			assert.fileContent('gulpfile.js', /compile-templates/);
+		});
+
+	});
+
+	describe('when not including client templates', function () {
+		beforeAll(function (done) {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({'skip-install': true})
+				.withPrompts({clientTpl: false})
+				.on('end', done);
+		});
+
+		it('package.json does not contain some specific dependencies', function () {
+			assert.noFileContent([
+				['package.json', /gulp-change/],
+				['package.json', /gulp-declare/],
+				['package.json', /gulp-handlebars/],
+				['package.json', /gulp-wrap/],
+				['package.json', /merge-stream/]
+			]);
+		});
+
+		it('component blueprint does not contain template file', function () {
+			assert.noFile('project/blueprints/component/template/component.hbs');
+		});
+
+		it('example component does not contain template files', function () {
+			assert.noFile([
+				'components/molecules/Example/template/example.hbs',
+				'components/molecules/Example/template/example.links.hbs',
+				'components/molecules/Example/template/partial/example.link.hbs',
+				'components/molecules/Example/_data/example-template.json',
+				'components/molecules/Example/js/decorator/example-template.js'
+			]);
+		});
+
+		it('.jshintignore contains some specific ignores', function () {
+			assert.noFileContent([
+				['.jshintignore', 'components/**/template/*.js'],
+				['.jshintignore', 'components/**/template/partial/*.js']
+			]);
+		});
+
+		it('config.json loads template files', function () {
+			assert.noFileContent([
+				['config.json', 'components/**/template/*.js'],
+				['config.json', 'components/**/template/partial/*.js']
+			]);
+		});
+
+		it('gulpfile has compile-templates task', function () {
+			assert.noFileContent('gulpfile.js', /compile-templates/);
+		});
+
+		it('gulp task watch-assets handles template files correct', function () {
+			assert.noFileContent([
+				['gulp/watch-assets.js', 'components/**/template/**/*.hbs'],
+				['gulp/watch-assets.js', '!components/**/template/**/*.hbs']
+			]);
+		});
+
+	});
 });

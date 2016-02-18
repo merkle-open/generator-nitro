@@ -17,7 +17,7 @@ var configData = {
 describe('nitro:component', function () {
 	describe('when creating a component "Test" (organism)', function () {
 		describe('but no modifier and decorator is given', function () {
-			beforeEach(function (done) {
+			beforeAll(function (done) {
 				helpers.run(path.join(__dirname, '../component'))
 					.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
 						fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
@@ -52,7 +52,7 @@ describe('nitro:component', function () {
 		});
 
 		describe('and a modifier "More" is given', function () {
-			beforeEach(function (done) {
+			beforeAll(function (done) {
 				helpers.run(path.join(__dirname, '../component'))
 					.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
 						fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
@@ -85,7 +85,7 @@ describe('nitro:component', function () {
 		});
 
 		describe('and a decorator "More" is given', function () {
-			beforeEach(function (done) {
+			beforeAll(function (done) {
 				helpers.run(path.join(__dirname, '../component'))
 					.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
 						fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
@@ -119,7 +119,7 @@ describe('nitro:component', function () {
 	});
 
 	describe('when creating a component "NavMain" (molecule) with a modifier and decorator "SpecialCase"', function () {
-		beforeEach(function (done) {
+		beforeAll(function (done) {
 			helpers.run(path.join(__dirname, '../component'))
 				.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
 					fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
@@ -161,7 +161,7 @@ describe('nitro:component', function () {
 	});
 
 	describe('when creating a component "nav-main" (molecule) with a modifier and decorator "special-case"', function () {
-		beforeEach(function (done) {
+		beforeAll(function (done) {
 			helpers.run(path.join(__dirname, '../component'))
 				.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
 					fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
@@ -203,7 +203,7 @@ describe('nitro:component', function () {
 	});
 
 	describe('when creating a component "Nav Main" (molecule) with a modifier "Light.Blue"', function () {
-		beforeEach(function (done) {
+		beforeAll(function (done) {
 			helpers.run(path.join(__dirname, '../component'))
 				.inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
 					fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));

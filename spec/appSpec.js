@@ -6,36 +6,41 @@ var helpers = require('yeoman-test');
 var os = require('os');
 
 describe('nitro:app', function () {
-	beforeEach(function (done) {
-		helpers.run(path.join(__dirname, '../app'))
-			.inDir(path.join(os.tmpdir(), './temp-test')) // Clear the directory and set it as the CWD
-			.withOptions({'skip-install': true})  // Mock options passed in
-			.on('end', done);
-	});
 
-	it('creates blueprint files', function () {
-		assert.file([
-			'app',
-			'assets',
-			'components',
-			'project',
-			'views',
-			'bower.json',
-			'package.json'
-		]);
-	});
+	describe('when using default options', function () {
+		beforeAll(function (done) {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test')) // Clear the directory and set it as the CWD
+				.withOptions({'skip-install': true})  // Mock options passed in
+				.on('end', done);
+		});
 
-	it('includes namics frontend-defaults', function () {
-		assert.file([
-			'.editorconfig',
-			'.gitignore',
-			'.gitattributes',
-			'.jshintrc'
-		]);
+		it('creates blueprint files', function () {
+			assert.file([
+				'app',
+				'assets',
+				'components',
+				'gulp',
+				'project',
+				'public',
+				'views',
+				'bower.json',
+				'package.json'
+			]);
+		});
+
+		it('includes namics frontend-defaults', function () {
+			assert.file([
+				'.editorconfig',
+				'.gitattributes',
+				'.gitignore',
+				'.jshintrc'
+			]);
+		});
 	});
 
 	describe('when using less', function () {
-		beforeEach(function (done) {
+		beforeAll(function (done) {
 			helpers.run(path.join(__dirname, '../app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({'skip-install': true})
@@ -62,7 +67,7 @@ describe('nitro:app', function () {
 	});
 
 	describe('when using scss', function () {
-		beforeEach(function (done) {
+		beforeAll(function (done) {
 			helpers.run(path.join(__dirname, '../app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({'skip-install': true})
@@ -89,7 +94,7 @@ describe('nitro:app', function () {
 	});
 
 	describe('when using view file extension html', function () {
-		beforeEach(function (done) {
+		beforeAll(function (done) {
 			helpers.run(path.join(__dirname, '../app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({'skip-install': true})
@@ -97,7 +102,7 @@ describe('nitro:app', function () {
 				.on('end', done);
 		});
 
-		it('files have the .html file extension', function() {
+		it('view files have the .html file extension', function() {
 			assert.file([
 				'views/index.html',
 				'views/404.html',
@@ -114,7 +119,7 @@ describe('nitro:app', function () {
 	});
 
 	describe('when using view file extension hbs', function () {
-		beforeEach(function (done) {
+		beforeAll(function (done) {
 			helpers.run(path.join(__dirname, '../app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({'skip-install': true})
@@ -122,7 +127,7 @@ describe('nitro:app', function () {
 				.on('end', done);
 		});
 
-		it('files have the .hbs file extension', function() {
+		it('view files have the .hbs file extension', function() {
 			assert.file([
 				'views/index.hbs',
 				'views/404.hbs',
@@ -139,7 +144,7 @@ describe('nitro:app', function () {
 	});
 
 	describe('when using view file extension mustache', function () {
-		beforeEach(function (done) {
+		beforeAll(function (done) {
 			helpers.run(path.join(__dirname, '../app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({'skip-install': true})
@@ -147,7 +152,7 @@ describe('nitro:app', function () {
 				.on('end', done);
 		});
 
-		it('files have the .mustache file extension', function() {
+		it('view files have the .mustache file extension', function() {
 			assert.file([
 				'views/index.mustache',
 				'views/404.mustache',
@@ -162,5 +167,5 @@ describe('nitro:app', function () {
 			assert.fileContent('app/core/config.js', /view_file_extension: 'mustache'/);
 		});
 	});
-});
 
+});

@@ -7,7 +7,8 @@ module.exports = function (gulp, plugins) {
 					env: {
 						PORT: port
 					}
-				}
+				},
+				false
 			);
 
 		server.start();

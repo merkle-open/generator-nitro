@@ -18,6 +18,11 @@ function factory() {
 		view_data_directory: 'views/_data'
 	}, config.nitro);
 
+	config.server = {
+		port: process.env.PORT || 8080,
+		proxy: process.env.PROXY || 8081
+	};
+
 	config.reload = function () {
 		return factory();
 	};

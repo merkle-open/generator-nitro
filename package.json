@@ -31,7 +31,7 @@
 		"adm-zip": "^0.4.7",
 		"chalk": "^1.1.1",
 		"git-config": "0.0.7",
-		"glob": "^6.0.4",
+		"glob": "^7.0.0",
 		"lodash": "^4.5.1",
 		"request": "^2.69.0",
 		"yeoman-generator": "^0.22.5",

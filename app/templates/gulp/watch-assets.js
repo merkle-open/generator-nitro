@@ -1,10 +1,11 @@
 var browserSync = require('browser-sync');
 var cfg = require('../app/core/config');
+var utils = require('./utils');
 
 module.exports = function (gulp, plugins) {
 	return function () {
 		var clearCache = function (e) {
-			if ('delete' === e.type) {
+			if ('unlink' === e.event) {
 				delete plugins.cached.caches.scripts[e.path];
 				plugins.remember.forget('scripts', e.path);
 			}
@@ -13,6 +14,7 @@ module.exports = function (gulp, plugins) {
 		plugins.watch([
 			'config.json'
 		], function () {
+			utils.reloadConfig();
 			cfg = cfg.reload();
 			gulp.start('compile-css');
 			gulp.start('compile-js');

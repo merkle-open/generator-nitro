@@ -6,6 +6,7 @@ Nitro provides the following [Lodash](https://lodash.com/docs#template) replacem
     <%= user.email %>		// Your email, eg. john@doe.com
     
     <%= component.name %>	// Component name, eg. Main Navigation
+    <%= component.folder %>	// Component folder, eg. MainNavigation
     <%= component.js %> 	// Component name for use in JS files, eg. MainNavigation
     <%= component.css %> 	// Component name for use in CSS files, eg. main-navigation
     <%= component.prefix %>	// CSS class prefix, eg. o

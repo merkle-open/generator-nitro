@@ -141,8 +141,9 @@ module.exports = generators.Base.extend({
 			var replacements = {
 				user: user,
 				component: {
-					name: this.name, // Component name, eg. Main navigation
-					js: _.capitalize(_.camelCase(this.name.replace(/^[0-9]+/, ''))), // Component name for use in JS files, eg. MainNavigation
+					name: this.name, // Component name, eg. Main Navigation
+					folder: folder, // Component folder, eg. MainNavigation
+					js: _.upperFirst(_.camelCase(this.name.replace(/^[0-9]+/, ''))), // Component name for use in JS files, eg. MainNavigation
 					css: _.kebabCase(this.name), // Component name for use in CSS files, eg. main-navigation
 					prefix: component.component_prefix || null, // CSS class prefix, eg. m
 					type: this.options.type, // Component type, eg. atom, molecule etc.
@@ -155,7 +156,7 @@ module.exports = generators.Base.extend({
 				},
 				decorator: {
 					name: this.options.decorator, // Decorator name, eg. Highlight
-					js: _.capitalize(_.camelCase(this.options.decorator.replace(/^[0-9]+/, ''))), // Decorator name for use in JS files, eg. Highlight
+					js: _.upperFirst(_.camelCase(this.options.decorator.replace(/^[0-9]+/, ''))), // Decorator name for use in JS files, eg. Highlight
 					file: this.options.decorator.replace(/[^A-Za-z0-9-]/g, '').toLowerCase()  // Modifier filename, eg.highlight
 				}
 			};

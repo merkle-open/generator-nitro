@@ -1,17 +1,15 @@
 var browserSync = require('browser-sync');
 var compression = require('compression');
+var config = require('../app/core/config');
 
 module.exports = function (gulp, plugins) {
 	return function () {
-		var port = process.env.PORT || 8080,
-			proxy = process.env.PROXY || 8081;
-
 		browserSync({
 			proxy: {
-				target: 'localhost:' + port,
+				target: 'localhost:' + config.server.port,
 				middleware: [compression()]
 			},
-			port: proxy
+			port: config.server.proxy
 		}, function (e) {
 			if (!e) {
 				browserSync.notify('Compiling your assets, please wait!');
@@ -19,4 +17,3 @@ module.exports = function (gulp, plugins) {
 		});
 	};
 };
-

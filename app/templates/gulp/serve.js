@@ -1,15 +1,19 @@
+var config = require('../app/core/config');
+
 module.exports = function (gulp, plugins) {
 	return function () {
-		var port = process.env.PORT || 8080,
-			server = plugins.liveServer(
-				'server.js',
-				{
-					env: {
-						PORT: port
-					}
+		var server = plugins.liveServer(
+			'server.js',
+			{
+				env: {
+					PORT: config.server.port
 				}
-			);
-
-		server.start();
+			},
+			false
+		);
+		server.start().then(function (result) {
+			console.log('Server exited with result:', result);
+			process.exit(result.code);
+		});
 	};
 };

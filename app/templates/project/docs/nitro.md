@@ -15,7 +15,8 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 * Caching (LESS/SCSS) for optimal performance
 * Jasmine tests with Karma test runner
 * Bower support
-* Yeoman component generator
+* Yeoman component generator<% if (options.clientTpl) { %>
+* [Client side templates](client-templates.md)<% } %>
 
 ## Preparation
 
@@ -27,38 +28,7 @@ and some dependencies installed globally.
 
     npm install -g yo bower gulp jasmine karma-cli generator-nitro
 
-## Daily Work - Creating Components & Pages
-
-### Creating Components
-
-Components are created in the `components` folder. A component is an encapsulated block of markup 
-with corresponding styles, scripts and data.  
-For a better overview it is useful to define different types of components. It is recommended to make 
-subfolders like `atoms`, `molecules` & `organisms`  
-A component uses the following structure:
-
-    /Example
-    /Example/example.html
-    /Example/css/example.css
-    /Example/js/example.js
-    /Example/_data/example.json
-
-Terrific modifiers & decorators are created using the following conventions:
-
-    /Example/css/modifier/example-<modifier>.css
-    /Example/js/decorator/example-<decorator>.js
-
-Different data variantions has to be placed in the `_data` folder:
-
-    /Example/_data/example-variant.json
-
-### Creating Components with yo
-
-    yo nitro:component
-
-### Using gulp
-
-#### Starting the app
+## Starting the app
 
 The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `develop` task). If you want the
 app to run on another port put them before the gulp task like this:
@@ -74,13 +44,42 @@ This works a bit different on **Windows**. Use the following commands in prompt:
     set PORT=8000 && set PROXY=8001 && gulp develop
     set PORT=3000 && node server.js
 
+## Daily Work - Creating Components & Pages
+
+### Creating Components
+
+Components are created in the `components` folder. A component is an encapsulated block of markup 
+with corresponding styles, scripts and data.  
+For a better overview it is useful to define different types of components. It is recommended to make 
+subfolders like `atoms`, `molecules` & `organisms`  
+A component uses the following structure:
+
+    /Example
+    /Example/example.<%= options.viewExt %>
+    /Example/css/example.css
+    /Example/js/example.js
+    /Example/_data/example.json
+
+Terrific modifiers & decorators are created using the following conventions:
+
+    /Example/css/modifier/example-<modifier>.css
+    /Example/js/decorator/example-<decorator>.js
+
+Different data variations has to be placed in the `_data` folder:
+
+    /Example/_data/example-variant.json
+
+### Creating Components with yo
+
+    yo nitro:component
+
 ### Creating pages
 
-Create a new `*.html` file in the `views` folder. You can make as many subfolders as you want.
+Create a new `*.<%= options.viewExt %>` file in the `views` folder. You can make as many subfolders as you want.
 
-    /views/index.html
-    /views/content.html
-    /views/content/variant.html
+    /views/index.<%= options.viewExt %>
+    /views/content.<%= options.viewExt %>
+    /views/content/variant.<%= options.viewExt %>
 
 Your new page can then be called by the according URL (with or without an extension). 
 Subfolders are represented with a dash.
@@ -96,12 +95,12 @@ component name is case-sensitive.
 
 Nitro uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
 
-Render the Example component. (file: `example.html`, data-file: `example.json`)
+Render the Example component. (file: `example.<%= options.viewExt %>`, data-file: `example.json`)
 
     {{component 'Example'}}
     {{component 'Example', 'example'}}
 
-Render a "variant" from the Example component. (file: `example.html`, data-file: `example-variant.json`)
+Render a "variant" from the Example component. (file: `example.<%= options.viewExt %>`, data-file: `example-variant.json`)
 
     {{component 'Example' 'example-variant'}}
     
@@ -109,7 +108,7 @@ Another possibility to use the component helper is by providing hash options.
 
     {{component name='Example' data='example-variant'}}
 
-...and if you really need this you may provide a second template file. (file: `example-2.html`, data-file: `example-variant.json`)
+...and if you really need this you may provide a second template file. (file: `example-2.<%= options.viewExt %>`, data-file: `example-variant.json`)
 
     {{component name='Example' data='example-variant' template='example-2'}}
 
@@ -120,7 +119,7 @@ There also is a possibility to pass data to subcomponents by providing a data ob
 
 ### Render Partials
 
-Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.html` files (e.g. `head.html`).
+Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.<%= options.viewExt %>` files (e.g. `head.<%= options.viewExt %>`).
 
     {{> head}}
 
@@ -132,17 +131,17 @@ You may pass data to your templates (view, partial, component) per view.
 Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`. 
 (Use the same folder structure as in `views`)
 
-    /views/index.html
+    /views/index.<%= options.viewExt %>
     /views/_data/index.json
     http://localhost:8080/index
 
-    /views/content/variant.html
+    /views/content/variant.<%= options.viewExt %>
     /views/_data/content/variant.json
     http://localhost:8080/content-variant
 
 It's also possilbe to use a custom data file by requesting with a query param `?_data=...`:
 
-    /views/index.html
+    /views/index.<%= options.viewExt %>
     /views/_data/index-test.json
     http://localhost:8080/index?_data=index-test
 
@@ -161,7 +160,7 @@ You may overwrite data from views & components in request parameters.
 
 `?pageTitle=Testpage` will overwrite the the data for the handlebars expression `{{pageTitle}}`
 
-It's also possilbe to use dot notation for object data:
+It's also possible to use dot notation for object data:
 
 `?page.title=Testpage` will overwrite the value for `{{page.title}}` 
 
@@ -212,7 +211,7 @@ The order of these special patterns does not matter.
 
 #### Examples
 
-* `"!components/*/Test*"          Exclude all components starting with `Test`
+* `"!components/*/Test*"`         Exclude all components starting with `Test`
 * `"!**/*-test.*"`                Exclude all filenames ending with `-test`.
 * `"+assets/css/mixins.less"`     Exclude `assets/css/mixins.less` but prepend to every compile call of every .less file
 
@@ -344,8 +343,9 @@ All these steps need to be performed in `server.js`.
 2. Remove the line `app.engine(cfg.nitro.view_file_extension, hbs.__express);`
 3. Configure nunjucks as Express' Template Engine with the following block:
 
+
     nunjucks.configure(
-        cfg.nitro.view_directory,
+        cfg.nitro.base_path + cfg.nitro.view_directory,
         {
             autoescape: true,
             express: app
@@ -376,7 +376,7 @@ Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used o
 
 The following packages are always installed by the [app](#name) generator:
 
-* [jQuery 2.1.4](http://jquery.com/)
+* [jQuery 2.2.0](http://jquery.com/)
 * [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)
 
 All of these can be updated with `bower update` as new versions are released.

@@ -16,22 +16,46 @@ module.exports = generators.Base.extend({
 		// Calling the super constructor
 		generators.Base.apply(this, arguments);
 
-		this.option('name', {desc: 'the name of your app', type: String});
-		this.options.name = this.options.name || path.basename(process.cwd());
+		this.passedInOptions = {
+			name: this.options.name,
+			pre: this.options.pre,
+			js: this.options.js,
+			viewExt: this.options.viewExt,
+			clientTpl: this.options.clientTpl
+		};
+
+		this.option('name', {
+			desc: 'the name of your app',
+			type: String,
+			defaults: this.passedInOptions.name || path.basename(process.cwd())
+		});
 		this.options.name = _.kebabCase(this.options.name);
 
 		this.preOptions = ['less', 'scss'];
 		this.option('pre', {
 			desc: 'your desired preprocessor [' + this.preOptions.join('|') + ']',
 			type: String,
-			defaults: this.preOptions[0]
+			defaults: this.passedInOptions.pre || this.preOptions[1]
 		});
 
 		this.jsOptions = ['JavaScript', 'TypeScript'];
 		this.option('js', {
 			desc: 'your desired js compiler [' + this.jsOptions.join('|') + ']',
 			type: String,
-			defaults: this.jsOptions[0]
+			defaults: this.passedInOptions.js || this.jsOptions[0]
+		});
+
+		this.viewExtOptions = ['html', 'hbs', 'mustache'];
+		this.option('viewExt', {
+			desc: 'your desired view file extension [' + this.viewExtOptions.join('|') + ']',
+			type: String,
+			defaults: this.passedInOptions.viewExt || this.viewExtOptions[0]
+		});
+
+		this.option('clientTpl', {
+			desc: 'do you need client side templates',
+			type: Boolean,
+			defaults: this.passedInOptions.clientTpl || false
 		});
 	},
 
@@ -72,6 +96,8 @@ module.exports = generators.Base.extend({
 					this.options.name = config.name || this.options.name;
 					this.options.pre = config.preprocessor || this.options.pre;
 					this.options.js = config.jscompiler || this.options.js;
+					this.options.viewExt = config.viewExtension || this.options.viewExt;
+					this.options.clientTpl = config.clientTemplates || this.options.clientTpl;
 				}
 
 				done();
@@ -83,30 +109,66 @@ module.exports = generators.Base.extend({
 				{
 					name: 'name',
 					message: 'What\'s the name of your app?',
-					default: this.options.name
+					default: this.options.name,
+					when: function() {
+						return !this.passedInOptions.name;
+					}.bind(this)
 				},
 				{
 					name: 'pre',
 					type: 'list',
 					message: 'What\'s your desired preprocessor?',
 					choices: this.preOptions,
-					default: _.indexOf(this.preOptions, this.options.pre) || 0
+					default: this.options.pre,
+					store: true,
+					when: function() {
+						return !this.passedInOptions.pre;
+					}.bind(this)
 				},
 				{
 					name: 'js',
 					type: 'list',
 					message: 'What\'s your desired javascript compiler?',
 					choices: this.jsOptions,
-					default: _.indexOf(this.jsOptions, this.options.js) || 0
+					default: this.options.js,
+					store: true,
+					when: function() {
+						return !this.passedInOptions.js;
+					}.bind(this)
+				},
+				{
+					name: 'viewExt',
+					type: 'list',
+					message: 'What\'s your desired view file extension?',
+					choices: this.viewExtOptions,
+					default: this.options.viewExt,
+					store: true,
+					when: function() {
+						return !this.passedInOptions.viewExt;
+					}.bind(this)
+				},
+				{
+					name: 'clientTpl',
+					type: 'confirm',
+					message: 'Would you like to include client side templates?',
+					default: this.options.clientTpl,
+					store: true,
+					when: function() {
+						return typeof this.passedInOptions.clientTpl !== 'boolean';
+					}.bind(this)
 				}
 			], function (props) {
-				this.options.name = props.name;
-				this.options.pre = props.pre;
-				this.options.js = props.js;
+				this.options.name = props.name || this.options.name;
+				this.options.pre = props.pre || this.options.pre;
+				this.options.js = props.js || this.options.js;
+				this.options.viewExt = props.viewExt || this.options.viewExt;
+				this.options.clientTpl = props.clientTpl !== undefined ? props.clientTpl : this.options.clientTpl;
 
 				this.config.set('name', this.options.name);
 				this.config.set('preprocessor', this.options.pre);
 				this.config.set('jscompiler', this.options.js);
+				this.config.set('viewExtension', this.options.viewExt);
+				this.config.set('clientTemplates', this.options.clientTpl);
 
 				this.config.save();
 
@@ -140,7 +202,7 @@ module.exports = generators.Base.extend({
 			var zip = new admzip(this.destZip);
 
 			try {
-				// extract entrys
+				// extract entries
 				zip.extractEntryTo('frontend-defaults-master/editorconfig/frontend.editorconfig', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/gitignore/nitro.gitignore', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/gitattributes/.gitattributes', this.sourceRoot(), false, true);
@@ -171,11 +233,16 @@ module.exports = generators.Base.extend({
 				// files to process with copyTpl
 				'package.json',
 				'config.json',
+				'bower.json',
 				'gulpfile.js',
 				'gulp/compile-css.js',
 				'gulp/compile-js.js',
 				'gulp/utils.js',
 				'gulp/watch-assets.js',
+				'app/core/config.js',
+				'project/docs/nitro.md',
+				'components/molecules/Example/example.html',
+				'views/index.html',
 				'.jshintignore'
 			];
 			var ignores = [
@@ -188,6 +255,26 @@ module.exports = generators.Base.extend({
 				// files only for this.options.js==='TypeScript'
 				'tsd.json',
 				'gulp/compile-ts.js'
+			];
+			var clientTplFiles = [
+				// files only for this.options.clientTpl===true
+				'components/molecules/Example/_data/example-template.json',
+				'components/molecules/Example/js/decorator/example-template.js',
+				'components/molecules/Example/template/example.hbs',
+				'components/molecules/Example/template/example.links.hbs',
+				'components/molecules/Example/template/partial/example.link.hbs',
+				'project/docs/client-templates.md',
+				'project/blueprints/component/template/component.hbs',
+				'gulp/compile-templates.js'
+			];
+			var viewFiles = [
+				// files that might change file extension
+				'views/404.html',
+				'views/index.html',
+				'views/_partials/foot.html',
+				'views/_partials/head.html',
+				'components/molecules/Example/example.html',
+				'project/blueprints/component/component.html'
 			];
 
 			var data = {
@@ -208,7 +295,14 @@ module.exports = generators.Base.extend({
 					}
 				}
 
-				// ignore everything under assets, components and views
+				// Client side templates only Files
+				if (!this.options.clientTpl) {
+					if (_.indexOf(clientTplFiles, file) !== -1) {
+						return;
+					}
+				}
+
+				// ignore everything under assets, components and views on updating project
 				if (this.update) {
 					if (_.startsWith(file, 'assets') ||
 						_.startsWith(file, 'components') ||
@@ -217,9 +311,9 @@ module.exports = generators.Base.extend({
 					}
 				}
 
-				// exclude unecessary preprocessor files
 				var ext = path.extname(file).substring(1);
 
+				// exclude unnecessary preprocessor files
 				if (_.indexOf(this.preOptions, ext) !== -1 && this.options.pre !== ext) {
 					return;
 				}
@@ -228,12 +322,22 @@ module.exports = generators.Base.extend({
 					return;
 				}
 
+				var sourcePath = this.templatePath(file),
+					destinationPath = this.destinationPath(file);
+
+				// adjust destination template file extension for view files
+				if(_.indexOf(this.viewExtOptions, ext) !== -1 && _.indexOf(viewFiles, file) !== -1) {
+					var targetExt = '.' + (this.options.viewExt !== 0 ? this.options.viewExt : this.viewExtOptions[0]);
+
+					destinationPath = destinationPath.replace(path.extname(destinationPath), targetExt);
+				}
+
 				if (_.indexOf(tplFiles, file) !== -1) {
-					this.fs.copyTpl(this.templatePath(file), this.destinationPath(file), data);
+					this.fs.copyTpl(sourcePath, destinationPath, data);
 					return;
 				}
 
-				this.fs.copy(this.templatePath(file), this.destinationPath(file));
+				this.fs.copy(sourcePath, destinationPath);
 			}, this);
 
 		}

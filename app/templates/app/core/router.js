@@ -1,6 +1,7 @@
 var path = require('path'),
 	fs = require('fs'),
 	cfg = require('./config'),
+	utils = require('./utils'),
 	dot = require('dot-object'),
 	extend = require('extend'),
 	express = require('express'),
@@ -54,16 +55,6 @@ function getView(req, res, next) {
 	var replaceAt = function replaceAt(string, index, character) {
 		return string.substr(0, index) + character + string.substr(index + character.length);
 	};
-	var fileExistsSync = function fileExistsSync(filename) {
-		// Substitution for the deprecated fs.existsSync() method @see https://nodejs.org/api/fs.html#fs_fs_existssync_path
-		try {
-			fs.accessSync(filename);
-			return true;
-		}
-		catch (ex) {
-			return false;
-		}
-	};
 
 	var tpl = req.params.view ? req.params.view.toLowerCase() : 'index',
 		data = {
@@ -75,29 +66,31 @@ function getView(req, res, next) {
 	viewPathes.forEach(function (viewPath) {
 		if (!rendered) {
 			var tplPath = path.join(
+				cfg.nitro.base_path,
 				cfg.nitro.view_directory,
 				'/',
 				viewPath + '.' + cfg.nitro.view_file_extension
 			);
 
-			if (fileExistsSync(tplPath)) {
+			if (utils.fileExistsSync(tplPath)) {
 
 				// collect data
 				var dataPath = path.join(
-					cfg.nitro.view_directory,
-					'/_data/',
+					cfg.nitro.base_path,
+					cfg.nitro.view_data_directory,
+					'/',
 					viewPath + '.json'
 				);
 				var customDataPath = req.query._data ? path.join(
-					cfg.nitro.view_directory,
-					'/_data/',
-					req.query._data + '.json'
+					cfg.nitro.base_path,
+					cfg.nitro.view_data_directory,
+					'/' + req.query._data + '.json'
 				) : false;
 
-				if (customDataPath && fileExistsSync(customDataPath)) {
+				if (customDataPath && utils.fileExistsSync(customDataPath)) {
 					extend(true, data, JSON.parse(fs.readFileSync(customDataPath, 'utf8')));
 				}
-				else if (fileExistsSync(dataPath)) {
+				else if (utils.fileExistsSync(dataPath)) {
 					extend(true, data, JSON.parse(fs.readFileSync(dataPath, 'utf8')));
 				}
 

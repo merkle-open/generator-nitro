@@ -36,6 +36,7 @@ function getSourceFiles(ext) {
 
 function reloadConfig() {
 	cfg = cfg.reload();
+	return cfg;
 }
 
 function getTask(task) {
@@ -49,7 +50,8 @@ function splitJsAssets(asset) {
 	asset.src.forEach(function (value) {
 		if (value.indexOf('.ts') !== -1) {
 			tsAssets.push(value);
-		} else {
+		}
+		else {
 			jsAssets.push(value);
 		}
 	});

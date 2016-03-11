@@ -50,7 +50,7 @@
 		"gulp-remember": "^0.3.0",
 		"gulp-rename": "^1.2.2",<% if (options.pre === 'scss') { %>
 		"gulp-sass": "^2.2.0",<% } %>
-		"gulp-size": "^2.0.0",
+		"gulp-size": "^2.1.0",
 		"gulp-sourcemaps": "^1.6.0",<% if (options.js === 'TypeScript') { %>
 		"typescript": "^1.5.0-beta",
 		"gulp-typescript": "^2.7.5", <% } %>
@@ -63,7 +63,7 @@
 		"jasmine-core": "^2.4.1",
 		"jshint": "^2.9.1",
 		"jshint-stylish": "^2.1.0",
-		"karma": "^0.13.21",
+		"karma": "^0.13.22",
 		"karma-chrome-launcher": "^0.2.2",
 		"karma-jasmine": "^0.3.7"<% if (options.clientTpl) { %>,
 		"merge-stream": "^1.0.0"<% } %>

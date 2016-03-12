@@ -1,9 +1,9 @@
 {
 	"name": "nitro",
-	"version": "0.2.7",
-	"description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.",
-	"license": "MIT",
-	"repository": "namics/generator-nitro",
+	"version": "0.0.0",
+	"description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro <%= version %>",
+	"license": "UNLICENSED",
+	"private": true,
 	"author": "The Nitro Team",
 	"engines": {
 		"node": ">=0.12 <5",

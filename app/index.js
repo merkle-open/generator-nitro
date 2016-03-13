@@ -16,7 +16,7 @@ module.exports = generators.Base.extend({
 		// Calling the super constructor
 		generators.Base.apply(this, arguments);
 
-		this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
+		this.pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json'),'utf8'));
 
 		this.passedInOptions = {
 			name: this.options.name,

@@ -7,6 +7,8 @@ var os = require('os');
 
 describe('nitro:app', function () {
 
+	jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
+
 	describe('when using default options', function () {
 		beforeAll(function (done) {
 			helpers.run(path.join(__dirname, '../app'))

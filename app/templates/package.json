@@ -65,7 +65,7 @@
 		"jshint-stylish": "^2.1.0",
 		"karma": "^0.13.22",
 		"karma-chrome-launcher": "^0.2.2",
-		"karma-jasmine": "^0.3.7"<% if (options.clientTpl) { %>,
+		"karma-jasmine": "^0.3.8"<% if (options.clientTpl) { %>,
 		"merge-stream": "^1.0.0"<% } %>
 	},
 	"devDependencies": {

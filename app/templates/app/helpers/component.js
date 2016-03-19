@@ -7,13 +7,6 @@ var utils = require('../core/utils');
 
 module.exports = function () {
 
-	var logAndRenderError = function logAndRenderError(e) {
-		console.info(e.message);
-		return new hbs.handlebars.SafeString(
-			'<p class="nitro-msg nitro-msg--error">' + e.message + '</p>'
-		);
-	};
-
 	try {
 		var context = arguments[arguments.length - 1];
 		var contextDataRoot = context.data && context.data.root ? context.data.root : {};      // default component data from controller & view
@@ -98,6 +91,6 @@ module.exports = function () {
 		throw new Error('Component `' + name + '` with template file `'+ templateFile + '.' + cfg.nitro.view_file_extension + '` not found in folder `' + folder + '`.');
 	}
 	catch (e) {
-		return logAndRenderError(e);
+		return utils.logAndRenderError(e);
 	}
 };

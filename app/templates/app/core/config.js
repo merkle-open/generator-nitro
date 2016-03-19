@@ -1,15 +1,15 @@
-var path = require('path'),
-	fs = require('fs'),
-	extend = require('extend');
+var path = require('path');
+var fs = require('fs');
+var extend = require('extend');
 
 function factory() {
-	var base_path = path.normalize(__dirname + '../../../'),
-		options = {
-			encoding: 'utf-8',
-			flag: 'r'
-		};
-
+	var base_path = path.normalize(__dirname + '../../../');
+	var options = {
+		encoding: 'utf-8',
+		flag: 'r'
+	};
 	var config = JSON.parse(fs.readFileSync(base_path + 'config.json', options));
+
 	config.nitro = extend(true, {
 		base_path: base_path,
 		view_directory: 'views',

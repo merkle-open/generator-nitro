@@ -30,7 +30,7 @@
 		"es6-promise": "^3.1.2",
 		"express": "^4.13.4",
 		"extend": "^3.0.0",
-		"globby": "^3.0.1",
+		"globby": "^4.0.0",
 		"gulp": "^3.9.1",
 		"gulp-autoprefixer": "^3.1.0",
 		"gulp-cached": "^1.1.0",<% if (options.clientTpl) { %>

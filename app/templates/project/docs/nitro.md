@@ -123,6 +123,14 @@ Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*
 
     {{> head}}
 
+### Render Placeholders
+
+Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `views/_placeholders/` as `*.<%= options.viewExt %>` files.  
+The following two examples do the same and render the file `Content/example.<%= options.viewExt %>` from `views/_placeholders/`.
+
+    {{placeholder 'Content' 'example'}}
+    {{placeholder name='Content' template='example'}}
+
 ### Passing data
 
 #### Data per view
@@ -376,7 +384,7 @@ Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used o
 
 The following packages are always installed by the [app](#name) generator:
 
-* [jQuery 2.2.1](http://jquery.com/)
+* [jQuery 2.2.2](http://jquery.com/)
 * [TerrificJS 3.0.0-beta.9](https://github.com/brunschgi/terrificjs)<% if (options.clientTpl) { %>
 * [Handlebars 4.0.5](https://github.com/components/handlebars.js)<% } %>
 

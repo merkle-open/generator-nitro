@@ -11,33 +11,30 @@ module.exports = function (gulp, plugins) {
 
 		assets.forEach(function (asset) {
 			promises.push(new Promise(function (resolve) {
-				globby(asset.deps).then(function (paths) {
-					var imports = '';
-
-					paths.forEach(function (path) {
-						imports += fs.readFileSync(path);
-					});
-
-					gulp.src(asset.src)
-						.pipe(plugins.plumber())
-						.pipe(plugins.header(imports))
-						.pipe(plugins.cached(asset.name))
-						<% if (options.pre === 'scss') { %>.pipe(plugins.sass().on('error', plugins.sass.logError ))<% } else { %>.pipe(plugins.less().on('error', function(err) {
-							console.log(err.message);
-							this.emit('end');
-						}))<% } %>
-						.pipe(plugins.autoprefixer({
-							browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1'],
-							cascade: true
-						}))
-						.pipe(plugins.remember(asset.name))
-						.pipe(plugins.concat(asset.name))
-						.pipe(gulp.dest('public/assets/css/'))
-						.on('end', function () {
-							resolve();
-						})
-						.pipe(browserSync.reload({stream: true}));
+				var imports = '';
+				globby.sync(asset.deps).forEach(function (path) {
+					imports += fs.readFileSync(path, 'utf8');
 				});
+
+				gulp.src(asset.src)
+					.pipe(plugins.plumber())
+					.pipe(plugins.header(imports, false))
+					.pipe(plugins.cached(asset.name))
+					<% if (options.pre === 'scss') { %>.pipe(plugins.sass().on('error', plugins.sass.logError ))<% } else { %>.pipe(plugins.less().on('error', function(err) {
+						console.log(err.message);
+						this.emit('end');
+					}))<% } %>
+					.pipe(plugins.autoprefixer({
+						browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1'],
+						cascade: true
+					}))
+					.pipe(plugins.remember(asset.name))
+					.pipe(plugins.concat(asset.name))
+					.pipe(gulp.dest('public/assets/css/'))
+					.on('end', function () {
+						resolve();
+					})
+					.pipe(browserSync.reload({stream: true}));
 			}));
 		});
 

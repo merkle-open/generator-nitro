@@ -22,6 +22,7 @@
 		"nitro"
 	],
 	"dependencies": {
+		"autoprefixer": "^6.3.4",
 		"body-parser": "^1.15.0",
 		"browser-sync": "^2.11.1",
 		"compression": "^1.6.1",
@@ -32,7 +33,6 @@
 		"extend": "^3.0.0",
 		"globby": "^4.0.0",
 		"gulp": "^3.9.1",
-		"gulp-autoprefixer": "^3.1.0",
 		"gulp-cached": "^1.1.0",<% if (options.clientTpl) { %>
 		"gulp-change": "^1.0.0",<% } %>
 		"gulp-concat": "^2.6.0",
@@ -47,6 +47,7 @@
 		"gulp-load-plugins": "^1.2.0",
 		"gulp-newer": "^1.1.0",
 		"gulp-plumber": "^1.1.0",
+		"gulp-postcss": "^6.1.0",
 		"gulp-remember": "^0.3.0",
 		"gulp-rename": "^1.2.2",<% if (options.pre === 'scss') { %>
 		"gulp-sass": "^2.2.0",<% } %>

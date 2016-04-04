@@ -22,7 +22,7 @@
 		"nitro"
 	],
 	"dependencies": {
-		"autoprefixer": "^6.3.5",
+		"autoprefixer": "^6.3.6",
 		"body-parser": "^1.15.0",
 		"browser-sync": "^2.11.2",
 		"compression": "^1.6.1",

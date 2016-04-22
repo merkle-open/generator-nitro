@@ -10,6 +10,7 @@
 		"npm": ">=1.3 <4"
 	},
 	"scripts": {
+		"postinstall": "bower install",
 		"test": "karma start --single-run --no-auto-watch",
 		"start": "node server"
 	},

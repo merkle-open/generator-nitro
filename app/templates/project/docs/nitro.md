@@ -27,11 +27,27 @@ And also you need the yeoman [generator-nitro](https://www.npmjs.com/package/gen
 and some dependencies installed globally.
 
     npm install -g yo bower gulp jasmine karma-cli generator-nitro
+    
+Install the project dependencies in the project root:
+
+    npm install
 
 ## Starting the app
 
-The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `develop` task). If you want the
-app to run on another port put them before the gulp task like this:
+Use
+
+    gulp develop
+
+... to start in development mode
+
+or
+
+    node server.js
+
+... to start the server only
+
+The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `develop` task).  
+If you want the app to run on another port put them before the gulp task like this:
 
     PORT=8000 PROXY=8001 gulp develop
 

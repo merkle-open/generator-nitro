@@ -16,6 +16,8 @@ module.exports = generators.Base.extend({
 		// Calling the super constructor
 		generators.Base.apply(this, arguments);
 
+		this.pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json'),'utf8'));
+
 		this.passedInOptions = {
 			name: this.options.name,
 			pre: this.options.pre,
@@ -279,6 +281,7 @@ module.exports = generators.Base.extend({
 
 			var data = {
 				name: this.options.name,
+				version: this.pkg.version,
 				options: this.options
 			};
 

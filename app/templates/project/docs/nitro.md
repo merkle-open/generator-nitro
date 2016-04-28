@@ -27,11 +27,27 @@ And also you need the yeoman [generator-nitro](https://www.npmjs.com/package/gen
 and some dependencies installed globally.
 
     npm install -g yo bower gulp jasmine karma-cli generator-nitro
+    
+Install the project dependencies in the project root:
+
+    npm install
 
 ## Starting the app
 
-The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `develop` task). If you want the
-app to run on another port put them before the gulp task like this:
+Use
+
+    gulp develop
+
+... to start in development mode
+
+or
+
+    node server.js
+
+... to start the server only
+
+The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `develop` task).  
+If you want the app to run on another port put them before the gulp task like this:
 
     PORT=8000 PROXY=8001 gulp develop
 
@@ -122,6 +138,14 @@ There also is a possibility to pass data to subcomponents by providing a data ob
 Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.<%= options.viewExt %>` files (e.g. `head.<%= options.viewExt %>`).
 
     {{> head}}
+
+### Render Placeholders
+
+Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `views/_placeholders/` as `*.<%= options.viewExt %>` files.  
+The following two examples do the same and render the file `Content/example.<%= options.viewExt %>` from `views/_placeholders/`.
+
+    {{placeholder 'Content' 'example'}}
+    {{placeholder name='Content' template='example'}}
 
 ### Passing data
 
@@ -376,15 +400,13 @@ Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used o
 
 The following packages are always installed by the [app](#name) generator:
 
-* [jQuery 2.2.0](http://jquery.com/)
-* [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)
+* [jQuery 2.2.2](http://jquery.com/)
+* [TerrificJS 3.0.0-beta.9](https://github.com/brunschgi/terrificjs)<% if (options.clientTpl) { %>
+* [Handlebars 4.0.5](https://github.com/components/handlebars.js)<% } %>
 
 All of these can be updated with `bower update` as new versions are released.
 
 ## Credits
 
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version <%= version %>).  
 Nitro is an alternative to [Terrific Micro](https://github.com/namics/terrific-micro) which is developed by Namics AG.
-
-## License
-
-Released under the [MIT license](LICENSE)

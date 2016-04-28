@@ -14,8 +14,8 @@
  *
  * It is also possible to use other translation features from i18next (http://i18next.com/node/pages/doc_features.html)
  */
-var i18n = require('i18next'),
-	hbs = require('hbs');
+var i18n = require('i18next');
+var hbs = require('hbs');
 
 // already initialised in ../core/i18n.js
 //var options = {
@@ -29,13 +29,13 @@ var i18n = require('i18next'),
 
 module.exports = function(key) {
 
-	var interpolationPrefix = '{',
-		interpolationSuffix = '}',
-		args = [].slice.call(arguments),
-		values = args.slice(1, -1),
-		hash = args.slice(-1)[0].hash,
-		result = i18n.t.apply(i18n, args), // default translations (i18next)
-		regExp;
+	var interpolationPrefix = '{';
+	var interpolationSuffix = '}';
+	var args = [].slice.call(arguments);
+	var values = args.slice(1, -1);
+	var hash = args.slice(-1)[0].hash;
+	var result = i18n.t.apply(i18n, args); // default translations (i18next)
+	var regExp;
 
 	// custom replaces from arguments
 	values.forEach(function(item, index) {

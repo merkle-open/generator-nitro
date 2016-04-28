@@ -1,7 +1,7 @@
-var hbs = require('hbs'),
-	fs = require('fs'),
-	path = require('path'),
-	cfg = require('../core/config.js');
+var hbs = require('hbs');
+var fs = require('fs');
+var path = require('path');
+var cfg = require('../core/config.js');
 
 /**
  * Excluded Directories and Files
@@ -11,6 +11,7 @@ var excludes = {
 	directories: [
 		path.basename(cfg.nitro.view_data_directory),
 		path.basename(cfg.nitro.view_partials_directory),
+		path.basename(cfg.nitro.placeholders_directory),
 		'.svn'
 	],
 	files: [
@@ -27,24 +28,24 @@ var excludes = {
  * @returns {Array} All allowed views
  */
 function walk(dir) {
-	var results = [],
-		files = fs.readdirSync(dir);
+	var results = [];
+	var files = fs.readdirSync(dir);
 
 	files.forEach(function(file) {
-		var filePath = dir + '/' + file,
-			stat = fs.statSync(filePath);
+		var filePath = dir + '/' + file;
+		var stat = fs.statSync(filePath);
 
 		if (stat && stat.isDirectory() && excludes.directories.indexOf(file) === -1) {
 			results = results.concat(walk(filePath));
 		}
 		else if (stat && stat.isFile() && excludes.files.indexOf(file) === -1) {
-			var relativePath = path.relative(cfg.nitro.base_path + cfg.nitro.view_directory, filePath),
-				ext = path.extname(filePath),
-				extReg = new RegExp(ext + '$'),
-				name = relativePath.replace(extReg, '').replace(/\//g, ' ').replace(/\\/g, ' ').replace(/\b\w/g, function (w) {
+			var relativePath = path.relative(cfg.nitro.base_path + cfg.nitro.view_directory, filePath);
+			var ext = path.extname(filePath);
+			var extReg = new RegExp(ext + '$');
+			var name = relativePath.replace(extReg, '').replace(/\//g, ' ').replace(/\\/g, ' ').replace(/\b\w/g, function (w) {
 					return w.toUpperCase();
-				}),
-				url = relativePath.replace(extReg, '').replace(/\//g, '-').replace(/\\/g, '-');
+				});
+			var url = relativePath.replace(extReg, '').replace(/\//g, '-').replace(/\\/g, '-');
 
 			results.push({
 				view_name: name,
@@ -57,8 +58,8 @@ function walk(dir) {
 }
 
 module.exports = function() {
-	var views = walk(cfg.nitro.base_path + cfg.nitro.view_directory),
-		markup = ['<ul>'];
+	var views = walk(cfg.nitro.base_path + cfg.nitro.view_directory);
+	var markup = ['<ul>'];
 
 	views.forEach(function(view) {
 		markup.push('<li><a href="/' + view.view_url + '">' + view.view_name + '</a></li>');

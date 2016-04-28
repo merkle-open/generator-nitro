@@ -1,14 +1,14 @@
-var path = require('path'),
-	fs = require('fs'),
-	cfg = require('./config'),
-	utils = require('./utils'),
-	dot = require('dot-object'),
-	extend = require('extend'),
-	express = require('express'),
-	router = express.Router({
-		caseSensitive: false,
-		strict:        false
-	});
+var path = require('path');
+var fs = require('fs');
+var cfg = require('./config');
+var utils = require('./utils');
+var dot = require('dot-object');
+var extend = require('extend');
+var express = require('express');
+var router = express.Router({
+	caseSensitive: false,
+	strict:        false
+});
 
 /**
  * static routes
@@ -20,9 +20,9 @@ router.use('/', express.static(cfg.nitro.base_path + '/public/'));
  */
 function getView(req, res, next) {
 	var getViewCombinations = function getViewCombinations(action) {
-		var pathes = [action],
-			positions = [],
-			i, j;
+		var pathes = [action];
+		var positions = [];
+		var i, j;
 
 		for (i = 0; i < action.length; i++) {
 			if (action[i] === '-') {
@@ -56,12 +56,12 @@ function getView(req, res, next) {
 		return string.substr(0, index) + character + string.substr(index + character.length);
 	};
 
-	var tpl = req.params.view ? req.params.view.toLowerCase() : 'index',
-		data = {
-			pageTitle: tpl
-		},
-		viewPathes = getViewCombinations(tpl),
-		rendered = false;
+	var tpl = req.params.view ? req.params.view.toLowerCase() : 'index';
+	var data = {
+		pageTitle: tpl
+	};
+	var viewPathes = getViewCombinations(tpl);
+	var rendered = false;
 
 	viewPathes.forEach(function (viewPath) {
 		if (!rendered) {

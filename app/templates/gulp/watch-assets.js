@@ -1,19 +1,31 @@
 var browserSync = require('browser-sync');
 var cfg = require('../app/core/config');
+var utils = require('./utils');
 
 module.exports = function (gulp, plugins) {
 	return function () {
 		var clearCache = function (e) {
-			if ('delete' === e.type) {
-				delete plugins.cached.caches.scripts[e.path];
-				plugins.remember.forget('scripts', e.path);
+			if (
+				'unlink' === e.event ||
+				'add' === e.event ||
+				e.path.endsWith('config.json')
+			) {
+				// forget all
+				plugins.cached.caches = {};
+				var assets = utils.getSourceFiles('.css');
+				assets.forEach(function (asset) {
+					if (plugins.remember.cacheFor(asset.name)) {
+						plugins.remember.forgetAll(asset.name);
+					}
+				});
 			}
 		};
 
 		plugins.watch([
 			'config.json'
-		], function () {
-			cfg = cfg.reload();
+		], function (e) {
+			cfg = utils.reloadConfig();
+			clearCache(e);
 			gulp.start('compile-css');
 			gulp.start('compile-js');
 		});
@@ -32,8 +44,7 @@ module.exports = function (gulp, plugins) {
 			'assets/js/**/*.ts',
 			'components/**/js/**/*.ts'<% } %><% if (options.clientTpl) { %>,
 			'components/**/template/**/*.hbs'<% } %>
-		], function () {<% if (options.js === 'TypeScript') { %>
-			clearCache(e);<% } %>
+		], function () {
 			gulp.start('compile-js');
 		});
 

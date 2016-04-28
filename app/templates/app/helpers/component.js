@@ -1,28 +1,21 @@
-var fs = require('fs'),
-	hbs = require('hbs'),
-	path = require('path'),
-	extend = require('extend'),
-	cfg = require('../core/config'),
-	utils = require('../core/utils');
+var fs = require('fs');
+var hbs = require('hbs');
+var path = require('path');
+var extend = require('extend');
+var cfg = require('../core/config');
+var utils = require('../core/utils');
 
 module.exports = function () {
 
-	var logAndRenderError = function logAndRenderError(e) {
-		console.info(e.message);
-		return new hbs.handlebars.SafeString(
-			'<p class="nitro-msg nitro-msg--error">' + e.message + '</p>'
-		);
-	};
-
 	try {
-		var context = arguments[arguments.length - 1],
-			contextDataRoot = context.data && context.data.root ? context.data.root : {},   // default component data from controller & view
-			name = 'string' === typeof arguments[0] ? arguments[0] : context.hash.name,
-			folder = name.replace(/[^A-Za-z0-9-]/g, ''),
-			templateFile = context.hash && context.hash.template ? context.hash.template : folder.toLowerCase(),
-			dataFile = folder.toLowerCase(),                                                           // default data file
-			passedData = null,                                                                         // passed data to component helper
-			componentData = {};                                                                        // collected component data
+		var context = arguments[arguments.length - 1];
+		var contextDataRoot = context.data && context.data.root ? context.data.root : {};      // default component data from controller & view
+		var name = 'string' === typeof arguments[0] ? arguments[0] : context.hash.name;
+		var folder = name.replace(/[^A-Za-z0-9-]/g, '');
+		var templateFile = context.hash && context.hash.template ? context.hash.template : folder.toLowerCase();
+		var dataFile = folder.toLowerCase();                                                   // default data file
+		var passedData = null;                                                                 // passed data to component helper
+		var componentData = {};                                                                // collected component data
 
 		if (arguments.length >= 3) {
 			if ('object' === typeof arguments[1]) {
@@ -98,6 +91,6 @@ module.exports = function () {
 		throw new Error('Component `' + name + '` with template file `'+ templateFile + '.' + cfg.nitro.view_file_extension + '` not found in folder `' + folder + '`.');
 	}
 	catch (e) {
-		return logAndRenderError(e);
+		return utils.logAndRenderError(e);
 	}
 };

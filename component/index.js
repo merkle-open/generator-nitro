@@ -147,7 +147,7 @@ module.exports = generators.Base.extend({
 					css: _.kebabCase(this.name), // Component name for use in CSS files, eg. main-navigation
 					prefix: component.component_prefix || null, // CSS class prefix, eg. m
 					type: this.options.type, // Component type, eg. atom, molecule etc.
-					file: this.name.replace(/[^A-Za-z0-9-]/g, '').toLowerCase() // Component filename, eg. main-navigation
+					file: this.name.replace(/[^A-Za-z0-9-]/g, '').toLowerCase() // Component filename, eg. mainnavigation
 				},
 				modifier: {
 					name: this.options.modifier, // Modifier name, eg. Highlight
@@ -157,7 +157,7 @@ module.exports = generators.Base.extend({
 				decorator: {
 					name: this.options.decorator, // Decorator name, eg. Highlight
 					js: _.upperFirst(_.camelCase(this.options.decorator.replace(/^[0-9]+/, ''))), // Decorator name for use in JS files, eg. Highlight
-					file: this.options.decorator.replace(/[^A-Za-z0-9-]/g, '').toLowerCase()  // Modifier filename, eg.highlight
+					file: this.options.decorator.replace(/[^A-Za-z0-9-]/g, '').toLowerCase()  // Decorator filename, eg.highlight
 				}
 			};
 

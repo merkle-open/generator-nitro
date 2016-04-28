@@ -34,6 +34,11 @@ function getSourceFiles(ext) {
 	return assets;
 }
 
+function reloadConfig() {
+	cfg = cfg.reload();
+	return cfg;
+}
+
 function getTask(task) {
 	return require('./' + task)(gulp, plugins);
 }
@@ -45,7 +50,8 @@ function splitJsAssets(asset) {
 	asset.src.forEach(function (value) {
 		if (value.indexOf('.ts') !== -1) {
 			tsAssets.push(value);
-		} else {
+		}
+		else {
 			jsAssets.push(value);
 		}
 	});
@@ -57,6 +63,7 @@ function splitJsAssets(asset) {
 }<% } %>
 module.exports = {
 	getSourceFiles: getSourceFiles,
+	reloadConfig: reloadConfig,
 	getTask: getTask<% if (options.js === 'TypeScript') { %>,
 	splitJsAssets: splitJsAssets<% } %>
 };

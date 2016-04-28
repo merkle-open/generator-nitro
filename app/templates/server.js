@@ -1,10 +1,10 @@
-var express = require('express'),
-	app = express(),
-	config = require('./app/core/config'),
-	router = require('./app/core/router'),
-	hbs = require('./app/core/hbs'),
-	compression = require('compression'),
-	bodyParser = require('body-parser');
+var express = require('express');
+var app = express();
+var config = require('./app/core/config');
+var router = require('./app/core/router');
+var hbs = require('./app/core/hbs');
+var compression = require('compression');
+var bodyParser = require('body-parser');
 
 // compress all requests
 app.use(compression());

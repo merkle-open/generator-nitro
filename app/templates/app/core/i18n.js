@@ -27,6 +27,6 @@ var options = {
 
 i18n.init(options);
 
-exports = module.exports = function (app) {
+module.exports = function (app) {
 	app.use(i18n.handle);
 };

@@ -1,9 +1,9 @@
 /*
  Simple solution
- if you need more control, start the server with forever or similar techniques
+ if you need more control, start the server with pm2 or similar techniques
  https://github.com/namics/generator-nitro/blob/master/app/templates/project/docs/nitro.md#starting-the-app
- https://www.npmjs.com/package/forever
-*/
+ https://www.npmjs.com/package/pm2
+ */
 module.exports = function (gulp, plugins) {
 	return function () {
 		gulp.start('serve');

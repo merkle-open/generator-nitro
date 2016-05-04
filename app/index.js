@@ -266,7 +266,9 @@ module.exports = generators.Base.extend({
 				'app/core/utils.js',
 				'project/docs/nitro.md',
 				'components/molecules/Example/example.html',
+				'project/blueprints/component/component.html',
 				'views/index.html',
+				'views/404.html',
 				'.jshintignore'
 			];
 			var ignores = [

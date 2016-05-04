@@ -1,7 +1,7 @@
 var fs = require('fs');
 var hbs = require('hbs');
 var path = require('path');
-var cfg = require('../../../app/core/config');
+var cfg = require('../../../core/config');
 var utils = require('../../../core/utils');
 
 module.exports = function () {

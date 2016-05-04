@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var hbs = require('./app/templating/hbs/engine');
 app.engine(config.nitro.view_file_extension, hbs.__express);
 <% } %>
-<% if (options.templateEngine === 'handlebars') {%>
+<% if (options.templateEngine === 'twig') {%>
 var twig = require('./app/templating/twig/engine');
 twig.cache(false);
 app.engine(config.nitro.view_file_extension, twig.__express);

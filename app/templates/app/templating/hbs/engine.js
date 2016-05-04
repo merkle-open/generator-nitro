@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var hbs = require('hbs');
 var hbsutils = require('hbs-utils')(hbs);
-var cfg = require('../../config');
+var cfg = require('../../core/config');
 var coreHelpersDir = cfg.nitro.base_path + 'app/templating/hbs/helpers/';
 var projectHelpersDir = cfg.nitro.base_path + 'project/helpers/';
 

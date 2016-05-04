@@ -263,6 +263,7 @@ module.exports = generators.Base.extend({
 				'gulp/utils.js',
 				'gulp/watch-assets.js',
 				'app/core/config.js',
+				'app/core/utils.js',
 				'project/docs/nitro.md',
 				'components/molecules/Example/example.html',
 				'views/index.html',

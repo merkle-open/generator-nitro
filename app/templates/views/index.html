@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<% if (options.templateEngine === 'handlebars') { %>
 	{{> head}}
+	<% } %>
+	<% if (options.templateEngine === 'twig') { %>
+	{% include '_partials/head.html' %}
+	<% } %>
 </head>
 <body>
 <div class="container">
+	<% if (options.templateEngine === 'handlebars') { %>
 	{{component 'Example'}}
 	{{component 'Example' 'example-blue'}}<% if (options.clientTpl) { %>
 	{{component 'Example' 'example-template'}}<% } %>
+	<% } %>
+	<% if (options.templateEngine === 'twig') { %>
+	{% component 'Example' }}
+	{% component 'Example' 'example-blue' %}<% if (options.clientTpl) { %>
+	{% component 'Example' 'example-template' %}<% } %>
+	<% } %>
 </div>
+<% if (options.templateEngine === 'handlebars') { %>
 {{> foot}}
+<% } %>
+<% if (options.templateEngine === 'twig') { %>
+{% include '_partials/foot.html' %}
+<% } %>
 </body>
 </html>

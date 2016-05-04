@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<% if (options.templateEngine === 'handlebars') { %>
 	{{> head}}
+	<% } %>
+	<% if (options.templateEngine === 'twig') { %>
+	{% include '_partials/head.html' %}
+	<% } %>
 </head>
 <body>
 <div class="container">
 	<h1>404 - Not Found</h1>
+	<% if (options.templateEngine === 'handlebars') { %>
 	{{view_list}}
+	<% } %>
 </div>
+<% if (options.templateEngine === 'handlebars') { %>
 {{> foot}}
+<% } %>
+<% if (options.templateEngine === 'twig') { %>
+{% include '_partials/foot.html' %}
+<% } %>
 </body>
 </html>

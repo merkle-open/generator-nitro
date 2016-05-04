@@ -11,7 +11,7 @@
 	},
 	"main": "app/index.js",
 	"scripts": {
-		"test": "node_modules/.bin/jasmine"
+		"test": "node_modules/.bin/jasmine --harmony"
 	},
 	"files": [
 		"app",

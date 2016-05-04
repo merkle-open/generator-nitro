@@ -1,6 +1,6 @@
 var fs = require('fs');
 var path = require('path');
-<% if (options.templateEngine === 'twig') { %>
+var config = require('./config');<% if (options.templateEngine === 'twig') { %>
 var twig = require('twig');
 
 function logAndRenderError(e) {
@@ -8,9 +8,7 @@ function logAndRenderError(e) {
 	return twig({
 		data: '<p class="nitro-msg nitro-msg--error">' + e.message + '</p>',
 	}).render();
-}
-<% } %>
-<% if (options.templateEngine === 'handlebars') {%>
+}<% } %><% if (options.templateEngine === 'handlebars') {%>
 var hbs = require('hbs');
 
 function logAndRenderError(e) {
@@ -18,8 +16,7 @@ function logAndRenderError(e) {
 	return new hbs.handlebars.SafeString(
 		'<p class="nitro-msg nitro-msg--error">' + e.message + '</p>'
 	);
-}
-<% } %>
+}<% } %>
 
 function fileExistsSync(filename) {
 	// Substitution for the deprecated fs.existsSync() method @see https://nodejs.org/api/fs.html#fs_fs_existssync_path

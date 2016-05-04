@@ -3,16 +3,12 @@ var app = express();
 var config = require('./app/core/config');
 var router = require('./app/core/router');
 var compression = require('compression');
-var bodyParser = require('body-parser');
-<% if (options.templateEngine === 'handlebars') {%>
+var bodyParser = require('body-parser');<% if (options.templateEngine === 'handlebars') {%>
 var hbs = require('./app/templating/hbs/engine');
-app.engine(config.nitro.view_file_extension, hbs.__express);
-<% } %>
-<% if (options.templateEngine === 'twig') {%>
+app.engine(config.nitro.view_file_extension, hbs.__express);<% } %><% if (options.templateEngine === 'twig') {%>
 var twig = require('./app/templating/twig/engine');
 twig.cache(false);
-app.engine(config.nitro.view_file_extension, twig.__express);
-<% } %>
+app.engine(config.nitro.view_file_extension, twig.__express);<% } %>
 
 // compress all requests
 app.use(compression());

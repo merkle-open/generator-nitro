@@ -265,8 +265,8 @@ module.exports = generators.Base.extend({
 				'app/core/config.js',
 				'app/core/utils.js',
 				'project/docs/nitro.md',
+				'project/component/component.html',
 				'components/molecules/Example/example.html',
-				'project/blueprints/component/component.html',
 				'views/index.html',
 				'views/404.html',
 				'.jshintignore'

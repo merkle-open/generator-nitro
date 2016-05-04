@@ -60,7 +60,7 @@
 		"gulp-wrap": "^0.11.0",<% } %><% if (options.templateEngine === 'handlebars') { %>
 		"hbs": "^4.0.0",
 		"hbs-utils": "^0.0.3",<% } %> <% if (options.templateEngine === 'twig') {%>
-		"twig": "^0.8.9",<% } %>
+		"twig": "0.8.8",<% } %>
 		"i18next": "^1.10.6",
 		"imagemin-pngquant": "^4.2.2",
 		"jasmine-core": "^2.4.1",

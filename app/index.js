@@ -257,6 +257,7 @@ module.exports = generators.Base.extend({
 				'config.json',
 				'bower.json',
 				'gulpfile.js',
+				'server.js',
 				'gulp/compile-css.js',
 				'gulp/compile-js.js',
 				'gulp/utils.js',

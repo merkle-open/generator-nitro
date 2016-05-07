@@ -20,10 +20,11 @@
 	"keywords": [
 		"yeoman-generator",
 		"scaffold",
-		"terrific",
-		"component",
 		"frontend",
+		"component",
+		"pattern",
 		"modular",
+		"terrific",
 		"app",
 		"nitro"
 	],

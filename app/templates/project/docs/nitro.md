@@ -3,8 +3,7 @@
 Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.  
 It provides a proven but flexible structure to develop your frontend code, even in a large team.  
 Keep track of your code with a modularized frontend. This app and the suggested concepts could help - 
-[atomic design](http://bradfrost.com/blog/post/atomic-web-design/), [BEM](https://en.bem.info/method/definitions/) 
-and [terrific](http://terrifically.org).  
+[atomic design](http://bradfrost.com/blog/post/atomic-web-design/) and [BEM](https://en.bem.info/method/definitions/).  
 Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 ## Features
@@ -27,7 +26,15 @@ And also you need the yeoman [generator-nitro](https://www.npmjs.com/package/gen
 and some dependencies installed globally.
 
     npm install -g yo bower gulp jasmine karma-cli generator-nitro
-    
+
+Keep your global packages up to date:
+
+    npm outdated -g --depth=0
+
+Make an update if necessary:
+
+    npm update -g
+
 Install the project dependencies in the project root:
 
     npm install
@@ -76,7 +83,7 @@ A component uses the following structure:
     /Example/js/example.js
     /Example/_data/example.json
 
-Terrific modifiers & decorators are created using the following conventions:
+Modifiers (JavaScript) and decorators (CSS) are created using the following conventions:
 
     /Example/css/modifier/example-<modifier>.css
     /Example/js/decorator/example-<decorator>.js
@@ -207,7 +214,7 @@ You can configure the include order of your assets by defining patterns in `conf
         ],
         "app.js": [
             "!assets/js/somefile.js",
-            "assets/vendor/terrific/dist/terrific.min.js",
+            "assets/vendor/jquery/dist/jquery.min.js",
             "assets/vendor/terrific/dist/terrific.min.js",
             "assets/js/*.js",
             "components/**/js/*.js",

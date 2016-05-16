@@ -3,6 +3,3 @@ sudo: false
 node_js:
   - '4'
   - '0.12'
-before_install:
-  - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-nitro' ]; then cd .. && eval "mv $currentfolder generator-nitro" && cd generator-nitro; fi

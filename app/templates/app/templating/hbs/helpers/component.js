@@ -2,8 +2,8 @@ var fs = require('fs');
 var hbs = require('hbs');
 var path = require('path');
 var extend = require('extend');
-var cfg = require('../core/config');
-var utils = require('../core/utils');
+var cfg = require('../../../core/config');
+var utils = require('../../../core/utils');
 
 module.exports = function () {
 

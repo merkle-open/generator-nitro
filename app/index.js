@@ -23,7 +23,8 @@ module.exports = generators.Base.extend({
 			pre: this.options.pre,
 			js: this.options.js,
 			viewExt: this.options.viewExt,
-			clientTpl: this.options.clientTpl
+			clientTpl: this.options.clientTpl,
+			templateEngine: this.options.templateEngine,
 		};
 
 		this.option('name', {
@@ -58,6 +59,13 @@ module.exports = generators.Base.extend({
 			desc: 'do you need client side templates',
 			type: Boolean,
 			defaults: this.passedInOptions.clientTpl || false
+		});
+
+		this.templateEngineOptions = ['handlebars', 'twig'];
+		this.option('templateEngine', {
+			desc: 'your desired server-side template engine [' + this.templateEngineOptions.join('|') + ']',
+			type: String,
+			defaults: this.passedInOptions || this.templateEngineOptions[0],
 		});
 	},
 
@@ -100,6 +108,7 @@ module.exports = generators.Base.extend({
 					this.options.js = config.jscompiler || this.options.js;
 					this.options.viewExt = config.viewExtension || this.options.viewExt;
 					this.options.clientTpl = config.clientTemplates || this.options.clientTpl;
+					this.options.templateEngine = config.templateEngine || this.options.templateEngine;
 				}
 
 				done();
@@ -158,19 +167,30 @@ module.exports = generators.Base.extend({
 					when: function() {
 						return typeof this.passedInOptions.clientTpl !== 'boolean';
 					}.bind(this)
-				}
+				},
+				{
+					name: 'templateEngine',
+					type: 'list',
+					message: 'Which server-side template engine would you like to use?',
+					choices: this.templateEngineOptions,
+					default: this.options.templateEngine,
+					store: true,
+					when: function() { return !this.passedInOptions.templateEngine}.bind(this),
+				},
 			], function (props) {
 				this.options.name = props.name || this.options.name;
 				this.options.pre = props.pre || this.options.pre;
 				this.options.js = props.js || this.options.js;
 				this.options.viewExt = props.viewExt || this.options.viewExt;
 				this.options.clientTpl = props.clientTpl !== undefined ? props.clientTpl : this.options.clientTpl;
+				this.options.templateEngine = props.templateEngine || this.options.templateEngine;
 
 				this.config.set('name', this.options.name);
 				this.config.set('preprocessor', this.options.pre);
 				this.config.set('jscompiler', this.options.js);
 				this.config.set('viewExtension', this.options.viewExt);
 				this.config.set('clientTemplates', this.options.clientTpl);
+				this.config.set('templateEngine', this.options.templateEngine);
 
 				this.config.save();
 
@@ -237,14 +257,18 @@ module.exports = generators.Base.extend({
 				'config.json',
 				'bower.json',
 				'gulpfile.js',
+				'server.js',
 				'gulp/compile-css.js',
 				'gulp/compile-js.js',
 				'gulp/utils.js',
 				'gulp/watch-assets.js',
 				'app/core/config.js',
+				'app/core/utils.js',
 				'project/docs/nitro.md',
+				'project/component/component.html',
 				'components/molecules/Example/example.html',
 				'views/index.html',
+				'views/404.html',
 				'.jshintignore'
 			];
 			var ignores = [

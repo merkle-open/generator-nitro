@@ -3,7 +3,7 @@ var fs = require('fs');
 var extend = require('extend');
 
 function factory() {
-	var base_path = path.normalize(__dirname + '../../../');
+	var base_path = path.normalize(path.join(__dirname, '../../'));
 	var options = {
 		encoding: 'utf-8',
 		flag: 'r'

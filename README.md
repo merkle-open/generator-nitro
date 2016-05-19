@@ -7,7 +7,7 @@
 Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.  
 It provides a proven but flexible structure to develop your frontend code, even in a large team.  
 Keep track of your code with a modularized frontend. This app and the suggested [atomic design](http://bradfrost.com/blog/post/atomic-web-design/) and [BEM](https://en.bem.info/method/definitions/) concepts could help.  
-Nitro is simple, fast and flexible. Use this app for all your frontend work.
+Nitro is simple, fast and flexible. It works on OSX, Windows and Linux. Use this app for all your frontend work.
 
 ## Usage
 

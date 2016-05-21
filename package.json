@@ -21,12 +21,11 @@
 		"yeoman-generator",
 		"scaffold",
 		"frontend",
+		"app",
+		"nitro",
 		"component",
 		"pattern",
-		"modular",
-		"terrific",
-		"app",
-		"nitro"
+		"modular"
 	],
 	"dependencies": {
 		"adm-zip": "~0.4.7",

@@ -179,7 +179,7 @@ It's also possilbe to use a custom data file by requesting with a query param `?
 #### Dynamic view data
 
 If you want to use dynamic view data (i.e. using data from a database or data which is available in different views), 
-you can define those "routes" in the directory [`project/viewData`](project/viewData/). 
+you can define those "routes" in the directory [`project/viewData/`](project/viewData/README.md). 
 
 #### Data per component
 
@@ -189,7 +189,7 @@ Component data will overwrite data from views. (Use as described above)
 
 You may overwrite data from views & components in request parameters.
 
-`?pageTitle=Testpage` will overwrite the the data for the handlebars expression `{{pageTitle}}`
+`?pageTitle=Testpage` will overwrite the data for the handlebars expression `{{pageTitle}}`
 
 It's also possible to use dot notation for object data:
 
@@ -197,8 +197,9 @@ It's also possible to use dot notation for object data:
 
 ## Assets
 
-Nitro's main feature is asset concatenation for CSS and JavaScript files. If changed, the files will be updated on
-every request, therefore you'll always get the latest version.
+One of Nitro's main feature is asset concatenation for CSS and JavaScript files. 
+If changed, the files will be updated on every change, 
+therefore you'll always get the latest version.
 
 ### Assets Configuration
 
@@ -293,7 +294,7 @@ Some examples:
     {{t "test.example.sprintf" "alphabet" "a" "l" "p"}}
     {{t "test.example.interpolation" data}}
 
-The Second system uses brackets as interpolation pre- and suffixes and numbered or named placeholders:
+The second system uses brackets as interpolation and numbered or named placeholders:
 
     "test": {
         "example": {
@@ -324,10 +325,10 @@ Use all lowercase if possible.
 
 Exceptions:
 
-* Component folders must match terrific classes, therefore they are case-sensitive.
+* Component folders must match JS classes, therefore they are case-sensitive.
 * TerrificJS uses upper case for its namespace `T` and class names `T.Module.Example`
 
-Use the component helper with the *exact* component name:
+So, use the component helper with the *exact* component name:
 
     {{component 'NavMain'}}
 
@@ -339,28 +340,28 @@ Note that camel case ComponentNames are represented in CSS with dashes.
     
 ### Custom Handlebars helpers
 
-Custom handlebars will be automatically loaded if put into to `project/helpers` directory. An example could look like 
+Custom handlebars helpers will be automatically loaded if put into to `project/helpers` directory. An example could look like 
 this:
 
     module.exports = function(foo) {
         // Helper Logic
     };
 
-The helper name will automatically match the filename, so if you name your file `foo.js` your helper will be called  
-`foo`.
+The helper name will automatically match the filename, so if you name your file `foo.js` your helper will be called `foo`.
 
 ### JSON Endpoints
 
 If you need to mock service endpoints, you can put JSON files into a directory inside the `/public` directory as 
 those are directly exposed.
 
-`/public/service/posts.json` will be available under `/service/posts.json` and can be used for things like AJAX 
-requests.
+`/public/service/posts.json` will be available under `/service/posts.json` 
+and can be used for things like AJAX requests.
 
 ### Custom Routes
 
-If you need more custom functionality in endpoints you can put your custom routes with their logic into the 
-[`project/routes` directory](project/routes/).
+If you need more custom functionality in endpoints 
+you can put your custom routes with their logic 
+into the [`project/routes` directory](project/routes/).
 
 ### Using another Template Engine
 
@@ -395,7 +396,7 @@ Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used o
 ## Contributing
 
 * For Bugs and Features please use [GitHub](https://github.com/namics/generator-nitro/issues)
-* Feel free to fork and send PRs. That's the best way to discuss your ideas.
+* Feel free to fork and send PRs to the current `develop` branch. That's the best way to discuss your ideas.
 
 ## Example Project Includes
 

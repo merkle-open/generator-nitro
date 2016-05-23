@@ -37,7 +37,9 @@ describe('nitro:app', function () {
 				'.gitattributes',
 				'.gitignore',
 				'.jshintrc',
-				'.jshintignore'
+				'.jshintignore',
+				'.stylelintrc',
+				'.stylelintignore'
 			]);
 		});
 	});

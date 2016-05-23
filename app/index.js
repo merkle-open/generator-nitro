@@ -207,6 +207,8 @@ module.exports = generators.Base.extend({
 				// extract entries
 				zip.extractEntryTo('frontend-defaults-master/codequality/jshint/.jshintrc', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/codequality/jshint/nitro.jshintignore', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/codequality/stylelint/.stylelintrc', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/codequality/stylelint/nitro.stylelintignore', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/editorconfig/.editorconfig', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/repo/gitignore/nitro.gitignore', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/repo/gitattributes/.gitattributes', this.sourceRoot(), false, true);
@@ -214,6 +216,7 @@ module.exports = generators.Base.extend({
 				// rename files
 				fs.renameSync(this.templatePath('nitro.gitignore'), this.templatePath('.gitignore'));
 				fs.renameSync(this.templatePath('nitro.jshintignore'), this.templatePath('.jshintignore'));
+				fs.renameSync(this.templatePath('nitro.stylelintignore'), this.templatePath('.stylelintignore'));
 			}
 			catch (e) {
 				this.log(chalk.red(e.message));

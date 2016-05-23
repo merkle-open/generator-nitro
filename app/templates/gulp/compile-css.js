@@ -29,6 +29,13 @@ module.exports = function (gulp, plugins) {
 					.pipe(plugins.plumber())
 					.pipe(plugins.cached(asset.name))
 					.pipe(plugins.sourcemaps.init({loadMaps: true}))
+					.pipe(plugins.stylelint({
+						failAfterError: false,
+						syntax: '<% if (options.pre === 'scss') { %>scss<% } else { %>less<% } %>',
+						reporters: [
+							{formatter: 'string', console: true}
+						]
+					}))
 					.pipe(plugins.header(imports, false))
 					<% if (options.pre === 'scss') { %>.pipe(plugins.sass().on('error', plugins.sass.logError ))<% } else { %>.pipe(plugins.less().on('error', function(err) {
 						console.log(err.message);

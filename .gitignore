@@ -22,6 +22,8 @@ app/templates/.gitignore
 app/templates/.gitattributes
 app/templates/.jshintrc
 app/templates/.jshintignore
+app/templates/.stylelintrc
+app/templates/.stylelintignore
 
 # Project
 node_modules/

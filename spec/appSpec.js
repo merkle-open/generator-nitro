@@ -36,7 +36,8 @@ describe('nitro:app', function () {
 				'.editorconfig',
 				'.gitattributes',
 				'.gitignore',
-				'.jshintrc'
+				'.jshintrc',
+				'.jshintignore'
 			]);
 		});
 	});

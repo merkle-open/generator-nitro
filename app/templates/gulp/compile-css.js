@@ -9,12 +9,13 @@ module.exports = function (gulp, plugins) {
 	return function () {
 		var assets = utils.getSourceFiles('.css');
 		var promises = [];
+		var browserCompatibility = utils.getBrowserCompatibility();
 
 		assets.forEach(function (asset) {
 			promises.push(new Promise(function (resolve) {
 				var processors = [
 					autoprefixer({
-						browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1'],
+						browsers: browserCompatibility,
 						cascade: true
 					})
 				];

@@ -19,6 +19,12 @@ function factory() {
 		placeholders_directory: 'views/_placeholders'
 	}, config.nitro);
 
+	config.code = extend(true, {
+		compatibility: {
+			browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1']
+		}
+	}, config.code);
+
 	config.server = {
 		port: process.env.PORT || 8080,
 		proxy: process.env.PROXY || 8081

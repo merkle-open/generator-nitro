@@ -3,6 +3,10 @@ var path = require('path');
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
 
+function getBrowserCompatibility() {
+	return cfg.code.compatibility.browsers;
+}
+
 function getSourceFiles(ext) {
 	var assets = [];
 
@@ -34,14 +38,15 @@ function getSourceFiles(ext) {
 	return assets;
 }
 
+function getTask(task) {
+	return require('./' + task)(gulp, plugins);
+}
+
 function reloadConfig() {
 	cfg = cfg.reload();
 	return cfg;
 }
 
-function getTask(task) {
-	return require('./' + task)(gulp, plugins);
-}
 <% if (options.js === 'TypeScript') { %>
 function splitJsAssets(asset) {
 	var tsAssets = [],
@@ -61,9 +66,11 @@ function splitJsAssets(asset) {
 		js: jsAssets
 	};
 }<% } %>
+
 module.exports = {
+	getBrowserCompatibility: getBrowserCompatibility,
 	getSourceFiles: getSourceFiles,
-	reloadConfig: reloadConfig,
-	getTask: getTask<% if (options.js === 'TypeScript') { %>,
+	getTask: getTask,
+	reloadConfig: reloadConfig<% if (options.js === 'TypeScript') { %>,
 	splitJsAssets: splitJsAssets<% } %>
 };

@@ -408,8 +408,8 @@ Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used o
 
 The following packages are always installed by the [app](#name) generator:
 
-* [jQuery 2.2.2](http://jquery.com/)
-* [TerrificJS 3.0.0-beta.9](https://github.com/brunschgi/terrificjs)<% if (options.clientTpl) { %>
+* [jQuery 2.2.4](http://jquery.com/)
+* [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)<% if (options.clientTpl) { %>
 * [Handlebars 4.0.5](https://github.com/components/handlebars.js)<% } %>
 
 All of these can be updated with `bower update` as new versions are released.

@@ -203,13 +203,6 @@ describe('nitro:app', function () {
 			]);
 		});
 
-		it('.jshintignore contains some specific ignores', function () {
-			assert.fileContent([
-				['.jshintignore', 'components/**/template/*.js'],
-				['.jshintignore', 'components/**/template/partial/*.js']
-			]);
-		});
-
 		it('config.json loads template files', function () {
 			assert.fileContent([
 				['config.json', 'components/**/template/*.js'],
@@ -253,13 +246,6 @@ describe('nitro:app', function () {
 				'components/molecules/Example/template/partial/example.link.hbs',
 				'components/molecules/Example/_data/example-template.json',
 				'components/molecules/Example/js/decorator/example-template.js'
-			]);
-		});
-
-		it('.jshintignore contains some specific ignores', function () {
-			assert.noFileContent([
-				['.jshintignore', 'components/**/template/*.js'],
-				['.jshintignore', 'components/**/template/partial/*.js']
 			]);
 		});
 

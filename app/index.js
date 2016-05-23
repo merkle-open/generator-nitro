@@ -205,14 +205,15 @@ module.exports = generators.Base.extend({
 
 			try {
 				// extract entries
-				zip.extractEntryTo('frontend-defaults-master/editorconfig/frontend.editorconfig', this.sourceRoot(), false, true);
-				zip.extractEntryTo('frontend-defaults-master/gitignore/nitro.gitignore', this.sourceRoot(), false, true);
-				zip.extractEntryTo('frontend-defaults-master/gitattributes/.gitattributes', this.sourceRoot(), false, true);
-				zip.extractEntryTo('frontend-defaults-master/jshintrc/.jshintrc', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/codequality/jshint/.jshintrc', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/codequality/jshint/nitro.jshintignore', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/editorconfig/.editorconfig', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/repo/gitignore/nitro.gitignore', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/repo/gitattributes/.gitattributes', this.sourceRoot(), false, true);
 
 				// rename files
-				fs.renameSync(this.templatePath('frontend.editorconfig'), this.templatePath('.editorconfig'));
 				fs.renameSync(this.templatePath('nitro.gitignore'), this.templatePath('.gitignore'));
+				fs.renameSync(this.templatePath('nitro.jshintignore'), this.templatePath('.jshintignore'));
 			}
 			catch (e) {
 				this.log(chalk.red(e.message));
@@ -244,8 +245,7 @@ module.exports = generators.Base.extend({
 				'app/core/config.js',
 				'project/docs/nitro.md',
 				'components/molecules/Example/example.html',
-				'views/index.html',
-				'.jshintignore'
+				'views/index.html'
 			];
 			var ignores = [
 				// files to ignore

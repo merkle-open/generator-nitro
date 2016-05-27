@@ -10,7 +10,7 @@ describe('Genearator', function () {
 			expect(pkg.name).toEqual('generator-nitro');
 		});
 
-		fit('includes MIT license', function () {
+		it('includes MIT license', function () {
 			expect(pkg.license).toEqual('MIT');
 		});
 

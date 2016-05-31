@@ -1,4 +1,4 @@
-# EditorConfig. Frontend.
+# EditorConfig. Frontend. Default. Namics.
 # @see: http://EditorConfig.org
 # install a plugin to your editor: http://editorconfig.org/#download
 # mark: not all plugins supports the same EditorConfig properties
@@ -12,18 +12,23 @@ root = true
 charset = utf-8
 # Force Unix-style newlines with a newline ending every file & trim trailing whitespace
 end_of_line = lf
+# Indentation
+indent_style = tab
+indent_size = 4
+
 insert_final_newline = true
 trim_trailing_whitespace = true
 
 ### Frontend files
-[*.{css,scss,less,js,json,ts,sass,php,html,phtml,html.twig}]
-
-# Tab indentation
-indent_style = tab
-indent_size = 4
+[*.{css,scss,less,js,json,ts,sass,php,html,hbs,mustache,phtml,html.twig}]
 
 ### Markdown
 [*.md]
 indent_style = space
 indent_size = 4
 trim_trailing_whitespace = false
+
+### Specific files
+[{package,bower}.json,.travis.yml]
+indent_style = space
+indent_size = 2

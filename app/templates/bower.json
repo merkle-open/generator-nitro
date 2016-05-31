@@ -1,31 +1,31 @@
 {
-	"name": "nitro",
-	"description": "Bower frontend dependencies for Nitro",
-	"main": "",
-	"authors": [
-		"The Nitro Team"
-	],
-	"keywords": [
-		"terrific",
-		"component",
-		"frontend",
-		"modular",
-		"app",
-		"nitro"
-	],
-	"license": "MIT",
-	"ignore": [
-		"**/.*",
-		"node_modules",
-		"bower_components",
-		"assets/vendor",
-		"test",
-		"tests"
-	],
-	"dependencies": {
-		"jquery": "~2.2.4",
-		"terrific": "~3.0.0"<% if (options.clientTpl) { %>,
-		"handlebars": "~4.0.5"<% } %>
-	},
-	"private": true
+  "name": "nitro",
+  "description": "Bower frontend dependencies for Nitro",
+  "main": "",
+  "authors": [
+    "The Nitro Team"
+  ],
+  "keywords": [
+    "terrific",
+    "component",
+    "frontend",
+    "modular",
+    "app",
+    "nitro"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.4",
+    "terrific": "~3.0.0"<% if (options.clientTpl) { %>,
+    "handlebars": "~4.0.5"<% } %>
+  },
+  "private": true
 }

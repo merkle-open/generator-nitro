@@ -10,10 +10,10 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 * Simple project structure
 * CSS/JS concatenation and minification
-* LESS/SCSS support
-* Caching (LESS/SCSS) for optimal performance
-* Jasmine tests with Karma test runner
+* LESS/SCSS support (with caching for optimal performance)
+* Source Maps, Linting, PostCSS & Browsersync
 * Bower support
+* Jasmine tests with Karma test runner
 * Yeoman component generator<% if (options.clientTpl) { %>
 * [Client side templates](client-templates.md)<% } %>
 
@@ -179,7 +179,7 @@ It's also possilbe to use a custom data file by requesting with a query param `?
 #### Dynamic view data
 
 If you want to use dynamic view data (i.e. using data from a database or data which is available in different views), 
-you can define those "routes" in the directory [`project/viewData/`](project/viewData/README.md). 
+you can define those "routes" in the directory [`project/viewData/`](../viewData/README.md). 
 
 #### Data per component
 
@@ -389,22 +389,32 @@ Now Restart Nitro and it'll run with Nunjucks.
 **Be aware**, you'll need to adjust all your views and components to work with the new engine. 
 Nitro only provides a `component` helper for handlebars.
 
-## Commandline
+## Miscellaneous
+
+### Commandline
 
 Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used on the CLI.
 
-## Contributing
+### Git Hooks
+
+Nitro tries to install a `post-merge` git hook with every `npm install`.
+This hook will run a `npm install` if someone changes `package.json` 
+and will run `bower install` if someone changes `bower.json`. 
+ 
+You may [change this or add other hooks](../.githooks/README.md) in `project/.githooks`.
+
+### Contributing
 
 * For Bugs and Features please use [GitHub](https://github.com/namics/generator-nitro/issues)
 * Feel free to fork and send PRs to the current `develop` branch. That's the best way to discuss your ideas.
 
-## Example Project Includes
+### Example Project Includes
 
 * [YUI CSS Reset 3.18.1](http://yuilibrary.com/yui/docs/cssreset/)
 * Favicon & Home-Icons from Nitro (replace with your own)
 * Component `Example` and some styles in assets/css (you don't need them)
 
-### Bower Components
+#### Bower Components
 
 The following packages are always installed by the [app](#name) generator:
 
@@ -414,7 +424,7 @@ The following packages are always installed by the [app](#name) generator:
 
 All of these can be updated with `bower update` as new versions are released.
 
-## Credits
+### Credits
 
 This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version <%= version %>).  
 Nitro is an alternative to [Terrific Micro](https://github.com/namics/terrific-micro) which is developed by Namics AG.

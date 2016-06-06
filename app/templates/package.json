@@ -25,7 +25,7 @@
   "dependencies": {
     "autoprefixer": "~6.3.6",
     "body-parser": "~1.15.1",
-    "browser-sync": "~2.12.10",
+    "browser-sync": "~2.12.12",
     "compression": "~1.6.2",
     "del": "~2.2.0",
     "dot-object": "~1.4.1",
@@ -44,9 +44,9 @@
     "gulp-imagemin": "~2.4.0",
     "gulp-jshint": "~2.0.1",<% if (options.pre === 'less') { %>
     "gulp-less": "~3.1.0",<% } %>
-    "gulp-live-server": "~0.0.29",
+    "gulp-live-server": "~0.0.30",
     "gulp-load-plugins": "~1.2.4",
-    "gulp-newer": "~1.1.0",
+    "gulp-newer": "~1.2.0",
     "gulp-plumber": "~1.1.0",
     "gulp-postcss": "~6.1.1",
     "gulp-remember": "~0.3.1",

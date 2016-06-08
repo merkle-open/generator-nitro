@@ -2,8 +2,8 @@ var fs = require('fs');
 var path = require('path');
 var hbs = require('hbs');
 var hbsutils = require('hbs-utils')(hbs);
-var cfg = require('./config');
-var coreHelpersDir = cfg.nitro.base_path + 'app/helpers/';
+var cfg = require('../../core/config');
+var coreHelpersDir = cfg.nitro.base_path + 'app/templating/hbs/helpers/';
 var projectHelpersDir = cfg.nitro.base_path + 'project/helpers/';
 var partialMatch = new RegExp('\.' + cfg.nitro.view_file_extension + '$');
 

@@ -1,7 +1,7 @@
 var hbs = require('hbs');
 var fs = require('fs');
 var path = require('path');
-var cfg = require('../core/config.js');
+var cfg = require('../../../core/config');
 
 /**
  * Excluded Directories and Files

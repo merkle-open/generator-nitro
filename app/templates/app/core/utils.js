@@ -15,7 +15,7 @@ function fileExistsSync(filename) {
 function logAndRenderError(e) {
 	console.info(e.message);
 	return new hbs.handlebars.SafeString(
-		'<p class="nitro-msg nitro-msg--error">' + e.message + '</p>'
+		'<p class="nitro-msg nitro-msg--error">' + msg + '</p>'
 	);
 }
 

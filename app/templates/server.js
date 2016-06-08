@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var config = require('./app/core/config');
 var router = require('./app/core/router');
-var hbs = require('./app/core/hbs');
+var hbs = require('./app/templating/hbs/engine');
 var compression = require('compression');
 var bodyParser = require('body-parser');
 

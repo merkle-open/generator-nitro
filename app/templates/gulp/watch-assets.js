@@ -1,6 +1,6 @@
-var browserSync = require('browser-sync');
 var cfg = require('../app/core/config');
 var utils = require('./utils');
+var browserSync = utils.getBrowserSyncInstance();
 
 module.exports = function (gulp, plugins) {
 	return function () {

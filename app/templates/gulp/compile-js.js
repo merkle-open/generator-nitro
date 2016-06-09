@@ -1,6 +1,6 @@
 var utils = require('./utils');
 var Promise = require('es6-promise').Promise;
-var browserSync = require('browser-sync');
+var browserSync = utils.getBrowserSyncInstance();
 
 module.exports = function (gulp, plugins) {
 	return function () {
@@ -24,7 +24,7 @@ module.exports = function (gulp, plugins) {
 					.on('end', function () {
 						resolve();
 					})
-					.pipe(browserSync.reload({stream: true}));
+					.pipe(browserSync.stream());
 			}));
 		});
 

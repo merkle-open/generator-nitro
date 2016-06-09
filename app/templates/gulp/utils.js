@@ -2,9 +2,18 @@ var cfg = require('../app/core/config');
 var path = require('path');
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
+var browserSync;
 
 function getBrowserCompatibility() {
 	return cfg.code.compatibility.browsers;
+}
+
+function getBrowserSyncInstance() {
+	var name = 'Nitro' + cfg.server.port;
+	if (!browserSync) {
+		browserSync = require('browser-sync').create(name);
+	}
+	return browserSync;
 }
 
 function getSourceFiles(ext) {
@@ -69,6 +78,7 @@ function splitJsAssets(asset) {
 
 module.exports = {
 	getBrowserCompatibility: getBrowserCompatibility,
+	getBrowserSyncInstance: getBrowserSyncInstance,
 	getSourceFiles: getSourceFiles,
 	getTask: getTask,
 	reloadConfig: reloadConfig<% if (options.js === 'TypeScript') { %>,

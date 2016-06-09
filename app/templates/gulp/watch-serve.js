@@ -1,10 +1,11 @@
-var browserSync = require('browser-sync');
-var compression = require('compression');
 var config = require('../app/core/config');
+var utils = require('./utils');
+var browserSync = utils.getBrowserSyncInstance();
+var compression = require('compression');
 
 module.exports = function (gulp, plugins) {
 	return function () {
-		browserSync({
+		browserSync.init({
 			proxy: {
 				target: 'localhost:' + config.server.port,
 				middleware: [compression()]

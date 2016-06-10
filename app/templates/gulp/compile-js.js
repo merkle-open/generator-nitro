@@ -4,7 +4,7 @@ var browserSync = utils.getBrowserSyncInstance();
 
 module.exports = function (gulp, plugins) {
 	return function () {
-		var assets = utils.getSourceFiles('.js');
+		var assets = utils.getSourcePatterns('js');
 		var promises = [];
 
 		assets.forEach(function (asset) {

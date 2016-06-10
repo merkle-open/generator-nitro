@@ -1,19 +1,34 @@
 var cfg = require('../app/core/config');
 var utils = require('./utils');
+var globby = require('globby');
 var browserSync = utils.getBrowserSyncInstance();
 
 module.exports = function (gulp, plugins) {
 	return function () {
+		var isDependentStyleSource = function(file) {
+			var isDependent = false;
+			var cssAssets = utils.getSourcePatterns('css');
+			cssAssets.forEach(function (asset) {
+				globby.sync(asset.deps).forEach(function (path) {
+					if ( file.replace(/\\/g, '/').endsWith(path) ) {
+						isDependent = true;
+					}
+				});
+			});
+
+			return isDependent;
+		};
 		var clearCache = function (e) {
 			if (
 				'unlink' === e.event ||
 				'add' === e.event ||
-				e.path.endsWith('config.json')
+				e.path.endsWith('config.json') ||
+				isDependentStyleSource(e.path)
 			) {
 				// forget all
 				plugins.cached.caches = {};
-				var assets = utils.getSourceFiles('.css');
-				assets.forEach(function (asset) {
+				var cssAssets = utils.getSourcePatterns('css');
+				cssAssets.forEach(function (asset) {
 					if (plugins.remember.cacheFor(asset.name)) {
 						plugins.remember.forgetAll(asset.name);
 					}
@@ -26,6 +41,7 @@ module.exports = function (gulp, plugins) {
 		], function (e) {
 			cfg = utils.reloadConfig();
 			clearCache(e);
+			utils.updateSourcePatterns();
 			gulp.start('compile-css');
 			gulp.start('compile-js');
 		});

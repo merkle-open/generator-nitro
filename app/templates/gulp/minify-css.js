@@ -2,7 +2,7 @@ var utils = require('./utils');
 
 module.exports = function (gulp, plugins) {
 	return function () {
-		var assets = utils.getSourceFiles('.css');
+		var assets = utils.getSourcePatterns('css');
 
 		assets.forEach(function (asset) {
 			gulp

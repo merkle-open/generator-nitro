@@ -7,7 +7,7 @@ var autoprefixer = require('autoprefixer');
 
 module.exports = function (gulp, plugins) {
 	return function () {
-		var assets = utils.getSourceFiles('.css');
+		var assets = utils.getSourcePatterns('css');
 		var promises = [];
 		var browserCompatibility = utils.getBrowserCompatibility();
 

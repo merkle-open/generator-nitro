@@ -32,6 +32,14 @@
 		"dest": "dist",
 		"views": true,
 		"publics": true,
+		"release": {
+			"bumpFiles": ["package.json"],
+			"commit": false,
+			"push": false,
+			"pushBranch": "master",
+			"pushTo": "origin",
+			"tag": false
+		},
 		"renames": [{
 			"src": "dist/assets/**",
 			"base": "dist/assets",

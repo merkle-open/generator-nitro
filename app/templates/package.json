@@ -33,13 +33,15 @@
     "express": "~4.13.4",
     "extend": "~3.0.0",
     "globby": "~4.1.0",
-    "gulp": "~3.9.1",
+    "gulp": "~3.9.1",<% if (options.exporter) { %>
+    "gulp-bump": "~2.1.0",<% } %>
     "gulp-cached": "~1.1.0",<% if (options.clientTpl) { %>
     "gulp-change": "~1.0.0",<% } %>
     "gulp-concat": "~2.6.0",
     "gulp-cssnano": "~2.1.2",<% if (options.clientTpl) { %>
     "gulp-declare": "~0.3.0",
-    "gulp-handlebars": "~4.0.0",<% } %>
+    "gulp-handlebars": "~4.0.0",<% } %><% if (options.exporter) { %>
+    "gulp-git": "~1.7.2",<% } %>
     "gulp-header": "~1.8.2",
     "gulp-imagemin": "~2.4.0",
     "gulp-jshint": "~2.0.1",<% if (options.pre === 'less') { %>
@@ -71,7 +73,8 @@
     "karma-chrome-launcher": "~1.0.1",
     "karma-jasmine": "~1.0.2"<% if (options.clientTpl) { %>,
     "merge-stream": "~1.0.0"<% } %><% if (options.exporter) { %>,
-    "run-sequence": "^1.2.1"<% } %>
+    "run-sequence": "^1.2.1",
+    "yargs": "~4.7.1"<% } %>
   },
   "devDependencies": {
     "gulp-install": "~0.6.0",

@@ -22,7 +22,7 @@ gulp.task('build', ['clean-assets'], getTask('build'));<% if (options.exporter) 
 gulp.task('export-clean', getTask('export-clean'));
 gulp.task('export-html', ['serve'], getTask('export-html'));
 gulp.task('export-config', getTask('export'));
-gulp.task('export', function(cb) {
+gulp.task('export', function (cb) {
 	runSequence(
 		'export-clean',
 		'assets',
@@ -30,5 +30,6 @@ gulp.task('export', function(cb) {
 		'export-config',
 		cb
 	);
-});<% } %>
+});
+gulp.task('release', getTask('release'));<% } %>
 gulp.task('production', ['assets'], getTask('production'));

@@ -302,8 +302,10 @@ module.exports = generators.Base.extend({
 			];
 			var exporterFiles = [
 				// files for this.options.exporter===true
+				'gulp/export-clean.js',
 				'gulp/export-html.js',
-				'gulp/export.js'
+				'gulp/export.js',
+				'gulp/release.js'
 			];
 
 			var data = {

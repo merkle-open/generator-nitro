@@ -1,7 +1,8 @@
 var config = require('../app/core/config');
+var fs = require('fs');
 
 module.exports = function (gulp, plugins) {
-	return function () {
+	return function (callback) {
 		var server = plugins.liveServer(
 			'server.js',
 			{
@@ -13,7 +14,14 @@ module.exports = function (gulp, plugins) {
 		);
 		server.start().then(function (result) {
 			console.log('Server exited with result:', result);
+			fs.unlinkSync('.servepid');
 			process.exit(result.code);
+			callback();
+		}, function () {
+
+		}, function() {
+			fs.writeFileSync('.servepid', server.server.pid);
+			callback();
 		});
 	};
 };

@@ -1,5 +1,6 @@
 var gulp = require('gulp');
-var getTask = require('./gulp/utils').getTask;
+var getTask = require('./gulp/utils').getTask;<% if (options.exporter) { %>
+var runSequence = require('run-sequence');<% } %>
 
 gulp.task('install-githooks', getTask('install-githooks'));
 gulp.task('compile-css', getTask('compile-css'));<% if (options.js === 'TypeScript') { %>
@@ -17,5 +18,17 @@ gulp.task('serve', getTask('serve'));
 gulp.task('watch-serve', ['serve'], getTask('watch-serve'));
 gulp.task('test', ['compile-css', 'compile-js'], getTask('test'));
 gulp.task('develop', ['watch-assets', 'watch-serve']);
-gulp.task('build', ['clean-assets'], getTask('build'));
+gulp.task('build', ['clean-assets'], getTask('build'));<% if (options.exporter) { %>
+gulp.task('export-clean', getTask('export-clean'));
+gulp.task('export-html', ['serve'], getTask('export-html'));
+gulp.task('export-config', getTask('export'));
+gulp.task('export', function(cb) {
+	runSequence(
+		'export-clean',
+		'assets',
+		'export-html',
+		'export-config',
+		cb
+	);
+});<% } %>
 gulp.task('production', ['assets'], getTask('production'));

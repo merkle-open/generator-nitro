@@ -59,6 +59,12 @@ module.exports = generators.Base.extend({
 			type: Boolean,
 			defaults: this.passedInOptions.clientTpl || false
 		});
+
+		this.option('exporter', {
+			desc: 'do you need static exporting functionalities',
+			type: Boolean,
+			defaults: this.passedInOptions.exporter || false
+		});
 	},
 
 	initializing: function () {
@@ -100,6 +106,7 @@ module.exports = generators.Base.extend({
 					this.options.js = config.jscompiler || this.options.js;
 					this.options.viewExt = config.viewExtension || this.options.viewExt;
 					this.options.clientTpl = config.clientTemplates || this.options.clientTpl;
+					this.options.exporter = config.exporter || this.options.exporter;
 				}
 
 				done();
@@ -158,6 +165,16 @@ module.exports = generators.Base.extend({
 					when: function() {
 						return typeof this.passedInOptions.clientTpl !== 'boolean';
 					}.bind(this)
+				},
+				{
+					name: 'exporter',
+					type: 'confirm',
+					message: 'Would you like to include static exporting functionalities?',
+					default: this.options.exporter,
+					store: true,
+					when: function() {
+						return typeof this.passedInOptions.exporter !== 'boolean';
+					}.bind(this)
 				}
 			], function (props) {
 				this.options.name = props.name || this.options.name;
@@ -165,12 +182,14 @@ module.exports = generators.Base.extend({
 				this.options.js = props.js || this.options.js;
 				this.options.viewExt = props.viewExt || this.options.viewExt;
 				this.options.clientTpl = props.clientTpl !== undefined ? props.clientTpl : this.options.clientTpl;
+				this.options.exporter = props.exporter !== undefined ? props.exporter : this.options.exporter;
 
 				this.config.set('name', this.options.name);
 				this.config.set('preprocessor', this.options.pre);
 				this.config.set('jscompiler', this.options.js);
 				this.config.set('viewExtension', this.options.viewExt);
 				this.config.set('clientTemplates', this.options.clientTpl);
+				this.config.set('exporter', this.options.exporter);
 
 				this.config.save();
 
@@ -281,6 +300,11 @@ module.exports = generators.Base.extend({
 				'components/molecules/Example/example.html',
 				'project/blueprints/component/component.html'
 			];
+			var exporterFiles = [
+				// files for this.options.exporter===true
+				'gulp/export-html.js',
+				'gulp/export.js'
+			];
 
 			var data = {
 				name: this.options.name,
@@ -304,6 +328,13 @@ module.exports = generators.Base.extend({
 				// Client side templates only Files
 				if (!this.options.clientTpl) {
 					if (_.indexOf(clientTplFiles, file) !== -1) {
+						return;
+					}
+				}
+
+				// Client side templates only Files
+				if (!this.options.exporter) {
+					if (_.indexOf(exporterFiles, file) !== -1) {
 						return;
 					}
 				}

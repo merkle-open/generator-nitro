@@ -50,7 +50,8 @@
     "gulp-plumber": "~1.1.0",
     "gulp-postcss": "~6.1.1",
     "gulp-remember": "~0.3.1",
-    "gulp-rename": "~1.2.2",<% if (options.pre === 'scss') { %>
+    "gulp-rename": "~1.2.2",<% if (options.exporter) { %>
+    "gulp-replace": "~0.5.4",<% } %><% if (options.pre === 'scss') { %>
     "gulp-sass": "~2.3.1",<% } %>
     "gulp-size": "~2.1.0",
     "gulp-sourcemaps": "~1.6.0",
@@ -69,7 +70,8 @@
     "karma": "~0.13.22",
     "karma-chrome-launcher": "~1.0.1",
     "karma-jasmine": "~1.0.2"<% if (options.clientTpl) { %>,
-    "merge-stream": "~1.0.0"<% } %>
+    "merge-stream": "~1.0.0"<% } %><% if (options.exporter) { %>,
+    "run-sequence": "^1.2.1"<% } %>
   },
   "devDependencies": {
     "gulp-install": "~0.6.0",

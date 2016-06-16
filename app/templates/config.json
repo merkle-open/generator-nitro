@@ -27,7 +27,30 @@
 		"compatibility": {
 			"browsers": ["> 1%", "last 2 versions", "ie 9", "android 4", "Firefox ESR", "Opera 12.1"]
 		}
-	},
+	},<% if (options.exporter) { %>
+	"exporter": {
+		"dest": "dist",
+		"views": true,
+		"publics": true,
+		"renames": [{
+			"src": "dist/assets/**",
+			"base": "dist/assets",
+			"dest": "dist/"
+		}],
+		"replacements": [{
+			"glob": ["dist/*.html", "dist/css/*.css"],
+			"replace": [{
+				"from": "/assets",
+				"to": "assets"
+			}]
+		}, {
+			"glob": ["dist/js/*.js"],
+			"replace": [{
+				"from": "/api",
+				"to": "api"
+			}]
+		}]
+	},<% } %>
 	"nitro": {
 		"components": {
 			"atom": {

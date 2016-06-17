@@ -395,6 +395,20 @@ Nitro can generate static exports of your project by using `gulp export` on the 
 
 The exporter configuration can be found at [config.json](../../config.json).
 
+Nitro can also produce releases by using `gulp release` on the CLI.
+You can influence the version bump by using the `--bump` option.
+
+All possibilities in examples:
+
+    $ gulp --bump
+    \> Version bumped from 0.0.0 -> 0.0.1
+    $ gulp --bump=minor
+    \> Version bumped from 0.0.1 -> 0.1.0
+    $ gulp --bump=major
+    \> Version bumped from 0.1.0 -> 1.0.0
+    $ gulp --bump=patch
+    \> Version bumped from 1.0.0 -> 1.0.1
+
 ### Exporter configuration options
 
 #### exporter.dest (String)

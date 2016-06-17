@@ -3,7 +3,7 @@ var Promise = require('es6-promise').Promise;
 
 module.exports = function (gulp, plugins) {
 	return function(){
-		var assets = utils.getSourceFiles('.js');
+		var assets = utils.getSourcePatterns('js');
 
 		var tsDefinition = {
 			typescript: require('typescript'),

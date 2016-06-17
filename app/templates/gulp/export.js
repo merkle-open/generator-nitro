@@ -1,9 +1,11 @@
 var config = require('../app/core/config.js');
+var del = require('del');
+var es = require('event-stream');
+var fs = require('fs');
 var path = require('path');
 var Promise = require('es6-promise').Promise;
 var replace = require('gulp-replace');
-var es = require('event-stream');
-var del = require('del');
+var zip = require('gulp-zip');
 
 module.exports = function (gulp) {
 	'use strict';
@@ -20,6 +22,9 @@ module.exports = function (gulp) {
 			return Promise.resolve();
 		};
 		var getRenamesPromise = function () {
+			return Promise.resolve();
+		};
+		var getZipPromise = function() {
 			return Promise.resolve();
 		};
 
@@ -104,8 +109,28 @@ module.exports = function (gulp) {
 			};
 		}
 
+		if(config.exporter.zip) {
+			getZipPromise = function() {
+				return new Promise(function (resolve) {
+					var pkg = JSON.parse(fs.readFileSync(config.nitro.base_path + 'package.json', {
+						encoding: 'utf-8',
+						flag: 'r'
+					}));
+					gulp.src(config.exporter.dest + path.sep + '**')
+						.pipe(zip(pkg.name + '-' + pkg.version + '.zip'))
+						.pipe(gulp.dest(config.exporter.dest))
+						.on('end', function() {
+							del(config.exporter.dest + path.sep + '!(*.zip)').then(function () {
+								resolve();
+							});
+						});
+				});
+			};
+		}
+
 		return getPublicsPromise()
 			.then(getRenamesPromise)
 			.then(getReplacementsPromise)
+			.then(getZipPromise);
 	};
 };

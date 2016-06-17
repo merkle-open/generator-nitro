@@ -2,7 +2,7 @@
 
 Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.  
 It provides a proven but flexible structure to develop your frontend code, even in a large team.  
-Keep track of your code with a modularized frontend. This app and the suggested concepts could help - 
+Keep track of your code with a modularized frontend. This app and the suggested concepts could help -
 [atomic design](http://bradfrost.com/blog/post/atomic-web-design/) and [BEM](https://en.bem.info/method/definitions/).  
 Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
@@ -20,9 +20,9 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 ## Preparation
 
 This application was created by the yeoman generator for nitro.  
-Before using, you need of course [node and npm](https://nodejs.org/) installed. 
+Before using, you need of course [node and npm](https://nodejs.org/) installed.
 Currently supported node.js versions are 0.12.x, and 4.x. So everything between should work.  
-And also you need the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro) 
+And also you need the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro)
 and some dependencies installed globally.
 
     npm install -g yo bower gulp jasmine karma-cli generator-nitro
@@ -59,11 +59,11 @@ If you want the app to run on another port put them before the gulp task like th
     PORT=8000 PROXY=8001 gulp develop
 
 The port to be used in production can be set the same way:
- 
+
     PORT=3000 node server.js
 
 This works a bit different on **Windows**. Use the following commands in prompt:
- 
+
     set PORT=8000 && set PROXY=8001 && gulp develop
     set PORT=3000 && node server.js
 
@@ -71,9 +71,9 @@ This works a bit different on **Windows**. Use the following commands in prompt:
 
 ### Creating Components
 
-Components are created in the `components` folder. A component is an encapsulated block of markup 
+Components are created in the `components` folder. A component is an encapsulated block of markup
 with corresponding styles, scripts and data.  
-For a better overview it is useful to define different types of components. It is recommended to make 
+For a better overview it is useful to define different types of components. It is recommended to make
 subfolders like `atoms`, `molecules` & `organisms`  
 A component uses the following structure:
 
@@ -104,7 +104,7 @@ Create a new `*.<%= options.viewExt %>` file in the `views` folder. You can make
     /views/content.<%= options.viewExt %>
     /views/content/variant.<%= options.viewExt %>
 
-Your new page can then be called by the according URL (with or without an extension). 
+Your new page can then be called by the according URL (with or without an extension).
 Subfolders are represented with a dash.
 
     http://localhost:8080/index
@@ -126,7 +126,7 @@ Render the Example component. (file: `example.<%= options.viewExt %>`, data-file
 Render a "variant" from the Example component. (file: `example.<%= options.viewExt %>`, data-file: `example-variant.json`)
 
     {{component 'Example' 'example-variant'}}
-    
+
 Another possibility to use the component helper is by providing hash options.
 
     {{component name='Example' data='example-variant'}}
@@ -159,7 +159,7 @@ The following two examples do the same and render the file `Content/example.<%= 
 #### Data per view
 
 You may pass data to your templates (view, partial, component) per view.  
-Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`. 
+Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`.
 (Use the same folder structure as in `views`)
 
     /views/index.<%= options.viewExt %>
@@ -178,8 +178,8 @@ It's also possilbe to use a custom data file by requesting with a query param `?
 
 #### Dynamic view data
 
-If you want to use dynamic view data (i.e. using data from a database or data which is available in different views), 
-you can define those "routes" in the directory [`project/viewData/`](../viewData/README.md). 
+If you want to use dynamic view data (i.e. using data from a database or data which is available in different views),
+you can define those "routes" in the directory [`project/viewData/`](../viewData/README.md).
 
 #### Data per component
 
@@ -193,12 +193,12 @@ You may overwrite data from views & components in request parameters.
 
 It's also possible to use dot notation for object data:
 
-`?page.title=Testpage` will overwrite the value for `{{page.title}}` 
+`?page.title=Testpage` will overwrite the value for `{{page.title}}`
 
 ## Assets
 
-One of Nitro's main feature is asset concatenation for CSS and JavaScript files. 
-If changed, the files will be updated on every change, 
+One of Nitro's main feature is asset concatenation for CSS and JavaScript files.
+If changed, the files will be updated on every change,
 therefore you'll always get the latest version.
 
 ### Assets Configuration
@@ -227,7 +227,7 @@ You can configure the include order of your assets by defining patterns in `conf
 
 The matching patterns follow the standard node glob patterns.  
 Glob patterns are similar to regular expression but simplified. They are used by several shells.  
-You should always try to keep the patterns simple. Usually you only need the asterisks `*` `**` 
+You should always try to keep the patterns simple. Usually you only need the asterisks `*` `**`
 and the exclamation mark `!` for negation.
 
 You can read more on the standard [node glob patterns](https://github.com/isaacs/node-glob#glob-primer).
@@ -257,7 +257,7 @@ You can configure as many different assets as you wish.
 
 ## Translations
 
-Nitro uses [i18next](http://i18next.com/node/index.html) as Translation Library 
+Nitro uses [i18next](http://i18next.com/node/index.html) as Translation Library
 and gives you the Handlebars helper `{{t}}`.  
 Translations are stored in `project/locales/[lang]/translation.json`.
 
@@ -271,7 +271,7 @@ Express Middleware configuration:
 
 The helper combines the given [library features](http://i18next.com/node/pages/doc_features.html) with a second system of translation features.
 
-The library needs one object to transfer data and uses two underscores as interpolation pre- and suffixes 
+The library needs one object to transfer data and uses two underscores as interpolation pre- and suffixes
 or uses `%s` placeholders for sprintf functionality.
 
 Some examples:
@@ -279,7 +279,7 @@ Some examples:
     data = {
        name: "developer"
     }
-    
+
     "test": {
         "example": {
             "string" : "gold",
@@ -302,7 +302,7 @@ The second system uses brackets as interpolation and numbered or named placehold
             "interpolation2" : "The first letter of {word} is: {one}"
         }
     }
-    
+
     {{t "test.example.interpolation1" "alphabet" "e" "t"}}
     {{t "test.example.interpolation2" word="alphabet" one="a"}}
 
@@ -310,7 +310,7 @@ The second system uses brackets as interpolation and numbered or named placehold
 
 ### Resource linking
 
-To stay consistent you should favour the use of relative paths with a leading slash. 
+To stay consistent you should favour the use of relative paths with a leading slash.
 Link to resources relatively to the `project`-folder **with** a leading slash.
 
     <link rel="stylesheet" href="/assets/app.css" type="text/css" />
@@ -337,10 +337,10 @@ Note that camel case ComponentNames are represented in CSS with dashes.
     Navigation   -> T.Module.Navigation   -> m-navigation
     NavMain      -> T.Module.NavMain      -> m-nav-main
     AdminNavMain -> T.Module.AdminNavMain -> m-admin-nav-main
-    
+
 ### Custom Handlebars helpers
 
-Custom handlebars helpers will be automatically loaded if put into to `project/helpers` directory. An example could look like 
+Custom handlebars helpers will be automatically loaded if put into to `project/helpers` directory. An example could look like
 this:
 
     module.exports = function(foo) {
@@ -351,21 +351,21 @@ The helper name will automatically match the filename, so if you name your file 
 
 ### JSON Endpoints
 
-If you need to mock service endpoints, you can put JSON files into a directory inside the `/public` directory as 
+If you need to mock service endpoints, you can put JSON files into a directory inside the `/public` directory as
 those are directly exposed.
 
-`/public/service/posts.json` will be available under `/service/posts.json` 
+`/public/service/posts.json` will be available under `/service/posts.json`
 and can be used for things like AJAX requests.
 
 ### Custom Routes
 
-If you need more custom functionality in endpoints 
-you can put your custom routes with their logic 
+If you need more custom functionality in endpoints
+you can put your custom routes with their logic
 into the [`project/routes` directory](project/routes/).
 
 ### Using another Template Engine
 
-If you don't want to use [Handlebars](http://handlebarsjs.com/) as Nitro's Template Engine 
+If you don't want to use [Handlebars](http://handlebarsjs.com/) as Nitro's Template Engine
 you can configure your own Engine.  
 This example shows how to replace Handlebars with [Nunjucks](https://mozilla.github.io/nunjucks/) as an example.
 
@@ -383,10 +383,10 @@ All these steps need to be performed in `server.js`.
             express: app
         }
     );
-    
+
 Now Restart Nitro and it'll run with Nunjucks.
 
-**Be aware**, you'll need to adjust all your views and components to work with the new engine. 
+**Be aware**, you'll need to adjust all your views and components to work with the new engine.
 Nitro only provides a `component` helper for handlebars.
 
 ## Static exports
@@ -416,16 +416,6 @@ All possibilities in examples:
 The distribution folder for your static export. This is where all your static files will go.
 
 - default: `"dist"`
-
-#### exporter.views (Boolean / Array)
-
-Controls which views should be exported statically. `true` will export all views from your `views` directory.
-
-You can define an array of strings, like `["index.hbs", "404.hbs"]` to export only those views.
-
-When defining strings you can use globbing patterns.
-
-- default: `true`
 
 #### exporter.publics (Boolean / Array)
 
@@ -511,6 +501,22 @@ Defines, if a release git tag should be created. The name is `vVERSION`, e.g. `v
 
 - default: `false`
 
+#### exporter.views (Boolean / Array)
+
+Controls which views should be exported statically. `true` will export all views from your `views` directory.
+
+You can define an array of strings, like `["index.hbs", "404.hbs"]` to export only those views.
+
+When defining strings you can use globbing patterns.
+
+- default: `true`
+
+#### exporter.zip
+
+Defines, if an export should be zipped.
+
+- default: `false`
+
 ## Miscellaneous
 
 ### Commandline
@@ -520,9 +526,9 @@ Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used o
 ### Git Hooks
 
 Nitro tries to install a `post-merge` git hook with every `npm install`.
-This hook will run a `npm install` if someone changes `package.json` 
-and will run `bower install` if someone changes `bower.json`. 
- 
+This hook will run a `npm install` if someone changes `package.json`
+and will run `bower install` if someone changes `bower.json`.
+
 You may [change this or add other hooks](../.githooks/README.md) in `project/.githooks`.
 
 ### Contributing

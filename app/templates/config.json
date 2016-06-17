@@ -30,7 +30,6 @@
 	},<% if (options.exporter) { %>
 	"exporter": {
 		"dest": "dist",
-		"views": true,
 		"publics": true,
 		"release": {
 			"bumpFiles": ["package.json"],
@@ -57,7 +56,9 @@
 				"from": "/api",
 				"to": "api"
 			}]
-		}]
+		}],
+		"views": true,
+		"zip": false
 	},<% } %>
 	"nitro": {
 		"components": {

@@ -30,6 +30,7 @@
 	},<% if (options.exporter) { %>
 	"exporter": {
 		"dest": "dist",
+		"i18n": [],
 		"publics": true,
 		"release": {
 			"bumpFiles": ["package.json"],

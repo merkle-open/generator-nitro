@@ -417,6 +417,13 @@ The distribution folder for your static export. This is where all your static fi
 
 - default: `"dist"`
 
+#### exporter.i18n (Array)
+
+Contains a list of language keys. The views will be downloaded using the specified language keys.
+All defined language keys require a valid `translation.json` file at `project/locales`.
+
+- default: `[]`
+
 #### exporter.publics (Boolean / Array)
 
 Controls which public files should be exported statically. `true` will export all files from your `public` directory.

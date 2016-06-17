@@ -2,6 +2,7 @@ var config = require('../app/core/config');
 var es = require('event-stream');
 var fs = require('fs');
 var path = require('path');
+var Promise = require('es6-promise').Promise;
 var request = require('request');
 
 module.exports = function (gulp) {
@@ -31,11 +32,27 @@ module.exports = function (gulp) {
 			url = 'http://localhost:' + config.server.port + '/' + viewRoute;
 			dest = config.exporter.dest + path.sep + viewRoute + '.html';
 
-			getView(
-				url,
-				dest,
-				callback
-			);
+			if(config.exporter.i18n.length) {
+				var promises = [];
+				config.exporter.i18n.forEach(function (lang) {
+					promises.push(new Promise(function (resolve) {
+						getView(
+							url + '?lang=' + lang,
+							dest.replace('.html', '-' + lang + '.html'),
+							resolve
+						);
+					}));
+				});
+				Promise.all(promises).then(function() {
+					callback();
+				});
+			} else {
+				getView(
+					url,
+					dest,
+					callback
+				);
+			}
 		});
 	}
 	return function () {

@@ -271,4 +271,31 @@ describe('nitro:app', function () {
 		});
 
 	});
+
+	describe('when using exporter', function () {
+		beforeAll(function (done) {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({'skip-install': true})
+				.withPrompts({exporter: true})
+				.on('end', done);
+		});
+
+		it('package.json contains exporter dependencies', function () {
+			assert.fileContent([
+				['package.json', /gulp-bump/],
+				['package.json', /gulp-git/],
+				['package.json', /gulp-replace/],
+				['package.json', /gulp-zip/],
+				['package.json', /run-sequence/],
+				['package.json', /yargs/]
+			]);
+		});
+
+		it('config.json contains default exporter properties', function () {
+			assert.fileContent([
+				['config.json', /"exporter"/]
+			]);
+		});
+	});
 });

@@ -40,24 +40,33 @@
 			"pushTo": "origin",
 			"tag": false
 		},
-		"renames": [{
-			"src": "dist/assets/**",
-			"base": "dist/assets",
-			"dest": "dist/"
-		}],
-		"replacements": [{
-			"glob": ["dist/*.html", "dist/css/*.css"],
-			"replace": [{
-				"from": "/assets",
-				"to": "assets"
-			}]
-		}, {
-			"glob": ["dist/js/*.js"],
-			"replace": [{
-				"from": "/api",
-				"to": "api"
-			}]
-		}],
+		"renames": [
+			{
+				"src": "dist/assets/**",
+				"base": "dist/assets",
+				"dest": "dist/"
+			}
+		],
+		"replacements": [
+			{
+				"glob": ["dist/*.html", "dist/css/*.css"],
+				"replace": [
+					{
+						"from": "/assets/",
+						"to": ""
+					}
+				]
+			},
+			{
+				"glob": ["dist/js/*.js"],
+				"replace": [
+					{
+						"from": "/api",
+						"to": "api"
+					}
+				]
+			}
+		],
 		"views": true,
 		"zip": false
 	},<% } %>

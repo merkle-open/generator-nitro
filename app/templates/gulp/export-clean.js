@@ -1,4 +1,4 @@
-var config = require('../app/core/config.js');
+var config = require('../app/core/config');
 var del = require('del');
 
 module.exports = function (gulp, plugins) {

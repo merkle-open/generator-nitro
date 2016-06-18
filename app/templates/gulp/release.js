@@ -1,10 +1,8 @@
 var argv = require('yargs').argv;
-var bump = require('gulp-bump');
-var config = require('../app/core/config.js');
+var config = require('../app/core/config');
 var fs = require('fs');
-var git = require('gulp-git');
 
-module.exports = function (gulp) {
+module.exports = function (gulp, plugins) {
 	'use strict';
 
 	return function () {
@@ -16,15 +14,15 @@ module.exports = function (gulp) {
 		var getBumpPromise = function () {
 			return new Promise(function (resolve) {
 				gulp.src(releaseConf.bumpFiles)
-				.pipe(bump({type: bumpType}))
-				.pipe(gulp.dest('./'))
-				.on('end', function() {
-					pkg = JSON.parse(fs.readFileSync(config.nitro.base_path + 'package.json', {
-						encoding: 'utf-8',
-						flag: 'r'
-					}));
-					resolve();
-				});
+					.pipe(plugins.bump({type: bumpType}))
+					.pipe(gulp.dest('./'))
+					.on('end', function() {
+						pkg = JSON.parse(fs.readFileSync(config.nitro.base_path + 'package.json', {
+							encoding: 'utf-8',
+							flag: 'r'
+						}));
+						resolve();
+					});
 			})
 		};
 
@@ -38,8 +36,8 @@ module.exports = function (gulp) {
 				}
 
 				gulp.src(releaseConf.bumpFiles)
-					.pipe(git.add())
-					.pipe(git.commit(releaseMessage))
+					.pipe(plugins.git.add())
+					.pipe(plugins.git.commit(releaseMessage))
 					.on('end', function() {
 						resolve();
 					});
@@ -52,7 +50,7 @@ module.exports = function (gulp) {
 					resolve();
 					return;
 				}
-				git.tag('v' + pkg.version, releaseMessage, function (err) {
+				plugins.git.tag('v' + pkg.version, releaseMessage, function (err) {
 					if (err) throw err;
 					resolve();
 				});
@@ -65,9 +63,9 @@ module.exports = function (gulp) {
 					resolve();
 					return;
 				}
-				git.push(releaseConf.pushTo, releaseConf.pushBranch, function (err) {
+				plugins.git.push(releaseConf.pushTo, releaseConf.pushBranch, function (err) {
 					if (err) throw err;
-					git.push(releaseConf.pushTo, releaseConf.pushBranch, { args: '--tags' }, function (err) {
+					plugins.git.push(releaseConf.pushTo, releaseConf.pushBranch, { args: '--tags' }, function (err) {
 						if (err) throw err;
 						resolve();
 					});

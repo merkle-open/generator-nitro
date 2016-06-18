@@ -303,8 +303,8 @@ module.exports = generators.Base.extend({
 			var exporterFiles = [
 				// files for this.options.exporter===true
 				'gulp/export-clean.js',
-				'gulp/export-html.js',
-				'gulp/export.js',
+				'gulp/export-views.js',
+				'gulp/export-processing.js',
 				'gulp/release.js',
 				'project/docs/nitro-exporter.md'
 			];

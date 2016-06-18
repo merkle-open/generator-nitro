@@ -291,8 +291,8 @@ describe('nitro:app', function () {
 		it('exporter specific files are present', function() {
 			assert.file([
 				'gulp/export-clean.js',
-				'gulp/export-html.js',
-				'gulp/export.js',
+				'gulp/export-views.js',
+				'gulp/export-processing.js',
 				'gulp/release.js',
 				'project/docs/nitro-exporter.md'
 			]);
@@ -303,8 +303,8 @@ describe('nitro:app', function () {
 				['package.json', /gulp-bump/],
 				['package.json', /gulp-git/],
 				['package.json', /gulp-replace/],
+				['package.json', /gulp-sequence/],
 				['package.json', /gulp-zip/],
-				['package.json', /run-sequence/],
 				['package.json', /yargs/]
 			]);
 		});
@@ -328,8 +328,8 @@ describe('nitro:app', function () {
 		it('exporter specific files are not present', function() {
 			assert.noFile([
 				'gulp/export-clean.js',
-				'gulp/export-html.js',
-				'gulp/export.js',
+				'gulp/export-views.js',
+				'gulp/export-processing.js',
 				'gulp/release.js',
 				'project/docs/nitro-exporter.md'
 			]);
@@ -340,8 +340,8 @@ describe('nitro:app', function () {
 				['package.json', /gulp-bump/],
 				['package.json', /gulp-git/],
 				['package.json', /gulp-replace/],
+				['package.json', /gulp-sequence/],
 				['package.json', /gulp-zip/],
-				['package.json', /run-sequence/],
 				['package.json', /yargs/]
 			]);
 		});

@@ -1,13 +1,10 @@
-var config = require('../app/core/config.js');
+var config = require('../app/core/config');
 var del = require('del');
-var es = require('event-stream');
 var fs = require('fs');
 var path = require('path');
 var Promise = require('es6-promise').Promise;
-var replace = require('gulp-replace');
-var zip = require('gulp-zip');
 
-module.exports = function (gulp) {
+module.exports = function (gulp, plugins) {
 	'use strict';
 
 	return function () {
@@ -96,7 +93,7 @@ module.exports = function (gulp) {
 						var str = gulp.src(replacement.glob, { base: config.exporter.dest });
 
 						replacement.replace.forEach(function (r) {
-							str.pipe(replace(r.from, r.to));
+							str.pipe(plugins.replace(r.from, r.to));
 						});
 
 						str.pipe(gulp.dest(config.exporter.dest));
@@ -117,7 +114,7 @@ module.exports = function (gulp) {
 						flag: 'r'
 					}));
 					gulp.src(config.exporter.dest + path.sep + '**')
-						.pipe(zip(pkg.name + '-' + pkg.version + '.zip'))
+						.pipe(plugins.zip(pkg.name + '-' + pkg.version + '.zip'))
 						.pipe(gulp.dest(config.exporter.dest))
 						.on('end', function() {
 							del(config.exporter.dest + path.sep + '!(*.zip)').then(function () {

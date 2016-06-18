@@ -5,7 +5,7 @@ var path = require('path');
 var Promise = require('es6-promise').Promise;
 var request = require('request');
 
-module.exports = function (gulp) {
+module.exports = function (gulp, plugins) {
 	'use strict';
 
 	function getView(url, dest, cb) {
@@ -46,7 +46,8 @@ module.exports = function (gulp) {
 				Promise.all(promises).then(function() {
 					callback();
 				});
-			} else {
+			}
+			else {
 				getView(
 					url,
 					dest,
@@ -60,9 +61,12 @@ module.exports = function (gulp) {
 			encoding: 'utf8'
 		});
 		var views = config.exporter.views;
+		var excludeFolders = [config.nitro.view_partials_directory, config.nitro.view_data_directory, config.nitro.placeholders_directory].map(function(item) {
+			return item.replace(config.nitro.view_directory + '/', '');
+		});
 		var viewGlobs = [
-			config.nitro.view_directory + '/!(_partials)/**/*.hbs',
-			config.nitro.view_directory + '/*.hbs'
+			config.nitro.view_directory + '/!('+excludeFolders.join('|')+')/**/*.' + config.nitro.view_file_extension,
+			config.nitro.view_directory + '/*.' + config.nitro.view_file_extension
 		];
 
 		if(views) {
@@ -76,8 +80,8 @@ module.exports = function (gulp) {
 					viewGlobs.push(config.nitro.view_directory + path.sep + view);
 				});
 			}
-
-		} else {
+		}
+		else {
 			process.kill(pid);
 			fs.unlinkSync('.servepid');
 			return;

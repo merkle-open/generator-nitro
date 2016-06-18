@@ -106,35 +106,47 @@ A list of files, where a version bump should be processed.
 
 - example: `["package.json"]`
 
-#### exporter.release.commit
+#### exporter.release.commit (Boolean)
 
 Defines, if the `bumpFiles` should be committed. A commit will have the message `Release VERSION`.
 
 - example: `false`
 
-#### exporter.release.push
+#### exporter.release.commitMessage (String)
+
+Defines the commit message. Use `%VERSION%` to replace with current (bumped) version.
+
+- example: `"Release %VERSION%"`
+
+#### exporter.release.push (Boolean)
 
 Defines, if a commit should be pushed automatically. Only pushes, if `commit` is set to `true`.
 
 - example: `false`
 
-#### exporter.release.pushBranch
+#### exporter.release.pushBranch (String)
 
 Defines the branch, which should be pushed. This should be the nae of the branch, where the release happens.
 
 - example: `"master"`
 
-#### exporter.release.pushTo
+#### exporter.release.pushTo (String)
 
 Defines the remote origin name.
 
 - example: `"origin"`
 
-#### exporter.release.tag
+#### exporter.release.tag (Boolean)
 
 Defines, if a release git tag should be created. The name is `vVERSION`, e.g. `v0.1.0`.
 
 - example: `false`
+
+#### exporter.release.tagName (String)
+
+Defines the tag name. Use `%VERSION%` to replace with current (bumped) version.
+
+- example: `"v%VERSION%"`
 
 ## Example Exporter Config
 

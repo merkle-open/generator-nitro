@@ -93,7 +93,7 @@ module.exports = function (gulp, plugins) {
 						var str = gulp.src(replacement.glob, { base: config.exporter.dest });
 
 						replacement.replace.forEach(function (r) {
-							str.pipe(plugins.replace(r.from, r.to));
+							str.pipe(plugins.replace(new RegExp(r.from, 'g'), r.to));
 						});
 
 						str.pipe(gulp.dest(config.exporter.dest));

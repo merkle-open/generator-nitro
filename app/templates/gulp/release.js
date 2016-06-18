@@ -5,6 +5,10 @@ var fs = require('fs');
 module.exports = function (gulp, plugins) {
 	'use strict';
 
+	function replaceVersion(str, version) {
+		return str.replace('%VERSION%', version);
+	}
+
 	return function () {
 		var pkg = {};
 		var bumpType = argv.bump || 'patch';
@@ -28,7 +32,7 @@ module.exports = function (gulp, plugins) {
 
 		var getCommitPromise = function () {
 			return new Promise(function (resolve) {
-				releaseMessage = 'Release ' + pkg.version;
+				releaseMessage = replaceVersion(releaseConf.commitMessage, pkg.version);
 
 				if(!releaseConf.commit) {
 					resolve();
@@ -46,11 +50,12 @@ module.exports = function (gulp, plugins) {
 
 		var getTagPromise = function () {
 			return new Promise(function (resolve) {
+				var tagName = replaceVersion(releaseConf.tagName, pkg.version);
 				if(!releaseConf.tag) {
 					resolve();
 					return;
 				}
-				plugins.git.tag('v' + pkg.version, releaseMessage, function (err) {
+				plugins.git.tag(tagName, releaseMessage, function (err) {
 					if (err) throw err;
 					resolve();
 				});

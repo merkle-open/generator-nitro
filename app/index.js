@@ -305,7 +305,8 @@ module.exports = generators.Base.extend({
 				'gulp/export-clean.js',
 				'gulp/export-html.js',
 				'gulp/export.js',
-				'gulp/release.js'
+				'gulp/release.js',
+				'project/docs/nitro-exporter.md'
 			];
 
 			var data = {
@@ -361,8 +362,8 @@ module.exports = generators.Base.extend({
 					return;
 				}
 
-				var sourcePath = this.templatePath(file),
-					destinationPath = this.destinationPath(file);
+				var sourcePath = this.templatePath(file);
+				var destinationPath = this.destinationPath(file);
 
 				// adjust destination template file extension for view files
 				if(_.indexOf(this.viewExtOptions, ext) !== -1 && _.indexOf(viewFiles, file) !== -1) {

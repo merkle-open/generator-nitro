@@ -1,3 +1,16 @@
+/**
+ * handlebars helper: {{component ComponentName Data Variation}} 
+ *
+ * Usage (simple)
+ * {{component "Button" "button-fancy"}}
+ *
+ * Usage (with children)
+ * {{#component "Button"}}Click Me{{/component}}
+ *
+ * Usage (passing arguments)
+ * {{#component "Button" disabled=true}}Click Me{{/component}}
+ *
+ */
 var fs = require('fs');
 var hbs = require('hbs');
 var path = require('path');
@@ -5,7 +18,7 @@ var extend = require('extend');
 var cfg = require('../core/config');
 var utils = require('../core/utils');
 
-module.exports = function () {
+module.exports = function component () {
 
 	try {
 		var context = arguments[arguments.length - 1];
@@ -72,6 +85,16 @@ module.exports = function () {
 
 							if (contextDataRoot._query) {
 								extend(true, componentData, contextDataRoot._query);
+							}
+
+							// Add attribtues e.g. "disabled" of {{component "Button" disabled=true}}
+							if (context.hash) {
+								extend(true, componentData, context.hash);
+							}
+
+							// Add children e.g. {{#component "Button"}}Click me{{/component}}
+							if (context.fn) {
+								componentData.children = context.fn(this);
 							}
 
 							return new hbs.handlebars.SafeString(

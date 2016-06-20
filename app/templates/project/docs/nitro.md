@@ -140,6 +140,25 @@ There also is a possibility to pass data to subcomponents by providing a data ob
     {{component 'Example' exampleContent}}
     {{component 'Example' data=exampleContent}}
 
+To be more flexible, you may also pass individual arguments to the component, which overrides the defaults.
+
+    {{component 'Example' modifier='blue'}}
+
+#### Render Components with children
+
+Maybe using your component templates with transclusion could be helpful in some cases.
+
+    // example box template
+    <div class="a-box">
+        {{{children}}}
+    </div>
+
+Call it as block like this:
+
+    {{#component 'Box'}}
+        {{component 'Example'}}
+    {{/component}}
+
 ### Render Partials
 
 Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.<%= options.viewExt %>` files (e.g. `head.<%= options.viewExt %>`).

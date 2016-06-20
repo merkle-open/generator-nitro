@@ -1,14 +1,16 @@
 /**
- * handlebars helper: {{component ComponentName Data Variation}} 
+ * handlebars helper: {{component ComponentName Data Variation}}
  *
- * Usage (simple)
- * {{component "Button" "button-fancy"}}
- *
- * Usage (with children)
- * {{#component "Button"}}Click Me{{/component}}
+ * Usage
+ * {{component 'Button' 'button-fancy'}}
+ * {{component name='Button' data='button-fancy'}}
  *
  * Usage (passing arguments)
- * {{#component "Button" disabled=true}}Click Me{{/component}}
+ * {{component name='Button' disabled=true}}
+ *
+ * Usage (with children)
+ * {{#component name='Button'}}Click Me{{/component}}
+ * {{#component name='Button' disabled=true}}Not Clickable{{/component}}
  *
  */
 var fs = require('fs');

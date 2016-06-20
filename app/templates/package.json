@@ -24,8 +24,8 @@
   ],
   "dependencies": {
     "autoprefixer": "~6.3.6",
-    "body-parser": "~1.15.1",
-    "browser-sync": "~2.12.12",
+    "body-parser": "~1.15.2",
+    "browser-sync": "~2.13.0",
     "compression": "~1.6.2",
     "del": "~2.2.0",
     "dot-object": "~1.4.1",
@@ -54,7 +54,7 @@
     "gulp-sass": "~2.3.1",<% } %>
     "gulp-size": "~2.1.0",
     "gulp-sourcemaps": "~1.6.0",
-    "gulp-stylelint": "^2.0.2",<% if (options.js === 'TypeScript') { %>
+    "gulp-stylelint": "~2.0.2",<% if (options.js === 'TypeScript') { %>
     "typescript": "~1.5.0-beta",
     "gulp-typescript": "~2.7.5", <% } %>
     "gulp-uglify": "~1.5.3",<% if (options.clientTpl) { %>
@@ -73,6 +73,6 @@
   },
   "devDependencies": {
     "gulp-install": "~0.6.0",
-    "gulp-watch": "~4.3.6"
+    "gulp-watch": "~4.3.8"
   }
 }

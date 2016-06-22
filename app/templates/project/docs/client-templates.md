@@ -64,7 +64,7 @@ Clientside handlebars helpers can be stored as normal JavaScript files in the co
 
 If you want to use the code of a serverside component unchanged for your clientside template you may use the nitro `component` helper for this. 
 
-    {{component 'Example'}}
+    {{component 'example'}}
 
 ## Handlebars versions
 

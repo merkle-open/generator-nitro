@@ -77,20 +77,20 @@ For a better overview it is useful to define different types of components. It i
 subfolders like `atoms`, `molecules` & `organisms`  
 A component uses the following structure:
 
-    /Example
-    /Example/example.<%= options.viewExt %>
-    /Example/css/example.css
-    /Example/js/example.js
-    /Example/_data/example.json
+    /example
+    /example/example.<%= options.viewExt %>
+    /example/css/example.css
+    /example/js/example.js
+    /example/_data/example.json
 
 Modifiers (JavaScript) and decorators (CSS) are created using the following conventions:
 
-    /Example/css/modifier/example-<modifier>.css
-    /Example/js/decorator/example-<decorator>.js
+    /example/css/modifier/example-<modifier>.css
+    /example/js/decorator/example-<decorator>.js
 
 Different data variations has to be placed in the `_data` folder:
 
-    /Example/_data/example-variant.json
+    /example/_data/example-variant.json
 
 ### Creating Components with yo
 
@@ -118,31 +118,31 @@ component name is case-sensitive.
 
 Nitro uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
 
-Render the Example component. (file: `example.<%= options.viewExt %>`, data-file: `example.json`)
+Render the example component. (file: `example.<%= options.viewExt %>`, data-file: `example.json`)
 
-    {{component 'Example'}}
-    {{component 'Example', 'example'}}
+    {{component 'example'}}
+    {{component 'example', 'example'}}
 
-Render a "variant" from the Example component. (file: `example.<%= options.viewExt %>`, data-file: `example-variant.json`)
+Render a "variant" from the example component. (file: `example.<%= options.viewExt %>`, data-file: `example-variant.json`)
 
-    {{component 'Example' 'example-variant'}}
+    {{component 'example' 'example-variant'}}
     
 Another possibility to use the component helper is by providing hash options.
 
-    {{component name='Example' data='example-variant'}}
+    {{component name='example' data='example-variant'}}
 
 ...and if you really need this you may provide a second template file. (file: `example-2.<%= options.viewExt %>`, data-file: `example-variant.json`)
 
-    {{component name='Example' data='example-variant' template='example-2'}}
+    {{component name='example' data='example-variant' template='example-2'}}
 
 There also is a possibility to pass data to subcomponents by providing a data object as second parameter or as hash option.
 
-    {{component 'Example' exampleContent}}
-    {{component 'Example' data=exampleContent}}
+    {{component 'example' exampleContent}}
+    {{component 'example' data=exampleContent}}
 
 To be more flexible, you may also pass individual arguments to the component, which overrides the defaults.
 
-    {{component 'Example' modifier='blue'}}
+    {{component 'example' modifier='blue'}}
 
 #### Render Components with children
 
@@ -155,8 +155,8 @@ Maybe using your component templates with transclusion could be helpful in some 
 
 Call it as block like this:
 
-    {{#component 'Box'}}
-        {{component 'Example'}}
+    {{#component 'box'}}
+        {{component 'example'}}
     {{/component}}
 
 ### Render Partials
@@ -170,8 +170,8 @@ Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*
 Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `views/_placeholders/` as `*.<%= options.viewExt %>` files.  
 The following two examples do the same and render the file `Content/example.<%= options.viewExt %>` from `views/_placeholders/`.
 
-    {{placeholder 'Content' 'example'}}
-    {{placeholder name='Content' template='example'}}
+    {{placeholder 'content' 'example'}}
+    {{placeholder name='content' template='example'}}
 
 ### Passing data
 
@@ -262,7 +262,7 @@ The order of these special patterns does not matter.
 
 #### Examples
 
-* `"!components/*/Test*"`         Exclude all components starting with `Test`
+* `"!components/*/test*"`         Exclude all components starting with `test`
 * `"!**/*-test.*"`                Exclude all filenames ending with `-test`.
 * `"+assets/css/mixins.less"`     Exclude `assets/css/mixins.less` but prepend to every compile call of every .less file
 
@@ -340,18 +340,15 @@ Link to resources relatively to the `project`-folder **with** a leading slash.
 
 ### Upper & lower case letters
 
-Use all lowercase if possible.
+Use all lowercase if possible. (Exception: TerrificJS uses upper case for its namespace `T` and class names `T.Module.Example`)
 
-Exceptions:
+If you want to use uppercase letters (e.g. for component folders), keep care of case sensitive filesystems and use handlebars helpers with *exact* file and folder names. 
 
-* Component folders must match JS classes, therefore they are case-sensitive.
-* TerrificJS uses upper case for its namespace `T` and class names `T.Module.Example`
+    {{component name='NavMain'}}
 
-So, use the component helper with the *exact* component name:
+... looks for a template in the folder `NavMain`. 
 
-    {{component 'NavMain'}}
-
-Note that camel case ComponentNames are represented in CSS with dashes.
+Note that uppercase letters in component names are represented in CSS with dashes.
 
     Navigation   -> T.Module.Navigation   -> m-navigation
     NavMain      -> T.Module.NavMain      -> m-nav-main
@@ -431,7 +428,7 @@ You may [change this or add other hooks](../.githooks/README.md) in `project/.gi
 
 * [YUI CSS Reset 3.18.1](http://yuilibrary.com/yui/docs/cssreset/)
 * Favicon & Home-Icons from Nitro (replace with your own)
-* Component `Example` and some styles in assets/css (you don't need them)
+* Component `example` and some styles in assets/css (you don't need them)
 
 #### Bower Components
 

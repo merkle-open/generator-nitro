@@ -69,7 +69,7 @@ Renaming is used with native `gulp.src(...).pipe(gulp.dest(...))`.
 Defines string replacements. Takes an array of objects with `glob` and `replace`.
 `replace` is an array of objects with keys `from` and `to`.
 
-**Please note: replacements are executed before renames!**
+**Please note: renames are executed before replacements!**
 
 - example:
 

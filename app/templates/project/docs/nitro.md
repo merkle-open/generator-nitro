@@ -414,8 +414,12 @@ Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used o
 ### Git Hooks
 
 Nitro tries to install a `post-merge` git hook with every `npm install`.
-This hook will run a `npm install` if someone changes `package.json` 
-and will run `bower install` if someone changes `bower.json`. 
+
+This hook will:
+
+* run `npm install` if someone changes `package.json` 
+* run `bower install` if someone changes `bower.json`. 
+* sync this git hooks if someone changes one.
  
 You may [change this or add other hooks](../.githooks/README.md) in `project/.githooks`.
 

@@ -10,7 +10,8 @@
     "npm": ">=1.3 <4"
   },
   "scripts": {
-    "postinstall": "bower install && gulp install-githooks",
+    "githooks": "gulp sync-githooks",
+    "postinstall": "bower install && npm run githooks",
     "test": "karma start --single-run --no-auto-watch",
     "start": "node server"
   },

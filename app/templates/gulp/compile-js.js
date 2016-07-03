@@ -15,9 +15,11 @@ module.exports = function (gulp, plugins) {
 			promises.push(new Promise(function(resolve) {
 				gulp.src(<% if (options.js === 'TypeScript') { %>tsAssets.js<% } else { %>asset.src<% } %>, {base: '.'})
 					.pipe(plugins.plumber())
+					.pipe(plugins.cached(asset.name))
 					.pipe(plugins.sourcemaps.init({loadMaps: true}))
 					.pipe(plugins.jshint())
 					.pipe(plugins.jshint.reporter('jshint-stylish'))
+					.pipe(plugins.remember(asset.name))
 					.pipe(plugins.concat(asset.name))
 					.pipe(plugins.sourcemaps.write('.'))
 					.pipe(gulp.dest('public/assets/js'))

@@ -33,6 +33,12 @@ module.exports = function (gulp, plugins) {
 						plugins.remember.forgetAll(asset.name);
 					}
 				});
+				var jsAssets = utils.getSourcePatterns('js');
+				jsAssets.forEach(function (asset) {
+					if (plugins.remember.cacheFor(asset.name)) {
+						plugins.remember.forgetAll(asset.name);
+					}
+				});
 			}
 		};
 
@@ -67,7 +73,7 @@ module.exports = function (gulp, plugins) {
 		plugins.watch([
 			'views/**/*.' + cfg.nitro.view_file_extension,
 			'!' + cfg.nitro.view_partials_directory + '/*.' + cfg.nitro.view_file_extension, // exclude partials
-			'views/_data/**/*.json',
+			cfg.nitro.view_data_directory + '/**/*.json',
 			'components/**/*.' + cfg.nitro.view_file_extension<% if (options.clientTpl) { %>,
 			'!components/**/template/**/*.hbs'<% } %>,
 			'components/**/_data/*.json'

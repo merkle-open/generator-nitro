@@ -276,6 +276,7 @@ module.exports = generators.Base.extend({
 				// files that might change file extension
 				'views/404.html',
 				'views/index.html',
+				'views/_layouts/default.html',
 				'views/_partials/foot.html',
 				'views/_partials/head.html',
 				'components/molecules/example/example.html',

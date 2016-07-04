@@ -175,7 +175,7 @@ The following two examples do the same and render the file `Content/example.<%= 
 
 ### Passing data
 
-#### Data per view
+#### Data per page
 
 You may pass data to your templates (view, partial, component) per view.  
 Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`. 
@@ -194,6 +194,24 @@ It's also possilbe to use a custom data file by requesting with a query param `?
     /views/index.<%= options.viewExt %>
     /views/_data/index-test.json
     http://localhost:8080/index?_data=index-test
+
+##### Use different layout
+
+If you need a different layout for a page, do so in the corresponding data file:
+
+    /views/_data/index.json
+    {
+        "_layout": "home"
+    }
+    
+    /views/_layouts/home.<%= options.viewExt %>
+    http://localhost:8080/index
+
+...or you may change the layout by requesting a page with the query param `?_layout=...`
+
+    /views/index.<%= options.viewExt %>
+    /views/_layouts/home.<%= options.viewExt %>
+    http://localhost:8080/index?_layout=home
 
 #### Dynamic view data
 

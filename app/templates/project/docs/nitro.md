@@ -360,11 +360,11 @@ Link to resources relatively to the `project`-folder **with** a leading slash.
 
 Use all lowercase if possible. (Exception: TerrificJS uses upper case for its namespace `T` and class names `T.Module.Example`)
 
-If you want to use uppercase letters (e.g. for component folders), keep care of case sensitive filesystems and use handlebars helpers with *exact* file and folder names. 
+All files must be lowercase. It's allowed to use uppercase letters for component folders, keep care of case sensitive filesystems and use handlebars helpers with the *exact* folder name. 
 
     {{component name='NavMain'}}
 
-... looks for a template in the folder `NavMain`. 
+... looks for a template `navmain.<%= options.viewExt %>` in the folder `NavMain`. 
 
 Note that uppercase letters in component names are represented in CSS with dashes.
 

@@ -476,7 +476,7 @@ You may [change this or add other hooks](../.githooks/README.md) in `project/.gi
 
 The following packages are always installed by the [app](#name) generator:
 
-* [jQuery 2.2.4](http://jquery.com/)
+* [jQuery 3.1.0](http://jquery.com/)
 * [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)<% if (options.clientTpl) { %>
 * [Handlebars 4.0.5](https://github.com/components/handlebars.js)<% } %>
 

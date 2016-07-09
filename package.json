@@ -33,7 +33,7 @@
     "git-config": "~0.0.7",
     "glob": "~7.0.5",
     "lodash": "~4.13.1",
-    "request": "~2.72.0",
+    "request": "~2.73.0",
     "yeoman-generator": "~0.22.6",
     "yosay": "~1.2.0"
   },

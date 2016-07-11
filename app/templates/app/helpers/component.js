@@ -45,7 +45,7 @@ module.exports = function component () {
 				passedData = context.hash.data;
 			}
 			else if ('string' === typeof context.hash.data) {
-				dataFile = context.hash.data;
+				dataFile = context.hash.data.toLowerCase();
 			}
 		}
 

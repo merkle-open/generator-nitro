@@ -1,0 +1,32 @@
+{
+  "name": "nitro-exporter",
+  "version": "0.0.0",
+  "description": "An exporting package for nitro. Generate static packages with ease.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/namics/nitro-exporter.git"
+  },
+  "keywords": [
+    "nitro",
+    "exporter"
+  ],
+  "author": "Christian Stuff <christianstuff90@gmail.com> (http://github.com/Regaddi)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/namics/nitro-exporter/issues"
+  },
+  "homepage": "https://github.com/namics/nitro-exporter#readme",
+  "dependencies": {
+    "@namics/eslint-config": "^0.x",
+    "event-stream": "^3.x",
+    "gulp-replace": "^0.x",
+    "gulp-sequence": "^0.x",
+    "gulp-zip": "^3.x",
+    "readable-stream": "^2.1.4",
+    "request": "^2.x"
+  }
+}

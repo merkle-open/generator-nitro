@@ -2,15 +2,15 @@
  * handlebars helper: {{component ComponentName Data Variation}}
  *
  * Usage
- * {{component 'Button' 'button-fancy'}}
- * {{component name='Button' data='button-fancy'}}
+ * {{component 'button' 'button-fancy'}}
+ * {{component name='button' data='button-fancy'}}
  *
  * Usage (passing arguments)
- * {{component name='Button' disabled=true}}
+ * {{component name='button' disabled=true}}
  *
  * Usage (with children)
- * {{#component name='Button'}}Click Me{{/component}}
- * {{#component name='Button' disabled=true}}Not Clickable{{/component}}
+ * {{#component name='button'}}Click Me{{/component}}
+ * {{#component name='button' disabled=true}}Not Clickable{{/component}}
  *
  */
 var fs = require('fs');
@@ -33,19 +33,35 @@ module.exports = function component () {
 		var componentData = {};                                                                // collected component data
 
 		if (arguments.length >= 3) {
-			if ('object' === typeof arguments[1]) {
-				passedData = arguments[1];
-			}
-			else if('string' === typeof arguments[1]) {
-				dataFile = arguments[1].replace(/\.json$/i, '').toLowerCase();
+			switch (typeof arguments[1]) {
+				case 'string':
+					dataFile = arguments[1].replace(/\.json$/i, '').toLowerCase();
+					break;
+				case 'object':
+					passedData = extend(true, passedData, arguments[1]);
+					break;
+				case 'number':
+				case 'boolean':
+					passedData = arguments[1];
+					break;
+				default:
+					break;
 			}
 		}
-		else if (context.hash && context.hash.data) {
-			if ('object' === typeof context.hash.data) {
-				passedData = context.hash.data;
-			}
-			else if ('string' === typeof context.hash.data) {
-				dataFile = context.hash.data.toLowerCase();
+		if (context.hash && context.hash.data) {
+			switch (typeof context.hash.data) {
+				case 'string':
+					dataFile = context.hash.data.replace(/\.json$/i, '').toLowerCase();
+					break;
+				case 'object':
+					passedData = extend(true, passedData, context.hash.data);
+					break;
+				case 'number':
+				case 'boolean':
+					passedData = context.hash.data;
+					break;
+				default:
+					break;
 			}
 		}
 

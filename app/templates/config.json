@@ -32,16 +32,6 @@
 		"dest": "dist",
 		"i18n": [],
 		"publics": true,
-		"release": {
-			"bumpFiles": ["package.json"],
-			"commit": false,
-			"commitMessage": "Release %VERSION%",
-			"push": false,
-			"pushBranch": "master",
-			"pushTo": "origin",
-			"tag": false,
-			"tagName": "v%VERSION%"
-		},
 		"renames": [
 			{
 				"src": "dist/assets/**",
@@ -71,6 +61,16 @@
 		],
 		"views": true,
 		"zip": false
+	},<% } %><% if (options.release) { %>
+	"release": {
+		"bumpFiles": ["package.json"],
+		"commit": false,
+		"commitMessage": "Release %VERSION%",
+		"push": false,
+		"pushBranch": "master",
+		"pushTo": "origin",
+		"tag": false,
+		"tagName": "v%VERSION%"
 	},<% } %>
 	"nitro": {
 		"components": {

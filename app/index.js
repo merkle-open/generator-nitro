@@ -23,7 +23,9 @@ module.exports = generators.Base.extend({
 			pre: this.options.pre,
 			js: this.options.js,
 			viewExt: this.options.viewExt,
-			clientTpl: this.options.clientTpl
+			clientTpl: this.options.clientTpl,
+			exporter: this.options.exporter,
+			release: this.options.release
 		};
 
 		this.option('name', {
@@ -64,6 +66,12 @@ module.exports = generators.Base.extend({
 			desc: 'do you need static exporting functionalities',
 			type: Boolean,
 			defaults: this.passedInOptions.exporter || false
+		});
+
+		this.option('release', {
+			desc: 'do you need release management',
+			type: Boolean,
+			defaults: this.passedInOptions.release || false
 		});
 	},
 
@@ -175,6 +183,16 @@ module.exports = generators.Base.extend({
 					when: function() {
 						return typeof this.passedInOptions.exporter !== 'boolean';
 					}.bind(this)
+				},
+				{
+					name: 'release',
+					type: 'confirm',
+					message: 'Would you like to include release management?',
+					default: this.options.release,
+					store: true,
+					when: function() {
+						return typeof this.passedInOptions.release !== 'boolean';
+					}.bind(this)
 				}
 			], function (props) {
 				this.options.name = props.name || this.options.name;
@@ -183,6 +201,7 @@ module.exports = generators.Base.extend({
 				this.options.viewExt = props.viewExt || this.options.viewExt;
 				this.options.clientTpl = props.clientTpl !== undefined ? props.clientTpl : this.options.clientTpl;
 				this.options.exporter = props.exporter !== undefined ? props.exporter : this.options.exporter;
+				this.options.release = props.release !== undefined ? props.release : this.options.release;
 
 				this.config.set('name', this.options.name);
 				this.config.set('preprocessor', this.options.pre);
@@ -190,6 +209,7 @@ module.exports = generators.Base.extend({
 				this.config.set('viewExtension', this.options.viewExt);
 				this.config.set('clientTemplates', this.options.clientTpl);
 				this.config.set('exporter', this.options.exporter);
+				this.config.set('release', this.options.release);
 
 				this.config.save();
 
@@ -302,11 +322,10 @@ module.exports = generators.Base.extend({
 			];
 			var exporterFiles = [
 				// files for this.options.exporter===true
-				'gulp/export-clean.js',
-				'gulp/export-views.js',
-				'gulp/export-processing.js',
-				'gulp/release.js',
-				'project/docs/nitro-exporter.md'
+			];
+			var releaseFiles = [
+				// files for this.options.release===true
+				'gulp/release.js'
 			];
 
 			var data = {
@@ -335,9 +354,16 @@ module.exports = generators.Base.extend({
 					}
 				}
 
-				// Client side templates only Files
+				// Exporter only Files
 				if (!this.options.exporter) {
 					if (_.indexOf(exporterFiles, file) !== -1) {
+						return;
+					}
+				}
+
+				// Release only Files
+				if (!this.options.release) {
+					if (_.indexOf(releaseFiles, file) !== -1) {
 						return;
 					}
 				}

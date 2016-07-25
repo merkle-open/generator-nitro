@@ -1,6 +1,10 @@
 var gulp = require('gulp');
-var getTask = require('./gulp/utils').getTask;<% if (options.exporter) { %>
-var gulpSequence = require('gulp-sequence');<% } %>
+var getTask = require('./gulp/utils').getTask;<% if (options.exporter || options.release) { %>
+var cfg = require('../app/core/config');<% } %><% if (options.exporter) { %>
+var plugins = require('gulp-load-plugins')();
+var exporter = require('nitro-exporter')(gulp, plugins, cfg);
+<% } %><% if (options.release) { %>
+var release = require('nitro-release')(gulp, cfg);<% } %>
 
 gulp.task('install-githooks', getTask('install-githooks'));
 gulp.task('compile-css', getTask('compile-css'));<% if (options.js === 'TypeScript') { %>
@@ -18,10 +22,5 @@ gulp.task('serve', getTask('serve'));
 gulp.task('watch-serve', ['serve'], getTask('watch-serve'));
 gulp.task('test', ['compile-css', 'compile-js'], getTask('test'));
 gulp.task('develop', ['watch-assets', 'watch-serve']);
-gulp.task('build', ['clean-assets'], getTask('build'));<% if (options.exporter) { %>
-gulp.task('export-clean', getTask('export-clean'));
-gulp.task('export-views', ['serve'], getTask('export-views'));
-gulp.task('export-processing', getTask('export-processing'));
-gulp.task('export', gulpSequence(['export-clean', 'assets'], 'export-views', 'export-processing'));
-gulp.task('release', getTask('release'));<% } %>
+gulp.task('build', ['clean-assets'], getTask('build'));
 gulp.task('production', ['assets'], getTask('production'));

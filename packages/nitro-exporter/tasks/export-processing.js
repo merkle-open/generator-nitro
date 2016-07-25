@@ -1,7 +1,7 @@
 const del = require('del');
 const fs = require('fs');
 const path = require('path');
-const gulpReplace = require('gulp-replace');
+const gulpReplace = require('gulp-replace-task');
 const gulpZip = require('gulp-zip');
 
 module.exports = function (gulp, config) {
@@ -98,17 +98,19 @@ module.exports = function (gulp, config) {
 						}
 					}
 					replacements.forEach((replacement) => {
-						const str = gulp.src(replacement.glob, { base: config.exporter.dest });
-
-						replacement.replace.forEach((r) => {
-							str.pipe(gulpReplace(new RegExp(r.from, 'g'), r.to));
-						});
-
-						str.pipe(gulp.dest(config.exporter.dest));
-
-						str.on('end', () => {
-							done(++i);
-						});
+						gulp.src(replacement.glob, { base: config.exporter.dest })
+							.pipe(gulpReplace({
+								patterns: replacement.replace.map(r => ({
+									match: new RegExp(r.from, 'g'),
+									replacement: r.to
+								})),
+								preserveOrder: true,
+								usePrefix: false
+							}))
+							.pipe(gulp.dest(config.exporter.dest))
+							.on('end', () => {
+								done(++i);
+							});
 					});
 				});
 			};

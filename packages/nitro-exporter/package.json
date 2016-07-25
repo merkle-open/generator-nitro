@@ -23,7 +23,7 @@
   "dependencies": {
     "@namics/eslint-config": "^0.x",
     "event-stream": "^3.x",
-    "gulp-replace": "^0.x",
+    "gulp-replace-task": "^0.11.x",
     "gulp-sequence": "^0.x",
     "gulp-zip": "^3.x",
     "readable-stream": "^2.1.4",

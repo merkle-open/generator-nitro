@@ -1,8 +1,7 @@
 var gulp = require('gulp');
 var getTask = require('./gulp/utils').getTask;<% if (options.exporter || options.release) { %>
-var cfg = require('../app/core/config');<% } %><% if (options.exporter) { %>
-var plugins = require('gulp-load-plugins')();
-var exporter = require('nitro-exporter')(gulp, plugins, cfg);
+var cfg = require('./app/core/config');<% } %><% if (options.exporter) { %>
+var exporter = require('nitro-exporter')(gulp, cfg);
 <% } %><% if (options.release) { %>
 var release = require('nitro-release')(gulp, cfg);<% } %>
 

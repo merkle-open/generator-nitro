@@ -2,6 +2,7 @@ var config = require('../app/core/config');
 var fs = require('fs');
 
 module.exports = function (gulp, plugins) {
+	var taskCallbackCalled = false;
 	return function (callback) {
 		var server = plugins.liveServer(
 			'server.js',
@@ -16,12 +17,18 @@ module.exports = function (gulp, plugins) {
 			console.log('Server exited with result:', result);
 			fs.unlinkSync('.servepid');
 			process.exit(result.code);
-			callback();
+			if(!taskCallbackCalled) {
+				taskCallbackCalled = true;
+				callback();
+			}
 		}, function () {
 
 		}, function() {
 			fs.writeFileSync('.servepid', server.server.pid);
-			callback();
+			if(!taskCallbackCalled) {
+				taskCallbackCalled = true;
+				callback();
+			}
 		});
 	};
 };

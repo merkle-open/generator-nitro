@@ -115,6 +115,7 @@ module.exports = generators.Base.extend({
 					this.options.viewExt = config.viewExtension || this.options.viewExt;
 					this.options.clientTpl = config.clientTemplates || this.options.clientTpl;
 					this.options.exporter = config.exporter || this.options.exporter;
+					this.options.release = config.release || this.options.release;
 				}
 
 				done();

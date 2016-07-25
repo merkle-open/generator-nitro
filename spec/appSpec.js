@@ -288,24 +288,9 @@ describe('nitro:app', function () {
 				.on('end', done);
 		});
 
-		it('exporter specific files are present', function() {
-			assert.file([
-				'gulp/export-clean.js',
-				'gulp/export-views.js',
-				'gulp/export-processing.js',
-				'gulp/release.js',
-				'project/docs/nitro-exporter.md'
-			]);
-		});
-
-		it('package.json contains exporter dependencies', function () {
+		it('package.json contains exporter dependency', function () {
 			assert.fileContent([
-				['package.json', /gulp-bump/],
-				['package.json', /gulp-git/],
-				['package.json', /gulp-replace/],
-				['package.json', /gulp-sequence/],
-				['package.json', /gulp-zip/],
-				['package.json', /yargs/]
+				['package.json', /nitro-exporter/]
 			]);
 		});
 
@@ -325,30 +310,59 @@ describe('nitro:app', function () {
 				.on('end', done);
 		});
 
-		it('exporter specific files are not present', function() {
-			assert.noFile([
-				'gulp/export-clean.js',
-				'gulp/export-views.js',
-				'gulp/export-processing.js',
-				'gulp/release.js',
-				'project/docs/nitro-exporter.md'
-			]);
-		});
-
-		it('package.json does not contain exporter dependencies', function () {
+		it('package.json does not contain exporter dependency', function () {
 			assert.noFileContent([
-				['package.json', /gulp-bump/],
-				['package.json', /gulp-git/],
-				['package.json', /gulp-replace/],
-				['package.json', /gulp-sequence/],
-				['package.json', /gulp-zip/],
-				['package.json', /yargs/]
+				['package.json', /nitro-exporter/]
 			]);
 		});
 
 		it('config.json does not contain default exporter properties', function () {
 			assert.noFileContent([
 				['config.json', /"exporter"/]
+			]);
+		});
+	});
+
+	describe('when including release package', function () {
+		beforeAll(function (done) {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({'skip-install': true})
+				.withPrompts({release: true})
+				.on('end', done);
+		});
+
+		it('package.json contains exporter dependency', function () {
+			assert.fileContent([
+				['package.json', /nitro-release/]
+			]);
+		});
+
+		it('config.json does not contain default exporter properties', function () {
+			assert.fileContent([
+				['config.json', /"release"/]
+			]);
+		});
+	});
+
+	describe('when not including release package', function () {
+		beforeAll(function (done) {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({'skip-install': true})
+				.withPrompts({release: false})
+				.on('end', done);
+		});
+
+		it('package.json does not contain exporter dependency', function () {
+			assert.noFileContent([
+				['package.json', /nitro-release/]
+			]);
+		});
+
+		it('config.json does not contain default exporter properties', function () {
+			assert.noFileContent([
+				['config.json', /"release"/]
 			]);
 		});
 	});

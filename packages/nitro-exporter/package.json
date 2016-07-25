@@ -22,6 +22,7 @@
   "homepage": "https://github.com/namics/nitro-exporter#readme",
   "dependencies": {
     "@namics/eslint-config": "^0.x",
+    "array-unique": "^0.2.x",
     "event-stream": "^3.x",
     "gulp-replace-task": "^0.11.x",
     "gulp-sequence": "^0.x",

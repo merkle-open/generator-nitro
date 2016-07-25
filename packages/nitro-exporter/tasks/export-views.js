@@ -100,7 +100,7 @@ module.exports = function (gulp, config) {
 			return;
 		}
 
-		gulp.src(viewGlobs)
+		return gulp.src(viewGlobs)
 			.pipe(loadView(es))
 			.on('error', () => {
 				process.kill(pid);

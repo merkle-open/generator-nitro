@@ -324,10 +324,10 @@ module.exports = generators.Base.extend({
 			];
 			var exporterFiles = [
 				// files for this.options.exporter===true
+				'project/docs/nitro-exporter.md'
 			];
 			var releaseFiles = [
 				// files for this.options.release===true
-				'gulp/release.js'
 			];
 
 			var data = {

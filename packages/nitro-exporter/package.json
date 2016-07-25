@@ -24,6 +24,7 @@
     "@namics/eslint-config": "^0.x",
     "array-unique": "^0.2.x",
     "event-stream": "^3.x",
+    "glob": "^7.0.5",
     "gulp-replace-task": "^0.11.x",
     "gulp-sequence": "^0.x",
     "gulp-zip": "^3.x",

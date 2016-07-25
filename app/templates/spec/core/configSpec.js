@@ -21,6 +21,10 @@ describe('Nitro Config', function () {
 		expect(cfg.nitro.view_data_directory).toBeDefined();
 	});
 
+	it('contains a view layouts directory', function () {
+		expect(cfg.nitro.view_layouts_directory).toBeDefined();
+	});
+	
 	it('contains a components map', function () {
 		expect(cfg.nitro.components).toEqual(jasmine.any(Object));
 	});

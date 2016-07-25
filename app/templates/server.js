@@ -6,6 +6,9 @@ var hbs = require('./app/core/hbs');
 var compression = require('compression');
 var bodyParser = require('body-parser');
 
+// partials
+require('./app/core/hbs-partials')(hbs);
+
 // compress all requests
 app.use(compression());
 

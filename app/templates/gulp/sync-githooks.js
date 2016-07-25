@@ -33,6 +33,15 @@ var gitHook = {
 		catch(error) {
 			console.log('Installing hook `' + hook + '` failed: ', error);
 		}
+	},
+	remove: function(hook, filenameTarget) {
+		try {
+			fs.unlinkSync(filenameTarget);
+			console.log('Git hook `' + hook  + '` removed');
+		}
+		catch(error) {
+			console.log('Removing hook `' + hook + '` failed: ', error);
+		}
 	}
 };
 
@@ -41,13 +50,18 @@ module.exports = function (gulp, plugins) {
 		if (fs.existsSync(gitHook.directory)) {
 			gitHook.hooks.forEach(function (hook) {
 				var hookSource = path.resolve(__dirname, '..', 'project', '.githooks', hook);
+				var hookTarget = path.resolve(gitHook.directory, hook);
 				if (fs.existsSync(hookSource)) {
-					var hookTarget = path.resolve(gitHook.directory, hook);
 					if (!fs.existsSync(hookTarget) || gitHook.isInstalledHook(hookTarget)) {
 						gitHook.write(hook, hookSource, hookTarget);
 					}
 					else {
 						console.log('Skipping git hook `' + hook  + '`. There ist an existing user hook.');
+					}
+				}
+				else {
+					if (fs.existsSync(hookTarget) && gitHook.isInstalledHook(hookTarget)) {
+						gitHook.remove(hook, hookTarget);
 					}
 				}
 			});

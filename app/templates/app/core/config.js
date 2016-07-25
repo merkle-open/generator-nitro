@@ -16,7 +16,9 @@ function factory() {
 		view_file_extension: '<%= options.viewExt %>',
 		view_partials_directory: 'views/_partials',
 		view_data_directory: 'views/_data',
-		placeholders_directory: 'views/_placeholders'
+		view_layouts_directory: 'views/_layouts',
+		placeholders_directory: 'views/_placeholders',
+		default_layout: 'default'
 	}, config.nitro);
 
 	config.code = extend(true, {

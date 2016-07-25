@@ -27,6 +27,7 @@ app/templates/.stylelintignore
 
 # Project
 node_modules/
+npm-debug.log
 
 # allow
 !.gitkeep

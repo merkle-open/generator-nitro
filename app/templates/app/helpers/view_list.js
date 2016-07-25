@@ -11,6 +11,7 @@ var excludes = {
 	directories: [
 		path.basename(cfg.nitro.view_data_directory),
 		path.basename(cfg.nitro.view_partials_directory),
+		path.basename(cfg.nitro.view_layouts_directory),
 		path.basename(cfg.nitro.placeholders_directory),
 		'.svn'
 	],

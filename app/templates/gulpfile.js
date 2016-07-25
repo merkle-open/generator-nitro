@@ -6,7 +6,7 @@ var exporter = require('nitro-exporter')(gulp, plugins, cfg);
 <% } %><% if (options.release) { %>
 var release = require('nitro-release')(gulp, cfg);<% } %>
 
-gulp.task('install-githooks', getTask('install-githooks'));
+gulp.task('sync-githooks', getTask('sync-githooks'));
 gulp.task('compile-css', getTask('compile-css'));<% if (options.js === 'TypeScript') { %>
 gulp.task('compile-ts', getTask('compile-ts'));<% } %><% if (options.clientTpl) { %>
 gulp.task('compile-templates', getTask('compile-templates'));<% } %>

@@ -1,6 +1,6 @@
 /**
  * Init Translation Library i18next
- * http://i18next.com/node/index.html
+ * Documentation of this version: http://i18next.github.io/i18next/pages/doc_init.html
  *
  * Configuration:
  * Fallback translation file: project/locales/default/translation.json
@@ -16,6 +16,7 @@ var i18n = require('i18next');
 var options = {
 	//supportedLngs: ['en', 'de'],
 	//lng: 'de-CH',
+	//detectLngFromHeaders: false,
 	fallbackLng: 'default',
 	detectLngQS: 'lang',
 	detectLngFromPath: false,

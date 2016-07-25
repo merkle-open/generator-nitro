@@ -1,3 +1,18 @@
+/**
+ * handlebars helper: {{component ComponentName Data Variation}}
+ *
+ * Usage
+ * {{component 'button' 'button-fancy'}}
+ * {{component name='button' data='button-fancy'}}
+ *
+ * Usage (passing arguments)
+ * {{component name='button' disabled=true}}
+ *
+ * Usage (with children)
+ * {{#component name='button'}}Click Me{{/component}}
+ * {{#component name='button' disabled=true}}Not Clickable{{/component}}
+ *
+ */
 var fs = require('fs');
 var hbs = require('hbs');
 var path = require('path');
@@ -5,7 +20,7 @@ var extend = require('extend');
 var cfg = require('../core/config');
 var utils = require('../core/utils');
 
-module.exports = function () {
+module.exports = function component () {
 
 	try {
 		var context = arguments[arguments.length - 1];
@@ -18,19 +33,35 @@ module.exports = function () {
 		var componentData = {};                                                                // collected component data
 
 		if (arguments.length >= 3) {
-			if ('object' === typeof arguments[1]) {
-				passedData = arguments[1];
-			}
-			else if('string' === typeof arguments[1]) {
-				dataFile = arguments[1].replace(/\.json$/i, '').toLowerCase();
+			switch (typeof arguments[1]) {
+				case 'string':
+					dataFile = arguments[1].replace(/\.json$/i, '').toLowerCase();
+					break;
+				case 'object':
+					passedData = extend(true, passedData, arguments[1]);
+					break;
+				case 'number':
+				case 'boolean':
+					passedData = arguments[1];
+					break;
+				default:
+					break;
 			}
 		}
-		else if (context.hash && context.hash.data) {
-			if ('object' === typeof context.hash.data) {
-				passedData = context.hash.data;
-			}
-			else if ('string' === typeof context.hash.data) {
-				dataFile = context.hash.data;
+		if (context.hash && context.hash.data) {
+			switch (typeof context.hash.data) {
+				case 'string':
+					dataFile = context.hash.data.replace(/\.json$/i, '').toLowerCase();
+					break;
+				case 'object':
+					passedData = extend(true, passedData, context.hash.data);
+					break;
+				case 'number':
+				case 'boolean':
+					passedData = context.hash.data;
+					break;
+				default:
+					break;
 			}
 		}
 
@@ -72,6 +103,16 @@ module.exports = function () {
 
 							if (contextDataRoot._query) {
 								extend(true, componentData, contextDataRoot._query);
+							}
+
+							// Add attribtues e.g. "disabled" of {{component "Button" disabled=true}}
+							if (context.hash) {
+								extend(true, componentData, context.hash);
+							}
+
+							// Add children e.g. {{#component "Button"}}Click me{{/component}}
+							if (context.fn) {
+								componentData.children = context.fn(this);
 							}
 
 							return new hbs.handlebars.SafeString(

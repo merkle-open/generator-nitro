@@ -113,7 +113,7 @@ describe('nitro:app', function () {
 				'views/404.html',
 				'views/_partials/head.html',
 				'views/_partials/foot.html',
-				'components/molecules/Example/example.html',
+				'components/molecules/example/example.html',
 				'project/blueprints/component/component.html'
 			]);
 		});
@@ -138,7 +138,7 @@ describe('nitro:app', function () {
 				'views/404.hbs',
 				'views/_partials/head.hbs',
 				'views/_partials/foot.hbs',
-				'components/molecules/Example/example.hbs',
+				'components/molecules/example/example.hbs',
 				'project/blueprints/component/component.hbs'
 			]);
 		});
@@ -163,7 +163,7 @@ describe('nitro:app', function () {
 				'views/404.mustache',
 				'views/_partials/head.mustache',
 				'views/_partials/foot.mustache',
-				'components/molecules/Example/example.mustache',
+				'components/molecules/example/example.mustache',
 				'project/blueprints/component/component.mustache'
 			]);
 		});
@@ -198,11 +198,11 @@ describe('nitro:app', function () {
 
 		it('example component contains template files', function () {
 			assert.file([
-				'components/molecules/Example/template/example.hbs',
-				'components/molecules/Example/template/example.links.hbs',
-				'components/molecules/Example/template/partial/example.link.hbs',
-				'components/molecules/Example/_data/example-template.json',
-				'components/molecules/Example/js/decorator/example-template.js'
+				'components/molecules/example/template/example.hbs',
+				'components/molecules/example/template/example.links.hbs',
+				'components/molecules/example/template/partial/example.link.hbs',
+				'components/molecules/example/_data/example-template.json',
+				'components/molecules/example/js/decorator/example-template.js'
 			]);
 		});
 
@@ -251,11 +251,11 @@ describe('nitro:app', function () {
 
 		it('example component does not contain template files', function () {
 			assert.noFile([
-				'components/molecules/Example/template/example.hbs',
-				'components/molecules/Example/template/example.links.hbs',
-				'components/molecules/Example/template/partial/example.link.hbs',
-				'components/molecules/Example/_data/example-template.json',
-				'components/molecules/Example/js/decorator/example-template.js'
+				'components/molecules/example/template/example.hbs',
+				'components/molecules/example/template/example.links.hbs',
+				'components/molecules/example/template/partial/example.link.hbs',
+				'components/molecules/example/_data/example-template.json',
+				'components/molecules/example/js/decorator/example-template.js'
 			]);
 		});
 

@@ -1,50 +1,50 @@
 {
-	"assets": {
-		"app.css": [
-			"+assets/css/variables.<%= options.pre %>",
-			"+assets/css/mixins.<%= options.pre %>",
-			"assets/css/reset.css",
-			"assets/css/basic.<%= options.pre %>",
-			"components/**/css/*.<%= options.pre %>",
-			"components/**/css/modifier/*.<%= options.pre %>"
-		],
-		"app.js": [
-			"assets/vendor/es6-promise/promise.min.js",
-			"assets/vendor/jquery/dist/jquery.min.js",
-			"assets/vendor/terrific/dist/terrific.min.js",<% if (options.clientTpl) { %>
-			"assets/vendor/handlebars/handlebars.runtime.min.js",<% } %>
-			"assets/js/*.js"<% if (options.js === 'TypeScript') { %>,
-			"assets/js/*.ts",
-			"components/**/js/*.ts",
-			"components/**/js/decorator/*.ts"<% } else { %>,
-			"components/**/js/*.js",
-			"components/**/js/decorator/*.js"<% } %><% if (options.clientTpl) { %>,
-			"components/**/template/*.js",
-			"components/**/template/partial/*.js"<% } %>
-		]
-	},
-	"code": {
-		"compatibility": {
-			"browsers": ["> 1%", "last 2 versions", "ie 9", "android 4", "Firefox ESR", "Opera 12.1"]
-		}
-	},
-	"nitro": {
-		"components": {
-			"atom": {
-				"template": "project/blueprints/component",
-				"path": "components/atoms",
-				"component_prefix": "a"
-			},
-			"molecule": {
-				"template": "project/blueprints/component",
-				"path": "components/molecules",
-				"component_prefix": "m"
-			},
-			"organism": {
-				"template": "project/blueprints/component",
-				"path": "components/organisms",
-				"component_prefix": "o"
-			}
-		}
-	}
+  "assets": {
+    "app.css": [
+      "+assets/css/variables.<%= options.pre %>",
+      "+assets/css/mixins.<%= options.pre %>",
+      "assets/css/reset.css",
+      "assets/css/basic.<%= options.pre %>",
+      "components/**/css/*.<%= options.pre %>",
+      "components/**/css/modifier/*.<%= options.pre %>"
+    ],
+    "app.js": [
+      "assets/vendor/es6-promise/promise.min.js",
+      "assets/vendor/jquery/dist/jquery.min.js",
+      "assets/vendor/terrific/dist/terrific.min.js",<% if (options.clientTpl) { %>
+      "assets/vendor/handlebars/handlebars.runtime.min.js",<% } %>
+      "assets/js/*.js"<% if (options.js === 'TypeScript') { %>,
+      "assets/js/*.ts",
+      "components/**/js/*.ts",
+      "components/**/js/decorator/*.ts"<% } else { %>,
+      "components/**/js/*.js",
+      "components/**/js/decorator/*.js"<% } %><% if (options.clientTpl) { %>,
+      "components/**/template/*.js",
+      "components/**/template/partial/*.js"<% } %>
+    ]
+  },
+  "code": {
+    "compatibility": {
+      "browsers": ["> 1%", "last 2 versions", "ie 9", "android 4", "Firefox ESR", "Opera 12.1"]
+    }
+  },
+  "nitro": {
+    "components": {
+      "atom": {
+        "template": "project/blueprints/component",
+        "path": "components/atoms",
+        "component_prefix": "a"
+      },
+      "molecule": {
+        "template": "project/blueprints/component",
+        "path": "components/molecules",
+        "component_prefix": "m"
+      },
+      "organism": {
+        "template": "project/blueprints/component",
+        "path": "components/organisms",
+        "component_prefix": "o"
+      }
+    }
+  }
 }

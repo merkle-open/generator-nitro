@@ -5,7 +5,7 @@
  https://www.npmjs.com/package/pm2
  */
 module.exports = function (gulp, plugins) {
-	return function () {
-		gulp.start('serve');
-	};
+  return function () {
+    gulp.start('serve');
+  };
 };

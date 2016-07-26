@@ -13,8 +13,8 @@ charset = utf-8
 # Force Unix-style newlines with a newline ending every file & trim trailing whitespace
 end_of_line = lf
 # Indentation
-indent_style = tab
-indent_size = 4
+indent_style = space
+indent_size = 2
 
 insert_final_newline = true
 trim_trailing_whitespace = true
@@ -27,8 +27,3 @@ trim_trailing_whitespace = true
 indent_style = space
 indent_size = 4
 trim_trailing_whitespace = false
-
-### Specific files
-[{package,bower}.json,.travis.yml]
-indent_style = space
-indent_size = 2

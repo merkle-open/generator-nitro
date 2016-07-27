@@ -12,7 +12,7 @@
   "main": "app/index.js",
   "scripts": {
     "test": "node_modules/.bin/jasmine",
-    "lint": "node_modules/.bin/eslint component/**"
+    "lint": "node_modules/.bin/eslint component/** || true"
   },
   "files": [
     "app",
@@ -41,6 +41,7 @@
   "devDependencies": {
     "@namics/eslint-config": "~1.0.0",
     "ejs": "~2.5.1",
+    "eslint": "^3.1.1",
     "fs-extra": "~0.30.0",
     "jasmine": "~2.4.1",
     "yeoman-assert": "~2.2.1",

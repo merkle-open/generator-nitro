@@ -1,14 +1,16 @@
 'use strict';
 
-var generators = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
-var request = require('request');
-var path = require('path');
-var fs = require('fs');
-var admzip = require('adm-zip');
-var glob = require('glob');
-var _ = require('lodash');
+/* eslint-disable max-len, complexity */
+
+const generators = require('yeoman-generator');
+const chalk = require('chalk');
+const yosay = require('yosay');
+const request = require('request');
+const path = require('path');
+const fs = require('fs');
+const Admzip = require('adm-zip');
+const glob = require('glob');
+const _ = require('lodash');
 
 module.exports = generators.Base.extend({
 
@@ -35,21 +37,21 @@ module.exports = generators.Base.extend({
 
     this.preOptions = ['less', 'scss'];
     this.option('pre', {
-      desc: 'your desired preprocessor [' + this.preOptions.join('|') + ']',
+      desc: `your desired preprocessor [${this.preOptions.join('|')}]`,
       type: String,
       defaults: this.passedInOptions.pre || this.preOptions[1]
     });
 
     this.jsOptions = ['JavaScript', 'TypeScript'];
     this.option('js', {
-      desc: 'your desired js compiler [' + this.jsOptions.join('|') + ']',
+      desc: `your desired js compiler [${this.jsOptions.join('|')}]`,
       type: String,
       defaults: this.passedInOptions.js || this.jsOptions[0]
     });
 
     this.viewExtOptions = ['html', 'hbs', 'mustache'];
     this.option('viewExt', {
-      desc: 'your desired view file extension [' + this.viewExtOptions.join('|') + ']',
+      desc: `your desired view file extension [${this.viewExtOptions.join('|')}]`,
       type: String,
       defaults: this.passedInOptions.viewExt || this.viewExtOptions[0]
     });
@@ -61,39 +63,38 @@ module.exports = generators.Base.extend({
     });
   },
 
-  initializing: function () {
+  initializing() {
     // namics frontend-defaults
     this.srcZip = 'http://github.com/namics/frontend-defaults/archive/master.zip';
     this.destZip = this.templatePath('frontend-defaults.zip');
   },
 
-  prompting: function () {
-    var done = this.async();
+  prompting() {
 
     this.log(yosay(
-      'Welcome to the awe-inspiring ' + chalk.cyan('Nitro') + ' generator!'
+      `Welcome to the awe-inspiring ${chalk.cyan('Nitro')} generator!`
     ));
 
     // check whether there is already a nitro application in place and we only have to update the application
-    var json = this.fs.readJSON(this.destinationPath('package.json'), {defaults: {"new": true}});
+    const json = this.fs.readJSON(this.destinationPath('package.json'), { defaults: { 'new': true } });
 
     if (!json.new && _.indexOf(json.keywords, 'nitro') !== -1) {
       // update existing application
-      this.prompt([
+      return this.prompt([
         {
           name: 'update',
           type: 'confirm',
-          message: 'There is already a ' + chalk.cyan('Nitro') + ' application in place! Should I serve you an update?',
+          message: `There is already a ${chalk.cyan('Nitro')} application in place! Should I serve you an update?`,
           default: true
         }
-      ], function (props) {
-        this.update = props.update;
+      ]).then(function (answers) {
+        this.update = answers.update;
 
         if (!this.update) {
           return;
         }
 
-        var config = this.config.getAll();
+        const config = this.config.getAll();
         if (config) {
           this.options.name = config.name || this.options.name;
           this.options.pre = config.preprocessor || this.options.pre;
@@ -101,13 +102,10 @@ module.exports = generators.Base.extend({
           this.options.viewExt = config.viewExtension || this.options.viewExt;
           this.options.clientTpl = config.clientTemplates || this.options.clientTpl;
         }
-
-        done();
       }.bind(this));
-    }
-    else {
+    } else {
       // create new application
-      this.prompt([
+      return this.prompt([
         {
           name: 'name',
           message: 'What\'s the name of your app?',
@@ -159,12 +157,12 @@ module.exports = generators.Base.extend({
             return typeof this.passedInOptions.clientTpl !== 'boolean';
           }.bind(this)
         }
-      ], function (props) {
-        this.options.name = props.name || this.options.name;
-        this.options.pre = props.pre || this.options.pre;
-        this.options.js = props.js || this.options.js;
-        this.options.viewExt = props.viewExt || this.options.viewExt;
-        this.options.clientTpl = props.clientTpl !== undefined ? props.clientTpl : this.options.clientTpl;
+      ]).then(function (answers) {
+        this.options.name = answers.name || this.options.name;
+        this.options.pre = answers.pre || this.options.pre;
+        this.options.js = answers.js || this.options.js;
+        this.options.viewExt = answers.viewExt || this.options.viewExt;
+        this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
 
         this.config.set('name', this.options.name);
         this.config.set('preprocessor', this.options.pre);
@@ -173,35 +171,33 @@ module.exports = generators.Base.extend({
         this.config.set('clientTemplates', this.options.clientTpl);
 
         this.config.save();
-
-        done();
       }.bind(this));
     }
   },
 
   configuring: {
-    download: function () {
-      var self = this;
-      var done = this.async();
+    download() {
+      const done = this.async();
 
-      this.log('Download ' + chalk.cyan(this.srcZip));
+      this.log(`Download ${chalk.cyan(this.srcZip)}`);
 
-      var dl = request
+      const dl = request
         .get(this.srcZip)
         .on('error', function (err) {
-          self.log(chalk.red(err));
-        })
+          this.log(chalk.red(err));
+        }.bind(this))
         .pipe(fs.createWriteStream(this.destZip));
 
-      dl.on('finish', function () {
+      dl.on('finish', () => {
         done();
       });
     },
-    extract: function () {
-      var done = this.async();
+    extract() {
+      const done = this.async();
 
       this.log('Extracting frontend-defaults templates');
-      var zip = new admzip(this.destZip);
+
+      const zip = new Admzip(this.destZip);
 
       try {
         // extract entries
@@ -217,8 +213,7 @@ module.exports = generators.Base.extend({
         fs.renameSync(this.templatePath('nitro.gitignore'), this.templatePath('.gitignore'));
         fs.renameSync(this.templatePath('nitro.jshintignore'), this.templatePath('.jshintignore'));
         fs.renameSync(this.templatePath('nitro.stylelintignore'), this.templatePath('.stylelintignore'));
-      }
-      catch (e) {
+      } catch (e) {
         this.log(chalk.red(e.message));
       }
 
@@ -230,12 +225,12 @@ module.exports = generators.Base.extend({
   },
 
   writing: {
-    app: function () {
+    app() {
       this.log('Scaffolding your app');
 
-      var files = glob.sync('**/*', {cwd: this.sourceRoot(), nodir: true, dot: true});
+      const files = glob.sync('**/*', { cwd: this.sourceRoot(), nodir: true, dot: true });
 
-      var tplFiles = [
+      const tplFiles = [
         // files to process with copyTpl
         'package.json',
         'config.json',
@@ -250,18 +245,18 @@ module.exports = generators.Base.extend({
         'components/molecules/example/example.html',
         'views/index.html'
       ];
-      var ignores = [
+      const ignores = [
         // files to ignore
         '.DS_Store',
         '.npmignore',
         'frontend-defaults.zip'
       ];
-      var typeScriptFiles = [
+      const typeScriptFiles = [
         // files only for this.options.js==='TypeScript'
         'tsd.json',
         'gulp/compile-ts.js'
       ];
-      var clientTplFiles = [
+      const clientTplFiles = [
         // files only for this.options.clientTpl===true
         'components/molecules/example/_data/example-template.json',
         'components/molecules/example/js/decorator/example-template.js',
@@ -272,7 +267,7 @@ module.exports = generators.Base.extend({
         'project/blueprints/component/template/component.hbs',
         'gulp/compile-templates.js'
       ];
-      var viewFiles = [
+      const viewFiles = [
         // files that might change file extension
         'views/404.html',
         'views/index.html',
@@ -283,7 +278,7 @@ module.exports = generators.Base.extend({
         'project/blueprints/component/component.html'
       ];
 
-      var data = {
+      const templateData = {
         name: this.options.name,
         version: this.pkg.version,
         options: this.options
@@ -318,7 +313,7 @@ module.exports = generators.Base.extend({
           }
         }
 
-        var ext = path.extname(file).substring(1);
+        const ext = path.extname(file).substring(1);
 
         // exclude unnecessary preprocessor files
         if (_.indexOf(this.preOptions, ext) !== -1 && this.options.pre !== ext) {
@@ -329,18 +324,18 @@ module.exports = generators.Base.extend({
           return;
         }
 
-        var sourcePath = this.templatePath(file),
-          destinationPath = this.destinationPath(file);
+        const sourcePath = this.templatePath(file);
+        let destinationPath = this.destinationPath(file);
 
         // adjust destination template file extension for view files
         if (_.indexOf(this.viewExtOptions, ext) !== -1 && _.indexOf(viewFiles, file) !== -1) {
-          var targetExt = '.' + (this.options.viewExt !== 0 ? this.options.viewExt : this.viewExtOptions[0]);
+          const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this.viewExtOptions[0]}`;
 
           destinationPath = destinationPath.replace(path.extname(destinationPath), targetExt);
         }
 
         if (_.indexOf(tplFiles, file) !== -1) {
-          this.fs.copyTpl(sourcePath, destinationPath, data);
+          this.fs.copyTpl(sourcePath, destinationPath, templateData);
           return;
         }
 
@@ -350,20 +345,19 @@ module.exports = generators.Base.extend({
     }
   },
 
-  install: function () {
+  install() {
     this.installDependencies({
       skipInstall: this.options['skip-install']
     });
 
     if (this.options.js === 'TypeScript') {
-      var that = this;
       this.spawnCommand('tsd', ['reinstall']).on('close', function () {
-        that.spawnCommand('tsd', ['rebundle']);
-      });
+        this.spawnCommand('tsd', ['rebundle']);
+      }.bind(this));
     }
   },
 
-  end: function () {
+  end() {
     this.log(chalk.green('All done – have fun'));
   }
 });

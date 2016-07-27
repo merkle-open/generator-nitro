@@ -1,13 +1,14 @@
 'use strict';
 
-var generators = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
-var path = require('path');
-var fs = require('fs');
-var gitconfig = require('git-config');
-var glob = require('glob');
-var _ = require('lodash');
+/* eslint-disable no-inline-comments, max-len, complexity */
+
+const generators = require('yeoman-generator');
+const chalk = require('chalk');
+const yosay = require('yosay');
+const path = require('path');
+const gitconfig = require('git-config');
+const glob = require('glob');
+const _ = require('lodash');
 
 module.exports = generators.Base.extend({
   constructor: function () {
@@ -15,7 +16,7 @@ module.exports = generators.Base.extend({
     generators.Base.apply(this, arguments);
 
     // Component name
-    this.argument('name', {desc: 'the name of your component?', type: String, required: false, defaults: ''});
+    this.argument('name', { desc: 'the name of your component?', type: String, required: false, defaults: '' });
 
     // Component type
     this.cfg = require(this.destinationPath('config.json'));
@@ -25,30 +26,29 @@ module.exports = generators.Base.extend({
     });
 
     this.option('type', {
-      desc: 'your desired type [' + this.types.join('|') + ']',
+      desc: `your desired type [${this.types.join('|')}]`,
       type: String,
       defaults: this.types[0]
     });
 
     // Component modifier
-    this.option('modifier', {desc: 'the name of your modifier', type: String});
+    this.option('modifier', { desc: 'the name of your modifier', type: String });
 
     // Component decorator
-    this.option('decorator', {desc: 'the name of your decorator', type: String});
+    this.option('decorator', { desc: 'the name of your decorator', type: String });
   },
 
-  initializing: function () {
+  initializing() {
     this.pkg = require('../package.json');
   },
 
-  prompting: function () {
-    var done = this.async();
+  prompting() {
 
     this.log(yosay(
       'Let me help you to create your component…'
     ));
 
-    this.prompt([
+    return this.prompt([
       {
         name: 'name',
         message: 'What\'s the name of your component?',
@@ -86,28 +86,26 @@ module.exports = generators.Base.extend({
           return true;
         }
       }
-    ], function (props) {
-      this.name = props.name;
-      this.options.type = props.type;
-      this.options.modifier = props.modifier;
-      this.options.decorator = props.decorator;
-
-      done();
+    ]).then(function (answers) {
+      this.name = answers.name;
+      this.options.type = answers.type;
+      this.options.modifier = answers.modifier;
+      this.options.decorator = answers.decorator;
     }.bind(this));
   },
 
   writing: {
-    app: function () {
-      var hasModifier = !_.isEmpty(this.options.modifier);
-      var hasDecorator = !_.isEmpty(this.options.decorator);
-      var msg = 'Creating ' + chalk.cyan(this.name) + ' ' + this.options.type;
+    app() {
+      const hasModifier = !_.isEmpty(this.options.modifier);
+      const hasDecorator = !_.isEmpty(this.options.decorator);
+      let msg = `Creating ${chalk.cyan(this.name)} ${this.options.type}`;
 
       if (hasModifier || hasDecorator) {
         msg += ' with ';
       }
 
       if (hasModifier) {
-        msg += 'CSS modifier ' + chalk.cyan(this.options.modifier);
+        msg += `CSS modifier ${chalk.cyan(this.options.modifier)}`;
 
         if (hasDecorator) {
           msg += ' and ';
@@ -115,30 +113,30 @@ module.exports = generators.Base.extend({
       }
 
       if (hasDecorator) {
-        msg += 'JS decorator ' + chalk.cyan(this.options.decorator);
+        msg += `JS decorator ${chalk.cyan(this.options.decorator)}`;
       }
 
       this.log(msg);
 
-      var component = this.cfg.nitro.components[this.options.type];
-      var folder = this.name.replace(/[^A-Za-z0-9-]/g, '');
-      var files = glob.sync('**/*', {cwd: this.destinationPath(component.template), nodir: true, dot: true});
-      var ignores = [
+      const component = this.cfg.nitro.components[this.options.type];
+      const folder = this.name.replace(/[^A-Za-z0-9-]/g, '');
+      const files = glob.sync('**/*', { cwd: this.destinationPath(component.template), nodir: true, dot: true });
+      const ignores = [
         // files to ignore
         '.DS_Store'
       ];
-      var user = {
+      const user = {
         name: '',
         email: ''
       };
-      var gitConfig = gitconfig.sync();
+      const gitConfig = gitconfig.sync();
 
       if (!_.isEmpty(gitConfig) && !_.isEmpty(gitConfig.user)) {
         user.name = gitConfig.user.name;
         user.email = gitConfig.user.email;
       }
 
-      var replacements = {
+      const replacements = {
         user: user,
         component: {
           name: this.name, // Component name, eg. Main Navigation
@@ -181,18 +179,21 @@ module.exports = generators.Base.extend({
         }
 
         // filename replacements
-        var fileReplacements = {
+        const fileReplacements = {
           component: replacements.component.file,
           modifier: replacements.modifier.file,
           decorator: replacements.decorator.file
         };
 
-        var filename = file;
+        let filename = file;
         _.forOwn(fileReplacements, function (value, key) {
           filename = path.join(path.dirname(filename), path.basename(filename).replace(key, value));
         });
 
-        this.fs.copyTpl(this.destinationPath(component.template + '/' + file), this.destinationPath(component.path + '/' + folder + '/' + filename), replacements);
+        this.fs.copyTpl(
+          this.destinationPath(`${component.template}/${file}`),
+          this.destinationPath(`${component.path}/${folder}/${filename}`),
+          replacements);
       }, this);
     }
   }

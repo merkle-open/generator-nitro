@@ -11,7 +11,8 @@
   },
   "main": "app/index.js",
   "scripts": {
-    "test": "node_modules/.bin/jasmine"
+    "test": "node_modules/.bin/jasmine",
+    "lint": "node_modules/.bin/eslint component/**"
   },
   "files": [
     "app",
@@ -38,6 +39,7 @@
     "yosay": "~1.2.0"
   },
   "devDependencies": {
+    "@namics/eslint-config": "~1.0.0",
     "ejs": "~2.5.1",
     "fs-extra": "~0.30.0",
     "jasmine": "~2.4.1",

@@ -412,20 +412,7 @@ module.exports = generators.Base.extend({
 
 	install: function () {
 		this.installDependencies({
-			skipInstall: this.options['skip-install'],
-			callback: function () {
-				var filesToCopy = [
-					{do: this.options.exporter, src:'node_modules/nitro-exporter/README.md', dest:'project/docs/nitro-exporter.md'},
-					{do: this.options.release, src:'node_modules/nitro-release/README.md', dest:'project/docs/nitro-release.md'}
-				];
-
-				filesToCopy.forEach(function(file){
-					if (file.do) {
-						this.fs.copy(this.destinationPath(file.src), this.destinationPath(file.dest));
-					}
-				}.bind(this));
-
-			}.bind(this)
+			skipInstall: this.options['skip-install']
 		});
 
 		if (this.options.js === 'TypeScript') {
@@ -436,6 +423,19 @@ module.exports = generators.Base.extend({
 	},
 
 	end: function () {
+		var filesToCopy = [
+			{do: this.options.exporter, src:'node_modules/nitro-exporter/README.md', dest:'project/docs/nitro-exporter.md'},
+			{do: this.options.release, src:'node_modules/nitro-release/README.md', dest:'project/docs/nitro-release.md'}
+		];
+		try {
+			filesToCopy.forEach(function(file){
+				if (file.do) {
+					this.fs.copy(this.destinationPath(file.src), this.destinationPath(file.dest));
+				}
+			}.bind(this));
+		}
+		catch(e) {}
+
 		this.log(chalk.green('All done – have fun'));
 	}
 });

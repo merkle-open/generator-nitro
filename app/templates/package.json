@@ -71,7 +71,7 @@
     "karma-chrome-launcher": "~1.0.1",
     "karma-jasmine": "~1.0.2"<% if (options.clientTpl) { %>,
     "merge-stream": "~1.0.0"<% } %><% if (options.exporter) { %>,
-    "nitro-exporter": "~0.0.4"<% } %><% if (options.release) { %>,
+    "nitro-exporter": "~0.0.5"<% } %><% if (options.release) { %>,
     "nitro-release": "~0.0.1"<% } %>
   },
   "devDependencies": {

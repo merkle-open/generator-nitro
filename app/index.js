@@ -324,7 +324,6 @@ module.exports = generators.Base.extend({
 			];
 			var exporterFiles = [
 				// files for this.options.exporter===true
-				'project/docs/nitro-exporter.md'
 			];
 			var releaseFiles = [
 				// files for this.options.release===true
@@ -413,14 +412,26 @@ module.exports = generators.Base.extend({
 
 	install: function () {
 		this.installDependencies({
-			skipInstall: this.options['skip-install']
+			skipInstall: this.options['skip-install'],
+			callback: function () {
+				var filesToCopy = [
+					{do: this.options.exporter, src:'node_modules/nitro-exporter/README.md', dest:'project/docs/nitro-exporter.md'},
+					{do: this.options.release, src:'node_modules/nitro-release/README.md', dest:'project/docs/nitro-release.md'}
+				];
+
+				filesToCopy.forEach(function(file){
+					if (file.do) {
+						this.fs.copy(this.destinationPath(file.src), this.destinationPath(file.dest));
+					}
+				}.bind(this));
+
+			}.bind(this)
 		});
 
 		if (this.options.js === 'TypeScript') {
-			var that = this;
 			this.spawnCommand('tsd', ['reinstall']).on('close', function () {
-				that.spawnCommand('tsd', ['rebundle']);
-			});
+				this.spawnCommand('tsd', ['rebundle']);
+			}.bind(this));
 		}
 	},
 

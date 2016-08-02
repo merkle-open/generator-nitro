@@ -3,7 +3,7 @@ var helper = require('../../app/helpers/component');
 describe('Component Helper', function () {
 
 	it('returns an error message if module is unknown', function () {
-		expect(helper('inexistent')).toMatch('<p class="nitro-msg nitro-msg--error">Component `inexistent` with template file `inexistent.html` not found in folder `inexistent`.</p>');
+		expect(helper('inexistent')).toMatch('<p class="nitro-msg nitro-msg--error">Component `inexistent` with template file `inexistent.<%= options.viewExt %>` not found in folder `inexistent`.</p>');
 	});
 
 	it('returns an object containing a string if module was found', function () {

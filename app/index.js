@@ -237,17 +237,18 @@ module.exports = generators.Base.extend({
 
 			var tplFiles = [
 				// files to process with copyTpl
-				'package.json',
-				'config.json',
 				'bower.json',
+				'config.json',
 				'gulpfile.js',
+				'package.json',
+				'app/core/config.js',
+				'components/molecules/example/example.html',
 				'gulp/compile-css.js',
 				'gulp/compile-js.js',
 				'gulp/utils.js',
 				'gulp/watch-assets.js',
-				'app/core/config.js',
 				'project/docs/nitro.md',
-				'components/molecules/example/example.html',
+				'spec/helpers/componentSpec.js',
 				'views/index.html'
 			];
 			var ignores = [

@@ -1,12 +1,12 @@
 {
-  "test": {
-    "example": {
-      "string": "gold",
-      "nested": "All that glitters is not $t(test.example.string).",
-      "sprintf": "The first three letters of %s are: %s, %s and %s",
-      "interpolation": "Hello __name__",
-      "interpolation1": "The last two letters of {1} are: {3} and {2}",
-      "interpolation2": "The first letter of {word} is: {one}"
-    }
-  }
+	"test": {
+		"example": {
+			"string": "gold",
+			"nested": "All that glitters is not $t(test.example.string).",
+			"sprintf": "The first three letters of %s are: %s, %s and %s",
+			"interpolation": "Hello __name__",
+			"interpolation1": "The last two letters of {1} are: {3} and {2}",
+			"interpolation2": "The first letter of {word} is: {one}"
+		}
+	}
 }

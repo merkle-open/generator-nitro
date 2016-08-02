@@ -14,350 +14,351 @@ const _ = require('lodash');
 
 module.exports = generators.Base.extend({
 
-  constructor: function () {
-    // Calling the super constructor
-    generators.Base.apply(this, arguments);
+	constructor: function () {
+		// Calling the super constructor
+		generators.Base.apply(this, arguments);
 
-    this.pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json'), 'utf8'));
+		this.pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json'), 'utf8'));
 
-    this.passedInOptions = {
-      name: this.options.name,
-      pre: this.options.pre,
-      js: this.options.js,
-      viewExt: this.options.viewExt,
-      clientTpl: this.options.clientTpl
-    };
+		this.passedInOptions = {
+			name: this.options.name,
+			pre: this.options.pre,
+			js: this.options.js,
+			viewExt: this.options.viewExt,
+			clientTpl: this.options.clientTpl
+		};
 
-    this.option('name', {
-      desc: 'the name of your app',
-      type: String,
-      defaults: this.passedInOptions.name || path.basename(process.cwd())
-    });
-    this.options.name = _.kebabCase(this.options.name);
+		this.option('name', {
+			desc: 'the name of your app',
+			type: String,
+			defaults: this.passedInOptions.name || path.basename(process.cwd())
+		});
+		this.options.name = _.kebabCase(this.options.name);
 
-    this.preOptions = ['less', 'scss'];
-    this.option('pre', {
-      desc: `your desired preprocessor [${this.preOptions.join('|')}]`,
-      type: String,
-      defaults: this.passedInOptions.pre || this.preOptions[1]
-    });
+		this.preOptions = ['less', 'scss'];
+		this.option('pre', {
+			desc: `your desired preprocessor [${this.preOptions.join('|')}]`,
+			type: String,
+			defaults: this.passedInOptions.pre || this.preOptions[1]
+		});
 
-    this.jsOptions = ['JavaScript', 'TypeScript'];
-    this.option('js', {
-      desc: `your desired js compiler [${this.jsOptions.join('|')}]`,
-      type: String,
-      defaults: this.passedInOptions.js || this.jsOptions[0]
-    });
+		this.jsOptions = ['JavaScript', 'TypeScript'];
+		this.option('js', {
+			desc: `your desired js compiler [${this.jsOptions.join('|')}]`,
+			type: String,
+			defaults: this.passedInOptions.js || this.jsOptions[0]
+		});
 
-    this.viewExtOptions = ['html', 'hbs', 'mustache'];
-    this.option('viewExt', {
-      desc: `your desired view file extension [${this.viewExtOptions.join('|')}]`,
-      type: String,
-      defaults: this.passedInOptions.viewExt || this.viewExtOptions[0]
-    });
+		this.viewExtOptions = ['html', 'hbs', 'mustache'];
+		this.option('viewExt', {
+			desc: `your desired view file extension [${this.viewExtOptions.join('|')}]`,
+			type: String,
+			defaults: this.passedInOptions.viewExt || this.viewExtOptions[0]
+		});
 
-    this.option('clientTpl', {
-      desc: 'do you need client side templates',
-      type: Boolean,
-      defaults: this.passedInOptions.clientTpl || false
-    });
-  },
+		this.option('clientTpl', {
+			desc: 'do you need client side templates',
+			type: Boolean,
+			defaults: this.passedInOptions.clientTpl || false
+		});
+	},
 
-  initializing() {
-    // namics frontend-defaults
-    this.srcZip = 'http://github.com/namics/frontend-defaults/archive/master.zip';
-    this.destZip = this.templatePath('frontend-defaults.zip');
-  },
+	initializing() {
+		// namics frontend-defaults
+		this.srcZip = 'http://github.com/namics/frontend-defaults/archive/master.zip';
+		this.destZip = this.templatePath('frontend-defaults.zip');
+	},
 
-  prompting() {
+	prompting() {
 
-    this.log(yosay(
-      `Welcome to the awe-inspiring ${chalk.cyan('Nitro')} generator!`
-    ));
+		this.log(yosay(
+			`Welcome to the awe-inspiring ${chalk.cyan('Nitro')} generator!`
+		));
 
-    // check whether there is already a nitro application in place and we only have to update the application
-    const json = this.fs.readJSON(this.destinationPath('package.json'), { defaults: { 'new': true } });
+		// check whether there is already a nitro application in place and we only have to update the application
+		const json = this.fs.readJSON(this.destinationPath('package.json'), {defaults: {'new': true}});
 
-    if (!json.new && _.indexOf(json.keywords, 'nitro') !== -1) {
-      // update existing application
-      return this.prompt([
-        {
-          name: 'update',
-          type: 'confirm',
-          message: `There is already a ${chalk.cyan('Nitro')} application in place! Should I serve you an update?`,
-          default: true
-        }
-      ]).then(function (answers) {
-        this.update = answers.update;
+		if (!json.new && _.indexOf(json.keywords, 'nitro') !== -1) {
+			// update existing application
+			return this.prompt([
+				{
+					name: 'update',
+					type: 'confirm',
+					message: `There is already a ${chalk.cyan('Nitro')} application in place! Should I serve you an update?`,
+					default: true
+				}
+			]).then(function (answers) {
+				this.update = answers.update;
 
-        if (!this.update) {
-          return;
-        }
+				if (!this.update) {
+					return;
+				}
 
-        const config = this.config.getAll();
-        if (config) {
-          this.options.name = config.name || this.options.name;
-          this.options.pre = config.preprocessor || this.options.pre;
-          this.options.js = config.jscompiler || this.options.js;
-          this.options.viewExt = config.viewExtension || this.options.viewExt;
-          this.options.clientTpl = config.clientTemplates || this.options.clientTpl;
-        }
-      }.bind(this));
-    } else {
-      // create new application
-      return this.prompt([
-        {
-          name: 'name',
-          message: 'What\'s the name of your app?',
-          default: this.options.name,
-          when: function () {
-            return !this.passedInOptions.name;
-          }.bind(this)
-        },
-        {
-          name: 'pre',
-          type: 'list',
-          message: 'What\'s your desired preprocessor?',
-          choices: this.preOptions,
-          default: this.options.pre,
-          store: true,
-          when: function () {
-            return !this.passedInOptions.pre;
-          }.bind(this)
-        },
-        {
-          name: 'js',
-          type: 'list',
-          message: 'What\'s your desired javascript compiler?',
-          choices: this.jsOptions,
-          default: this.options.js,
-          store: true,
-          when: function () {
-            return !this.passedInOptions.js;
-          }.bind(this)
-        },
-        {
-          name: 'viewExt',
-          type: 'list',
-          message: 'What\'s your desired view file extension?',
-          choices: this.viewExtOptions,
-          default: this.options.viewExt,
-          store: true,
-          when: function () {
-            return !this.passedInOptions.viewExt;
-          }.bind(this)
-        },
-        {
-          name: 'clientTpl',
-          type: 'confirm',
-          message: 'Would you like to include client side templates?',
-          default: this.options.clientTpl,
-          store: true,
-          when: function () {
-            return typeof this.passedInOptions.clientTpl !== 'boolean';
-          }.bind(this)
-        }
-      ]).then(function (answers) {
-        this.options.name = answers.name || this.options.name;
-        this.options.pre = answers.pre || this.options.pre;
-        this.options.js = answers.js || this.options.js;
-        this.options.viewExt = answers.viewExt || this.options.viewExt;
-        this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
+				const config = this.config.getAll();
+				if (config) {
+					this.options.name = config.name || this.options.name;
+					this.options.pre = config.preprocessor || this.options.pre;
+					this.options.js = config.jscompiler || this.options.js;
+					this.options.viewExt = config.viewExtension || this.options.viewExt;
+					this.options.clientTpl = config.clientTemplates || this.options.clientTpl;
+				}
+			}.bind(this));
+		} else {
+			// create new application
+			return this.prompt([
+				{
+					name: 'name',
+					message: 'What\'s the name of your app?',
+					default: this.options.name,
+					when: function () {
+						return !this.passedInOptions.name;
+					}.bind(this)
+				},
+				{
+					name: 'pre',
+					type: 'list',
+					message: 'What\'s your desired preprocessor?',
+					choices: this.preOptions,
+					default: this.options.pre,
+					store: true,
+					when: function () {
+						return !this.passedInOptions.pre;
+					}.bind(this)
+				},
+				{
+					name: 'js',
+					type: 'list',
+					message: 'What\'s your desired javascript compiler?',
+					choices: this.jsOptions,
+					default: this.options.js,
+					store: true,
+					when: function () {
+						return !this.passedInOptions.js;
+					}.bind(this)
+				},
+				{
+					name: 'viewExt',
+					type: 'list',
+					message: 'What\'s your desired view file extension?',
+					choices: this.viewExtOptions,
+					default: this.options.viewExt,
+					store: true,
+					when: function () {
+						return !this.passedInOptions.viewExt;
+					}.bind(this)
+				},
+				{
+					name: 'clientTpl',
+					type: 'confirm',
+					message: 'Would you like to include client side templates?',
+					default: this.options.clientTpl,
+					store: true,
+					when: function () {
+						return typeof this.passedInOptions.clientTpl !== 'boolean';
+					}.bind(this)
+				}
+			]).then(function (answers) {
+				this.options.name = answers.name || this.options.name;
+				this.options.pre = answers.pre || this.options.pre;
+				this.options.js = answers.js || this.options.js;
+				this.options.viewExt = answers.viewExt || this.options.viewExt;
+				this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
 
-        this.config.set('name', this.options.name);
-        this.config.set('preprocessor', this.options.pre);
-        this.config.set('jscompiler', this.options.js);
-        this.config.set('viewExtension', this.options.viewExt);
-        this.config.set('clientTemplates', this.options.clientTpl);
+				this.config.set('name', this.options.name);
+				this.config.set('preprocessor', this.options.pre);
+				this.config.set('jscompiler', this.options.js);
+				this.config.set('viewExtension', this.options.viewExt);
+				this.config.set('clientTemplates', this.options.clientTpl);
 
-        this.config.save();
-      }.bind(this));
-    }
-  },
+				this.config.save();
+			}.bind(this));
+		}
+	},
 
-  configuring: {
-    download() {
-      const done = this.async();
+	configuring: {
+		download() {
+			const done = this.async();
 
-      this.log(`Download ${chalk.cyan(this.srcZip)}`);
+			this.log(`Download ${chalk.cyan(this.srcZip)}`);
 
-      const dl = request
-        .get(this.srcZip)
-        .on('error', function (err) {
-          this.log(chalk.red(err));
-        }.bind(this))
-        .pipe(fs.createWriteStream(this.destZip));
+			const dl = request
+				.get(this.srcZip)
+				.on('error', function (err) {
+					this.log(chalk.red(err));
+				}.bind(this))
+				.pipe(fs.createWriteStream(this.destZip));
 
-      dl.on('finish', () => {
-        done();
-      });
-    },
-    extract() {
-      const done = this.async();
+			dl.on('finish', () => {
+				done();
+			});
+		},
+		extract() {
+			const done = this.async();
 
-      this.log('Extracting frontend-defaults templates');
+			this.log('Extracting frontend-defaults templates');
 
-      const zip = new Admzip(this.destZip);
+			const zip = new Admzip(this.destZip);
 
-      try {
-        // extract entries
-        zip.extractEntryTo('frontend-defaults-master/codequality/jshint/.jshintrc', this.sourceRoot(), false, true);
-        zip.extractEntryTo('frontend-defaults-master/codequality/jshint/nitro.jshintignore', this.sourceRoot(), false, true);
-        zip.extractEntryTo('frontend-defaults-master/codequality/stylelint/.stylelintrc', this.sourceRoot(), false, true);
-        zip.extractEntryTo('frontend-defaults-master/codequality/stylelint/nitro.stylelintignore', this.sourceRoot(), false, true);
-        zip.extractEntryTo('frontend-defaults-master/editorconfig/.editorconfig', this.sourceRoot(), false, true);
-        zip.extractEntryTo('frontend-defaults-master/repo/gitignore/nitro.gitignore', this.sourceRoot(), false, true);
-        zip.extractEntryTo('frontend-defaults-master/repo/gitattributes/.gitattributes', this.sourceRoot(), false, true);
+			try {
+				// extract entries
+				zip.extractEntryTo('frontend-defaults-master/codequality/jshint/.jshintrc', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/codequality/jshint/nitro.jshintignore', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/codequality/stylelint/.stylelintrc', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/codequality/stylelint/nitro.stylelintignore', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/editorconfig/.editorconfig', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/repo/gitignore/nitro.gitignore', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/repo/gitattributes/.gitattributes', this.sourceRoot(), false, true);
 
-        // rename files
-        fs.renameSync(this.templatePath('nitro.gitignore'), this.templatePath('.gitignore'));
-        fs.renameSync(this.templatePath('nitro.jshintignore'), this.templatePath('.jshintignore'));
-        fs.renameSync(this.templatePath('nitro.stylelintignore'), this.templatePath('.stylelintignore'));
-      } catch (e) {
-        this.log(chalk.red(e.message));
-      }
+				// rename files
+				fs.renameSync(this.templatePath('nitro.gitignore'), this.templatePath('.gitignore'));
+				fs.renameSync(this.templatePath('nitro.jshintignore'), this.templatePath('.jshintignore'));
+				fs.renameSync(this.templatePath('nitro.stylelintignore'), this.templatePath('.stylelintignore'));
+			} catch (e) {
+				this.log(chalk.red(e.message));
+			}
 
-      // remove zip
-      fs.unlinkSync(this.destZip);
+			// remove zip
+			fs.unlinkSync(this.destZip);
 
-      done();
-    }
-  },
+			done();
+		}
+	},
 
-  writing: {
-    app() {
-      this.log('Scaffolding your app');
+	writing: {
+		app() {
+			this.log('Scaffolding your app');
 
-      const files = glob.sync('**/*', { cwd: this.sourceRoot(), nodir: true, dot: true });
+			const files = glob.sync('**/*', {cwd: this.sourceRoot(), nodir: true, dot: true});
 
-      const tplFiles = [
-        // files to process with copyTpl
-        'package.json',
-        'config.json',
-        'bower.json',
-        'gulpfile.js',
-        'gulp/compile-css.js',
-        'gulp/compile-js.js',
-        'gulp/utils.js',
-        'gulp/watch-assets.js',
-        'app/core/config.js',
-        'project/docs/nitro.md',
-        'components/molecules/example/example.html',
-        'views/index.html'
-      ];
-      const ignores = [
-        // files to ignore
-        '.DS_Store',
-        '.npmignore',
-        'frontend-defaults.zip'
-      ];
-      const typeScriptFiles = [
-        // files only for this.options.js==='TypeScript'
-        'tsd.json',
-        'gulp/compile-ts.js'
-      ];
-      const clientTplFiles = [
-        // files only for this.options.clientTpl===true
-        'components/molecules/example/_data/example-template.json',
-        'components/molecules/example/js/decorator/example-template.js',
-        'components/molecules/example/template/example.hbs',
-        'components/molecules/example/template/example.links.hbs',
-        'components/molecules/example/template/partial/example.link.hbs',
-        'project/docs/client-templates.md',
-        'project/blueprints/component/template/component.hbs',
-        'gulp/compile-templates.js'
-      ];
-      const viewFiles = [
-        // files that might change file extension
-        'views/404.html',
-        'views/index.html',
-        'views/_layouts/default.html',
-        'views/_partials/foot.html',
-        'views/_partials/head.html',
-        'components/molecules/example/example.html',
-        'project/blueprints/component/component.html'
-      ];
+			const tplFiles = [
+				// files to process with copyTpl
+				'bower.json',
+				'config.json',
+				'gulpfile.js',
+				'package.json',
+				'app/core/config.js',
+				'components/molecules/example/example.html',
+				'gulp/compile-css.js',
+				'gulp/compile-js.js',
+				'gulp/utils.js',
+				'gulp/watch-assets.js',
+				'project/docs/nitro.md',
+				'spec/helpers/componentSpec.js',
+				'views/index.html'
+			];
+			const ignores = [
+				// files to ignore
+				'.DS_Store',
+				'.npmignore',
+				'frontend-defaults.zip'
+			];
+			const typeScriptFiles = [
+				// files only for this.options.js==='TypeScript'
+				'tsd.json',
+				'gulp/compile-ts.js'
+			];
+			const clientTplFiles = [
+				// files only for this.options.clientTpl===true
+				'components/molecules/example/_data/example-template.json',
+				'components/molecules/example/js/decorator/example-template.js',
+				'components/molecules/example/template/example.hbs',
+				'components/molecules/example/template/example.links.hbs',
+				'components/molecules/example/template/partial/example.link.hbs',
+				'project/docs/client-templates.md',
+				'project/blueprints/component/template/component.hbs',
+				'gulp/compile-templates.js'
+			];
+			const viewFiles = [
+				// files that might change file extension
+				'views/404.html',
+				'views/index.html',
+				'views/_layouts/default.html',
+				'views/_partials/foot.html',
+				'views/_partials/head.html',
+				'components/molecules/example/example.html',
+				'project/blueprints/component/component.html'
+			];
 
-      const templateData = {
-        name: this.options.name,
-        version: this.pkg.version,
-        options: this.options
-      };
+			const templateData = {
+				name: this.options.name,
+				version: this.pkg.version,
+				options: this.options
+			};
 
-      files.forEach(function (file) {
-        // exclude ignores
-        if (_.indexOf(ignores, file) !== -1) {
-          return;
-        }
+			files.forEach(function (file) {
+				// exclude ignores
+				if (_.indexOf(ignores, file) !== -1) {
+					return;
+				}
 
-        // TypeScript only Files
-        if (this.options.js !== 'TypeScript') {
-          if (_.indexOf(typeScriptFiles, file) !== -1) {
-            return;
-          }
-        }
+				// TypeScript only Files
+				if (this.options.js !== 'TypeScript') {
+					if (_.indexOf(typeScriptFiles, file) !== -1) {
+						return;
+					}
+				}
 
-        // Client side templates only Files
-        if (!this.options.clientTpl) {
-          if (_.indexOf(clientTplFiles, file) !== -1) {
-            return;
-          }
-        }
+				// Client side templates only Files
+				if (!this.options.clientTpl) {
+					if (_.indexOf(clientTplFiles, file) !== -1) {
+						return;
+					}
+				}
 
-        // ignore everything under assets, components and views on updating project
-        if (this.update) {
-          if (_.startsWith(file, 'assets') ||
-            _.startsWith(file, 'components') ||
-            _.startsWith(file, 'views')) {
-            return;
-          }
-        }
+				// ignore everything under assets, components and views on updating project
+				if (this.update) {
+					if (_.startsWith(file, 'assets') ||
+						_.startsWith(file, 'components') ||
+						_.startsWith(file, 'views')) {
+						return;
+					}
+				}
 
-        const ext = path.extname(file).substring(1);
+				const ext = path.extname(file).substring(1);
 
-        // exclude unnecessary preprocessor files
-        if (_.indexOf(this.preOptions, ext) !== -1 && this.options.pre !== ext) {
-          return;
-        }
+				// exclude unnecessary preprocessor files
+				if (_.indexOf(this.preOptions, ext) !== -1 && this.options.pre !== ext) {
+					return;
+				}
 
-        if ((_.startsWith(file, 'project') || _.startsWith(file, 'components')) && (ext === 'js' || ext === 'ts') && (this.options.js === 'JavaScript' && ext !== 'js' || this.options.js === 'TypeScript' && ext !== 'ts')) {
-          return;
-        }
+				if ((_.startsWith(file, 'project') || _.startsWith(file, 'components')) && (ext === 'js' || ext === 'ts') && (this.options.js === 'JavaScript' && ext !== 'js' || this.options.js === 'TypeScript' && ext !== 'ts')) {
+					return;
+				}
 
-        const sourcePath = this.templatePath(file);
-        let destinationPath = this.destinationPath(file);
+				const sourcePath = this.templatePath(file);
+				let destinationPath = this.destinationPath(file);
 
-        // adjust destination template file extension for view files
-        if (_.indexOf(this.viewExtOptions, ext) !== -1 && _.indexOf(viewFiles, file) !== -1) {
-          const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this.viewExtOptions[0]}`;
+				// adjust destination template file extension for view files
+				if (_.indexOf(this.viewExtOptions, ext) !== -1 && _.indexOf(viewFiles, file) !== -1) {
+					const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this.viewExtOptions[0]}`;
 
-          destinationPath = destinationPath.replace(path.extname(destinationPath), targetExt);
-        }
+					destinationPath = destinationPath.replace(path.extname(destinationPath), targetExt);
+				}
 
-        if (_.indexOf(tplFiles, file) !== -1) {
-          this.fs.copyTpl(sourcePath, destinationPath, templateData);
-          return;
-        }
+				if (_.indexOf(tplFiles, file) !== -1) {
+					this.fs.copyTpl(sourcePath, destinationPath, templateData);
+					return;
+				}
 
-        this.fs.copy(sourcePath, destinationPath);
-      }, this);
+				this.fs.copy(sourcePath, destinationPath);
+			}, this);
 
-    }
-  },
+		}
+	},
 
-  install() {
-    this.installDependencies({
-      skipInstall: this.options['skip-install']
-    });
+	install() {
+		this.installDependencies({
+			skipInstall: this.options['skip-install']
+		});
 
-    if (this.options.js === 'TypeScript') {
-      this.spawnCommand('tsd', ['reinstall']).on('close', function () {
-        this.spawnCommand('tsd', ['rebundle']);
-      }.bind(this));
-    }
-  },
+		if (this.options.js === 'TypeScript') {
+			this.spawnCommand('tsd', ['reinstall']).on('close', function () {
+				this.spawnCommand('tsd', ['rebundle']);
+			}.bind(this));
+		}
+	},
 
-  end() {
-    this.log(chalk.green('All done – have fun'));
-  }
+	end() {
+		this.log(chalk.green('All done – have fun'));
+	}
 });

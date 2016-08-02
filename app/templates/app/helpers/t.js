@@ -19,48 +19,48 @@ var hbs = require('hbs');
 
 // already initialised in ../core/i18n.js
 //var options = {
-//  //supportedLngs: ['en', 'de'],
-//  //lng: 'de-CH',
-//  fallbackLng: 'default',
-//  resGetPath: 'project/locales/__lng__/__ns__.json',
-//  debug: false
+//	//supportedLngs: ['en', 'de'],
+//	//lng: 'de-CH',
+//	fallbackLng: 'default',
+//	resGetPath: 'project/locales/__lng__/__ns__.json',
+//	debug: false
 //};
 //i18n.init(options);
 
 module.exports = function(key) {
 
-  var interpolationPrefix = '{';
-  var interpolationSuffix = '}';
-  var args = [].slice.call(arguments);
-  var values = args.slice(1, -1);
-  var hash = args.slice(-1)[0].hash;
-  var result = i18n.t.apply(i18n, args); // default translations (i18next)
-  var regExp;
+	var interpolationPrefix = '{';
+	var interpolationSuffix = '}';
+	var args = [].slice.call(arguments);
+	var values = args.slice(1, -1);
+	var hash = args.slice(-1)[0].hash;
+	var result = i18n.t.apply(i18n, args); // default translations (i18next)
+	var regExp;
 
-  // custom replaces from arguments
-  values.forEach(function(item, index) {
-    if (typeof item === 'string') {
-      regExp = new RegExp('\\' + interpolationPrefix + (index+1) + '\\' + interpolationSuffix, 'g');
-      result = result.replace(regExp, item);
-    }
-    else if (typeof item === 'object') {
-      for (var key in item) {
-        if (item.hasOwnProperty(key)) {
-          regExp = new RegExp('\\' + interpolationPrefix + key + '\\' + interpolationSuffix, 'g');
-          result = result.replace(regExp, item[key]);
-        }
-      }
-    }
-  });
-  // custom replaces from hash
-  if (Object.keys(hash).length !== 0) {
-    for (var name in hash) {
-      if (hash.hasOwnProperty(name)) {
-        regExp = new RegExp('\\' + interpolationPrefix + name + '\\' + interpolationSuffix, 'g');
-        result = result.replace(regExp, hash[name]);
-      }
-    }
-  }
+	// custom replaces from arguments
+	values.forEach(function(item, index) {
+		if (typeof item === 'string') {
+			regExp = new RegExp('\\' + interpolationPrefix + (index+1) + '\\' + interpolationSuffix, 'g');
+			result = result.replace(regExp, item);
+		}
+		else if (typeof item === 'object') {
+			for (var key in item) {
+				if (item.hasOwnProperty(key)) {
+					regExp = new RegExp('\\' + interpolationPrefix + key + '\\' + interpolationSuffix, 'g');
+					result = result.replace(regExp, item[key]);
+				}
+			}
+		}
+	});
+	// custom replaces from hash
+	if (Object.keys(hash).length !== 0) {
+		for (var name in hash) {
+			if (hash.hasOwnProperty(name)) {
+				regExp = new RegExp('\\' + interpolationPrefix + name + '\\' + interpolationSuffix, 'g');
+				result = result.replace(regExp, hash[name]);
+			}
+		}
+	}
 
-  return new hbs.handlebars.SafeString(result);
+	return new hbs.handlebars.SafeString(result);
 };

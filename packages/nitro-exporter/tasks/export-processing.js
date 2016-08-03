@@ -77,7 +77,7 @@ module.exports = function (gulp, config) {
 					renames.forEach((rename) => gulp.src(rename.src, { base: rename.base })
 						.pipe(gulp.dest(rename.dest))
 						.on('end', () => {
-							del([rename.src]);
+							del.sync([rename.src]);
 							done(++i);
 						})
 					);

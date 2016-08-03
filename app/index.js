@@ -68,7 +68,6 @@ module.exports = generators.Base.extend({
 	},
 
 	prompting: function () {
-		var done = this.async();
 
 		this.log(yosay(
 			'Welcome to the awe-inspiring ' + chalk.cyan('Nitro') + ' generator!'
@@ -79,15 +78,15 @@ module.exports = generators.Base.extend({
 
 		if (!json.new && _.indexOf(json.keywords, 'nitro') !== -1) {
 			// update existing application
-			this.prompt([
+			return this.prompt([
 				{
 					name: 'update',
 					type: 'confirm',
 					message: 'There is already a ' + chalk.cyan('Nitro') + ' application in place! Should I serve you an update?',
 					default: true
 				}
-			], function (props) {
-				this.update = props.update;
+			]).then(function (answers) {
+				this.update = answers.update;
 
 				if (!this.update) {
 					return;
@@ -101,13 +100,11 @@ module.exports = generators.Base.extend({
 					this.options.viewExt = config.viewExtension || this.options.viewExt;
 					this.options.clientTpl = config.clientTemplates || this.options.clientTpl;
 				}
-
-				done();
 			}.bind(this));
 		}
 		else {
 			// create new application
-			this.prompt([
+			return this.prompt([
 				{
 					name: 'name',
 					message: 'What\'s the name of your app?',
@@ -159,12 +156,12 @@ module.exports = generators.Base.extend({
 						return typeof this.passedInOptions.clientTpl !== 'boolean';
 					}.bind(this)
 				}
-			], function (props) {
-				this.options.name = props.name || this.options.name;
-				this.options.pre = props.pre || this.options.pre;
-				this.options.js = props.js || this.options.js;
-				this.options.viewExt = props.viewExt || this.options.viewExt;
-				this.options.clientTpl = props.clientTpl !== undefined ? props.clientTpl : this.options.clientTpl;
+			]).then(function (answers) {
+				this.options.name = answers.name || this.options.name;
+				this.options.pre = answers.pre || this.options.pre;
+				this.options.js = answers.js || this.options.js;
+				this.options.viewExt = answers.viewExt || this.options.viewExt;
+				this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
 
 				this.config.set('name', this.options.name);
 				this.config.set('preprocessor', this.options.pre);
@@ -173,15 +170,12 @@ module.exports = generators.Base.extend({
 				this.config.set('clientTemplates', this.options.clientTpl);
 
 				this.config.save();
-
-				done();
 			}.bind(this));
 		}
 	},
 
 	configuring: {
 		download: function () {
-			var self = this;
 			var done = this.async();
 
 			this.log('Download ' + chalk.cyan(this.srcZip));
@@ -189,8 +183,8 @@ module.exports = generators.Base.extend({
 			var dl = request
 				.get(this.srcZip)
 				.on('error', function (err) {
-					self.log(chalk.red(err));
-				})
+					this.log(chalk.red(err));
+				}.bind(this))
 				.pipe(fs.createWriteStream(this.destZip));
 
 			dl.on('finish', function () {
@@ -330,8 +324,8 @@ module.exports = generators.Base.extend({
 					return;
 				}
 
-				var sourcePath = this.templatePath(file),
-					destinationPath = this.destinationPath(file);
+				var sourcePath = this.templatePath(file);
+				var destinationPath = this.destinationPath(file);
 
 				// adjust destination template file extension for view files
 				if(_.indexOf(this.viewExtOptions, ext) !== -1 && _.indexOf(viewFiles, file) !== -1) {
@@ -357,10 +351,9 @@ module.exports = generators.Base.extend({
 		});
 
 		if (this.options.js === 'TypeScript') {
-			var that = this;
 			this.spawnCommand('tsd', ['reinstall']).on('close', function () {
-				that.spawnCommand('tsd', ['rebundle']);
-			});
+				this.spawnCommand('tsd', ['rebundle']);
+			}.bind(this));
 		}
 	},
 

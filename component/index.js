@@ -42,13 +42,12 @@ module.exports = generators.Base.extend({
 	},
 
 	prompting: function () {
-		var done = this.async();
 
 		this.log(yosay(
 			'Let me help you to create your component…'
 		));
 
-		this.prompt([
+		return this.prompt([
 			{
 				name: 'name',
 				message: 'What\'s the name of your component?',
@@ -86,13 +85,11 @@ module.exports = generators.Base.extend({
 					return true;
 				}
 			}
-		], function (props) {
-			this.name = props.name;
-			this.options.type = props.type;
-			this.options.modifier = props.modifier;
-			this.options.decorator = props.decorator;
-
-			done();
+		]).then(function (answers) {
+			this.name = answers.name;
+			this.options.type = answers.type;
+			this.options.modifier = answers.modifier;
+			this.options.decorator = answers.decorator;
 		}.bind(this));
 	},
 
@@ -168,7 +165,7 @@ module.exports = generators.Base.extend({
 
 				// exclude modifier files if modifier is not set
 				if (file.indexOf('modifier') !== -1) {
-					if(_.isEmpty(this.options.modifier)) {
+					if (_.isEmpty(this.options.modifier)) {
 						return;
 					}
 				}

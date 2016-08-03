@@ -17,6 +17,7 @@ _.*
 atlassian-ide-plugin.xml
 
 # Namics frontend-defaults
+app/templates/frontend-defaults.zip
 app/templates/.editorconfig
 app/templates/.gitignore
 app/templates/.gitattributes

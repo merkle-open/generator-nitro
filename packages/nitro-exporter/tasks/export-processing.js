@@ -90,14 +90,14 @@ module.exports = function (gulp, config) {
 				return new Promise((resolve) => {
 					replacements.forEach((replacement) => {
 						let files = [];
-						replacement.glob.forEach(g => {
+						replacement.glob.forEach((g) => {
 							files = files.concat(glob.sync(g));
 						});
 						unique(files);
-						files.forEach(f => {
-							let content = fs.readFileSync(f, 'utf8');
+						files.forEach((f) => {
+							let content = fs.readFileSync((f), 'utf8');
 
-							replacement.replace.forEach(r => {
+							replacement.replace.forEach((r) => {
 								content = content.replace(
 									new RegExp(r.from, 'g'),
 									r.to

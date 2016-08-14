@@ -217,6 +217,13 @@ describe('nitro:app', function () {
 			assert.fileContent('gulpfile.js', /compile-templates/);
 		});
 
+		it('gulp task watch-assets handles template files correct', function () {
+			assert.fileContent([
+				['gulp/watch-assets.js', 'components/**/template/**/*.hbs'],
+				['gulp/watch-assets.js', '!components/**/template/**/*.hbs']
+			]);
+		});
+
 	});
 
 	describe('when not including client templates', function () {
@@ -252,23 +259,111 @@ describe('nitro:app', function () {
 			]);
 		});
 
-		it('config.json loads template files', function () {
+		it('config.json does not load template files', function () {
 			assert.noFileContent([
 				['config.json', 'components/**/template/*.js'],
 				['config.json', 'components/**/template/partial/*.js']
 			]);
 		});
 
-		it('gulpfile has compile-templates task', function () {
+		it('gulpfile does not have compile-templates task', function () {
 			assert.noFileContent('gulpfile.js', /compile-templates/);
 		});
 
-		it('gulp task watch-assets handles template files correct', function () {
+		it('gulp task watch-assets does not handle template files', function () {
 			assert.noFileContent([
 				['gulp/watch-assets.js', 'components/**/template/**/*.hbs'],
 				['gulp/watch-assets.js', '!components/**/template/**/*.hbs']
 			]);
 		});
 
+	});
+
+	describe('when including static exporter', function () {
+		beforeAll(function (done) {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({'skip-install': true})
+				.withPrompts({exporter: true})
+				.on('end', done);
+		});
+
+		it('package.json contains exporter dependency', function () {
+			assert.fileContent([
+				['package.json', /nitro-exporter/]
+			]);
+		});
+
+		it('config.json contains default exporter properties', function () {
+			assert.fileContent([
+				['config.json', /"exporter"/]
+			]);
+		});
+	});
+
+	describe('when not including static exporter', function () {
+		beforeAll(function (done) {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({'skip-install': true})
+				.withPrompts({exporter: false})
+				.on('end', done);
+		});
+
+		it('package.json does not contain exporter dependency', function () {
+			assert.noFileContent([
+				['package.json', /nitro-exporter/]
+			]);
+		});
+
+		it('config.json does not contain default exporter properties', function () {
+			assert.noFileContent([
+				['config.json', /"exporter"/]
+			]);
+		});
+	});
+
+	describe('when including release package', function () {
+		beforeAll(function (done) {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({'skip-install': true})
+				.withPrompts({release: true})
+				.on('end', done);
+		});
+
+		it('package.json contains exporter dependency', function () {
+			assert.fileContent([
+				['package.json', /nitro-release/]
+			]);
+		});
+
+		it('config.json does not contain default exporter properties', function () {
+			assert.fileContent([
+				['config.json', /"release"/]
+			]);
+		});
+	});
+
+	describe('when not including release package', function () {
+		beforeAll(function (done) {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({'skip-install': true})
+				.withPrompts({release: false})
+				.on('end', done);
+		});
+
+		it('package.json does not contain exporter dependency', function () {
+			assert.noFileContent([
+				['package.json', /nitro-release/]
+			]);
+		});
+
+		it('config.json does not contain default exporter properties', function () {
+			assert.noFileContent([
+				['config.json', /"release"/]
+			]);
+		});
 	});
 });

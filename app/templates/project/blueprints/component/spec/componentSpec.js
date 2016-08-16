@@ -3,7 +3,7 @@
 describe('<%= component.name %> module', function () {
 	beforeEach(function () {
 		var application = new T.Application();
-		this.mod = new T.Module. < %= component.js % > (document.createElement('div'), application._sandbox);
+		this.mod = new T.Module.< %= component.js % >(document.createElement('div'), application._sandbox);
 	});
 
 	it('should have a .start() method', function () {

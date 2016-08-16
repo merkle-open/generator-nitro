@@ -1,5 +1,8 @@
 var gulp = require('gulp');
-var getTask = require('./gulp/utils').getTask;
+var getTask = require('./gulp/utils').getTask;<% if (options.exporter || options.release) { %>
+var config = require('./app/core/config');<% } %><% if (options.exporter) { %>
+require('nitro-exporter')(gulp, config);<% } %><% if (options.release) { %>
+require('nitro-release')(gulp, config);<% } %>
 
 gulp.task('sync-githooks', getTask('sync-githooks'));
 gulp.task('compile-css', getTask('compile-css'));<% if (options.js === 'TypeScript') { %>

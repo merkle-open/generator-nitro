@@ -1,23 +1,26 @@
 'use strict';
 
-var path = require('path');
-var assert = require('yeoman-assert');
-var helpers = require('yeoman-test');
-var os = require('os');
+/* eslint-env jasmine */
+/* eslint-disable no-inline-comments */
 
-describe('nitro:app', function () {
+const path = require('path');
+const assert = require('yeoman-assert');
+const helpers = require('yeoman-test');
+const os = require('os');
+
+describe('nitro:app', () => {
 
 	jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
 
-	describe('when using default options', function () {
-		beforeAll(function (done) {
+	describe('when using default options', () => {
+		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../app'))
 				.inDir(path.join(os.tmpdir(), './temp-test')) // Clear the directory and set it as the CWD
-				.withOptions({'skip-install': true})  // Mock options passed in
+				.withOptions({ 'skip-install': true })  // Mock options passed in
 				.on('end', done);
 		});
 
-		it('creates blueprint files', function () {
+		it('creates blueprint files', () => {
 			assert.file([
 				'app',
 				'assets',
@@ -31,7 +34,7 @@ describe('nitro:app', function () {
 			]);
 		});
 
-		it('includes namics frontend-defaults', function () {
+		it('includes namics frontend-defaults', () => {
 			assert.file([
 				'.editorconfig',
 				'.gitattributes',
@@ -44,70 +47,70 @@ describe('nitro:app', function () {
 		});
 	});
 
-	describe('when using less', function () {
-		beforeAll(function (done) {
+	describe('when using less', () => {
+		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
-				.withOptions({'skip-install': true})
-				.withPrompts({pre: 'less'})
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ pre: 'less' })
 				.on('end', done);
 		});
 
-		it('package.json contains gulp-less dependency', function () {
+		it('package.json contains gulp-less dependency', () => {
 			assert.fileContent('package.json', /gulp-less/);
 		});
 
-		it('compile-css uses gulp-less dependency', function () {
+		it('compile-css uses gulp-less dependency', () => {
 			assert.fileContent('gulp/compile-css.js', /plugins.less/);
 		});
 
-		it('config.json loads .less files', function () {
+		it('config.json loads .less files', () => {
 			assert.fileContent('config.json', /\.less/);
 		});
 
-		it('component blueprint does not contain .scss files', function () {
+		it('component blueprint does not contain .scss files', () => {
 			assert.noFile('project/blueprints/component/css/component.scss');
 			assert.noFile('project/blueprints/component/css/modifier/component-modifier.scss');
 		});
 	});
 
-	describe('when using scss', function () {
-		beforeAll(function (done) {
+	describe('when using scss', () => {
+		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
-				.withOptions({'skip-install': true})
-				.withPrompts({pre: 'scss'})
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ pre: 'scss' })
 				.on('end', done);
 		});
 
-		it('package.json contains gulp-sass dependency', function () {
+		it('package.json contains gulp-sass dependency', () => {
 			assert.fileContent('package.json', /gulp-sass/);
 		});
 
-		it('compile-css uses gulp-sass dependency', function () {
+		it('compile-css uses gulp-sass dependency', () => {
 			assert.fileContent('gulp/compile-css.js', /plugins.sass/);
 		});
 
-		it('config.json loads .scss files', function () {
+		it('config.json loads .scss files', () => {
 			assert.fileContent('config.json', /\.scss/);
 		});
 
-		it('component blueprint does not contain .less files', function () {
+		it('component blueprint does not contain .less files', () => {
 			assert.noFile('project/blueprints/component/css/component.less');
 			assert.noFile('project/blueprints/component/css/modifier/component-modifier.less');
 		});
 	});
 
-	describe('when using view file extension html', function () {
-		beforeAll(function (done) {
+	describe('when using view file extension html', () => {
+		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
-				.withOptions({'skip-install': true})
-				.withPrompts({viewExt: 'html'})
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ viewExt: 'html' })
 				.on('end', done);
 		});
 
-		it('view files have the .html file extension', function () {
+		it('view files have the .html file extension', () => {
 			assert.file([
 				'views/index.html',
 				'views/404.html',
@@ -118,21 +121,21 @@ describe('nitro:app', function () {
 			]);
 		});
 
-		it('config.js defaults contain the correct view file extension', function () {
+		it('config.js defaults contain the correct view file extension', () => {
 			assert.fileContent('app/core/config.js', /view_file_extension: 'html'/);
 		});
 	});
 
-	describe('when using view file extension hbs', function () {
-		beforeAll(function (done) {
+	describe('when using view file extension hbs', () => {
+		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
-				.withOptions({'skip-install': true})
-				.withPrompts({viewExt: 'hbs'})
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ viewExt: 'hbs' })
 				.on('end', done);
 		});
 
-		it('view files have the .hbs file extension', function () {
+		it('view files have the .hbs file extension', () => {
 			assert.file([
 				'views/index.hbs',
 				'views/404.hbs',
@@ -143,21 +146,21 @@ describe('nitro:app', function () {
 			]);
 		});
 
-		it('config.js defaults contain the correct view file extension', function () {
+		it('config.js defaults contain the correct view file extension', () => {
 			assert.fileContent('app/core/config.js', /view_file_extension: 'hbs'/);
 		});
 	});
 
-	describe('when using view file extension mustache', function () {
-		beforeAll(function (done) {
+	describe('when using view file extension mustache', () => {
+		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
-				.withOptions({'skip-install': true})
-				.withPrompts({viewExt: 'mustache'})
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ viewExt: 'mustache' })
 				.on('end', done);
 		});
 
-		it('view files have the .mustache file extension', function () {
+		it('view files have the .mustache file extension', () => {
 			assert.file([
 				'views/index.mustache',
 				'views/404.mustache',
@@ -168,21 +171,21 @@ describe('nitro:app', function () {
 			]);
 		});
 
-		it('config.js defaults contain the correct view file extension', function () {
+		it('config.js defaults contain the correct view file extension', () => {
 			assert.fileContent('app/core/config.js', /view_file_extension: 'mustache'/);
 		});
 	});
 
-	describe('when including client templates', function () {
-		beforeAll(function (done) {
+	describe('when including client templates', () => {
+		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
-				.withOptions({'skip-install': true})
-				.withPrompts({clientTpl: true})
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ clientTpl: true })
 				.on('end', done);
 		});
 
-		it('package.json contains some specific dependencies', function () {
+		it('package.json contains some specific dependencies', () => {
 			assert.fileContent([
 				['package.json', /gulp-change/],
 				['package.json', /gulp-declare/],
@@ -192,11 +195,11 @@ describe('nitro:app', function () {
 			]);
 		});
 
-		it('component blueprint contains template file', function () {
+		it('component blueprint contains template file', () => {
 			assert.file('project/blueprints/component/template/component.hbs');
 		});
 
-		it('example component contains template files', function () {
+		it('example component contains template files', () => {
 			assert.file([
 				'components/molecules/example/template/example.hbs',
 				'components/molecules/example/template/example.links.hbs',
@@ -206,29 +209,36 @@ describe('nitro:app', function () {
 			]);
 		});
 
-		it('config.json loads template files', function () {
+		it('config.json loads template files', () => {
 			assert.fileContent([
 				['config.json', 'components/**/template/*.js'],
 				['config.json', 'components/**/template/partial/*.js']
 			]);
 		});
 
-		it('gulpfile has compile-templates task', function () {
+		it('gulpfile has compile-templates task', () => {
 			assert.fileContent('gulpfile.js', /compile-templates/);
+		});
+
+		it('gulp task watch-assets handles template files correct', () => {
+			assert.fileContent([
+				['gulp/watch-assets.js', 'components/**/template/**/*.hbs'],
+				['gulp/watch-assets.js', '!components/**/template/**/*.hbs']
+			]);
 		});
 
 	});
 
-	describe('when not including client templates', function () {
-		beforeAll(function (done) {
+	describe('when not including client templates', () => {
+		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
-				.withOptions({'skip-install': true})
-				.withPrompts({clientTpl: false})
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ clientTpl: false })
 				.on('end', done);
 		});
 
-		it('package.json does not contain some specific dependencies', function () {
+		it('package.json does not contain some specific dependencies', () => {
 			assert.noFileContent([
 				['package.json', /gulp-change/],
 				['package.json', /gulp-declare/],
@@ -238,11 +248,11 @@ describe('nitro:app', function () {
 			]);
 		});
 
-		it('component blueprint does not contain template file', function () {
+		it('component blueprint does not contain template file', () => {
 			assert.noFile('project/blueprints/component/template/component.hbs');
 		});
 
-		it('example component does not contain template files', function () {
+		it('example component does not contain template files', () => {
 			assert.noFile([
 				'components/molecules/example/template/example.hbs',
 				'components/molecules/example/template/example.links.hbs',
@@ -252,23 +262,111 @@ describe('nitro:app', function () {
 			]);
 		});
 
-		it('config.json loads template files', function () {
+		it('config.json does not load template files', () => {
 			assert.noFileContent([
 				['config.json', 'components/**/template/*.js'],
 				['config.json', 'components/**/template/partial/*.js']
 			]);
 		});
 
-		it('gulpfile has compile-templates task', function () {
+		it('gulpfile does not have compile-templates task', () => {
 			assert.noFileContent('gulpfile.js', /compile-templates/);
 		});
 
-		it('gulp task watch-assets handles template files correct', function () {
+		it('gulp task watch-assets does not handle template files', () => {
 			assert.noFileContent([
 				['gulp/watch-assets.js', 'components/**/template/**/*.hbs'],
 				['gulp/watch-assets.js', '!components/**/template/**/*.hbs']
 			]);
 		});
 
+	});
+
+	describe('when including static exporter', () => {
+		beforeAll((done) => {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ exporter: true })
+				.on('end', done);
+		});
+
+		it('package.json contains exporter dependency', () => {
+			assert.fileContent([
+				['package.json', /nitro-exporter/]
+			]);
+		});
+
+		it('config.json contains default exporter properties', () => {
+			assert.fileContent([
+				['config.json', /"exporter"/]
+			]);
+		});
+	});
+
+	describe('when not including static exporter', () => {
+		beforeAll((done) => {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ exporter: false })
+				.on('end', done);
+		});
+
+		it('package.json does not contain exporter dependency', () => {
+			assert.noFileContent([
+				['package.json', /nitro-exporter/]
+			]);
+		});
+
+		it('config.json does not contain default exporter properties', () => {
+			assert.noFileContent([
+				['config.json', /"exporter"/]
+			]);
+		});
+	});
+
+	describe('when including release package', () => {
+		beforeAll((done) => {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ release: true })
+				.on('end', done);
+		});
+
+		it('package.json contains exporter dependency', () => {
+			assert.fileContent([
+				['package.json', /nitro-release/]
+			]);
+		});
+
+		it('config.json does not contain default exporter properties', () => {
+			assert.fileContent([
+				['config.json', /"release"/]
+			]);
+		});
+	});
+
+	describe('when not including release package', () => {
+		beforeAll((done) => {
+			helpers.run(path.join(__dirname, '../app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ release: false })
+				.on('end', done);
+		});
+
+		it('package.json does not contain exporter dependency', () => {
+			assert.noFileContent([
+				['package.json', /nitro-release/]
+			]);
+		});
+
+		it('config.json does not contain default exporter properties', () => {
+			assert.noFileContent([
+				['config.json', /"release"/]
+			]);
+		});
 	});
 });

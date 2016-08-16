@@ -10,7 +10,7 @@ module.exports = function (config) {
 		// available frameworks: https://npmjs.org/browse/keyword/karma-adapter
 		frameworks: ['jasmine'],
 
-		// list of afiles / patterns to load in the browser
+		// list of files / patterns to load in the browser
 		files: [
 			'public/assets/js/app.js',
 			'components/**/spec/*Spec.js'

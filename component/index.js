@@ -1,6 +1,6 @@
 'use strict';
 
-/* eslint-disable no-inline-comments, max-len, complexity */
+/* eslint-disable no-inline-comments, max-len, complexity, global-require */
 
 const generators = require('yeoman-generator');
 const chalk = require('chalk');
@@ -11,17 +11,19 @@ const glob = require('glob');
 const _ = require('lodash');
 
 module.exports = generators.Base.extend({
+	// eslint-disable-next-line object-shorthand
 	constructor: function () {
 		// Calling the super constructor
+		// eslint-disable-next-line prefer-rest-params
 		generators.Base.apply(this, arguments);
 
 		// Component name
-		this.argument('name', {desc: 'the name of your component?', type: String, required: false, defaults: ''});
+		this.argument('name', { desc: 'the name of your component?', type: String, required: false, defaults: '' });
 
 		// Component type
 		this.cfg = require(this.destinationPath('config.json'));
 
-		this.types = _.map(this.cfg.nitro.components, function (value, key) {
+		this.types = _.map(this.cfg.nitro.components, (value, key) => {
 			return key;
 		});
 
@@ -32,10 +34,10 @@ module.exports = generators.Base.extend({
 		});
 
 		// Component modifier
-		this.option('modifier', {desc: 'the name of your modifier', type: String});
+		this.option('modifier', { desc: 'the name of your modifier', type: String });
 
 		// Component decorator
-		this.option('decorator', {desc: 'the name of your decorator', type: String});
+		this.option('decorator', { desc: 'the name of your decorator', type: String });
 	},
 
 	initializing() {
@@ -80,18 +82,18 @@ module.exports = generators.Base.extend({
 				message: 'Would you like to create a JS decorator? Type your desired name or leave empty.',
 				default: this.options.decorator || '',
 				validate: function validateString(value) {
-					if (_.isString(value) && /^[0-9]/.test(value)) {
+					if (_.isString(value) && (/^[0-9]/).test(value)) {
 						return 'Component decorator must not start with a Number';
 					}
 					return true;
 				}
 			}
-		]).then(function (answers) {
+		]).then((answers) => {
 			this.name = answers.name;
 			this.options.type = answers.type;
 			this.options.modifier = answers.modifier;
 			this.options.decorator = answers.decorator;
-		}.bind(this));
+		});
 	},
 
 	writing: {
@@ -120,7 +122,7 @@ module.exports = generators.Base.extend({
 
 			const component = this.cfg.nitro.components[this.options.type];
 			const folder = this.name.replace(/[^A-Za-z0-9-]/g, '');
-			const files = glob.sync('**/*', {cwd: this.destinationPath(component.template), nodir: true, dot: true});
+			const files = glob.sync('**/*', { cwd: this.destinationPath(component.template), nodir: true, dot: true });
 			const ignores = [
 				// files to ignore
 				'.DS_Store'
@@ -137,10 +139,10 @@ module.exports = generators.Base.extend({
 			}
 
 			const replacements = {
-				user: user,
+				user,
 				component: {
 					name: this.name, // Component name, eg. Main Navigation
-					folder: folder, // Component folder, eg. MainNavigation
+					folder, // Component folder, eg. MainNavigation
 					js: _.upperFirst(_.camelCase(this.name.replace(/^[0-9]+/, ''))), // Component name for use in JS files, eg. MainNavigation
 					css: _.kebabCase(this.name), // Component name for use in CSS files, eg. main-navigation
 					prefix: component.component_prefix || null, // CSS class prefix, eg. m
@@ -159,7 +161,7 @@ module.exports = generators.Base.extend({
 				}
 			};
 
-			files.forEach(function (file) {
+			files.forEach((file) => {
 				if (_.indexOf(ignores, file) !== -1) {
 					return;
 				}
@@ -186,7 +188,7 @@ module.exports = generators.Base.extend({
 				};
 
 				let filename = file;
-				_.forOwn(fileReplacements, function (value, key) {
+				_.forOwn(fileReplacements, (value, key) => {
 					filename = path.join(path.dirname(filename), path.basename(filename).replace(key, value));
 				});
 

@@ -13,10 +13,10 @@ const glob = require('glob');
 const _ = require('lodash');
 
 module.exports = generators.Base.extend({
-
-	/* eslint-disable object-shorthand, prefer-rest-params */
+	// eslint-disable-next-line object-shorthand
 	constructor: function () {
 		// Calling the super constructor
+		// eslint-disable-next-line prefer-rest-params
 		generators.Base.apply(this, arguments);
 
 		this.pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json'), 'utf8'));
@@ -77,7 +77,6 @@ module.exports = generators.Base.extend({
 			defaults: this.passedInOptions.release || false
 		});
 	},
-	/* eslint-enable object-shorthand, prefer-rest-params */
 
 	initializing() {
 		// namics frontend-defaults

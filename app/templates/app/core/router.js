@@ -9,6 +9,7 @@ var router = express.Router({
 	caseSensitive: false,
 	strict:        false
 });
+var isProduction = cfg.server.production;
 
 /**
  * static routes
@@ -59,7 +60,8 @@ function getView(req, res, next) {
 	var tpl = req.params.view ? req.params.view.toLowerCase() : 'index';
 	var data = {
 		pageTitle: tpl,
-		_layout: cfg.nitro.default_layout
+		_layout: cfg.nitro.default_layout,
+		_production: isProduction
 	};
 	var viewPathes = getViewCombinations(tpl);
 	var rendered = false;
@@ -136,6 +138,7 @@ router.get('/:view', getView);
  */
 router.use(function (req, res) {
 	res.locals.pageTitle = '404 - Not Found';
+	res.locals._production = isProduction;
 	if (utils.layoutExists(cfg.nitro.default_layout)) {
 		res.locals.layout = utils.getLayoutPath(cfg.nitro.default_layout);
 	}

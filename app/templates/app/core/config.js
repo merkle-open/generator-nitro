@@ -29,7 +29,9 @@ function factory() {
 
 	config.server = {
 		port: process.env.PORT || 8080,
-		proxy: process.env.PROXY || 8081
+		proxy: process.env.PROXY || 8081,
+		// windows may have white spaces in env var
+		production: process.env.NODE_ENV && process.env.NODE_ENV.replace((/\s/g),'') === 'production'
 	};
 
 	config.reload = function () {

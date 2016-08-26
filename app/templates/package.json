@@ -55,7 +55,7 @@
     "gulp-sass": "~2.3.2",<% } %>
     "gulp-size": "~2.1.0",
     "gulp-sourcemaps": "~1.6.0",
-    "gulp-stylelint": "~3.0.0",<% if (options.js === 'TypeScript') { %>
+    "gulp-stylelint": "~3.1.0",<% if (options.js === 'TypeScript') { %>
     "typescript": "~1.5.0-beta",
     "gulp-typescript": "~2.7.5", <% } %>
     "gulp-uglify": "~2.0.0",<% if (options.clientTpl) { %>
@@ -65,10 +65,10 @@
     "i18next": "~1.10.6",
     "imagemin-pngquant": "~4.2.2",
     "jasmine-core": "~2.4.1",
-    "jshint": "~2.9.2",
+    "jshint": "~2.9.3",
     "jshint-stylish": "~2.2.1",
     "karma": "~1.2.0",
-    "karma-chrome-launcher": "~1.0.1",
+    "karma-chrome-launcher": "~2.0.0",
     "karma-jasmine": "~1.0.2"<% if (options.clientTpl) { %>,
     "merge-stream": "~1.0.0"<% } %><% if (options.exporter) { %>,
     "nitro-exporter": "~0.1.0"<% } %><% if (options.release) { %>,

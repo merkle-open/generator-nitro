@@ -1,8 +1,10 @@
-var Karma = require('karma').Server;
-var path = require('path');
+'use strict';
 
-module.exports = function (gulp, plugins) {
-	return function (done) {
+const Karma = require('karma').Server;
+const path = require('path');
+
+module.exports = (gulp, plugins) => {
+	return (done) => {
 		new Karma({
 			configFile: path.join(__dirname, '..', 'karma.conf.js'),
 			singleRun: true,

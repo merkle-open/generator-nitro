@@ -1,10 +1,12 @@
-var utils = require('./utils');
+'use strict';
 
-module.exports = function (gulp, plugins) {
-	return function () {
-		var assets = utils.getSourcePatterns('css');
+const utils = require('./utils');
 
-		assets.forEach(function (asset) {
+module.exports = (gulp, plugins) => {
+	return () => {
+		const assets = utils.getSourcePatterns('css');
+
+		assets.forEach((asset) => {
 			gulp
 				.src('public/assets/css/' + asset.name)
 				.pipe(plugins.cssnano({mergeRules: false}))

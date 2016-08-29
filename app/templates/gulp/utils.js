@@ -1,16 +1,18 @@
-var cfg = require('../app/core/config');
-var path = require('path');
-var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')();
-var browserSync;
-var assets = {};
+'use strict';
+
+let cfg = require('../app/core/config');
+const path = require('path');
+const gulp = require('gulp');
+const plugins = require('gulp-load-plugins')();
+let browserSync;
+let assets = {};
 
 function getBrowserCompatibility() {
 	return cfg.code.compatibility.browsers;
 }
 
 function getBrowserSyncInstance() {
-	var name = 'Nitro' + cfg.server.port;
+	const name = 'Nitro' + cfg.server.port;
 	if (!browserSync) {
 		browserSync = require('browser-sync').create(name);
 	}
@@ -18,8 +20,7 @@ function getBrowserSyncInstance() {
 }
 
 function getSourcePatterns(ext) {
-
-	var type = typeof ext === 'string' && ( ext === 'js' || ext === 'css' ) ? ext : null;
+	const type = typeof ext === 'string' && ( ext === 'js' || ext === 'css' ) ? ext : null;
 
 	if (!assets.hasOwnProperty('js') || !assets.hasOwnProperty('css')) {
 		updateSourcePatterns();
@@ -29,7 +30,7 @@ function getSourcePatterns(ext) {
 }
 
 function updateSourcePatterns() {
-	var key, ext, type, asset, result, patternKey, patternPath;
+	let key, ext, type, asset, result, patternKey, patternPath;
 
 	assets = {
 		css: [],
@@ -76,10 +77,10 @@ function reloadConfig() {
 
 <% if (options.js === 'TypeScript') { %>
 function splitJsAssets(asset) {
-	var tsAssets = [],
-		jsAssets = [];
+	let tsAssets = [];
+	let jsAssets = [];
 
-	asset.src.forEach(function (value) {
+	asset.src.forEach((value) => {
 		if (value.indexOf('.ts') !== -1) {
 			tsAssets.push(value);
 		}

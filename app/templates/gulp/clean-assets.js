@@ -1,7 +1,9 @@
-var del = require('del');
+'use strict';
 
-module.exports = function (gulp, plugins) {
-	return function () {
+const del = require('del');
+
+module.exports = (gulp, plugins) => {
+	return () => {
 		return del('public/assets/*/**');
 	};
 };

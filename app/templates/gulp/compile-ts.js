@@ -1,30 +1,32 @@
-var utils = require('./utils');
-var Promise = require('es6-promise').Promise;
+'use strict';
 
-module.exports = function (gulp, plugins) {
-	return function(){
-		var assets = utils.getSourcePatterns('js');
+const utils = require('./utils');
+const Promise = require('es6-promise').Promise;
 
-		var tsDefinition = {
+module.exports = (gulp, plugins) => {
+	return () => {
+		const assets = utils.getSourcePatterns('js');
+
+		const tsDefinition = {
 			typescript: require('typescript'),
 			declarationFiles: false,
 			removeComments: true,
 			target: 'ES5'
 		};
 
-		var promises = [];
+		let promises = [];
 
-		assets.forEach(function (asset) {
-			var assets = utils.splitJsAssets(asset);
+		assets.forEach((asset) => {
+			const assets = utils.splitJsAssets(asset);
 
-			promises.push(new Promise(function(resolve) {
+			promises.push(new Promise((resolve) => {
 				gulp.src(assets.ts)
 					.pipe(plugins.plumber())
 					.pipe(plugins.typescript(tsDefinition))
 					.js
 					.pipe(plugins.concat(asset.name.replace('.js', '.ts.js')))
 					.pipe(gulp.dest('public/assets/js'))
-					.on('end', function() {
+					.on('end', () => {
 						resolve();
 					});
 			}));

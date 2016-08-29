@@ -1,5 +1,7 @@
-module.exports = function (gulp, plugins) {
-	return function () {
-		gulp.start('assets');
+'use strict';
+
+module.exports = (gulp, plugins) => {
+	return () => {
+		return gulp.start('assets');
 	};
 };

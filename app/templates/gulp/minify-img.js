@@ -1,7 +1,9 @@
-var pngquant = require('imagemin-pngquant');
+'use strict';
 
-module.exports = function (gulp, plugins) {
-	return function () {
+const pngquant = require('imagemin-pngquant');
+
+module.exports = (gulp, plugins) => {
+	return () => {
 		return gulp
 			.src('assets/img/**/*')
 			.pipe(plugins.newer('public/assets/img'))

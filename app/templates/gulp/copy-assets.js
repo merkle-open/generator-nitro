@@ -1,5 +1,7 @@
-module.exports = function (gulp, plugins) {
-	return function () {
+'use strict';
+
+module.exports = (gulp, plugins) => {
+	return () => {
 		return gulp
 			.src(['assets/font/**/*'])
 			.pipe(plugins.newer('public/assets/font'))

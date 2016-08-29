@@ -1,10 +1,12 @@
-describe('Nitro Router', function () {
-	var router = require('../../app/core/router');
+'use strict';
 
-	it('contains default route', function () {
-		var contains = false;
+describe('Nitro Router', () => {
+	const router = require('../../app/core/router');
 
-		router.stack.forEach(function (route) {
+	it('contains default route', () => {
+		let contains = false;
+
+		router.stack.forEach((route) => {
 			if (!!route.route && route.route.path === '/') {
 				contains = true;
 			}
@@ -13,10 +15,10 @@ describe('Nitro Router', function () {
 		expect(contains).toBe(true);
 	});
 
-	it('contains view route', function () {
-		var contains = false;
+	it('contains view route', () => {
+		let contains = false;
 
-		router.stack.forEach(function (route) {
+		router.stack.forEach((route) => {
 			if (!!route.route && route.route.path === '/:view') {
 				contains = true;
 			}
@@ -25,8 +27,8 @@ describe('Nitro Router', function () {
 		expect(contains).toBe(true);
 	});
 
-	it('contains one static route', function () {
-		var noOfStaticRoutes = 0;
+	it('contains one static route', () => {
+		let noOfStaticRoutes = 0;
 
 		router.stack.forEach(function (route) {
 			if (!!route.name && route.name === 'serveStatic') {

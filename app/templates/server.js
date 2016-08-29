@@ -1,10 +1,12 @@
-var express = require('express');
-var app = express();
-var config = require('./app/core/config');
-var router = require('./app/core/router');
-var hbs = require('./app/core/hbs');
-var compression = require('compression');
-var bodyParser = require('body-parser');
+'use strict';
+
+const express = require('express');
+const app = express();
+const config = require('./app/core/config');
+const router = require('./app/core/router');
+const hbs = require('./app/core/hbs');
+const compression = require('compression');
+const bodyParser = require('body-parser');
 
 // partials
 require('./app/core/hbs-partials')(hbs);

@@ -1,27 +1,29 @@
-var utils = require('./utils');
-var Promise = require('es6-promise').Promise;
-var globby = require('globby');
-var fs = require('fs');
-var browserSync = utils.getBrowserSyncInstance();
-var autoprefixer = require('autoprefixer');
+'use strict';
 
-module.exports = function (gulp, plugins) {
-	return function () {
-		var assets = utils.getSourcePatterns('css');
-		var promises = [];
-		var browserCompatibility = utils.getBrowserCompatibility();
+const utils = require('./utils');
+const Promise = require('es6-promise').Promise;
+const globby = require('globby');
+const fs = require('fs');
+const browserSync = utils.getBrowserSyncInstance();
+const autoprefixer = require('autoprefixer');
 
-		assets.forEach(function (asset) {
-			promises.push(new Promise(function (resolve) {
-				var processors = [
+module.exports = (gulp, plugins) => {
+	return () => {
+		const assets = utils.getSourcePatterns('css');
+		const browserCompatibility = utils.getBrowserCompatibility();
+		let promises = [];
+
+		assets.forEach((asset) => {
+			promises.push(new Promise((resolve) => {
+				const processors = [
 					autoprefixer({
 						browsers: browserCompatibility,
 						cascade: true
 					})
 				];
-				var imports = '';
+				let imports = '';
 
-				globby.sync(asset.deps).forEach(function (path) {
+				globby.sync(asset.deps).forEach((path) => {
 					imports += fs.readFileSync(path, 'utf8');
 				});
 
@@ -37,7 +39,7 @@ module.exports = function (gulp, plugins) {
 						]
 					}))
 					.pipe(plugins.header(imports, false))
-					<% if (options.pre === 'scss') { %>.pipe(plugins.sass().on('error', plugins.sass.logError ))<% } else { %>.pipe(plugins.less().on('error', function(err) {
+					<% if (options.pre === 'scss') { %>.pipe(plugins.sass().on('error', plugins.sass.logError ))<% } else { %>.pipe(plugins.less().on('error', (err) => {
 						console.log(err.message);
 						this.emit('end');
 					}))<% } %>
@@ -56,4 +58,3 @@ module.exports = function (gulp, plugins) {
 		return Promise.all(promises);
 	};
 };
-

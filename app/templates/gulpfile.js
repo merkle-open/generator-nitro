@@ -1,6 +1,8 @@
-var gulp = require('gulp');
-var getTask = require('./gulp/utils').getTask;<% if (options.exporter || options.release) { %>
-var config = require('./app/core/config');<% } %><% if (options.exporter) { %>
+'use strict';
+
+const gulp = require('gulp');
+const getTask = require('./gulp/utils').getTask;<% if (options.exporter || options.release) { %>
+const config = require('./app/core/config');<% } %><% if (options.exporter) { %>
 require('nitro-exporter')(gulp, config);<% } %><% if (options.release) { %>
 require('nitro-release')(gulp, config);<% } %>
 

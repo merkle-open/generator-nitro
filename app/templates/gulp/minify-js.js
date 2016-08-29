@@ -1,10 +1,12 @@
-var utils = require('./utils');
+'use strict';
 
-module.exports = function (gulp, plugins) {
-	return function () {
-		var assets = utils.getSourcePatterns('js');
+const utils = require('./utils');
 
-		assets.forEach(function (asset) {
+module.exports = (gulp, plugins) => {
+	return () => {
+		const assets = utils.getSourcePatterns('js');
+
+		assets.forEach((asset) => {
 			gulp
 				.src('public/assets/js/' + asset.name)
 				.pipe(plugins.uglify())

@@ -1,15 +1,17 @@
-var cfg = require('../app/core/config');
-var utils = require('./utils');
-var globby = require('globby');
-var browserSync = utils.getBrowserSyncInstance();
+'use strict';
 
-module.exports = function (gulp, plugins) {
-	return function () {
-		var isDependentStyleSource = function(file) {
-			var isDependent = false;
-			var cssAssets = utils.getSourcePatterns('css');
-			cssAssets.forEach(function (asset) {
-				globby.sync(asset.deps).forEach(function (path) {
+let cfg = require('../app/core/config');
+const utils = require('./utils');
+const globby = require('globby');
+const browserSync = utils.getBrowserSyncInstance();
+
+module.exports = (gulp, plugins) => {
+	return () => {
+		const isDependentStyleSource = (file) => {
+			let isDependent = false;
+			const cssAssets = utils.getSourcePatterns('css');
+			cssAssets.forEach((asset) => {
+				globby.sync(asset.deps).forEach((path) => {
 					if ( file.replace(/\\/g, '/').endsWith(path) ) {
 						isDependent = true;
 					}
@@ -18,7 +20,7 @@ module.exports = function (gulp, plugins) {
 
 			return isDependent;
 		};
-		var clearCache = function (e) {
+		const clearCache = (e) => {
 			if (
 				'unlink' === e.event ||
 				'add' === e.event ||
@@ -27,14 +29,14 @@ module.exports = function (gulp, plugins) {
 			) {
 				// forget all
 				plugins.cached.caches = {};
-				var cssAssets = utils.getSourcePatterns('css');
-				cssAssets.forEach(function (asset) {
+				const cssAssets = utils.getSourcePatterns('css');
+				cssAssets.forEach((asset) => {
 					if (plugins.remember.cacheFor(asset.name)) {
 						plugins.remember.forgetAll(asset.name);
 					}
 				});
-				var jsAssets = utils.getSourcePatterns('js');
-				jsAssets.forEach(function (asset) {
+				const jsAssets = utils.getSourcePatterns('js');
+				jsAssets.forEach((asset) => {
 					if (plugins.remember.cacheFor(asset.name)) {
 						plugins.remember.forgetAll(asset.name);
 					}
@@ -44,7 +46,7 @@ module.exports = function (gulp, plugins) {
 
 		plugins.watch([
 			'config.json'
-		], function (e) {
+		], (e) => {
 			cfg = utils.reloadConfig();
 			clearCache(e);
 			utils.updateSourcePatterns();
@@ -55,7 +57,7 @@ module.exports = function (gulp, plugins) {
 		plugins.watch([
 			'assets/css/**/*.<%= options.pre %>',
 			'components/**/css/**/*.<%= options.pre %>'
-		], function (e) {
+		], (e) => {
 			clearCache(e);
 			gulp.start('compile-css');
 		});
@@ -66,7 +68,7 @@ module.exports = function (gulp, plugins) {
 			'assets/js/**/*.ts',
 			'components/**/js/**/*.ts'<% } %><% if (options.clientTpl) { %>,
 			'components/**/template/**/*.hbs'<% } %>
-		], function () {
+		], () => {
 			gulp.start('compile-js');
 		});
 
@@ -76,19 +78,19 @@ module.exports = function (gulp, plugins) {
 			'components/**/*.' + cfg.nitro.view_file_extension<% if (options.clientTpl) { %>,
 			'!components/**/template/**/*.hbs'<% } %>,
 			'components/**/_data/*.json'
-		], function () {
+		], () => {
 			browserSync.reload();
 		});
 
 		plugins.watch([
 			'assets/img/**/*'
-		], function () {
+		], () => {
 			gulp.start('minify-img');
 		});
 
 		plugins.watch([
 			'assets/font/**/*'
-		], function () {
+		], () => {
 			gulp.start('copy-assets');
 		});
 	};

@@ -1,12 +1,12 @@
 var fs = require('fs');
 var path = require('path');
 var hbs = require('hbs');
-var cfg = require('./config');
+var config = require('./config');
 
 // collect helpers
 var files = {};
-var coreHelpersDir = cfg.nitro.base_path + 'app/helpers/';
-var projectHelpersDir = cfg.nitro.base_path + 'project/helpers/';
+var coreHelpersDir = config.nitro.base_path + 'app/helpers/';
+var projectHelpersDir = config.nitro.base_path + 'project/helpers/';
 var coreFiles = fs.readdirSync(coreHelpersDir);
 var projectFiles = fs.readdirSync(projectHelpersDir);
 

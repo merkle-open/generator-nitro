@@ -1,6 +1,6 @@
 'use strict';
 
-let cfg = require('../app/core/config');
+let config = require('../app/core/config');
 const utils = require('./utils');
 const globby = require('globby');
 const browserSync = utils.getBrowserSyncInstance();
@@ -47,7 +47,7 @@ module.exports = (gulp, plugins) => {
 		plugins.watch([
 			'config.json'
 		], (e) => {
-			cfg = utils.reloadConfig();
+			config = utils.reloadConfig();
 			clearCache(e);
 			utils.updateSourcePatterns();
 			gulp.start('compile-css');
@@ -73,9 +73,9 @@ module.exports = (gulp, plugins) => {
 		});
 
 		plugins.watch([
-			'views/**/*.' + cfg.nitro.view_file_extension,
-			cfg.nitro.view_data_directory + '/**/*.json',
-			'components/**/*.' + cfg.nitro.view_file_extension<% if (options.clientTpl) { %>,
+			'views/**/*.' + config.nitro.view_file_extension,
+			config.nitro.view_data_directory + '/**/*.json',
+			'components/**/*.' + config.nitro.view_file_extension<% if (options.clientTpl) { %>,
 			'!components/**/template/**/*.hbs'<% } %>,
 			'components/**/_data/*.json'
 		], () => {

@@ -1,8 +1,8 @@
-var cfg = require('./config');
+var config = require('./config');
 var fs = require('fs');
 var path = require('path');
-var routePath = cfg.nitro.base_path + 'project/routes/';
-var viewDataPath = cfg.nitro.base_path + 'project/viewData/';
+var routePath = config.nitro.base_path + 'project/routes/';
+var viewDataPath = config.nitro.base_path + 'project/viewData/';
 var routers = [];
 
 function readRoutes(routes){

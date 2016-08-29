@@ -1,5 +1,5 @@
 {
-  "name": "generator-nitro",
+  "name": "generator-nitro-dev",
   "version": "1.0.0-ALPHA",
   "description": "Yeoman generator for the nitro frontend framework",
   "license": "MIT",

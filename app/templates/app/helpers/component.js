@@ -17,7 +17,7 @@ var fs = require('fs');
 var hbs = require('hbs');
 var path = require('path');
 var extend = require('extend');
-var cfg = require('../core/config');
+var config = require('../core/config');
 var utils = require('../core/utils');
 
 module.exports = function component () {
@@ -65,23 +65,23 @@ module.exports = function component () {
 			}
 		}
 
-		for (var key in cfg.nitro.components) {
-			if (cfg.nitro.components.hasOwnProperty(key)) {
-				var component = cfg.nitro.components[key];
+		for (var key in config.nitro.components) {
+			if (config.nitro.components.hasOwnProperty(key)) {
+				var component = config.nitro.components[key];
 				if (component.hasOwnProperty('path')) {
 					var templatePath = path.join(
-						cfg.nitro.base_path,
+						config.nitro.base_path,
 						component.path,
 						'/',
 						folder,
 						'/',
-						templateFile + '.' + cfg.nitro.view_file_extension
+						templateFile + '.' + config.nitro.view_file_extension
 					);
 
 					if (utils.fileExistsSync(templatePath)) {
 						var jsonFilename = dataFile + '.json',
 							jsonPath = path.join(
-								cfg.nitro.base_path,
+								config.nitro.base_path,
 								component.path,
 								'/',
 								folder,
@@ -129,7 +129,7 @@ module.exports = function component () {
 			}
 		}
 
-		throw new Error('Component `' + name + '` with template file `'+ templateFile + '.' + cfg.nitro.view_file_extension + '` not found in folder `' + folder + '`.');
+		throw new Error('Component `' + name + '` with template file `'+ templateFile + '.' + config.nitro.view_file_extension + '` not found in folder `' + folder + '`.');
 	}
 	catch (e) {
 		return utils.logAndRenderError(e);

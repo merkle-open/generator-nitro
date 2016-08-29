@@ -1,6 +1,6 @@
 'use strict';
 
-let cfg = require('../app/core/config');
+let config = require('../app/core/config');
 const path = require('path');
 const gulp = require('gulp');
 const plugins = require('gulp-load-plugins')();
@@ -8,11 +8,11 @@ let browserSync;
 let assets = {};
 
 function getBrowserCompatibility() {
-	return cfg.code.compatibility.browsers;
+	return config.code.compatibility.browsers;
 }
 
 function getBrowserSyncInstance() {
-	const name = 'Nitro' + cfg.server.port;
+	const name = 'Nitro' + config.server.port;
 	if (!browserSync) {
 		browserSync = require('browser-sync').create(name);
 	}
@@ -37,12 +37,12 @@ function updateSourcePatterns() {
 		js: []
 	};
 
-	for (key in cfg.assets) {
-		if (cfg.assets.hasOwnProperty(key)) {
+	for (key in config.assets) {
+		if (config.assets.hasOwnProperty(key)) {
 			ext = path.extname(key);
 			if (ext) {
 				type = ext.replace(/[^a-z]/g, '');
-				asset = cfg.assets[key];
+				asset = config.assets[key];
 				result = {
 					name: key,
 					deps: [],
@@ -71,8 +71,8 @@ function getTask(task) {
 }
 
 function reloadConfig() {
-	cfg = cfg.reload();
-	return cfg;
+	config = config.reload();
+	return config;
 }
 
 <% if (options.js === 'TypeScript') { %>

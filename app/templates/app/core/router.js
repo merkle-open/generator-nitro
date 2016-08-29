@@ -1,6 +1,6 @@
 var path = require('path');
 var fs = require('fs');
-var cfg = require('./config');
+var config = require('./config');
 var utils = require('./utils');
 var dot = require('dot-object');
 var extend = require('extend');
@@ -9,12 +9,12 @@ var router = express.Router({
 	caseSensitive: false,
 	strict: false
 });
-var isProduction = cfg.server.production;
+var isProduction = config.server.production;
 
 /**
  * static routes
  */
-router.use('/', express.static(cfg.nitro.base_path + '/public/'));
+router.use('/', express.static(config.nitro.base_path + '/public/'));
 
 /**
  * views
@@ -60,7 +60,7 @@ function getView(req, res, next) {
 	var tpl = req.params.view ? req.params.view.toLowerCase() : 'index';
 	var data = {
 		pageTitle: tpl,
-		_layout: cfg.nitro.default_layout,
+		_layout: config.nitro.default_layout,
 		_production: isProduction
 	};
 	var viewPathes = getViewCombinations(tpl);
@@ -69,24 +69,24 @@ function getView(req, res, next) {
 	viewPathes.forEach(function (viewPath) {
 		if (!rendered) {
 			var tplPath = path.join(
-				cfg.nitro.base_path,
-				cfg.nitro.view_directory,
+				config.nitro.base_path,
+				config.nitro.view_directory,
 				'/',
-				viewPath + '.' + cfg.nitro.view_file_extension
+				viewPath + '.' + config.nitro.view_file_extension
 			);
 
 			if (utils.fileExistsSync(tplPath)) {
 
 				// collect data
 				var dataPath = path.join(
-					cfg.nitro.base_path,
-					cfg.nitro.view_data_directory,
+					config.nitro.base_path,
+					config.nitro.view_data_directory,
 					'/',
 					viewPath + '.json'
 				);
 				var customDataPath = req.query._data ? path.join(
-					cfg.nitro.base_path,
-					cfg.nitro.view_data_directory,
+					config.nitro.base_path,
+					config.nitro.view_data_directory,
 					'/' + req.query._data + '.json'
 				) : false;
 
@@ -110,8 +110,8 @@ function getView(req, res, next) {
 					if (utils.layoutExists(data._layout)) {
 						data.layout = utils.getLayoutPath(data._layout);
 					}
-					else if (utils.layoutExists(cfg.nitro.default_layout)) {
-						data.layout = utils.getLayoutPath(cfg.nitro.default_layout);
+					else if (utils.layoutExists(config.nitro.default_layout)) {
+						data.layout = utils.getLayoutPath(config.nitro.default_layout);
 					}
 				}
 
@@ -139,8 +139,8 @@ router.get('/:view', getView);
 router.use(function (req, res) {
 	res.locals.pageTitle = '404 - Not Found';
 	res.locals._production = isProduction;
-	if (utils.layoutExists(cfg.nitro.default_layout)) {
-		res.locals.layout = utils.getLayoutPath(cfg.nitro.default_layout);
+	if (utils.layoutExists(config.nitro.default_layout)) {
+		res.locals.layout = utils.getLayoutPath(config.nitro.default_layout);
 	}
 	res.status(404);
 	res.render('404', function (err, html) {

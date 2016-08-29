@@ -433,12 +433,12 @@ This example shows how to replace Handlebars with [Nunjucks](https://mozilla.git
 All these steps need to be performed in `server.js`.
 
 1. Replace the line `hbs = require('./app/core/hbs')` with `nunjucks = require('nunjucks')`
-2. Remove the line `app.engine(cfg.nitro.view_file_extension, hbs.__express);`
+2. Remove the line `app.engine(config.nitro.view_file_extension, hbs.__express);`
 3. Configure nunjucks as Express' Template Engine with the following block:
 
 
     nunjucks.configure(
-        cfg.nitro.base_path + cfg.nitro.view_directory,
+        config.nitro.base_path + config.nitro.view_directory,
         {
             autoescape: true,
             express: app

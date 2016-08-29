@@ -2,7 +2,7 @@ var fs = require('fs');
 var hbs = require('hbs');
 var path = require('path');
 var extend = require('extend');
-var cfg = require('../../app/core/config.js');
+var config = require('../core/config.js');
 var utils = require('../core/utils');
 
 module.exports = function () {
@@ -32,11 +32,11 @@ module.exports = function () {
 			extend(true, placeholderData, contextDataRoot._query);
 		}
 
-		templateFile += '.' + cfg.nitro.view_file_extension;
+		templateFile += '.' + config.nitro.view_file_extension;
 
 		var templatePath = path.join(
-			cfg.nitro.base_path,
-			cfg.nitro.placeholders_directory,
+			config.nitro.base_path,
+			config.nitro.placeholders_directory,
 			name,
 			templateFile);
 

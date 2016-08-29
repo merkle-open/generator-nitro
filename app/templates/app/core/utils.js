@@ -1,7 +1,7 @@
 var fs = require('fs');
 var hbs = require('hbs');
 var path = require('path');
-var cfg = require('./config');
+var config = require('./config');
 
 function fileExistsSync(filename) {
 	// Substitution for the deprecated fs.existsSync() method @see https://nodejs.org/api/fs.html#fs_fs_existssync_path
@@ -23,15 +23,15 @@ function logAndRenderError(e) {
 
 function layoutExists(layoutName) {
 	var layoutPath = path.join(
-		cfg.nitro.base_path,
-		cfg.nitro.view_layouts_directory,
-		'/' + layoutName + '.' + cfg.nitro.view_file_extension
+		config.nitro.base_path,
+		config.nitro.view_layouts_directory,
+		'/' + layoutName + '.' + config.nitro.view_file_extension
 	);
 	return fileExistsSync(layoutPath);
 }
 
 function getLayoutPath(layoutName) {
-	var layoutPath = cfg.nitro.view_layouts_directory.replace(cfg.nitro.view_directory + '/', '') + '/' + layoutName;
+	var layoutPath = config.nitro.view_layouts_directory.replace(config.nitro.view_directory + '/', '') + '/' + layoutName;
 	return layoutPath;
 }
 

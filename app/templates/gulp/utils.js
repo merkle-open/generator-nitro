@@ -1,4 +1,5 @@
 var cfg = require('../app/core/config');
+var fs = require('fs');
 var path = require('path');
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
@@ -18,7 +19,6 @@ function getBrowserSyncInstance() {
 }
 
 function getSourcePatterns(ext) {
-
 	var type = typeof ext === 'string' && ( ext === 'js' || ext === 'css' ) ? ext : null;
 
 	if (!assets.hasOwnProperty('js') || !assets.hasOwnProperty('css')) {
@@ -94,12 +94,24 @@ function splitJsAssets(asset) {
 	};
 }<% } %>
 
+function fileExistsSync(filename) {
+	// Substitution for the deprecated fs.existsSync() method @see https://nodejs.org/api/fs.html#fs_fs_existssync_path
+	try {
+		fs.accessSync(filename);
+		return true;
+	}
+	catch (ex) {
+		return false;
+	}
+}
+
 module.exports = {
+	fileExistsSync: fileExistsSync,
 	getBrowserCompatibility: getBrowserCompatibility,
 	getBrowserSyncInstance: getBrowserSyncInstance,
 	getSourcePatterns: getSourcePatterns,
-	updateSourcePatterns: updateSourcePatterns,
 	getTask: getTask,
-	reloadConfig: reloadConfig<% if (options.js === 'TypeScript') { %>,
-	splitJsAssets: splitJsAssets<% } %>
+	reloadConfig: reloadConfig,<% if (options.js === 'TypeScript') { %>
+	splitJsAssets: splitJsAssets,<% } %>
+	updateSourcePatterns: updateSourcePatterns
 };

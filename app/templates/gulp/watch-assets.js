@@ -1,11 +1,11 @@
 var cfg = require('../app/core/config');
 var utils = require('./utils');
 var globby = require('globby');
-var browserSync = utils.getBrowserSyncInstance();
 
 module.exports = function (gulp, plugins) {
 	return function () {
 		var isDependentStyleSource = function(file) {
+			var browserSync = utils.getBrowserSyncInstance();
 			var isDependent = false;
 			var cssAssets = utils.getSourcePatterns('css');
 			cssAssets.forEach(function (asset) {

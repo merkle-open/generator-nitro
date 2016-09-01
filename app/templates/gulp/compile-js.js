@@ -1,10 +1,10 @@
 var utils = require('./utils');
 var Promise = require('es6-promise').Promise;
-var browserSync = utils.getBrowserSyncInstance();
 
 module.exports = function (gulp, plugins) {
 	return function () {
 		var assets = utils.getSourcePatterns('js');
+		var browserSync = utils.getBrowserSyncInstance();
 		var promises = [];
 
 		assets.forEach(function (asset) {

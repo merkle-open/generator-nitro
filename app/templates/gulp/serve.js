@@ -1,5 +1,6 @@
 var config = require('../app/core/config');
 var fs = require('fs');
+var utils = require('./utils');
 
 module.exports = function (gulp, plugins) {
 	var taskCallbackCalled = false;
@@ -16,9 +17,11 @@ module.exports = function (gulp, plugins) {
 			},
 			false
 		);
-		server.start().then(function (result) {
+		return server.start().then(function (result) {
 			console.log('Server exited with result:', result);
-			fs.unlinkSync(pidFile);
+			if (utils.fileExistsSync(pidFile)) {
+				fs.unlinkSync(pidFile);
+			}
 			process.exit(result.code);
 			if(!taskCallbackCalled) {
 				taskCallbackCalled = true;

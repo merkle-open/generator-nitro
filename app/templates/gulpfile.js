@@ -17,6 +17,7 @@ gulp.task('clean-assets', getTask('clean-assets'));
 gulp.task('assets', ['copy-assets', 'minify-img', 'minify-js', 'minify-css']);
 gulp.task('watch-assets', ['assets'], getTask('watch-assets'));
 gulp.task('serve', getTask('serve'));
+gulp.task('serve-stop', getTask('serve-stop'));
 gulp.task('watch-serve', ['serve'], getTask('watch-serve'));
 gulp.task('test', ['compile-css', 'compile-js'], getTask('test'));
 gulp.task('develop', ['watch-assets', 'watch-serve']);

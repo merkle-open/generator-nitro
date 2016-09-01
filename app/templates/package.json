@@ -26,10 +26,10 @@
   "dependencies": {
     "autoprefixer": "~6.4.0",
     "body-parser": "~1.15.2",
-    "browser-sync": "~2.14.0",
+    "browser-sync": "~2.14.3",
     "compression": "~1.6.2",
     "del": "~2.2.2",
-    "dot-object": "~1.5.0",
+    "dot-object": "~1.5.1",
     "es6-promise": "~3.2.1",
     "express": "~4.14.0",
     "extend": "~3.0.0",
@@ -55,7 +55,7 @@
     "gulp-sass": "~2.3.2",<% } %>
     "gulp-size": "~2.1.0",
     "gulp-sourcemaps": "~1.6.0",
-    "gulp-stylelint": "~3.1.0",<% if (options.js === 'TypeScript') { %>
+    "gulp-stylelint": "~3.2.0",<% if (options.js === 'TypeScript') { %>
     "typescript": "~1.5.0-beta",
     "gulp-typescript": "~2.7.5", <% } %>
     "gulp-uglify": "~2.0.0",<% if (options.clientTpl) { %>
@@ -64,7 +64,7 @@
     "hbs-utils": "~0.0.3",
     "i18next": "~1.10.6",
     "imagemin-pngquant": "~4.2.2",
-    "jasmine-core": "~2.4.1",
+    "jasmine-core": "~2.5.0",
     "jshint": "~2.9.3",
     "jshint-stylish": "~2.2.1",
     "karma": "~1.2.0",

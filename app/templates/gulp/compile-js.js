@@ -2,11 +2,11 @@
 
 const utils = require('./utils');
 const Promise = require('es6-promise').Promise;
-const browserSync = utils.getBrowserSyncInstance();
 
 module.exports = (gulp, plugins) => {
 	return () => {
 		const assets = utils.getSourcePatterns('js');
+		const browserSync = utils.getBrowserSyncInstance();
 		let promises = [];
 
 		assets.forEach((asset) => {

@@ -3,10 +3,10 @@
 let config = require('../app/core/config');
 const utils = require('./utils');
 const globby = require('globby');
-const browserSync = utils.getBrowserSyncInstance();
 
 module.exports = (gulp, plugins) => {
 	return () => {
+		const browserSync = utils.getBrowserSyncInstance();
 		const isDependentStyleSource = (file) => {
 			let isDependent = false;
 			const cssAssets = utils.getSourcePatterns('css');

@@ -2,6 +2,7 @@
 
 let config = require('../app/core/config');
 const path = require('path');
+const fs = require('fs');
 const gulp = require('gulp');
 const plugins = require('gulp-load-plugins')();
 let browserSync;
@@ -95,12 +96,24 @@ function splitJsAssets(asset) {
 	};
 }<% } %>
 
+function fileExistsSync(filename) {
+	// Substitution for the deprecated fs.existsSync() method @see https://nodejs.org/api/fs.html#fs_fs_existssync_path
+	try {
+		fs.accessSync(filename);
+		return true;
+	}
+	catch (ex) {
+		return false;
+	}
+}
+
 module.exports = {
+	fileExistsSync: fileExistsSync,
 	getBrowserCompatibility: getBrowserCompatibility,
 	getBrowserSyncInstance: getBrowserSyncInstance,
 	getSourcePatterns: getSourcePatterns,
-	updateSourcePatterns: updateSourcePatterns,
 	getTask: getTask,
-	reloadConfig: reloadConfig<% if (options.js === 'TypeScript') { %>,
-	splitJsAssets: splitJsAssets<% } %>
+	reloadConfig: reloadConfig,<% if (options.js === 'TypeScript') { %>
+	splitJsAssets: splitJsAssets,<% } %>
+	updateSourcePatterns: updateSourcePatterns,
 };

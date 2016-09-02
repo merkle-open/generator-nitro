@@ -4,13 +4,13 @@ const utils = require('./utils');
 const Promise = require('es6-promise').Promise;
 const globby = require('globby');
 const fs = require('fs');
-const browserSync = utils.getBrowserSyncInstance();
 const autoprefixer = require('autoprefixer');
 
 module.exports = (gulp, plugins) => {
 	return () => {
 		const assets = utils.getSourcePatterns('css');
 		const browserCompatibility = utils.getBrowserCompatibility();
+		const browserSync = utils.getBrowserSyncInstance();
 		let promises = [];
 
 		assets.forEach((asset) => {

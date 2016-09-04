@@ -1,9 +1,9 @@
 'use strict';
 
 describe('Nitro\'s Handlebars helper loader', () => {
-	it('has registered the component helper', () => {
+	it('has registered the pattern helper', () => {
 		const hbs = require('../../app/core/hbs');
-		expect(typeof hbs.handlebars.helpers.component).toBe('function');
+		expect(typeof hbs.handlebars.helpers.pattern).toBe('function');
 	});
 
 	it('has registered the view_list helper', () => {

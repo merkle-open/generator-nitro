@@ -56,7 +56,7 @@ module.exports = (gulp, plugins) => {
 
 		plugins.watch([
 			'assets/css/**/*.<%= options.pre %>',
-			'components/**/css/**/*.<%= options.pre %>'
+			'patterns/**/css/**/*.<%= options.pre %>'
 		], (e) => {
 			clearCache(e);
 			gulp.start('compile-css');
@@ -64,10 +64,10 @@ module.exports = (gulp, plugins) => {
 
 		plugins.watch([
 			'assets/js/**/*.js',
-			'components/**/js/**/*.js'<% if (options.js === 'TypeScript') { %>,
+			'patterns/**/js/**/*.js'<% if (options.js === 'TypeScript') { %>,
 			'assets/js/**/*.ts',
-			'components/**/js/**/*.ts'<% } %><% if (options.clientTpl) { %>,
-			'components/**/template/**/*.hbs'<% } %>
+			'patterns/**/js/**/*.ts'<% } %><% if (options.clientTpl) { %>,
+			'patterns/**/template/**/*.hbs'<% } %>
 		], () => {
 			gulp.start('compile-js');
 		});
@@ -75,9 +75,9 @@ module.exports = (gulp, plugins) => {
 		plugins.watch([
 			'views/**/*.' + config.nitro.view_file_extension,
 			config.nitro.view_data_directory + '/**/*.json',
-			'components/**/*.' + config.nitro.view_file_extension<% if (options.clientTpl) { %>,
-			'!components/**/template/**/*.hbs'<% } %>,
-			'components/**/_data/*.json'
+			'patterns/**/*.' + config.nitro.view_file_extension<% if (options.clientTpl) { %>,
+			'!patterns/**/template/**/*.hbs'<% } %>,
+			'patterns/**/_data/*.json'
 		], () => {
 			browserSync.reload();
 		});

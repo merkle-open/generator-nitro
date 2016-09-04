@@ -13,7 +13,7 @@ module.exports = function (config) {
 		// list of files / patterns to load in the browser
 		files: [
 			'public/assets/js/app.js',
-			'components/**/spec/*Spec.js'
+			'patterns/**/spec/*Spec.js'
 		],
 
 		// list of files to exclude

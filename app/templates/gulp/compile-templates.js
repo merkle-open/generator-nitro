@@ -7,19 +7,19 @@ const merge = require('merge-stream');
 
 module.exports = (gulp, plugins) => {
 	return () => {
-		// register nitro handlebars component helper
+		// register nitro handlebars pattern helper
 		const helpersDir = path.join(__dirname, '../app/helpers');
 		fs.readdirSync(helpersDir).forEach(function(helper) {
 			const name = helper.replace('.js', '');
-			if ('component' === name) {
+			if ('pattern' === name) {
 				hbs.registerHelper(name, require(path.join(helpersDir, name)));
 			}
 		});
 
-		const templates = gulp.src('components/**/template/*.hbs')
-			// compile nitro component
+		const templates = gulp.src('patterns/**/template/*.hbs')
+			// compile nitro pattern
 			.pipe(plugins.change((content) => {
-				const compilePattern = /{{(component)\s[^}]*}}/gi;
+				const compilePattern = /{{(pattern)\s[^}]*}}/gi;
 				const matches = content.match(compilePattern);
 				for (let index in matches) {
 					if(matches.hasOwnProperty(index)) {
@@ -39,9 +39,9 @@ module.exports = (gulp, plugins) => {
 				namespace: 'T.tpl'
 			}))
 			.pipe(plugins.rename({extname: '.js'}))
-			.pipe(gulp.dest('./components'));
+			.pipe(gulp.dest('./patterns'));
 
-		const partials = gulp.src('components/**/template/partial/*.hbs')
+		const partials = gulp.src('patterns/**/template/partial/*.hbs')
 			.pipe(plugins.handlebars({
 				handlebars: hbs.handlebars
 			}))
@@ -54,7 +54,7 @@ module.exports = (gulp, plugins) => {
 				}
 			}))
 			.pipe(plugins.rename({extname: '.js'}))
-			.pipe(gulp.dest('./components'));
+			.pipe(gulp.dest('./patterns'));
 
 		return merge(templates, partials);
 	};

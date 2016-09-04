@@ -68,7 +68,7 @@ If you run `yo nitro` from an existing project you may update your project to a 
 Available generators:
 
 * `yo nitro` (aka `nitro:app`)
-* `yo nitro:component [name]`
+* `yo nitro:pattern [name]`
 
 Note: Generators are to be run from the root directory of your project.
 

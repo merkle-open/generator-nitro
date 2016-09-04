@@ -27,8 +27,8 @@ describe('Nitro Config', () => {
 		expect(config.nitro.view_layouts_directory).toBeDefined();
 	});
 
-	it('contains a components map', () => {
-		expect(config.nitro.components).toEqual(jasmine.any(Object));
+	it('contains a pattern map', () => {
+		expect(config.nitro.patterns).toEqual(jasmine.any(Object));
 	});
 
 	it('contains an assets map', () => {

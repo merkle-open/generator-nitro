@@ -277,13 +277,13 @@ module.exports = generators.Base.extend({
 				'gulpfile.js',
 				'package.json',
 				'app/core/config.js',
-				'components/molecules/example/example.html',
+				'patterns/molecules/example/example.html',
 				'gulp/compile-css.js',
 				'gulp/compile-js.js',
 				'gulp/utils.js',
 				'gulp/watch-assets.js',
 				'project/docs/nitro.md',
-				'spec/helpers/componentSpec.js',
+				'spec/helpers/patternSpec.js',
 				'views/index.html'
 			];
 			const ignores = [
@@ -299,13 +299,13 @@ module.exports = generators.Base.extend({
 			];
 			const clientTplFiles = [
 				// files only for this.options.clientTpl===true
-				'components/molecules/example/_data/example-template.json',
-				'components/molecules/example/js/decorator/example-template.js',
-				'components/molecules/example/template/example.hbs',
-				'components/molecules/example/template/example.links.hbs',
-				'components/molecules/example/template/partial/example.link.hbs',
+				'patterns/molecules/example/_data/example-template.json',
+				'patterns/molecules/example/js/decorator/example-template.js',
+				'patterns/molecules/example/template/example.hbs',
+				'patterns/molecules/example/template/example.links.hbs',
+				'patterns/molecules/example/template/partial/example.link.hbs',
 				'project/docs/client-templates.md',
-				'project/blueprints/component/template/component.hbs',
+				'project/blueprints/pattern/template/pattern.hbs',
 				'gulp/compile-templates.js'
 			];
 			const viewFiles = [
@@ -315,8 +315,8 @@ module.exports = generators.Base.extend({
 				'views/_layouts/default.html',
 				'views/_partials/foot.html',
 				'views/_partials/head.html',
-				'components/molecules/example/example.html',
-				'project/blueprints/component/component.html'
+				'patterns/molecules/example/example.html',
+				'project/blueprints/pattern/pattern.html'
 			];
 			const exporterFiles = [
 				// files for this.options.exporter===true
@@ -365,10 +365,10 @@ module.exports = generators.Base.extend({
 					}
 				}
 
-				// ignore everything under assets, components and views on updating project
+				// ignore everything under assets, patterns and views on updating project
 				if (this.update) {
 					if (_.startsWith(file, 'assets') ||
-						_.startsWith(file, 'components') ||
+						_.startsWith(file, 'patterns') ||
 						_.startsWith(file, 'views')) {
 						return;
 					}
@@ -381,7 +381,7 @@ module.exports = generators.Base.extend({
 					return;
 				}
 
-				if ((_.startsWith(file, 'project') || _.startsWith(file, 'components')) && (ext === 'js' || ext === 'ts') && (this.options.js === 'JavaScript' && ext !== 'js' || this.options.js === 'TypeScript' && ext !== 'ts')) {
+				if ((_.startsWith(file, 'project') || _.startsWith(file, 'patterns')) && (ext === 'js' || ext === 'ts') && (this.options.js === 'JavaScript' && ext !== 'js' || this.options.js === 'TypeScript' && ext !== 'ts')) {
 					return;
 				}
 

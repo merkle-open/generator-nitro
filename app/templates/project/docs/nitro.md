@@ -14,7 +14,7 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 * Source Maps, Linting, PostCSS & Browsersync
 * Bower support
 * Jasmine tests with Karma test runner
-* Yeoman component generator<% if (options.clientTpl) { %>
+* Yeoman pattern generator<% if (options.clientTpl) { %>
 * [Client side templates](client-templates.md)<% } %><% if (options.exporter) { %>
 * [Static Exports](nitro-exporter.md)<% } %><% if (options.release) { %>
 * [Releases](nitro-release.md)<% } %>
@@ -74,15 +74,15 @@ This works a bit different on **Windows**. Use the following commands in prompt:
     set PORT=3000 && node server
     set NODE_ENV=production && gulp production
 
-## Daily Work - Creating Components & Pages
+## Daily Work - Creating Patterns & Pages
 
-### Creating Components
+### Creating Patterns
 
-Components are created in the `components` folder. A component is an encapsulated block of markup 
+Patterns are created in the `patterns` folder. A pattern is an encapsulated block of markup 
 with corresponding styles, scripts and data.  
-For a better overview it is useful to define different types of components. It is recommended to make 
+For a better overview it is useful to define different types of patterns. It is recommended to make 
 subfolders like `atoms`, `molecules` & `organisms`  
-A component uses the following structure:
+A pattern uses the following structure:
 
     /example
     /example/example.<%= options.viewExt %>
@@ -99,9 +99,9 @@ Different data variations has to be placed in the `_data` folder:
 
     /example/_data/example-variant.json
 
-### Creating Components with yo
+### Creating patterns with yo
 
-    yo nitro:component
+    yo nitro:pattern
 
 ### Creating pages
 
@@ -138,42 +138,42 @@ To remove the layout feature, simply delete the folder `views/_layout`.
 
 Different layouts are placed in `views/_layouts/`. Link them to your view [in your page datafile](#use-different-layout).
 
-### Render Components
+### Render patterns
 
-Pages are meant to be compositions of your components. Use the component's name as the first parameter. Be aware, the
-component name is case-sensitive.
+Pages are meant to be compositions of your patterns. Use the pattern's name as the first parameter. Be aware, the
+pattern name is case-sensitive.
 
 Nitro uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
 
-Render the example component. (file: `example.<%= options.viewExt %>`, data-file: `example.json`)
+Render the example pattern. (file: `example.<%= options.viewExt %>`, data-file: `example.json`)
 
-    {{component 'example'}}
-    {{component 'example', 'example'}}
+    {{pattern 'example'}}
+    {{pattern 'example', 'example'}}
 
-Render a "variant" from the example component. (file: `example.<%= options.viewExt %>`, data-file: `example-variant.json`)
+Render a "variant" from the example pattern. (file: `example.<%= options.viewExt %>`, data-file: `example-variant.json`)
 
-    {{component 'example' 'example-variant'}}
+    {{pattern 'example' 'example-variant'}}
     
-Another possibility to use the component helper is by providing hash options.
+Another possibility to use the pattern helper is by providing hash options.
 
-    {{component name='example' data='example-variant'}}
+    {{pattern name='example' data='example-variant'}}
 
 ...and if you really need this you may provide a second template file. (file: `example-2.<%= options.viewExt %>`, data-file: `example-variant.json`)
 
-    {{component name='example' data='example-variant' template='example-2'}}
+    {{pattern name='example' data='example-variant' template='example-2'}}
 
-There also is a possibility to pass data to subcomponents by providing a data object as second parameter or as hash option.
+There also is a possibility to pass data to subpatterns by providing a data object as second parameter or as hash option.
 
-    {{component 'example' exampleContent}}
-    {{component 'example' data=exampleContent}}
+    {{pattern 'example' exampleContent}}
+    {{pattern 'example' data=exampleContent}}
 
-To be more flexible, you may also pass individual arguments to the component, which overrides the defaults.
+To be more flexible, you may also pass individual arguments to the pattern, which overrides the defaults.
 
-    {{component 'example' modifier='blue'}}
+    {{pattern 'example' modifier='blue'}}
 
-#### Render Components with children
+#### Render patterns with children
 
-Maybe using your component templates with transclusion could be helpful in some cases.
+Maybe using your pattern templates with transclusion could be helpful in some cases.
 
     // example box template
     <div class="a-box">
@@ -182,17 +182,17 @@ Maybe using your component templates with transclusion could be helpful in some 
 
 Call it as block like this:
 
-    {{#component 'box'}}
-        {{component 'example'}}
-    {{/component}}
+    {{#pattern 'box'}}
+        {{pattern 'example'}}
+    {{/pattern}}
 
-### Render Partials
+### Render partials
 
 Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.<%= options.viewExt %>` files (e.g. `head.<%= options.viewExt %>`).
 
     {{> head}}
 
-### Render Placeholders
+### Render placeholders
 
 Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `views/_placeholders/` as `*.<%= options.viewExt %>` files.  
 The following two examples do the same and render the file `Content/example.<%= options.viewExt %>` from `views/_placeholders/`.
@@ -204,7 +204,7 @@ The following two examples do the same and render the file `Content/example.<%= 
 
 #### Data per page
 
-You may pass data to your templates (view, layout, partial, component) per view.  
+You may pass data to your templates (view, layout, partial, pattern) per view.  
 Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`. 
 (Use the same folder structure as in `views`)
 
@@ -245,13 +245,13 @@ If you need a different layout for a page, do so in the corresponding data file:
 If you want to use dynamic view data (i.e. using data from a database or data which is available in different views), 
 you can define those "routes" in the directory [`project/viewData/`](../viewData/README.md). 
 
-#### Data per component
+#### Data per pattern
 
-Component data will overwrite data from views. (Use as described above)
+Pattern data will overwrite data from views. (Use as described above)
 
 #### Data in request
 
-You may overwrite data from views & components in request parameters.
+You may overwrite data from views & patterns in request parameters.
 
 `?pageTitle=Testpage` will overwrite the data for the handlebars expression `{{pageTitle}}`
 
@@ -274,16 +274,16 @@ You can configure the include order of your assets by defining patterns in `conf
             "!assets/css/somefile.*",
             "assets/css/cssreset.css",
             "assets/css/*.*",
-            "components/**/css/*.*",
-            "components/**/css/modifier/*.*"
+            "patterns/**/css/*.*",
+            "patterns/**/css/modifier/*.*"
         ],
         "app.js": [
             "!assets/js/somefile.js",
             "assets/vendor/jquery/dist/jquery.min.js",
             "assets/vendor/terrific/dist/terrific.min.js",
             "assets/js/*.js",
-            "components/**/js/*.js",
-            "components/**/js/decorator/*.js"
+            "patterns/**/js/*.js",
+            "patterns/**/js/decorator/*.js"
         ]
     }
 
@@ -307,11 +307,11 @@ The order of these special patterns does not matter.
 
 #### Examples
 
-* `"!components/*/test*"`         Exclude all components starting with `test`
-* `"!**/*-test.*"`                Exclude all filenames ending with `-test`.
-* `"+assets/css/mixins.less"`     Exclude `assets/css/mixins.less` but prepend to every compile call of every .less file
+* `"!patterns/*/test*"`         Exclude all patterns starting with `test`
+* `"!**/*-test.*"`              Exclude all filenames ending with `-test`.
+* `"+assets/css/mixins.less"`   Exclude `assets/css/mixins.less` but prepend to every compile call of every .less file
 
-### Other Asset Files
+### Other asset files
 
 You can configure as many different assets as you wish.
 
@@ -387,13 +387,13 @@ Link to resources relatively to the `project`-folder **with** a leading slash.
 
 Use all lowercase if possible. (Exception: TerrificJS uses upper case for its namespace `T` and class names `T.Module.Example`)
 
-All files must be lowercase. It's allowed to use uppercase letters for component folders, keep care of case sensitive filesystems and use handlebars helpers with the *exact* folder name. 
+All files must be lowercase. It's allowed to use uppercase letters for pattern folders, keep care of case sensitive filesystems and use handlebars helpers with the *exact* folder name. 
 
-    {{component name='NavMain'}}
+    {{pattern name='NavMain'}}
 
 ... looks for a template `navmain.<%= options.viewExt %>` in the folder `NavMain`. 
 
-Note that uppercase letters in component names are represented in CSS with hyphens.
+Note that uppercase letters in pattern names are represented in CSS with hyphens.
 
     Navigation   -> T.Module.Navigation   -> m-navigation
     NavMain      -> T.Module.NavMain      -> m-nav-main
@@ -447,8 +447,8 @@ All these steps need to be performed in `server.js`.
     
 Now Restart Nitro and it'll run with Nunjucks.
 
-**Be aware**, you'll need to adjust all your views and components to work with the new engine. 
-Nitro only provides a `component` helper for handlebars.
+**Be aware**, you'll need to adjust all your views and patterns to work with the new engine. 
+Nitro only provides a `pattern` helper for handlebars.
 
 ## Miscellaneous
 
@@ -477,7 +477,7 @@ You may [change this or add other hooks](../.githooks/README.md) in `project/.gi
 
 * [YUI CSS Reset 3.18.1](http://yuilibrary.com/yui/docs/cssreset/)
 * Favicon & Home-Icons from Nitro (replace with your own)
-* Component `example` and some styles in assets/css (you don't need them)
+* Pattern `example` and some styles in assets/css (you don't need them)
 
 #### Bower Components
 

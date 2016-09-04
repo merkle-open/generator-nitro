@@ -102,7 +102,7 @@ function getView(req, res, next) {
 					var reqQuery = JSON.parse(JSON.stringify(req.query)); // simple clone
 					dot.object(reqQuery);
 					extend(true, data, reqQuery);
-					data._query = reqQuery; // save query for use in components
+					data._query = reqQuery; // save query for use in patterns
 				}
 
 				// layout handling

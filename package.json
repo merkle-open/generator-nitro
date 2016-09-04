@@ -16,7 +16,7 @@
   },
   "files": [
     "app",
-    "component"
+    "pattern"
   ],
   "keywords": [
     "yeoman-generator",

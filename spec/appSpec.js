@@ -24,7 +24,7 @@ describe('nitro:app', () => {
 			assert.file([
 				'app',
 				'assets',
-				'components',
+				'patterns',
 				'gulp',
 				'project',
 				'public',
@@ -68,9 +68,9 @@ describe('nitro:app', () => {
 			assert.fileContent('config.json', /\.less/);
 		});
 
-		it('component blueprint does not contain .scss files', () => {
-			assert.noFile('project/blueprints/component/css/component.scss');
-			assert.noFile('project/blueprints/component/css/modifier/component-modifier.scss');
+		it('pattern blueprint does not contain .scss files', () => {
+			assert.noFile('project/blueprints/pattern/css/pattern.scss');
+			assert.noFile('project/blueprints/pattern/css/modifier/pattern-modifier.scss');
 		});
 	});
 
@@ -95,9 +95,9 @@ describe('nitro:app', () => {
 			assert.fileContent('config.json', /\.scss/);
 		});
 
-		it('component blueprint does not contain .less files', () => {
-			assert.noFile('project/blueprints/component/css/component.less');
-			assert.noFile('project/blueprints/component/css/modifier/component-modifier.less');
+		it('pattern blueprint does not contain .less files', () => {
+			assert.noFile('project/blueprints/pattern/css/pattern.less');
+			assert.noFile('project/blueprints/pattern/css/modifier/pattern-modifier.less');
 		});
 	});
 
@@ -116,8 +116,8 @@ describe('nitro:app', () => {
 				'views/404.html',
 				'views/_partials/head.html',
 				'views/_partials/foot.html',
-				'components/molecules/example/example.html',
-				'project/blueprints/component/component.html'
+				'patterns/molecules/example/example.html',
+				'project/blueprints/pattern/pattern.html'
 			]);
 		});
 
@@ -141,8 +141,8 @@ describe('nitro:app', () => {
 				'views/404.hbs',
 				'views/_partials/head.hbs',
 				'views/_partials/foot.hbs',
-				'components/molecules/example/example.hbs',
-				'project/blueprints/component/component.hbs'
+				'patterns/molecules/example/example.hbs',
+				'project/blueprints/pattern/pattern.hbs'
 			]);
 		});
 
@@ -166,8 +166,8 @@ describe('nitro:app', () => {
 				'views/404.mustache',
 				'views/_partials/head.mustache',
 				'views/_partials/foot.mustache',
-				'components/molecules/example/example.mustache',
-				'project/blueprints/component/component.mustache'
+				'patterns/molecules/example/example.mustache',
+				'project/blueprints/pattern/pattern.mustache'
 			]);
 		});
 
@@ -195,24 +195,24 @@ describe('nitro:app', () => {
 			]);
 		});
 
-		it('component blueprint contains template file', () => {
-			assert.file('project/blueprints/component/template/component.hbs');
+		it('pattern blueprint contains template file', () => {
+			assert.file('project/blueprints/pattern/template/pattern.hbs');
 		});
 
-		it('example component contains template files', () => {
+		it('example pattern contains template files', () => {
 			assert.file([
-				'components/molecules/example/template/example.hbs',
-				'components/molecules/example/template/example.links.hbs',
-				'components/molecules/example/template/partial/example.link.hbs',
-				'components/molecules/example/_data/example-template.json',
-				'components/molecules/example/js/decorator/example-template.js'
+				'patterns/molecules/example/template/example.hbs',
+				'patterns/molecules/example/template/example.links.hbs',
+				'patterns/molecules/example/template/partial/example.link.hbs',
+				'patterns/molecules/example/_data/example-template.json',
+				'patterns/molecules/example/js/decorator/example-template.js'
 			]);
 		});
 
 		it('config.json loads template files', () => {
 			assert.fileContent([
-				['config.json', 'components/**/template/*.js'],
-				['config.json', 'components/**/template/partial/*.js']
+				['config.json', 'patterns/**/template/*.js'],
+				['config.json', 'patterns/**/template/partial/*.js']
 			]);
 		});
 
@@ -222,8 +222,8 @@ describe('nitro:app', () => {
 
 		it('gulp task watch-assets handles template files correct', () => {
 			assert.fileContent([
-				['gulp/watch-assets.js', 'components/**/template/**/*.hbs'],
-				['gulp/watch-assets.js', '!components/**/template/**/*.hbs']
+				['gulp/watch-assets.js', 'patterns/**/template/**/*.hbs'],
+				['gulp/watch-assets.js', '!patterns/**/template/**/*.hbs']
 			]);
 		});
 
@@ -248,24 +248,24 @@ describe('nitro:app', () => {
 			]);
 		});
 
-		it('component blueprint does not contain template file', () => {
-			assert.noFile('project/blueprints/component/template/component.hbs');
+		it('pattern blueprint does not contain template file', () => {
+			assert.noFile('project/blueprints/pattern/template/pattern.hbs');
 		});
 
-		it('example component does not contain template files', () => {
+		it('example pattern does not contain template files', () => {
 			assert.noFile([
-				'components/molecules/example/template/example.hbs',
-				'components/molecules/example/template/example.links.hbs',
-				'components/molecules/example/template/partial/example.link.hbs',
-				'components/molecules/example/_data/example-template.json',
-				'components/molecules/example/js/decorator/example-template.js'
+				'patterns/molecules/example/template/example.hbs',
+				'patterns/molecules/example/template/example.links.hbs',
+				'patterns/molecules/example/template/partial/example.link.hbs',
+				'patterns/molecules/example/_data/example-template.json',
+				'patterns/molecules/example/js/decorator/example-template.js'
 			]);
 		});
 
 		it('config.json does not load template files', () => {
 			assert.noFileContent([
-				['config.json', 'components/**/template/*.js'],
-				['config.json', 'components/**/template/partial/*.js']
+				['config.json', 'patterns/**/template/*.js'],
+				['config.json', 'patterns/**/template/partial/*.js']
 			]);
 		});
 
@@ -275,8 +275,8 @@ describe('nitro:app', () => {
 
 		it('gulp task watch-assets does not handle template files', () => {
 			assert.noFileContent([
-				['gulp/watch-assets.js', 'components/**/template/**/*.hbs'],
-				['gulp/watch-assets.js', '!components/**/template/**/*.hbs']
+				['gulp/watch-assets.js', 'patterns/**/template/**/*.hbs'],
+				['gulp/watch-assets.js', '!patterns/**/template/**/*.hbs']
 			]);
 		});
 

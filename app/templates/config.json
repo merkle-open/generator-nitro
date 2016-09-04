@@ -5,8 +5,8 @@
 			"+assets/css/mixins.<%= options.pre %>",
 			"assets/css/reset.css",
 			"assets/css/basic.<%= options.pre %>",
-			"components/**/css/*.<%= options.pre %>",
-			"components/**/css/modifier/*.<%= options.pre %>"
+			"patterns/**/css/*.<%= options.pre %>",
+			"patterns/**/css/modifier/*.<%= options.pre %>"
 		],
 		"app.js": [
 			"assets/vendor/es6-promise/promise.min.js",
@@ -15,12 +15,12 @@
 			"assets/vendor/handlebars/handlebars.runtime.min.js",<% } %>
 			"assets/js/*.js"<% if (options.js === 'TypeScript') { %>,
 			"assets/js/*.ts",
-			"components/**/js/*.ts",
-			"components/**/js/decorator/*.ts"<% } else { %>,
-			"components/**/js/*.js",
-			"components/**/js/decorator/*.js"<% } %><% if (options.clientTpl) { %>,
-			"components/**/template/*.js",
-			"components/**/template/partial/*.js"<% } %>
+			"patterns/**/js/*.ts",
+			"patterns/**/js/decorator/*.ts"<% } else { %>,
+			"patterns/**/js/*.js",
+			"patterns/**/js/decorator/*.js"<% } %><% if (options.clientTpl) { %>,
+			"patterns/**/template/*.js",
+			"patterns/**/template/partial/*.js"<% } %>
 		]
 	},
 	"code": {
@@ -82,21 +82,21 @@
 		"tagName": "v%VERSION%"
 	},<% } %>
 	"nitro": {
-		"components": {
+		"patterns": {
 			"atom": {
-				"template": "project/blueprints/component",
-				"path": "components/atoms",
-				"component_prefix": "a"
+				"template": "project/blueprints/pattern",
+				"path": "patterns/atoms",
+				"pattern_prefix": "a"
 			},
 			"molecule": {
-				"template": "project/blueprints/component",
-				"path": "components/molecules",
-				"component_prefix": "m"
+				"template": "project/blueprints/pattern",
+				"path": "patterns/molecules",
+				"pattern_prefix": "m"
 			},
 			"organism": {
-				"template": "project/blueprints/component",
-				"path": "components/organisms",
-				"component_prefix": "o"
+				"template": "project/blueprints/pattern",
+				"path": "patterns/organisms",
+				"pattern_prefix": "o"
 			}
 		}
 	}

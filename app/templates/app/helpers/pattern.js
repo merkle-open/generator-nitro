@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * handlebars helper: {{pattern PatternName Data Variation}}
  *
@@ -13,24 +15,24 @@
  * {{#pattern name='button' disabled=true}}Not Clickable{{/pattern}}
  *
  */
-var fs = require('fs');
-var hbs = require('hbs');
-var path = require('path');
-var extend = require('extend');
-var config = require('../core/config');
-var utils = require('../core/utils');
+const fs = require('fs');
+const hbs = require('hbs');
+const path = require('path');
+const extend = require('extend');
+const config = require('../core/config');
+const utils = require('../core/utils');
 
 module.exports = function pattern () {
 
 	try {
-		var context = arguments[arguments.length - 1];
-		var contextDataRoot = context.data && context.data.root ? context.data.root : {};      // default pattern data from controller & view
-		var name = 'string' === typeof arguments[0] ? arguments[0] : context.hash.name;
-		var folder = name.replace(/[^A-Za-z0-9-]/g, '');
-		var templateFile = context.hash && context.hash.template ? context.hash.template : folder.toLowerCase();
-		var dataFile = folder.toLowerCase();                                                   // default data file
-		var passedData = null;                                                                 // passed data to pattern helper
-		var patternData = {};                                                                // collected pattern data
+		const context = arguments[arguments.length - 1];
+		const contextDataRoot = context.data && context.data.root ? context.data.root : {};    // default pattern data from controller & view
+		const name = 'string' === typeof arguments[0] ? arguments[0] : context.hash.name;
+		const folder = name.replace(/[^A-Za-z0-9-]/g, '');
+		const templateFile = context.hash && context.hash.template ? context.hash.template : folder.toLowerCase();
+		let dataFile = folder.toLowerCase();                                                   // default data file
+		let passedData = null;                                                                 // passed data to pattern helper
+		let patternData = {};                                                                  // collected pattern data
 
 		if (arguments.length >= 3) {
 			switch (typeof arguments[1]) {
@@ -65,29 +67,29 @@ module.exports = function pattern () {
 			}
 		}
 
-		for (var key in config.nitro.patterns) {
+		for (let key in config.nitro.patterns) {
 			if (config.nitro.patterns.hasOwnProperty(key)) {
 				var pattern = config.nitro.patterns[key];
 				if (pattern.hasOwnProperty('path')) {
-					var templatePath = path.join(
+					const templatePath = path.join(
 						config.nitro.base_path,
 						pattern.path,
 						'/',
 						folder,
 						'/',
-						templateFile + '.' + config.nitro.view_file_extension
+						`${templateFile}.${config.nitro.view_file_extension}`
 					);
 
 					if (utils.fileExistsSync(templatePath)) {
-						var jsonFilename = dataFile + '.json',
-							jsonPath = path.join(
-								config.nitro.base_path,
-								pattern.path,
-								'/',
-								folder,
-								'/_data/',
-								jsonFilename
-							);
+						const jsonFilename = `${dataFile}.json`;
+						const jsonPath = path.join(
+							config.nitro.base_path,
+							pattern.path,
+							'/',
+							folder,
+							'/_data/',
+							jsonFilename
+						);
 
 						try {
 							if (contextDataRoot._locals) {
@@ -122,14 +124,14 @@ module.exports = function pattern () {
 							);
 						}
 						catch (e) {
-							throw new Error('Parse Error in Pattern ' + name + ': ' + e.message);
+							throw new Error(`Parse Error in Pattern ${name}: ${e.message}`);
 						}
 					}
 				}
 			}
 		}
 
-		throw new Error('Pattern `' + name + '` with template file `'+ templateFile + '.' + config.nitro.view_file_extension + '` not found in folder `' + folder + '`.');
+		throw new Error(`Pattern \`${name}\` with template file \`${templateFile}.${config.nitro.view_file_extension}\` not found in folder \`${folder}\`.`);
 	}
 	catch (e) {
 		return utils.logAndRenderError(e);

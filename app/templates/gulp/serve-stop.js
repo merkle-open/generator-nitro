@@ -3,7 +3,7 @@
 const fs = require('fs');
 const utils = require('./utils');
 
-module.exports = function (gulp, plugins) {
+module.exports = (gulp, plugins) => {
 	return function (callback) {
 		const pidFile = '.servepid';
 

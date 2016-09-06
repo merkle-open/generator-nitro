@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Simple Handlebars Translation Helper
  *
@@ -14,8 +16,8 @@
  *
  * It is also possible to use other translation features from i18next (http://i18next.com/node/pages/doc_features.html)
  */
-var i18n = require('i18next');
-var hbs = require('hbs');
+const i18n = require('i18next');
+const hbs = require('hbs');
 
 // already initialised in ../core/i18n.js
 //var options = {
@@ -27,26 +29,26 @@ var hbs = require('hbs');
 //};
 //i18n.init(options);
 
-module.exports = function(key) {
+module.exports = function t (key) {
 
-	var interpolationPrefix = '{';
-	var interpolationSuffix = '}';
-	var args = [].slice.call(arguments);
-	var values = args.slice(1, -1);
-	var hash = args.slice(-1)[0].hash;
-	var result = i18n.t.apply(i18n, args); // default translations (i18next)
-	var regExp;
+	const interpolationPrefix = '{';
+	const interpolationSuffix = '}';
+	const args = [].slice.call(arguments);
+	const values = args.slice(1, -1);
+	const hash = args.slice(-1)[0].hash;
+	let result = i18n.t.apply(i18n, args); // default translations (i18next)
+	let regExp;
 
 	// custom replaces from arguments
-	values.forEach(function(item, index) {
+	values.forEach((item, index) => {
 		if (typeof item === 'string') {
-			regExp = new RegExp('\\' + interpolationPrefix + (index+1) + '\\' + interpolationSuffix, 'g');
+			regExp = new RegExp(`\\${interpolationPrefix}${index+1}\\${interpolationSuffix}`, 'g');
 			result = result.replace(regExp, item);
 		}
 		else if (typeof item === 'object') {
-			for (var key in item) {
+			for (let key in item) {
 				if (item.hasOwnProperty(key)) {
-					regExp = new RegExp('\\' + interpolationPrefix + key + '\\' + interpolationSuffix, 'g');
+					regExp = new RegExp(`\\${interpolationPrefix}${key}\\${interpolationSuffix}`, 'g');
 					result = result.replace(regExp, item[key]);
 				}
 			}
@@ -54,9 +56,9 @@ module.exports = function(key) {
 	});
 	// custom replaces from hash
 	if (Object.keys(hash).length !== 0) {
-		for (var name in hash) {
+		for (let name in hash) {
 			if (hash.hasOwnProperty(name)) {
-				regExp = new RegExp('\\' + interpolationPrefix + name + '\\' + interpolationSuffix, 'g');
+				regExp = new RegExp(`\\${interpolationPrefix}${name}\\${interpolationSuffix}`, 'g');
 				result = result.replace(regExp, hash[name]);
 			}
 		}

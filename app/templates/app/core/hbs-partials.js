@@ -1,9 +1,11 @@
-var config = require('./config');
-var partialMatch = new RegExp('\.' + config.nitro.view_file_extension + '$');
+'use strict';
+
+const config = require('./config');
+const partialMatch = new RegExp('\.' + config.nitro.view_file_extension + '$');
 
 module.exports = function (hbs) {
-	var hbsutils = require('hbs-utils')(hbs);
-	var registerPartial = config.server.production ? 'registerPartials' : 'registerWatchedPartials';
+	const hbsutils = require('hbs-utils')(hbs);
+	const registerPartial = config.server.production ? 'registerPartials' : 'registerWatchedPartials';
 
 	hbsutils[registerPartial](config.nitro.base_path + config.nitro.view_partials_directory, {
 		match: partialMatch,

@@ -1,22 +1,24 @@
-var fs = require('fs');
-var path = require('path');
-var hbs = require('hbs');
-var config = require('./config');
+'use strict';
+
+const fs = require('fs');
+const path = require('path');
+const hbs = require('hbs');
+const config = require('./config');
 
 // collect helpers
-var files = {};
-var coreHelpersDir = config.nitro.base_path + 'app/helpers/';
-var projectHelpersDir = config.nitro.base_path + 'project/helpers/';
-var coreFiles = fs.readdirSync(coreHelpersDir);
-var projectFiles = fs.readdirSync(projectHelpersDir);
+let files = {};
+const coreHelpersDir = config.nitro.base_path + 'app/helpers/';
+const projectHelpersDir = config.nitro.base_path + 'project/helpers/';
+const coreFiles = fs.readdirSync(coreHelpersDir);
+const projectFiles = fs.readdirSync(projectHelpersDir);
 
-coreFiles.map(function (file) {
+coreFiles.map((file) => {
 	if ('.js' === path.extname(file)) {
 		files[path.basename(file, '.js')] = coreHelpersDir + file;
 	}
 });
 
-projectFiles.map(function (file) {
+projectFiles.map((file) => {
 	if ('.js' === path.extname(file)) {
 		files[path.basename(file, '.js')] = projectHelpersDir + file;
 	}

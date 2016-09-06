@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Init Translation Library i18next
  * Documentation of this version: http://i18next.github.io/i18next/pages/doc_init.html
@@ -11,9 +13,9 @@
  * Use with handlebars translation helper t: `../helpers/t.js`
  */
 
-var i18n = require('i18next');
+const i18n = require('i18next');
 
-var options = {
+const options = {
 	//supportedLngs: ['en', 'de'],
 	//lng: 'de-CH',
 	//detectLngFromHeaders: false,

@@ -1,15 +1,17 @@
-var path = require('path');
-var fs = require('fs');
-var config = require('./config');
-var utils = require('./utils');
-var dot = require('dot-object');
-var extend = require('extend');
-var express = require('express');
-var router = express.Router({
+'use strict';
+
+const path = require('path');
+const fs = require('fs');
+const config = require('./config');
+const utils = require('./utils');
+const dot = require('dot-object');
+const extend = require('extend');
+const express = require('express');
+const router = express.Router({
 	caseSensitive: false,
 	strict: false
 });
-var isProduction = config.server.production;
+const isProduction = config.server.production;
 
 /**
  * static routes
@@ -20,10 +22,10 @@ router.use('/', express.static(config.nitro.base_path + '/public/'));
  * views
  */
 function getView(req, res, next) {
-	var getViewCombinations = function getViewCombinations(action) {
-		var pathes = [action];
-		var positions = [];
-		var i, j;
+	const getViewCombinations = function getViewCombinations(action) {
+		const pathes = [action];
+		let positions = [];
+		let i, j;
 
 		for (i = 0; i < action.length; i++) {
 			if (action[i] === '-') {
@@ -31,11 +33,11 @@ function getView(req, res, next) {
 			}
 		}
 
-		var len = positions.length;
-		var combinations = [];
+		const len = positions.length;
+		let combinations = [];
 
 		for (i = 1; i < ( 1 << len ); i++) {
-			var c = [];
+			let c = [];
 			for (j = 0; j < len; j++) {
 				if (i & ( 1 << j )) {
 					c.push(positions[j]);
@@ -44,31 +46,31 @@ function getView(req, res, next) {
 			combinations.push(c);
 		}
 
-		combinations.forEach(function (combination) {
-			var path = action;
-			combination.forEach(function (pos) {
+		combinations.forEach((combination) => {
+			let path = action;
+			combination.forEach((pos) => {
 				path = replaceAt(path, pos, '/');
 			});
 			pathes.push(path);
 		});
 		return pathes;
 	};
-	var replaceAt = function replaceAt(string, index, character) {
+	const replaceAt = function replaceAt(string, index, character) {
 		return string.substr(0, index) + character + string.substr(index + character.length);
 	};
 
-	var tpl = req.params.view ? req.params.view.toLowerCase() : 'index';
-	var data = {
+	const tpl = req.params.view ? req.params.view.toLowerCase() : 'index';
+	let data = {
 		pageTitle: tpl,
 		_layout: config.nitro.default_layout,
 		_production: isProduction
 	};
-	var viewPathes = getViewCombinations(tpl);
-	var rendered = false;
+	const viewPathes = getViewCombinations(tpl);
+	let rendered = false;
 
-	viewPathes.forEach(function (viewPath) {
+	viewPathes.forEach((viewPath) => {
 		if (!rendered) {
-			var tplPath = path.join(
+			const tplPath = path.join(
 				config.nitro.base_path,
 				config.nitro.view_directory,
 				'/',
@@ -78,13 +80,13 @@ function getView(req, res, next) {
 			if (utils.fileExistsSync(tplPath)) {
 
 				// collect data
-				var dataPath = path.join(
+				const dataPath = path.join(
 					config.nitro.base_path,
 					config.nitro.view_data_directory,
 					'/',
 					viewPath + '.json'
 				);
-				var customDataPath = req.query._data ? path.join(
+				const customDataPath = req.query._data ? path.join(
 					config.nitro.base_path,
 					config.nitro.view_data_directory,
 					'/' + req.query._data + '.json'
@@ -99,7 +101,7 @@ function getView(req, res, next) {
 
 				// handle query string parameters
 				if (Object.keys(req.query).length !== 0) {
-					var reqQuery = JSON.parse(JSON.stringify(req.query)); // simple clone
+					let reqQuery = JSON.parse(JSON.stringify(req.query)); // simple clone
 					dot.object(reqQuery);
 					extend(true, data, reqQuery);
 					data._query = reqQuery; // save query for use in patterns
@@ -136,7 +138,7 @@ router.get('/:view', getView);
 /**
  * everything else gets a 404
  */
-router.use(function (req, res) {
+router.use((req, res) => {
 	res.locals.pageTitle = '404 - Not Found';
 	res.locals._production = isProduction;
 	if (utils.layoutExists(config.nitro.default_layout)) {

@@ -1,18 +1,20 @@
-var fs = require('fs');
-var hbs = require('hbs');
-var path = require('path');
-var extend = require('extend');
-var config = require('../core/config.js');
-var utils = require('../core/utils');
+'use strict';
 
-module.exports = function () {
+const fs = require('fs');
+const hbs = require('hbs');
+const path = require('path');
+const extend = require('extend');
+const config = require('../core/config.js');
+const utils = require('../core/utils');
+
+module.exports = function placeholder () {
 
 	try {
-		var context = arguments[arguments.length - 1];
-		var contextDataRoot = context.data && context.data.root ? context.data.root : {};
-		var name = 'string' === typeof arguments[0] ? arguments[0] : context.hash.name;
-		var templateFile = 'string' === typeof arguments[1] ? arguments[1] : context.hash.template;
-		var placeholderData = {};
+		const context = arguments[arguments.length - 1];
+		const contextDataRoot = context.data && context.data.root ? context.data.root : {};
+		const name = 'string' === typeof arguments[0] ? arguments[0] : context.hash.name;
+		let templateFile = 'string' === typeof arguments[1] ? arguments[1] : context.hash.template;
+		let placeholderData = {};
 
 		// validate
 		if(!name) {
@@ -32,9 +34,9 @@ module.exports = function () {
 			extend(true, placeholderData, contextDataRoot._query);
 		}
 
-		templateFile += '.' + config.nitro.view_file_extension;
+		templateFile += `.${config.nitro.view_file_extension}`;
 
-		var templatePath = path.join(
+		const templatePath = path.join(
 			config.nitro.base_path,
 			config.nitro.placeholders_directory,
 			name,
@@ -48,7 +50,7 @@ module.exports = function () {
 			);
 		}
 
-		throw new Error('Placeholder ' + templatePath + ' not found.');
+		throw new Error(`Placeholder ${templatePath} not found.`);
 
 	}
 	catch (e) {

@@ -108,12 +108,12 @@ function fileExistsSync(filename) {
 }
 
 module.exports = {
-	fileExistsSync: fileExistsSync,
-	getBrowserCompatibility: getBrowserCompatibility,
-	getBrowserSyncInstance: getBrowserSyncInstance,
-	getSourcePatterns: getSourcePatterns,
-	getTask: getTask,
-	reloadConfig: reloadConfig,<% if (options.js === 'TypeScript') { %>
-	splitJsAssets: splitJsAssets,<% } %>
-	updateSourcePatterns: updateSourcePatterns,
+	fileExistsSync,
+	getBrowserCompatibility,
+	getBrowserSyncInstance,
+	getSourcePatterns,
+	getTask,
+	reloadConfig,<% if (options.js === 'TypeScript') { %>
+	splitJsAssets,<% } %>
+	updateSourcePatterns
 };

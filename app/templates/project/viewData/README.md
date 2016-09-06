@@ -7,12 +7,12 @@ You can add data to the `res.locals` property which will be merged later with th
 
 The following code is an example of such a view data route:
 
-    function getUser(req, res, next){
+    function getUser(req, res, next) {
        res.locals.user = {name: "my name", email: "me@test.com"};
        next();
     }
     
-    exports = module.exports = function(app){
+    exports = module.exports = (app) => {
         app.route('/')
             .get(getUser);
     };

@@ -1,14 +1,16 @@
-var path = require('path');
-var fs = require('fs');
-var extend = require('extend');
+'use strict';
+
+const path = require('path');
+const fs = require('fs');
+const extend = require('extend');
 
 function factory() {
-	var base_path = path.normalize(path.join(__dirname, '../../'));
-	var options = {
+	const base_path = path.normalize(path.join(__dirname, '../../'));
+	const options = {
 		encoding: 'utf-8',
 		flag: 'r'
 	};
-	var config = JSON.parse(fs.readFileSync(base_path + 'config.json', options));
+	let config = JSON.parse(fs.readFileSync(base_path + 'config.json', options));
 
 	config.nitro = extend(true, {
 		base_path: base_path,

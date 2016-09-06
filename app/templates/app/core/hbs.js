@@ -24,7 +24,7 @@ projectFiles.map((file) => {
 	}
 });
 
-for (var key in files) {
+for (let key in files) {
 	if (files.hasOwnProperty(key)) {
 		hbs.registerHelper(key, require(files[key]));
 	}

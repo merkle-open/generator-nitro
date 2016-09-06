@@ -69,7 +69,7 @@ module.exports = function pattern () {
 
 		for (let key in config.nitro.patterns) {
 			if (config.nitro.patterns.hasOwnProperty(key)) {
-				var pattern = config.nitro.patterns[key];
+				const pattern = config.nitro.patterns[key];
 				if (pattern.hasOwnProperty('path')) {
 					const templatePath = path.join(
 						config.nitro.base_path,

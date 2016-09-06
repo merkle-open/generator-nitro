@@ -20,7 +20,7 @@ const i18n = require('i18next');
 const hbs = require('hbs');
 
 // already initialised in ../core/i18n.js
-//var options = {
+//const options = {
 //	//supportedLngs: ['en', 'de'],
 //	//lng: 'de-CH',
 //	fallbackLng: 'default',

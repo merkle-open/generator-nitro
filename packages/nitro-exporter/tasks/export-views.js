@@ -67,9 +67,6 @@ module.exports = function (gulp, config) {
 		});
 	}
 	return function () {
-		const pid = fs.readFileSync('.servepid', {
-			encoding: 'utf8'
-		});
 		const views = config.exporter.views;
 		const excludeFolders = [
 			config.nitro.view_partials_directory,
@@ -98,20 +95,10 @@ module.exports = function (gulp, config) {
 				});
 			}
 		} else {
-			process.kill(pid);
-			fs.unlinkSync('.servepid');
 			return;
 		}
 
 		return gulp.src(viewGlobs)
-			.pipe(loadView(es))
-			.on('error', () => {
-				process.kill(pid);
-				fs.unlinkSync('.servepid');
-			})
-			.on('end', () => {
-				process.kill(pid);
-				fs.unlinkSync('.servepid');
-			});
+			.pipe(loadView(es));
 	};
 };

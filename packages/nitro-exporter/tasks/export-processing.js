@@ -74,13 +74,23 @@ module.exports = function (gulp, config) {
 							resolve();
 						}
 					}
-					renames.forEach((rename) => gulp.src(rename.src, { base: rename.base })
-						.pipe(gulp.dest(rename.dest))
-						.on('end', () => {
-							del.sync([rename.src]);
-							done(++i);
-						})
-					);
+					/**
+					 * Will move files.
+					 * @returns {null} No return value.
+					 */
+					function move() {
+						gulp.src(renames[i].src, { base: renames[i].base })
+							.pipe(gulp.dest(renames[i].dest))
+							.on('end', () => {
+								del.sync(renames[i++].src);
+								if (i < renames.length) {
+									move();
+								} else {
+									done();
+								}
+							});
+					}
+					move();
 				});
 			};
 		}

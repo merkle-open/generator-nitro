@@ -24,9 +24,9 @@
     "modular"
   ],
   "dependencies": {
-    "autoprefixer": "~6.4.0",
+    "autoprefixer": "~6.4.1",
     "body-parser": "~1.15.2",
-    "browser-sync": "~2.14.3",
+    "browser-sync": "~2.15.0",
     "compression": "~1.6.2",
     "del": "~2.2.2",
     "dot-object": "~1.5.1",
@@ -71,7 +71,7 @@
     "karma-chrome-launcher": "~2.0.0",
     "karma-jasmine": "~1.0.2"<% if (options.clientTpl) { %>,
     "merge-stream": "~1.0.0"<% } %><% if (options.exporter) { %>,
-    "nitro-exporter": "~0.1.0"<% } %><% if (options.release) { %>,
+    "nitro-exporter": "~0.1.2"<% } %><% if (options.release) { %>,
     "nitro-release": "~0.1.0"<% } %>
   },
   "devDependencies": {

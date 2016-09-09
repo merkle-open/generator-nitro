@@ -12,7 +12,6 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 * CSS/JS concatenation and minification
 * LESS/SCSS support (with caching for optimal performance)
 * Source Maps, Linting, PostCSS & Browsersync
-* Bower support
 * Jasmine tests with Karma test runner
 * Yeoman pattern generator<% if (options.clientTpl) { %>
 * [Client side templates](client-templates.md)<% } %><% if (options.exporter) { %>
@@ -27,7 +26,7 @@ Currently supported node.js versions are 0.12.x, and 4.x. So everything between 
 And also you need the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro) 
 and some dependencies installed globally.
 
-    npm install -g yo bower gulp jasmine karma-cli generator-nitro
+    npm install -g yo gulp jasmine karma-cli generator-nitro
 
 Keep your global packages up to date:
 
@@ -463,7 +462,6 @@ Nitro tries to install a `post-merge` git hook with every `npm install`.
 This hook will:
 
 * run `npm install` if someone changes `package.json` 
-* run `bower install` if someone changes `bower.json`. 
 * sync this git hooks if someone changes one.
  
 You may [change this or add other hooks](../.githooks/README.md) in `project/.githooks`.
@@ -479,15 +477,13 @@ You may [change this or add other hooks](../.githooks/README.md) in `project/.gi
 * Favicon & Home-Icons from Nitro (replace with your own)
 * Pattern `example` and some styles in assets/css (you don't need them)
 
-#### Bower Components
+#### Client Dependencies
 
-The following packages are always installed by the [app](#name) generator:
+The following packages are always installed by the [app](#name) generator as npm dependencies:
 
 * [jQuery 3.1.0](http://jquery.com/)
 * [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)<% if (options.clientTpl) { %>
 * [Handlebars 4.0.5](https://github.com/components/handlebars.js)<% } %>
-
-All of these can be updated with `bower update` as new versions are released.
 
 ### Credits
 

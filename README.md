@@ -17,7 +17,7 @@ It's not recommended to update node.js to release 5.
 
 Install `yo` and other required tools globally:
 
-    npm install -g yo bower gulp jasmine karma-cli
+    npm install -g yo gulp jasmine karma-cli
 
 If you want to use TypeScript, you need to install "tsd" (typescript definition repository) as well.
 

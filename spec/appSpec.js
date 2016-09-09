@@ -29,7 +29,6 @@ describe('nitro:app', () => {
 				'project',
 				'public',
 				'views',
-				'bower.json',
 				'package.json'
 			]);
 		});

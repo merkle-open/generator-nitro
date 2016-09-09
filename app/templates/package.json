@@ -11,7 +11,7 @@
   },
   "scripts": {
     "githooks": "gulp sync-githooks",
-    "postinstall": "bower install && npm run githooks",
+    "postinstall": "npm run githooks",
     "test": "karma start --single-run --no-auto-watch",
     "start": "node server"
   },
@@ -23,7 +23,12 @@
     "pattern",
     "modular"
   ],
-  "dependencies": {
+  "dependencies": {<% if (options.clientTpl) { %>
+    "handlebars": "~4.0.5",<% } %>
+    "jquery": "~3.1.0",
+    "terrific": "~3.0.0"
+  },
+  "devDependencies": {
     "autoprefixer": "~6.4.1",
     "body-parser": "~1.15.2",
     "browser-sync": "~2.14.3",
@@ -58,7 +63,8 @@
     "gulp-stylelint": "~3.2.0",<% if (options.js === 'TypeScript') { %>
     "typescript": "~1.5.0-beta",
     "gulp-typescript": "~2.7.5", <% } %>
-    "gulp-uglify": "~2.0.0",<% if (options.clientTpl) { %>
+    "gulp-uglify": "~2.0.0",
+    "gulp-watch": "~4.3.9",<% if (options.clientTpl) { %>
     "gulp-wrap": "~0.13.0",<% } %>
     "hbs": "~4.0.0",
     "hbs-utils": "~0.0.3",
@@ -73,8 +79,5 @@
     "merge-stream": "~1.0.0"<% } %><% if (options.exporter) { %>,
     "nitro-exporter": "~0.1.0"<% } %><% if (options.release) { %>,
     "nitro-release": "~0.1.0"<% } %>
-  },
-  "devDependencies": {
-    "gulp-watch": "~4.3.9"
   }
 }

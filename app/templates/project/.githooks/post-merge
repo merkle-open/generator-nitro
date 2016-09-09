@@ -14,8 +14,5 @@ check_run() {
 # `npm install` and `npm prune` if `package.json` gets changed
 check_run package.json "npm install && npm prune"
 
-# `bower install` and `bower prune` if `bower.json` gets changed
-check_run bower.json "bower install && bower prune"
-
 # `sync hooks` if `.githooks` gets changed
 check_run ".githooks" "npm run githooks"

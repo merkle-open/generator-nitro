@@ -272,7 +272,6 @@ module.exports = generators.Base.extend({
 
 			const tplFiles = [
 				// files to process with copyTpl
-				'bower.json',
 				'config.json',
 				'gulpfile.js',
 				'package.json',
@@ -408,6 +407,7 @@ module.exports = generators.Base.extend({
 
 	install() {
 		this.installDependencies({
+			bower: false,
 			skipInstall: this.options['skip-install']
 		});
 

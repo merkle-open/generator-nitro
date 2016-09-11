@@ -3,7 +3,7 @@
 const hbs = require('hbs');
 const fs = require('fs');
 const path = require('path');
-const config = require('../core/config.js');
+const config = require('../../../core/config.js');
 
 /**
  * Excluded Directories and Files

@@ -282,7 +282,7 @@ module.exports = generators.Base.extend({
 				'gulp/utils.js',
 				'gulp/watch-assets.js',
 				'project/docs/nitro.md',
-				'spec/helpers/patternSpec.js',
+				'spec/templating/patternSpec.js',
 				'views/index.html'
 			];
 			const ignores = [

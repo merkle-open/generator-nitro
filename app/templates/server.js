@@ -4,12 +4,12 @@ const express = require('express');
 const app = express();
 const config = require('./app/core/config');
 const router = require('./app/core/router');
-const hbs = require('./app/core/hbs');
+const hbs = require('./app/templating/hbs/engine');
 const compression = require('compression');
 const bodyParser = require('body-parser');
 
 // partials
-require('./app/core/hbs-partials')(hbs);
+require('./app/templating/hbs/hbs-partials')(hbs);
 
 // compress all requests
 app.use(compression());

@@ -1,7 +1,6 @@
 'use strict';
 
 const fs = require('fs');
-const hbs = require('hbs');
 const path = require('path');
 const config = require('./config');
 
@@ -14,13 +13,6 @@ function fileExistsSync(filename) {
 	catch (ex) {
 		return false;
 	}
-}
-
-function logAndRenderError(e) {
-	console.info(e.message);
-	return new hbs.handlebars.SafeString(
-		`<p class="nitro-msg nitro-msg--error">${e.message}</p>`
-	);
 }
 
 function layoutExists(layoutName) {
@@ -39,7 +31,6 @@ function getLayoutPath(layoutName) {
 
 module.exports = {
 	fileExistsSync,
-	logAndRenderError,
 	layoutExists,
 	getLayoutPath
 };

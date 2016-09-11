@@ -1,6 +1,6 @@
 'use strict';
 
-const config = require('./config');
+const config = require('../../core/config');
 const partialMatch = new RegExp('\.' + config.nitro.view_file_extension + '$');
 
 module.exports = function (hbs) {

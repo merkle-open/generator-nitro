@@ -19,8 +19,9 @@ const fs = require('fs');
 const hbs = require('hbs');
 const path = require('path');
 const extend = require('extend');
-const config = require('../core/config');
-const utils = require('../core/utils');
+const config = require('../../../core/config');
+const utils = require('../../../core/utils');
+const hbsUtils = require('../utils');
 
 module.exports = function pattern () {
 
@@ -134,6 +135,6 @@ module.exports = function pattern () {
 		throw new Error(`Pattern \`${name}\` with template file \`${templateFile}.${config.nitro.view_file_extension}\` not found in folder \`${folder}\`.`);
 	}
 	catch (e) {
-		return utils.logAndRenderError(e);
+		return hbsUtils.logAndRenderError(e);
 	}
 };

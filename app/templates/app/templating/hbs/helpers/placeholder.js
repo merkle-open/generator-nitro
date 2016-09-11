@@ -4,8 +4,9 @@ const fs = require('fs');
 const hbs = require('hbs');
 const path = require('path');
 const extend = require('extend');
-const config = require('../core/config.js');
-const utils = require('../core/utils');
+const config = require('../../../core/config');
+const utils = require('../../../core/utils');
+const hbsUtils = require('../utils');
 
 module.exports = function placeholder () {
 
@@ -54,6 +55,6 @@ module.exports = function placeholder () {
 
 	}
 	catch (e) {
-		return utils.logAndRenderError(e);
+		return hbsUtils.logAndRenderError(e);
 	}
 };

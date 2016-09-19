@@ -1,4 +1,4 @@
-/// <reference path="../../../../assets/vendor/terrific/dist/terrific.d.ts" />
+/// <reference path="../../../../node_modules/terrific/dist/terrific.d.ts" />
 /// <reference path="../../../../typings/tsd.d.ts" />
 
 module T {
@@ -9,7 +9,7 @@ module T {
 			}
 
 			start(resolve: (value?: any) => void, reject: (error?: any) => void): void {
-				console.log("start: <%= pattern.js %>");
+				console.log('start: <%= pattern.js %>');
 				resolve();
 			}
 		}

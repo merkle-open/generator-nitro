@@ -241,8 +241,8 @@ module.exports = generators.Base.extend({
 
 			try {
 				// extract entries
-				zip.extractEntryTo('frontend-defaults-master/codequality/jshint/.jshintrc', this.sourceRoot(), false, true);
-				zip.extractEntryTo('frontend-defaults-master/codequality/jshint/nitro.jshintignore', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/codequality/eslint/.eslintrc.js', this.sourceRoot(), false, true);
+				zip.extractEntryTo('frontend-defaults-master/codequality/eslint/nitro.eslintignore', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/codequality/stylelint/.stylelintrc', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/codequality/stylelint/nitro.stylelintignore', this.sourceRoot(), false, true);
 				zip.extractEntryTo('frontend-defaults-master/editorconfig/.editorconfig', this.sourceRoot(), false, true);
@@ -250,8 +250,8 @@ module.exports = generators.Base.extend({
 				zip.extractEntryTo('frontend-defaults-master/repo/gitattributes/.gitattributes', this.sourceRoot(), false, true);
 
 				// rename files
+				fs.renameSync(this.templatePath('nitro.eslintignore'), this.templatePath('.eslintignore'));
 				fs.renameSync(this.templatePath('nitro.gitignore'), this.templatePath('.gitignore'));
-				fs.renameSync(this.templatePath('nitro.jshintignore'), this.templatePath('.jshintignore'));
 				fs.renameSync(this.templatePath('nitro.stylelintignore'), this.templatePath('.stylelintignore'));
 			} catch (e) {
 				this.log(chalk.red(e.message));

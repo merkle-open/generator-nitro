@@ -1,21 +1,17 @@
-(function ($) {
+((($) => {
 	'use strict';
 	/**
 	 * Template decorator implementation for the Example module.
 	 *
 	 * @author Pre Name <pre.name@domain.com>
-	 * @namespace T.Module.Example
-	 * @class Template
-	 * @extends T.Module
-	 * @constructor
 	 */
 	T.Module.Example.Template = T.createDecorator({
-		start: function (resolve) {
-			var $ctx = $(this._ctx);
+		start(resolve) {
+			const $ctx = $(this._ctx);
 
-			$ctx.on('click', '.js-m-example__add', function() {
+			$ctx.on('click', '.js-m-example__add', () => {
 				if (T.tpl && T.tpl.example) {
-					var data = {
+					const tplData = {
 						decorator: 'Template',
 						title: 'Client Side Rendered Example Module',
 						links: [
@@ -29,19 +25,22 @@
 							}
 						]
 					};
-					var pattern = T.tpl.example(data);
-					var $pattern = $(pattern);
+					const pattern = T.tpl.example(tplData);
+					const $pattern = $(pattern);
 
 					this._sandbox.addModules($pattern.get(0));
 					$ctx.after($pattern);
-					console.log('Client Side Template Example rendered [id:' + $pattern.data('t-id') + ']');
-				}
-			}.bind(this));
 
-			$ctx.on('click', '.js-m-example__more', function() {
+					/* eslint-disable no-console */
+					console.log(`Client Side Template Example rendered [id:${$pattern.data('t-id')}]`);
+					/* eslint-enable no-console */
+				}
+			});
+
+			$ctx.on('click', '.js-m-example__more', () => {
 				if (T.tpl && T.tpl.example && T.tpl.example.links) {
-					var data = {
-						links : [
+					const tplData = {
+						links: [
 							{
 								uri: 'index',
 								text: 'One more link'
@@ -52,16 +51,19 @@
 							}
 						]
 					};
-					var links = T.tpl.example.links(data);
-					var $links = $(links);
+					const links = T.tpl.example.links(tplData);
+					const $links = $(links);
 
 					$ctx.find('.js-m-example__list').append($links);
 				}
-			}.bind(this));
+			});
 
-			console.log('Example Decorator Template - start id: [' + $ctx.data('t-id') + ']');
+			/* eslint-disable no-console */
+			console.log(`Example Decorator Template - start id: [${$ctx.data('t-id')}]`);
+			/* eslint-enable no-console */
 
-			this._parent.start(resolve); // calling original method
+			// calling original method
+			this._parent.start(resolve);
 		}
 	});
-}(jQuery));
+})(jQuery));

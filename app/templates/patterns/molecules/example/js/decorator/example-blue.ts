@@ -1,24 +1,28 @@
-/// <reference path="../../../../../assets/vendor/terrific/dist/terrific.d.ts" />
+/// <reference path="../../../../../node_modules/terrific/dist/terrific.d.ts" />
 /// <reference path="../../../../../typings/tsd.d.ts" />
 /// <reference path="../example.ts" />
 
 module T {
 	export module Module {
 		function ExampleBlue(mod:Example) {
-			var start = mod.start.bind(mod);
+			const start = mod.start.bind(mod);
 			mod.start = function (resolve:(value?:any) => void, reject:(error?:any) => void) {
-				var $ctx = $(this._ctx);
+				const $ctx = $(this._ctx);
 
-				console.log('Example Decorator Blue - start id: [' + $ctx.data('t-id') + ']');
+				/* eslint-disable no-console */
+				console.log(`Example Decorator Blue - start id: [${$ctx.data('t-id')}]`);
+				/* eslint-enable no-console */
 
 				start(resolve, reject); // calling original method
 			};
 
-			var sync = mod.sync.bind(mod);
+			const sync = mod.sync.bind(mod);
 			mod.sync = function () {
-				var $ctx = $(this._ctx);
+				const $ctx = $(this._ctx);
 
-				console.log('Example Decorator Blue - sync id: [' + $ctx.data('t-id') + ']');
+				/* eslint-disable no-console */
+				console.log(`Example Decorator Blue - sync id: [${$ctx.data('t-id')}]`);
+				/* eslint-enable no-console */
 
 				sync(); // calling original method
 			};

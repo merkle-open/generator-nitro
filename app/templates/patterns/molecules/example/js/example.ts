@@ -1,4 +1,4 @@
-/// <reference path="../../../../assets/vendor/terrific/dist/terrific.d.ts" />
+/// <reference path="../../../../node_modules/terrific/dist/terrific.d.ts" />
 /// <reference path="../../../../typings/tsd.d.ts" />
 
 module T {
@@ -9,17 +9,21 @@ module T {
 			}
 
 			start(resolve:(value?:any) => void, reject:(error?:any) => void):void {
-				var $ctx = $(this._ctx);
+				const $ctx = $(this._ctx);
 				this._events.on('t.sync', this.sync.bind(this));
 
-				console.log('Example - start [id:' + $ctx.data('t-id') + ']');
+				/* eslint-disable no-console */
+				console.log(`Example - start [id:${$ctx.data('t-id')}]`);
+				/* eslint-enable no-console */
 
 				resolve();
 			}
 
 			sync() {
-				var $ctx = $(this._ctx);
-				console.log('Example - sync [id:' + $ctx.data('t-id') + ']');
+				const $ctx = $(this._ctx);
+				/* eslint-disable no-console */
+				console.log(`Example - sync [id:${$ctx.data('t-id')}]`);
+				/* eslint-enable no-console */
 			}
 		}
 	}

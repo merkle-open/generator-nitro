@@ -36,12 +36,12 @@ describe('nitro:app', () => {
 		it('includes namics frontend-defaults', () => {
 			assert.file([
 				'.editorconfig',
+				'.eslintignore',
+				'.eslintrc.js',
 				'.gitattributes',
 				'.gitignore',
-				'.jshintrc',
-				'.jshintignore',
-				'.stylelintrc',
-				'.stylelintignore'
+				'.stylelintignore',
+				'.stylelintrc'
 			]);
 		});
 	});

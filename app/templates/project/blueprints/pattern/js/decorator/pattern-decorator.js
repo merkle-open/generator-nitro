@@ -10,6 +10,6 @@
 			const $ctx = $(this._ctx);
 
 			this._parent.start(resolve);
-		}
+		},
 	});
 })(jQuery));

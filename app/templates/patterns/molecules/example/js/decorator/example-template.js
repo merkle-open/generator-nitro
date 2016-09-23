@@ -17,13 +17,13 @@
 						links: [
 							{
 								uri: 'index',
-								text: 'Link One'
+								text: 'Link One',
 							},
 							{
 								uri: 'index',
-								text: 'Link Two'
-							}
-						]
+								text: 'Link Two',
+							},
+						],
 					};
 					const pattern = T.tpl.example(tplData);
 					const $pattern = $(pattern);
@@ -43,13 +43,13 @@
 						links: [
 							{
 								uri: 'index',
-								text: 'One more link'
+								text: 'One more link',
 							},
 							{
 								uri: 'index',
-								text: 'Another link'
-							}
-						]
+								text: 'Another link',
+							},
+						],
 					};
 					const links = T.tpl.example.links(tplData);
 					const $links = $(links);
@@ -64,6 +64,6 @@
 
 			// calling original method
 			this._parent.start(resolve);
-		}
+		},
 	});
 })(jQuery));

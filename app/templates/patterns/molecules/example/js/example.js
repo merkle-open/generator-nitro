@@ -21,6 +21,6 @@
 			/* eslint-disable no-console */
 			console.log(`Example - sync [id:${$ctx.data('t-id')}]`);
 			/* eslint-enable no-console */
-		}
+		},
 	});
 })(jQuery));

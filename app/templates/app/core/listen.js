@@ -2,11 +2,12 @@
 
 const config = require('./config');
 const port = config.server.port;
+const mode = config.server.production ? 'production': 'development';
 
 module.exports = function (app) {
 
 	app.listen(port, () => {
-			console.log('Nitro listening on *:%s', port);
+			console.log('Nitro listening on *:%s in %s mode', port, mode);
 		})
 		.on('error', (err) => {
 			if (err.errno === 'EADDRINUSE') {

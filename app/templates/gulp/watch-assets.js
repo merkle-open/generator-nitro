@@ -5,7 +5,6 @@ var globby = require('globby');
 module.exports = function (gulp, plugins) {
 	return function () {
 		var isDependentStyleSource = function(file) {
-			var browserSync = utils.getBrowserSyncInstance();
 			var isDependent = false;
 			var cssAssets = utils.getSourcePatterns('css');
 			cssAssets.forEach(function (asset) {
@@ -41,6 +40,7 @@ module.exports = function (gulp, plugins) {
 				});
 			}
 		};
+		var browserSync = utils.getBrowserSyncInstance();
 
 		plugins.watch([
 			'config.json'

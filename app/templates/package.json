@@ -6,8 +6,8 @@
   "private": true,
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=0.12 <5",
-    "npm": ">=1.3 <4"
+    "node": ">=4 <7",
+    "npm": ">=3 <4"
   },
   "scripts": {
     "githooks": "gulp sync-githooks",
@@ -30,7 +30,7 @@
     "terrific": "~3.0.0"
   },
   "devDependencies": {
-    "@namics/eslint-config": "^2.0.0",
+    "@namics/eslint-config": "~2.0.0",
     "autoprefixer": "~6.5.0",
     "babel-preset-es2015": "~6.16.0",
     "body-parser": "~1.15.2",

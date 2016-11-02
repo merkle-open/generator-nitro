@@ -33,13 +33,13 @@
     "git-config": "~0.0.7",
     "glob": "~7.1.0",
     "lodash": "~4.16.0",
-    "request": "~2.75.0",
+    "request": "~2.76.0",
     "yeoman-generator": "~0.24.1",
     "yosay": "~1.2.0"
   },
   "devDependencies": {
     "ejs": "~2.5.2",
-    "fs-extra": "~0.30.0",
+    "fs-extra": "~1.0.0",
     "jasmine": "~2.5.2",
     "yeoman-assert": "~2.2.1",
     "yeoman-test": "~1.5.1"

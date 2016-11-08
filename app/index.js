@@ -42,7 +42,7 @@ module.exports = generators.Base.extend({
 			defaults: this.passedInOptions.pre || this.preOptions[1]
 		});
 
-		this.jsOptions = ['JavaScript', 'TypeScript'];
+		this.jsOptions = ['JavaScript', 'TypeScript', 'ESNext'];
 		this.option('js', {
 			desc: 'your desired js compiler [' + this.jsOptions.join('|') + ']',
 			type: String,

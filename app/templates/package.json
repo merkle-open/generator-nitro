@@ -58,7 +58,7 @@
     "gulp-stylelint": "3.4.0",<% if (options.js === 'TypeScript') { %>
     "typescript": "1.5.0-beta",
     "gulp-typescript": "2.7.5",<% } else if (options.js === 'ESNext') { %>
-    "babel-preset-latest": "^6.16.0",
+    "babel-preset-es2015-script": "^1.1.0",
     "gulp-babel": "^6.1.2",
     "@namics/eslint-config": "^2.0.0",
     "gulp-eslint": "^3.0.1",<% } %>

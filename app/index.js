@@ -300,6 +300,7 @@ module.exports = generators.Base.extend({
 				// files only for this.options.clientTpl===true
 				'components/molecules/example/_data/example-template.json',
 				'components/molecules/example/js/decorator/example-template.js',
+				'components/molecules/example/js/decorator/example-template.es',
 				'components/molecules/example/template/example.hbs',
 				'components/molecules/example/template/example.links.hbs',
 				'components/molecules/example/template/partial/example.link.hbs',

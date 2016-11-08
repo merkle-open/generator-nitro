@@ -42,8 +42,8 @@
     "gulp-declare": "0.3.0",
     "gulp-handlebars": "4.0.0",<% } %>
     "gulp-header": "1.8.8",
-    "gulp-imagemin": "2.4.0",
-    "gulp-jshint": "2.0.2",<% if (options.pre === 'less') { %>
+    "gulp-imagemin": "2.4.0",<% if (options.js !== 'ESNext') { %>
+    "gulp-jshint": "2.0.2",<% } if (options.pre === 'less') { %>
     "gulp-less": "3.1.0",<% } %>
     "gulp-live-server": "0.0.30",
     "gulp-load-plugins": "1.4.0",
@@ -57,7 +57,11 @@
     "gulp-sourcemaps": "1.6.0",
     "gulp-stylelint": "3.4.0",<% if (options.js === 'TypeScript') { %>
     "typescript": "1.5.0-beta",
-    "gulp-typescript": "2.7.5", <% } %>
+    "gulp-typescript": "2.7.5",<% } else if (options.js === 'ESNext') { %>
+    "babel-preset-latest": "^6.16.0",
+    "gulp-babel": "^6.1.2",
+    "@namics/eslint-config": "^2.0.0",
+    "gulp-eslint": "^3.0.1",<% } %>
     "gulp-uglify": "2.0.0",<% if (options.clientTpl) { %>
     "gulp-wrap": "0.13.0",<% } %>
     "hbs": "4.0.0",

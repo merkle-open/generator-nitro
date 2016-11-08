@@ -8,7 +8,11 @@ gulp.task('sync-githooks', getTask('sync-githooks'));
 gulp.task('compile-css', getTask('compile-css'));<% if (options.js === 'TypeScript') { %>
 gulp.task('compile-ts', getTask('compile-ts'));<% } %><% if (options.clientTpl) { %>
 gulp.task('compile-templates', getTask('compile-templates'));<% } %>
-gulp.task('compile-js', <% if (options.js === 'TypeScript') { %>['compile-ts'<% if (options.clientTpl) { %>, 'compile-templates'<% } %>], <% } else if (options.clientTpl) { %>['compile-templates'], <% } %>getTask('compile-js'));
+<% if (options.js === 'ESNext') { %>
+	gulp.task('compile-js', getTask('compile-esnext'));
+<% } else { %>
+	gulp.task('compile-js', <% if (options.js === 'TypeScript') { %>['compile-ts'<% if (options.clientTpl) { %>, 'compile-templates'<% } %>], <% } else if (options.clientTpl) { %>['compile-templates'], <% } %>getTask('compile-js'));
+<% } %>
 gulp.task('minify-css', ['compile-css'], getTask('minify-css'));
 gulp.task('minify-js', ['compile-js'], getTask('minify-js'));
 gulp.task('minify-img', getTask('minify-img'));

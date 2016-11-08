@@ -8,27 +8,24 @@ module.exports = function (gulp, plugins) {
 
 		return Promise.all(
 			assets.map(function (asset) {
-				<% if (options.js === 'TypeScript') { %>
-					var tsAssets = utils.splitJsAssets(asset);
-					tsAssets.js.push('public/assets/js/' + asset.name.replace('.js', '.ts.js'));
-				<% } %>
 				return new Promise(function(resolve) {
-					gulp.src(<% if (options.js === 'TypeScript') { %>tsAssets.js<% } else { %>asset.src<% } %>, {base: '.'})
+					gulp.src(asset.src, {base: '.'})
 						.pipe(plugins.plumber())
 						.pipe(plugins.cached(asset.name))
+						.pipe(plugins.eslint())
+						.pipe(plugins.eslint.format('stylish'))
 						.pipe(plugins.sourcemaps.init({loadMaps: true}))
-						.pipe(plugins.jshint())
-						.pipe(plugins.jshint.reporter('jshint-stylish'))
+						.pipe(plugins.babel())
 						.pipe(plugins.remember(asset.name))
 						.pipe(plugins.concat(asset.name))
 						.pipe(plugins.sourcemaps.write('.'))
 						.pipe(gulp.dest('public/assets/js'))
-						.on('end', function () {
-							resolve();
-						})
+						.on('end', resolve)
 						.pipe(browserSync.stream());
 			});
 		}));
+
+		return Promise.all(promises);
 	};
 };
 

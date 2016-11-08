@@ -380,12 +380,30 @@ module.exports = generators.Base.extend({
 					return;
 				}
 
-				if ((_.startsWith(file, 'project') || _.startsWith(file, 'components')) && (ext === 'js' || ext === 'ts') && (this.options.js === 'JavaScript' && ext !== 'js' || this.options.js === 'TypeScript' && ext !== 'ts')) {
+				if ((_.startsWith(file, 'project') || _.startsWith(file, 'components'))
+					&& (ext === 'js' || ext === 'ts')
+					&& (this.options.js === 'JavaScript' && ext !== 'js'
+						|| this.options.js === 'TypeScript' && ext !== 'ts')) {
+					return;
+				}
+
+				// exclude .js files for esnext
+				if (_.startsWith(file, 'components')
+					&& this.options.js === 'ESNext'
+				    && ext === 'js') {
 					return;
 				}
 
 				var sourcePath = this.templatePath(file);
 				var destinationPath = this.destinationPath(file);
+
+				// esnext files have .es extension, so they can be segregated from es5 files
+				if (_.startsWith(file, 'components')
+					&& this.options.js === 'ESNext'
+				    && ext === 'es') {
+
+					destinationPath = destinationPath.replace(path.extname(destinationPath), '.js');
+				}
 
 				// adjust destination template file extension for view files
 				if(_.indexOf(this.viewExtOptions, ext) !== -1 && _.indexOf(viewFiles, file) !== -1) {

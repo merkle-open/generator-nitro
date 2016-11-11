@@ -127,7 +127,7 @@ module.exports = function (gulp, config) {
 				};
 			}
 
-			if (config.exporter.zip) {
+			if (configEntry.zip) {
 				getZipPromise = function () {
 					return new Promise((resolve) => {
 						const pkg = JSON.parse(fs.readFileSync(`${config.nitro.base_path}package.json`, {

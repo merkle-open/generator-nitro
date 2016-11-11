@@ -125,3 +125,29 @@ Defines, if the export should be zipped.
     "zip": false
 }
 ```
+
+## Multiple Exporter configurations
+
+You can define multiple exporter configuration objects, by setting the `exporter` to an array.
+
+### Example
+
+```
+"exporter": [{
+    "dest": "dist",
+    "i18n": [],
+    "publics": true,
+    "renames": [],
+    "replacements": [],
+    "views": true,
+    "zip": false
+}, {
+	"dest": "static",
+    "i18n": [],
+    "publics": true,
+    "renames": [],
+    "replacements": [],
+    "views": true,
+    "zip": false
+}]
+```

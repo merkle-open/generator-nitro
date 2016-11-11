@@ -156,5 +156,5 @@ module.exports = function (gulp, config) {
 		}));
 	});
 
-	return () => Promise.all(processes);
+	return Promise.all(processes);
 };

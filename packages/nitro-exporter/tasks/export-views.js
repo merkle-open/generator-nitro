@@ -9,67 +9,69 @@ module.exports = function (gulp, config) {
 
 	const processes = [];
 
+	/**
+	* Call and save given view in filesystem.
+	* @param {string} url The URL to the view.
+	* @param {string} dest The destination file path for the views HTML.
+	* @param {function} cb A callback function, that is executed after the file has been saved.
+	* @returns {null} No return value.
+	*/
+	function getView(url, dest, cb) {
+		request(url, (err, response, body) => {
+			fs.writeFileSync(dest, body);
+			cb();
+		});
+	}
+
+	/**
+	* Base function to load a view from Nitro.
+	* @param {Any} esi The event stream instance for the view files.
+	* @param {Object} configEntry Exporter configuration object.
+	* @returns {Any} The event stream .map return.
+	*/
+	function loadView(esi, configEntry) {
+		return esi.map((file, cb) => {
+			const viewPath = path.relative('views', file.path);
+			let viewName = path.basename(viewPath, `.${config.nitro.view_file_extension}`);
+			let viewRoute = '';
+			let url = '';
+			let dest = '';
+
+			if (path.dirname(viewPath) !== '.') {
+				viewName = path.dirname(viewPath) + path.sep + viewName;
+			}
+
+			viewRoute = viewName.replace(path.sep, '-');
+
+			url = `http://localhost:${config.server.port}/${viewRoute}`;
+			dest = path.join(configEntry.dest, `${viewRoute}.html`);
+
+			if (configEntry.i18n.length) {
+				const promises = [];
+				configEntry.i18n.forEach((lang) => {
+					promises.push(new Promise((resolve) => {
+						getView(
+							`${url}?lang=${lang}`,
+							dest.replace('.html', `-${lang}.html`),
+							resolve
+						);
+					}));
+				});
+				Promise.all(promises).then(() => {
+					cb();
+				});
+			} else {
+				getView(
+					url,
+					dest,
+					cb
+				);
+			}
+			return true;
+		});
+	}
+
 	utils.each(config.exporter, (configEntry) => {
-		/**
-		* Call and save given view in filesystem.
-		* @param {string} url The URL to the view.
-		* @param {string} dest The destination file path for the views HTML.
-		* @param {function} cb A callback function, that is executed after the file has been saved.
-		* @returns {null} No return value.
-		*/
-		function getView(url, dest, cb) {
-			request(url, (err, response, body) => {
-				fs.writeFileSync(dest, body);
-				cb();
-			});
-		}
-
-		/**
-		* Base function to load a view from Nitro.
-		* @param {Any} esi The event stream instance for the view files.
-		* @returns {Any} The event stream .map return.
-		*/
-		function loadView(esi) {
-			return esi.map((file, cb) => {
-				const viewPath = path.relative('views', file.path);
-				let viewName = path.basename(viewPath, `.${config.nitro.view_file_extension}`);
-				let viewRoute = '';
-				let url = '';
-				let dest = '';
-
-				if (path.dirname(viewPath) !== '.') {
-					viewName = path.dirname(viewPath) + path.sep + viewName;
-				}
-
-				viewRoute = viewName.replace(path.sep, '-');
-
-				url = `http://localhost:${config.server.port}/${viewRoute}`;
-				dest = `${configEntry.dest}${path.sep}${viewRoute}.html`;
-
-				if (configEntry.i18n.length) {
-					const promises = [];
-					configEntry.i18n.forEach((lang) => {
-						promises.push(new Promise((resolve) => {
-							getView(
-								`${url}?lang=${lang}`,
-								dest.replace('.html', `-${lang}.html`),
-								resolve
-							);
-						}));
-					});
-					Promise.all(promises).then(() => {
-						cb();
-					});
-				} else {
-					getView(
-						url,
-						dest,
-						cb
-					);
-				}
-				return true;
-			});
-		}
 		const views = configEntry.views;
 		const excludeFolders = [
 			config.nitro.view_partials_directory,
@@ -102,10 +104,20 @@ module.exports = function (gulp, config) {
 		}
 
 		processes.push(
-			gulp.src(viewGlobs)
-				.pipe(loadView(es))
+			new Promise((resolve) => {
+				gulp.src(viewGlobs)
+					.pipe(loadView(es, configEntry))
+					.on('end', () => {
+						resolve();
+					});
+			})
 		);
 	});
 
-	return () => Promise.all(processes);
+
+	return new Promise((resolve) => {
+		Promise.all(processes).then(() => {
+			resolve();
+		});
+	});
 };

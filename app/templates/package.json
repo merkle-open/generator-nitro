@@ -31,8 +31,8 @@
   },
   "devDependencies": {
     "@namics/eslint-config": "2.0.0",
-    "autoprefixer": "6.5.1",
-    "babel-preset-es2015": "6.16.0",
+    "autoprefixer": "6.5.3",
+    "babel-preset-es2015": "6.18.0",
     "body-parser": "1.15.2",
     "browser-sync": "2.17.5",
     "compression": "1.6.2",
@@ -41,7 +41,7 @@
     "es6-promise": "4.0.5",
     "express": "4.14.0",
     "extend": "3.0.0",
-    "globby": "6.0.0",
+    "globby": "6.1.0",
     "gulp": "3.9.1",
     "gulp-babel": "6.1.2",
     "gulp-cached": "1.1.0",<% if (options.clientTpl) { %>
@@ -52,10 +52,10 @@
     "gulp-eslint": "3.0.1",<% if (options.clientTpl) { %>
     "gulp-handlebars": "4.0.0",<% } %>
     "gulp-header": "1.8.8",
-    "gulp-imagemin": "3.0.3",<% if (options.pre === 'less') { %>
-    "gulp-less": "3.1.0",<% } %>
+    "gulp-imagemin": "3.1.1",<% if (options.pre === 'less') { %>
+    "gulp-less": "3.3.0",<% } %>
     "gulp-live-server": "0.0.30",
-    "gulp-load-plugins": "1.3.0",
+    "gulp-load-plugins": "1.4.0",
     "gulp-newer": "1.3.0",
     "gulp-plumber": "1.1.0",
     "gulp-postcss": "6.2.0",
@@ -63,15 +63,15 @@
     "gulp-rename": "1.2.2",<% if (options.pre === 'scss') { %>
     "gulp-sass": "2.3.2",<% } %>
     "gulp-size": "2.1.0",
-    "gulp-sourcemaps": "2.1.1",
+    "gulp-sourcemaps": "2.2.0",
     "gulp-stylelint": "3.4.0",<% if (options.js === 'TypeScript') { %>
     "typescript": "1.5.0-beta",
     "gulp-typescript": "2.7.5", <% } %>
     "gulp-uglify": "2.0.0",
     "gulp-watch": "4.3.10",<% if (options.clientTpl) { %>
     "gulp-wrap": "0.13.0",<% } %>
-    "hbs": "4.0.0",
-    "hbs-utils": "0.0.3",
+    "hbs": "4.0.1",
+    "hbs-utils": "0.0.4",
     "i18next": "1.10.6",
     "imagemin-pngquant": "5.0.0",
     "jasmine-core": "2.5.2",

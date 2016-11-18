@@ -320,7 +320,7 @@ You can configure as many different assets as you wish.
 
 ## Translations
 
-Nitro uses [i18next](http://i18next.com/node/index.html) as Translation Library 
+Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library 
 and gives you the Handlebars helper `{{t}}`.  
 Translations are stored in `project/locales/[lang]/translation.json`.
 
@@ -332,15 +332,15 @@ Express Middleware configuration:
 
 ### Translation handlebars helper
 
-The helper combines the given [library features](http://i18next.com/node/pages/doc_features.html) with a second system of translation features.
+The helper uses the given [library features](http://i18next.com/translate/).  
 
-The library needs one object to transfer data and uses two underscores as interpolation pre- and suffixes 
-or uses `%s` placeholders for sprintf functionality.
+You may use hash values or an object to transfer data to the helper. Use two brackets as interpolation pre- and suffixes 
+or use `%s` placeholders for sprintf functionality.
 
 Some examples:
 
     data = {
-       name: "developer"
+       name: 'developer'
     }
     
     "test": {
@@ -348,26 +348,15 @@ Some examples:
             "string" : "gold",
             "nested": "All that glitters is not $t(test.example.string).",
             "sprintf" : "The first three letters of %s are: %s, %s and %s",
-            "interpolation" : "Hello __name__"
+            "interpolation" : "Hello {{name}}"
         }
     }
 
-    {{t "test.example.string"}}
-    {{t "test.example.nested"}}
-    {{t "test.example.sprintf" "alphabet" "a" "l" "p"}}
-    {{t "test.example.interpolation" data}}
-
-The second system uses brackets as interpolation and numbered or named placeholders:
-
-    "test": {
-        "example": {
-            "interpolation1" : "The last two letters of {1} are: {3} and {2}",
-            "interpolation2" : "The first letter of {word} is: {one}"
-        }
-    }
-    
-    {{t "test.example.interpolation1" "alphabet" "e" "t"}}
-    {{t "test.example.interpolation2" word="alphabet" one="a"}}
+    {{t 'test.example.string'}}
+    {{t 'test.example.nested'}}
+    {{t 'test.example.sprintf' 'alphabet' 'a' 'l' 'p'}}
+    {{t 'test.example.interpolation' name='developer'}}
+    {{t 'test.example.interpolation' data}}
 
 ## Conventions
 

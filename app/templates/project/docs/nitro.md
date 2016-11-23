@@ -468,11 +468,11 @@ You may [change this or add other hooks](../.githooks/README.md) in `project/.gi
 
 #### Client Dependencies
 
-The following packages are always installed by the [app](#name) generator as npm dependencies:
+The following packages are installed by the [app](#name) generator as npm dependencies:
 
 * [jQuery 3.1.1](http://jquery.com/)
 * [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)<% if (options.clientTpl) { %>
-* [Handlebars 4.0.5](https://github.com/components/handlebars.js)<% } %>
+* [Handlebars 4.0.6](https://github.com/components/handlebars.js)<% } %>
 
 ### Credits
 

@@ -30,7 +30,7 @@ module.exports = generators.Base.extend({
 		this._pattern = {
 			name: _patternName,
 			Name: _.upperFirst(_patternName),
-			node: this.cfg.nitro.patterns || this.cfg.nitro.components
+			node: this.cfg.nitro.patterns || this.cfg.nitro.components,
 		};
 
 		this.types = _.map(this._pattern.node, (value, key) => {
@@ -40,7 +40,7 @@ module.exports = generators.Base.extend({
 		this.option('type', {
 			desc: `your desired type [${this.types.join('|')}]`,
 			type: String,
-			defaults: this.types[0]
+			defaults: this.types[0],
 		});
 
 		// Pattern modifier
@@ -63,7 +63,7 @@ module.exports = generators.Base.extend({
 		return this.prompt([
 			{
 				name: 'name',
-				message: `What\'s the name of your ${this._pattern.name}?`,
+				message: `What's the name of your ${this._pattern.name}?`,
 				default: this.name,
 				validate: function validateString(value) {
 					if (!_.isString(value) || _.isEmpty(value)) {
@@ -73,19 +73,19 @@ module.exports = generators.Base.extend({
 						return `${this._pattern.Name} name must not start with a Number`;
 					}
 					return true;
-				}
+				},
 			},
 			{
 				name: 'type',
 				type: 'list',
 				message: 'And what\'s your desired type?',
 				choices: this.types,
-				default: _.indexOf(this.types, this.options.type) || 0
+				default: _.indexOf(this.types, this.options.type) || 0,
 			},
 			{
 				name: 'modifier',
 				message: 'Would you like to create a CSS modifier? Type your desired name or leave empty.',
-				default: this.options.modifier || ''
+				default: this.options.modifier || '',
 			},
 			{
 				name: 'decorator',
@@ -96,8 +96,8 @@ module.exports = generators.Base.extend({
 						return `${this._pattern.Name} decorator must not start with a Number`;
 					}
 					return true;
-				}
-			}
+				},
+			},
 		]).then((answers) => {
 			this.name = answers.name;
 			this.options.type = answers.type;
@@ -135,11 +135,11 @@ module.exports = generators.Base.extend({
 			const files = glob.sync('**/*', { cwd: this.destinationPath(pattern.template), nodir: true, dot: true });
 			const ignores = [
 				// files to ignore
-				'.DS_Store'
+				'.DS_Store',
 			];
 			const user = {
 				name: '',
-				email: ''
+				email: '',
 			};
 			const gitConfig = gitconfig.sync();
 
@@ -155,7 +155,7 @@ module.exports = generators.Base.extend({
 				css: _.kebabCase(this.name), // Pattern name for use in CSS files, eg. main-navigation
 				prefix: pattern.pattern_prefix || pattern.component_prefix || null, // CSS class prefix, eg. m
 				type: this.options.type, // Pattern type, eg. atom, molecule etc.
-				file: this.name.replace(/[^A-Za-z0-9-]/g, '').toLowerCase() // Pattern filename, eg. mainnavigation
+				file: this.name.replace(/[^A-Za-z0-9-]/g, '').toLowerCase(), // Pattern filename, eg. mainnavigation
 			};
 			const replacements = {
 				user,
@@ -164,13 +164,13 @@ module.exports = generators.Base.extend({
 				modifier: {
 					name: this.options.modifier, // Modifier name, eg. Highlight
 					css: _.kebabCase(this.options.modifier), // Modifier name for use in CSS files, eg. highlight
-					file: this.options.modifier.replace(/[^A-Za-z0-9-]/g, '').toLowerCase()  // Modifier filename, eg.highlight
+					file: this.options.modifier.replace(/[^A-Za-z0-9-]/g, '').toLowerCase(), // Modifier filename, eg.highlight
 				},
 				decorator: {
 					name: this.options.decorator, // Decorator name, eg. Highlight
 					js: _.upperFirst(_.camelCase(this.options.decorator.replace(/^[0-9]+/, ''))), // Decorator name for use in JS files, eg. Highlight
-					file: this.options.decorator.replace(/[^A-Za-z0-9-]/g, '').toLowerCase()  // Decorator filename, eg.highlight
-				}
+					file: this.options.decorator.replace(/[^A-Za-z0-9-]/g, '').toLowerCase(), // Decorator filename, eg.highlight
+				},
 			};
 
 			files.forEach((file) => {
@@ -197,7 +197,7 @@ module.exports = generators.Base.extend({
 					pattern: replacements.pattern.file,
 					component: replacements.pattern.file,
 					modifier: replacements.modifier.file,
-					decorator: replacements.decorator.file
+					decorator: replacements.decorator.file,
 				};
 
 				let filename = file;
@@ -210,6 +210,6 @@ module.exports = generators.Base.extend({
 					this.destinationPath(`${pattern.path}/${folder}/${filename}`),
 					replacements);
 			}, this);
-		}
-	}
+		},
+	},
 });

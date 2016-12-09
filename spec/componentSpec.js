@@ -13,8 +13,8 @@ const ejs = require('ejs');
 const configData = {
 	options: {
 		pre: 'less',
-		js: 'JavaScript'
-	}
+		js: 'JavaScript',
+	},
 };
 
 describe('nitro:component', () => {
@@ -32,13 +32,13 @@ describe('nitro:component', () => {
 
 			it('the modifier files are not created', () => {
 				assert.noFile([
-					'patterns/organisms/Test/css/modifier'
+					'patterns/organisms/Test/css/modifier',
 				]);
 			});
 
 			it('the decorator files are not created', () => {
 				assert.noFile([
-					'patterns/organisms/Test/js/decorator'
+					'patterns/organisms/Test/js/decorator',
 				]);
 			});
 
@@ -49,7 +49,7 @@ describe('nitro:component', () => {
 					'patterns/organisms/Test/_data/test.json',
 					'patterns/organisms/Test/css/test.less',
 					'patterns/organisms/Test/js/test.js',
-					'patterns/organisms/Test/spec/testSpec.js'
+					'patterns/organisms/Test/spec/testSpec.js',
 				]);
 			});
 		});

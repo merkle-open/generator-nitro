@@ -21,7 +21,7 @@ require('./app/core/i18n')(app);
 require('./app/core/routeLoader')(app);
 
 app.use(router);
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', config.nitro.view_file_extension);
 app.set('views', config.nitro.base_path + config.nitro.view_directory);
 app.engine(config.nitro.view_file_extension, hbs.__express);

@@ -13,8 +13,8 @@ const ejs = require('ejs');
 const configData = {
 	options: {
 		pre: 'less',
-		js: 'JavaScript'
-	}
+		js: 'JavaScript',
+	},
 };
 
 describe('nitro:pattern', () => {
@@ -32,13 +32,13 @@ describe('nitro:pattern', () => {
 
 			it('the modifier files are not created', () => {
 				assert.noFile([
-					'patterns/organisms/Test/css/modifier'
+					'patterns/organisms/Test/css/modifier',
 				]);
 			});
 
 			it('the decorator files are not created', () => {
 				assert.noFile([
-					'patterns/organisms/Test/js/decorator'
+					'patterns/organisms/Test/js/decorator',
 				]);
 			});
 
@@ -49,7 +49,7 @@ describe('nitro:pattern', () => {
 					'patterns/organisms/Test/_data/test.json',
 					'patterns/organisms/Test/css/test.less',
 					'patterns/organisms/Test/js/test.js',
-					'patterns/organisms/Test/spec/testSpec.js'
+					'patterns/organisms/Test/spec/testSpec.js',
 				]);
 			});
 		});
@@ -74,7 +74,7 @@ describe('nitro:pattern', () => {
 					'patterns/organisms/Test/css/test.less',
 					'patterns/organisms/Test/css/modifier/test-more.less',
 					'patterns/organisms/Test/js/test.js',
-					'patterns/organisms/Test/spec/testSpec.js'
+					'patterns/organisms/Test/spec/testSpec.js',
 				]);
 			});
 
@@ -107,7 +107,7 @@ describe('nitro:pattern', () => {
 					'patterns/organisms/Test/css/test.less',
 					'patterns/organisms/Test/js/test.js',
 					'patterns/organisms/Test/js/decorator/test-more.js',
-					'patterns/organisms/Test/spec/testSpec.js'
+					'patterns/organisms/Test/spec/testSpec.js',
 				]);
 			});
 
@@ -142,7 +142,7 @@ describe('nitro:pattern', () => {
 				'patterns/molecules/NavMain/css/modifier/navmain-specialcase.less',
 				'patterns/molecules/NavMain/js/navmain.js',
 				'patterns/molecules/NavMain/js/decorator/navmain-specialcase.js',
-				'patterns/molecules/NavMain/spec/navmainSpec.js'
+				'patterns/molecules/NavMain/spec/navmainSpec.js',
 			]);
 		});
 
@@ -184,7 +184,7 @@ describe('nitro:pattern', () => {
 				'patterns/molecules/nav-main/css/modifier/nav-main-special-case.less',
 				'patterns/molecules/nav-main/js/nav-main.js',
 				'patterns/molecules/nav-main/js/decorator/nav-main-special-case.js',
-				'patterns/molecules/nav-main/spec/nav-mainSpec.js'
+				'patterns/molecules/nav-main/spec/nav-mainSpec.js',
 			]);
 		});
 
@@ -225,7 +225,7 @@ describe('nitro:pattern', () => {
 				'patterns/molecules/NavMain/css/navmain.less',
 				'patterns/molecules/NavMain/css/modifier/navmain-lightblue.less',
 				'patterns/molecules/NavMain/js/navmain.js',
-				'patterns/molecules/NavMain/spec/navmainSpec.js'
+				'patterns/molecules/NavMain/spec/navmainSpec.js',
 			]);
 		});
 

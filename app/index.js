@@ -28,13 +28,13 @@ module.exports = generators.Base.extend({
 			viewExt: this.options.viewExt,
 			clientTpl: this.options.clientTpl,
 			exporter: this.options.exporter,
-			release: this.options.release
+			release: this.options.release,
 		};
 
 		this.option('name', {
 			desc: 'the name of your app',
 			type: String,
-			defaults: this.passedInOptions.name || path.basename(process.cwd())
+			defaults: this.passedInOptions.name || path.basename(process.cwd()),
 		});
 		this.options.name = _.kebabCase(this.options.name);
 
@@ -42,39 +42,39 @@ module.exports = generators.Base.extend({
 		this.option('pre', {
 			desc: `your desired preprocessor [${this.preOptions.join('|')}]`,
 			type: String,
-			defaults: this.passedInOptions.pre || this.preOptions[1]
+			defaults: this.passedInOptions.pre || this.preOptions[1],
 		});
 
 		this.jsOptions = ['JavaScript', 'TypeScript'];
 		this.option('js', {
 			desc: `your desired js compiler [${this.jsOptions.join('|')}]`,
 			type: String,
-			defaults: this.passedInOptions.js || this.jsOptions[0]
+			defaults: this.passedInOptions.js || this.jsOptions[0],
 		});
 
 		this.viewExtOptions = ['html', 'hbs', 'mustache'];
 		this.option('viewExt', {
 			desc: `your desired view file extension [${this.viewExtOptions.join('|')}]`,
 			type: String,
-			defaults: this.passedInOptions.viewExt || this.viewExtOptions[0]
+			defaults: this.passedInOptions.viewExt || this.viewExtOptions[0],
 		});
 
 		this.option('clientTpl', {
 			desc: 'do you need client side templates',
 			type: Boolean,
-			defaults: this.passedInOptions.clientTpl || false
+			defaults: this.passedInOptions.clientTpl || false,
 		});
 
 		this.option('exporter', {
 			desc: 'do you need static exporting functionalities',
 			type: Boolean,
-			defaults: this.passedInOptions.exporter || false
+			defaults: this.passedInOptions.exporter || false,
 		});
 
 		this.option('release', {
 			desc: 'do you need release management',
 			type: Boolean,
-			defaults: this.passedInOptions.release || false
+			defaults: this.passedInOptions.release || false,
 		});
 	},
 
@@ -100,8 +100,8 @@ module.exports = generators.Base.extend({
 					name: 'update',
 					type: 'confirm',
 					message: `There is already a ${chalk.cyan('Nitro')} application in place! Should I serve you an update?`,
-					default: true
-				}
+					default: true,
+				},
 			]).then((answers) => {
 				this.update = answers.update;
 
@@ -129,7 +129,7 @@ module.exports = generators.Base.extend({
 					default: this.options.name,
 					when: function () {
 						return !this.passedInOptions.name;
-					}.bind(this)
+					}.bind(this),
 				},
 				{
 					name: 'pre',
@@ -140,7 +140,7 @@ module.exports = generators.Base.extend({
 					store: true,
 					when: function () {
 						return !this.passedInOptions.pre;
-					}.bind(this)
+					}.bind(this),
 				},
 				{
 					name: 'js',
@@ -151,7 +151,7 @@ module.exports = generators.Base.extend({
 					store: true,
 					when: function () {
 						return !this.passedInOptions.js;
-					}.bind(this)
+					}.bind(this),
 				},
 				{
 					name: 'viewExt',
@@ -162,7 +162,7 @@ module.exports = generators.Base.extend({
 					store: true,
 					when: function () {
 						return !this.passedInOptions.viewExt;
-					}.bind(this)
+					}.bind(this),
 				},
 				{
 					name: 'clientTpl',
@@ -172,7 +172,7 @@ module.exports = generators.Base.extend({
 					store: true,
 					when: function () {
 						return typeof this.passedInOptions.clientTpl !== 'boolean';
-					}.bind(this)
+					}.bind(this),
 				},
 				{
 					name: 'exporter',
@@ -182,7 +182,7 @@ module.exports = generators.Base.extend({
 					store: true,
 					when: function () {
 						return typeof this.passedInOptions.exporter !== 'boolean';
-					}.bind(this)
+					}.bind(this),
 				},
 				{
 					name: 'release',
@@ -192,8 +192,8 @@ module.exports = generators.Base.extend({
 					store: true,
 					when: function () {
 						return typeof this.passedInOptions.release !== 'boolean';
-					}.bind(this)
-				}
+					}.bind(this),
+				},
 			]).then((answers) => {
 				this.options.name = answers.name || this.options.name;
 				this.options.pre = answers.pre || this.options.pre;
@@ -261,7 +261,7 @@ module.exports = generators.Base.extend({
 			fs.unlinkSync(this.destZip);
 
 			done();
-		}
+		},
 	},
 
 	writing: {
@@ -283,18 +283,18 @@ module.exports = generators.Base.extend({
 				'gulp/watch-assets.js',
 				'project/docs/nitro.md',
 				'spec/templating/patternSpec.js',
-				'views/index.html'
+				'views/index.html',
 			];
 			const ignores = [
 				// files to ignore
 				'.DS_Store',
 				'.npmignore',
-				'frontend-defaults.zip'
+				'frontend-defaults.zip',
 			];
 			const typeScriptFiles = [
 				// files only for this.options.js==='TypeScript'
 				'tsd.json',
-				'gulp/compile-ts.js'
+				'gulp/compile-ts.js',
 			];
 			const clientTplFiles = [
 				// files only for this.options.clientTpl===true
@@ -305,7 +305,7 @@ module.exports = generators.Base.extend({
 				'patterns/molecules/example/template/partial/example.link.hbs',
 				'project/docs/client-templates.md',
 				'project/blueprints/pattern/template/pattern.hbs',
-				'gulp/compile-templates.js'
+				'gulp/compile-templates.js',
 			];
 			const viewFiles = [
 				// files that might change file extension
@@ -315,7 +315,7 @@ module.exports = generators.Base.extend({
 				'views/_partials/foot.html',
 				'views/_partials/head.html',
 				'patterns/molecules/example/example.html',
-				'project/blueprints/pattern/pattern.html'
+				'project/blueprints/pattern/pattern.html',
 			];
 			const exporterFiles = [
 				// files for this.options.exporter===true
@@ -327,7 +327,7 @@ module.exports = generators.Base.extend({
 			const templateData = {
 				name: this.options.name,
 				version: this.pkg.version,
-				options: this.options
+				options: this.options,
 			};
 
 			files.forEach(function (file) {
@@ -402,13 +402,13 @@ module.exports = generators.Base.extend({
 				this.fs.copy(sourcePath, destinationPath);
 			}, this);
 
-		}
+		},
 	},
 
 	install() {
 		this.installDependencies({
 			bower: false,
-			skipInstall: this.options['skip-install']
+			skipInstall: this.options['skip-install'],
 		});
 
 		if (this.options.js === 'TypeScript') {
@@ -421,7 +421,7 @@ module.exports = generators.Base.extend({
 	end() {
 		const filesToCopy = [
 			{ do: this.options.exporter, src: 'node_modules/nitro-exporter/README.md', dest: 'project/docs/nitro-exporter.md' },
-			{ do: this.options.release, src: 'node_modules/nitro-release/README.md', dest: 'project/docs/nitro-release.md' }
+			{ do: this.options.release, src: 'node_modules/nitro-release/README.md', dest: 'project/docs/nitro-release.md' },
 		];
 		try {
 			filesToCopy.forEach((file) => {
@@ -434,5 +434,5 @@ module.exports = generators.Base.extend({
 		}
 
 		this.log(chalk.green('All done – have fun'));
-	}
+	},
 });

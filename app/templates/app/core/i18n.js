@@ -18,11 +18,11 @@ const sprintf = require('i18next-sprintf-postprocessor');
 const i18nextMiddleware = require('i18next-express-middleware');
 
 const options = {
-	//defaultNS: 'translation',
-	//whitelist: ['en', 'de', 'default'],
+	// defaultNS: 'translation',
+	// whitelist: ['en', 'de', 'default'],
 	fallbackLng: 'default',
 	backend: {
-		"loadPath": "project/locales/{{lng}}/{{ns}}.json"
+		'loadPath': 'project/locales/{{lng}}/{{ns}}.json',
 	},
 	detection: {
 		// order and from where user language should be detected
@@ -30,9 +30,9 @@ const options = {
 		// keys or params to lookup language from
 		lookupQuerystring: 'lang',
 	},
-	debug: false
+	debug: false,
 };
-const middlewareOptions =  {
+const middlewareOptions = {
 	ignoreRoutes: ['api/', 'assets/', 'dist/'],
 };
 

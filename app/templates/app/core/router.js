@@ -9,7 +9,7 @@ const extend = require('extend');
 const express = require('express');
 const router = express.Router({
 	caseSensitive: false,
-	strict: false
+	strict: false,
 });
 const isProduction = config.server.production;
 

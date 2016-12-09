@@ -13,7 +13,7 @@ module.exports = function (config) {
 		// list of files / patterns to load in the browser
 		files: [
 			'public/assets/js/app.js',
-			'patterns/**/spec/*Spec.js'
+			'patterns/**/spec/*Spec.js',
 		],
 
 		// list of files to exclude
@@ -48,6 +48,6 @@ module.exports = function (config) {
 
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits
-		singleRun: false
+		singleRun: false,
 	});
 };

@@ -29,7 +29,7 @@ describe('nitro:app', () => {
 				'project',
 				'public',
 				'views',
-				'package.json'
+				'package.json',
 			]);
 		});
 
@@ -41,7 +41,7 @@ describe('nitro:app', () => {
 				'.gitattributes',
 				'.gitignore',
 				'.stylelintignore',
-				'.stylelintrc'
+				'.stylelintrc',
 			]);
 		});
 	});
@@ -116,7 +116,7 @@ describe('nitro:app', () => {
 				'views/_partials/head.html',
 				'views/_partials/foot.html',
 				'patterns/molecules/example/example.html',
-				'project/blueprints/pattern/pattern.html'
+				'project/blueprints/pattern/pattern.html',
 			]);
 		});
 
@@ -141,7 +141,7 @@ describe('nitro:app', () => {
 				'views/_partials/head.hbs',
 				'views/_partials/foot.hbs',
 				'patterns/molecules/example/example.hbs',
-				'project/blueprints/pattern/pattern.hbs'
+				'project/blueprints/pattern/pattern.hbs',
 			]);
 		});
 
@@ -166,7 +166,7 @@ describe('nitro:app', () => {
 				'views/_partials/head.mustache',
 				'views/_partials/foot.mustache',
 				'patterns/molecules/example/example.mustache',
-				'project/blueprints/pattern/pattern.mustache'
+				'project/blueprints/pattern/pattern.mustache',
 			]);
 		});
 
@@ -190,7 +190,7 @@ describe('nitro:app', () => {
 				['package.json', /gulp-declare/],
 				['package.json', /gulp-handlebars/],
 				['package.json', /gulp-wrap/],
-				['package.json', /merge-stream/]
+				['package.json', /merge-stream/],
 			]);
 		});
 
@@ -204,14 +204,14 @@ describe('nitro:app', () => {
 				'patterns/molecules/example/template/example.links.hbs',
 				'patterns/molecules/example/template/partial/example.link.hbs',
 				'patterns/molecules/example/_data/example-template.json',
-				'patterns/molecules/example/js/decorator/example-template.js'
+				'patterns/molecules/example/js/decorator/example-template.js',
 			]);
 		});
 
 		it('config.json loads template files', () => {
 			assert.fileContent([
 				['config.json', 'patterns/**/template/*.js'],
-				['config.json', 'patterns/**/template/partial/*.js']
+				['config.json', 'patterns/**/template/partial/*.js'],
 			]);
 		});
 
@@ -222,7 +222,7 @@ describe('nitro:app', () => {
 		it('gulp task watch-assets handles template files correct', () => {
 			assert.fileContent([
 				['gulp/watch-assets.js', 'patterns/**/template/**/*.hbs'],
-				['gulp/watch-assets.js', '!patterns/**/template/**/*.hbs']
+				['gulp/watch-assets.js', '!patterns/**/template/**/*.hbs'],
 			]);
 		});
 
@@ -243,7 +243,7 @@ describe('nitro:app', () => {
 				['package.json', /gulp-declare/],
 				['package.json', /gulp-handlebars/],
 				['package.json', /gulp-wrap/],
-				['package.json', /merge-stream/]
+				['package.json', /merge-stream/],
 			]);
 		});
 
@@ -257,14 +257,14 @@ describe('nitro:app', () => {
 				'patterns/molecules/example/template/example.links.hbs',
 				'patterns/molecules/example/template/partial/example.link.hbs',
 				'patterns/molecules/example/_data/example-template.json',
-				'patterns/molecules/example/js/decorator/example-template.js'
+				'patterns/molecules/example/js/decorator/example-template.js',
 			]);
 		});
 
 		it('config.json does not load template files', () => {
 			assert.noFileContent([
 				['config.json', 'patterns/**/template/*.js'],
-				['config.json', 'patterns/**/template/partial/*.js']
+				['config.json', 'patterns/**/template/partial/*.js'],
 			]);
 		});
 
@@ -275,7 +275,7 @@ describe('nitro:app', () => {
 		it('gulp task watch-assets does not handle template files', () => {
 			assert.noFileContent([
 				['gulp/watch-assets.js', 'patterns/**/template/**/*.hbs'],
-				['gulp/watch-assets.js', '!patterns/**/template/**/*.hbs']
+				['gulp/watch-assets.js', '!patterns/**/template/**/*.hbs'],
 			]);
 		});
 
@@ -292,13 +292,13 @@ describe('nitro:app', () => {
 
 		it('package.json contains exporter dependency', () => {
 			assert.fileContent([
-				['package.json', /nitro-exporter/]
+				['package.json', /nitro-exporter/],
 			]);
 		});
 
 		it('config.json contains default exporter properties', () => {
 			assert.fileContent([
-				['config.json', /"exporter"/]
+				['config.json', /"exporter"/],
 			]);
 		});
 	});
@@ -314,13 +314,13 @@ describe('nitro:app', () => {
 
 		it('package.json does not contain exporter dependency', () => {
 			assert.noFileContent([
-				['package.json', /nitro-exporter/]
+				['package.json', /nitro-exporter/],
 			]);
 		});
 
 		it('config.json does not contain default exporter properties', () => {
 			assert.noFileContent([
-				['config.json', /"exporter"/]
+				['config.json', /"exporter"/],
 			]);
 		});
 	});
@@ -336,13 +336,13 @@ describe('nitro:app', () => {
 
 		it('package.json contains exporter dependency', () => {
 			assert.fileContent([
-				['package.json', /nitro-release/]
+				['package.json', /nitro-release/],
 			]);
 		});
 
 		it('config.json does not contain default exporter properties', () => {
 			assert.fileContent([
-				['config.json', /"release"/]
+				['config.json', /"release"/],
 			]);
 		});
 	});
@@ -358,13 +358,13 @@ describe('nitro:app', () => {
 
 		it('package.json does not contain exporter dependency', () => {
 			assert.noFileContent([
-				['package.json', /nitro-release/]
+				['package.json', /nitro-release/],
 			]);
 		});
 
 		it('config.json does not contain default exporter properties', () => {
 			assert.noFileContent([
-				['config.json', /"release"/]
+				['config.json', /"release"/],
 			]);
 		});
 	});

@@ -70,7 +70,7 @@
     "gulp-sass": "2.3.2",<% } %>
     "gulp-size": "2.1.0",
     "gulp-sourcemaps": "2.2.1",
-    "gulp-stylelint": "3.6.1",<% if (options.js === 'TypeScript') { %>
+    "gulp-stylelint": "3.7.0",<% if (options.js === 'TypeScript') { %>
     "typescript": "1.5.0-beta",
     "gulp-typescript": "2.7.5", <% } %>
     "gulp-uglify": "2.0.0",
@@ -88,7 +88,7 @@
     "karma-chrome-launcher": "2.0.0",
     "karma-jasmine": "1.1.0",<% if (options.clientTpl) { %>
     "merge-stream": "1.0.1",<% } %><% if (options.exporter) { %>
-    "nitro-exporter": "0.1.2",<% } %><% if (options.release) { %>
+    "nitro-exporter": "0.2.0",<% } %><% if (options.release) { %>
     "nitro-release": "0.1.0",<% } %>
     "npm-run-all": "3.1.2"
   }

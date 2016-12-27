@@ -14,7 +14,7 @@ describe('nitro:app', () => {
 
 	describe('when using default options', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../app'))
+			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test')) // Clear the directory and set it as the CWD
 				.withOptions({ 'skip-install': true })  // Mock options passed in
 				.on('end', done);
@@ -48,7 +48,7 @@ describe('nitro:app', () => {
 
 	describe('when using less', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../app'))
+			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ pre: 'less' })
@@ -75,7 +75,7 @@ describe('nitro:app', () => {
 
 	describe('when using scss', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../app'))
+			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ pre: 'scss' })
@@ -102,7 +102,7 @@ describe('nitro:app', () => {
 
 	describe('when using view file extension html', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../app'))
+			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ viewExt: 'html' })
@@ -127,7 +127,7 @@ describe('nitro:app', () => {
 
 	describe('when using view file extension hbs', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../app'))
+			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ viewExt: 'hbs' })
@@ -152,7 +152,7 @@ describe('nitro:app', () => {
 
 	describe('when using view file extension mustache', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../app'))
+			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ viewExt: 'mustache' })
@@ -177,7 +177,7 @@ describe('nitro:app', () => {
 
 	describe('when including client templates', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../app'))
+			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ clientTpl: true })
@@ -225,12 +225,11 @@ describe('nitro:app', () => {
 				['gulp/watch-assets.js', '!patterns/**/template/**/*.hbs'],
 			]);
 		});
-
 	});
 
 	describe('when not including client templates', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../app'))
+			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ clientTpl: false })
@@ -283,7 +282,7 @@ describe('nitro:app', () => {
 
 	describe('when including static exporter', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../app'))
+			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ exporter: true })
@@ -305,7 +304,7 @@ describe('nitro:app', () => {
 
 	describe('when not including static exporter', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../app'))
+			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ exporter: false })
@@ -327,7 +326,7 @@ describe('nitro:app', () => {
 
 	describe('when including release package', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../app'))
+			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ release: true })
@@ -349,7 +348,7 @@ describe('nitro:app', () => {
 
 	describe('when not including release package', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../app'))
+			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ release: false })

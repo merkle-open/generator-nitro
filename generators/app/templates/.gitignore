@@ -1,0 +1,32 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+_.*
+.project
+.idea
+.cache
+.settings
+.config
+.buildpath
+.metadata
+.tmp*
+*.prefs
+.deployables
+atlassian-ide-plugin.xml
+
+# Project
+assets/vendor/
+components/**/template/*.js
+components/**/template/partial/*.js
+dist/
+node_modules/
+npm-debug.log
+patterns/**/template/*.js
+patterns/**/template/partial/*.js
+public/assets/
+.servepid
+
+# allow
+!.gitkeep

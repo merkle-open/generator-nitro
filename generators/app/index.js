@@ -1,8 +1,8 @@
 'use strict';
 
-/* eslint-disable max-len, complexity, no-else-return */
+/* eslint-disable max-len, complexity, no-else-return, require-jsdoc */
 
-const generators = require('yeoman-generator');
+const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const request = require('request');
@@ -12,14 +12,14 @@ const Admzip = require('adm-zip');
 const glob = require('glob');
 const _ = require('lodash');
 
-module.exports = generators.Base.extend({
-	// eslint-disable-next-line object-shorthand
-	constructor: function () {
+module.exports = class extends Generator {
+
+	constructor(args, opts) {
 		// Calling the super constructor
 		// eslint-disable-next-line prefer-rest-params
-		generators.Base.apply(this, arguments);
+		super(args, opts);
 
-		this.pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json'), 'utf8'));
+		this.pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../../package.json'), 'utf8'));
 
 		this.passedInOptions = {
 			name: this.options.name,
@@ -76,13 +76,13 @@ module.exports = generators.Base.extend({
 			type: Boolean,
 			defaults: this.passedInOptions.release || false,
 		});
-	},
+	}
 
 	initializing() {
 		// namics frontend-defaults
 		this.srcZip = 'http://github.com/namics/frontend-defaults/archive/master.zip';
 		this.destZip = this.templatePath('frontend-defaults.zip');
-	},
+	}
 
 	prompting() {
 
@@ -214,196 +214,195 @@ module.exports = generators.Base.extend({
 				this.config.save();
 			});
 		}
-	},
+	}
 
-	configuring: {
-		download() {
-			const done = this.async();
+	get configuring() {
+		return {
+			download() {
+				const done = this.async();
 
-			this.log(`Download ${chalk.cyan(this.srcZip)}`);
+				this.log(`Download ${chalk.cyan(this.srcZip)}`);
 
-			const dl = request
-				.get(this.srcZip)
-				.on('error', (err) => {
-					this.log(chalk.red(err));
-				})
-				.pipe(fs.createWriteStream(this.destZip));
+				const dl = request
+					.get(this.srcZip)
+					.on('error', (err) => {
+						this.log(chalk.red(err));
+					})
+					.pipe(fs.createWriteStream(this.destZip));
 
-			dl.on('finish', () => {
+				dl.on('finish', () => {
+					done();
+				});
+			},
+			extract() {
+				const done = this.async();
+				const zip = new Admzip(this.destZip);
+
+				this.log('Extracting frontend-defaults templates');
+
+				try {
+					// extract entries
+					zip.extractEntryTo('frontend-defaults-master/codequality/eslint/.eslintrc.js', this.sourceRoot(), false, true);
+					zip.extractEntryTo('frontend-defaults-master/codequality/eslint/nitro.eslintignore', this.sourceRoot(), false, true);
+					zip.extractEntryTo('frontend-defaults-master/codequality/stylelint/.stylelintrc', this.sourceRoot(), false, true);
+					zip.extractEntryTo('frontend-defaults-master/codequality/stylelint/nitro.stylelintignore', this.sourceRoot(), false, true);
+					zip.extractEntryTo('frontend-defaults-master/editorconfig/.editorconfig', this.sourceRoot(), false, true);
+					zip.extractEntryTo('frontend-defaults-master/repo/gitignore/nitro.gitignore', this.sourceRoot(), false, true);
+					zip.extractEntryTo('frontend-defaults-master/repo/gitattributes/.gitattributes', this.sourceRoot(), false, true);
+
+					// rename files
+					fs.renameSync(this.templatePath('nitro.eslintignore'), this.templatePath('.eslintignore'));
+					fs.renameSync(this.templatePath('nitro.gitignore'), this.templatePath('.gitignore'));
+					fs.renameSync(this.templatePath('nitro.stylelintignore'), this.templatePath('.stylelintignore'));
+				} catch (e) {
+					this.log(chalk.red(e.message));
+				}
+
+				// remove zip
+				fs.unlinkSync(this.destZip);
 				done();
-			});
-		},
-		extract() {
-			const done = this.async();
-			const zip = new Admzip(this.destZip);
+			},
+		};
+	}
 
-			this.log('Extracting frontend-defaults templates');
+	writing() {
 
-			try {
-				// extract entries
-				zip.extractEntryTo('frontend-defaults-master/codequality/eslint/.eslintrc.js', this.sourceRoot(), false, true);
-				zip.extractEntryTo('frontend-defaults-master/codequality/eslint/nitro.eslintignore', this.sourceRoot(), false, true);
-				zip.extractEntryTo('frontend-defaults-master/codequality/stylelint/.stylelintrc', this.sourceRoot(), false, true);
-				zip.extractEntryTo('frontend-defaults-master/codequality/stylelint/nitro.stylelintignore', this.sourceRoot(), false, true);
-				zip.extractEntryTo('frontend-defaults-master/editorconfig/.editorconfig', this.sourceRoot(), false, true);
-				zip.extractEntryTo('frontend-defaults-master/repo/gitignore/nitro.gitignore', this.sourceRoot(), false, true);
-				zip.extractEntryTo('frontend-defaults-master/repo/gitattributes/.gitattributes', this.sourceRoot(), false, true);
+		this.log('Scaffolding your app');
 
-				// rename files
-				fs.renameSync(this.templatePath('nitro.eslintignore'), this.templatePath('.eslintignore'));
-				fs.renameSync(this.templatePath('nitro.gitignore'), this.templatePath('.gitignore'));
-				fs.renameSync(this.templatePath('nitro.stylelintignore'), this.templatePath('.stylelintignore'));
-			} catch (e) {
-				this.log(chalk.red(e.message));
+		const files = glob.sync('**/*', { cwd: this.sourceRoot(), nodir: true, dot: true });
+
+		const tplFiles = [
+			// files to process with copyTpl
+			'config.json',
+			'gulpfile.js',
+			'package.json',
+			'app/core/config.js',
+			'patterns/molecules/example/example.html',
+			'gulp/compile-css.js',
+			'gulp/compile-js.js',
+			'gulp/utils.js',
+			'gulp/watch-assets.js',
+			'project/docs/nitro.md',
+			'spec/templating/patternSpec.js',
+			'views/index.html',
+		];
+		const ignores = [
+			// files to ignore
+			'.DS_Store',
+			'.npmignore',
+			'frontend-defaults.zip',
+		];
+		const typeScriptFiles = [
+			// files only for this.options.js==='TypeScript'
+			'tsd.json',
+			'gulp/compile-ts.js',
+		];
+		const clientTplFiles = [
+			// files only for this.options.clientTpl===true
+			'patterns/molecules/example/_data/example-template.json',
+			'patterns/molecules/example/js/decorator/example-template.js',
+			'patterns/molecules/example/template/example.hbs',
+			'patterns/molecules/example/template/example.links.hbs',
+			'patterns/molecules/example/template/partial/example.link.hbs',
+			'project/docs/client-templates.md',
+			'project/blueprints/pattern/template/pattern.hbs',
+			'gulp/compile-templates.js',
+		];
+		const viewFiles = [
+			// files that might change file extension
+			'views/404.html',
+			'views/index.html',
+			'views/_layouts/default.html',
+			'views/_partials/foot.html',
+			'views/_partials/head.html',
+			'patterns/molecules/example/example.html',
+			'project/blueprints/pattern/pattern.html',
+		];
+		const exporterFiles = [
+			// files for this.options.exporter===true
+		];
+		const releaseFiles = [
+			// files for this.options.release===true
+		];
+
+		const templateData = {
+			name: this.options.name,
+			version: this.pkg.version,
+			options: this.options,
+		};
+
+		files.forEach(function (file) {
+			// exclude ignores
+			if (_.indexOf(ignores, file) !== -1) {
+				return;
 			}
 
-			// remove zip
-			fs.unlinkSync(this.destZip);
-
-			done();
-		},
-	},
-
-	writing: {
-		app() {
-			this.log('Scaffolding your app');
-
-			const files = glob.sync('**/*', { cwd: this.sourceRoot(), nodir: true, dot: true });
-
-			const tplFiles = [
-				// files to process with copyTpl
-				'config.json',
-				'gulpfile.js',
-				'package.json',
-				'app/core/config.js',
-				'patterns/molecules/example/example.html',
-				'gulp/compile-css.js',
-				'gulp/compile-js.js',
-				'gulp/utils.js',
-				'gulp/watch-assets.js',
-				'project/docs/nitro.md',
-				'spec/templating/patternSpec.js',
-				'views/index.html',
-			];
-			const ignores = [
-				// files to ignore
-				'.DS_Store',
-				'.npmignore',
-				'frontend-defaults.zip',
-			];
-			const typeScriptFiles = [
-				// files only for this.options.js==='TypeScript'
-				'tsd.json',
-				'gulp/compile-ts.js',
-			];
-			const clientTplFiles = [
-				// files only for this.options.clientTpl===true
-				'patterns/molecules/example/_data/example-template.json',
-				'patterns/molecules/example/js/decorator/example-template.js',
-				'patterns/molecules/example/template/example.hbs',
-				'patterns/molecules/example/template/example.links.hbs',
-				'patterns/molecules/example/template/partial/example.link.hbs',
-				'project/docs/client-templates.md',
-				'project/blueprints/pattern/template/pattern.hbs',
-				'gulp/compile-templates.js',
-			];
-			const viewFiles = [
-				// files that might change file extension
-				'views/404.html',
-				'views/index.html',
-				'views/_layouts/default.html',
-				'views/_partials/foot.html',
-				'views/_partials/head.html',
-				'patterns/molecules/example/example.html',
-				'project/blueprints/pattern/pattern.html',
-			];
-			const exporterFiles = [
-				// files for this.options.exporter===true
-			];
-			const releaseFiles = [
-				// files for this.options.release===true
-			];
-
-			const templateData = {
-				name: this.options.name,
-				version: this.pkg.version,
-				options: this.options,
-			};
-
-			files.forEach(function (file) {
-				// exclude ignores
-				if (_.indexOf(ignores, file) !== -1) {
+			// TypeScript only Files
+			if (this.options.js !== 'TypeScript') {
+				if (_.indexOf(typeScriptFiles, file) !== -1) {
 					return;
 				}
+			}
 
-				// TypeScript only Files
-				if (this.options.js !== 'TypeScript') {
-					if (_.indexOf(typeScriptFiles, file) !== -1) {
-						return;
-					}
-				}
-
-				// Client side templates only Files
-				if (!this.options.clientTpl) {
-					if (_.indexOf(clientTplFiles, file) !== -1) {
-						return;
-					}
-				}
-
-				// Exporter only Files
-				if (!this.options.exporter) {
-					if (_.indexOf(exporterFiles, file) !== -1) {
-						return;
-					}
-				}
-
-				// Release only Files
-				if (!this.options.release) {
-					if (_.indexOf(releaseFiles, file) !== -1) {
-						return;
-					}
-				}
-
-				// ignore everything under assets, patterns and views on updating project
-				if (this.update) {
-					if (_.startsWith(file, 'assets') ||
-						_.startsWith(file, 'patterns') ||
-						_.startsWith(file, 'views')) {
-						return;
-					}
-				}
-
-				const ext = path.extname(file).substring(1);
-
-				// exclude unnecessary preprocessor files
-				if (_.indexOf(this.preOptions, ext) !== -1 && this.options.pre !== ext) {
+			// Client side templates only Files
+			if (!this.options.clientTpl) {
+				if (_.indexOf(clientTplFiles, file) !== -1) {
 					return;
 				}
+			}
 
-				if ((_.startsWith(file, 'project') || _.startsWith(file, 'patterns')) && (ext === 'js' || ext === 'ts') && (this.options.js === 'JavaScript' && ext !== 'js' || this.options.js === 'TypeScript' && ext !== 'ts')) {
+			// Exporter only Files
+			if (!this.options.exporter) {
+				if (_.indexOf(exporterFiles, file) !== -1) {
 					return;
 				}
+			}
 
-				const sourcePath = this.templatePath(file);
-				let destinationPath = this.destinationPath(file);
-
-				// adjust destination template file extension for view files
-				if (_.indexOf(this.viewExtOptions, ext) !== -1 && _.indexOf(viewFiles, file) !== -1) {
-					const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this.viewExtOptions[0]}`;
-
-					destinationPath = destinationPath.replace(path.extname(destinationPath), targetExt);
-				}
-
-				if (_.indexOf(tplFiles, file) !== -1) {
-					this.fs.copyTpl(sourcePath, destinationPath, templateData);
+			// Release only Files
+			if (!this.options.release) {
+				if (_.indexOf(releaseFiles, file) !== -1) {
 					return;
 				}
+			}
 
-				this.fs.copy(sourcePath, destinationPath);
-			}, this);
+			// ignore everything under assets, patterns and views on updating project
+			if (this.update) {
+				if (_.startsWith(file, 'assets') ||
+					_.startsWith(file, 'patterns') ||
+					_.startsWith(file, 'views')) {
+					return;
+				}
+			}
 
-		},
-	},
+			const ext = path.extname(file).substring(1);
+
+			// exclude unnecessary preprocessor files
+			if (_.indexOf(this.preOptions, ext) !== -1 && this.options.pre !== ext) {
+				return;
+			}
+
+			if ((_.startsWith(file, 'project') || _.startsWith(file, 'patterns')) && (ext === 'js' || ext === 'ts') && (this.options.js === 'JavaScript' && ext !== 'js' || this.options.js === 'TypeScript' && ext !== 'ts')) {
+				return;
+			}
+
+			const sourcePath = this.templatePath(file);
+			let destinationPath = this.destinationPath(file);
+
+			// adjust destination template file extension for view files
+			if (_.indexOf(this.viewExtOptions, ext) !== -1 && _.indexOf(viewFiles, file) !== -1) {
+				const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this.viewExtOptions[0]}`;
+
+				destinationPath = destinationPath.replace(path.extname(destinationPath), targetExt);
+			}
+
+			if (_.indexOf(tplFiles, file) !== -1) {
+				this.fs.copyTpl(sourcePath, destinationPath, templateData);
+				return;
+			}
+
+			this.fs.copy(sourcePath, destinationPath);
+		}, this);
+	}
 
 	install() {
 		this.installDependencies({
@@ -416,7 +415,7 @@ module.exports = generators.Base.extend({
 				this.spawnCommand('tsd', ['rebundle']);
 			});
 		}
-	},
+	}
 
 	end() {
 		const filesToCopy = [
@@ -434,5 +433,5 @@ module.exports = generators.Base.extend({
 		}
 
 		this.log(chalk.green('All done – have fun'));
-	},
-});
+	}
+};

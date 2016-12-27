@@ -1,0 +1,11 @@
+app/
+assets/js/*.ts.js
+gulp/
+node_modules/
+patterns/**/template/*.js
+patterns/**/template/partial/*.js
+patterns/**/*Spec.js
+project/
+public/
+spec/
+views/

@@ -21,10 +21,10 @@ describe('nitro:component', () => {
 	describe('when creating a component "Test" (organism)', () => {
 		describe('but no modifier and decorator is given', () => {
 			beforeAll((done) => {
-				helpers.run(path.join(__dirname, '../component'))
+				helpers.run(path.join(__dirname, '../generators/component'))
 					.inDir(path.join(os.tmpdir(), './temp-test'), (dir) => {
-						fs.copySync(path.join(__dirname, '../app/templates/project'), path.join(dir, 'project'));
-						fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../app/templates/config.json'), 'utf8'), configData));
+						fs.copySync(path.join(__dirname, '../generators/app/templates/project'), path.join(dir, 'project'));
+						fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../generators/app/templates/config.json'), 'utf8'), configData));
 					})
 					.withPrompts({ name: 'Test', type: 'organism' })
 					.on('end', done);

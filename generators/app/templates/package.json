@@ -78,6 +78,7 @@
     "gulp-wrap": "0.13.0",<% } %>
     "hbs": "4.0.1",
     "hbs-utils": "0.0.4",
+    "htmllint": "0.4.0",
     "i18next": "4.1.4",
     "i18next-express-middleware": "1.0.2",
     "i18next-node-fs-backend": "0.1.3",

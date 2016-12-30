@@ -29,8 +29,22 @@ function getLayoutPath(layoutName) {
 	return layoutPath;
 }
 
+function getHtmllintOptions (isSnippet) {
+	const configPath = '.htmllintrc';
+	let htmllintOptions = {};
+	if (fs.existsSync(configPath)) {
+		htmllintOptions = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+	}
+	if (isSnippet) {
+		htmllintOptions['doctype-first'] = false;
+	}
+
+	return htmllintOptions;
+}
+
 module.exports = {
 	fileExistsSync,
 	layoutExists,
-	getLayoutPath
+	getLayoutPath,
+	getHtmllintOptions
 };

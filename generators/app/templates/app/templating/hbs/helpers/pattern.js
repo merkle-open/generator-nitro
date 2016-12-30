@@ -22,6 +22,8 @@ const extend = require('extend');
 const config = require('../../../core/config');
 const utils = require('../../../core/utils');
 const hbsUtils = require('../utils');
+const htmllint = require('htmllint');
+const htmllintOptions = utils.getHtmllintOptions(true);
 
 module.exports = function pattern () {
 
@@ -118,11 +120,27 @@ module.exports = function pattern () {
 								patternData.children = context.fn(this);
 							}
 
-							return new hbs.handlebars.SafeString(
-								hbs.handlebars.compile(
+							const html = hbs.handlebars.compile(
 									fs.readFileSync(templatePath, 'utf8')
-								)(patternData, context)
-							);
+								)(patternData, context);
+
+							// lint html snippet
+							htmllint(html, htmllintOptions)
+								.then(function(issues) {
+									if (issues.length) {
+										console.log(templatePath.toString().replace(config.nitro.base_path,''));
+										issues.forEach(function (issue, idx) {
+											let dataString = Object.keys(issue.data).map((key) => {
+												return issue.data[key];
+											}).join(', ');
+											let msg = `[${issue.line}:${issue.column}] (${issue.rule}) ${dataString}`;
+
+											console.error(msg.toString());
+										});
+									}
+								});
+
+							return new hbs.handlebars.SafeString(html);
 						}
 						catch (e) {
 							throw new Error(`Parse Error in Pattern ${name}: ${e.message}`);

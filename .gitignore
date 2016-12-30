@@ -22,6 +22,7 @@ generators/app/templates/.eslintrc.js
 generators/app/templates/.eslintignore
 generators/app/templates/.gitignore
 generators/app/templates/.gitattributes
+generators/app/templates/.htmllintrc
 generators/app/templates/.stylelintrc
 generators/app/templates/.stylelintignore
 

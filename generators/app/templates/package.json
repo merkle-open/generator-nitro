@@ -12,8 +12,8 @@
   "scripts": {
     "githooks": "gulp sync-githooks",
     "lint": "npm-run-all lint:*",
-    "lint:js": "./node_modules/.bin/eslint ./patterns ./assets/js || true",
-    "lint:css": "./node_modules/.bin/stylelint assets/**/*.*ss patterns/**/*.*ss || true",
+    "lint:js": "eslint ./patterns ./assets/js || true",
+    "lint:css": "stylelint assets/**/*.*ss patterns/**/*.*ss || true",
     "postinstall": "npm run githooks",
     "test": "karma start --single-run --no-auto-watch",
     "start": "node server"
@@ -91,6 +91,7 @@
     "merge-stream": "1.0.1",<% } %><% if (options.exporter) { %>
     "nitro-exporter": "0.2.0",<% } %><% if (options.release) { %>
     "nitro-release": "0.1.0",<% } %>
-    "npm-run-all": "3.1.2"
+    "npm-run-all": "3.1.2",
+    "stylelint": "7.7.0"
   }
 }

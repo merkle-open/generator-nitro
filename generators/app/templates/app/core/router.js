@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const config = require('./config');
 const utils = require('./utils');
+const view = require('../lib/view');
 const dot = require('dot-object');
 const extend = require('extend');
 const express = require('express');
@@ -22,50 +23,13 @@ router.use('/', express.static(config.nitro.base_path + '/public/'));
  * views
  */
 function getView(req, res, next) {
-	const getViewCombinations = function getViewCombinations(action) {
-		const pathes = [action];
-		let positions = [];
-		let i, j;
-
-		for (i = 0; i < action.length; i++) {
-			if (action[i] === '-') {
-				positions.push(i);
-			}
-		}
-
-		const len = positions.length;
-		let combinations = [];
-
-		for (i = 1; i < ( 1 << len ); i++) {
-			let c = [];
-			for (j = 0; j < len; j++) {
-				if (i & ( 1 << j )) {
-					c.push(positions[j]);
-				}
-			}
-			combinations.push(c);
-		}
-
-		combinations.forEach((combination) => {
-			let path = action;
-			combination.forEach((pos) => {
-				path = replaceAt(path, pos, '/');
-			});
-			pathes.push(path);
-		});
-		return pathes;
-	};
-	const replaceAt = function replaceAt(string, index, character) {
-		return string.substr(0, index) + character + string.substr(index + character.length);
-	};
-
 	const tpl = req.params.view ? req.params.view.toLowerCase() : 'index';
 	let data = {
 		pageTitle: tpl,
 		_layout: config.nitro.default_layout,
 		_production: isProduction
 	};
-	const viewPathes = getViewCombinations(tpl);
+	const viewPathes = view.getViewCombinations(tpl);
 	let rendered = false;
 
 	viewPathes.forEach((viewPath) => {

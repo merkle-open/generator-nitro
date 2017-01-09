@@ -12,8 +12,8 @@
   "scripts": {
     "githooks": "gulp sync-githooks",
     "lint": "npm-run-all lint:*",
-    "lint:js": "eslint ./patterns ./assets/js || true",
-    "lint:css": "stylelint assets/**/*.*ss patterns/**/*.*ss || true",
+    "lint:js": "eslint ./patterns ./assets/js",
+    "lint:css": "stylelint assets/**/*.*ss patterns/**/*.*ss",
     "postinstall": "npm run githooks",
     "test": "karma start --single-run --no-auto-watch",
     "start": "node server"

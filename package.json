@@ -11,8 +11,8 @@
   },
   "main": "app/index.js",
   "scripts": {
-    "test": "node_modules/.bin/jasmine",
-    "lint": "node_modules/.bin/eslint . || true"
+    "test": "jasmine",
+    "lint": "eslint ."
   },
   "files": [
     "app",

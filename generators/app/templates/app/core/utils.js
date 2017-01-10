@@ -15,6 +15,11 @@ function fileExistsSync(filename) {
 	}
 }
 
+function getLayoutPath(layoutName) {
+	const layoutPath = `${config.nitro.view_layouts_directory.replace(config.nitro.view_directory + '/', '')}/${layoutName}`;
+	return layoutPath;
+}
+
 function layoutExists(layoutName) {
 	const layoutPath = path.join(
 		config.nitro.base_path,
@@ -24,27 +29,8 @@ function layoutExists(layoutName) {
 	return fileExistsSync(layoutPath);
 }
 
-function getLayoutPath(layoutName) {
-	const layoutPath = `${config.nitro.view_layouts_directory.replace(config.nitro.view_directory + '/', '')}/${layoutName}`;
-	return layoutPath;
-}
-
-function getHtmllintOptions (isSnippet) {
-	const configPath = '.htmllintrc';
-	let htmllintOptions = {};
-	if (fs.existsSync(configPath)) {
-		htmllintOptions = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-	}
-	if (isSnippet) {
-		htmllintOptions['doctype-first'] = false;
-	}
-
-	return htmllintOptions;
-}
-
 module.exports = {
 	fileExistsSync,
-	layoutExists,
 	getLayoutPath,
-	getHtmllintOptions
+	layoutExists
 };

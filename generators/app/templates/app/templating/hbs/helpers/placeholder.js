@@ -7,8 +7,8 @@ const extend = require('extend');
 const config = require('../../../core/config');
 const utils = require('../../../core/utils');
 const hbsUtils = require('../utils');
-const htmllint = require('htmllint');
-const htmllintOptions = utils.getHtmllintOptions(true);
+const lint = require('../../../lib/lint');
+const htmllintOptions = lint.getHtmllintOptions(true);
 
 module.exports = function placeholder () {
 
@@ -51,21 +51,9 @@ module.exports = function placeholder () {
 			)(placeholderData, context);
 
 			// lint html snippet
-			htmllint(html, htmllintOptions)
-				.then(function(issues) {
-					if (issues.length) {
-						console.log(templatePath.toString().replace(config.nitro.base_path,''));
-						issues.forEach(function (issue, idx) {
-							let dataString = Object.keys(issue.data).map((key) => {
-								return issue.data[key];
-							}).join(', ');
-							let msg = `[${issue.line}:${issue.column}] (${issue.rule}) ${dataString}`;
-
-							console.error(msg.toString());
-						});
-					}
-				});
-
+			if (!config.server.production) {
+				lint.lintSnippet(templatePath, html, htmllintOptions);
+			}
 			return new hbs.handlebars.SafeString(html);
 		}
 

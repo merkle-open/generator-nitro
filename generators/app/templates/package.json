@@ -14,6 +14,7 @@
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint ./patterns ./assets/js",
     "lint:css": "stylelint assets/**/*.*ss patterns/**/*.*ss",
+    "lint:html": "gulp lint-html",
     "postinstall": "npm run githooks",
     "test": "karma start --single-run --no-auto-watch",
     "start": "node server"
@@ -47,6 +48,7 @@
     "eslint-plugin-import": "2.2.0",
     "express": "4.14.0",
     "extend": "3.0.0",
+    "get-port": "2.1.0",
     "globby": "6.1.0",
     "gulp": "3.9.1",
     "gulp-babel": "6.1.2",
@@ -58,6 +60,7 @@
     "gulp-eslint": "3.0.1",<% if (options.clientTpl) { %>
     "gulp-handlebars": "4.0.0",<% } %>
     "gulp-header": "1.8.8",
+    "gulp-htmllint": "0.0.11",
     "gulp-imagemin": "3.1.1",<% if (options.pre === 'less') { %>
     "gulp-less": "3.3.0",<% } %>
     "gulp-live-server": "0.0.30",
@@ -66,6 +69,7 @@
     "gulp-plumber": "1.1.0",
     "gulp-postcss": "6.2.0",
     "gulp-remember": "0.3.1",
+    "gulp-remote-src": "0.4.1",
     "gulp-rename": "1.2.2",<% if (options.pre === 'scss') { %>
     "gulp-sass": "2.3.2",<% } %>
     "gulp-size": "2.1.0",

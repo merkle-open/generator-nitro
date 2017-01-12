@@ -141,7 +141,7 @@ module.exports = class extends Generator {
 						return !this.passedInOptions.pre;
 					}.bind(this),
 				},
-				{
+				/* {
 					name: 'js',
 					type: 'list',
 					message: 'What\'s your desired javascript compiler?',
@@ -151,7 +151,7 @@ module.exports = class extends Generator {
 					when: function () {
 						return !this.passedInOptions.js;
 					}.bind(this),
-				},
+				},*/
 				{
 					name: 'viewExt',
 					type: 'list',

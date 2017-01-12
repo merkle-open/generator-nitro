@@ -11,6 +11,7 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 * Simple project structure
 * CSS/JS concatenation and minification
 * LESS/SCSS support (with caching for optimal performance)
+* ES2015 with babel transpiling
 * Source Maps, Linting, PostCSS & Browsersync
 * Jasmine tests with Karma test runner
 * Yeoman pattern generator<% if (options.clientTpl) { %>
@@ -22,11 +23,11 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 This application was created by the yeoman generator for nitro.  
 Before using, you need of course [node and npm](https://nodejs.org/) installed. 
-Currently supported node.js versions are 0.12.x, and 4.x. So everything between should work.  
+Currently supported node.js versions are 4.x and 6.x. So everything between should work.  
 And also you need the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro) 
 and some dependencies installed globally.
 
-    npm install -g yo gulp jasmine karma-cli generator-nitro
+    npm install -g yo gulp generator-nitro
 
 Keep your global packages up to date:
 
@@ -476,5 +477,4 @@ The following packages are installed by the [app](#name) generator as npm depend
 
 ### Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version <%= version %>).  
-Nitro is an alternative to [Terrific Micro](https://github.com/namics/terrific-micro) which is developed by Namics AG.
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version <%= version %>).

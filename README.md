@@ -12,20 +12,12 @@ Nitro is simple, fast and flexible. It works on OSX, Windows and Linux. Use this
 ## Usage
 
 Before using, you need of course [node and npm](https://nodejs.org/) installed.  
-Nitro and the Nitro generator are tested with the current versions of the node.js releases 0.12 and 4 (LTS). So everything between should work.
-It's not recommended to update node.js to release 5.
+Nitro and the Nitro generator are tested with the current LTS versions of the node.js releases 4 and 6. So everything between should work.
+It's not recommended to update node.js to release 7.
 
-Install `yo` and other required tools globally:
+Install `yo`, `gulp` and `generator-nitro` globally:
 
-    npm install -g yo gulp jasmine karma-cli
-
-If you want to use TypeScript, you need to install "tsd" (typescript definition repository) as well.
-
-    npm install -g tsd
-
-Install `generator-nitro`:
-
-    npm install -g generator-nitro
+    npm install -g yo gulp generator-nitro
 
 Keep your global packages up to date:
 
@@ -49,7 +41,6 @@ You will be guided through some configuration options:
 
 * Desired Name (default: current directory name)
 * Desired CSS preprocessor (`less` or `scss`; default: `less`)
-* Desired JavaScript compiler (`JavaScript` or `TypeScript`; default: `JavaScript`)
 * Desired view file extension (`html`, `hbs` or `mustache`; default: `html`)
 * Using client side templates (default: false)
 
@@ -57,7 +48,7 @@ The choosen options will be stored for the next project generation.
 
 It's possible to pass in these options through the command line:
 
-    yo nitro --name=myproject --pre=less --js=JavaScript --viewExt=hbs --clientTpl
+    yo nitro --name=myproject --pre=less --viewExt=hbs --clientTpl
 
 ### Update a project
 

@@ -16,7 +16,7 @@
     "lint:css": "stylelint assets/**/*.*ss patterns/**/*.*ss",
     "lint:html": "gulp lint-html",
     "postinstall": "npm run githooks",
-    "test": "karma start --single-run --no-auto-watch",
+    "test": "npm run lint && gulp test",
     "start": "node server"
   },
   "keywords": [

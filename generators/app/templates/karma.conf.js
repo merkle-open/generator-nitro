@@ -1,4 +1,5 @@
 // Karma configuration
+// Requires that asset `app.js` is compiled
 
 module.exports = function (config) {
 	config.set({
@@ -22,13 +23,13 @@ module.exports = function (config) {
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
-			'patterns/**/spec/*Spec.js': ['babel']
+			'patterns/**/spec/*Spec.js': ['babel'],
 		},
 		babelPreprocessor: {
 			options: {
 				presets: ['es2015'],
-				sourceMap: 'inline'
-			}
+				sourceMap: 'inline',
+			},
 		},
 
 		// test results reporter to use
@@ -37,7 +38,7 @@ module.exports = function (config) {
 		reporters: ['progress'],
 
 		// web server port
-		port: 9876,
+		// port: 9876,
 
 		// enable / disable colors in the output (reporters and logs)
 		colors: true,
@@ -47,7 +48,7 @@ module.exports = function (config) {
 		logLevel: config.LOG_INFO,
 
 		// enable / disable watching file and executing tests whenever any file changes
-		autoWatch: true,
+		autoWatch: false,
 
 		// start these browsers
 		// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
@@ -56,11 +57,11 @@ module.exports = function (config) {
 
 		phantomjsLauncher: {
 			// Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
-			exitOnResourceError: true
+			exitOnResourceError: true,
 		},
 
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits
-		singleRun: false,
+		singleRun: true,
 	});
 };

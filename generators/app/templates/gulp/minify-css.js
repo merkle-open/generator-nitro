@@ -8,7 +8,7 @@ module.exports = (gulp, plugins) => {
 
 		assets.forEach((asset) => {
 			gulp
-				.src('public/assets/css/' + asset.name)
+				.src(`public/assets/css/${asset.name}`)
 				.pipe(plugins.cssnano({mergeRules: false}))
 				.pipe(plugins.rename(asset.name.replace('.css', '.min.css')))
 				.pipe(plugins.size({showFiles: true, gzip: false, title: 'CSS minified'}))

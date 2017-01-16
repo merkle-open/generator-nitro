@@ -2,7 +2,7 @@
 
 const utils = require('./utils');
 const config = require('../app/core/config');
-const tmpDirectory = utils.getTmpDirectory('views');
+const srcPattern = `${utils.getTmpDirectory('views')}/*.html`;
 
 module.exports = function (gulp, plugins) {
 
@@ -22,7 +22,7 @@ module.exports = function (gulp, plugins) {
 	}
 
 	return () => {
-		return gulp.src(tmpDirectory + '/*.html')
+		return gulp.src(srcPattern)
 			.pipe(plugins.htmllint({}, htmllintReporter))
 			.on('end', () => {});
 	}

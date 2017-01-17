@@ -20,7 +20,6 @@ const hbs = require('hbs');
 const path = require('path');
 const extend = require('extend');
 const config = require('../../../core/config');
-const utils = require('../../../core/utils');
 const hbsUtils = require('../utils');
 const lint = require('../../../lib/lint');
 const htmllintOptions = lint.getHtmllintOptions(true);
@@ -83,7 +82,7 @@ module.exports = function pattern () {
 						`${templateFile}.${config.nitro.view_file_extension}`
 					);
 
-					if (utils.fileExistsSync(templatePath)) {
+					if (fs.existsSync(templatePath)) {
 						const jsonFilename = `${dataFile}.json`;
 						const jsonPath = path.join(
 							config.nitro.base_path,
@@ -102,7 +101,7 @@ module.exports = function pattern () {
 							if (passedData) {
 								extend(true, patternData, passedData);
 							}
-							else if (utils.fileExistsSync(jsonPath)) {
+							else if (fs.existsSync(jsonPath)) {
 								extend(true, patternData, JSON.parse(fs.readFileSync(jsonPath, 'utf8')));
 							}
 

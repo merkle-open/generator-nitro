@@ -5,7 +5,6 @@ const hbs = require('hbs');
 const path = require('path');
 const extend = require('extend');
 const config = require('../../../core/config');
-const utils = require('../../../core/utils');
 const hbsUtils = require('../utils');
 const lint = require('../../../lib/lint');
 const htmllintOptions = lint.getHtmllintOptions(true);
@@ -45,7 +44,7 @@ module.exports = function placeholder () {
 			name,
 			templateFile);
 
-		if (utils.fileExistsSync(templatePath)) {
+		if (fs.existsSync(templatePath)) {
 			const html = hbs.handlebars.compile(
 				fs.readFileSync(templatePath, 'utf8')
 			)(placeholderData, context);

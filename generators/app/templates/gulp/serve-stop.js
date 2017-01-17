@@ -1,13 +1,12 @@
 'use strict';
 
 const fs = require('fs');
-const utils = require('./utils');
 
 module.exports = (gulp, plugins) => {
 	return function (callback) {
 		const pidFile = '.servepid';
 
-		if (utils.fileExistsSync(pidFile)) {
+		if (fs.existsSync(pidFile)) {
 			const pid = fs.readFileSync(pidFile, {
 				encoding: 'utf8'
 			});

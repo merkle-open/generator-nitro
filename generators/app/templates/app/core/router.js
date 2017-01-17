@@ -41,7 +41,7 @@ function getView(req, res, next) {
 				viewPath + '.' + config.nitro.view_file_extension
 			);
 
-			if (utils.fileExistsSync(tplPath)) {
+			if (fs.existsSync(tplPath)) {
 
 				// collect data
 				const dataPath = path.join(
@@ -51,15 +51,15 @@ function getView(req, res, next) {
 					viewPath + '.json'
 				);
 				const customDataPath = req.query._data ? path.join(
-					config.nitro.base_path,
-					config.nitro.view_data_directory,
-					'/' + req.query._data + '.json'
-				) : false;
+						config.nitro.base_path,
+						config.nitro.view_data_directory,
+						'/' + req.query._data + '.json'
+					) : false;
 
-				if (customDataPath && utils.fileExistsSync(customDataPath)) {
+				if (customDataPath && fs.existsSync(customDataPath)) {
 					extend(true, data, JSON.parse(fs.readFileSync(customDataPath, 'utf8')));
 				}
-				else if (utils.fileExistsSync(dataPath)) {
+				else if (fs.existsSync(dataPath)) {
 					extend(true, data, JSON.parse(fs.readFileSync(dataPath, 'utf8')));
 				}
 

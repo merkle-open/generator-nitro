@@ -2,7 +2,6 @@
 
 const config = require('../app/core/config');
 const fs = require('fs');
-const utils = require('./utils');
 
 module.exports = (gulp, plugins) => {
 	let taskCallbackCalled = false;
@@ -21,7 +20,7 @@ module.exports = (gulp, plugins) => {
 		);
 		return server.start().then((result) => {
 			console.log('Nitro exited with result:', result);
-			if (utils.fileExistsSync(pidFile)) {
+			if (fs.existsSync(pidFile)) {
 				fs.unlinkSync(pidFile);
 			}
 			process.exit(result.code);

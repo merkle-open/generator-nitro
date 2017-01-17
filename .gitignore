@@ -17,6 +17,7 @@ _.*
 atlassian-ide-plugin.xml
 
 # Namics frontend-defaults
+generators/app/templates/.accessibilityrc
 generators/app/templates/.editorconfig
 generators/app/templates/.eslintrc.js
 generators/app/templates/.eslintignore

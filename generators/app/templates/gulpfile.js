@@ -25,6 +25,7 @@ gulp.task('develop', ['watch-assets', 'watch-serve']);
 gulp.task('build', ['clean-assets'], getTask('build'));
 gulp.task('production', ['assets'], getTask('production'));
 gulp.task('dump-views', getTask('dump-views'));
+gulp.task('lint-accessibility', ['dump-views'], getTask('lint-accessibility'));
 gulp.task('lint-html', ['dump-views'], getTask('lint-html'));
 gulp.task('test', ['compile-css', 'compile-js'], getTask('test'));
 gulp.task('watch-test', ['test'], getTask('watch-test'));

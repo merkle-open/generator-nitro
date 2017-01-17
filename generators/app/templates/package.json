@@ -12,9 +12,10 @@
   "scripts": {
     "githooks": "gulp sync-githooks",
     "lint": "npm-run-all lint:*",
-    "lint:js": "eslint ./patterns ./assets/js",
+    "lint:accessibility": "gulp lint-accessibility",
     "lint:css": "stylelint assets/**/*.*ss patterns/**/*.*ss",
     "lint:html": "gulp lint-html",
+    "lint:js": "eslint ./patterns ./assets/js",
     "postinstall": "npm run githooks",
     "test": "npm run lint && gulp test",
     "start": "node server"
@@ -51,6 +52,7 @@
     "get-port": "2.1.0",
     "globby": "6.1.0",
     "gulp": "3.9.1",
+    "gulp-accessibility": "3.0.1",
     "gulp-babel": "6.1.2",
     "gulp-cached": "1.1.1",<% if (options.clientTpl) { %>
     "gulp-change": "1.0.0",<% } %>

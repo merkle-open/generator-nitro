@@ -80,7 +80,7 @@ This works a bit different on **Windows**. Use the following commands in prompt:
 
 Patterns are created in the `patterns` folder. A pattern is an encapsulated block of markup 
 with corresponding styles, scripts and data.  
-For a better overview it is useful to define different types of patterns. It is recommended to make 
+For a better overview it is useful to define different types of patterns in `config.json`. It is recommended to make 
 subfolders like `atoms`, `molecules` & `organisms`  
 A pattern uses the following structure:
 
@@ -102,6 +102,8 @@ Different data variations has to be placed in the `_data` folder:
 ### Creating patterns with yo
 
     yo nitro:pattern
+
+This will copy the templates (nitro.patterns.<type>.template) from `config.json` to the configured target.
 
 ### Creating pages
 

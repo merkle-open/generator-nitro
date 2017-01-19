@@ -243,7 +243,7 @@ If you need a different layout for a page, do so in the corresponding data file:
 #### Dynamic view data
 
 If you want to use dynamic view data (i.e. using data from a database or data which is available in different views), 
-you can define those "routes" in the directory [`project/viewData/`](../viewData/README.md). 
+you can define those "routes" in the directory [`project/viewData/`](../viewData/readme.md). 
 
 #### Data per component
 
@@ -466,7 +466,7 @@ This hook will:
 * run `bower install` if someone changes `bower.json`. 
 * sync this git hooks if someone changes one.
  
-You may [change this or add other hooks](../.githooks/README.md) in `project/.githooks`.
+You may [change this or add other hooks](../.githooks/readme.md) in `project/.githooks`.
 
 ### Contributing
 

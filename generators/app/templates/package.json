@@ -18,6 +18,8 @@
     "lint:js": "eslint ./patterns ./assets/js",
     "postinstall": "npm run githooks",
     "test": "npm run lint && gulp test",
+    "dev": "gulp develop",
+    "prod": "gulp production",
     "start": "node server"
   },
   "keywords": [

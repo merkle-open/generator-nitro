@@ -65,7 +65,7 @@ Note: Generators are to be run from the root directory of your project.
 
 ## Generated app
 
-See how tho use the [generated app](app/templates/project/docs/nitro.md)
+See how tho use the [generated app](generators/app/templates/project/docs/nitro.md)
 
 ## Testing
 

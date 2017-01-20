@@ -45,7 +45,7 @@ Install the project dependencies in the project root:
 
 Use
 
-    gulp develop
+    npm run dev
 
 ... to start in development mode
 
@@ -57,12 +57,12 @@ or
 
 For production mode add `NODE_ENV=production` environment variable
 
-    NODE_ENV=production && gulp production
+    NODE_ENV=production && npm run prod
 
-The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `develop` task).  
-If you want the app to run on another port put them before the gulp task like this:
+The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `dev` task).  
+If you want the app to run on another port put them before the start task like this:
 
-    PORT=8000 PROXY=8001 gulp develop
+    PORT=8000 PROXY=8001 npm run dev
 
 The port to be used in production can be set the same way:
  
@@ -70,9 +70,9 @@ The port to be used in production can be set the same way:
 
 This works a bit different on **Windows**. Use the following commands in prompt:
  
-    set PORT=8000 && set PROXY=8001 && gulp develop
+    set PORT=8000 && set PROXY=8001 && npm run dev
     set PORT=3000 && node server
-    set NODE_ENV=production && gulp production
+    set NODE_ENV=production && npm run prod
 
 ## Daily Work - Creating Patterns & Pages
 

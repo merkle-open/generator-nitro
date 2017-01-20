@@ -30,9 +30,9 @@ function factory() {
 	}, config.code);
 
 	config.server = {
-		port: process.env.PORT || 8080,
-		proxy: process.env.PROXY || 8081,
-		// windows may have white spaces in env var
+		// keep care, windows may have white spaces in env vars
+		port: Number(process.env.PORT) || 8080,
+		proxy: Number(process.env.PROXY) || 8081,
 		production: process.env.NODE_ENV && process.env.NODE_ENV.replace((/\s/g), '') === 'production',
 	};
 

@@ -105,6 +105,21 @@ Different data variations has to be placed in the `_data` folder:
 
 This will copy the templates (nitro.patterns.<type>.template) from `config.json` to the configured target.
 
+### Creating pattern elements
+
+If you want to split up your pattern into smaller parts you may use elements. 
+For this, place a new pattern in the folder `elements` inside a pattern. 
+
+Element `example-sub` in pattern `example`:
+
+    /example/elements/example-sub
+    /example/elements/example-sub/example-sub.<%= options.viewExt %>
+    /example/elements/example-sub/css/example-sub.css
+    /example/elements/example-sub/js/example-sub.js
+    /example/elements/example-sub/_data/example-sub.json
+
+It's recommended to start the name of a subpattern with the pattern name.
+
 ### Creating pages
 
 Create a new `*.<%= options.viewExt %>` file in the `views` folder. (You can make as many subfolders as you want.)
@@ -143,7 +158,7 @@ Different layouts are placed in `views/_layouts/`. Link them to your view [in yo
 ### Render patterns
 
 Pages are meant to be compositions of your patterns. Use the pattern's name as the first parameter. Be aware, the
-pattern name is case-sensitive.
+pattern name is case-sensitive and should be unique.
 
 Nitro uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
 
@@ -187,6 +202,17 @@ Call it as block like this:
     {{#pattern 'box'}}
         {{pattern 'example'}}
     {{/pattern}}
+
+#### Render pattern elements
+
+The pattern helper will find also pattern elements.
+
+   {{pattern 'example-sub'}}
+
+... looks for following paths
+
+- Pattern with name `example-sub`: `<type>/example-sub/example-sub.<%= options.viewExt %>`
+- Element with name `example-sub`: `<type>/*/elements/example-sub/example-sub.<%= options.viewExt %>`
 
 ### Render partials
 

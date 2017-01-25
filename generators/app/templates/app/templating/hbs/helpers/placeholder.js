@@ -36,6 +36,10 @@ module.exports = function placeholder () {
 			extend(true, placeholderData, contextDataRoot._query);
 		}
 
+		if (context.hash) {
+			extend(true, placeholderData, context.hash);
+		}
+
 		templateFile += `.${config.nitro.view_file_extension}`;
 
 		const templatePath = path.join(

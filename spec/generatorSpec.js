@@ -1,20 +1,21 @@
 'use strict';
 
-var pkg = require('../package.json');
+/* eslint-env jasmine */
 
-describe('Genearator', function () {
+const pkg = require('../package.json');
 
-	describe('Generator package configuration', function () {
+describe('Genearator', () => {
 
-		it('contains the name `generator-nitro`', function () {
+	describe('Generator package configuration', () => {
+
+		it('contains the name `generator-nitro`', () => {
 			expect(pkg.name).toEqual('generator-nitro');
 		});
 
-		it('includes MIT license', function () {
+		it('includes MIT license', () => {
 			expect(pkg.license).toEqual('MIT');
 		});
 
 	});
 
 });
-

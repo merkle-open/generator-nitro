@@ -22,13 +22,19 @@ trim_trailing_whitespace = true
 ### Frontend files
 [*.{css,scss,less,js,json,ts,sass,php,html,hbs,mustache,phtml,html.twig}]
 
+
 ### Markdown
 [*.md]
 indent_style = space
 indent_size = 4
 trim_trailing_whitespace = false
 
+### YAML
+[*.yml]
+indent_style = space
+indent_size = 2
+
 ### Specific files
-[{package,bower}.json,.travis.yml]
+[{package,bower}.json]
 indent_style = space
 indent_size = 2

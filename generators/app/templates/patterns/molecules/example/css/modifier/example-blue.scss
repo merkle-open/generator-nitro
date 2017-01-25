@@ -1,0 +1,12 @@
+.m-example--blue {
+	background: $blue;
+	animation: blue-background-change 10s infinite;
+}
+
+/* stylelint-disable color-named  */
+@keyframes blue-background-change {
+	0%,100% { background-color: lightslategray; }
+	30% { background-color: lightblue; }
+	60% { background-color: cornflowerblue; }
+}
+/* stylelint-enable color-named  */

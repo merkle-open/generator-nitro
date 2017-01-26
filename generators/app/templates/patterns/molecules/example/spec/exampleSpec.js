@@ -1,18 +1,20 @@
 'use strict';
 
-describe('Example module', function(){
-  beforeEach(function(){
-    var application = new T.Application();
-    this.mod = new T.Module.Example(document.createElement('div'), application._sandbox);
-  });
+describe('Example module', function () {
+	let mod;
 
-  it('should have a .start() method', function(){
-    expect(this.mod.start).toBeDefined();
-  });
+	beforeEach(() => {
+		const application = new T.Application();
+		mod = new T.Module.Example(document.createElement('div'), application._sandbox);
+	});
 
-  it('should execute promise.resolve callback in the .start() method', function(){
-    var resolve = jasmine.createSpy('resolve');
-    this.mod.start(resolve);
-    expect(resolve).toHaveBeenCalled();
-  });
+	it('should have a .start() method', () => {
+		expect(mod.start).toBeDefined();
+	});
+
+	it('should execute promise.resolve callback in the .start() method', () => {
+		const resolve = jasmine.createSpy('resolve');
+		mod.start(resolve);
+		expect(resolve).toHaveBeenCalled();
+	});
 });

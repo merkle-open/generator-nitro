@@ -9,15 +9,15 @@
     "node": ">=4 <7",
     "npm": ">=3 <4"
   },
-  "main": "app/index.js",
+  "main": "generators/app/index.js",
   "scripts": {
     "test": "jasmine",
     "lint": "eslint ."
   },
   "files": [
-    "app",
-    "pattern",
-    "component"
+    "generators/app",
+    "generators/pattern",
+    "generators/component"
   ],
   "keywords": [
     "yeoman-generator",
@@ -42,7 +42,7 @@
   "devDependencies": {
     "@namics/eslint-config": "2.1.0",
     "ejs": "2.5.5",
-    "eslint": "3.14.1",
+    "eslint": "3.15.0",
     "eslint-plugin-import": "2.2.0",
     "fs-extra": "2.0.0",
     "jasmine": "2.5.3",

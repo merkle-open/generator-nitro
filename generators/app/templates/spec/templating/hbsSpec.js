@@ -6,6 +6,16 @@ describe('Nitro\'s Handlebars helper loader', () => {
 		expect(typeof hbs.handlebars.helpers.pattern).toBe('function');
 	});
 
+	it('has registered the component helper', () => {
+		const hbs = require('../../app/templating/hbs/engine');
+		expect(typeof hbs.handlebars.helpers.component).toBe('function');
+	});
+
+	it('has registered the placeholder helper', () => {
+		const hbs = require('../../app/templating/hbs/engine');
+		expect(typeof hbs.handlebars.helpers.placeholder).toBe('function');
+	});
+
 	it('has registered the view_list helper', () => {
 		const hbs = require('../../app/templating/hbs/engine');
 		expect(typeof hbs.handlebars.helpers.view_list).toBe('function');

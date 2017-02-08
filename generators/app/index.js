@@ -307,6 +307,7 @@ module.exports = class extends Generator {
 			'patterns/molecules/example/template/partial/example.link.hbs',
 			'project/docs/client-templates.md',
 			'project/blueprints/pattern/template/pattern.hbs',
+			'project/blueprints/pattern/template/schema.json',
 			'gulp/compile-templates.js',
 		];
 		const viewFiles = [

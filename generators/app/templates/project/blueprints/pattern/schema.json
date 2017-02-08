@@ -1,0 +1,18 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "<%= pattern.name %>",
+	"description": "A <%= pattern.name %> <%= pattern.type %>",
+	"type": "object",
+	"properties": {
+		"modifier": {
+			"description": "A modifier",
+			"type": "string"
+		},
+		"decorator": {
+			"description": "A decorator",
+			"type": "string"
+		}
+	},
+	"required": [],
+	"dependencies": {}
+}

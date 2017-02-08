@@ -3,6 +3,7 @@
 const fs = require('fs');
 const config = require('../core/config');
 const htmllint = require('htmllint');
+const textTable = require('text-table');
 
 function getHtmllintOptions (isSnippet) {
 	const configPath = '.htmllintrc';
@@ -21,23 +22,41 @@ function lintSnippet(templatePath, markup, options) {
 
 	const htmllintOptions = options || getHtmllintOptions(true);
 
-	htmllint(markup, htmllintOptions)
-		.then(function (issues) {
-			if (issues.length) {
-				console.log(`[htmllint] ${templatePath.toString().replace(config.nitro.base_path,'')}`);
-				issues.forEach(function (issue, idx) {
-					let dataString = Object.keys(issue.data).map((key) => {
-						return issue.data[key];
-					}).join(', ');
-					let msg = `[${issue.line}:${issue.column}] (${issue.rule}) ${dataString}`;
-
-					console.error(msg.toString());
-				});
-			}
+	return htmllint(markup, htmllintOptions)
+		.then((issues) => {
+			htmllintReporter(templatePath, issues);
 		});
+}
+
+function htmllintReporter(filepath, issues) {
+	if (issues.length > 0) {
+
+		const filePath = filepath.toString().replace(config.nitro.base_path,'');
+		let tableData = [];
+
+		issues.forEach((issue) => {
+			issue.msg = issue.msg || htmllint.messages.renderIssue(issue);
+			issue.cell = `${('    ' + issue.line).slice(-4)}:${issue.column}`;
+			tableData.push([
+				issue.cell,
+				issue.msg,
+				issue.rule
+			]);
+		});
+
+		const table = textTable(tableData);
+
+		// output
+		console.log(`[htmllint] ${filePath}`);
+		console.log(table);
+		console.log('\n');
+
+		process.exitCode = 1;
+	}
 }
 
 module.exports = {
 	getHtmllintOptions,
-	lintSnippet
+	lintSnippet,
+	htmllintReporter
 };

@@ -43,7 +43,8 @@ function getViews(dir) {
 		const filePath = dir + '/' + file;
 		const stat = fs.statSync(filePath);
 
-		if (stat && stat.isDirectory() && viewExcludes.directories.indexOf(file) === -1) {
+		if (file.substring(0,1) === '.') {}
+		else if (stat && stat.isDirectory() && viewExcludes.directories.indexOf(file) === -1) {
 			results = results.concat(getViews(filePath));
 		}
 		else if (stat && stat.isFile() && viewExcludes.files.indexOf(file) === -1) {

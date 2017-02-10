@@ -47,7 +47,7 @@ function getViews(dir) {
 		else if (stat && stat.isDirectory() && viewExcludes.directories.indexOf(file) === -1) {
 			results = results.concat(getViews(filePath));
 		}
-		else if (stat && stat.isFile() && viewExcludes.files.indexOf(file) === -1) {
+		else if (stat && stat.isFile() && path.extname(file) === `.${config.nitro.view_file_extension}` && viewExcludes.files.indexOf(file) === -1) {
 			const relativePath = path.relative(config.nitro.base_path + config.nitro.view_directory, filePath);
 			const ext = path.extname(filePath);
 			const extReg = new RegExp(ext + '$');

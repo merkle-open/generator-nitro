@@ -20,6 +20,8 @@ const hbs = require('hbs');
 const path = require('path');
 const extend = require('extend');
 const globby = require('globby');
+const Ajv = require('ajv');
+const ajv = new Ajv({allErrors: true});
 const config = require('../../../core/config');
 const hbsUtils = require('../utils');
 const lint = require('../../../lib/lint');
@@ -52,11 +54,20 @@ function getPattern(folder, templateFile, dataFile) {
 				'/_data/',
 				`${dataFile}.json`
 			);
+			const schemaFilePath = path.join(
+				config.nitro.base_path,
+				patternBasePath,
+				'/',
+				folder,
+				'/',
+				'schema.json'
+			);
 
 			if (fs.existsSync(templateFilePath)) {
 				pattern = {
-					templateFilePath: templateFilePath,
-					jsonFilePath: jsonFilePath,
+					templateFilePath,
+					jsonFilePath,
+					schemaFilePath
 				}
 			}
 		}
@@ -79,7 +90,11 @@ function getPattern(folder, templateFile, dataFile) {
 						path.dirname(templatePath),
 						'/_data/',
 						`${dataFile}.json`
-					)
+					),
+					schemaFilePath: path.join(
+						path.dirname(templatePath),
+						'schema.json'
+					),
 				}
 			}
 		});
@@ -160,6 +175,17 @@ module.exports = function pattern () {
 				// Add children e.g. {{#pattern "button"}}Click me{{/pattern}}
 				if (context.fn) {
 					patternData.children = context.fn(this);
+				}
+
+				// Validate with JSON schema
+				if (!config.server.production) {
+					if (fs.existsSync(pattern.schemaFilePath)) {
+						const schema = JSON.parse(fs.readFileSync(pattern.schemaFilePath, 'utf8'));
+						const valid = ajv.validate(schema, patternData);
+						if (!valid) {
+							throw new Error(`JSON Schema: ${ajv.errorsText()}`);
+						}
+					}
 				}
 
 				const html = hbs.handlebars.compile(

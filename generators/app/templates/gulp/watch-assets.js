@@ -77,6 +77,7 @@ module.exports = (gulp, plugins) => {
 			config.nitro.view_data_directory + '/**/*.json',
 			'patterns/**/*.' + config.nitro.view_file_extension<% if (options.clientTpl) { %>,
 			'!patterns/**/template/**/*.hbs'<% } %>,
+			'patterns/**/schema.json',
 			'patterns/**/_data/*.json'
 		], () => {
 			browserSync.reload();

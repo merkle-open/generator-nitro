@@ -506,7 +506,7 @@ The following packages are installed by the [app](#name) generator as npm depend
 * [jQuery 3.1.1](http://jquery.com/)
 * [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)<% if (options.clientTpl) { %>
 * [Handlebars 4.0.6](https://github.com/components/handlebars.js)<% } %>
-* [Babel Polyfill 6.20.0](https://www.npmjs.com/package/babel-polyfill)
+* [Babel Polyfill 6.23.0](https://www.npmjs.com/package/babel-polyfill)
 
 ### Credits
 

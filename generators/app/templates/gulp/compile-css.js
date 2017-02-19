@@ -47,14 +47,15 @@ module.exports = (gulp, plugins) => {
 					.pipe(plugins.remember(asset.name))
 					.pipe(plugins.concat(asset.name))
 					.pipe(plugins.sourcemaps.write('.'))
+					.pipe(plugins.plumber.stop())
 					.pipe(gulp.dest('public/assets/css/'))
-					.on('end', function () {
+					.on('end', () => {
 						resolve();
-					})
-					.pipe(browserSync.stream());
+					});
 			}));
 		});
 
-		return Promise.all(promises);
+		return Promise.all(promises)
+			.then(() => browserSync.reload('*.css'));
 	};
 };

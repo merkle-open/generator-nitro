@@ -279,6 +279,7 @@ module.exports = class extends Generator {
 			'package.json',
 			'app/core/config.js',
 			'patterns/molecules/example/example.html',
+			'patterns/molecules/example/schema.json',
 			'gulp/compile-css.js',
 			'gulp/compile-js.js',
 			'gulp/utils.js',
@@ -307,7 +308,6 @@ module.exports = class extends Generator {
 			'patterns/molecules/example/template/partial/example.link.hbs',
 			'project/docs/client-templates.md',
 			'project/blueprints/pattern/template/pattern.hbs',
-			'project/blueprints/pattern/template/schema.json',
 			'gulp/compile-templates.js',
 		];
 		const viewFiles = [

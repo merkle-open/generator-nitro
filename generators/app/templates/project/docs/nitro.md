@@ -479,7 +479,7 @@ Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used o
 
 ### Git Hooks
 
-Nitro tries to install a `post-merge` git hook with every `npm install`.
+Nitro tries to install a `post-merge` git hook with every `npm install` (if we are in git root).
 
 This hook will:
 

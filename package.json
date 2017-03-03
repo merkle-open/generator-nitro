@@ -40,9 +40,9 @@
     "yosay": "2.0.0"
   },
   "devDependencies": {
-    "@namics/eslint-config": "2.1.0",
+    "@namics/eslint-config": "2.2.0",
     "ejs": "2.5.6",
-    "eslint": "3.16.1",
+    "eslint": "3.17.0",
     "eslint-plugin-import": "2.2.0",
     "fs-extra": "2.0.0",
     "jasmine": "2.5.3",

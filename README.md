@@ -23,13 +23,13 @@ Keep your global packages up to date:
 
     npm outdated -g --depth=0
 
-Make an update if necessary:
+Do an update if necessary:
 
     npm update -g
 
 ## Project Generation
 
-Make a new directory, and `cd` into it:
+Create a new directory, and `cd` into it:
 
     mkdir my-new-project && cd my-new-project
 
@@ -43,6 +43,8 @@ You will be guided through some configuration options:
 * Desired CSS preprocessor (`less` or `scss`; default: `less`)
 * Desired view file extension (`html`, `hbs` or `mustache`; default: `html`)
 * Using client side templates (default: false)
+* Installing [`nitro-exporter`](https://www.npmjs.com/package/nitro-exporter) (default: false)
+* Installing [`nitro-release`](https://www.npmjs.com/package/nitro-release) (default: false)
 
 The choosen options will be stored for the next project generation.
 

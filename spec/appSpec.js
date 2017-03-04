@@ -29,7 +29,11 @@ describe('nitro:app', () => {
 				'project',
 				'public',
 				'views',
+				'.node-version',
+				'config.json',
 				'package.json',
+				'README.md',
+				'server.js',
 			]);
 		});
 

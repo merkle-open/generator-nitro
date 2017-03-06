@@ -10,12 +10,20 @@ module.exports = function (gulp, config) {
 	gulp.task('export-clean', exportClean(config));
 	gulp.task('export-views', () => exportViews(gulp, config));
 	gulp.task('export-processing', () => exportProcessing(gulp, config));
-	gulp.task('export', gulpSequence(
-		'export-clean',
-		'assets',
-		shouldExportViews ? 'serve' : '',
-		shouldExportViews ? 'export-views' : '',
-		shouldExportViews ? 'serve-stop' : '',
-		'export-processing'
-	));
+	if (shouldExportViews) {
+		gulp.task('export', gulpSequence(
+			'export-clean',
+			'assets',
+			'serve',
+			'export-views',
+			'export-processing',
+			'serve-stop'
+		));
+	} else {
+		gulp.task('export', gulpSequence(
+			'export-clean',
+			'assets',
+			'export-processing'
+		));
+	}
 };

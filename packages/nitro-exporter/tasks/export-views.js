@@ -15,9 +15,12 @@ module.exports = function (gulp, config) {
 	utils.each(config.exporter, (configEntry) => {
 		processes.push(
 			new Promise((resolve) => {
+				const i18nFilter = configEntry.i18n.length ?
+					configEntry.i18n.map(lng => path.join(nitroTmpDirectory, `*-${lng}.html`)) :
+					path.join(nitroTmpDirectory, '*.html');
 				if (configEntry.views === true) {
 					gulp.src(path.join(nitroTmpDirectory, '*.html'))
-						.pipe(filter(configEntry.i18n.map(lng => path.join(nitroTmpDirectory, `*-${lng}.html`))))
+						.pipe(filter(i18nFilter))
 						.pipe(gulp.dest(configEntry.dest))
 						.on('end', () => {
 							resolve();
@@ -25,7 +28,7 @@ module.exports = function (gulp, config) {
 				} else if (typeof configEntry.views === 'object' && configEntry.views.length > 0) {
 					gulp.src(path.join(nitroTmpDirectory, '*.html'))
 						.pipe(filter(configEntry.views.map(v => path.join(nitroTmpDirectory, `${v}.html`))))
-						.pipe(filter(configEntry.i18n.map(lng => path.join(nitroTmpDirectory, `*-${lng}.html`))))
+						.pipe(filter(i18nFilter))
 						.pipe(gulp.dest(configEntry.dest))
 						.on('end', () => {
 							resolve();

@@ -14,10 +14,9 @@ module.exports = function (gulp, config) {
 		gulp.task('export', gulpSequence(
 			'export-clean',
 			'assets',
-			'serve',
+			'dump-views',
 			'export-views',
-			'export-processing',
-			'serve-stop'
+			'export-processing'
 		));
 	} else {
 		gulp.task('export', gulpSequence(

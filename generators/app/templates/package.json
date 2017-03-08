@@ -19,7 +19,8 @@
     "postinstall": "npm run githooks",
     "test": "npm run lint && gulp test",
     "prebuild": "npm test",
-    "build": "gulp assets",
+    "build": "gulp assets",<% if (options.exporter) { %>
+    "export": "gulp export",<% } %>
     "dev": "gulp develop",
     "prod": "gulp production",
     "start": "node server"

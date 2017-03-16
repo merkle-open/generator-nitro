@@ -43,6 +43,7 @@ You will be guided through some configuration options:
 * Desired CSS preprocessor (`less` or `scss`; default: `less`)
 * Desired view file extension (`html`, `hbs` or `mustache`; default: `html`)
 * Using client side templates (default: false)
+* Including example code (default: true)
 * Installing [`nitro-exporter`](https://www.npmjs.com/package/nitro-exporter) (default: false)
 * Installing [`nitro-release`](https://www.npmjs.com/package/nitro-release) (default: false)
 

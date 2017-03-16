@@ -1,9 +1,9 @@
 {
 	"assets": {
-		"app.css": [
-			"+assets/css/variables.<%= options.pre %>",
-			"+assets/css/mixins.<%= options.pre %>",
-			"assets/css/reset.css",
+		"app.css": [<% if (options.exampleCode) { %>
+			"+assets/css/example/variables.<%= options.pre %>",
+			"+assets/css/example/mixins.<%= options.pre %>",
+			"assets/css/example/reset.css",<% } %>
 			"assets/css/basic.<%= options.pre %>",
 			"patterns/**/css/*.<%= options.pre %>",
 			"patterns/**/css/modifier/*.<%= options.pre %>"

@@ -1,4 +1,5 @@
 <script src="/assets/js/app.js"></script>
+<% if (options.exampleCode) { %>
 <script>
 	$(document).ready(function () {
 		var application = new T.Application();
@@ -6,3 +7,4 @@
 		application.start();
 	});
 </script>
+<% } %>

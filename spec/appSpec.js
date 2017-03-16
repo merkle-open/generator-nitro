@@ -284,6 +284,74 @@ describe('nitro:app', () => {
 
 	});
 
+	describe('when including example files', () => {
+		beforeAll((done) => {
+			helpers.run(path.join(__dirname, '../generators/app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ exampleCode: true })
+				.on('end', done);
+		});
+
+		it('example reset.css is present', () => {
+			assert.file([
+				'assets/css/example/reset.css',
+			]);
+		});
+
+		it('example icons are present', () => {
+			assert.file([
+				'assets/img/icon/favicon.ico',
+				'assets/img/icon/tile-icon.png',
+				'assets/img/icon/apple-touch-icon.png',
+				'assets/img/icon/apple-touch-icon-precomposed.png',
+			]);
+		});
+
+		it('example pattern is present', () => {
+			assert.file([
+				'patterns/molecules/example/readme.md',
+				'patterns/molecules/example/schema.json',
+				'patterns/molecules/example/js/example.js',
+				'patterns/molecules/example/_data/example.json',
+			]);
+		});
+	});
+
+	describe('when not including example files', () => {
+		beforeAll((done) => {
+			helpers.run(path.join(__dirname, '../generators/app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ exampleCode: false })
+				.on('end', done);
+		});
+
+		it('example reset.css is not present', () => {
+			assert.noFile([
+				'assets/css/example/reset.css',
+			]);
+		});
+
+		it('example icons are not present', () => {
+			assert.noFile([
+				'assets/img/icon/favicon.ico',
+				'assets/img/icon/tile-icon.png',
+				'assets/img/icon/apple-touch-icon.png',
+				'assets/img/icon/apple-touch-icon-precomposed.png',
+			]);
+		});
+
+		it('example pattern is not present', () => {
+			assert.noFile([
+				'patterns/molecules/example/readme.md',
+				'patterns/molecules/example/schema.json',
+				'patterns/molecules/example/js/example.js',
+				'patterns/molecules/example/_data/example.json',
+			]);
+		});
+	});
+
 	describe('when including static exporter', () => {
 		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../generators/app'))

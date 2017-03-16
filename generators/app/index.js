@@ -26,6 +26,7 @@ module.exports = class extends Generator {
 			js: this.options.js,
 			viewExt: this.options.viewExt,
 			clientTpl: this.options.clientTpl,
+			exampleCode: this.options.exampleCode,
 			exporter: this.options.exporter,
 			release: this.options.release,
 		};
@@ -62,6 +63,12 @@ module.exports = class extends Generator {
 			desc: 'do you need client side templates',
 			type: Boolean,
 			defaults: this.passedInOptions.clientTpl || false,
+		});
+
+		this.option('exampleCode', {
+			desc: 'do you want to include the example code',
+			type: Boolean,
+			defaults: this.passedInOptions.exampleCode !== false,
 		});
 
 		this.option('exporter', {
@@ -115,6 +122,7 @@ module.exports = class extends Generator {
 					this.options.js = config.jscompiler || this.options.js;
 					this.options.viewExt = config.viewExtension || this.options.viewExt;
 					this.options.clientTpl = config.clientTemplates || this.options.clientTpl;
+					this.options.exampleCode = config.exampleCode || this.options.exampleCode;
 					this.options.exporter = config.exporter || this.options.exporter;
 					this.options.release = config.release || this.options.release;
 				}
@@ -126,9 +134,7 @@ module.exports = class extends Generator {
 					name: 'name',
 					message: 'What\'s the name of your app?',
 					default: this.options.name,
-					when: function () {
-						return !this.passedInOptions.name;
-					}.bind(this),
+					when: () => !this.passedInOptions.name,
 				},
 				{
 					name: 'pre',
@@ -137,9 +143,7 @@ module.exports = class extends Generator {
 					choices: this.preOptions,
 					default: this.options.pre,
 					store: true,
-					when: function () {
-						return !this.passedInOptions.pre;
-					}.bind(this),
+					when: () => !this.passedInOptions.pre,
 				},
 				/* {
 					name: 'js',
@@ -148,9 +152,7 @@ module.exports = class extends Generator {
 					choices: this.jsOptions,
 					default: this.options.js,
 					store: true,
-					when: function () {
-						return !this.passedInOptions.js;
-					}.bind(this),
+					when: () => !this.passedInOptions.js,
 				},*/
 				{
 					name: 'viewExt',
@@ -159,9 +161,7 @@ module.exports = class extends Generator {
 					choices: this.viewExtOptions,
 					default: this.options.viewExt,
 					store: true,
-					when: function () {
-						return !this.passedInOptions.viewExt;
-					}.bind(this),
+					when: () => !this.passedInOptions.viewExt,
 				},
 				{
 					name: 'clientTpl',
@@ -169,9 +169,15 @@ module.exports = class extends Generator {
 					message: 'Would you like to include client side templates?',
 					default: this.options.clientTpl,
 					store: true,
-					when: function () {
-						return typeof this.passedInOptions.clientTpl !== 'boolean';
-					}.bind(this),
+					when: () => typeof this.passedInOptions.clientTpl !== 'boolean',
+				},
+				{
+					name: 'exampleCode',
+					type: 'confirm',
+					message: 'Would you like to include the example code?',
+					default: this.options.exampleCode,
+					store: true,
+					when: () => typeof this.passedInOptions.exampleCode !== 'boolean',
 				},
 				{
 					name: 'exporter',
@@ -179,9 +185,7 @@ module.exports = class extends Generator {
 					message: 'Would you like to include static exporting functionalities?',
 					default: this.options.exporter,
 					store: true,
-					when: function () {
-						return typeof this.passedInOptions.exporter !== 'boolean';
-					}.bind(this),
+					when: () => typeof this.passedInOptions.exporter !== 'boolean',
 				},
 				{
 					name: 'release',
@@ -189,9 +193,7 @@ module.exports = class extends Generator {
 					message: 'Would you like to include release management?',
 					default: this.options.release,
 					store: true,
-					when: function () {
-						return typeof this.passedInOptions.release !== 'boolean';
-					}.bind(this),
+					when: () => typeof this.passedInOptions.release !== 'boolean',
 				},
 			]).then((answers) => {
 				this.options.name = answers.name || this.options.name;
@@ -199,6 +201,7 @@ module.exports = class extends Generator {
 				this.options.js = answers.js || this.options.js;
 				this.options.viewExt = answers.viewExt || this.options.viewExt;
 				this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
+				this.options.exampleCode = answers.exampleCode !== undefined ? answers.exampleCode : this.options.exampleCode;
 				this.options.exporter = answers.exporter !== undefined ? answers.exporter : this.options.exporter;
 				this.options.release = answers.release !== undefined ? answers.release : this.options.release;
 
@@ -207,6 +210,7 @@ module.exports = class extends Generator {
 				this.config.set('jscompiler', this.options.js);
 				this.config.set('viewExtension', this.options.viewExt);
 				this.config.set('clientTemplates', this.options.clientTpl);
+				this.config.set('exampleCode', this.options.exampleCode);
 				this.config.set('exporter', this.options.exporter);
 				this.config.set('release', this.options.release);
 
@@ -287,6 +291,8 @@ module.exports = class extends Generator {
 			'project/docs/nitro.md',
 			'spec/templating/patternSpec.js',
 			'views/index.html',
+			'views/_partials/head.html',
+			'views/_partials/foot.html',
 		];
 		const ignores = [
 			// files to ignore
@@ -320,6 +326,12 @@ module.exports = class extends Generator {
 			'patterns/molecules/example/example.html',
 			'project/blueprints/pattern/pattern.html',
 		];
+		const examplePaths = [
+			// paths only for this.options.exampleCode===true
+			'patterns/molecules/example/',
+			'assets/css/example/',
+			'assets/img/icon/',
+		];
 		const exporterFiles = [
 			// files for this.options.exporter===true
 		];
@@ -333,9 +345,15 @@ module.exports = class extends Generator {
 			options: this.options,
 		};
 
-		files.forEach(function (file) {
+		files.forEach((file) => {
+
 			// exclude ignores
 			if (_.indexOf(ignores, file) !== -1) {
+				return;
+			}
+
+			// exclude nitro tests
+			if (_.startsWith(file, 'spec/')) {
 				return;
 			}
 
@@ -353,6 +371,13 @@ module.exports = class extends Generator {
 				}
 			}
 
+			// Example only Files
+			if (!this.options.exampleCode) {
+				if (examplePaths.some((v) => { return file.indexOf(v) >= 0; }) && file.indexOf('.gitkeep') === -1) {
+					return;
+				}
+			}
+
 			// Exporter only Files
 			if (!this.options.exporter) {
 				if (_.indexOf(exporterFiles, file) !== -1) {
@@ -363,15 +388,6 @@ module.exports = class extends Generator {
 			// Release only Files
 			if (!this.options.release) {
 				if (_.indexOf(releaseFiles, file) !== -1) {
-					return;
-				}
-			}
-
-			// ignore everything under assets, patterns and views on updating project
-			if (this.update) {
-				if (_.startsWith(file, 'assets') ||
-					_.startsWith(file, 'patterns') ||
-					_.startsWith(file, 'views')) {
 					return;
 				}
 			}

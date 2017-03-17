@@ -82,7 +82,9 @@
     "gulp-sass": "3.1.0",<% } %>
     "gulp-size": "2.1.0",
     "gulp-sourcemaps": "2.4.1",
-    "gulp-stylelint": "3.9.0",<% if (options.js === 'TypeScript') { %>
+    "gulp-stylelint": "3.9.0",
+    "gulp-svgmin": "1.2.3",
+    "gulp-svgstore": "6.1.0",<% if (options.js === 'TypeScript') { %>
     "typescript": "1.5.0-beta",
     "gulp-typescript": "2.7.5", <% } %>
     "gulp-uglify": "2.1.0",

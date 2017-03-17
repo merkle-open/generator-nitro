@@ -121,10 +121,10 @@ module.exports = class extends Generator {
 					this.options.pre = config.preprocessor || this.options.pre;
 					this.options.js = config.jscompiler || this.options.js;
 					this.options.viewExt = config.viewExtension || this.options.viewExt;
-					this.options.clientTpl = config.clientTemplates || this.options.clientTpl;
-					this.options.exampleCode = config.exampleCode || this.options.exampleCode;
-					this.options.exporter = config.exporter || this.options.exporter;
-					this.options.release = config.release || this.options.release;
+					this.options.clientTpl = typeof config.clientTemplates === 'boolean' ? config.clientTemplates : this.options.clientTpl;
+					this.options.exampleCode = typeof config.exampleCode === 'boolean' ? config.exampleCode : this.options.exampleCode;
+					this.options.exporter = typeof config.exporter === 'boolean' ? config.exporter : this.options.exporter;
+					this.options.release = typeof config.release === 'boolean' ? config.release : this.options.release;
 				}
 			});
 		} else {
@@ -323,11 +323,13 @@ module.exports = class extends Generator {
 			'views/_layouts/default.html',
 			'views/_partials/foot.html',
 			'views/_partials/head.html',
+			'patterns/atoms/icon/icon.html',
 			'patterns/molecules/example/example.html',
 			'project/blueprints/pattern/pattern.html',
 		];
 		const examplePaths = [
 			// paths only for this.options.exampleCode===true
+			'patterns/atoms/icon/',
 			'patterns/molecules/example/',
 			'assets/css/example/',
 			'assets/img/icon/',

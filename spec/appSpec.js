@@ -316,6 +316,14 @@ describe('nitro:app', () => {
 				'patterns/molecules/example/_data/example.json',
 			]);
 		});
+
+		it('icon pattern is present', () => {
+			assert.file([
+				'patterns/atoms/icon/readme.md',
+				'patterns/atoms/icon/schema.json',
+				'patterns/atoms/icon/_data/icon.json',
+			]);
+		});
 	});
 
 	describe('when not including example files', () => {
@@ -348,6 +356,14 @@ describe('nitro:app', () => {
 				'patterns/molecules/example/schema.json',
 				'patterns/molecules/example/js/example.js',
 				'patterns/molecules/example/_data/example.json',
+			]);
+		});
+
+		it('icon pattern is not present', () => {
+			assert.noFile([
+				'patterns/atoms/icon/readme.md',
+				'patterns/atoms/icon/schema.json',
+				'patterns/atoms/icon/_data/icon.json',
 			]);
 		});
 	});

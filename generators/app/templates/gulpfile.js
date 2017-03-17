@@ -14,9 +14,10 @@ gulp.task('compile-js', <% if (options.js === 'TypeScript') { %>['compile-ts'<% 
 gulp.task('minify-css', ['compile-css'], getTask('minify-css'));
 gulp.task('minify-js', ['compile-js'], getTask('minify-js'));
 gulp.task('minify-img', getTask('minify-img'));
+gulp.task('svg-sprite', getTask('svg-sprite'));
 gulp.task('copy-assets', getTask('copy-assets'));
 gulp.task('clean-assets', getTask('clean-assets'));
-gulp.task('assets', ['copy-assets', 'minify-img', 'minify-js', 'minify-css']);
+gulp.task('assets', ['svg-sprite', 'copy-assets', 'minify-img', 'minify-js', 'minify-css']);
 gulp.task('watch-assets', ['assets'], getTask('watch-assets'));
 gulp.task('serve', getTask('serve'));
 gulp.task('serve-stop', getTask('serve-stop'));

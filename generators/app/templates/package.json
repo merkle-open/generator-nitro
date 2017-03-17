@@ -104,6 +104,7 @@
     "nitro-release": "0.1.0",<% } %>
     "npm-run-all": "4.0.2",
     "stylelint": "7.9.0",
-    "text-table": "0.2.0"
+    "text-table": "0.2.0",
+    "yargs": "7.0.2"
   }
 }

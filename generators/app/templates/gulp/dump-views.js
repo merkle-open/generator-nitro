@@ -1,3 +1,17 @@
+/**
+ * Usage:
+ *  gulp dump-views
+ *
+ * You can optionally dump views with specific locales:
+ *
+ *  gulp dump-views --locales de,en
+ *
+ * If you want to export default templates you have to explicitly set the "default" language:
+ *
+ *  gulp dump-views --locales default,de,en
+ *
+ * If you specify languages, your HTML views will be suffixed with the provided locale, e.g. index-en.html
+ */
 'use strict';
 
 const argv = require('yargs').argv;
@@ -29,19 +43,22 @@ module.exports = function (gulp, plugins) {
 					return del(tmpDirectory)
 						.then(() => {
 								let views = getViews();
+								let dumpedViews = [];
 								const languages = (argv.locales === undefined) ? [] : argv.locales.split(',');
 
 								if(languages.length) {
 									const viewsAmount = views.length;
-									languages.filter(lng => lng !== 'default').map(lng => {
-										views = views.concat(views.map(v => v += `?lang=${lng}`));
+									languages.filter(lng => lng !== 'default').forEach(lng => {
+										dumpedViews = dumpedViews.concat(views.map(v => v += `?lang=${lng}`));
 									});
-									if(!languages.includes('default')) {
-										views.splice(0, viewsAmount);
+									if(languages.includes('default')) {
+										Array.prototype.unshift.apply(dumpedViews, views);
 									}
+								} else {
+									dumpedViews = views;
 								}
 
-								return plugins.remoteSrc(views, {
+								return plugins.remoteSrc(dumpedViews, {
 									base: `http://localhost:${port}/`,
 									buffer: true
 								})

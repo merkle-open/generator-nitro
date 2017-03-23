@@ -7,9 +7,9 @@ const bannerData = {
 	pkg: require('../package.json'),
 };
 const banner = ['/*! ',
-	' * <%= bannerData.pkg.name %>',
-	' * @version v<%= bannerData.pkg.version %>',
-	' * @date <%= bannerData.date %>',
+	' * <%%= bannerData.pkg.name %>',
+	' * @version v<%%= bannerData.pkg.version %>',
+	' * @date <%%= bannerData.date %>',
 	' */',
 	''].join('\n');
 
@@ -19,8 +19,7 @@ module.exports = (gulp, plugins) => {
 		const browserSync = utils.getBrowserSyncInstance();
 		let promises = [];
 
-		assets.forEach((asset) => {
-			<% if (options.js === 'TypeScript') { %>
+		assets.forEach((asset) => {<% if (options.js === 'TypeScript') { %>
 				let tsAssets = utils.splitJsAssets(asset);
 				tsAssets.js.push('public/assets/js/' + asset.name.replace('.js', '.ts.js'));
 			<% } %>

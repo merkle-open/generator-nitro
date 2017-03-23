@@ -10,9 +10,9 @@ const bannerData = {
 	pkg: require('../package.json'),
 };
 const banner = ['/*! ',
-	' * <%= bannerData.pkg.name %>',
-	' * @version v<%= bannerData.pkg.version %>',
-	' * @date <%= bannerData.date %>',
+	' * <%%= bannerData.pkg.name %>',
+	' * @version v<%%= bannerData.pkg.version %>',
+	' * @date <%%= bannerData.date %>',
 	' */',
 	''].join('\n');
 

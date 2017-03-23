@@ -1,7 +1,8 @@
 'use strict';
 
 const gulp = require('gulp');
-const getTask = require('./gulp/utils').getTask;<% if (options.exporter || options.release) { %>
+const getTask = require('./gulp/utils').getTask;
+const gulpSequence = require('gulp-sequence').use(gulp);<% if (options.exporter || options.release) { %>
 const config = require('./app/core/config');<% } %><% if (options.exporter) { %>
 require('nitro-exporter')(gulp, config);<% } %><% if (options.release) { %>
 require('nitro-release')(gulp, config);<% } %>
@@ -23,7 +24,7 @@ gulp.task('serve', getTask('serve'));
 gulp.task('serve-stop', getTask('serve-stop'));
 gulp.task('watch-serve', ['serve'], getTask('watch-serve'));
 gulp.task('develop', ['watch-assets', 'watch-serve']);
-gulp.task('build', ['clean-assets'], getTask('build'));
+gulp.task('build', gulpSequence('clean-assets', 'assets'));
 gulp.task('production', ['assets'], getTask('production'));
 gulp.task('dump-views', getTask('dump-views'));
 gulp.task('lint-accessibility', ['dump-views'], getTask('lint-accessibility'));

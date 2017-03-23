@@ -333,6 +333,12 @@ module.exports = class extends Generator {
 			'patterns/molecules/example/',
 			'assets/css/example/',
 			'assets/img/icon/',
+			'project/routes/',
+		];
+		const exampleIncludeAnyway = [
+			// example file "parts" included for this.options.exampleCode===false
+			'project/routes/readme.md',
+			'.gitkeep',
 		];
 		const exporterFiles = [
 			// files for this.options.exporter===true
@@ -375,7 +381,10 @@ module.exports = class extends Generator {
 
 			// Example only Files
 			if (!this.options.exampleCode) {
-				if (examplePaths.some((v) => { return file.indexOf(v) >= 0; }) && file.indexOf('.gitkeep') === -1) {
+				if (
+					examplePaths.some((v) => file.indexOf(v) >= 0) &&
+					exampleIncludeAnyway.every((v) => { return file.indexOf(v) === -1; })
+				) {
 					return;
 				}
 			}

@@ -12,7 +12,7 @@ The following code is an example of such a view data route:
        next();
     }
     
-    exports = module.exports = (app) => {
+    module.exports = (app) => {
         app.route('/')
             .get(getUser);
     };

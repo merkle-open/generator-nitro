@@ -109,7 +109,7 @@ describe('nitro:app', () => {
 			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ viewExt: 'html' })
+				.withPrompts({ viewExt: 'html', exampleCode: true })
 				.on('end', done);
 		});
 
@@ -134,7 +134,7 @@ describe('nitro:app', () => {
 			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ viewExt: 'hbs' })
+				.withPrompts({ viewExt: 'hbs', exampleCode: true })
 				.on('end', done);
 		});
 
@@ -159,7 +159,7 @@ describe('nitro:app', () => {
 			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ viewExt: 'mustache' })
+				.withPrompts({ viewExt: 'mustache', exampleCode: true })
 				.on('end', done);
 		});
 
@@ -184,7 +184,7 @@ describe('nitro:app', () => {
 			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ clientTpl: true })
+				.withPrompts({ clientTpl: true, exampleCode: true })
 				.on('end', done);
 		});
 
@@ -236,7 +236,7 @@ describe('nitro:app', () => {
 			helpers.run(path.join(__dirname, '../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ clientTpl: false })
+				.withPrompts({ clientTpl: false, exampleCode: true })
 				.on('end', done);
 		});
 
@@ -324,6 +324,15 @@ describe('nitro:app', () => {
 				'patterns/atoms/icon/_data/icon.json',
 			]);
 		});
+
+		it('country project route is present', () => {
+			assert.file([
+				'project/routes/readme.md',
+				'project/routes/countries.js',
+				'project/routes/data/countries.json',
+				'project/routes/helpers/utils.js',
+			]);
+		});
 	});
 
 	describe('when not including example files', () => {
@@ -364,6 +373,20 @@ describe('nitro:app', () => {
 				'patterns/atoms/icon/readme.md',
 				'patterns/atoms/icon/schema.json',
 				'patterns/atoms/icon/_data/icon.json',
+			]);
+		});
+
+		it('country project route is not present', () => {
+			assert.noFile([
+				'project/routes/countries.js',
+				'project/routes/data/countries.json',
+				'project/routes/helpers/utils.js',
+			]);
+		});
+
+		it('but project route readme.md is present', () => {
+			assert.file([
+				'project/routes/readme.md',
 			]);
 		});
 	});

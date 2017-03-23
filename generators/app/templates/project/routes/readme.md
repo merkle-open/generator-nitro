@@ -18,7 +18,7 @@ The following code is an example of such a data api route:
         });
     }
 
-    exports = module.exports = (app) => {
+    module.exports = (app) => {
         app.route('/api/data')
             .get(getData)
             .post(postData);

@@ -7,13 +7,13 @@ module.exports = (gulp, plugins) => {
 		return gulp
 			.src('assets/img/**/*')
 			.pipe(plugins.newer('public/assets/img'))
-			.pipe(plugins.imagemin({
-				optimizationLevel: 7,
-				progressive: true,
-				multipass: true,
-				svgoPlugins: [{collapseGroups: false}, {cleanupIDs: false}, {removeUnknownsAndDefaults: false}, {removeViewBox: false}],
-				use: [pngquant()]
-			}))
+			.pipe(plugins.imagemin([
+				plugins.imagemin.gifsicle({interlaced: true}),
+				plugins.imagemin.jpegtran({progressive: true}),
+				plugins.imagemin.optipng({optimizationLevel: 7}),
+				plugins.imagemin.svgo({plugins: [{collapseGroups: false}, {cleanupIDs: false}, {removeUnknownsAndDefaults: false}, {removeViewBox: false}]}),
+				pngquant(),
+			]))
 			.pipe(gulp.dest('public/assets/img'));
 	};
 };

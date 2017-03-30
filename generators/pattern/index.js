@@ -22,6 +22,13 @@ module.exports = class extends Generator {
 		// Pattern name
 		this.argument('name', { desc: 'the name of your pattern?', type: String, required: false, defaults: '' });
 
+		this.passedInOptions = {
+			name: this.options.name,
+			type: this.options.type,
+			modifier: this.options.modifier,
+			decorator: this.options.decorator,
+		};
+
 		// Pattern type
 		this.cfg = require(this.destinationPath('config.json'));
 
@@ -37,17 +44,31 @@ module.exports = class extends Generator {
 			return key;
 		});
 
+		this.option('name', {
+			desc: `the name of your ${this._pattern.Name}`,
+			type: String,
+			defaults: this.passedInOptions.name || '',
+		});
+
 		this.option('type', {
 			desc: `your desired type [${this.types.join('|')}]`,
 			type: String,
-			defaults: this.types[0],
+			defaults: this.passedInOptions.type || this.types[0],
 		});
 
 		// Pattern modifier
-		this.option('modifier', { desc: 'the name of your modifier', type: String });
+		this.option('modifier', {
+			desc: 'the name of your modifier',
+			type: String,
+			defaults: this.passedInOptions.modifier || '',
+		});
 
 		// Pattern decorator
-		this.option('decorator', { desc: 'the name of your decorator', type: String });
+		this.option('decorator', {
+			desc: 'the name of your decorator',
+			type: String,
+			defaults: this.passedInOptions.decorator || '',
+		});
 	}
 
 	initializing() {
@@ -64,7 +85,7 @@ module.exports = class extends Generator {
 			{
 				name: 'name',
 				message: `What's the name of your ${this._pattern.name}?`,
-				default: this.name,
+				default: this.options.name,
 				validate: (value) => {
 					if (!_.isString(value) || _.isEmpty(value)) {
 						return `${this._pattern.Name} name has to be a valid string`;

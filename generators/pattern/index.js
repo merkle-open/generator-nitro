@@ -65,12 +65,15 @@ module.exports = class extends Generator {
 				name: 'name',
 				message: `What's the name of your ${this._pattern.name}?`,
 				default: this.name,
-				validate: function validateString(value) {
+				validate: (value) => {
 					if (!_.isString(value) || _.isEmpty(value)) {
 						return `${this._pattern.Name} name has to be a valid string`;
 					}
 					if (/^[0-9]/.test(value)) {
 						return `${this._pattern.Name} name must not start with a Number`;
+					}
+					if (/(component|pattern|modifier|decorator)/i.test(value)) {
+						return `Avoid 'pattern', 'component', 'modifier' and 'decorator' in ${this._pattern.Name} names. These have a special meaning`;
 					}
 					return true;
 				},
@@ -86,14 +89,23 @@ module.exports = class extends Generator {
 				name: 'modifier',
 				message: 'Would you like to create a CSS modifier? Type your desired name or leave empty.',
 				default: this.options.modifier || '',
+				validate: (value) => {
+					if (/(component|pattern|modifier|decorator)/i.test(value)) {
+						return `Avoid 'pattern', 'component', 'modifier' and 'decorator' in ${this._pattern.Name} modifier names. These have a special meaning`;
+					}
+					return true;
+				},
 			},
 			{
 				name: 'decorator',
 				message: 'Would you like to create a JS decorator? Type your desired name or leave empty.',
 				default: this.options.decorator || '',
-				validate: function validateString(value) {
+				validate: (value) => {
 					if (_.isString(value) && (/^[0-9]/).test(value)) {
 						return `${this._pattern.Name} decorator must not start with a Number`;
+					}
+					if (/(component|pattern|modifier|decorator)/i.test(value)) {
+						return `Avoid 'pattern', 'component', 'modifier' and 'decorator' in ${this._pattern.Name} decorator names. These have a special meaning`;
 					}
 					return true;
 				},
@@ -202,7 +214,7 @@ module.exports = class extends Generator {
 
 			let filename = file;
 			_.forOwn(fileReplacements, (value, key) => {
-				filename = path.join(path.dirname(filename), path.basename(filename).replace(key, value));
+				filename = path.join(path.dirname(filename), path.basename(filename).split(key).join(value));
 			});
 
 			this.fs.copyTpl(

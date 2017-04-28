@@ -12,35 +12,37 @@
  *
  * example config in ./config.json
  *
- *	"linter": {
- *		"patternData": {
- *			 "logMissingSchemaAsError": false,
- *			 "logMissingSchemaAsWarning": true
- *		}
- *	 }
+ *    "linter": {
+ *        "patternData": {
+ *            "logMissingSchemaAsError": false,
+ *            "logMissingSchemaAsWarning": true
+ *         }
+ *    }
  *
  */
 const chalk = require('chalk');
 const fs = require('fs');
-const hbs = require('hbs');
 const path = require('path');
-const extend = require('extend');
 const globby = require('globby');
 const Ajv = require('ajv');
 const config = require('../core/config');
 const ajv = new Ajv({allErrors: true});
+const wildcard = '*';
 const patternBasePaths = Object.keys(config.nitro.patterns).map((key) => {
 	return config.nitro.patterns[key].path;
 });
-const wildcard = '*';
-
-const elementGlobs = patternBasePaths.map((patternBasePath) => {
+const patternGlobs = patternBasePaths.map((patternBasePath) => {
 	return `${patternBasePath}/${wildcard}`;
-});
+}).concat(
+	patternBasePaths.map((patternBasePath) => {
+		return `${patternBasePath}/${wildcard}/elements/${wildcard}`;
+	})
+);
 
 let logMissingSchemaAsError;
 let logMissingSchemaAsWarning;
 let errorCouter = 0;
+let patternCouter = 0;
 
 if (config.linter && config.linter.patternData) {
 	logMissingSchemaAsError = config.linter.patternData.logMissingSchemaAsError === undefined
@@ -49,8 +51,9 @@ if (config.linter && config.linter.patternData) {
 		? true : config.linter.patternData.logMissingSchemaAsWarning;
 }
 
-globby.sync(elementGlobs).forEach((patternPath, index) => {
+globby.sync(patternGlobs).forEach((patternPath, index) => {
 	const schemaFilePath = `${patternPath}/schema.json`;
+	patternCouter += 1;
 
 	if (!fs.existsSync(schemaFilePath)) {
 		if (logMissingSchemaAsError) {
@@ -77,7 +80,7 @@ globby.sync(elementGlobs).forEach((patternPath, index) => {
 });
 
 if (errorCouter <= 0) {
-	console.log(chalk.green(`Success: all pattern data are valid! 👍`));
+	console.log(chalk.green(`Success: all data from each of the ${patternCouter} patterns are valid! 👍`));
 } else {
 	process.abort();
 }

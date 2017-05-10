@@ -42,19 +42,19 @@ module.exports = (gulp, plugins) => {
 			isDependentStyleSource(e.path) ||
 			'unlink' === e.event
 		) {
-			clearCssCache();
+			processChange('cssCache', clearCssCache, 12000);
 		}
 	}
 	function clearCache() {
-		clearJsCache();
-		clearCssCache();
+		processChange('jsCache', clearJsCache, 12000);
+		processChange('cssCache', clearCssCache, 12000);
 	}
 
 	const lastRun = {};
 	function processChange(type, func, throttle) {
 		type = type || 'other';
 		func = func || function(){};
-		throttle = throttle || 1000;
+		throttle = throttle || 2000;
 
 		// call function only once in defined time
 		lastRun[type] = lastRun[type] || 0;
@@ -76,7 +76,7 @@ module.exports = (gulp, plugins) => {
 				utils.updateSourcePatterns();
 				gulp.start('compile-css');
 				gulp.start('compile-js');
-			}, 2000);
+			}, 5000);
 		});
 
 		plugins.watch([

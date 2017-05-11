@@ -26,6 +26,12 @@
 	"code": {
 		"compatibility": {
 			"browsers": ["> 1%", "last 2 versions", "ie 9", "android 4", "Firefox ESR", "Opera 12.1"]
+		},
+		"validation": {
+			"jsonSchema": {
+				"logMissingSchemaAsError": false,
+				"logMissingSchemaAsWarning": true
+			}
 		}
 	},<% if (options.exporter) { %>
 	"exporter": {
@@ -98,12 +104,6 @@
 				"path": "patterns/organisms",
 				"pattern_prefix": "o"
 			}
-		}
-	},
-	"linter": {
-		"patternData": {
-			"logMissingSchemaAsError": false,
-			"logMissingSchemaAsWarning": true
 		}
 	}
 }

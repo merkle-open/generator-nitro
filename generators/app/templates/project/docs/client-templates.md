@@ -71,4 +71,4 @@ If you want to use the code of a serverside pattern unchanged for your clientsid
 Two handlebars versions are in use at the moment. They should have similar versions ;-)
 
 * One to render views for nitro and to precompile the templates on the server side (`hbs.handlebars` currently 4.0.5)
-* A handlebars runtime to render the precompiled template on the client side (`handlebars` currently 4.0.7)
+* A handlebars runtime to render the precompiled template on the client side (`handlebars` currently 4.0.8)

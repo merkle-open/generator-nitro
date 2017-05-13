@@ -18,20 +18,20 @@ _.*
 atlassian-ide-plugin.xml
 
 # Namics frontend-defaults
-generators/app/templates/frontend-defaults.zip
-generators/app/templates/.accessibilityrc
-generators/app/templates/.editorconfig
-generators/app/templates/.eslintrc.js
-generators/app/templates/.eslintignore
-generators/app/templates/.gitignore
-generators/app/templates/.gitattributes
-generators/app/templates/.htmllintrc
-generators/app/templates/.stylelintrc
-generators/app/templates/.stylelintignore
+/generators/app/templates/frontend-defaults.zip
+/generators/app/templates/.accessibilityrc
+/generators/app/templates/.editorconfig
+/generators/app/templates/.eslintrc.js
+/generators/app/templates/.eslintignore
+/generators/app/templates/.gitignore
+/generators/app/templates/.gitattributes
+/generators/app/templates/.htmllintrc
+/generators/app/templates/.stylelintrc
+/generators/app/templates/.stylelintignore
 
 # Project
-node_modules/
-npm-debug.log
+/node_modules
+/npm-debug.log
 
 # allow
 !.gitkeep

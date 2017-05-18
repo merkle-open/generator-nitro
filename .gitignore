@@ -31,7 +31,7 @@ atlassian-ide-plugin.xml
 
 # Project
 /node_modules
-/npm-debug.log
+npm-debug.log
 
 # allow
 !.gitkeep

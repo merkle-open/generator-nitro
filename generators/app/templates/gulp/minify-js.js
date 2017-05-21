@@ -1,6 +1,12 @@
 'use strict';
 
 const utils = require('./utils');
+const uglifyOptions = {
+	output: {
+		comments: /^!/
+	}
+};
+
 
 module.exports = (gulp, plugins) => {
 	return () => {
@@ -9,7 +15,7 @@ module.exports = (gulp, plugins) => {
 		assets.forEach((asset) => {
 			gulp
 				.src(`public/assets/js/${asset.name}`)
-				.pipe(plugins.uglify({preserveComments: 'license'}))
+				.pipe(plugins.uglify(uglifyOptions))
 				.pipe(plugins.rename(asset.name.replace('.js', '.min.js')))
 				.pipe(plugins.size({showFiles: true, gzip: false, title: 'JavaScript minified'}))
 				.pipe(plugins.size({showFiles: true, gzip: true, title: 'JavaScript minified'}))

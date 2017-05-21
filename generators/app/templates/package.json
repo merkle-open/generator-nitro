@@ -36,7 +36,7 @@
   ],
   "dependencies": {
     "babel-polyfill": "6.23.0",<% if (options.clientTpl) { %>
-    "handlebars": "4.0.8",<% } %>
+    "handlebars": "4.0.10",<% } %>
     "jquery": "3.2.1",
     "terrific": "3.0.0"
   },
@@ -44,10 +44,10 @@
     "@namics/eslint-config": "2.3.0",
     "@namics/stylelint-bem": "3.1.1",
     "ajv": "4.11.5",
-    "autoprefixer": "7.1.0",
+    "autoprefixer": "7.1.1",
     "babel-preset-es2015": "6.24.1",
-    "body-parser": "1.17.1",
-    "browser-sync": "2.18.11",
+    "body-parser": "1.17.2",
+    "browser-sync": "2.18.12",
     "chalk": "1.1.3",
     "compression": "1.6.2",
     "del": "2.2.2",
@@ -90,13 +90,13 @@
     "gulp-svgstore": "6.1.0",<% if (options.js === 'TypeScript') { %>
     "typescript": "1.5.0-beta",
     "gulp-typescript": "2.7.5", <% } %>
-    "gulp-uglify": "2.1.2",
+    "gulp-uglify": "3.0.0",
     "gulp-watch": "4.3.11",<% if (options.clientTpl) { %>
     "gulp-wrap": "0.13.0",<% } %>
     "hbs": "4.0.1",
     "hbs-utils": "0.0.4",
     "htmllint": "0.6.0",
-    "i18next": "8.2.1",
+    "i18next": "8.3.0",
     "i18next-express-middleware": "1.0.5",
     "i18next-node-fs-backend": "1.0.0",
     "i18next-sprintf-postprocessor": "0.2.2",

@@ -194,7 +194,6 @@ describe('nitro:app', () => {
 				['package.json', /gulp-declare/],
 				['package.json', /gulp-handlebars/],
 				['package.json', /gulp-wrap/],
-				['package.json', /merge-stream/],
 			]);
 		});
 
@@ -246,7 +245,6 @@ describe('nitro:app', () => {
 				['package.json', /gulp-declare/],
 				['package.json', /gulp-handlebars/],
 				['package.json', /gulp-wrap/],
-				['package.json', /merge-stream/],
 			]);
 		});
 

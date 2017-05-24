@@ -7,7 +7,7 @@ module.exports = (gulp, plugins) => {
 	return () => {
 		const svgIcons = gulp
 			.src('patterns/atoms/icon/img/icons/*.svg')
-			.pipe(plugins.svgmin(function (file) {
+			.pipe(plugins.svgmin((file) => {
 				var prefix = path.basename(file.relative, path.extname(file.relative));
 				return {
 					plugins: [

@@ -15,7 +15,7 @@ const reportOptions = {
 const tmpDirectory = utils.getTmpDirectory('views');
 const destDirectory = utils.getTmpDirectory(`reports/${lintOptions.accessibilityLevel}`);
 
-module.exports = function (gulp, plugins) {
+module.exports = (gulp, plugins) => {
 	return () => {
 		return del(destDirectory)
 			.then(() => {

@@ -9,7 +9,7 @@ module.exports = (gulp, plugins) => {
 	return () => {
 		// register nitro handlebars pattern helper
 		const helpersDir = path.join(__dirname, '../app/templating/hbs/helpers');
-		fs.readdirSync(helpersDir).forEach(function(helper) {
+		fs.readdirSync(helpersDir).forEach((helper) => {
 			const name = helper.replace('.js', '');
 			if ('pattern' === name) {
 				hbs.registerHelper(name, require(path.join(helpersDir, name)));

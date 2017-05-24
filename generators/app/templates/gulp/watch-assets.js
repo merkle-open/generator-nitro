@@ -70,7 +70,7 @@ module.exports = (gulp, plugins) => {
 		plugins.watch([
 			'config.json'
 		], () => {
-			processChange('config', function() {
+			processChange('config', () => {
 				config = utils.reloadConfig();
 				clearCache();
 				utils.updateSourcePatterns();
@@ -83,7 +83,7 @@ module.exports = (gulp, plugins) => {
 			'assets/css/**/*.<%= options.pre %>',
 			'patterns/**/css/**/*.<%= options.pre %>'
 		], (e) => {
-			processChange('css', function() {
+			processChange('css', () => {
 				checkCssCache(e);
 				gulp.start('compile-css');
 			});
@@ -96,7 +96,7 @@ module.exports = (gulp, plugins) => {
 			'patterns/**/js/**/*.ts'<% } %><% if (options.clientTpl) { %>,
 			'patterns/**/template/**/*.hbs'<% } %>
 		], () => {
-			processChange('js', function() {
+			processChange('js', () => {
 				gulp.start('compile-js');
 			});
 		});
@@ -109,7 +109,7 @@ module.exports = (gulp, plugins) => {
 			'patterns/**/schema.json',
 			'patterns/**/_data/*.json'
 		], () => {
-			processChange('data', function() {
+			processChange('data', () => {
 				browserSync.reload();
 			});
 		});

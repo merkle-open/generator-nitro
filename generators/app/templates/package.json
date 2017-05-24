@@ -106,8 +106,8 @@
     "karma-babel-preprocessor": "6.0.1",
     "karma-chrome-launcher": "2.1.1",
     "karma-jasmine": "1.1.0",
-    "karma-phantomjs-launcher": "1.0.4",<% if (options.clientTpl) { %>
-    "merge-stream": "1.0.1",<% } %><% if (options.exporter) { %>
+    "karma-phantomjs-launcher": "1.0.4",
+    "merge-stream": "1.0.1",<% if (options.exporter) { %>
     "nitro-exporter": "0.3.2",<% } %><% if (options.release) { %>
     "nitro-release": "0.1.0",<% } %>
     "npm-run-all": "4.0.2",

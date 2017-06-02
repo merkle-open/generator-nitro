@@ -54,7 +54,7 @@
     "dot-object": "1.5.4",
     "es6-promise": "4.1.0",
     "eslint": "3.19.0",
-    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-import": "2.3.0",
     "express": "4.15.3",
     "extend": "3.0.1",
     "get-port": "3.1.0",
@@ -71,7 +71,7 @@
     "gulp-handlebars": "4.0.0",<% } %>
     "gulp-header": "1.8.8",
     "gulp-htmllint": "0.0.12",
-    "gulp-imagemin": "3.2.0",<% if (options.pre === 'less') { %>
+    "gulp-imagemin": "3.3.0",<% if (options.pre === 'less') { %>
     "gulp-less": "3.3.0",<% } %>
     "gulp-live-server": "0.0.30",
     "gulp-load-plugins": "1.5.0",
@@ -96,11 +96,11 @@
     "hbs": "4.0.1",
     "hbs-utils": "0.0.4",
     "htmllint": "0.6.0",
-    "i18next": "8.3.0",
+    "i18next": "8.4.0",
     "i18next-express-middleware": "1.0.5",
     "i18next-node-fs-backend": "1.0.0",
     "i18next-sprintf-postprocessor": "0.2.2",
-    "imagemin-pngquant": "5.0.0",
+    "imagemin-pngquant": "5.0.1",
     "jasmine-core": "2.6.2",
     "karma": "1.7.0",
     "karma-babel-preprocessor": "6.0.1",

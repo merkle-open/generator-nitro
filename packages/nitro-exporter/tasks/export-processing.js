@@ -132,7 +132,7 @@ module.exports = function (gulp, config) {
 					return new Promise((resolve) => {
 						const pkg = JSON.parse(fs.readFileSync(`${config.nitro.base_path}package.json`, {
 							encoding: 'utf-8',
-							flag: 'r'
+							flag: 'r',
 						}));
 						gulp.src(`${configEntry.dest}${path.sep}**`)
 							.pipe(gulpZip(`${pkg.name}-${pkg.version}.zip`))

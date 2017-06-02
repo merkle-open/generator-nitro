@@ -1,11 +1,11 @@
 module.exports = {
-	each(exporter, callback) {
+	each(exporter, cb) {
 		if (exporter.length) {
 			exporter.forEach((config) => {
-				callback(config);
+				cb(config);
 			});
 		} else {
-			callback(exporter);
+			cb(exporter);
 		}
-	}
+	},
 };

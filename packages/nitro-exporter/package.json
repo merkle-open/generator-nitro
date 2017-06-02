@@ -4,7 +4,7 @@
   "description": "An exporting package for nitro. Generate static packages with ease.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/eslint ."
+    "test": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -21,18 +21,19 @@
   },
   "homepage": "https://github.com/namics/nitro-exporter#readme",
   "dependencies": {
-    "array-unique": "^0.2.x",
-    "event-stream": "^3.x",
-    "glob": "^7.0.5",
+    "array-unique": "^0.3.2",
+    "event-stream": "^3.3.4",
+    "glob": "^7.1.2",
     "gulp-filter": "^5.0.0",
-    "gulp-replace-task": "^0.11.x",
-    "gulp-sequence": "^0.x",
-    "gulp-zip": "^3.x",
-    "readable-stream": "^2.1.4",
-    "request": "^2.x"
+    "gulp-replace-task": "^0.11.0",
+    "gulp-sequence": "^0.4.6",
+    "gulp-zip": "^4.0.0",
+    "readable-stream": "^2.2.9",
+    "request": "^2.81.0"
   },
   "devDependencies": {
-    "@namics/eslint-config": "^1.0.0",
-    "eslint": "^3.1.1"
+    "@namics/eslint-config": "^2.3.0",
+    "eslint": "^3.19.0",
+    "eslint-plugin-import": "^2.3.0"
   }
 }

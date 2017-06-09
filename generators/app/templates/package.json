@@ -50,7 +50,7 @@
     "browser-sync": "2.18.12",
     "chalk": "1.1.3",
     "compression": "1.6.2",
-    "del": "2.2.2",
+    "del": "3.0.0",
     "dot-object": "1.5.4",
     "es6-promise": "4.1.0",
     "eslint": "3.19.0",
@@ -96,12 +96,12 @@
     "hbs": "4.0.1",
     "hbs-utils": "0.0.4",
     "htmllint": "0.6.0",
-    "i18next": "8.4.0",
+    "i18next": "8.4.1",
     "i18next-express-middleware": "1.0.5",
     "i18next-node-fs-backend": "1.0.0",
     "i18next-sprintf-postprocessor": "0.2.2",
     "imagemin-pngquant": "5.0.1",
-    "jasmine-core": "2.6.2",
+    "jasmine-core": "2.6.3",
     "karma": "1.7.0",
     "karma-babel-preprocessor": "6.0.1",
     "karma-chrome-launcher": "2.1.1",
@@ -111,7 +111,7 @@
     "nitro-exporter": "0.3.2",<% } %><% if (options.release) { %>
     "nitro-release": "0.1.0",<% } %>
     "npm-run-all": "4.0.2",
-    "stylelint": "7.10.1",
+    "stylelint": "7.11.0",
     "text-table": "0.2.0",
     "yargs": "8.0.1"
   }

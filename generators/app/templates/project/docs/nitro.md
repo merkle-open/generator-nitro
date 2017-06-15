@@ -414,7 +414,7 @@ The order of these special patterns does not matter.
 
 You can configure as many different assets as you wish.
 
-```json
+```
 "brand.css": [
     "assets/css/reset.css",
     ...
@@ -441,7 +441,7 @@ or use `%s` placeholders for sprintf functionality.
 
 Some examples:
 
-```json
+```
 data = {
    name: 'developer'
 }
@@ -454,9 +454,7 @@ data = {
         "interpolation" : "Hello {{name}}"
     }
 }
-```
 
-```
 {{t 'test.example.string'}}
 {{t 'test.example.nested'}}
 {{t 'test.example.sprintf' 'alphabet' 'a' 'l' 'p'}}

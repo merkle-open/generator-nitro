@@ -3,7 +3,7 @@
 Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.
 It provides a proven but flexible structure to develop your frontend code, even in a large team.
 Keep track of your code with a modularized frontend. This app and the suggested concepts could help -
-[atomic design](http://bradfrost.com/blog/post/atomic-web-design/) and [BEM](https://en.bem.info/method/definitions/).
+[atomic design](http://bradfrost.com/blog/post/atomic-web-design/) and [BEM](https://en.bem.info/method/definitions/).  
 Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 ## Features
@@ -21,9 +21,9 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 ## Preparation
 
-This application was created by the yeoman generator for nitro.
+This application was created by the yeoman generator for nitro.  
 Before using, you need of course [node and npm](https://nodejs.org/) installed.
-Currently supported node.js versions are 4.x and 6.x. So everything between should work.
+Currently supported node.js versions are 4.x and 6.x. So everything between should work.  
 And also you need the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro)
 and some dependencies installed globally.
 
@@ -73,7 +73,7 @@ For production mode add `NODE_ENV=production` environment variable
 NODE_ENV=production && npm run prod
 ```
 
-The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `dev` task).
+The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `dev` task).  
 If you want the app to run on another port put them before the start task like this:
 
 ```
@@ -164,7 +164,7 @@ Create a new `*.<%= options.viewExt %>` file in the `views` folder. (You can mak
 /views/content/variant.<%= options.viewExt %>
 ```
 
-Your new page can then be called by the according URL (with or without an extension).
+Your new page can then be called by the according URL (with or without an extension).  
 Subfolders are represented with a hyphen.
 
 ```
@@ -295,8 +295,7 @@ The following two examples do the same and render the file `content/example.<%= 
 #### Data per page
 
 You may pass data to your templates (view, layout, partial, pattern) per view.  
-Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`. 
-(Use the same folder structure as in `views`)
+Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`. (Use the same folder structure as in `views`)
 
 ```
 /views/index.<%= options.viewExt %>
@@ -390,8 +389,7 @@ You can configure the include order of your assets by defining patterns in `conf
 
 The matching patterns follow the standard node glob patterns.  
 Glob patterns are similar to regular expression but simplified. They are used by several shells.  
-You should always try to keep the patterns simple. Usually you only need the asterisks `*` `**` 
-and the exclamation mark `!` for negation.
+You should always try to keep the patterns simple. Usually you only need the asterisks `*` `**` and the exclamation mark `!` for negation.
 
 You can read more on the standard [node glob patterns](https://github.com/isaacs/node-glob#glob-primer).
 
@@ -422,8 +420,7 @@ You can configure as many different assets as you wish.
 
 ## Translations
 
-Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library 
-and gives you the Handlebars helper `{{t}}`.
+Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the Handlebars helper `{{t}}`.  
 Translations are stored in `project/locales/[lang]/translation.json`.
 
 Express Middleware configuration:
@@ -526,7 +523,7 @@ into the [`project/routes` directory](project/routes/).
 ### Using another Template Engine
 
 If you don't want to use [Handlebars](http://handlebarsjs.com/) as Nitro's Template Engine
-you can configure your own Engine.
+you can configure your own Engine.  
 This example shows how to replace Handlebars with [Nunjucks](https://mozilla.github.io/nunjucks/) as an example.
 
 All these steps need to be performed in `server.js`.

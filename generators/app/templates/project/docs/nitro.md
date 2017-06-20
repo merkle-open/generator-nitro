@@ -116,7 +116,7 @@ A pattern uses the following structure:
 /example/_data/example.json
 ```
 
-Modifiers (JavaScript) and decorators (CSS) are created using the following conventions:
+Modifiers (CSS) and decorators (JavaScript) are created using the following conventions:
 
 ```
 /example/css/modifier/example-<modifier>.css
@@ -307,7 +307,7 @@ http://localhost:8080/index
 http://localhost:8080/content-variant
 ```
 
-It's also possilbe to use a custom data file by requesting with a query param `?_data=...`:
+It's also possible to use a custom data file by requesting with a query param `?_data=...`:
 
 ```
 /views/index.<%= options.viewExt %>

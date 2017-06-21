@@ -25,10 +25,10 @@ This application was created by the yeoman generator for nitro.
 Before using, you need of course [node and npm](https://nodejs.org/) installed.
 Currently supported node.js versions are 4.x and 6.x. So everything between should work.  
 And also you need the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro)
-and some dependencies installed globally.
+and the [yeoman cli tool](https://www.npmjs.com/package/yo) installed globally.
 
 ```
-npm install -g yo gulp generator-nitro
+npm install -g yo generator-nitro
 ```
 
 Keep your global packages up to date:
@@ -120,7 +120,7 @@ Modifiers (CSS) and decorators (JavaScript) are created using the following conv
 
 ```
 /example/css/modifier/example-<modifier>.css
-/example/js/decorator/example-<decorator>.
+/example/js/decorator/example-<decorator>.js
 ```
 
 Different data variations have to be placed in the `_data` folder:

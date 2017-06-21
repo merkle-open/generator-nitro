@@ -6,18 +6,20 @@
 
 Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.  
 It provides a proven but flexible structure to develop your frontend code, even in a large team.  
-Keep track of your code with a modularized frontend. This app and the suggested [atomic design](http://bradfrost.com/blog/post/atomic-web-design/) and [BEM](https://en.bem.info/method/definitions/) concepts could help.  
+Keep track of your code with a modularized frontend. This app and the suggested
+[atomic design](http://bradfrost.com/blog/post/atomic-web-design/) and [BEM](https://en.bem.info/method/definitions/)
+concepts could help.  
 Nitro is simple, fast and flexible. It works on OSX, Windows and Linux. Use this app for all your frontend work.
 
 ## Usage
 
 Before using, you need of course [node and npm](https://nodejs.org/) installed.  
-Nitro and the Nitro generator are tested with the current LTS versions of the node.js releases 4 and 6. So everything between should work.
-It's not recommended to update node.js to release 7.
+Nitro and the Nitro generator are tested with the current LTS versions of the node.js releases 4 and 6.
+(So everything between should work). The Nitro generator also works with node.js release 8.
 
-Install `yo`, `gulp` and `generator-nitro` globally:
+Install `yo` and `generator-nitro` globally:
 
-    npm install -g yo gulp generator-nitro
+    npm install -g yo generator-nitro
 
 Keep your global packages up to date:
 
@@ -79,7 +81,8 @@ Running `npm test` will run the `jasmine` unit tests.
 ## Contribute
 
 See the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contributing.md)  
-When submitting an issue, please follow the [guidelines](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission). Especially important is to make sure Yeoman is up-to-date, and providing the command or commands that cause the issue.  
+When submitting an issue, please follow the [guidelines](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission).
+Especially important is to make sure Yeoman is up-to-date, and providing the command or commands that cause the issue.  
 When submitting a bugfix, write a test that exposes the bug and fails before applying your fix. Submit the test alongside the fix.  
 When submitting a new feature, add tests that cover the feature.
 

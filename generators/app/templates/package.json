@@ -72,7 +72,7 @@
     "gulp-header": "1.8.8",
     "gulp-htmllint": "0.0.12",
     "gulp-imagemin": "3.3.0",<% if (options.pre === 'less') { %>
-    "gulp-less": "3.3.0",<% } %>
+    "gulp-less": "3.3.2",<% } %>
     "gulp-live-server": "0.0.30",
     "gulp-load-plugins": "1.5.0",
     "gulp-newer": "1.3.0",
@@ -96,12 +96,12 @@
     "hbs": "4.0.1",
     "hbs-utils": "0.0.4",
     "htmllint": "0.6.0",
-    "i18next": "8.4.1",
+    "i18next": "8.4.2",
     "i18next-express-middleware": "1.0.5",
     "i18next-node-fs-backend": "1.0.0",
     "i18next-sprintf-postprocessor": "0.2.2",
     "imagemin-pngquant": "5.0.1",
-    "jasmine-core": "2.6.3",
+    "jasmine-core": "2.6.4",
     "karma": "1.7.0",
     "karma-babel-preprocessor": "6.0.1",
     "karma-chrome-launcher": "2.1.1",
@@ -111,8 +111,8 @@
     "nitro-exporter": "0.3.2",<% } %><% if (options.release) { %>
     "nitro-release": "0.1.0",<% } %>
     "npm-run-all": "4.0.2",
-    "stylelint": "7.11.0",
+    "stylelint": "7.11.1",
     "text-table": "0.2.0",
-    "yargs": "8.0.1"
+    "yargs": "8.0.2"
   }
 }

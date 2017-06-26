@@ -1,11 +1,11 @@
 'use strict';
 
 const hbs = require('hbs');
-const config = require('../../../core/config.js');
+const config = require('config');
 const view = require('../../../lib/view.js');
 
 module.exports = function view_list () {
-	const views = view.getViews(config.nitro.base_path + config.nitro.view_directory);
+	const views = view.getViews(config.get('nitro.basePath') + config.get('nitro.viewDirectory'));
 	let markup = ['<ul>'];
 
 	views.forEach((view) => {

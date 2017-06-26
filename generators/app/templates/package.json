@@ -50,6 +50,7 @@
     "browser-sync": "2.18.12",
     "chalk": "2.0.1",
     "compression": "1.6.2",
+    "config": "1.26.1",
     "del": "3.0.0",
     "dot-object": "1.6.0",
     "es6-promise": "4.1.1",

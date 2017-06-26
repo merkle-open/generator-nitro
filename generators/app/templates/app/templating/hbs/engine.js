@@ -3,12 +3,12 @@
 const fs = require('fs');
 const path = require('path');
 const hbs = require('hbs');
-const config = require('../../core/config');
+const config = require('config');
 
 // collect helpers
 let files = {};
-const coreHelpersDir = config.nitro.base_path + 'app/templating/hbs/helpers/';
-const projectHelpersDir = config.nitro.base_path + 'project/helpers/';
+const coreHelpersDir = `${config.get('nitro.basePath')}app/templating/hbs/helpers/`;
+const projectHelpersDir = `${config.get('nitro.basePath')}project/helpers/`;
 const coreFiles = fs.readdirSync(coreHelpersDir);
 const projectFiles = fs.readdirSync(projectHelpersDir);
 

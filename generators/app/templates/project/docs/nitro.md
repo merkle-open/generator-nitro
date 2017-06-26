@@ -103,7 +103,7 @@ Patterns are created in the `patterns` folder. A pattern is an encapsulated bloc
 with corresponding styles, scripts and data. The pattern data can be described in `schema.json`
 with [JSON schema](http://json-schema.org) format. Nitro uses [ajv](http://epoberezkin.github.io/ajv/) for validation.
 
-For a better overview it is useful to define different types of patterns in `config.json`. It is recommended to make
+For a better overview it is useful to define different types of patterns in `config/default.js`. It is recommended to make
 subfolders like `atoms`, `molecules` & `organisms`
 
 A pattern uses the following structure:
@@ -136,7 +136,7 @@ Different data variations have to be placed in the `_data` folder:
 yo nitro:pattern
 ```
 
-This will copy the templates (nitro.patterns.<type>.template) from `config.json` to the configured target.
+This will copy the templates (nitro.patterns.<type>.template) from config to the configured target.
 
 ### Creating pattern elements
 
@@ -377,26 +377,28 @@ therefore you'll always get the latest version.
 
 ### Assets Configuration
 
-You can configure the include order of your assets by defining patterns in `config.json`.
+You can configure the include order of your assets by defining patterns in `config/default/assets.js`.
 
-```json
-"assets": {
-    "app.css": [
-        "!assets/css/somefile.*",
-        "assets/css/cssreset.css",
-        "assets/css/*.*",
-        "patterns/**/css/*.*",
-        "patterns/**/css/modifier/*.*"
-    ],
-    "app.js": [
-        "!assets/js/somefile.js",
-        "assets/vendor/jquery/dist/jquery.min.js",
-        "assets/vendor/terrific/dist/terrific.min.js",
-        "assets/js/*.js",
-        "patterns/**/js/*.js",
-        "patterns/**/js/decorator/*.js"
-    ]
-}
+```js
+const config = {
+   assets: {
+        'app.css': [
+            '!assets/css/somefile.*',
+            'assets/css/cssreset.css',
+            'assets/css/*.*',
+            'patterns/**/css/*.*',
+            'patterns/**/css/modifier/*.*',
+        ],
+        'app.js': [
+            '!assets/js/somefile.js',
+            'assets/vendor/jquery/dist/jquery.min.js',
+            'assets/vendor/terrific/dist/terrific.min.js',
+            'assets/js/*.js',
+            'patterns/**/js/*.js',
+            'patterns/**/js/decorator/*.js',
+        ],
+   },
+};
 ```
 
 #### Pattern
@@ -542,17 +544,17 @@ This example shows how to replace Handlebars with [Nunjucks](https://mozilla.git
 
 All these steps need to be performed in `server.js`.
 
-1. Replace the line `hbs = require('./app/core/hbs')` with `nunjucks = require('nunjucks')`
-2. Remove the line `app.engine(config.nitro.view_file_extension, hbs.__express);`
+1. Replace the line `hbs = require('./app/templating/hbs/engine')` with `nunjucks = require('nunjucks')`
+2. Remove the partials line and  `app.engine(config.get('nitro.viewFileExtension'), hbs.__express);`
 3. Configure nunjucks as Express' Template Engine with the following block:
 
 ```js
 nunjucks.configure(
-    config.nitro.base_path + config.nitro.view_directory,
+    config.get('nitro.basePath') + config.get('nitro.viewDirectory'),
     {
         autoescape: true,
         express: app
-    }
+    },
 );
 ```
 

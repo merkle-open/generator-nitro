@@ -6,6 +6,7 @@ const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const path = require('path');
+const fs = require('fs');
 const gitconfig = require('git-config');
 const glob = require('glob');
 const _ = require('lodash');
@@ -29,15 +30,23 @@ module.exports = class extends Generator {
 			decorator: this.options.decorator,
 		};
 
-		// Pattern type
-		this.cfg = require(this.destinationPath('config.json'));
+		// get project config
+		let projectConfig = {};
+		if (fs.existsSync(this.destinationPath('config/default.js'))) {
+			// use config from 2.x
+			process.env.NODE_CONFIG_DIR = this.destinationPath('config');
+			projectConfig = require('config');
+		} else if (fs.existsSync(this.destinationPath('config.json'))) {
+			// use config.json from 1.x
+			projectConfig = require(this.destinationPath('config.json'));
+		}
 
 		// Compatibility with older config and subgeneartor nitro:component
 		const _patternName = this.options.namespace.split(':')[1];
 		this._pattern = {
 			name: _patternName,
 			Name: _.upperFirst(_patternName),
-			node: this.cfg.nitro.patterns || this.cfg.nitro.components,
+			node: projectConfig.nitro.patterns || projectConfig.nitro.components,
 		};
 
 		this.types = _.map(this._pattern.node, (value, key) => {
@@ -186,7 +195,7 @@ module.exports = class extends Generator {
 			folder, // Pattern folder, eg. MainNavigation
 			js: _.upperFirst(_.camelCase(this.name.replace(/^[0-9]+/, ''))), // Pattern name for use in JS files, eg. MainNavigation
 			css: _.kebabCase(this.name), // Pattern name for use in CSS files, eg. main-navigation
-			prefix: pattern.pattern_prefix || pattern.component_prefix || null, // CSS class prefix, eg. m
+			prefix: pattern.patternPrefix || pattern.componentPrefix || null, // CSS class prefix, eg. m
 			type: this.options.type, // Pattern type, eg. atom, molecule etc.
 			file: this.name.replace(/[^A-Za-z0-9-]/g, '').toLowerCase(), // Pattern filename, eg. mainnavigation
 		};

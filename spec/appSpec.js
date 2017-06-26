@@ -24,13 +24,13 @@ describe('nitro:app', () => {
 			assert.file([
 				'app',
 				'assets',
-				'patterns',
+				'config',
 				'gulp',
+				'patterns',
 				'project',
 				'public',
 				'views',
 				'.node-version',
-				'config.json',
 				'package.json',
 				'README.md',
 				'server.js',
@@ -67,8 +67,8 @@ describe('nitro:app', () => {
 			assert.fileContent('gulp/compile-css.js', /plugins.less/);
 		});
 
-		it('config.json loads .less files', () => {
-			assert.fileContent('config.json', /\.less/);
+		it('config loads .less files', () => {
+			assert.fileContent('config/default/assets.js', /\.less/);
 		});
 
 		it('pattern blueprint does not contain .scss files', () => {
@@ -94,8 +94,8 @@ describe('nitro:app', () => {
 			assert.fileContent('gulp/compile-css.js', /plugins.sass/);
 		});
 
-		it('config.json loads .scss files', () => {
-			assert.fileContent('config.json', /\.scss/);
+		it('config loads .scss files', () => {
+			assert.fileContent('config/default/assets.js', /\.scss/);
 		});
 
 		it('pattern blueprint does not contain .less files', () => {
@@ -124,8 +124,8 @@ describe('nitro:app', () => {
 			]);
 		});
 
-		it('config.js defaults contain the correct view file extension', () => {
-			assert.fileContent('app/core/config.js', /view_file_extension: 'html'/);
+		it('config contain the correct view file extension', () => {
+			assert.fileContent('app/core/config.js', /viewFileExtension: 'html'/);
 		});
 	});
 
@@ -149,8 +149,8 @@ describe('nitro:app', () => {
 			]);
 		});
 
-		it('config.js defaults contain the correct view file extension', () => {
-			assert.fileContent('app/core/config.js', /view_file_extension: 'hbs'/);
+		it('config contains the correct view file extension', () => {
+			assert.fileContent('app/core/config.js', /viewFileExtension: 'hbs'/);
 		});
 	});
 
@@ -174,8 +174,8 @@ describe('nitro:app', () => {
 			]);
 		});
 
-		it('config.js defaults contain the correct view file extension', () => {
-			assert.fileContent('app/core/config.js', /view_file_extension: 'mustache'/);
+		it('config contains the correct view file extension', () => {
+			assert.fileContent('app/core/config.js', /viewFileExtension: 'mustache'/);
 		});
 	});
 
@@ -211,10 +211,10 @@ describe('nitro:app', () => {
 			]);
 		});
 
-		it('config.json loads template files', () => {
+		it('config loads template files', () => {
 			assert.fileContent([
-				['config.json', 'patterns/**/template/*.js'],
-				['config.json', 'patterns/**/template/partial/*.js'],
+				['config/default/assets.js', 'patterns/**/template/*.js'],
+				['config/default/assets.js', 'patterns/**/template/partial/*.js'],
 			]);
 		});
 
@@ -262,10 +262,10 @@ describe('nitro:app', () => {
 			]);
 		});
 
-		it('config.json does not load template files', () => {
+		it('config does not load template files', () => {
 			assert.noFileContent([
-				['config.json', 'patterns/**/template/*.js'],
-				['config.json', 'patterns/**/template/partial/*.js'],
+				['config/default/assets.js', 'patterns/**/template/*.js'],
+				['config/default/assets.js', 'patterns/**/template/partial/*.js'],
 			]);
 		});
 
@@ -404,9 +404,9 @@ describe('nitro:app', () => {
 			]);
 		});
 
-		it('config.json contains default exporter properties', () => {
+		it('config contains default exporter properties', () => {
 			assert.fileContent([
-				['config.json', /"exporter"/],
+				['config/default.js', /exporter:/],
 			]);
 		});
 	});
@@ -426,9 +426,9 @@ describe('nitro:app', () => {
 			]);
 		});
 
-		it('config.json does not contain default exporter properties', () => {
+		it('config does not contain default exporter properties', () => {
 			assert.noFileContent([
-				['config.json', /"exporter"/],
+				['config/default.js', /exporter:/],
 			]);
 		});
 	});
@@ -448,9 +448,9 @@ describe('nitro:app', () => {
 			]);
 		});
 
-		it('config.json does not contain default exporter properties', () => {
+		it('config does not contain default exporter properties', () => {
 			assert.fileContent([
-				['config.json', /"release"/],
+				['config/default.js', /release:/],
 			]);
 		});
 	});
@@ -470,9 +470,9 @@ describe('nitro:app', () => {
 			]);
 		});
 
-		it('config.json does not contain default exporter properties', () => {
+		it('config does not contain default exporter properties', () => {
 			assert.noFileContent([
-				['config.json', /"release"/],
+				['config/default.js', /release:/],
 			]);
 		});
 	});

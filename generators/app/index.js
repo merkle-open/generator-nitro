@@ -278,16 +278,17 @@ module.exports = class extends Generator {
 
 		const tplFiles = [
 			// files to process with copyTpl
-			'config.json',
 			'gulpfile.js',
 			'package.json',
 			'app/core/config.js',
-			'patterns/molecules/example/example.html',
-			'patterns/molecules/example/schema.json',
+			'config/default.js',
+			'config/default/assets.js',
 			'gulp/compile-css.js',
 			'gulp/compile-js.js',
 			'gulp/utils.js',
 			'gulp/watch-assets.js',
+			'patterns/molecules/example/example.html',
+			'patterns/molecules/example/schema.json',
 			'project/docs/nitro.md',
 			'spec/templating/patternSpec.js',
 			'views/index.html',
@@ -342,9 +343,11 @@ module.exports = class extends Generator {
 		];
 		const exporterFiles = [
 			// files for this.options.exporter===true
+			'config/default/exporter.js',
 		];
 		const releaseFiles = [
 			// files for this.options.release===true
+			'config/default/release.js',
 		];
 
 		const templateData = {

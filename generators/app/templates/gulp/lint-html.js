@@ -1,7 +1,6 @@
 'use strict';
 
 const utils = require('./utils');
-const config = require('../app/core/config');
 const lint = require('../app/lib/lint');
 const srcPattern = `${utils.getTmpDirectory('views')}/*.html`;
 

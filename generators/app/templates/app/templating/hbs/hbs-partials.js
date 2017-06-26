@@ -1,13 +1,13 @@
 'use strict';
 
-const config = require('../../core/config');
-const partialMatch = new RegExp('\.' + config.nitro.view_file_extension + '$');
+const config = require('config');
+const partialMatch = new RegExp(`\.${config.get('nitro.viewFileExtension')}$`);
 
 module.exports = function (hbs) {
 	const hbsutils = require('hbs-utils')(hbs);
-	const registerPartial = config.server.production ? 'registerPartials' : 'registerWatchedPartials';
+	const registerPartial = config.get('server.production') ? 'registerPartials' : 'registerWatchedPartials';
 
-	hbsutils[registerPartial](config.nitro.base_path + config.nitro.view_partials_directory, {
+	hbsutils[registerPartial](config.get('nitro.basePath') + config.get('nitro.viewPartialsDirectory'), {
 		match: partialMatch,
 		name: function(template) {
 			// fix template path for subfolders on windows

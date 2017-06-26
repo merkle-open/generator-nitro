@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const config = require('../core/config');
+const config = require('config');
 const htmllint = require('htmllint');
 const textTable = require('text-table');
 
@@ -31,7 +31,7 @@ function lintSnippet(templatePath, markup, options) {
 function htmllintReporter(filepath, issues) {
 	if (issues.length > 0) {
 
-		const filePath = filepath.toString().replace(config.nitro.base_path,'');
+		const filePath = filepath.toString().replace(config.get('nitro.basePath'),'');
 		let tableData = [];
 
 		issues.forEach((issue) => {

@@ -1,6 +1,6 @@
 'use strict';
 
-const config = require('../app/core/config');
+const config = require('config');
 const fs = require('fs');
 
 module.exports = (gulp, plugins) => {
@@ -12,8 +12,8 @@ module.exports = (gulp, plugins) => {
 			'server.js',
 			{
 				env: {
-					PORT: config.server.port,
-					NODE_ENV: config.server.production ? 'production' : 'development'
+					PORT: config.get('server.port'),
+					NODE_ENV: config.get('server.production') ? 'production' : 'development'
 				}
 			},
 			false

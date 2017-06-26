@@ -2,18 +2,18 @@
 
 const fs = require('fs');
 const path = require('path');
-const config = require('../core/config');
+const config = require('config');
 
 const viewExcludes = {
 	directories: [
-		path.basename(config.nitro.view_data_directory),
-		path.basename(config.nitro.view_partials_directory),
-		path.basename(config.nitro.view_layouts_directory),
-		path.basename(config.nitro.placeholders_directory),
+		path.basename(config.get('nitro.viewDataDirectory')),
+		path.basename(config.get('nitro.viewPartialsDirectory')),
+		path.basename(config.get('nitro.viewLayoutsDirectory')),
+		path.basename(config.get('nitro.placeholdersDirectory')),
 		'.svn'
 	],
 	files: [
-		'404.' + config.nitro.view_file_extension,
+		'404.' + config.get('nitro.viewFileExtension'),
 		'.DS_Store',
 		'Thumbs.db',
 		'Desktop.ini'
@@ -47,8 +47,8 @@ function getViews(dir) {
 		else if (stat && stat.isDirectory() && viewExcludes.directories.indexOf(file) === -1) {
 			results = results.concat(getViews(filePath));
 		}
-		else if (stat && stat.isFile() && path.extname(file) === `.${config.nitro.view_file_extension}` && viewExcludes.files.indexOf(file) === -1) {
-			const relativePath = path.relative(config.nitro.base_path + config.nitro.view_directory, filePath);
+		else if (stat && stat.isFile() && path.extname(file) === `.${config.get('nitro.viewFileExtension')}` && viewExcludes.files.indexOf(file) === -1) {
+			const relativePath = path.relative(config.get('nitro.basePath') + config.get('nitro.viewDirectory'), filePath);
 			const ext = path.extname(filePath);
 			const extReg = new RegExp(ext + '$');
 			const name = relativePath.replace(extReg, '').replace(/\//g, ' ').replace(/\\/g, ' ').replace(/\b\w/g, (w) => {

@@ -1,6 +1,6 @@
 'use strict';
 
-let config = require('../app/core/config');
+const config = require('config');
 const utils = require('./utils');
 const globby = require('globby');
 
@@ -68,18 +68,6 @@ module.exports = (gulp, plugins) => {
 		const browserSync = utils.getBrowserSyncInstance();
 
 		plugins.watch([
-			'config.json'
-		], () => {
-			processChange('config', () => {
-				config = utils.reloadConfig();
-				clearCache();
-				utils.updateSourcePatterns();
-				gulp.start('compile-css');
-				gulp.start('compile-js');
-			}, 6000);
-		});
-
-		plugins.watch([
 			'assets/css/**/*.<%= options.pre %>',
 			'patterns/**/css/**/*.<%= options.pre %>'
 		], (e) => {
@@ -102,9 +90,9 @@ module.exports = (gulp, plugins) => {
 		});
 
 		plugins.watch([
-			'views/**/*.' + config.nitro.view_file_extension,
-			config.nitro.view_data_directory + '/**/*.json',
-			'patterns/**/*.' + config.nitro.view_file_extension<% if (options.clientTpl) { %>,
+			`views/**/*.${config.get('nitro.viewFileExtension')}`,
+			`${config.get('nitro.viewDataDirectory')}/**/*.json`,
+			`patterns/**/*.${config.get('nitro.viewFileExtension')}`<% if (options.clientTpl) { %>,
 			'!patterns/**/template/**/*.hbs'<% } %>,
 			'patterns/**/schema.json',
 			'patterns/**/_data/*.json'

@@ -2,18 +2,18 @@
 
 const fs = require('fs');
 const path = require('path');
-const config = require('./config');
+const config = require('config');
 
 function getLayoutPath(layoutName) {
-	const layoutPath = `${config.nitro.view_layouts_directory.replace(config.nitro.view_directory + '/', '')}/${layoutName}`;
+	const layoutPath = `${config.get('nitro.viewLayoutsDirectory').replace(config.get('nitro.viewDirectory') + '/', '')}/${layoutName}`;
 	return layoutPath;
 }
 
 function layoutExists(layoutName) {
 	const layoutPath = path.join(
-		config.nitro.base_path,
-		config.nitro.view_layouts_directory,
-		`/${layoutName}.${config.nitro.view_file_extension}`
+		config.get('nitro.basePath'),
+		config.get('nitro.viewLayoutsDirectory'),
+		`/${layoutName}.${config.get('nitro.viewFileExtension')}`
 	);
 	return fs.existsSync(layoutPath);
 }

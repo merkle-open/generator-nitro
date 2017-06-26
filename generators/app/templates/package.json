@@ -104,14 +104,14 @@
     "jasmine-core": "2.6.4",
     "karma": "1.7.0",
     "karma-babel-preprocessor": "6.0.1",
-    "karma-chrome-launcher": "2.1.1",
+    "karma-chrome-launcher": "2.2.0",
     "karma-jasmine": "1.1.0",
     "karma-phantomjs-launcher": "1.0.4",
     "merge-stream": "1.0.1",<% if (options.exporter) { %>
     "nitro-exporter": "0.3.2",<% } %><% if (options.release) { %>
     "nitro-release": "0.1.0",<% } %>
     "npm-run-all": "4.0.2",
-    "stylelint": "7.11.1",
+    "stylelint": "7.12.0",
     "text-table": "0.2.0",
     "yargs": "8.0.2"
   }

@@ -202,23 +202,23 @@ pattern name is case-sensitive and should be unique.
 
 Nitro uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
 
-Render the example pattern. (file: `example.<%= options.viewExt %>`, data-file: `example.json`)
+Render the example pattern (file: `example.<%= options.viewExt %>`, data-file: `example.json`):
 
 ```
-{{pattern 'example'}}
-{{pattern 'example' 'example'}}
+{{pattern name='example'}}
+{{pattern name='example' data='example'}}
 ```
 
-Render a "variant" from the example pattern. (file: `example.<%= options.viewExt %>`, data-file: `example-variant.json`)
-
-```
-{{pattern 'example' 'example-variant'}}
-```
-
-Another possibility to use the pattern helper is by providing hash options.
+Render a "variant" from the example pattern (file: `example.<%= options.viewExt %>`, data-file: `example-variant.json`):
 
 ```
 {{pattern name='example' data='example-variant'}}
+```
+
+There also is a possibility to pass data to subpatterns by providing a data object as hash option.
+
+```
+{{pattern name='example' data=exampleContent}}
 ```
 
 ...and if you really need this you may provide a second template file. (file: `example-2.<%= options.viewExt %>`, data-file: `example-variant.json`)
@@ -227,17 +227,30 @@ Another possibility to use the pattern helper is by providing hash options.
 {{pattern name='example' data='example-variant' template='example-2'}}
 ```
 
-There also is a possibility to pass data to subpatterns by providing a data object as second parameter or as hash option.
+To be more flexible, you may also pass individual arguments to the pattern, which overrides the defaults from the data-file.
+
+```
+{{pattern name='example' modifier='blue'}}
+```
+
+#### Render patterns (simplified notation)
+
+A simplified but less clear variant is to use the pattern helper with one or two parameters.
+
+* the first parameter: pattern folder with the default template file
+* the second parameter (optional): the data-file to be used
+
+Render the example pattern (file: `example.<%= options.viewExt %>`, data-file: `example.json`):
+
+```
+{{pattern 'example'}}
+{{pattern 'example' 'example'}}
+```
+
+Or you may use the simplified notation with a data object as second parameter:
 
 ```
 {{pattern 'example' exampleContent}}
-{{pattern 'example' data=exampleContent}}
-```
-
-To be more flexible, you may also pass individual arguments to the pattern, which overrides the defaults.
-
-```
-{{pattern 'example' modifier='blue'}}
 ```
 
 #### Render patterns with children

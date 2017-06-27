@@ -1,6 +1,6 @@
 <div class="container"><% if (options.exampleCode) { %>
-	<h1>{{pattern 'icon' icon='nitro'}} Nitro example page</h1>
-	{{pattern 'example'}}
-	{{pattern 'example' 'example-blue'}}<% if (options.clientTpl) { %>
-	{{pattern 'example' 'example-template'}}<% } %><% } %>
+	<h1>{{pattern name='icon' icon='nitro'}} Nitro example page</h1>
+	{{pattern name='example'}}
+	{{pattern name='example' data='example-blue'}}<% if (options.clientTpl) { %>
+	{{pattern name='example' data='example-template'}}<% } %><% } %>
 </div>

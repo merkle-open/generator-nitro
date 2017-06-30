@@ -6,8 +6,8 @@
   "private": true,
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=4 <7",
-    "npm": ">=3 <4"
+    "node": ">=4 <9",
+    "npm": ">=3 <6"
   },
   "scripts": {
     "githooks": "gulp sync-githooks",

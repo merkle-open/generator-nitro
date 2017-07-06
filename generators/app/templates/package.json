@@ -72,6 +72,7 @@
     "gulp-handlebars": "4.0.0",<% } %>
     "gulp-header": "1.8.8",
     "gulp-htmllint": "0.0.12",
+    "gulp-if": "2.0.2",
     "gulp-imagemin": "3.3.0",<% if (options.pre === 'less') { %>
     "gulp-less": "3.3.2",<% } %>
     "gulp-live-server": "0.0.30",

@@ -2,6 +2,8 @@
 
 const utils = require('./utils');
 const Promise = require('es6-promise').Promise;
+const config = require('config');
+const lintJs = !!config.get('code.validation.eslint.live');
 const bannerData = {
 	date: new Date().toISOString().slice(0, 19),
 	pkg: require('../package.json'),
@@ -28,8 +30,8 @@ module.exports = (gulp, plugins) => {
 					.pipe(plugins.plumber())
 					.pipe(plugins.cached(asset.name))
 					.pipe(plugins.sourcemaps.init({loadMaps: true}))
-					.pipe(plugins.eslint())
-					.pipe(plugins.eslint.format())
+					.pipe(plugins.if(lintJs, plugins.eslint()))
+					.pipe(plugins.if(lintJs, plugins.eslint.format()))
 					.pipe(plugins.babel({presets: ['es2015'], ignore: ['node_modules'<% if (options.clientTpl) { %>, 'patterns/**/template/*.js', 'patterns/**/template/partial/*.js'<% } %>]}))
 					.pipe(plugins.remember(asset.name))
 					.pipe(plugins.concat(asset.name))

@@ -25,6 +25,20 @@ const defaultConfig = {
 		compatibility: {
 			browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1',],
 		},
+		validation: {
+			eslint: {
+				live: true
+			},
+			htmllint: {
+				live: true,
+			},
+			jsonSchema: {
+				live: true,
+			},
+			stylelint: {
+				live: true
+			},
+		},
 	},
 	server: {
 		port: Number(process.env.PORT) || 8080,

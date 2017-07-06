@@ -31,7 +31,7 @@ const config = require('config');
 const ajv = new Ajv({allErrors: true});
 const wildcard = '*';
 const patternBasePaths = Object.keys(config.get('nitro.patterns')).map((key) => {
-	return config.get(`nitro.patterns[${key}].path`);
+	return config.get(`nitro.patterns.${key}.path`);
 });
 const patternGlobs = patternBasePaths.map((patternBasePath) => {
 	return `${patternBasePath}/${wildcard}`;
@@ -40,18 +40,13 @@ const patternGlobs = patternBasePaths.map((patternBasePath) => {
 		return `${patternBasePath}/${wildcard}/elements/${wildcard}`;
 	})
 );
+const logMissingSchemaAsError = config.has('code.validation.jsonSchema.logMissingSchemaAsError')
+	? config.get('code.validation.jsonSchema.logMissingSchemaAsError'): false;
+const logMissingSchemaAsWarning = config.has('code.validation.jsonSchema.logMissingSchemaAsWarning')
+	? config.get('code.validation.jsonSchema.logMissingSchemaAsWarning') : true;
 
-let logMissingSchemaAsError;
-let logMissingSchemaAsWarning;
 let errorCouter = 0;
 let patternCouter = 0;
-
-if (config.has('linter.patternData')) {
-	logMissingSchemaAsError = config.get('linter.patternData.logMissingSchemaAsError') === undefined
-		? false : config.get('linter.patternData.logMissingSchemaAsError');
-	logMissingSchemaAsWarning = config.get('linter.patternData.logMissingSchemaAsWarning') === undefined
-		? true : config.get('linter.patternData.logMissingSchemaAsWarning');
-}
 
 globby.sync(patternGlobs).forEach((patternPath, index) => {
 	const schemaFilePath = `${patternPath}/schema.json`;

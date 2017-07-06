@@ -54,7 +54,7 @@ module.exports = function placeholder () {
 			)(placeholderData, context);
 
 			// lint html snippet
-			if (!config.get('server.production')) {
+			if (!config.get('server.production') && config.get('code.validation.htmllint.live')) {
 				lint.lintSnippet(templatePath, html, htmllintOptions);
 			}
 			return new hbs.handlebars.SafeString(html);

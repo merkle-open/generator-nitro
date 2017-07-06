@@ -180,7 +180,7 @@ module.exports = function pattern () {
 				}
 
 				// Validate with JSON schema
-				if (!config.get('server.production')) {
+				if (!config.get('server.production') && config.get('code.validation.jsonSchema.live')) {
 					if (fs.existsSync(pattern.schemaFilePath)) {
 						const schema = JSON.parse(fs.readFileSync(pattern.schemaFilePath, 'utf8'));
 						const valid = ajv.validate(schema, patternData);
@@ -195,7 +195,7 @@ module.exports = function pattern () {
 				)(patternData, context);
 
 				// lint html snippet
-				if (!config.get('server.production')) {
+				if (!config.get('server.production') && config.get('code.validation.htmllint.live')) {
 					lint.lintSnippet(pattern.templateFilePath, html, htmllintOptions);
 				}
 

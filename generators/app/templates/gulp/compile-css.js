@@ -5,6 +5,8 @@ const Promise = require('es6-promise').Promise;
 const globby = require('globby');
 const fs = require('fs');
 const autoprefixer = require('autoprefixer');
+const config = require('config');
+const lintCss = !!config.get('code.validation.stylelint.live');
 const bannerData = {
 	date: new Date().toISOString().slice(0, 19),
 	pkg: require('../package.json'),
@@ -41,13 +43,13 @@ module.exports = (gulp, plugins) => {
 					.pipe(plugins.plumber())
 					.pipe(plugins.cached(asset.name))
 					.pipe(plugins.sourcemaps.init({loadMaps: true}))
-					.pipe(plugins.stylelint({
+					.pipe(plugins.if(lintCss, plugins.stylelint({
 						failAfterError: false,
 						syntax: '<% if (options.pre === 'scss') { %>scss<% } else { %>less<% } %>',
 						reporters: [
 							{formatter: 'string', console: true}
 						]
-					}))
+					})))
 					.pipe(plugins.header(imports, false))
 					<% if (options.pre === 'scss') { %>.pipe(plugins.sass().on('error', plugins.sass.logError ))<% } else { %>.pipe(plugins.less().on('error', (err) => {
 						console.log(err.message);

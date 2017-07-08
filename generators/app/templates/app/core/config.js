@@ -41,8 +41,8 @@ const defaultConfig = {
 		},
 	},
 	server: {
-		port: Number(process.env.PORT) || 8080,
-		proxy: Number(process.env.PROXY) || 8081,
+		port: 8080,
+		proxy: 8081,
 		production: process.env.NODE_ENV && process.env.NODE_ENV.replace((/\s/g), '') === 'production' ? true : false,
 	},
 };

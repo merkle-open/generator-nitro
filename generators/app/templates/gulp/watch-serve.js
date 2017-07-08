@@ -12,7 +12,7 @@ module.exports = (gulp, plugins) => {
 				target: `127.0.0.1:${config.get('server.port')}`,
 				middleware: [compression()]
 			},
-			port: config.get('server.proxy'),
+			port: Number(config.get('server.proxy')),
 			online: config.get('nitro.mode.offline') ? false : true,
 		}, (e) => {
 			if (!e) {

@@ -1,3 +1,6 @@
+// Main Project Config
+// https://www.npmjs.com/package/config
+
 'use strict';
 
 const extend = require('extend');

@@ -12,7 +12,7 @@ module.exports = (gulp, plugins) => {
 			'server.js',
 			{
 				env: {
-					PORT: config.get('server.port'),
+					PORT: Number(config.get('server.port')),
 					NODE_ENV: config.get('server.production') ? 'production' : 'development'
 				}
 			},

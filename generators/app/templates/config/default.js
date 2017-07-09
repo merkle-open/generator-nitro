@@ -22,6 +22,12 @@ const defaultConfig = {
 	nitro: {
 		patterns: require('./default/patterns'),
 		viewFileExtension: '<%= options.viewExt %>',
+		watch: {
+			throttle: {
+				base: 1000,
+				cache: 3000,
+			},
+		},
 	},<% if (options.exporter) { %>
 	exporter: require('./default/exporter'),<% } %><% if (options.release) { %>
 	release: require('./default/release'),<% } %>

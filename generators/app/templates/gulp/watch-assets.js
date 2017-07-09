@@ -6,6 +6,10 @@ const globby = require('globby');
 
 module.exports = (gulp, plugins) => {
 
+	const throttleBase = config.get('nitro.watch.throttle.base');
+	const throttleCache = config.get('nitro.watch.throttle.cache');
+	const lastRun = {};
+
 	function isDependentStyleSource(file) {
 		let isDependent = false;
 		utils.getSourcePatterns('css').forEach((asset) => {
@@ -16,16 +20,6 @@ module.exports = (gulp, plugins) => {
 			});
 		});
 		return isDependent;
-	}
-	function clearJsCache() {
-		utils.getSourcePatterns('js').forEach((asset) => {
-			if (plugins.cached.caches && plugins.cached.caches[asset.name]) {
-				delete plugins.cached.caches[asset.name];
-			}
-			if (plugins.remember.cacheFor(asset.name)) {
-				plugins.remember.forgetAll(asset.name);
-			}
-		});
 	}
 	function clearCssCache() {
 		utils.getSourcePatterns('css').forEach((asset) => {
@@ -42,19 +36,13 @@ module.exports = (gulp, plugins) => {
 			isDependentStyleSource(e.path) ||
 			'unlink' === e.event
 		) {
-			processChange('cssCache', clearCssCache, 5000);
+			processChange('cssCache', clearCssCache, throttleCache);
 		}
 	}
-	function clearCache() {
-		processChange('jsCache', clearJsCache, 5000);
-		processChange('cssCache', clearCssCache, 5000);
-	}
-
-	const lastRun = {};
 	function processChange(type, func, throttle) {
 		type = type || 'other';
 		func = func || function(){};
-		throttle = throttle || 1000;
+		throttle = throttle || throttleBase;
 
 		// call function only once in defined time
 		lastRun[type] = lastRun[type] || 0;

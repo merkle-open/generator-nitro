@@ -19,6 +19,12 @@ const defaultConfig = {
 		mode: {
 			offline: false
 		},
+		watch: {
+			throttle: {
+				base: 1000,
+				cache: 3000,
+			}
+		},
 		// patterns: {},
 	},
 	code: {

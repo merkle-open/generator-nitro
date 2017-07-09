@@ -9,13 +9,13 @@ const defaultConfig = {
 	assets: require('./default/assets'),
 	code: {
 		compatibility: {
-			browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1',],
+			browserslist: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1',],
 		},
 		validation: {
 			jsonSchema: {
 				live: true,
 				logMissingSchemaAsError: false,
-				logMissingSchemaAsWarning: true
+				logMissingSchemaAsWarning: true,
 			},
 		},
 	},

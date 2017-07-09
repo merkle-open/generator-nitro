@@ -9,7 +9,7 @@ let browserSync;
 let assets = {};
 
 function getBrowserCompatibility() {
-	return config.get('code.compatibility.browsers');
+	return config.get('code.compatibility.browserslist');
 }
 
 function getBrowserSyncInstance() {

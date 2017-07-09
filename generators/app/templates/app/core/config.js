@@ -17,23 +17,23 @@ const defaultConfig = {
 		placeholdersDirectory: 'views/_placeholders',
 		defaultLayout: 'default',
 		mode: {
-			offline: false
+			offline: false,
 		},
 		watch: {
 			throttle: {
 				base: 1000,
 				cache: 3000,
-			}
+			},
 		},
 		// patterns: {},
 	},
 	code: {
 		compatibility: {
-			browsers: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1',],
+			browserslist: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1',],
 		},
 		validation: {
 			eslint: {
-				live: true
+				live: true,
 			},
 			htmllint: {
 				live: true,
@@ -42,7 +42,7 @@ const defaultConfig = {
 				live: true,
 			},
 			stylelint: {
-				live: true
+				live: true,
 			},
 		},
 	},
@@ -80,6 +80,12 @@ function getLegacyConfig() {
 				result[convertToCamelCase(key)] = config.nitro[key];
 				return result;
 			}, {});
+
+			if (config.nitro.compatibility && config.nitro.compatibility.browsers) {
+				// config.nitro.compatibility.browsers -> config.nitro.compatibility.browserslist
+				config.nitro.compatibility.browserslist = config.nitro.compatibility.browsers;
+				delete config.nitro.compatibility.browsers;
+			}
 
 			if (config.nitro.patterns) {
 				// pattern_prefix -> patternPrefix

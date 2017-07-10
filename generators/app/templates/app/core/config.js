@@ -18,6 +18,7 @@ const defaultConfig = {
 		defaultLayout: 'default',
 		mode: {
 			offline: false,
+			minified: false,
 		},
 		watch: {
 			partials: true,

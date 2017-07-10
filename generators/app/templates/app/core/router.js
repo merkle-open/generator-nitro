@@ -13,6 +13,8 @@ const router = express.Router({
 	strict: false,
 });
 const isProduction = config.get('server.production');
+const isOffline = config.get('nitro.mode.offline');
+const useMinifiedAssets = config.get('nitro.mode.minified');
 
 /**
  * static routes
@@ -27,7 +29,9 @@ function getView(req, res, next) {
 	let data = {
 		pageTitle: tpl,
 		_layout: config.get('nitro.defaultLayout'),
-		_production: isProduction
+		_production: isProduction,
+		_offline: isOffline,
+	    _minified: useMinifiedAssets,
 	};
 	const viewPathes = view.getViewCombinations(tpl);
 	let rendered = false;
@@ -105,6 +109,8 @@ router.get('/:view', getView);
 router.use((req, res) => {
 	res.locals.pageTitle = '404 - Not Found';
 	res.locals._production = isProduction;
+	res.locals._offline = isOffline;
+	res.locals._minified = useMinifiedAssets;
 	if (utils.layoutExists(config.get('nitro.defaultLayout'))) {
 		res.locals.layout = utils.getLayoutPath(config.get('nitro.defaultLayout'));
 	}

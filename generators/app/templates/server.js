@@ -9,7 +9,7 @@ const compression = require('compression');
 const bodyParser = require('body-parser');
 
 // partials
-require('./app/templating/hbs/hbs-partials')(hbs);
+require('./app/templating/hbs/partials')(hbs);
 
 // compress all requests
 app.use(compression());

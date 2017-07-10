@@ -20,6 +20,7 @@ const defaultConfig = {
 			offline: false,
 		},
 		watch: {
+			partials: true,
 			throttle: {
 				base: 1000,
 				cache: 3000,

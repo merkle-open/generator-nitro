@@ -46,6 +46,10 @@ module.exports = (gulp, plugins) => {
 		});
 
 		return Promise.all(promises)
-			.then(() => browserSync.reload('*.js'));
+			.then(() => {
+				if (config.get('nitro.mode.livereload')) {
+					browserSync.reload('*.js');
+				}
+			});
 	};
 };

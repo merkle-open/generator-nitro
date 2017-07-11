@@ -86,7 +86,9 @@ module.exports = (gulp, plugins) => {
 			'patterns/**/_data/*.json'
 		], () => {
 			processChange('data', () => {
-				browserSync.reload();
+				if (config.get('nitro.mode.livereload')) {
+					browserSync.reload();
+				}
 			});
 		});
 

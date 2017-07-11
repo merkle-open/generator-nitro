@@ -14,7 +14,7 @@ function getBrowserCompatibility() {
 
 function getBrowserSyncInstance() {
 	const name = 'Nitro' + config.get('server.port');
-	if (!browserSync) {
+	if (config.get('nitro.mode.livereload') && !browserSync) {
 		browserSync = require('browser-sync').create(name);
 	}
 	return browserSync;

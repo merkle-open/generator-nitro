@@ -17,8 +17,9 @@ const defaultConfig = {
 		placeholdersDirectory: 'views/_placeholders',
 		defaultLayout: 'default',
 		mode: {
-			offline: false,
+			livereload: true,
 			minified: false,
+			offline: false,
 		},
 		watch: {
 			partials: true,

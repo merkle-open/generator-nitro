@@ -12,17 +12,31 @@ const defaultConfig = {
 			browserslist: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1',],
 		},
 		validation: {
+			eslint: {
+				live: true,
+			},
+			htmllint: {
+				live: true,
+			},
 			jsonSchema: {
 				live: true,
 				logMissingSchemaAsError: false,
 				logMissingSchemaAsWarning: true,
 			},
+			stylelint: {
+				live: true,
+			},
 		},
 	},
 	nitro: {
 		patterns: require('./default/patterns'),
-		viewFileExtension: '<%= options.viewExt %>',
+		mode: {
+			livereload: true,
+			minified: false,
+			offline: false,
+		},
 		watch: {
+			partials: true,
 			throttle: {
 				base: 1000,
 				cache: 3000,

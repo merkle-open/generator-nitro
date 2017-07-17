@@ -9,7 +9,7 @@ It provides a proven but flexible structure to develop your frontend code, even 
 Keep track of your code with a modularized frontend. This app and the suggested
 [atomic design](http://bradfrost.com/blog/post/atomic-web-design/) and [BEM](https://en.bem.info/method/definitions/)
 concepts could help.  
-Nitro is simple, fast and flexible. It works on OSX, Windows and Linux. Use this app for all your frontend work.
+Nitro is simple, fast and flexible. It works on macOS, Windows and Linux. Use this app for all your frontend work.
 
 ## Usage
 
@@ -93,7 +93,6 @@ Recent changes can be viewed on Github on the [Releases Page](https://github.com
 ## License
 
 [MIT license](http://opensource.org/licenses/MIT)
-
 
 [npm-image]: https://badge.fury.io/js/generator-nitro.svg
 [npm-url]: https://npmjs.org/package/generator-nitro

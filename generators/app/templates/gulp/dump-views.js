@@ -38,7 +38,6 @@ function dumpViews(server, port, gulp, plugins) {
 			const languages = (argv.locales === undefined) ? [] : argv.locales.split(',');
 
 			if(languages.length) {
-				const viewsAmount = views.length;
 				languages.filter(lng => lng !== 'default').forEach(lng => {
 					dumpedViews = dumpedViews.concat(views.map(v => v += `?lang=${lng}`));
 				});
@@ -51,7 +50,7 @@ function dumpViews(server, port, gulp, plugins) {
 
 			return plugins.remoteSrc(dumpedViews, {
 				base: `http://localhost:${port}/`,
-				buffer: true
+				buffer: true,
 			})
 				.pipe(plugins.rename((path) => {
 					const lang = path.basename.match(/\?lang=([a-z]+)/);
@@ -77,7 +76,6 @@ module.exports = (gulp, plugins) => {
 				const server = plugins.liveServer('server', {
 					env: {
 						PORT: port,
-						NODE_ENV: 'production'
 					}
 				}, false);
 

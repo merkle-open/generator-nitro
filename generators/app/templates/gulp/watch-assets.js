@@ -80,7 +80,7 @@ module.exports = (gulp, plugins) => {
 		plugins.watch([
 			`views/**/*.${config.get('nitro.viewFileExtension')}`,
 			`${config.get('nitro.viewDataDirectory')}/**/*.json`,
-			`patterns/**/*.${config.get('nitro.viewFileExtension')}`<% if (options.clientTpl) { %>,
+			`patterns/**/*.${config.get('nitro.viewFileExtension')}`,<% if (options.clientTpl) { %>
 			'!patterns/**/template/**/*.hbs',<% } %>
 			'patterns/**/schema.json',
 			'patterns/**/_data/*.json',

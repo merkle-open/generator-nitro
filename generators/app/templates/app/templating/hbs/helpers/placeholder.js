@@ -9,21 +9,21 @@ const hbsUtils = require('../utils');
 const lint = require('../../../lib/lint');
 const htmllintOptions = lint.getHtmllintOptions(true);
 
-module.exports = function placeholder () {
+module.exports = function placeholder() {
 
 	try {
 		const context = arguments[arguments.length - 1];
 		const contextDataRoot = context.data && context.data.root ? context.data.root : {};
-		const name = 'string' === typeof arguments[0] ? arguments[0] : context.hash.name;
-		let templateFile = 'string' === typeof arguments[1] ? arguments[1] : context.hash.template;
-		let placeholderData = {};
+		const name = typeof arguments[0] === 'string' ? arguments[0] : context.hash.name;
+		let templateFile = typeof arguments[1] === 'string' ? arguments[1] : context.hash.template;
+		const placeholderData = {};
 
 		// validate
-		if(!name) {
+		if (!name) {
 			throw new Error('Placeholder name parameter not set');
 		}
 
-		if(!templateFile) {
+		if (!templateFile) {
 			throw new Error('Placeholder template parameter not set');
 		}
 
@@ -62,8 +62,7 @@ module.exports = function placeholder () {
 
 		throw new Error(`Placeholder ${templatePath} not found.`);
 
-	}
-	catch (e) {
+	} catch (e) {
 		return hbsUtils.logAndRenderError(e);
 	}
 };

@@ -9,8 +9,8 @@ const reportOptions = {
 	reportLevels: {
 		notice: true,
 		warning: true,
-		error: true
-	}
+		error: true,
+	},
 };
 const tmpDirectory = utils.getTmpDirectory('views');
 const destDirectory = utils.getTmpDirectory(`reports/${lintOptions.accessibilityLevel}`);
@@ -24,11 +24,10 @@ module.exports = (gulp, plugins) => {
 					.pipe(plugins.accessibility(lintOptions))
 					.on('error', console.log)
 					.pipe(plugins.accessibility.report(reportOptions))
-					.pipe(plugins.rename({extname: '.json'}))
+					.pipe(plugins.rename({ extname: '.json' }))
 					.pipe(gulp.dest(destDirectory))
-					.on('end', (a) => console.log(`Accessibility report generated at ${destDirectory}`))
+					.on('end', () => console.log(`Accessibility report generated at ${destDirectory}`))
 					.on('error', process.exitCode(1));
-				}
-			);
-	}
+			});
+	};
 };

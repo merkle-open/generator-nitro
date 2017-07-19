@@ -42,6 +42,10 @@ const defaultConfig = {
 				cache: 3000,
 			},
 		},
+	},
+	server: {
+		port: 8080,
+		proxy: 8081,
 	},<% if (options.exporter) { %>
 	exporter: require('./default/exporter'),<% } %><% if (options.release) { %>
 	release: require('./default/release'),<% } %>

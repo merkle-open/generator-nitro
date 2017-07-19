@@ -8,7 +8,7 @@ const basePath = path.normalize(path.join(__dirname, '../../'));
 const defaultConfig = {
 	// assets: {},
 	nitro: {
-		basePath: basePath,
+		basePath,
 		viewFileExtension: '<%= options.viewExt %>',
 		viewDirectory: 'views',
 		viewPartialsDirectory: 'views/_partials',
@@ -32,7 +32,7 @@ const defaultConfig = {
 	},
 	code: {
 		compatibility: {
-			browserslist: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1',],
+			browserslist: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1'],
 		},
 		validation: {
 			eslint: {
@@ -58,7 +58,7 @@ const defaultConfig = {
 
 // get legacy config and convert properties to camelCase
 function convertToCamelCase(key) {
-	return key.replace(/_(.)/g, function(match, group1) {
+	return key.replace(/_(.)/g, (match, group1) => {
 		return group1.toUpperCase();
 	});
 }
@@ -93,10 +93,10 @@ function getLegacyConfig() {
 			if (config.nitro.patterns) {
 				// pattern_prefix -> patternPrefix
 				Object.keys(config.nitro.patterns).forEach((pattern) => {
-					config.nitro.patterns[pattern] = Object.keys(config.nitro.patterns[pattern]).reduce(function(result, key) {
+					config.nitro.patterns[pattern] = Object.keys(config.nitro.patterns[pattern]).reduce((result, key) => {
 						result[convertToCamelCase(key)] = config.nitro.patterns[pattern][key];
 						return result;
-					}, {})
+					}, {});
 				});
 			}
 		}

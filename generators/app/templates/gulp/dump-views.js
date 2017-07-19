@@ -23,10 +23,10 @@ const utils = require('./utils');
 const tmpDirectory = utils.getTmpDirectory('views');
 let isRunning = false;
 
-function getViews () {
+function getViews() {
 	return view
 		.getViews(`${config.get('nitro.basePath')}${config.get('nitro.viewDirectory')}`)
-		.map((view) => view.url);
+		.map((viewItem) => viewItem.url);
 }
 
 function dumpViews(server, port, gulp, plugins) {
@@ -37,11 +37,11 @@ function dumpViews(server, port, gulp, plugins) {
 			let dumpedViews = [];
 			const languages = (argv.locales === undefined) ? [] : argv.locales.split(',');
 
-			if(languages.length) {
-				languages.filter(lng => lng !== 'default').forEach(lng => {
-					dumpedViews = dumpedViews.concat(views.map(v => v += `?lang=${lng}`));
+			if (languages.length) {
+				languages.filter((lng) => lng !== 'default').forEach((lng) => {
+					dumpedViews = dumpedViews.concat(views.map((v) => v += `?lang=${lng}`));
 				});
-				if(languages.includes('default')) {
+				if (languages.includes('default')) {
 					Array.prototype.unshift.apply(dumpedViews, views);
 				}
 			} else {
@@ -55,7 +55,7 @@ function dumpViews(server, port, gulp, plugins) {
 				.pipe(plugins.rename((path) => {
 					const lang = path.basename.match(/\?lang=([a-z]+)/);
 					path.extname = '.html';
-					if(lang) {
+					if (lang) {
 						path.basename = path.basename.replace(/\?lang=[a-z]+/, '');
 						path.basename += `-${lang[1]}`;
 					}
@@ -65,8 +65,7 @@ function dumpViews(server, port, gulp, plugins) {
 					server.stop();
 					isRunning = false;
 				});
-			}
-		);
+		});
 }
 
 module.exports = (gulp, plugins) => {
@@ -76,7 +75,7 @@ module.exports = (gulp, plugins) => {
 				const server = plugins.liveServer('server', {
 					env: {
 						PORT: port,
-					}
+					},
 				}, false);
 
 				return server.start()

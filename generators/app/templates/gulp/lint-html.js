@@ -9,5 +9,5 @@ module.exports = (gulp, plugins) => {
 		return gulp.src(srcPattern)
 			.pipe(plugins.htmllint({}, lint.htmllintReporter))
 			.on('end', () => {});
-	}
+	};
 };

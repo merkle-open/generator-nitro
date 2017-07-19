@@ -20,7 +20,7 @@ const hbs = require('hbs');
 
 // initialised in ../../../core/i18n.js
 
-module.exports = function t (key) {
+module.exports = function t(key) {
 
 	const context = arguments[arguments.length - 1];
 	const contextDataRoot = context.data && context.data.root ? context.data.root : {};
@@ -28,7 +28,7 @@ module.exports = function t (key) {
 	const values = args.slice(1, -1);
 	const hash = args.slice(-1)[0].hash;
 
-	let result ='|' + key + '|';
+	let result = `|${key}|`;
 
 	if (contextDataRoot.language) {
 		i18next.changeLanguage(contextDataRoot.language);
@@ -37,12 +37,10 @@ module.exports = function t (key) {
 	if (args.length === 2) {
 		// no arguments, optional hash for interpolation
 		result = i18next.t(key, hash);
-	}
-	else if (args.length === 3 && typeof args[1] === 'object') {
+	} else if (args.length === 3 && typeof args[1] === 'object') {
 		// interpolation using data object
 		result = i18next.t(key, args[1]);
-	}
-	else if (args.length > 2) {
+	} else if (args.length > 2) {
 		// values for sprintf
 		result = i18next.t(key, { postProcess: 'sprintf', sprintf: values });
 	}

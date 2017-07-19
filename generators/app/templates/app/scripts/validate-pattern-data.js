@@ -24,11 +24,10 @@
  */
 const chalk = require('chalk');
 const fs = require('fs');
-const path = require('path');
 const globby = require('globby');
 const Ajv = require('ajv');
 const config = require('config');
-const ajv = new Ajv({allErrors: true});
+const ajv = new Ajv({ allErrors: true });
 const wildcard = '*';
 const patternBasePaths = Object.keys(config.get('nitro.patterns')).map((key) => {
 	return config.get(`nitro.patterns.${key}.path`);
@@ -41,14 +40,14 @@ const patternGlobs = patternBasePaths.map((patternBasePath) => {
 	})
 );
 const logMissingSchemaAsError = config.has('code.validation.jsonSchema.logMissingSchemaAsError')
-	? config.get('code.validation.jsonSchema.logMissingSchemaAsError'): false;
+	? config.get('code.validation.jsonSchema.logMissingSchemaAsError') : false;
 const logMissingSchemaAsWarning = config.has('code.validation.jsonSchema.logMissingSchemaAsWarning')
 	? config.get('code.validation.jsonSchema.logMissingSchemaAsWarning') : true;
 
 let errorCouter = 0;
 let patternCouter = 0;
 
-globby.sync(patternGlobs).forEach((patternPath, index) => {
+globby.sync(patternGlobs).forEach((patternPath) => {
 	const schemaFilePath = `${patternPath}/schema.json`;
 	patternCouter += 1;
 

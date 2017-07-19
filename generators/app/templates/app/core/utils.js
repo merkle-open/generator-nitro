@@ -20,5 +20,5 @@ function layoutExists(layoutName) {
 
 module.exports = {
 	getLayoutPath,
-	layoutExists
+	layoutExists,
 };

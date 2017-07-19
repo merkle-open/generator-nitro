@@ -9,9 +9,9 @@ module.exports = function (hbs) {
 
 	hbsutils[registerPartial](config.get('nitro.basePath') + config.get('nitro.viewPartialsDirectory'), {
 		match: partialMatch,
-		name: function(template) {
+		name: (template) => {
 			// fix template path for subfolders on windows
 			return template.replace(/\\/g, '/');
-		}
+		},
 	});
 };

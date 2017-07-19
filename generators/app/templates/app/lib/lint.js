@@ -5,7 +5,7 @@ const config = require('config');
 const htmllint = require('htmllint');
 const textTable = require('text-table');
 
-function getHtmllintOptions (isSnippet) {
+function getHtmllintOptions(isSnippet) {
 	const configPath = '.htmllintrc';
 	let htmllintOptions = {};
 	if (fs.existsSync(configPath)) {
@@ -31,8 +31,8 @@ function lintSnippet(templatePath, markup, options) {
 function htmllintReporter(filepath, issues) {
 	if (issues.length > 0) {
 
-		const filePath = filepath.toString().replace(config.get('nitro.basePath'),'');
-		let tableData = [];
+		const filePath = filepath.toString().replace(config.get('nitro.basePath'), '');
+		const tableData = [];
 
 		issues.forEach((issue) => {
 			issue.msg = issue.msg || htmllint.messages.renderIssue(issue);
@@ -40,14 +40,14 @@ function htmllintReporter(filepath, issues) {
 			tableData.push([
 				issue.cell,
 				issue.msg,
-				issue.rule
+				issue.rule,
 			]);
 		});
 
 		const table = textTable(tableData);
 
 		// output
-		console.log(`[htmllint] ${filePath}`);
+		console.log(`\n[htmllint] ${filePath}`);
 		console.log(table);
 		console.log('\n');
 
@@ -58,5 +58,5 @@ function htmllintReporter(filepath, issues) {
 module.exports = {
 	getHtmllintOptions,
 	lintSnippet,
-	htmllintReporter
+	htmllintReporter,
 };

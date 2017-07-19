@@ -8,11 +8,11 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 ## Features
 
-* Simple project structure
+* Simple and proven project structure
 * CSS/JS concatenation and minification
 * LESS/SCSS support (with caching for optimal performance)
 * ES2015 with babel transpiling
-* Source Maps, Linting, PostCSS & Browsersync
+* Linting, Source Maps, PostCSS & Browsersync
 * Jasmine tests with Karma test runner
 * Yeoman pattern generator<% if (options.clientTpl) { %>
 * [Client side templates](client-templates.md)<% } %><% if (options.exporter) { %>
@@ -95,16 +95,23 @@ set PORT=3000 && node server
 set NODE_ENV=production && npm run prod
 ```
 
+## Configuring
+
+Nitro uses the flexible [config package](https://www.npmjs.com/package/config) for project configuration. 
+This lets you to extend the default configuration for different deployment environments or local usage.  
+See details in [config readme](nitro-config.md)
+
 ## Daily Work - Creating Patterns & Pages
 
 ### Creating Patterns
 
 Patterns are created in the `patterns` folder. A pattern is an encapsulated block of markup
 with corresponding styles, scripts and data. The pattern data can be described in `schema.json`
-with [JSON schema](http://json-schema.org) format. Nitro uses [ajv](http://epoberezkin.github.io/ajv/) for validation.
+with [JSON schema](http://json-schema.org) format (draft-04). Nitro uses [ajv](http://epoberezkin.github.io/ajv/) for validation.
 
-For a better overview it is useful to define different types of patterns in `config/default.js`. It is recommended to make
-subfolders like `atoms`, `molecules` & `organisms`
+For a better overview it is useful to define different types of patterns in [config](nitro-config.md).
+
+It is recommended to make subfolders like `atoms`, `molecules` & `organisms`.
 
 A pattern uses the following structure:
 
@@ -372,67 +379,9 @@ It's also possible to use dot notation for object data:
 ## Assets
 
 One of Nitro's main feature is asset concatenation for CSS and JavaScript files.
-If changed, the files will be updated on every change,
-therefore you'll always get the latest version.
+If changed, the files will be updated on every change, therefore you'll always get the latest version.
 
-### Assets Configuration
-
-You can configure the include order of your assets by defining patterns in `config/default/assets.js`.
-
-```js
-const config = {
-   assets: {
-        'app.css': [
-            '!assets/css/somefile.*',
-            'assets/css/cssreset.css',
-            'assets/css/*.*',
-            'patterns/**/css/*.*',
-            'patterns/**/css/modifier/*.*',
-        ],
-        'app.js': [
-            '!assets/js/somefile.js',
-            'assets/vendor/jquery/dist/jquery.min.js',
-            'assets/vendor/terrific/dist/terrific.min.js',
-            'assets/js/*.js',
-            'patterns/**/js/*.js',
-            'patterns/**/js/decorator/*.js',
-        ],
-   },
-};
-```
-
-#### Pattern
-
-The matching patterns follow the standard node glob patterns.  
-Glob patterns are similar to regular expression but simplified. They are used by several shells.  
-You should always try to keep the patterns simple. Usually you only need the asterisks `*` `**` and the exclamation mark `!` for negation.
-
-You can read more on the standard [node glob patterns](https://github.com/isaacs/node-glob#glob-primer).
-
-#### Special Pattern Prefixes
-
-* You can negate a pattern by starting with an exclamation mark `!`.
-  `!` = exclude pattern
-* Define all your dependencies for the compiling-process with the `+` prefix
-  `+` = exclude file but prepend it to every compile call for files with the same file extension.
-
-The order of these special patterns does not matter.
-
-#### Examples
-
-* `"!patterns/*/test*"`         Exclude all patterns starting with `test`
-* `"!**/*-test.*"`              Exclude all filenames ending with `-test`.
-* `"+assets/css/mixins.less"`   Exclude `assets/css/mixins.less` but prepend to every compile call of every .less file
-
-### Other asset files
-
-You can configure as many different assets as you wish.
-
-```
-"brand.css": [
-    "assets/css/reset.css",
-    ...
-```
+You can configure the include order of your assets by defining patterns in [config](nitro-config.md).
 
 ## Translations
 
@@ -524,7 +473,7 @@ The helper name will automatically match the filename, so if you name your file 
 
 ### JSON Endpoints
 
-If you need to mock service endpoints, you can put JSON files into a directory inside the `/public` directory as
+If you need to mock service endpoints, you can simply put JSON files into a directory inside the `/public` directory as
 those are directly exposed.
 
 `/public/service/posts.json` will be available under `/service/posts.json`
@@ -542,6 +491,7 @@ If you don't want to use [Handlebars](http://handlebarsjs.com/) as Nitro's Templ
 you can configure your own Engine.  
 This example shows how to replace Handlebars with [Nunjucks](https://mozilla.github.io/nunjucks/) as an example.
 
+All these steps need to be performed in `server.js`.
 All these steps need to be performed in `server.js`.
 
 1. Replace the line `hbs = require('./app/templating/hbs/engine')` with `nunjucks = require('nunjucks')`
@@ -584,13 +534,13 @@ You may [change this or add other hooks](../.githooks/readme.md) in `project/.gi
 
 * For bugs and features please use [GitHub Issues](https://github.com/namics/generator-nitro/issues)
 * Feel free to fork and send PRs to the current `develop` branch. That's a good way to discuss your ideas.
-
+<% if (options.exampleCode) { %>
 ### Example Project Includes
 
 * [YUI CSS Reset 3.18.1](http://yuilibrary.com/yui/docs/cssreset/)
 * Favicon & Home-Icons from Nitro (replace with your own)
-* Pattern `example` and some styles in assets/css (you don't need them)
-
+* Pattern `example` and `icon` and some styles in assets/css (you don't need them)
+<% } %>
 #### Client Dependencies
 
 The following packages are installed by the [app](#name) generator as npm dependencies:

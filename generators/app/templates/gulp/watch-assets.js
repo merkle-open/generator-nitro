@@ -87,7 +87,7 @@ module.exports = (gulp, plugins) => {
 		], () => {
 			processChange('data', () => {
 				if (config.get('nitro.mode.livereload')) {
-					browserSync.reload();
+					browserSync.reload('*.html');
 				}
 			});
 		});

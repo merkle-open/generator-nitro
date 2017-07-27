@@ -1,3 +1,6 @@
+// Nitro Exporter Config
+// https://github.com/namics/nitro-exporter
+
 'use strict';
 
 const config = {
@@ -39,7 +42,7 @@ const config = {
 						to: '$1.min.$2',
 					},
 				],
-			}
+			},
 		],
 		views: true,
 		zip: false,

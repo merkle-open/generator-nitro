@@ -4,7 +4,7 @@ Git hooks in this directory will be installed with:
 
     gulp sync-githooks
 
-This command is executed on every npm install.  
+This command is executed on every yarn install.  
 Every file in this directory will be installed in the git hooks directory (`.git/hooks/`) if:
 
 * the git hooks directory exists and we are in the root of the git repository

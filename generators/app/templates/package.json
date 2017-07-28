@@ -17,9 +17,9 @@
     "lint:html": "gulp lint-html",
     "lint:js": "eslint ./patterns ./assets/js",
     "lint:data": "node app/scripts/validate-pattern-data.js",
-    "postinstall": "npm rebuild node-sass && npm run githooks",
-    "test": "npm run lint && gulp test",
-    "prebuild": "npm test",
+    "postinstall": "yarn install --force && yarn githooks",
+    "test": "yarn lint && gulp test",
+    "prebuild": "yarn test",
     "build": "gulp build",<% if (options.exporter) { %>
     "export": "gulp export",<% } %>
     "dev": "gulp develop",

@@ -13,13 +13,13 @@ Nitro is simple, fast and flexible. It works on macOS, Windows and Linux. Use th
 
 ## Usage
 
-Before using, you need of course [node and npm](https://nodejs.org/) installed.  
+Before using, you need of course [node](https://nodejs.org/) installed.  
 Nitro and the Nitro generator are tested with the current LTS versions of the node.js releases 4 and 6.
 (So everything between should work). They should also work with node.js release 8.
 
-Install `yo` and `generator-nitro` globally:
+Install `yarn`, `yo` and `generator-nitro` globally:
 
-    npm install -g yo generator-nitro
+    npm install -g yarn yo generator-nitro
 
 Keep your global packages up to date:
 
@@ -74,9 +74,9 @@ See how tho use the [generated app](generators/app/templates/project/docs/nitro.
 
 ## Testing
 
-Running `npm test` will run the `jasmine` unit tests.
+Running `yarn test` will run the `jasmine` unit tests.
 
-    npm test
+    yarn test
 
 ## Contribute
 

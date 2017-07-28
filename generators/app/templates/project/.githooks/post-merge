@@ -11,8 +11,8 @@ check_run() {
 	echo "$changed_files" | grep -E --quiet "$1" && eval "$2"
 }
 
-# `npm install` and `npm prune` if `package.json` gets changed
-check_run package.json "npm install && npm prune"
+# `yarn install` if `yarn.lock` gets changed
+check_run yarn.lock "yarn install"
 
 # `sync hooks` if `.githooks` gets changed
-check_run ".githooks" "npm run githooks"
+check_run ".githooks" "yarn githooks"

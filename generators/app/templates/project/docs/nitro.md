@@ -22,14 +22,15 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 ## Preparation
 
 This application was created by the yeoman generator for nitro.  
-Before using, you need of course [node and npm](https://nodejs.org/) installed.
+Before using, you need of course [node](https://nodejs.org/) installed.
 Nitro is tested with the current LTS versions of the node.js releases 4 and 6
 and should also work with node.js release 8.  
-And also you need the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro)
-and the [yeoman cli tool](https://www.npmjs.com/package/yo) installed globally.
+And also you need [yarn](https://www.npmjs.com/package/yarn), 
+the [yeoman cli tool](https://www.npmjs.com/package/yo) and
+the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro) installed globally.
 
 ```
-npm install -g yo generator-nitro
+npm install -g yarn yo generator-nitro
 ```
 
 Keep your global packages up to date:
@@ -47,7 +48,7 @@ npm update -g
 Install the project dependencies in the project root:
 
 ```
-npm install
+yarn install
 ```
 
 ## Starting the app
@@ -55,7 +56,7 @@ npm install
 Use
 
 ```
-npm run dev
+yarn dev
 ```
 
 ... to start in development mode
@@ -71,14 +72,14 @@ node server
 For production mode add `NODE_ENV=production` environment variable
 
 ```
-NODE_ENV=production && npm run prod
+NODE_ENV=production && yarn prod
 ```
 
 The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `dev` task).  
 If you want the app to run on another port put them before the start task like this:
 
 ```
-PORT=8000 PROXY=8001 npm run dev
+PORT=8000 PROXY=8001 yarn dev
 ```
 
 The port to be used in production can be set the same way:
@@ -90,9 +91,9 @@ PORT=3000 node server
 This works a bit different on **Windows**. Use the following commands in prompt:
 
 ```
-set PORT=8000 && set PROXY=8001 && npm run dev
+set PORT=8000 && set PROXY=8001 && yarn dev
 set PORT=3000 && node server
-set NODE_ENV=production && npm run prod
+set NODE_ENV=production && yarn prod
 ```
 
 ## Configuring
@@ -525,11 +526,11 @@ Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used o
 
 ### Git Hooks
 
-Nitro tries to install a `post-merge` git hook with every `npm install` (if we are in git root).
+Nitro tries to install a `post-merge` git hook with every `yarn install` (if we are in git root).
 
 This hook will:
 
-* run `npm install` if someone changes `package.json`
+* run `yarn install` if someone changes `yarn.lock`
 * sync this git hooks if someone changes one.
 
 You may [change this or add other hooks](../.githooks/readme.md) in `project/.githooks`.
@@ -547,7 +548,7 @@ You may [change this or add other hooks](../.githooks/readme.md) in `project/.gi
 <% } %>
 #### Client Dependencies
 
-The following packages are installed by the [app](#name) generator as npm dependencies:
+The following packages are installed by the [app](#name) generator as dependencies:
 
 * [jQuery 3.2.0](http://jquery.com/)
 * [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)<% if (options.clientTpl) { %>

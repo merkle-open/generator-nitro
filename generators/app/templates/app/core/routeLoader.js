@@ -1,11 +1,11 @@
 'use strict';
 
-const config = require('./config');
+const config = require('config');
 const fs = require('fs');
 const path = require('path');
-const routePath = config.nitro.base_path + 'project/routes/';
-const viewDataPath = config.nitro.base_path + 'project/viewData/';
-let routers = [];
+const routePath = `${config.get('nitro.basePath')}project/routes/`;
+const viewDataPath = `${config.get('nitro.basePath')}project/viewData/`;
+const routers = [];
 
 function readRoutes(routes) {
 	fs.readdirSync(routes).forEach((el) => {

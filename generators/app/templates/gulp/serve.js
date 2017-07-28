@@ -1,20 +1,20 @@
 'use strict';
 
-const config = require('../app/core/config');
+const config = require('config');
 const fs = require('fs');
 
 module.exports = (gulp, plugins) => {
 	let taskCallbackCalled = false;
 
-	return (callback) => {
+	return (cb) => {
 		const pidFile = '.servepid';
 		const server = plugins.liveServer(
 			'server.js',
 			{
 				env: {
-					PORT: config.server.port,
-					NODE_ENV: config.server.production ? 'production' : 'development'
-				}
+					PORT: Number(config.get('server.port')),
+					NODE_ENV: config.get('server.production') ? 'production' : 'development',
+				},
 			},
 			false
 		);
@@ -24,17 +24,17 @@ module.exports = (gulp, plugins) => {
 				fs.unlinkSync(pidFile);
 			}
 			process.exit(result.code);
-			if(!taskCallbackCalled) {
+			if (!taskCallbackCalled) {
 				taskCallbackCalled = true;
-				callback();
+				cb();
 			}
 		}, () => {
 
 		}, () => {
 			fs.writeFileSync(pidFile, server.server.pid);
-			if(!taskCallbackCalled) {
+			if (!taskCallbackCalled) {
 				taskCallbackCalled = true;
-				callback();
+				cb();
 			}
 		});
 	};

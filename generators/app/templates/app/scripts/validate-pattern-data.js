@@ -10,7 +10,7 @@
  *  or
  * yarn lint:data
  *
- * example config in ./config.json
+ * example config in config/default.js
  *
  * "code": {
  *    "validation": {
@@ -24,14 +24,13 @@
  */
 const chalk = require('chalk');
 const fs = require('fs');
-const path = require('path');
 const globby = require('globby');
 const Ajv = require('ajv');
-const config = require('../core/config');
-const ajv = new Ajv({allErrors: true});
+const config = require('config');
+const ajv = new Ajv({ allErrors: true });
 const wildcard = '*';
-const patternBasePaths = Object.keys(config.nitro.patterns).map((key) => {
-	return config.nitro.patterns[key].path;
+const patternBasePaths = Object.keys(config.get('nitro.patterns')).map((key) => {
+	return config.get(`nitro.patterns.${key}.path`);
 });
 const patternGlobs = patternBasePaths.map((patternBasePath) => {
 	return `${patternBasePath}/${wildcard}`;
@@ -40,20 +39,15 @@ const patternGlobs = patternBasePaths.map((patternBasePath) => {
 		return `${patternBasePath}/${wildcard}/elements/${wildcard}`;
 	})
 );
+const logMissingSchemaAsError = config.has('code.validation.jsonSchema.logMissingSchemaAsError')
+	? config.get('code.validation.jsonSchema.logMissingSchemaAsError') : false;
+const logMissingSchemaAsWarning = config.has('code.validation.jsonSchema.logMissingSchemaAsWarning')
+	? config.get('code.validation.jsonSchema.logMissingSchemaAsWarning') : true;
 
-let logMissingSchemaAsError;
-let logMissingSchemaAsWarning;
 let errorCouter = 0;
 let patternCouter = 0;
 
-if (config.code && config.code.validation && config.code.validation.jsonSchema) {
-	logMissingSchemaAsError = config.code.validation.jsonSchema.logMissingSchemaAsError === undefined
-		? false : config.code.validation.jsonSchema.logMissingSchemaAsError;
-	logMissingSchemaAsWarning = config.code.validation.jsonSchema.logMissingSchemaAsWarning === undefined
-		? true : config.code.validation.jsonSchema.logMissingSchemaAsWarning;
-}
-
-globby.sync(patternGlobs).forEach((patternPath, index) => {
+globby.sync(patternGlobs).forEach((patternPath) => {
 	const schemaFilePath = `${patternPath}/schema.json`;
 	patternCouter += 1;
 

@@ -3,7 +3,7 @@
 const gulp = require('gulp');
 const getTask = require('./gulp/utils').getTask;
 const gulpSequence = require('gulp-sequence').use(gulp);<% if (options.exporter || options.release) { %>
-const config = require('./app/core/config');<% } %><% if (options.exporter) { %>
+const config = require('config');<% } %><% if (options.exporter) { %>
 require('nitro-exporter')(gulp, config);<% } %><% if (options.release) { %>
 require('nitro-release')(gulp, config);<% } %>
 

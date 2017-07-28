@@ -4,26 +4,26 @@ const fs = require('fs');
 const hbs = require('hbs');
 const path = require('path');
 const extend = require('extend');
-const config = require('../../../core/config');
+const config = require('config');
 const hbsUtils = require('../utils');
 const lint = require('../../../lib/lint');
 const htmllintOptions = lint.getHtmllintOptions(true);
 
-module.exports = function placeholder () {
+module.exports = function placeholder() {
 
 	try {
 		const context = arguments[arguments.length - 1];
 		const contextDataRoot = context.data && context.data.root ? context.data.root : {};
-		const name = 'string' === typeof arguments[0] ? arguments[0] : context.hash.name;
-		let templateFile = 'string' === typeof arguments[1] ? arguments[1] : context.hash.template;
-		let placeholderData = {};
+		const name = typeof arguments[0] === 'string' ? arguments[0] : context.hash.name;
+		let templateFile = typeof arguments[1] === 'string' ? arguments[1] : context.hash.template;
+		const placeholderData = {};
 
 		// validate
-		if(!name) {
+		if (!name) {
 			throw new Error('Placeholder name parameter not set');
 		}
 
-		if(!templateFile) {
+		if (!templateFile) {
 			throw new Error('Placeholder template parameter not set');
 		}
 
@@ -40,11 +40,11 @@ module.exports = function placeholder () {
 			extend(true, placeholderData, context.hash);
 		}
 
-		templateFile += `.${config.nitro.view_file_extension}`;
+		templateFile += `.${config.get('nitro.viewFileExtension')}`;
 
 		const templatePath = path.join(
-			config.nitro.base_path,
-			config.nitro.placeholders_directory,
+			config.get('nitro.basePath'),
+			config.get('nitro.placeholdersDirectory'),
 			name,
 			templateFile);
 
@@ -54,7 +54,7 @@ module.exports = function placeholder () {
 			)(placeholderData, context);
 
 			// lint html snippet
-			if (!config.server.production) {
+			if (!config.get('server.production') && config.get('code.validation.htmllint.live')) {
 				lint.lintSnippet(templatePath, html, htmllintOptions);
 			}
 			return new hbs.handlebars.SafeString(html);
@@ -62,8 +62,7 @@ module.exports = function placeholder () {
 
 		throw new Error(`Placeholder ${templatePath} not found.`);
 
-	}
-	catch (e) {
+	} catch (e) {
 		return hbsUtils.logAndRenderError(e);
 	}
 };

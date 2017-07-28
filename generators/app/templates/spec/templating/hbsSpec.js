@@ -16,9 +16,9 @@ describe('Nitro\'s Handlebars helper loader', () => {
 		expect(typeof hbs.handlebars.helpers.placeholder).toBe('function');
 	});
 
-	it('has registered the view_list helper', () => {
+	it('has registered the viewlist helper', () => {
 		const hbs = require('../../app/templating/hbs/engine');
-		expect(typeof hbs.handlebars.helpers.view_list).toBe('function');
+		expect(typeof hbs.handlebars.helpers.viewlist).toBe('function');
 	});
 
 	it('has registered the t helper', () => {

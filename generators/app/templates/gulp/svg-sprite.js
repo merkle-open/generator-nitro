@@ -8,19 +8,19 @@ module.exports = (gulp, plugins) => {
 		const svgIcons = gulp
 			.src('patterns/atoms/icon/img/icons/*.svg')
 			.pipe(plugins.svgmin((file) => {
-				var prefix = path.basename(file.relative, path.extname(file.relative));
+				const prefix = path.basename(file.relative, path.extname(file.relative));
 				return {
 					plugins: [
 						{
-							removeDoctype: true
+							removeDoctype: true,
 						}, {
 							cleanupIDs: {
-								prefix: prefix + '-',
-								minify: true
-							}
-						}
-					]
-				}
+								prefix: `${prefix}-`,
+								minify: true,
+							},
+						},
+					],
+				};
 			}))
 			.pipe(plugins.svgstore({ inlineSvg: true }))
 			.pipe(gulp.dest('public/assets/svg'));

@@ -6,25 +6,17 @@
 const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
-const os = require('os');
 const fs = require('fs-extra');
-const ejs = require('ejs');
-
-const configData = {
-	options: {
-		pre: 'less',
-		js: 'JavaScript',
-	},
-};
+const patternConfig = require(path.join(__dirname, '../generators/app/templates/config/default/patterns.js'));
 
 describe('nitro:pattern', () => {
 	describe('when creating a pattern "Test" (organism)', () => {
 		describe('but no modifier and decorator is given', () => {
 			beforeAll((done) => {
 				helpers.run(path.join(__dirname, '../generators/pattern'))
-					.inDir(path.join(os.tmpdir(), './temp-test'), (dir) => {
-						fs.copySync(path.join(__dirname, '../generators/app/templates/project'), path.join(dir, 'project'));
-						fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../generators/app/templates/config.json'), 'utf8'), configData));
+					.inTmpDir((dir) => {
+						fs.copySync(path.join(__dirname, '../generators/app/templates/project/blueprints'), path.join(dir, 'project/blueprints'));
+						fs.writeJsonSync(path.join(dir, 'config.json'), { nitro: { patterns: patternConfig } });
 					})
 					.withPrompts({ name: 'Test', type: 'organism' })
 					.on('end', done);
@@ -57,9 +49,9 @@ describe('nitro:pattern', () => {
 		describe('and a modifier "More" is given', () => {
 			beforeAll((done) => {
 				helpers.run(path.join(__dirname, '../generators/pattern'))
-					.inDir(path.join(os.tmpdir(), './temp-test'), (dir) => {
-						fs.copySync(path.join(__dirname, '../generators/app/templates/project'), path.join(dir, 'project'));
-						fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../generators/app/templates/config.json'), 'utf8'), configData));
+					.inTmpDir((dir) => {
+						fs.copySync(path.join(__dirname, '../generators/app/templates/project/blueprints'), path.join(dir, 'project/blueprints'));
+						fs.writeJsonSync(path.join(dir, 'config.json'), { nitro: { patterns: patternConfig } });
 					})
 					.withPrompts({ name: 'Test', type: 'organism', modifier: 'More' })
 					.on('end', done);
@@ -90,9 +82,9 @@ describe('nitro:pattern', () => {
 		describe('and a decorator "More" is given', () => {
 			beforeAll((done) => {
 				helpers.run(path.join(__dirname, '../generators/pattern'))
-					.inDir(path.join(os.tmpdir(), './temp-test'), (dir) => {
-						fs.copySync(path.join(__dirname, '../generators/app/templates/project'), path.join(dir, 'project'));
-						fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../generators/app/templates/config.json'), 'utf8'), configData));
+					.inTmpDir((dir) => {
+						fs.copySync(path.join(__dirname, '../generators/app/templates/project/blueprints'), path.join(dir, 'project/blueprints'));
+						fs.writeJsonSync(path.join(dir, 'config.json'), { nitro: { patterns: patternConfig } });
 					})
 					.withPrompts({ name: 'Test', type: 'organism', decorator: 'More' })
 					.on('end', done);
@@ -124,9 +116,9 @@ describe('nitro:pattern', () => {
 	describe('when creating a pattern "NavMain" (molecule) with a modifier and decorator "SpecialCase"', () => {
 		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../generators/pattern'))
-				.inDir(path.join(os.tmpdir(), './temp-test'), (dir) => {
-					fs.copySync(path.join(__dirname, '../generators/app/templates/project'), path.join(dir, 'project'));
-					fs.copySync(path.join(__dirname, '../generators/app/templates/config.json'), path.join(dir, 'config.json'));
+				.inTmpDir((dir) => {
+					fs.copySync(path.join(__dirname, '../generators/app/templates/project/blueprints'), path.join(dir, 'project/blueprints'));
+					fs.writeJsonSync(path.join(dir, 'config.json'), { nitro: { patterns: patternConfig } });
 				})
 				.withPrompts({ name: 'NavMain', type: 'molecule', modifier: 'SpecialCase', decorator: 'SpecialCase' })
 				.on('end', done);
@@ -166,9 +158,9 @@ describe('nitro:pattern', () => {
 	describe('when creating a pattern "nav-main" (molecule) with a modifier and decorator "special-case"', () => {
 		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../generators/pattern'))
-				.inDir(path.join(os.tmpdir(), './temp-test'), (dir) => {
-					fs.copySync(path.join(__dirname, '../generators/app/templates/project'), path.join(dir, 'project'));
-					fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../generators/app/templates/config.json'), 'utf8'), configData));
+				.inTmpDir((dir) => {
+					fs.copySync(path.join(__dirname, '../generators/app/templates/project/blueprints'), path.join(dir, 'project/blueprints'));
+					fs.writeJsonSync(path.join(dir, 'config.json'), { nitro: { patterns: patternConfig } });
 				})
 				.withPrompts({ name: 'nav-main', type: 'molecule', modifier: 'special-case', decorator: 'special-case' })
 				.on('end', done);
@@ -208,9 +200,9 @@ describe('nitro:pattern', () => {
 	describe('when creating a pattern "Nav Main" (molecule) with a modifier "Light.Blue"', () => {
 		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../generators/pattern'))
-				.inDir(path.join(os.tmpdir(), './temp-test'), (dir) => {
-					fs.copySync(path.join(__dirname, '../generators/app/templates/project'), path.join(dir, 'project'));
-					fs.writeFileSync(path.join(dir, 'config.json'), ejs.render(fs.readFileSync(path.join(__dirname, '../generators/app/templates/config.json'), 'utf8'), configData));
+				.inTmpDir((dir) => {
+					fs.copySync(path.join(__dirname, '../generators/app/templates/project/blueprints'), path.join(dir, 'project/blueprints'));
+					fs.writeJsonSync(path.join(dir, 'config.json'), { nitro: { patterns: patternConfig } });
 				})
 				.withPrompts({ name: 'Nav Main', type: 'molecule', modifier: 'Light.Blue' })
 				.on('end', done);

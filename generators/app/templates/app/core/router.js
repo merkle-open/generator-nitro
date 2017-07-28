@@ -2,7 +2,7 @@
 
 const path = require('path');
 const fs = require('fs');
-const config = require('./config');
+const config = require('config');
 const utils = require('./utils');
 const view = require('../lib/view');
 const dot = require('dot-object');
@@ -12,22 +12,26 @@ const router = express.Router({
 	caseSensitive: false,
 	strict: false,
 });
-const isProduction = config.server.production;
+const isProduction = config.get('server.production');
+const isOffline = config.get('nitro.mode.offline');
+const useMinifiedAssets = config.get('nitro.mode.minified');
 
 /**
  * static routes
  */
-router.use('/', express.static(config.nitro.base_path + '/public/'));
+router.use('/', express.static(config.get('nitro.basePath') + '/public/'));
 
 /**
  * views
  */
 function getView(req, res, next) {
 	const tpl = req.params.view ? req.params.view.toLowerCase() : 'index';
-	let data = {
+	const data = {
 		pageTitle: tpl,
-		_layout: config.nitro.default_layout,
-		_production: isProduction
+		_layout: config.get('nitro.defaultLayout'),
+		_production: isProduction,
+		_offline: isOffline,
+		_minified: useMinifiedAssets,
 	};
 	const viewPathes = view.getViewCombinations(tpl);
 	let rendered = false;
@@ -35,37 +39,36 @@ function getView(req, res, next) {
 	viewPathes.forEach((viewPath) => {
 		if (!rendered) {
 			const tplPath = path.join(
-				config.nitro.base_path,
-				config.nitro.view_directory,
+				config.get('nitro.basePath'),
+				config.get('nitro.viewDirectory'),
 				'/',
-				viewPath + '.' + config.nitro.view_file_extension
+				`${viewPath}.${config.get('nitro.viewFileExtension')}`
 			);
 
 			if (fs.existsSync(tplPath)) {
 
 				// collect data
 				const dataPath = path.join(
-					config.nitro.base_path,
-					config.nitro.view_data_directory,
+					config.get('nitro.basePath'),
+					config.get('nitro.viewDataDirectory'),
 					'/',
-					viewPath + '.json'
+					`${viewPath}.json`
 				);
 				const customDataPath = req.query._data ? path.join(
-						config.nitro.base_path,
-						config.nitro.view_data_directory,
-						'/' + req.query._data + '.json'
-					) : false;
+					config.get('nitro.basePath'),
+					config.get('nitro.viewDataDirectory'),
+					`/${req.query._data}.json`
+				) : false;
 
 				if (customDataPath && fs.existsSync(customDataPath)) {
 					extend(true, data, JSON.parse(fs.readFileSync(customDataPath, 'utf8')));
-				}
-				else if (fs.existsSync(dataPath)) {
+				} else if (fs.existsSync(dataPath)) {
 					extend(true, data, JSON.parse(fs.readFileSync(dataPath, 'utf8')));
 				}
 
 				// handle query string parameters
 				if (Object.keys(req.query).length !== 0) {
-					let reqQuery = JSON.parse(JSON.stringify(req.query)); // simple clone
+					const reqQuery = JSON.parse(JSON.stringify(req.query)); // simple clone
 					dot.object(reqQuery);
 					extend(true, data, reqQuery);
 					data._query = reqQuery; // save query for use in patterns
@@ -75,9 +78,8 @@ function getView(req, res, next) {
 				if (data._layout) {
 					if (utils.layoutExists(data._layout)) {
 						data.layout = utils.getLayoutPath(data._layout);
-					}
-					else if (utils.layoutExists(config.nitro.default_layout)) {
-						data.layout = utils.getLayoutPath(config.nitro.default_layout);
+					} else if (utils.layoutExists(config.get('nitro.defaultLayout'))) {
+						data.layout = utils.getLayoutPath(config.get('nitro.defaultLayout'));
 					}
 				}
 
@@ -105,11 +107,13 @@ router.get('/:view', getView);
 router.use((req, res) => {
 	res.locals.pageTitle = '404 - Not Found';
 	res.locals._production = isProduction;
-	if (utils.layoutExists(config.nitro.default_layout)) {
-		res.locals.layout = utils.getLayoutPath(config.nitro.default_layout);
+	res.locals._offline = isOffline;
+	res.locals._minified = useMinifiedAssets;
+	if (utils.layoutExists(config.get('nitro.defaultLayout'))) {
+		res.locals.layout = utils.getLayoutPath(config.get('nitro.defaultLayout'));
 	}
 	res.status(404);
-	res.render('404', function (err, html) {
+	res.render('404', (err, html) => {
 		if (err) {
 			res.send('404 - Not Found');
 		}

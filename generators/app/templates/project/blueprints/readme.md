@@ -10,7 +10,7 @@ Nitro provides the following [Lodash](https://lodash.com/docs#template) replacem
     <%= pattern.js %>       // Pattern name for use in JS files, eg. MainNavigation
     <%= pattern.css %>      // Pattern name for use in CSS files, eg. main-navigation
     <%= pattern.prefix %>   // CSS class prefix, eg. o
-    <%= pattern.type %>     // Pattern type as specified in config.json, eg. atom, molecule etc. 
+    <%= pattern.type %>     // Pattern type as specified in configuration, eg. atom, molecule etc. 
     <%= pattern.file %>     // Pattern filename, eg. mainnavigation
     
     <%= modifier.name %>    // Modifier name, eg. Highlight 

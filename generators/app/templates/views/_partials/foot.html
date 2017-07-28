@@ -1,10 +1,8 @@
-<script src="/assets/js/app{{#if _minified}}.min{{/if}}.js"></script>
-<% if (options.exampleCode) { %>
+<script src="/assets/js/app{{#if _minified}}.min{{/if}}.js"></script><% if (options.exampleCode) { %>
 <script>
 	$(document).ready(function () {
 		var application = new T.Application();
 		application.registerModules();
 		application.start();
 	});
-</script>
-<% } %>
+</script><% } %>

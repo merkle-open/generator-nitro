@@ -497,7 +497,6 @@ you can configure your own Engine.
 This example shows how to replace Handlebars with [Nunjucks](https://mozilla.github.io/nunjucks/) as an example.
 
 All these steps need to be performed in `server.js`.
-All these steps need to be performed in `server.js`.
 
 1. Replace the line `hbs = require('./app/templating/hbs/engine')` with `nunjucks = require('nunjucks')`
 2. Remove the partials line and  `app.engine(config.get('nitro.viewFileExtension'), hbs.__express);`

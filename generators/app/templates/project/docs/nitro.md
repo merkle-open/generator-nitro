@@ -301,6 +301,10 @@ Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*
 {{> head}}
 ```
 
+Partials are registered with [hbs-utils](https://www.npmjs.com/package/hbs-utils#partials), 
+so keep in mind that every space or hyphen in filenames is replaced with an underscore.
+(e.g. use `{{> file_name}}` to load `views/_partials/file-name.<%= options.viewExt %>`)
+
 ### Render placeholders
 
 Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `views/_placeholders/` as `*.<%= options.viewExt %>` files.  

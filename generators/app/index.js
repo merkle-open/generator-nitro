@@ -289,6 +289,7 @@ module.exports = class extends Generator {
 			'gulp/watch-assets.js',
 			'patterns/molecules/example/example.html',
 			'patterns/molecules/example/schema.json',
+			'project/.githooks/pre-commit',
 			'project/docs/nitro.md',
 			'spec/templating/patternSpec.js',
 			'views/index.html',

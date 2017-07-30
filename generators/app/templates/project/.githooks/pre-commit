@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# MIT © ernscht
+# starting point: https://gist.github.com/ernscht/41d037bb14f42fc89cd1d562b9fbcfda
+
+# git hook to run commands before `git commit` if specific source files were changed.
+# Run `chmod +x pre-commit` to make it executable then put it into `.git/hooks/`.
+
+# ok if there are no changed source files
+FILES_PATTERN="\.(<%= options.pre %>|<% if (options.js === 'TypeScript') { %>ts|<% } %>js|<%= options.viewExt %>|json)$"
+if git diff --cached --name-only | grep -E --quiet "$FILES_PATTERN"
+then
+  yarn test
+  exitCode=$?
+else
+  exitCode=0
+fi
+
+# Exit code
+exit $exitCode

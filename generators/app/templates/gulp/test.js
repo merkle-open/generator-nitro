@@ -6,7 +6,7 @@ const path = require('path');
 module.exports = (gulp, plugins) => {
 	return (done) => {
 		new Karma({
-			configFile: path.join(__dirname, '..', 'karma.conf.js'),
+			configFile: path.join(__dirname, '..', 'tests', 'karma',  'karma.conf.js'),
 		}, done).start();
 	};
 };

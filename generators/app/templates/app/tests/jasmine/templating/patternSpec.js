@@ -1,6 +1,6 @@
 'use strict';
 
-const helper = require('../../app/templating/hbs/helpers/pattern');
+const helper = require('../../../templating/hbs/helpers/pattern');
 
 describe('Pattern Helper', () => {
 

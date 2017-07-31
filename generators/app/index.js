@@ -291,7 +291,7 @@ module.exports = class extends Generator {
 			'patterns/molecules/example/schema.json',
 			'project/.githooks/pre-commit',
 			'project/docs/nitro.md',
-			'spec/templating/patternSpec.js',
+			'app/tests/jasmine/templating/patternSpec.js',
 			'views/index.html',
 			'views/_partials/head.html',
 			'views/_partials/foot.html',

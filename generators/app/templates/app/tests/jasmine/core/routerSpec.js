@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Nitro Router', () => {
-	const router = require('../../app/core/router');
+	const router = require('../../../core/router');
 
 	it('contains default route', () => {
 		let contains = false;

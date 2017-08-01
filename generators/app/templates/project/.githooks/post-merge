@@ -12,7 +12,7 @@ check_run() {
 }
 
 # `yarn install` if `yarn.lock` gets changed
-check_run yarn.lock "yarn install"
+check_run "yarn.lock" "yarn install"
 
 # `sync hooks` if `.githooks` gets changed
 check_run ".githooks" "yarn githooks"

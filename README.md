@@ -33,7 +33,7 @@ Do an update if necessary:
 
 Create a new directory, and `cd` into it:
 
-    mkdir my-new-project && cd my-new-project
+    mkdir my-new-project && cd $_
 
 Run:
 

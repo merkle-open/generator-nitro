@@ -2,7 +2,7 @@
 
 /* eslint-env jasmine */
 
-const pkg = require('../package.json');
+const pkg = require('../../package.json');
 
 describe('Genearator', () => {
 

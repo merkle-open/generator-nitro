@@ -11,8 +11,9 @@
   },
   "main": "generators/app/index.js",
   "scripts": {
-    "test": "jasmine",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "pretest": "yarn lint",
+    "test": "jasmine --config=tests/jasmine/support/jasmine.json"
   },
   "files": [
     "generators/app",

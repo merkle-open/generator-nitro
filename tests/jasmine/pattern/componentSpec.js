@@ -7,15 +7,15 @@ const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const fs = require('fs-extra');
-const patternConfig = require(path.join(__dirname, '../generators/app/templates/config/default/patterns.js'));
+const patternConfig = require(path.join(__dirname, '../../../generators/app/templates/config/default/patterns.js'));
 
 describe('nitro:component', () => {
 	describe('when creating a component "Test" (organism)', () => {
 		describe('but no modifier and decorator is given', () => {
 			beforeAll((done) => {
-				helpers.run(path.join(__dirname, '../generators/component'))
+				helpers.run(path.join(__dirname, '../../../generators/component'))
 					.inTmpDir((dir) => {
-						fs.copySync(path.join(__dirname, '../generators/app/templates/project/blueprints'), path.join(dir, 'project/blueprints'));
+						fs.copySync(path.join(__dirname, '../../../generators/app/templates/project/blueprints'), path.join(dir, 'project/blueprints'));
 						fs.writeJsonSync(path.join(dir, 'config.json'), { nitro: { patterns: patternConfig } });
 					})
 					.withPrompts({ name: 'Test', type: 'organism' })

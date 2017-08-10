@@ -13,7 +13,8 @@
   "scripts": {
     "lint": "eslint .",
     "pretest": "yarn lint",
-    "test": "jasmine --config=tests/jasmine/support/jasmine.json"
+    "test": "jasmine --config=tests/jasmine/support/jasmine.json",
+    "prepublish": "nsp check --output summary"
   },
   "files": [
     "generators/app",
@@ -48,6 +49,7 @@
     "eslint-plugin-import": "2.7.0",
     "fs-extra": "4.0.1",
     "jasmine": "2.7.0",
+    "nsp": "2.7.0",
     "yeoman-assert": "3.0.0",
     "yeoman-test": "1.7.0"
   }

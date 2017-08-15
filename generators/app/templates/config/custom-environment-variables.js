@@ -1,7 +1,9 @@
-// Config - Custom Environment Variables
-// https://github.com/lorenwest/node-config/wiki/Environment-Variables#custom-environment-variables
-
 'use strict';
+
+/**
+ * Config - Custom Environment Variables
+ * https://github.com/lorenwest/node-config/wiki/Environment-Variables#custom-environment-variables
+ */
 
 const config = {
 	server: {

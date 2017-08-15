@@ -1,7 +1,9 @@
-// Nitro Exporter Config
-// https://github.com/namics/nitro-exporter
-
 'use strict';
+
+/**
+ * Nitro Exporter Config
+ * https://github.com/namics/nitro-exporter
+ */
 
 const config = {
 	exporter: {

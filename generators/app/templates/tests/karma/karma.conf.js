@@ -1,5 +1,9 @@
-// Karma configuration
-// Requires that asset `app.js` is compiled
+'use strict';
+
+/**
+ * Karma configuration
+ * Requires that asset `app.js` is compiled
+ */
 
 module.exports = function (config) {
 	config.set({

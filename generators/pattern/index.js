@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * this generator is used as subgenerator nitro:pattern and nitro:component
+ */
+
 /* eslint-disable no-inline-comments, max-len, complexity, global-require, require-jsdoc */
 
 const Generator = require('yeoman-generator');
@@ -10,8 +14,6 @@ const fs = require('fs');
 const gitconfig = require('git-config');
 const glob = require('glob');
 const _ = require('lodash');
-
-/* this generator is used as subgenerator nitro:pattern and nitro:component */
 
 module.exports = class extends Generator {
 

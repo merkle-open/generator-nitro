@@ -1,7 +1,9 @@
-// Release Config
-// https://github.com/namics/nitro-release
-
 'use strict';
+
+/**
+ * Release Config
+ * https://github.com/namics/nitro-release
+ */
 
 const config = {
 	release: {

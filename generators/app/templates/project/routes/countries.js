@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Usage:
  *  /api/countries/search
@@ -5,8 +7,6 @@
  * To get results you have to provide a search query:
  *  /api/countries/search?query=sw
  */
-
-'use strict';
 
 const path = require('path');
 const fs = require('fs');

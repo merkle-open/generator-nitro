@@ -174,7 +174,7 @@ Default: false
 Indicator to use minified assests.  
 This property is passed as `_minified` to handlebars views.
 
-####`nitro.mode.offline`
+#### `nitro.mode.offline`
 
 Type: Boolean  
 Default: false

@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Usage:
  *  gulp dump-views
@@ -12,7 +14,6 @@
  *
  * If you specify languages, your HTML views will be suffixed with the provided locale, e.g. index-en.html
  */
-'use strict';
 
 const argv = require('yargs').argv;
 const config = require('config');

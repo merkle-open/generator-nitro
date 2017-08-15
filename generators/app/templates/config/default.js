@@ -1,7 +1,9 @@
-// Main Project Config
-// https://www.npmjs.com/package/config
-
 'use strict';
+
+/**
+ * Main Project Config
+ * https://www.npmjs.com/package/config
+ */
 
 const extend = require('extend');
 const baseConfig = require('../app/core/config');

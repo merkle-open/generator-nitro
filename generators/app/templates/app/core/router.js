@@ -28,13 +28,14 @@ function getView(req, res, next) {
 	const tpl = req.params.view ? req.params.view.toLowerCase() : 'index';
 	const data = {
 		pageTitle: tpl,
-		_layout: config.get('nitro.defaultLayout'),
 		_production: isProduction,
 		_offline: isOffline,
 		_minified: useMinifiedAssets,
 	};
 	const viewPathes = view.getViewCombinations(tpl);
 	let rendered = false;
+
+	extend(true, data, res.locals);
 
 	viewPathes.forEach((viewPath) => {
 		if (!rendered) {
@@ -78,13 +79,16 @@ function getView(req, res, next) {
 				if (data._layout) {
 					if (utils.layoutExists(data._layout)) {
 						data.layout = utils.getLayoutPath(data._layout);
-					} else if (utils.layoutExists(config.get('nitro.defaultLayout'))) {
+					}
+				}
+				if (!data.layout || !utils.layoutExists(utils.getLayoutName(data.layout))) {
+					// use default layout if present
+					if (utils.layoutExists(config.get('nitro.defaultLayout'))) {
 						data.layout = utils.getLayoutPath(config.get('nitro.defaultLayout'));
 					}
 				}
 
 				// locals
-				extend(true, data, res.locals);
 				res.locals = data;
 
 				// render

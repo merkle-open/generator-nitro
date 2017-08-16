@@ -343,7 +343,9 @@ http://localhost:8080/index?_data=index-test
 
 ##### Use different layout
 
-If you need a different layout for a page, do so in the corresponding data file:
+If you need a different layout for a page, do so in the corresponding view data file.
+(View data files needs to be placed in same directory structure than views)
+
 ```
     /views/_data/index.json
     {

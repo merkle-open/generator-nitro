@@ -302,6 +302,10 @@ module.exports = class extends Generator {
 			'.npmignore',
 			'frontend-defaults.zip',
 		];
+		const ignoresOnUpdate = [
+			// files to ignore ono updating projects
+			'config/local.js',
+		];
 		const typeScriptFiles = [
 			// files only for this.options.js==='TypeScript'
 			'tsd.json',
@@ -364,9 +368,11 @@ module.exports = class extends Generator {
 				return;
 			}
 
-			// exclude nitro tests
-			if (_.startsWith(file, 'spec/')) {
-				return;
+			// exclude update ignores
+			if (this.update) {
+				if (_.indexOf(ignoresOnUpdate, file) !== -1) {
+					return;
+				}
 			}
 
 			// TypeScript only Files

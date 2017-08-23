@@ -35,7 +35,7 @@
     "modular"
   ],
   "dependencies": {
-    "babel-polyfill": "6.23.0",<% if (options.clientTpl) { %>
+    "babel-polyfill": "6.26.0",<% if (options.clientTpl) { %>
     "handlebars": "4.0.10",<% } %>
     "jquery": "3.2.1",
     "terrific": "3.0.0"
@@ -54,11 +54,11 @@
     "del": "3.0.0",
     "dot-object": "1.6.0",
     "es6-promise": "4.1.1",
-    "eslint": "4.4.1",
+    "eslint": "4.5.0",
     "eslint-plugin-import": "2.7.0",
     "express": "4.15.4",
     "extend": "3.0.1",
-    "get-port": "3.1.0",
+    "get-port": "3.2.0",
     "globby": "6.1.0",
     "gulp": "3.9.1",
     "gulp-accessibility": "3.0.1",
@@ -86,7 +86,7 @@
     "gulp-sass": "3.1.0",<% } %>
     "gulp-sequence": "0.4.6",
     "gulp-size": "2.1.0",
-    "gulp-sourcemaps": "2.6.0",
+    "gulp-sourcemaps": "2.6.1",
     "gulp-stylelint": "3.9.0",
     "gulp-svgmin": "1.2.4",
     "gulp-svgstore": "6.1.0",<% if (options.js === 'TypeScript') { %>

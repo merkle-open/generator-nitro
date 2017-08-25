@@ -48,7 +48,7 @@
     "eslint": "4.5.0",
     "eslint-plugin-import": "2.7.0",
     "fs-extra": "4.0.1",
-    "jasmine": "2.7.0",
+    "jasmine": "2.8.0",
     "nsp": "2.7.0",
     "yeoman-assert": "3.0.0",
     "yeoman-test": "1.7.0"

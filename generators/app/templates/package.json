@@ -44,7 +44,7 @@
     "@namics/eslint-config": "4.1.0",
     "@namics/stylelint-bem": "3.1.2",
     "ajv": "4.11.5",
-    "autoprefixer": "7.1.2",
+    "autoprefixer": "7.1.3",
     "babel-preset-es2015": "6.24.1",
     "body-parser": "1.17.2",
     "browser-sync": "2.18.13",
@@ -112,7 +112,7 @@
     "merge-stream": "1.0.1",<% if (options.exporter) { %>
     "nitro-exporter": "0.3.2",<% } %><% if (options.release) { %>
     "nitro-release": "0.1.0",<% } %>
-    "npm-run-all": "4.0.2",
+    "npm-run-all": "4.1.1",
     "stylelint": "7.13.0",
     "text-table": "0.2.0",
     "yargs": "8.0.2"

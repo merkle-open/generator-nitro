@@ -22,6 +22,7 @@ const extend = require('extend');
 const globby = require('globby');
 const Ajv = require('ajv');
 const ajv = new Ajv({ allErrors: true });
+ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
 const config = require('config');
 const hbsUtils = require('../utils');
 const lint = require('../../../lib/lint');

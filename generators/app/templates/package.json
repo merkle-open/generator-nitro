@@ -6,7 +6,7 @@
   "private": true,
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=4 <9",
+    "node": ">=6 <9",
     "npm": ">=3 <6"
   },
   "scripts": {

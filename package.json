@@ -1,12 +1,12 @@
 {
   "name": "generator-nitro",
-  "version": "2.0.5",
+  "version": "3.x",
   "description": "Yeoman generator for the nitro frontend framework",
   "license": "MIT",
   "repository": "namics/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=4 <9",
+    "node": ">=6 <9",
     "npm": ">=3 <6"
   },
   "main": "generators/app/index.js",

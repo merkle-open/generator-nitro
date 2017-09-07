@@ -545,7 +545,7 @@ You may [change this or add other hooks](../.githooks/readme.md) in `project/.gi
 
 * [YUI CSS Reset 3.18.1](http://yuilibrary.com/yui/docs/cssreset/)
 * Favicon & Home-Icons from Nitro (replace with your own)
-* Pattern `example` and `icon` and some styles in assets/css (you don't need them)
+* Pattern `example` and `icon` and some styles in src/assets/css (you don't need them)
 <% } %>
 #### Client Dependencies
 

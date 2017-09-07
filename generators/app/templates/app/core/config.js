@@ -10,11 +10,11 @@ const defaultConfig = {
 	nitro: {
 		basePath,
 		viewFileExtension: '<%= options.viewExt %>',
-		viewDirectory: 'views',
-		viewPartialsDirectory: 'views/_partials',
-		viewDataDirectory: 'views/_data',
-		viewLayoutsDirectory: 'views/_layouts',
-		placeholdersDirectory: 'views/_placeholders',
+		viewDirectory: 'src/views',
+		viewPartialsDirectory: 'src/views/_partials',
+		viewDataDirectory: 'src/views/_data',
+		viewLayoutsDirectory: 'src/views/_layouts',
+		placeholdersDirectory: 'src/views/_placeholders',
 		defaultLayout: 'default',
 		mode: {
 			livereload: true,

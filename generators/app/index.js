@@ -287,14 +287,14 @@ module.exports = class extends Generator {
 			'gulp/compile-js.js',
 			'gulp/utils.js',
 			'gulp/watch-assets.js',
-			'patterns/molecules/example/example.html',
-			'patterns/molecules/example/schema.json',
+			'src/patterns/molecules/example/example.html',
+			'src/patterns/molecules/example/schema.json',
 			'project/.githooks/pre-commit',
 			'project/docs/nitro.md',
 			'app/tests/jasmine/templating/patternSpec.js',
-			'views/index.html',
-			'views/_partials/head.html',
-			'views/_partials/foot.html',
+			'src/views/index.html',
+			'src/views/_partials/head.html',
+			'src/views/_partials/foot.html',
 		];
 		const ignores = [
 			// files to ignore
@@ -313,32 +313,32 @@ module.exports = class extends Generator {
 		];
 		const clientTplFiles = [
 			// files only for this.options.clientTpl===true
-			'patterns/molecules/example/_data/example-template.json',
-			'patterns/molecules/example/js/decorator/example-template.js',
-			'patterns/molecules/example/template/example.hbs',
-			'patterns/molecules/example/template/example.links.hbs',
-			'patterns/molecules/example/template/partial/example.link.hbs',
+			'src/patterns/molecules/example/_data/example-template.json',
+			'src/patterns/molecules/example/js/decorator/example-template.js',
+			'src/patterns/molecules/example/template/example.hbs',
+			'src/patterns/molecules/example/template/example.links.hbs',
+			'src/patterns/molecules/example/template/partial/example.link.hbs',
 			'project/docs/client-templates.md',
 			'project/blueprints/pattern/template/pattern.hbs',
 			'gulp/compile-templates.js',
 		];
 		const viewFiles = [
 			// files that might change file extension
-			'views/404.html',
-			'views/index.html',
-			'views/_layouts/default.html',
-			'views/_partials/foot.html',
-			'views/_partials/head.html',
-			'patterns/atoms/icon/icon.html',
-			'patterns/molecules/example/example.html',
+			'src/views/404.html',
+			'src/views/index.html',
+			'src/views/_layouts/default.html',
+			'src/views/_partials/foot.html',
+			'src/views/_partials/head.html',
+			'src/patterns/atoms/icon/icon.html',
+			'src/patterns/molecules/example/example.html',
 			'project/blueprints/pattern/pattern.html',
 		];
 		const examplePaths = [
 			// paths only for this.options.exampleCode===true
-			'patterns/atoms/icon/',
-			'patterns/molecules/example/',
-			'assets/css/example/',
-			'assets/img/icon/',
+			'src/patterns/atoms/icon/',
+			'src/patterns/molecules/example/',
+			'src/assets/css/example/',
+			'src/assets/img/icon/',
 			'project/routes/',
 		];
 		const exampleIncludeAnyway = [
@@ -420,7 +420,7 @@ module.exports = class extends Generator {
 				return;
 			}
 
-			if ((_.startsWith(file, 'project') || _.startsWith(file, 'patterns')) && (ext === 'js' || ext === 'ts') && (this.options.js === 'JavaScript' && ext !== 'js' || this.options.js === 'TypeScript' && ext !== 'ts')) {
+			if ((_.startsWith(file, 'project') || _.startsWith(file, 'src/patterns')) && (ext === 'js' || ext === 'ts') && (this.options.js === 'JavaScript' && ext !== 'js' || this.options.js === 'TypeScript' && ext !== 'ts')) {
 				return;
 			}
 

@@ -5,17 +5,17 @@ const config = {
 		patterns: {
 			atom: {
 				template: 'project/blueprints/pattern',
-				path: 'patterns/atoms',
+				path: 'src/patterns/atoms',
 				patternPrefix: 'a',
 			},
 			molecule: {
 				template: 'project/blueprints/pattern',
-				path: 'patterns/molecules',
+				path: 'src/patterns/molecules',
 				patternPrefix: 'm',
 			},
 			organism: {
 				template: 'project/blueprints/pattern',
-				path: 'patterns/organisms',
+				path: 'src/patterns/organisms',
 				patternPrefix: 'o',
 			},
 		},

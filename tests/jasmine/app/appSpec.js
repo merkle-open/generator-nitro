@@ -23,17 +23,17 @@ describe('nitro:app', () => {
 		it('creates blueprint files', () => {
 			assert.file([
 				'app',
-				'assets',
 				'config',
 				'gulp',
-				'patterns',
 				'project',
 				'public',
-				'views',
 				'.node-version',
 				'package.json',
 				'README.md',
 				'server.js',
+				'src/assets',
+				'src/patterns',
+				'src/views',
 			]);
 		});
 
@@ -115,11 +115,11 @@ describe('nitro:app', () => {
 
 		it('view files have the .html file extension', () => {
 			assert.file([
-				'views/index.html',
-				'views/404.html',
-				'views/_partials/head.html',
-				'views/_partials/foot.html',
-				'patterns/molecules/example/example.html',
+				'src/views/index.html',
+				'src/views/404.html',
+				'src/views/_partials/head.html',
+				'src/views/_partials/foot.html',
+				'src/patterns/molecules/example/example.html',
 				'project/blueprints/pattern/pattern.html',
 			]);
 		});
@@ -140,11 +140,11 @@ describe('nitro:app', () => {
 
 		it('view files have the .hbs file extension', () => {
 			assert.file([
-				'views/index.hbs',
-				'views/404.hbs',
-				'views/_partials/head.hbs',
-				'views/_partials/foot.hbs',
-				'patterns/molecules/example/example.hbs',
+				'src/views/index.hbs',
+				'src/views/404.hbs',
+				'src/views/_partials/head.hbs',
+				'src/views/_partials/foot.hbs',
+				'src/patterns/molecules/example/example.hbs',
 				'project/blueprints/pattern/pattern.hbs',
 			]);
 		});
@@ -165,11 +165,11 @@ describe('nitro:app', () => {
 
 		it('view files have the .mustache file extension', () => {
 			assert.file([
-				'views/index.mustache',
-				'views/404.mustache',
-				'views/_partials/head.mustache',
-				'views/_partials/foot.mustache',
-				'patterns/molecules/example/example.mustache',
+				'src/views/index.mustache',
+				'src/views/404.mustache',
+				'src/views/_partials/head.mustache',
+				'src/views/_partials/foot.mustache',
+				'src/patterns/molecules/example/example.mustache',
 				'project/blueprints/pattern/pattern.mustache',
 			]);
 		});
@@ -203,11 +203,11 @@ describe('nitro:app', () => {
 
 		it('example pattern contains template files', () => {
 			assert.file([
-				'patterns/molecules/example/template/example.hbs',
-				'patterns/molecules/example/template/example.links.hbs',
-				'patterns/molecules/example/template/partial/example.link.hbs',
-				'patterns/molecules/example/_data/example-template.json',
-				'patterns/molecules/example/js/decorator/example-template.js',
+				'src/patterns/molecules/example/template/example.hbs',
+				'src/patterns/molecules/example/template/example.links.hbs',
+				'src/patterns/molecules/example/template/partial/example.link.hbs',
+				'src/patterns/molecules/example/_data/example-template.json',
+				'src/patterns/molecules/example/js/decorator/example-template.js',
 			]);
 		});
 
@@ -224,8 +224,8 @@ describe('nitro:app', () => {
 
 		it('gulp task watch-assets handles template files correct', () => {
 			assert.fileContent([
-				['gulp/watch-assets.js', 'patterns/**/template/**/*.hbs'],
-				['gulp/watch-assets.js', '!patterns/**/template/**/*.hbs'],
+				['gulp/watch-assets.js', 'src/patterns/**/template/**/*.hbs'],
+				['gulp/watch-assets.js', '!src/patterns/**/template/**/*.hbs'],
 			]);
 		});
 	});
@@ -254,11 +254,11 @@ describe('nitro:app', () => {
 
 		it('example pattern does not contain template files', () => {
 			assert.noFile([
-				'patterns/molecules/example/template/example.hbs',
-				'patterns/molecules/example/template/example.links.hbs',
-				'patterns/molecules/example/template/partial/example.link.hbs',
-				'patterns/molecules/example/_data/example-template.json',
-				'patterns/molecules/example/js/decorator/example-template.js',
+				'src/patterns/molecules/example/template/example.hbs',
+				'src/patterns/molecules/example/template/example.links.hbs',
+				'src/patterns/molecules/example/template/partial/example.link.hbs',
+				'src/patterns/molecules/example/_data/example-template.json',
+				'src/patterns/molecules/example/js/decorator/example-template.js',
 			]);
 		});
 
@@ -293,33 +293,33 @@ describe('nitro:app', () => {
 
 		it('example reset.css is present', () => {
 			assert.file([
-				'assets/css/example/reset.css',
+				'src/assets/css/example/reset.css',
 			]);
 		});
 
 		it('example icons are present', () => {
 			assert.file([
-				'assets/img/icon/favicon.ico',
-				'assets/img/icon/tile-icon.png',
-				'assets/img/icon/apple-touch-icon.png',
-				'assets/img/icon/apple-touch-icon-precomposed.png',
+				'src/assets/img/icon/favicon.ico',
+				'src/assets/img/icon/tile-icon.png',
+				'src/assets/img/icon/apple-touch-icon.png',
+				'src/assets/img/icon/apple-touch-icon-precomposed.png',
 			]);
 		});
 
 		it('example pattern is present', () => {
 			assert.file([
-				'patterns/molecules/example/readme.md',
-				'patterns/molecules/example/schema.json',
-				'patterns/molecules/example/js/example.js',
-				'patterns/molecules/example/_data/example.json',
+				'src/patterns/molecules/example/readme.md',
+				'src/patterns/molecules/example/schema.json',
+				'src/patterns/molecules/example/js/example.js',
+				'src/patterns/molecules/example/_data/example.json',
 			]);
 		});
 
 		it('icon pattern is present', () => {
 			assert.file([
-				'patterns/atoms/icon/readme.md',
-				'patterns/atoms/icon/schema.json',
-				'patterns/atoms/icon/_data/icon.json',
+				'src/patterns/atoms/icon/readme.md',
+				'src/patterns/atoms/icon/schema.json',
+				'src/patterns/atoms/icon/_data/icon.json',
 			]);
 		});
 
@@ -344,33 +344,33 @@ describe('nitro:app', () => {
 
 		it('example reset.css is not present', () => {
 			assert.noFile([
-				'assets/css/example/reset.css',
+				'src/assets/css/example/reset.css',
 			]);
 		});
 
 		it('example icons are not present', () => {
 			assert.noFile([
-				'assets/img/icon/favicon.ico',
-				'assets/img/icon/tile-icon.png',
-				'assets/img/icon/apple-touch-icon.png',
-				'assets/img/icon/apple-touch-icon-precomposed.png',
+				'src/assets/img/icon/favicon.ico',
+				'src/assets/img/icon/tile-icon.png',
+				'src/assets/img/icon/apple-touch-icon.png',
+				'src/assets/img/icon/apple-touch-icon-precomposed.png',
 			]);
 		});
 
 		it('example pattern is not present', () => {
 			assert.noFile([
-				'patterns/molecules/example/readme.md',
-				'patterns/molecules/example/schema.json',
-				'patterns/molecules/example/js/example.js',
-				'patterns/molecules/example/_data/example.json',
+				'src/patterns/molecules/example/readme.md',
+				'src/patterns/molecules/example/schema.json',
+				'src/patterns/molecules/example/js/example.js',
+				'src/patterns/molecules/example/_data/example.json',
 			]);
 		});
 
 		it('icon pattern is not present', () => {
 			assert.noFile([
-				'patterns/atoms/icon/readme.md',
-				'patterns/atoms/icon/schema.json',
-				'patterns/atoms/icon/_data/icon.json',
+				'src/patterns/atoms/icon/readme.md',
+				'src/patterns/atoms/icon/schema.json',
+				'src/patterns/atoms/icon/_data/icon.json',
 			]);
 		});
 

@@ -377,11 +377,7 @@ Pattern data will overwrite data from views. (Use as described above)
 
 You may overwrite data from views & patterns in request parameters.
 
-`?pageTitle=Testpage` will overwrite the data for the handlebars expression `{{pageTitle}}`
-
-It's also possible to use dot notation for object data:
-
-`?page.title=Testpage` will overwrite the value for `{{page.title}}`
+`?_nitro.pageTitle=Testpage` will overwrite the data for the handlebars expression `{{_nitro.pageTitle}}`
 
 ## Assets
 

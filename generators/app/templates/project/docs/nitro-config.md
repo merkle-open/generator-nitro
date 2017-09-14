@@ -172,7 +172,7 @@ Type: Boolean
 Default: false
 
 Indicator to use minified assests.  
-This property is passed as `_minified` to handlebars views.
+This property is passed as `_nitro.minified` to handlebars views.
 
 #### `nitro.mode.offline`
 
@@ -180,7 +180,7 @@ Type: Boolean
 Default: false
 
 If set to true, browsersync will be loaded in offline mode.  
-This property is passed as `_offline` to handlebars views.
+This property is passed as `_nitro.offline` to handlebars views.
 
 ### Watch
 

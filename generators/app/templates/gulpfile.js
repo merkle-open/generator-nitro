@@ -17,14 +17,15 @@ gulp.task('minify-js', ['compile-js'], getTask('minify-js'));
 gulp.task('minify-img', getTask('minify-img'));
 gulp.task('svg-sprite', getTask('svg-sprite'));
 gulp.task('copy-assets', getTask('copy-assets'));
-gulp.task('clean-assets', getTask('clean-assets'));
+gulp.task('clean-assets', getTask('clean-assets'));<% if (options.clientTpl) { %>
+gulp.task('clean-templates', getTask('clean-templates'));<% } %>
 gulp.task('assets', ['svg-sprite', 'copy-assets', 'minify-img', 'minify-js', 'minify-css']);
 gulp.task('watch-assets', ['assets'], getTask('watch-assets'));
 gulp.task('serve', getTask('serve'));
 gulp.task('serve-stop', getTask('serve-stop'));
 gulp.task('watch-serve', ['serve'], getTask('watch-serve'));
 gulp.task('develop', ['watch-assets', 'watch-serve']);
-gulp.task('build', gulpSequence('clean-assets', 'assets'));
+gulp.task('build', gulpSequence(<% if (options.clientTpl) { %>['clean-assets', 'clean-templates']<% } else { %>'clean-templates'<% } %>, 'assets'));
 gulp.task('production', ['assets'], getTask('production'));
 gulp.task('dump-views', getTask('dump-views'));
 gulp.task('lint-accessibility', ['dump-views'], getTask('lint-accessibility'));

@@ -38,7 +38,7 @@
     "git-config": "0.0.7",
     "glob": "7.1.2",
     "lodash": "4.17.4",
-    "request": "2.82.0",
+    "request": "2.83.0",
     "yeoman-generator": "2.0.0",
     "yosay": "2.0.1"
   },
@@ -49,8 +49,8 @@
     "eslint-plugin-import": "2.7.0",
     "fs-extra": "4.0.2",
     "jasmine": "2.8.0",
-    "nsp": "2.8.0",
-    "yeoman-assert": "3.0.0",
+    "nsp": "2.8.1",
+    "yeoman-assert": "3.1.0",
     "yeoman-test": "1.7.0"
   }
 }

@@ -386,6 +386,10 @@ If changed, the files will be updated on every change, therefore you'll always g
 
 You can configure the include order of your assets by defining patterns in [config](nitro-config.md).
 
+### Prototype Assets
+
+Place [code for development](../../src/proto/readme.md) in the corresponding directories.
+
 ## Translations
 
 Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the Handlebars helper `{{t}}`.  

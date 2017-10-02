@@ -1,0 +1,15 @@
+body:after {
+	content: 'prototype with dummy content';
+	display: block;
+	width: auto;
+	max-width: 40vw;
+	position: fixed;
+	bottom: 10px;
+	right: 0;
+	transform: translateX(-10px);
+	padding: 7px 10px;
+	pointer-events: none;
+	opacity: 0.4;
+	background: rgba(200, 200, 200, 0.9);
+	border: 1px solid rgba(200, 200, 200, 1);
+}

@@ -278,23 +278,25 @@ module.exports = class extends Generator {
 
 		const tplFiles = [
 			// files to process with copyTpl
-			'gulpfile.js',
-			'package.json',
 			'app/core/config.js',
+			'app/tests/jasmine/templating/patternSpec.js',
 			'config/default.js',
 			'config/default/assets.js',
 			'gulp/compile-css.js',
+			'gulp/compile-css-proto.js',
 			'gulp/compile-js.js',
 			'gulp/utils.js',
 			'gulp/watch-assets.js',
-			'src/patterns/molecules/example/example.html',
-			'src/patterns/molecules/example/schema.json',
 			'project/.githooks/pre-commit',
 			'project/docs/nitro.md',
-			'app/tests/jasmine/templating/patternSpec.js',
+			'src/patterns/molecules/example/example.html',
+			'src/patterns/molecules/example/schema.json',
+			'src/proto/js/prototype.js',
 			'src/views/index.html',
 			'src/views/_partials/head.html',
 			'src/views/_partials/foot.html',
+			'gulpfile.js',
+			'package.json',
 		];
 		const ignores = [
 			// files to ignore

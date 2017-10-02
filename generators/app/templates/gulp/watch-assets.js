@@ -78,6 +78,24 @@ module.exports = (gulp, plugins) => {
 		});
 
 		plugins.watch([
+			'src/proto/css/*.<%= options.pre %>',
+			'src/patterns/**/proto/**/*.<%= options.pre %>'
+		], () => {
+			processChange('css.prototype', function() {
+				gulp.start('compile-css-proto');
+			});
+		});
+
+		plugins.watch([
+			'src/proto/js/*.js',
+			'src/patterns/**/proto/**/*.js'
+		], () => {
+			processChange('js.prototype', function() {
+				gulp.start('compile-js-proto');
+			});
+		});
+
+		plugins.watch([
 			`src/views/**/*.${config.get('nitro.viewFileExtension')}`,
 			`${config.get('nitro.viewDataDirectory')}/**/*.json`,
 			`src/patterns/**/*.${config.get('nitro.viewFileExtension')}`,<% if (options.clientTpl) { %>

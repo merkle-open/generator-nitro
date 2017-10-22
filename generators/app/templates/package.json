@@ -37,7 +37,7 @@
   ],
   "dependencies": {
     "babel-polyfill": "6.26.0",<% if (options.clientTpl) { %>
-    "handlebars": "4.0.10",<% } %>
+    "handlebars": "4.0.11",<% } %>
     "jquery": "3.2.1",
     "terrific": "3.0.0"
   },
@@ -47,17 +47,17 @@
     "ajv": "5.2.3",
     "autoprefixer": "7.1.5",
     "babel-core": "6.26.0",
-    "babel-preset-env": "1.6.0",
+    "babel-preset-env": "1.6.1",
     "body-parser": "1.18.2",
     "browser-sync": "2.18.13",
-    "chalk": "2.1.0",
+    "chalk": "2.2.0",
     "compression": "1.7.1",
-    "config": "1.26.2",
+    "config": "1.27.0",
     "del": "3.0.0",
     "dot-object": "1.7.0",
     "es6-promise": "4.1.1",
     "eslint": "4.9.0",
-    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-import": "2.8.0",
     "express": "4.16.2",
     "extend": "3.0.1",
     "get-port": "3.2.0",
@@ -100,7 +100,7 @@
     "hbs": "4.0.1",
     "hbs-utils": "0.0.4",
     "htmllint": "0.6.0",
-    "i18next": "10.0.1",
+    "i18next": "10.0.3",
     "i18next-express-middleware": "1.0.7",
     "i18next-node-fs-backend": "1.0.0",
     "i18next-sprintf-postprocessor": "0.2.2",
@@ -111,12 +111,12 @@
     "karma-chrome-launcher": "2.2.0",
     "karma-jasmine": "1.1.0",
     "karma-phantomjs-launcher": "1.0.4",
-    "license-checker": "14.0.0",
+    "license-checker": "15.0.0",
     "merge-stream": "1.0.1",<% if (options.exporter) { %>
     "nitro-exporter": "0.3.2",<% } %><% if (options.release) { %>
     "nitro-release": "0.1.0",<% } %>
     "npm-run-all": "4.1.1",
-    "stylelint": "7.13.0",
+    "stylelint": "8.2.0",
     "text-table": "0.2.0",
     "yargs": "9.0.1"
   }

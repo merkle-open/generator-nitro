@@ -27,7 +27,7 @@ module.exports = (gulp, plugins) => {
 					.pipe(plugins.rename({ extname: '.json' }))
 					.pipe(gulp.dest(destDirectory))
 					.on('end', () => console.log(`Accessibility report generated at ${destDirectory}`))
-					.on('error', process.exitCode(1));
+					.on('error', process.exit(1));
 			});
 	};
 };

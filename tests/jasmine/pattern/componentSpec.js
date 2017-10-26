@@ -41,7 +41,7 @@ describe('nitro:component', () => {
 					'src/patterns/organisms/Test/_data/test.json',
 					'src/patterns/organisms/Test/css/test.less',
 					'src/patterns/organisms/Test/js/test.js',
-					'src/patterns/organisms/Test/spec/testSpec.js',
+					'src/patterns/organisms/Test/test/test.test.js',
 				]);
 			});
 		});

@@ -41,7 +41,7 @@ describe('nitro:pattern', () => {
 					'src/patterns/organisms/Test/_data/test.json',
 					'src/patterns/organisms/Test/css/test.less',
 					'src/patterns/organisms/Test/js/test.js',
-					'src/patterns/organisms/Test/spec/testSpec.js',
+					'src/patterns/organisms/Test/test/test.test.js',
 				]);
 			});
 		});
@@ -66,7 +66,7 @@ describe('nitro:pattern', () => {
 					'src/patterns/organisms/Test/css/test.less',
 					'src/patterns/organisms/Test/css/modifier/test-more.less',
 					'src/patterns/organisms/Test/js/test.js',
-					'src/patterns/organisms/Test/spec/testSpec.js',
+					'src/patterns/organisms/Test/test/test.test.js',
 				]);
 			});
 
@@ -99,7 +99,7 @@ describe('nitro:pattern', () => {
 					'src/patterns/organisms/Test/css/test.less',
 					'src/patterns/organisms/Test/js/test.js',
 					'src/patterns/organisms/Test/js/decorator/test-more.js',
-					'src/patterns/organisms/Test/spec/testSpec.js',
+					'src/patterns/organisms/Test/test/test.test.js',
 				]);
 			});
 
@@ -134,7 +134,7 @@ describe('nitro:pattern', () => {
 				'src/patterns/molecules/NavMain/css/modifier/navmain-specialcase.less',
 				'src/patterns/molecules/NavMain/js/navmain.js',
 				'src/patterns/molecules/NavMain/js/decorator/navmain-specialcase.js',
-				'src/patterns/molecules/NavMain/spec/navmainSpec.js',
+				'src/patterns/molecules/NavMain/test/navmain.test.js',
 			]);
 		});
 
@@ -176,7 +176,7 @@ describe('nitro:pattern', () => {
 				'src/patterns/molecules/nav-main/css/modifier/nav-main-special-case.less',
 				'src/patterns/molecules/nav-main/js/nav-main.js',
 				'src/patterns/molecules/nav-main/js/decorator/nav-main-special-case.js',
-				'src/patterns/molecules/nav-main/spec/nav-mainSpec.js',
+				'src/patterns/molecules/nav-main/test/nav-main.test.js',
 			]);
 		});
 
@@ -217,7 +217,7 @@ describe('nitro:pattern', () => {
 				'src/patterns/molecules/NavMain/css/navmain.less',
 				'src/patterns/molecules/NavMain/css/modifier/navmain-lightblue.less',
 				'src/patterns/molecules/NavMain/js/navmain.js',
-				'src/patterns/molecules/NavMain/spec/navmainSpec.js',
+				'src/patterns/molecules/NavMain/test/navmain.test.js',
 			]);
 		});
 

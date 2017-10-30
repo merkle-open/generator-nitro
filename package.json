@@ -1,6 +1,6 @@
 {
   "name": "generator-nitro",
-  "version": "3.0.0-alpha",
+  "version": "3.0.0-beta",
   "description": "Yeoman generator for the nitro frontend framework",
   "license": "MIT",
   "repository": "namics/generator-nitro",
@@ -43,9 +43,9 @@
     "yosay": "2.0.1"
   },
   "devDependencies": {
-    "@namics/eslint-config": "4.1.0",
+    "@namics/eslint-config": "4.2.0",
     "ejs": "2.5.7",
-    "eslint": "4.9.0",
+    "eslint": "4.10.0",
     "eslint-plugin-import": "2.8.0",
     "fs-extra": "4.0.2",
     "jasmine": "2.8.0",

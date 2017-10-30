@@ -98,7 +98,7 @@ Recent changes can be viewed on Github on the [Releases Page](https://github.com
 [npm-url]: https://npmjs.org/package/generator-nitro
 [travis-image]: https://travis-ci.org/namics/generator-nitro.svg?branch=master
 [travis-url]: https://travis-ci.org/namics/generator-nitro
-[appveyor-image]: https://ci.appveyor.com/api/projects/status/w3sl7cglwwcb0f3a/branch/master?svg=true
-[appveyor-url]: https://ci.appveyor.com/project/ernscht/generator-nitro/branch/master
+[appveyor-image]: https://ci.appveyor.com/api/projects/status/0580phm813ccdbhr/branch/master?svg=true
+[appveyor-url]: https://ci.appveyor.com/project/namics/generator-nitro/branch/master
 [daviddm-image]: https://david-dm.org/namics/generator-nitro.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/namics/generator-nitro

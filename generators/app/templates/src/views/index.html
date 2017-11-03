@@ -2,5 +2,6 @@
 	<h1>{{pattern name='icon' icon='nitro'}} Nitro example page</h1>
 	{{pattern name='example'}}
 	{{pattern name='example' data='example-blue'}}<% if (options.clientTpl) { %>
-	{{pattern name='example' data='example-template'}}<% } %><% } %>
+	{{pattern name='example' data='example-template'}}<% } %><% } else { %>
+	<h1>Index</h1><% } %>
 </div>

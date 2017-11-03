@@ -20,6 +20,9 @@
     "lint:license": "license-checker --production --summary --exclude \"Apache-2.0, BSD, ISC, LGPL, MIT, MPL\" --failOn \"AGPL, EPL, GPL\"",
     "postinstall": "<% if (options.pre === 'scss') { %>npm rebuild node-sass && <% } %>yarn githooks",
     "prepublish": "nsp check --output summary",
+    "visual-approve": "gulp visual-approve",
+    "visual-reference": "gulp visual-reference",
+    "visual-test": "gulp visual-test",
     "test": "yarn lint && gulp test",
     "prebuild": "yarn test",
     "build": "gulp build",<% if (options.exporter) { %>
@@ -49,6 +52,7 @@
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-preset-env": "1.6.1",
+    "backstopjs": "3.0.32",
     "body-parser": "1.18.2",
     "browser-sync": "2.18.13",
     "chalk": "2.3.0",

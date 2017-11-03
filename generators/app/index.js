@@ -295,6 +295,7 @@ module.exports = class extends Generator {
 			'src/views/index.html',
 			'src/views/_partials/head.html',
 			'src/views/_partials/foot.html',
+			'tests/backstop/backstop.config.js',
 			'gulpfile.js',
 			'package.json',
 		];

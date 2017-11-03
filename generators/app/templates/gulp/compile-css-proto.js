@@ -11,8 +11,8 @@ const cssFiles = [
 	'src/patterns/**/proto/**/*.<%= options.pre %>',
 ];
 const cssDependencies = [<% if (options.exampleCode) { %>
-	'+src/assets/css/example/variables.<%= options.pre %>',
-	'+src/assets/css/example/mixins.<%= options.pre %>',
+	'src/assets/css/example/variables.<%= options.pre %>',
+	'src/assets/css/example/mixins.<%= options.pre %>',
 <% } %>];
 const assetName = 'prototype.css';
 const browserSync = utils.getBrowserSyncInstance();

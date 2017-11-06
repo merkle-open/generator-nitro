@@ -1,12 +1,12 @@
 {
   "name": "generator-nitro",
-  "version": "2.1.2",
+  "version": "3.0.0-beta",
   "description": "Yeoman generator for the nitro frontend framework",
   "license": "MIT",
   "repository": "namics/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=4 <9",
+    "node": ">=6 <9",
     "npm": ">=3 <6"
   },
   "main": "generators/app/index.js",
@@ -33,7 +33,7 @@
   ],
   "dependencies": {
     "adm-zip": "0.4.7",
-    "chalk": "2.2.0",
+    "chalk": "2.3.0",
     "config": "1.27.0",
     "git-config": "0.0.7",
     "glob": "7.1.2",
@@ -43,13 +43,13 @@
     "yosay": "2.0.1"
   },
   "devDependencies": {
-    "@namics/eslint-config": "4.1.0",
+    "@namics/eslint-config": "4.2.0",
     "ejs": "2.5.7",
-    "eslint": "4.9.0",
+    "eslint": "4.10.0",
     "eslint-plugin-import": "2.8.0",
     "fs-extra": "4.0.2",
     "jasmine": "2.8.0",
-    "nsp": "2.8.1",
+    "nsp": "3.1.0",
     "yeoman-assert": "3.1.0",
     "yeoman-test": "1.7.0"
   }

@@ -6,19 +6,23 @@
   "private": true,
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=4 <9",
+    "node": ">=6 <9",
     "npm": ">=3 <6"
   },
   "scripts": {
     "githooks": "gulp sync-githooks",
     "lint": "npm-run-all lint:*",
     "lint:accessibility": "gulp lint-accessibility",
-    "lint:css": "stylelint assets/**/*.*ss patterns/**/*.*ss",
+    "lint:css": "stylelint src/assets/**/*.*ss src/patterns/**/*.*ss",
     "lint:data": "node app/scripts/validate-pattern-data.js",
     "lint:html": "gulp lint-html",
-    "lint:js": "eslint ./patterns ./assets/js",
-    "lint:license": "license-checker --production --summary --exclude \"Apache-2.0, BSD, LGPL, MIT, MPL\" --failOn \"AGPL, EPL, GPL\"",
+    "lint:js": "eslint ./src/patterns ./src/assets/js",
+    "lint:license": "license-checker --production --summary --exclude \"Apache-2.0, BSD, ISC, LGPL, MIT, MPL\" --failOn \"AGPL, EPL, GPL\"",
     "postinstall": "<% if (options.pre === 'scss') { %>npm rebuild node-sass && <% } %>yarn githooks",
+    "prepublish": "nsp check --output summary",
+    "visual-approve": "gulp visual-approve",
+    "visual-reference": "gulp visual-reference",
+    "visual-test": "gulp visual-test",
     "test": "yarn lint && gulp test",
     "prebuild": "yarn test",
     "build": "gulp build",<% if (options.exporter) { %>
@@ -42,21 +46,22 @@
     "terrific": "3.0.0"
   },
   "devDependencies": {
-    "@namics/eslint-config": "4.1.0",
-    "@namics/stylelint-bem": "3.1.2",
-    "ajv": "5.2.3",
-    "autoprefixer": "7.1.5",
+    "@namics/eslint-config": "4.2.0",
+    "@namics/stylelint-bem": "3.1.3",
+    "ajv": "5.3.0",
+    "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-preset-env": "1.6.1",
+    "backstopjs": "3.0.32",
     "body-parser": "1.18.2",
     "browser-sync": "2.18.13",
-    "chalk": "2.2.0",
+    "chalk": "2.3.0",
     "compression": "1.7.1",
     "config": "1.27.0",
     "del": "3.0.0",
     "dot-object": "1.7.0",
     "es6-promise": "4.1.1",
-    "eslint": "4.9.0",
+    "eslint": "4.10.0",
     "eslint-plugin-import": "2.8.0",
     "express": "4.16.2",
     "extend": "3.0.1",
@@ -73,7 +78,7 @@
     "gulp-eslint": "4.0.0",<% if (options.clientTpl) { %>
     "gulp-handlebars": "4.0.0",<% } %>
     "gulp-header": "1.8.9",
-    "gulp-htmllint": "0.0.12",
+    "gulp-htmllint": "0.0.14",
     "gulp-if": "2.0.2",
     "gulp-imagemin": "3.4.0",<% if (options.pre === 'less') { %>
     "gulp-less": "3.3.2",<% } %>
@@ -99,8 +104,8 @@
     "gulp-wrap": "0.13.0",<% } %>
     "hbs": "4.0.1",
     "hbs-utils": "0.0.4",
-    "htmllint": "0.6.0",
-    "i18next": "10.0.3",
+    "htmllint": "0.7.0",
+    "i18next": "10.0.7",
     "i18next-express-middleware": "1.0.7",
     "i18next-node-fs-backend": "1.0.0",
     "i18next-sprintf-postprocessor": "0.2.2",
@@ -116,8 +121,9 @@
     "nitro-exporter": "0.3.2",<% } %><% if (options.release) { %>
     "nitro-release": "0.1.0",<% } %>
     "npm-run-all": "4.1.1",
-    "stylelint": "7.13.0",
+    "nsp": "3.1.0",
+    "stylelint": "8.2.0",
     "text-table": "0.2.0",
-    "yargs": "9.0.1"
+    "yargs": "10.0.3"
   }
 }

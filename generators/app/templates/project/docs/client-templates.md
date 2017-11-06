@@ -58,7 +58,7 @@ Precompiled partials will be stored in the same manner as templates.
 
 ### Helpers
 
-Clientside handlebars helpers can be stored as normal JavaScript files in the patterns folder or in `assets/js`.
+Clientside handlebars helpers can be stored as normal JavaScript files in the patterns folder or in `src/assets/js`.
 
 ### Using the pattern one to one
 

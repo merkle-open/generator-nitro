@@ -24,24 +24,24 @@ describe('nitro:component', () => {
 
 			it('the modifier files are not created', () => {
 				assert.noFile([
-					'patterns/organisms/Test/css/modifier',
+					'src/patterns/organisms/Test/css/modifier',
 				]);
 			});
 
 			it('the decorator files are not created', () => {
 				assert.noFile([
-					'patterns/organisms/Test/js/decorator',
+					'src/patterns/organisms/Test/js/decorator',
 				]);
 			});
 
 			it('the pattern files are created', () => {
 				assert.file([
-					'patterns/organisms/Test',
-					'patterns/organisms/Test/test.html',
-					'patterns/organisms/Test/_data/test.json',
-					'patterns/organisms/Test/css/test.less',
-					'patterns/organisms/Test/js/test.js',
-					'patterns/organisms/Test/spec/testSpec.js',
+					'src/patterns/organisms/Test',
+					'src/patterns/organisms/Test/test.html',
+					'src/patterns/organisms/Test/_data/test.json',
+					'src/patterns/organisms/Test/css/test.less',
+					'src/patterns/organisms/Test/js/test.js',
+					'src/patterns/organisms/Test/test/test.test.js',
 				]);
 			});
 		});

@@ -5,7 +5,7 @@ const pngquant = require('imagemin-pngquant');
 module.exports = (gulp, plugins) => {
 	return () => {
 		return gulp
-			.src('assets/img/**/*')
+			.src('src/assets/img/**/*')
 			.pipe(plugins.newer('public/assets/img'))
 			.pipe(plugins.imagemin([
 				plugins.imagemin.gifsicle({ interlaced: true }),

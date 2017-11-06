@@ -16,7 +16,7 @@ module.exports = (gulp, plugins) => {
 			}
 		});
 
-		const templates = gulp.src('patterns/**/template/*.hbs')
+		const templates = gulp.src('src/patterns/**/template/*.hbs')
 			// compile nitro pattern
 			.pipe(plugins.change((content) => {
 				const compilePattern = /{{(pattern)\s[^}]*}}/gi;
@@ -39,9 +39,9 @@ module.exports = (gulp, plugins) => {
 				namespace: 'T.tpl',
 			}))
 			.pipe(plugins.rename({ extname: '.js' }))
-			.pipe(gulp.dest('./patterns'));
+			.pipe(gulp.dest('./src/patterns'));
 
-		const partials = gulp.src('patterns/**/template/partial/*.hbs')
+		const partials = gulp.src('src/patterns/**/template/partial/*.hbs')
 			.pipe(plugins.handlebars({
 				handlebars: hbs.handlebars,
 			}))
@@ -54,7 +54,7 @@ module.exports = (gulp, plugins) => {
 				},
 			}))
 			.pipe(plugins.rename({ extname: '.js' }))
-			.pipe(gulp.dest('./patterns'));
+			.pipe(gulp.dest('./src/patterns'));
 
 		return merge(templates, partials);
 	};

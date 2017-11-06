@@ -15,19 +15,19 @@ You can configure the include order of your assets by defining patterns in `conf
 const config = {
    assets: {
         'app.css': [
-            '!assets/css/somefile.*',
-            'assets/css/cssreset.css',
-            'assets/css/*.*',
-            'patterns/**/css/*.*',
-            'patterns/**/css/modifier/*.*',
+            '!src/assets/css/somefile.*',
+            'src/assets/css/cssreset.css',
+            'src/assets/css/*.*',
+            'src/patterns/**/css/*.*',
+            'src/patterns/**/css/modifier/*.*',
         ],
         'app.js': [
-            '!assets/js/somefile.js',
-            'assets/vendor/jquery/dist/jquery.min.js',
-            'assets/vendor/terrific/dist/terrific.min.js',
-            'assets/js/*.js',
-            'patterns/**/js/*.js',
-            'patterns/**/js/decorator/*.js',
+            '!src/assets/js/somefile.js',
+            'src/assets/vendor/jquery/dist/jquery.min.js',
+            'src/assets/vendor/terrific/dist/terrific.min.js',
+            'src/assets/js/*.js',
+            'src/patterns/**/js/*.js',
+            'src/patterns/**/js/decorator/*.js',
         ],
    },
 };
@@ -52,9 +52,9 @@ The order of these special patterns does not matter.
 
 ### Examples
 
-* `"!patterns/*/test*"`         Exclude all patterns starting with `test`
-* `"!**/*-test.*"`              Exclude all filenames ending with `-test`.
-* `"+assets/css/mixins.less"`   Exclude `assets/css/mixins.less` but prepend to every compile call of every .less file
+* `"!src/patterns/*/test*"`         Exclude all patterns starting with `test`
+* `"!**/*-test.*"`                  Exclude all filenames ending with `-test`.
+* `"+src/assets/css/mixins.less"`   Exclude `src/assets/css/mixins.less` but prepend to every compile call of every .less file
 
 ### Other asset files
 
@@ -62,7 +62,7 @@ You can configure as many different assets as you wish.
 
 ```
     'brand.css': [
-        'assets/css/reset.css',
+        'src/assets/css/reset.css',
         ...
 ```
 
@@ -139,17 +139,17 @@ const config = {
 		patterns: {
 			atom: {
 				template: 'project/blueprints/pattern',
-				path: 'patterns/atoms',
+				path: 'src/patterns/atoms',
 				patternPrefix: 'a',
 			},
 			molecule: {
 				template: 'project/blueprints/pattern',
-				path: 'patterns/molecules',
+				path: 'src/patterns/molecules',
 				patternPrefix: 'm',
 			},
 			organism: {
 				template: 'project/blueprints/pattern',
-				path: 'patterns/organisms',
+				path: 'src/patterns/organisms',
 				patternPrefix: 'o',
 			},
 		},
@@ -172,7 +172,7 @@ Type: Boolean
 Default: false
 
 Indicator to use minified assests.  
-This property is passed as `_minified` to handlebars views.
+This property is passed as `_nitro.minified` to handlebars views.
 
 #### `nitro.mode.offline`
 
@@ -180,7 +180,7 @@ Type: Boolean
 Default: false
 
 If set to true, browsersync will be loaded in offline mode.  
-This property is passed as `_offline` to handlebars views.
+This property is passed as `_nitro.offline` to handlebars views.
 
 ### Watch
 

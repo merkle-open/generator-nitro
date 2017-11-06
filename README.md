@@ -14,8 +14,8 @@ Nitro is simple, fast and flexible. It works on macOS, Windows and Linux. Use th
 ## Usage
 
 Before using, you need of course [node](https://nodejs.org/) installed.  
-Nitro and the Nitro generator are tested with the current LTS versions of the node.js releases 4 and 6.
-(So everything between should work). They should also work with node.js release 8.
+Nitro and the Nitro generator are tested with the current LTS version of node.js (releases 6).
+They also work with node.js release 8.
 
 Install `yarn`, `yo` and `generator-nitro` globally:
 
@@ -98,7 +98,7 @@ Recent changes can be viewed on Github on the [Releases Page](https://github.com
 [npm-url]: https://npmjs.org/package/generator-nitro
 [travis-image]: https://travis-ci.org/namics/generator-nitro.svg?branch=master
 [travis-url]: https://travis-ci.org/namics/generator-nitro
-[appveyor-image]: https://ci.appveyor.com/api/projects/status/w3sl7cglwwcb0f3a/branch/master?svg=true
-[appveyor-url]: https://ci.appveyor.com/project/ernscht/generator-nitro/branch/master
+[appveyor-image]: https://ci.appveyor.com/api/projects/status/0580phm813ccdbhr/branch/master?svg=true
+[appveyor-url]: https://ci.appveyor.com/project/namics/generator-nitro/branch/master
 [daviddm-image]: https://david-dm.org/namics/generator-nitro.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/namics/generator-nitro

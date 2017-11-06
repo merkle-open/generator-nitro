@@ -32,7 +32,7 @@ module.exports = (gulp, plugins) => {
 					.pipe(plugins.sourcemaps.init({ loadMaps: true }))
 					.pipe(plugins.if(lintJs, plugins.eslint()))
 					.pipe(plugins.if(lintJs, plugins.eslint.format()))
-					.pipe(plugins.babel({ presets: ['env'], ignore: ['node_modules'<% if (options.clientTpl) { %>, 'patterns/**/template/*.js', 'patterns/**/template/partial/*.js'<% } %>] }))
+					.pipe(plugins.babel({ presets: ['env'], ignore: ['node_modules'<% if (options.clientTpl) { %>, 'src/patterns/**/template/*.js', 'src/patterns/**/template/partial/*.js'<% } %>] }))
 					.pipe(plugins.remember(asset.name))
 					.pipe(plugins.concat(asset.name))
 					.pipe(plugins.header(banner, { bannerData }))

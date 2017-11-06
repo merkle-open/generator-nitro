@@ -24,24 +24,24 @@ describe('nitro:pattern', () => {
 
 			it('the modifier files are not created', () => {
 				assert.noFile([
-					'patterns/organisms/Test/css/modifier',
+					'src/patterns/organisms/Test/css/modifier',
 				]);
 			});
 
 			it('the decorator files are not created', () => {
 				assert.noFile([
-					'patterns/organisms/Test/js/decorator',
+					'src/patterns/organisms/Test/js/decorator',
 				]);
 			});
 
 			it('the pattern files are created', () => {
 				assert.file([
-					'patterns/organisms/Test',
-					'patterns/organisms/Test/test.html',
-					'patterns/organisms/Test/_data/test.json',
-					'patterns/organisms/Test/css/test.less',
-					'patterns/organisms/Test/js/test.js',
-					'patterns/organisms/Test/spec/testSpec.js',
+					'src/patterns/organisms/Test',
+					'src/patterns/organisms/Test/test.html',
+					'src/patterns/organisms/Test/_data/test.json',
+					'src/patterns/organisms/Test/css/test.less',
+					'src/patterns/organisms/Test/js/test.js',
+					'src/patterns/organisms/Test/test/test.test.js',
 				]);
 			});
 		});
@@ -59,23 +59,23 @@ describe('nitro:pattern', () => {
 
 			it('the pattern and modifier files are created', () => {
 				assert.file([
-					'patterns/organisms/Test',
-					'patterns/organisms/Test/test.html',
-					'patterns/organisms/Test/_data/test.json',
-					'patterns/organisms/Test/_data/test-more.json',
-					'patterns/organisms/Test/css/test.less',
-					'patterns/organisms/Test/css/modifier/test-more.less',
-					'patterns/organisms/Test/js/test.js',
-					'patterns/organisms/Test/spec/testSpec.js',
+					'src/patterns/organisms/Test',
+					'src/patterns/organisms/Test/test.html',
+					'src/patterns/organisms/Test/_data/test.json',
+					'src/patterns/organisms/Test/_data/test-more.json',
+					'src/patterns/organisms/Test/css/test.less',
+					'src/patterns/organisms/Test/css/modifier/test-more.less',
+					'src/patterns/organisms/Test/js/test.js',
+					'src/patterns/organisms/Test/test/test.test.js',
 				]);
 			});
 
 			it('the pattern css class is o-test', () => {
-				assert.fileContent([['patterns/organisms/Test/css/test.less', /\.o-test \{/]]);
+				assert.fileContent([['src/patterns/organisms/Test/css/test.less', /\.o-test \{/]]);
 			});
 
 			it('the modifier css class is o-test--more', () => {
-				assert.fileContent([['patterns/organisms/Test/css/modifier/test-more.less', /\.o-test--more \{/]]);
+				assert.fileContent([['src/patterns/organisms/Test/css/modifier/test-more.less', /\.o-test--more \{/]]);
 			});
 		});
 
@@ -92,23 +92,23 @@ describe('nitro:pattern', () => {
 
 			it('the pattern and decorator files are created', () => {
 				assert.file([
-					'patterns/organisms/Test',
-					'patterns/organisms/Test/test.html',
-					'patterns/organisms/Test/_data/test.json',
-					'patterns/organisms/Test/_data/test-more.json',
-					'patterns/organisms/Test/css/test.less',
-					'patterns/organisms/Test/js/test.js',
-					'patterns/organisms/Test/js/decorator/test-more.js',
-					'patterns/organisms/Test/spec/testSpec.js',
+					'src/patterns/organisms/Test',
+					'src/patterns/organisms/Test/test.html',
+					'src/patterns/organisms/Test/_data/test.json',
+					'src/patterns/organisms/Test/_data/test-more.json',
+					'src/patterns/organisms/Test/css/test.less',
+					'src/patterns/organisms/Test/js/test.js',
+					'src/patterns/organisms/Test/js/decorator/test-more.js',
+					'src/patterns/organisms/Test/test/test.test.js',
 				]);
 			});
 
 			it('the pattern js class is T.Module.Test', () => {
-				assert.fileContent([['patterns/organisms/Test/js/test.js', /T\.Module\.Test =/]]);
+				assert.fileContent([['src/patterns/organisms/Test/js/test.js', /T\.Module\.Test =/]]);
 			});
 
 			it('the decorator js class is T.Module.Test.More', () => {
-				assert.fileContent([['patterns/organisms/Test/js/decorator/test-more.js', /T\.Module\.Test\.More =/]]);
+				assert.fileContent([['src/patterns/organisms/Test/js/decorator/test-more.js', /T\.Module\.Test\.More =/]]);
 			});
 		});
 	});
@@ -126,32 +126,32 @@ describe('nitro:pattern', () => {
 
 		it('the pattern and modifier/decorator files are created', () => {
 			assert.file([
-				'patterns/molecules/NavMain',
-				'patterns/molecules/NavMain/navmain.html',
-				'patterns/molecules/NavMain/_data/navmain.json',
-				'patterns/molecules/NavMain/_data/navmain-specialcase.json',
-				'patterns/molecules/NavMain/css/navmain.less',
-				'patterns/molecules/NavMain/css/modifier/navmain-specialcase.less',
-				'patterns/molecules/NavMain/js/navmain.js',
-				'patterns/molecules/NavMain/js/decorator/navmain-specialcase.js',
-				'patterns/molecules/NavMain/spec/navmainSpec.js',
+				'src/patterns/molecules/NavMain',
+				'src/patterns/molecules/NavMain/navmain.html',
+				'src/patterns/molecules/NavMain/_data/navmain.json',
+				'src/patterns/molecules/NavMain/_data/navmain-specialcase.json',
+				'src/patterns/molecules/NavMain/css/navmain.less',
+				'src/patterns/molecules/NavMain/css/modifier/navmain-specialcase.less',
+				'src/patterns/molecules/NavMain/js/navmain.js',
+				'src/patterns/molecules/NavMain/js/decorator/navmain-specialcase.js',
+				'src/patterns/molecules/NavMain/test/navmain.test.js',
 			]);
 		});
 
 		it('the pattern css class is m-nav-main', () => {
-			assert.fileContent([['patterns/molecules/NavMain/css/navmain.less', /\.m-nav-main \{/]]);
+			assert.fileContent([['src/patterns/molecules/NavMain/css/navmain.less', /\.m-nav-main \{/]]);
 		});
 
 		it('the modifier css class is m-nav-main--special-case', () => {
-			assert.fileContent([['patterns/molecules/NavMain/css/modifier/navmain-specialcase.less', /\.m-nav-main--special-case \{/]]);
+			assert.fileContent([['src/patterns/molecules/NavMain/css/modifier/navmain-specialcase.less', /\.m-nav-main--special-case \{/]]);
 		});
 
 		it('the pattern js class is T.Module.NavMain', () => {
-			assert.fileContent([['patterns/molecules/NavMain/js/navmain.js', /T\.Module\.NavMain =/]]);
+			assert.fileContent([['src/patterns/molecules/NavMain/js/navmain.js', /T\.Module\.NavMain =/]]);
 		});
 
 		it('the decorator js class is T.Module.NavMain.SpecialCase', () => {
-			assert.fileContent([['patterns/molecules/NavMain/js/decorator/navmain-specialcase.js', /T\.Module\.NavMain\.SpecialCase =/]]);
+			assert.fileContent([['src/patterns/molecules/NavMain/js/decorator/navmain-specialcase.js', /T\.Module\.NavMain\.SpecialCase =/]]);
 		});
 	});
 
@@ -168,32 +168,32 @@ describe('nitro:pattern', () => {
 
 		it('the pattern and modifier/decorator files are created', () => {
 			assert.file([
-				'patterns/molecules/nav-main',
-				'patterns/molecules/nav-main/nav-main.html',
-				'patterns/molecules/nav-main/_data/nav-main.json',
-				'patterns/molecules/nav-main/_data/nav-main-special-case.json',
-				'patterns/molecules/nav-main/css/nav-main.less',
-				'patterns/molecules/nav-main/css/modifier/nav-main-special-case.less',
-				'patterns/molecules/nav-main/js/nav-main.js',
-				'patterns/molecules/nav-main/js/decorator/nav-main-special-case.js',
-				'patterns/molecules/nav-main/spec/nav-mainSpec.js',
+				'src/patterns/molecules/nav-main',
+				'src/patterns/molecules/nav-main/nav-main.html',
+				'src/patterns/molecules/nav-main/_data/nav-main.json',
+				'src/patterns/molecules/nav-main/_data/nav-main-special-case.json',
+				'src/patterns/molecules/nav-main/css/nav-main.less',
+				'src/patterns/molecules/nav-main/css/modifier/nav-main-special-case.less',
+				'src/patterns/molecules/nav-main/js/nav-main.js',
+				'src/patterns/molecules/nav-main/js/decorator/nav-main-special-case.js',
+				'src/patterns/molecules/nav-main/test/nav-main.test.js',
 			]);
 		});
 
 		it('the pattern css class is m-nav-main', () => {
-			assert.fileContent([['patterns/molecules/nav-main/css/nav-main.less', /\.m-nav-main \{/]]);
+			assert.fileContent([['src/patterns/molecules/nav-main/css/nav-main.less', /\.m-nav-main \{/]]);
 		});
 
 		it('the modifier css class is m-nav-main--special-case', () => {
-			assert.fileContent([['patterns/molecules/nav-main/css/modifier/nav-main-special-case.less', /\.m-nav-main--special-case \{/]]);
+			assert.fileContent([['src/patterns/molecules/nav-main/css/modifier/nav-main-special-case.less', /\.m-nav-main--special-case \{/]]);
 		});
 
 		it('the pattern js class is T.Module.NavMain', () => {
-			assert.fileContent([['patterns/molecules/nav-main/js/nav-main.js', /T\.Module\.NavMain =/]]);
+			assert.fileContent([['src/patterns/molecules/nav-main/js/nav-main.js', /T\.Module\.NavMain =/]]);
 		});
 
 		it('the decorator js class is T.Module.NavMain.SpecialCase', () => {
-			assert.fileContent([['patterns/molecules/nav-main/js/decorator/nav-main-special-case.js', /T\.Module\.NavMain\.SpecialCase =/]]);
+			assert.fileContent([['src/patterns/molecules/nav-main/js/decorator/nav-main-special-case.js', /T\.Module\.NavMain\.SpecialCase =/]]);
 		});
 	});
 
@@ -210,27 +210,27 @@ describe('nitro:pattern', () => {
 
 		it('the pattern and decorator files are created', () => {
 			assert.file([
-				'patterns/molecules/NavMain',
-				'patterns/molecules/NavMain/navmain.html',
-				'patterns/molecules/NavMain/_data/navmain.json',
-				'patterns/molecules/NavMain/_data/navmain-lightblue.json',
-				'patterns/molecules/NavMain/css/navmain.less',
-				'patterns/molecules/NavMain/css/modifier/navmain-lightblue.less',
-				'patterns/molecules/NavMain/js/navmain.js',
-				'patterns/molecules/NavMain/spec/navmainSpec.js',
+				'src/patterns/molecules/NavMain',
+				'src/patterns/molecules/NavMain/navmain.html',
+				'src/patterns/molecules/NavMain/_data/navmain.json',
+				'src/patterns/molecules/NavMain/_data/navmain-lightblue.json',
+				'src/patterns/molecules/NavMain/css/navmain.less',
+				'src/patterns/molecules/NavMain/css/modifier/navmain-lightblue.less',
+				'src/patterns/molecules/NavMain/js/navmain.js',
+				'src/patterns/molecules/NavMain/test/navmain.test.js',
 			]);
 		});
 
 		it('the pattern css class is m-nav-main', () => {
-			assert.fileContent([['patterns/molecules/NavMain/css/navmain.less', /\.m-nav-main \{/]]);
+			assert.fileContent([['src/patterns/molecules/NavMain/css/navmain.less', /\.m-nav-main \{/]]);
 		});
 
 		it('the modifier css class is m-nav-main--light-blue', () => {
-			assert.fileContent([['patterns/molecules/NavMain/css/modifier/navmain-lightblue.less', /\.m-nav-main--light-blue \{/]]);
+			assert.fileContent([['src/patterns/molecules/NavMain/css/modifier/navmain-lightblue.less', /\.m-nav-main--light-blue \{/]]);
 		});
 
 		it('the pattern js class is T.Module.NavMain', () => {
-			assert.fileContent([['patterns/molecules/NavMain/js/navmain.js', /T\.Module\.NavMain =/]]);
+			assert.fileContent([['src/patterns/molecules/NavMain/js/navmain.js', /T\.Module\.NavMain =/]]);
 		});
 	});
 });

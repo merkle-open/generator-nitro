@@ -56,8 +56,8 @@ module.exports = (gulp, plugins) => {
 		const browserSync = utils.getBrowserSyncInstance();
 
 		plugins.watch([
-			'assets/css/**/*.<%= options.pre %>',
-			'patterns/**/css/**/*.<%= options.pre %>',
+			'src/assets/css/**/*.<%= options.pre %>',
+			'src/patterns/**/css/**/*.<%= options.pre %>',
 		], (e) => {
 			processChange('css', () => {
 				checkCssCache(e);
@@ -66,11 +66,11 @@ module.exports = (gulp, plugins) => {
 		});
 
 		plugins.watch([
-			'assets/js/**/*.js',
-			'patterns/**/js/**/*.js',<% if (options.js === 'TypeScript') { %>
-			'assets/js/**/*.ts',
-			'patterns/**/js/**/*.ts',<% } %><% if (options.clientTpl) { %>
-			'patterns/**/template/**/*.hbs',<% } %>
+			'src/assets/js/**/*.js',
+			'src/patterns/**/js/**/*.js',<% if (options.js === 'TypeScript') { %>
+			'src/assets/js/**/*.ts',
+			'src/patterns/**/js/**/*.ts',<% } %><% if (options.clientTpl) { %>
+			'src/patterns/**/template/**/*.hbs',<% } %>
 		], () => {
 			processChange('js', () => {
 				gulp.start('compile-js');
@@ -78,12 +78,30 @@ module.exports = (gulp, plugins) => {
 		});
 
 		plugins.watch([
-			`views/**/*.${config.get('nitro.viewFileExtension')}`,
+			'src/proto/css/*.<%= options.pre %>',
+			'src/patterns/**/proto/**/*.<%= options.pre %>'
+		], () => {
+			processChange('css.prototype', function() {
+				gulp.start('compile-css-proto');
+			});
+		});
+
+		plugins.watch([
+			'src/proto/js/*.js',
+			'src/patterns/**/proto/**/*.js'
+		], () => {
+			processChange('js.prototype', function() {
+				gulp.start('compile-js-proto');
+			});
+		});
+
+		plugins.watch([
+			`src/views/**/*.${config.get('nitro.viewFileExtension')}`,
 			`${config.get('nitro.viewDataDirectory')}/**/*.json`,
-			`patterns/**/*.${config.get('nitro.viewFileExtension')}`,<% if (options.clientTpl) { %>
-			'!patterns/**/template/**/*.hbs',<% } %>
-			'patterns/**/schema.json',
-			'patterns/**/_data/*.json',
+			`src/patterns/**/*.${config.get('nitro.viewFileExtension')}`,<% if (options.clientTpl) { %>
+			'!src/patterns/**/template/**/*.hbs',<% } %>
+			'src/patterns/**/schema.json',
+			'src/patterns/**/_data/*.json',
 		], () => {
 			processChange('data', () => {
 				if (config.get('nitro.mode.livereload')) {
@@ -93,19 +111,19 @@ module.exports = (gulp, plugins) => {
 		});
 
 		plugins.watch([
-			'assets/img/**/*',
+			'src/assets/img/**/*',
 		], () => {
 			gulp.start('minify-img');
 		});
 
 		plugins.watch([
-			'patterns/atoms/icon/img/icons/*.svg',
+			'src/patterns/atoms/icon/img/icons/*.svg',
 		], () => {
 			gulp.start('svg-sprite');
 		});
 
 		plugins.watch([
-			'assets/font/**/*',
+			'src/assets/font/**/*',
 		], () => {
 			gulp.start('copy-assets');
 		});

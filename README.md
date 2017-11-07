@@ -14,8 +14,8 @@ Nitro is simple, fast and flexible. It works on macOS, Windows and Linux. Use th
 ## Usage
 
 Before using, you need of course [node](https://nodejs.org/) installed.  
-Nitro and the Nitro generator are tested with the current LTS version of node.js (releases 6).
-They also work with node.js release 8.
+Nitro and the Nitro generator are tested with the current 
+["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 6.x and 8.x).
 
 Install `yarn`, `yo` and `generator-nitro` globally:
 
@@ -58,6 +58,7 @@ It's possible to pass in these options through the command line:
 ### Update a project
 
 If you run `yo nitro` from an existing project you may update your project to a newer version.
+Updating to a new major version needs some more work. Please check the [release notes](https://github.com/namics/generator-nitro/releases)
 
 ## Generators
 
@@ -70,7 +71,7 @@ Note: Generators are to be run from the root directory of your project.
 
 ## Generated app
 
-See how tho use the [generated app](generators/app/templates/project/docs/nitro.md)
+See how to use the [generated app](generators/app/templates/project/docs/nitro.md)
 
 ## Testing
 

@@ -57,11 +57,11 @@
     "browser-sync": "2.18.13",
     "chalk": "2.3.0",
     "compression": "1.7.1",
-    "config": "1.28.0",
+    "config": "1.28.1",
     "del": "3.0.0",
     "dot-object": "1.7.0",
     "es6-promise": "4.1.1",
-    "eslint": "4.10.0",
+    "eslint": "4.11.0",
     "eslint-plugin-import": "2.8.0",
     "express": "4.16.2",
     "extend": "3.0.1",
@@ -80,7 +80,7 @@
     "gulp-header": "1.8.9",
     "gulp-htmllint": "0.0.14",
     "gulp-if": "2.0.2",
-    "gulp-imagemin": "3.4.0",<% if (options.pre === 'less') { %>
+    "gulp-imagemin": "4.0.0",<% if (options.pre === 'less') { %>
     "gulp-less": "3.3.2",<% } %>
     "gulp-live-server": "0.0.31",
     "gulp-load-plugins": "1.5.0",

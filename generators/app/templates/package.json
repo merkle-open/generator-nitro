@@ -52,7 +52,7 @@
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
     "babel-preset-env": "1.6.1",
-    "backstopjs": "3.0.32",
+    "backstopjs": "3.0.36",
     "body-parser": "1.18.2",
     "browser-sync": "2.18.13",
     "chalk": "2.3.0",
@@ -61,7 +61,7 @@
     "del": "3.0.0",
     "dot-object": "1.7.0",
     "es6-promise": "4.1.1",
-    "eslint": "4.11.0",
+    "eslint": "4.12.0",
     "eslint-plugin-import": "2.8.0",
     "express": "4.16.2",
     "extend": "3.0.1",
@@ -122,7 +122,7 @@
     "nitro-release": "0.1.1",<% } %>
     "npm-run-all": "4.1.2",
     "nsp": "3.1.0",
-    "stylelint": "8.2.0",
+    "stylelint": "8.3.1",
     "text-table": "0.2.0",
     "yargs": "10.0.3"
   }

@@ -49,7 +49,7 @@
     "@namics/eslint-config": "4.2.0",
     "@namics/stylelint-bem": "3.1.3",
     "ajv": "5.5.1",
-    "autoprefixer": "7.2.2",
+    "autoprefixer": "7.2.3",
     "babel-core": "6.26.0",
     "babel-preset-env": "1.6.1",
     "backstopjs": "3.0.36",
@@ -87,7 +87,7 @@
     "gulp-newer": "1.3.0",
     "gulp-plumber": "1.1.0",
     "gulp-postcss": "7.0.0",
-    "gulp-remember": "0.3.1",
+    "gulp-remember": "1.0.0",
     "gulp-remote-src": "0.4.3",
     "gulp-rename": "1.2.2",<% if (options.pre === 'scss') { %>
     "gulp-sass": "3.1.0",<% } %>
@@ -106,7 +106,7 @@
     "hbs-utils": "0.0.4",
     "htmllint": "0.7.0",
     "i18next": "10.2.1",
-    "i18next-express-middleware": "1.0.7",
+    "i18next-express-middleware": "1.0.9",
     "i18next-node-fs-backend": "1.0.0",
     "i18next-sprintf-postprocessor": "0.2.2",
     "imagemin-pngquant": "5.0.1",

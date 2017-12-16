@@ -23,15 +23,39 @@ const getPort = require('get-port');
 const utils = require('./utils');
 const tmpDirectory = utils.getTmpDirectory('views');
 let isRunning = false;
+let server;
 
 function getViews() {
 	return view
 		.getViews(`${config.get('nitro.basePath')}${config.get('nitro.viewDirectory')}`)
+		//.filter((viewItem) => viewItem.url !== 'incomplete') // filter corrupt or incomplete views
 		.map((viewItem) => viewItem.url);
 }
 
-function dumpViews(server, port, gulp, plugins) {
-	isRunning = true;
+function startTmpServer(port, gulp, plugins, cb) {
+	server = plugins.liveServer('server', {
+		env: {
+			PORT: port,
+		},
+	}, false);
+
+	return server.start()
+		.then(() => {}, () => {}, () => {
+			if (!isRunning) {
+				isRunning = true;
+				if (typeof cb === 'function') {
+					cb();
+				}
+			}
+		});
+}
+
+function stopTmpServer() {
+	server.stop();
+	isRunning = false;
+}
+
+function dumpViews(port, gulp, plugins) {
 	return del(tmpDirectory)
 		.then(() => {
 			const views = getViews();
@@ -63,8 +87,7 @@ function dumpViews(server, port, gulp, plugins) {
 				}))
 				.pipe(gulp.dest(tmpDirectory))
 				.on('end', () => {
-					server.stop();
-					isRunning = false;
+					stopTmpServer();
 				});
 		});
 }
@@ -73,18 +96,10 @@ module.exports = (gulp, plugins) => {
 	return () => {
 		return getPort()
 			.then((port) => {
-				const server = plugins.liveServer('server', {
-					env: {
-						PORT: port,
-					},
-				}, false);
-
-				return server.start()
-					.then(() => {}, () => {}, () => {
-						if (!isRunning) {
-							dumpViews(server, port, gulp, plugins);
-						}
-					});
+				const cb = () => {
+					return dumpViews(port, gulp, plugins);
+				};
+				return startTmpServer(port, gulp, plugins, cb);
 			});
 	};
 };

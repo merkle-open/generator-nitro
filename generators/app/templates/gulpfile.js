@@ -25,7 +25,6 @@ gulp.task('assets', ['svg-sprite', 'copy-assets', 'minify-img', 'minify-js', 'mi
 gulp.task('assets-proto', ['compile-css-proto', 'compile-js-proto']);
 gulp.task('watch-assets', ['assets', 'assets-proto'], getTask('watch-assets'));
 gulp.task('serve', getTask('serve'));
-gulp.task('serve-stop', getTask('serve-stop'));
 gulp.task('watch-serve', ['serve'], getTask('watch-serve'));
 gulp.task('develop', ['watch-assets', 'watch-serve']);
 gulp.task('build', gulpSequence(<% if (options.clientTpl) { %>['clean-assets', 'clean-templates']<% } else { %>'clean-assets'<% } %>, 'assets'));

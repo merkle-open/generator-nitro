@@ -1,13 +1,11 @@
 'use strict';
 
 const config = require('config');
-const fs = require('fs');
 
 module.exports = (gulp, plugins) => {
 	let taskCallbackCalled = false;
 
 	return (cb) => {
-		const pidFile = '.servepid';
 		const server = plugins.liveServer(
 			'server.js',
 			{
@@ -20,10 +18,8 @@ module.exports = (gulp, plugins) => {
 		);
 		return server.start().then((result) => {
 			console.log('Nitro exited with result:', result);
-			if (fs.existsSync(pidFile)) {
-				fs.unlinkSync(pidFile);
-			}
 			process.exit(result.code);
+
 			if (!taskCallbackCalled) {
 				taskCallbackCalled = true;
 				cb();
@@ -31,7 +27,6 @@ module.exports = (gulp, plugins) => {
 		}, () => {
 
 		}, () => {
-			fs.writeFileSync(pidFile, server.server.pid);
 			if (!taskCallbackCalled) {
 				taskCallbackCalled = true;
 				cb();

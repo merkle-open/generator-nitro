@@ -302,7 +302,6 @@ describe('nitro:app', () => {
 				'src/assets/img/icon/favicon.ico',
 				'src/assets/img/icon/tile-icon.png',
 				'src/assets/img/icon/apple-touch-icon.png',
-				'src/assets/img/icon/apple-touch-icon-precomposed.png',
 			]);
 		});
 
@@ -353,7 +352,6 @@ describe('nitro:app', () => {
 				'src/assets/img/icon/favicon.ico',
 				'src/assets/img/icon/tile-icon.png',
 				'src/assets/img/icon/apple-touch-icon.png',
-				'src/assets/img/icon/apple-touch-icon-precomposed.png',
 			]);
 		});
 

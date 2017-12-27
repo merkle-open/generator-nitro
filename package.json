@@ -34,18 +34,18 @@
   "dependencies": {
     "adm-zip": "0.4.7",
     "chalk": "2.3.0",
-    "config": "1.28.1",
+    "config": "1.29.0",
     "git-config": "0.0.7",
     "glob": "7.1.2",
     "lodash": "4.17.4",
     "request": "2.83.0",
-    "yeoman-generator": "2.0.1",
+    "yeoman-generator": "2.0.2",
     "yosay": "2.0.1"
   },
   "devDependencies": {
     "@namics/eslint-config": "4.2.0",
     "ejs": "2.5.7",
-    "eslint": "4.13.1",
+    "eslint": "4.14.0",
     "eslint-plugin-import": "2.8.0",
     "fs-extra": "5.0.0",
     "jasmine": "2.8.0",

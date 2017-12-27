@@ -23,7 +23,8 @@
     "visual-approve": "gulp visual-approve",
     "visual-reference": "gulp visual-reference",
     "visual-test": "gulp visual-test",
-    "test": "yarn lint && npm-run-all test:*",
+    "test": "npm-run-all test:*",
+    "test:lint": "yarn lint",
     "test:karma": "gulp test",
     "prebuild": "yarn test",
     "build": "gulp build",<% if (options.exporter) { %>
@@ -55,14 +56,14 @@
     "babel-preset-env": "1.6.1",
     "backstopjs": "3.0.36",
     "body-parser": "1.18.2",
-    "browser-sync": "2.18.13",
+    "browser-sync": "2.21.0",
     "chalk": "2.3.0",
     "compression": "1.7.1",
-    "config": "1.28.1",
+    "config": "1.29.0",
     "del": "3.0.0",
     "dot-object": "1.7.0",
-    "es6-promise": "4.1.1",
-    "eslint": "4.13.1",
+    "es6-promise": "4.2.2",
+    "eslint": "4.14.0",
     "eslint-plugin-import": "2.8.0",
     "express": "4.16.2",
     "extend": "3.0.1",
@@ -82,7 +83,7 @@
     "gulp-htmllint": "0.0.14",
     "gulp-if": "2.0.2",
     "gulp-imagemin": "4.0.0",<% if (options.pre === 'less') { %>
-    "gulp-less": "3.3.2",<% } %>
+    "gulp-less": "3.4.0",<% } %>
     "gulp-live-server": "0.0.31",
     "gulp-load-plugins": "1.5.0",
     "gulp-newer": "1.3.0",
@@ -94,7 +95,7 @@
     "gulp-sass": "3.1.0",<% } %>
     "gulp-sequence": "0.4.6",
     "gulp-size": "2.1.0",
-    "gulp-sourcemaps": "2.6.1",
+    "gulp-sourcemaps": "2.6.2",
     "gulp-stylelint": "3.9.0",
     "gulp-svgmin": "1.2.4",
     "gulp-svgstore": "6.1.0",<% if (options.js === 'TypeScript') { %>

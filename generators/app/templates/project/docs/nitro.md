@@ -139,13 +139,19 @@ Different data variations have to be placed in the `_data` folder:
 /example/_data/example-variant.json
 ```
 
-### Creating patterns with yo
+### Creating pattern with npm script
 
 ```
-yo nitro:pattern
+yarn create-pattern
 ```
 
 This will copy the templates (nitro.patterns.<type>.template) from config to the configured target.
+
+Optionally you can give the name:
+
+```
+yarn create-pattern <name>
+```
 
 ### Creating pattern elements
 

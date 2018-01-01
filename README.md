@@ -57,7 +57,13 @@ It's possible to pass in these options through the command line:
 
 ### Update a project
 
-If you run `yo nitro` from an existing project you may update your project to a newer version.
+In your project, first update the generator to the newest version:
+
+    yarn add generator-nitro
+
+If you then run `yo nitro` you will be asked to update the project. 
+It is best to overwrite all local files and check the differences after.
+
 Updating to a new major version needs some more work. Please check the [release notes](https://github.com/namics/generator-nitro/releases)
 
 ## Generators

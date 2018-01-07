@@ -80,7 +80,7 @@
     "gulp-cssnano": "2.1.2",<% if (options.clientTpl) { %>
     "gulp-declare": "0.3.0",<% } %>
     "gulp-eslint": "4.0.1",<% if (options.clientTpl) { %>
-    "gulp-handlebars": "4.0.0",<% } %>
+    "gulp-handlebars": "5.0.0",<% } %>
     "gulp-header": "1.8.9",
     "gulp-htmllint": "0.0.14",
     "gulp-if": "2.0.2",

@@ -444,9 +444,9 @@ concat-stream@^1.4.7, concat-stream@^1.6.0:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-config@1.29.0:
-  version "1.29.0"
-  resolved "https://registry.yarnpkg.com/config/-/config-1.29.0.tgz#f89190095ec8cfe886ea52b7d3d96cadfa577b7f"
+config@1.29.1:
+  version "1.29.1"
+  resolved "https://registry.yarnpkg.com/config/-/config-1.29.1.tgz#155c9fbc5a8636120e9eb5c183c212add3b7fe18"
   dependencies:
     json5 "0.4.0"
     os-homedir "1.0.2"
@@ -728,8 +728,8 @@ eslint-plugin-react@7.4.0:
     prop-types "^15.5.10"
 
 eslint-rule-documentation@^1.0.0:
-  version "1.0.18"
-  resolved "https://registry.yarnpkg.com/eslint-rule-documentation/-/eslint-rule-documentation-1.0.18.tgz#baae97d3d98a26ba802916bc71554b3f02864e47"
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/eslint-rule-documentation/-/eslint-rule-documentation-1.0.20.tgz#75b9d1b6ba5a2268c34039b86a450ac7ebde31c5"
 
 eslint-scope@^3.7.1:
   version "3.7.1"

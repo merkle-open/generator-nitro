@@ -34,7 +34,7 @@
   "dependencies": {
     "adm-zip": "0.4.7",
     "chalk": "2.3.0",
-    "config": "1.29.0",
+    "config": "1.29.1",
     "git-config": "0.0.7",
     "glob": "7.1.2",
     "lodash": "4.17.4",

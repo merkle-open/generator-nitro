@@ -1,4 +1,4 @@
 {
-	"modifier": "",
-	"decorator": "<%= decorator.js %>"
+	<% if (modifier.name) { %>"modifier": "",
+	<% } %>"decorator": "<%= decorator.js %>"
 }

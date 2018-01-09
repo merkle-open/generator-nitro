@@ -5,12 +5,12 @@
 	"type": "object",
 	"properties": {
 		"modifier": {
-			"description": "A modifier",
-			"type": "string"
+			"description": "A pattern modifier",
+			"enum": ["", "blue"]
 		},
 		"decorator": {
-			"description": "A decorator",
-			"type": "string"
+			"description": "A pattern decorator",
+			"enum": ["", "Blue"<% if (options.clientTpl) { %>, "Template"<% } %>]
 		},
 		"title": {
 			"description": "Title of the pattern",

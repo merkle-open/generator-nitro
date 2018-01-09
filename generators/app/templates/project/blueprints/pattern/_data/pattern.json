@@ -1,4 +1,4 @@
 {
-	"modifier": "",
-	"decorator": ""
+	<% if (modifier.name) { %>"modifier": ""<% if (modifier.name && decorator.name) { %>,
+	<% } %><% } %><% if (decorator.name) { %>"decorator": ""<% } %>
 }

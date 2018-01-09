@@ -3,16 +3,16 @@
 	"title": "<%= pattern.name %>",
 	"description": "A <%= pattern.name %> <%= pattern.type %>",
 	"type": "object",
-	"properties": {
+	"properties": {<% if (modifier.name) { %>
 		"modifier": {
-			"description": "A modifier",
-			"type": "string"
-		},
+			"description": "A pattern modifier",
+			"enum": ["", "<%= modifier.css %>"]
+		}<% } %><% if (modifier.name && decorator.name) { %>,<% } %><% if (decorator.name) { %>
 		"decorator": {
-			"description": "A decorator",
-			"type": "string"
-		}
+			"description": "A pattern decorator",
+			"enum": ["", "<%= decorator.js %>"]
+		}<% } %>
 	},
-	"required": [],
+	"required": [<% if (modifier.name) { %>"modifier"<% } %><% if (modifier.name && decorator.name) { %>, <% } %><%if (decorator.name) {%>"decorator"<% } %>],
 	"dependencies": {}
 }

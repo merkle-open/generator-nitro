@@ -21,7 +21,7 @@ const path = require('path');
 const extend = require('extend');
 const globby = require('globby');
 const Ajv = require('ajv');
-const ajv = new Ajv({ allErrors: true });
+const ajv = new Ajv({ schemaId: 'auto', allErrors: true });
 ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
 const config = require('config');
 const hbsUtils = require('../utils');

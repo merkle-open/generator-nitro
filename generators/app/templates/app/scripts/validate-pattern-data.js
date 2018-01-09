@@ -27,7 +27,7 @@ const fs = require('fs');
 const globby = require('globby');
 const Ajv = require('ajv');
 const config = require('config');
-const ajv = new Ajv({ allErrors: true });
+const ajv = new Ajv({ schemaId: 'auto', allErrors: true });
 ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
 const wildcard = '*';
 const patternBasePaths = Object.keys(config.get('nitro.patterns')).map((key) => {

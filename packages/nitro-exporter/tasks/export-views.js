@@ -33,6 +33,8 @@ module.exports = function (gulp, config) {
 						.on('end', () => {
 							resolve();
 						});
+				} else {
+					resolve();
 				}
 			})
 		);

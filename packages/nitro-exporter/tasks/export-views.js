@@ -25,7 +25,7 @@ module.exports = function (gulp, config) {
 						.on('end', () => {
 							resolve();
 						});
-				} else if (typeof configEntry.views === 'object' && configEntry.views.length > 0) {
+				} else if (Array.isArray(configEntry.views) && configEntry.views.length > 0) {
 					gulp.src(path.join(nitroTmpDirectory, '*.html'))
 						.pipe(filter(configEntry.views.map((v) => path.join(nitroTmpDirectory, `${v}.html`))))
 						.pipe(filter(i18nFilter))

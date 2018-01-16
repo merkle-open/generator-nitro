@@ -50,17 +50,17 @@
   },
   "devDependencies": {
     "@namics/eslint-config": "4.2.0",
-    "@namics/stylelint-bem": "3.1.3",
-    "ajv": "6.0.0",
-    "autoprefixer": "7.2.4",
+    "@namics/stylelint-bem": "4.0.0",
+    "ajv": "6.0.1",
+    "autoprefixer": "7.2.5",
     "babel-core": "6.26.0",
     "babel-preset-env": "1.6.1",
     "backstopjs": "3.0.37",
     "body-parser": "1.18.2",
-    "browser-sync": "2.23.3",
+    "browser-sync": "2.23.5",
     "chalk": "2.3.0",
     "compression": "1.7.1",
-    "config": "1.29.1",
+    "config": "1.29.2",
     "del": "3.0.0",
     "dot-object": "1.7.0",
     "es6-promise": "4.2.2",
@@ -82,7 +82,7 @@
     "gulp-eslint": "4.0.1",<% if (options.clientTpl) { %>
     "gulp-handlebars": "5.0.0",<% } %>
     "gulp-header": "1.8.9",
-    "gulp-htmllint": "0.0.14",
+    "gulp-htmllint": "0.0.15",
     "gulp-if": "2.0.2",
     "gulp-imagemin": "4.1.0",<% if (options.pre === 'less') { %>
     "gulp-less": "3.4.0",<% } %>

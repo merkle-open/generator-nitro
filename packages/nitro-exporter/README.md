@@ -26,7 +26,7 @@ The nitro-exporter will export all dumped views per default. You can filter out 
 
 Controls which public files should be exported statically. `true` will export all files from your `public` directory.
 
-You can define an array of strings, like `["assets/css/app.css", "assets/js/app.js"]` to export only those files.
+You can define an array of strings, like `["build/assets/css/app.css", "build/assets/js/app.js"]` to export only those files.
 
 When defining strings you can use globbing patterns.
 

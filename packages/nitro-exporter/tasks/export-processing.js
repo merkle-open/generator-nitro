@@ -130,7 +130,7 @@ module.exports = function (gulp, config) {
 			if (configEntry.zip) {
 				getZipPromise = function () {
 					return new Promise((resolve) => {
-						const pkg = JSON.parse(fs.readFileSync(`${config.nitro.base_path}package.json`, {
+						const pkg = JSON.parse(fs.readFileSync(`${config.nitro.basePath}package.json`, {
 							encoding: 'utf-8',
 							flag: 'r',
 						}));

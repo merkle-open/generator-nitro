@@ -13,6 +13,7 @@
   "main": "index.js",
   "repository": "namics/nitro-exporter.git",
   "scripts": {
+	"prepublish": "nsp check --output summary",
     "test": "eslint ."
   },
   "dependencies": {
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@namics/eslint-config": "4.2.0",
     "eslint": "4.15.0",
-    "eslint-plugin-import": "2.8.0"
+    "eslint-plugin-import": "2.8.0",
+	"nsp": "3.1.0"
   }
 }

@@ -122,7 +122,7 @@
     "karma-phantomjs-launcher": "1.0.4",
     "license-checker": "15.0.0",
     "merge-stream": "1.0.1",<% if (options.exporter) { %>
-    "nitro-exporter": "0.4.0",<% } %><% if (options.release) { %>
+    "nitro-exporter": "1.0.0",<% } %><% if (options.release) { %>
     "nitro-release": "0.1.1",<% } %>
     "npm-run-all": "4.1.2",
     "nsp": "3.1.0",

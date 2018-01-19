@@ -55,7 +55,7 @@
     "autoprefixer": "7.2.5",
     "babel-core": "6.26.0",
     "babel-preset-env": "1.6.1",
-    "backstopjs": "3.0.37",
+    "backstopjs": "3.0.38",
     "body-parser": "1.18.2",
     "browser-sync": "2.23.5",
     "chalk": "2.3.0",
@@ -80,7 +80,7 @@
     "gulp-cssnano": "2.1.2",<% if (options.clientTpl) { %>
     "gulp-declare": "0.3.0",<% } %>
     "gulp-eslint": "4.0.1",<% if (options.clientTpl) { %>
-    "gulp-handlebars": "5.0.1",<% } %>
+    "gulp-handlebars": "5.0.0",<% } %>
     "gulp-header": "2.0.1",
     "gulp-htmllint": "0.0.15",
     "gulp-if": "2.0.2",
@@ -109,18 +109,18 @@
     "hbs": "4.0.1",
     "hbs-utils": "0.0.4",
     "htmllint": "0.7.0",
-    "i18next": "10.2.2",
+    "i18next": "10.3.0",
     "i18next-express-middleware": "1.0.9",
     "i18next-node-fs-backend": "1.0.0",
     "i18next-sprintf-postprocessor": "0.2.2",
     "imagemin-pngquant": "5.0.1",
-    "jasmine-core": "2.8.0",
+    "jasmine-core": "2.9.0",
     "karma": "2.0.0",
     "karma-babel-preprocessor": "7.0.0",
     "karma-chrome-launcher": "2.2.0",
     "karma-jasmine": "1.1.1",
     "karma-phantomjs-launcher": "1.0.4",
-    "license-checker": "15.0.0",
+    "license-checker": "16.0.0",
     "merge-stream": "1.0.1",<% if (options.exporter) { %>
     "nitro-exporter": "1.0.0",<% } %><% if (options.release) { %>
     "nitro-release": "0.1.1",<% } %>

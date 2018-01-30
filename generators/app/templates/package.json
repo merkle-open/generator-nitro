@@ -51,11 +51,11 @@
   "devDependencies": {
     "@namics/eslint-config": "4.2.0",
     "@namics/stylelint-bem": "4.0.0",
-    "ajv": "6.0.1",
+    "ajv": "6.1.0",
     "autoprefixer": "7.2.5",
     "babel-core": "6.26.0",
     "babel-preset-env": "1.6.1",
-    "backstopjs": "3.0.38",
+    "backstopjs": "3.0.39",
     "body-parser": "1.18.2",
     "browser-sync": "2.23.6",
     "chalk": "2.3.0",
@@ -73,7 +73,7 @@
     "globby": "7.1.1",
     "gulp": "3.9.1",
     "gulp-accessibility": "3.0.1",
-    "gulp-babel": "7.0.0",
+    "gulp-babel": "7.0.1",
     "gulp-cached": "1.1.1",<% if (options.clientTpl) { %>
     "gulp-change": "1.0.0",<% } %>
     "gulp-concat": "2.6.1",
@@ -129,6 +129,6 @@
     "stylelint": "8.4.0",
     "text-table": "0.2.0",
     "yargs": "11.0.0",
-    "yo": "2.0.0"
+    "yo": "2.0.1"
   }
 }

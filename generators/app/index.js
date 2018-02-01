@@ -20,17 +20,15 @@ module.exports = class extends Generator {
 
 		this.pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../../package.json'), 'utf8'));
 
-		const makeBoolean = (value) => (typeof value === 'string' ? value === 'true' : value);
-
 		this.passedInOptions = {
 			name: this.options.name,
 			pre: this.options.pre,
 			js: this.options.js,
 			viewExt: this.options.viewExt,
-			clientTpl: makeBoolean(this.options.clientTpl),
-			exampleCode: makeBoolean(this.options.exampleCode),
-			exporter: makeBoolean(this.options.exporter),
-			release: makeBoolean(this.options.release),
+			clientTpl: this.options.clientTpl,
+			exampleCode: this.options.exampleCode,
+			exporter: this.options.exporter,
+			release: this.options.release,
 		};
 
 		this.option('name', {

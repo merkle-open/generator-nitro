@@ -53,7 +53,7 @@ The choosen options will be stored for the next project generation.
 
 It's possible to pass in these options through the command line:
 
-    yo nitro --name=myproject --pre=less --viewExt=hbs --clientTpl --exampleCode --exporter=false --release=false
+    yo nitro --name=myproject --pre=less --viewExt=hbs --clientTpl
 
 ### Update a project
 

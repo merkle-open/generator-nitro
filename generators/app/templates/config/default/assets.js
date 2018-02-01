@@ -1,5 +1,13 @@
 'use strict';
 
+const path = require('path');
+const fs = require('fs');
+
+const getCwd = () => fs.realpathSync(process.cwd());
+// return relative path to dependency
+// and make sure hoisting is supported -> https://github.com/lerna/lerna/blob/master/doc/hoist.md
+const getRelativeDependencyPath = (dependency) => path.relative(getCwd(), require.resolve(dependency));
+
 const config = {
 	assets: {
 		'app.css': [<% if (options.exampleCode) { %>
@@ -11,10 +19,10 @@ const config = {
 			'src/patterns/**/css/modifier/*.<%= options.pre %>',
 		],
 		'app.js': [
-			'node_modules/babel-polyfill/dist/polyfill.min.js',
-			'node_modules/jquery/dist/jquery.min.js',
-			'node_modules/terrific/dist/terrific.min.js',<% if (options.clientTpl) { %>
-			'node_modules/handlebars/dist/handlebars.runtime.min.js',<% } %>
+			getRelativeDependencyPath('babel-polyfill/dist/polyfill.min.js'),
+			getRelativeDependencyPath('jquery/dist/jquery.min.js'),
+			getRelativeDependencyPath('terrific/dist/terrific.min.js'),<% if (options.clientTpl) { %>
+			getRelativeDependencyPath('handlebars/dist/handlebars.runtime.min.js'),<% } %>
 			'src/assets/js/*.js',<% if (options.js === 'TypeScript') { %>
 			'src/assets/js/*.ts',
 			'src/patterns/**/js/*.ts',

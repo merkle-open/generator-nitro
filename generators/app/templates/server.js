@@ -19,6 +19,7 @@ require('./app/core/i18n')(app);
 
 // Loads custom project routes
 require('./app/core/routeLoader')(app);
+require('./app/core/routeWebpackDevServerBundleLoaderRoute')(app);
 
 app.use(router);
 app.use(bodyParser.urlencoded({ extended: true }));

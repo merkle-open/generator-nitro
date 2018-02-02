@@ -548,6 +548,16 @@ This hook will:
 
 You may [change this or add other hooks](../.githooks/readme.md) in `project/.githooks`.
 
+### Load bundle.js from external WebpackDevServer
+
+If you load a bundle.js directly, the socket connection to the WebpackDevServer will not work.
+To solve this you can use the following:
+```
+<div id="root"></div>
+<script defer async type="text/javascript" src="/webpack-dev-server/bundle.js?protocol=http&hostname=localhost&port=3000"></script>
+```
+The query params `protocol` (default "http"), `hostname` (default "localhost") and `port` (default 3000) define where the WebpackDevServer is located.
+
 ### Contributing
 
 * For bugs and features please use [GitHub Issues](https://github.com/namics/generator-nitro/issues)

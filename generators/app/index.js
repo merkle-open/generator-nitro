@@ -18,9 +18,9 @@ module.exports = class extends Generator {
 		// Calling the super constructor
 		super(args, opts);
 
-		this.pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../../package.json'), 'utf8'));
+		this._pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../../package.json'), 'utf8'));
 
-		this.passedInOptions = {
+		this._passedInOptions = {
 			name: this.options.name,
 			pre: this.options.pre,
 			js: this.options.js,
@@ -34,53 +34,53 @@ module.exports = class extends Generator {
 		this.option('name', {
 			desc: 'the name of your app',
 			type: String,
-			defaults: this.passedInOptions.name || path.basename(process.cwd()),
+			defaults: this._passedInOptions.name || path.basename(process.cwd()),
 		});
 		this.options.name = _.kebabCase(this.options.name);
 
-		this.preOptions = ['less', 'scss'];
+		this._preOptions = ['less', 'scss'];
 		this.option('pre', {
-			desc: `your desired preprocessor [${this.preOptions.join('|')}]`,
+			desc: `your desired preprocessor [${this._preOptions.join('|')}]`,
 			type: String,
-			defaults: this.passedInOptions.pre || this.preOptions[1],
+			defaults: this._passedInOptions.pre || this._preOptions[1],
 		});
 
-		this.jsOptions = ['JavaScript', 'TypeScript'];
+		this._jsOptions = ['JavaScript', 'TypeScript'];
 		this.option('js', {
-			desc: `your desired js compiler [${this.jsOptions.join('|')}]`,
+			desc: `your desired js compiler [${this._jsOptions.join('|')}]`,
 			type: String,
-			defaults: this.passedInOptions.js || this.jsOptions[0],
+			defaults: this._passedInOptions.js || this._jsOptions[0],
 		});
 
-		this.viewExtOptions = ['html', 'hbs', 'mustache'];
+		this._viewExtOptions = ['html', 'hbs', 'mustache'];
 		this.option('viewExt', {
-			desc: `your desired view file extension [${this.viewExtOptions.join('|')}]`,
+			desc: `your desired view file extension [${this._viewExtOptions.join('|')}]`,
 			type: String,
-			defaults: this.passedInOptions.viewExt || this.viewExtOptions[0],
+			defaults: this._passedInOptions.viewExt || this._viewExtOptions[1],
 		});
 
 		this.option('clientTpl', {
 			desc: 'do you need client side templates',
 			type: Boolean,
-			defaults: this.passedInOptions.clientTpl || false,
+			defaults: this._passedInOptions.clientTpl || false,
 		});
 
 		this.option('exampleCode', {
 			desc: 'do you want to include the example code',
 			type: Boolean,
-			defaults: this.passedInOptions.exampleCode !== false,
+			defaults: this._passedInOptions.exampleCode || false,
 		});
 
 		this.option('exporter', {
 			desc: 'do you need static exporting functionalities',
 			type: Boolean,
-			defaults: this.passedInOptions.exporter || false,
+			defaults: this._passedInOptions.exporter || false,
 		});
 
 		this.option('release', {
 			desc: 'do you need release management',
 			type: Boolean,
-			defaults: this.passedInOptions.release || false,
+			defaults: this._passedInOptions.release || false,
 		});
 	}
 
@@ -109,9 +109,9 @@ module.exports = class extends Generator {
 					default: true,
 				},
 			]).then((answers) => {
-				this.update = answers.update;
+				this._update = answers.update;
 
-				if (!this.update) {
+				if (!this._update) {
 					return;
 				}
 
@@ -134,34 +134,34 @@ module.exports = class extends Generator {
 					name: 'name',
 					message: 'What\'s the name of your app?',
 					default: this.options.name,
-					when: () => !this.passedInOptions.name,
+					when: () => !this._passedInOptions.name,
 				},
 				{
 					name: 'pre',
 					type: 'list',
 					message: 'What\'s your desired preprocessor?',
-					choices: this.preOptions,
+					choices: this._preOptions,
 					default: this.options.pre,
 					store: true,
-					when: () => !this.passedInOptions.pre,
+					when: () => !this._passedInOptions.pre,
 				},
 				/* {
 					name: 'js',
 					type: 'list',
 					message: 'What\'s your desired javascript compiler?',
-					choices: this.jsOptions,
+					choices: this._jsOptions,
 					default: this.options.js,
 					store: true,
-					when: () => !this.passedInOptions.js,
+					when: () => !this._passedInOptions.js,
 				},*/
 				{
 					name: 'viewExt',
 					type: 'list',
 					message: 'What\'s your desired view file extension?',
-					choices: this.viewExtOptions,
+					choices: this._viewExtOptions,
 					default: this.options.viewExt,
 					store: true,
-					when: () => !this.passedInOptions.viewExt,
+					when: () => !this._passedInOptions.viewExt,
 				},
 				{
 					name: 'clientTpl',
@@ -169,7 +169,7 @@ module.exports = class extends Generator {
 					message: 'Would you like to include client side templates?',
 					default: this.options.clientTpl,
 					store: true,
-					when: () => typeof this.passedInOptions.clientTpl !== 'boolean',
+					when: () => typeof this._passedInOptions.clientTpl !== 'boolean',
 				},
 				{
 					name: 'exampleCode',
@@ -177,7 +177,7 @@ module.exports = class extends Generator {
 					message: 'Would you like to include the example code?',
 					default: this.options.exampleCode,
 					store: true,
-					when: () => typeof this.passedInOptions.exampleCode !== 'boolean',
+					when: () => typeof this._passedInOptions.exampleCode !== 'boolean',
 				},
 				{
 					name: 'exporter',
@@ -185,7 +185,7 @@ module.exports = class extends Generator {
 					message: 'Would you like to include static exporting functionalities?',
 					default: this.options.exporter,
 					store: true,
-					when: () => typeof this.passedInOptions.exporter !== 'boolean',
+					when: () => typeof this._passedInOptions.exporter !== 'boolean',
 				},
 				{
 					name: 'release',
@@ -193,7 +193,7 @@ module.exports = class extends Generator {
 					message: 'Would you like to include release management?',
 					default: this.options.release,
 					store: true,
-					when: () => typeof this.passedInOptions.release !== 'boolean',
+					when: () => typeof this._passedInOptions.release !== 'boolean',
 				},
 			]).then((answers) => {
 				this.options.name = answers.name || this.options.name;
@@ -361,7 +361,7 @@ module.exports = class extends Generator {
 
 		const templateData = {
 			name: this.options.name,
-			version: this.pkg.version,
+			version: this._pkg.version,
 			options: this.options,
 		};
 
@@ -373,7 +373,7 @@ module.exports = class extends Generator {
 			}
 
 			// exclude update ignores
-			if (this.update) {
+			if (this._update) {
 				if (_.indexOf(ignoresOnUpdate, file) !== -1) {
 					return;
 				}
@@ -420,7 +420,7 @@ module.exports = class extends Generator {
 			const ext = path.extname(file).substring(1);
 
 			// exclude unnecessary preprocessor files
-			if (_.indexOf(this.preOptions, ext) !== -1 && this.options.pre !== ext) {
+			if (_.indexOf(this._preOptions, ext) !== -1 && this.options.pre !== ext) {
 				return;
 			}
 
@@ -432,8 +432,8 @@ module.exports = class extends Generator {
 			let destinationPath = this.destinationPath(file);
 
 			// adjust destination template file extension for view files
-			if (_.indexOf(this.viewExtOptions, ext) !== -1 && _.indexOf(viewFiles, file) !== -1) {
-				const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this.viewExtOptions[0]}`;
+			if (_.indexOf(this._viewExtOptions, ext) !== -1 && _.indexOf(viewFiles, file) !== -1) {
+				const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this._viewExtOptions[0]}`;
 
 				destinationPath = destinationPath.replace(path.extname(destinationPath), targetExt);
 			}

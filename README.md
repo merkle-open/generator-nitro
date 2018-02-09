@@ -41,13 +41,13 @@ Run:
 
 You will be guided through some configuration options:
 
-* Desired Name (default: current directory name)
-* Desired CSS preprocessor (`less` or `scss`; default: `less`)
-* Desired view file extension (`html`, `hbs` or `mustache`; default: `html`)
-* Using client side templates (default: false)
-* Including example code (default: true)
-* Installing [`nitro-exporter`](https://www.npmjs.com/package/nitro-exporter) (default: false)
-* Installing [`nitro-release`](https://www.npmjs.com/package/nitro-release) (default: false)
+* Desired Name `--name=` (default: current directory name)
+* Desired CSS preprocessor `--pre=` (`less` or `scss`; default: `scss`)
+* Desired view file extension `--viewExt=` (`html`, `hbs` or `mustache`; default: `hbs`)
+* Using client side templates `--clientTpl` (default: false)
+* Including example code `--exampleCode` (default: false)
+* Installing [`nitro-exporter`](https://www.npmjs.com/package/nitro-exporter) `--exporter` (default: false)
+* Installing [`nitro-release`](https://www.npmjs.com/package/nitro-release) `--release` (default: false)
 
 The choosen options will be stored for the next project generation.
 

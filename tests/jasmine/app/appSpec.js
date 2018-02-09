@@ -119,7 +119,6 @@ describe('nitro:app', () => {
 				'src/views/404.html',
 				'src/views/_partials/head.html',
 				'src/views/_partials/foot.html',
-				'src/patterns/molecules/example/example.html',
 				'project/blueprints/pattern/pattern.html',
 			]);
 		});
@@ -144,7 +143,6 @@ describe('nitro:app', () => {
 				'src/views/404.hbs',
 				'src/views/_partials/head.hbs',
 				'src/views/_partials/foot.hbs',
-				'src/patterns/molecules/example/example.hbs',
 				'project/blueprints/pattern/pattern.hbs',
 			]);
 		});
@@ -169,7 +167,6 @@ describe('nitro:app', () => {
 				'src/views/404.mustache',
 				'src/views/_partials/head.mustache',
 				'src/views/_partials/foot.mustache',
-				'src/patterns/molecules/example/example.mustache',
 				'project/blueprints/pattern/pattern.mustache',
 			]);
 		});
@@ -199,16 +196,6 @@ describe('nitro:app', () => {
 
 		it('pattern blueprint contains template file', () => {
 			assert.file('project/blueprints/pattern/template/pattern.hbs');
-		});
-
-		it('example pattern contains template files', () => {
-			assert.file([
-				'src/patterns/molecules/example/template/example.hbs',
-				'src/patterns/molecules/example/template/example.links.hbs',
-				'src/patterns/molecules/example/template/partial/example.link.hbs',
-				'src/patterns/molecules/example/_data/example-template.json',
-				'src/patterns/molecules/example/js/decorator/example-template.js',
-			]);
 		});
 
 		it('config loads template files', () => {

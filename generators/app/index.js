@@ -460,7 +460,7 @@ module.exports = class extends Generator {
 			npm: false,
 			bower: false,
 			yarn: true,
-			skipInstall: this.options['skip-install'],
+			skipInstall: this.options.skipInstall,
 		});
 
 		if (this.options.js === 'TypeScript') {
@@ -472,13 +472,31 @@ module.exports = class extends Generator {
 
 	end() {
 		const filesToCopy = [
-			{ do: this.options.exporter, src: 'node_modules/nitro-exporter/README.md', dest: 'project/docs/nitro-exporter.md' },
-			{ do: this.options.release, src: 'node_modules/nitro-release/README.md', dest: 'project/docs/nitro-release.md' },
+			{
+				do: this.options.exporter,
+				src: 'node_modules/nitro-exporter/README.md',
+				srcWeb: 'https://raw.githubusercontent.com/namics/nitro-exporter/master/README.md',
+				dest: 'project/docs/nitro-exporter.md',
+			},
+			{
+				do: this.options.release,
+				src: 'node_modules/nitro-release/README.md',
+				srcWeb: 'https://raw.githubusercontent.com/namics/nitro-release/master/README.md',
+				dest: 'project/docs/nitro-release.md',
+			},
 		];
 		try {
 			filesToCopy.forEach((file) => {
 				if (file.do) {
-					this.fs.copy(this.destinationPath(file.src), this.destinationPath(file.dest));
+					if (!this.options.skipInstall) {
+						// get readme from current package version
+						this.fs.copy(this.destinationPath(file.src), this.destinationPath(file.dest));
+					} else {
+						// get readme from github master branch
+						request
+							.get(file.srcWeb)
+							.pipe(fs.createWriteStream(this.destinationPath(file.dest)));
+					}
 				}
 			});
 		} catch (e) {

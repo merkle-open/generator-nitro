@@ -8,16 +8,16 @@ Before creating an issue please make sure you are using:
 
 ## Type of issue
 
-<!-- Check one of the following options with "x" -->
+<!-- Choose the right options and remove others -->
 
-* [ ] Bug report
-* [ ] Feature request
-* [ ] Documentation issue or request
+* Bug report
+* Feature request
+* Documentation issue or request
 
 The issue refers to:
 
-* [ ] The generator
-* [ ] A generated nitro project
+* The generator
+* A generated nitro project
 
 <!-- Please delete the rest of the template if it's not a bug report -->
 

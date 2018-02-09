@@ -82,6 +82,14 @@ module.exports = class extends Generator {
 			type: Boolean,
 			defaults: this._passedInOptions.release || false,
 		});
+
+		this.option('skipQuestions', {
+			desc: 'use default for not specified options and skip questions',
+			type: Boolean,
+			defaults: false,
+		});
+
+		this._skipQuestions = this.options.skipQuestions;
 	}
 
 	initializing() {
@@ -134,7 +142,7 @@ module.exports = class extends Generator {
 					name: 'name',
 					message: 'What\'s the name of your app?',
 					default: this.options.name,
-					when: () => !this._passedInOptions.name,
+					when: () => !this._skipQuestions && !this._passedInOptions.name,
 				},
 				{
 					name: 'pre',
@@ -143,7 +151,7 @@ module.exports = class extends Generator {
 					choices: this._preOptions,
 					default: this.options.pre,
 					store: true,
-					when: () => !this._passedInOptions.pre,
+					when: () => !this._skipQuestions && !this._passedInOptions.pre,
 				},
 				/* {
 					name: 'js',
@@ -152,7 +160,7 @@ module.exports = class extends Generator {
 					choices: this._jsOptions,
 					default: this.options.js,
 					store: true,
-					when: () => !this._passedInOptions.js,
+					when: () => !this._skipQuestions && !this._passedInOptions.js,
 				},*/
 				{
 					name: 'viewExt',
@@ -161,7 +169,7 @@ module.exports = class extends Generator {
 					choices: this._viewExtOptions,
 					default: this.options.viewExt,
 					store: true,
-					when: () => !this._passedInOptions.viewExt,
+					when: () => !this._skipQuestions && !this._passedInOptions.viewExt,
 				},
 				{
 					name: 'clientTpl',
@@ -169,7 +177,7 @@ module.exports = class extends Generator {
 					message: 'Would you like to include client side templates?',
 					default: this.options.clientTpl,
 					store: true,
-					when: () => typeof this._passedInOptions.clientTpl !== 'boolean',
+					when: () => !this._skipQuestions && typeof this._passedInOptions.clientTpl !== 'boolean',
 				},
 				{
 					name: 'exampleCode',
@@ -177,7 +185,7 @@ module.exports = class extends Generator {
 					message: 'Would you like to include the example code?',
 					default: this.options.exampleCode,
 					store: true,
-					when: () => typeof this._passedInOptions.exampleCode !== 'boolean',
+					when: () => !this._skipQuestions && typeof this._passedInOptions.exampleCode !== 'boolean',
 				},
 				{
 					name: 'exporter',
@@ -185,7 +193,7 @@ module.exports = class extends Generator {
 					message: 'Would you like to include static exporting functionalities?',
 					default: this.options.exporter,
 					store: true,
-					when: () => typeof this._passedInOptions.exporter !== 'boolean',
+					when: () => !this._skipQuestions && typeof this._passedInOptions.exporter !== 'boolean',
 				},
 				{
 					name: 'release',
@@ -193,7 +201,7 @@ module.exports = class extends Generator {
 					message: 'Would you like to include release management?',
 					default: this.options.release,
 					store: true,
-					when: () => typeof this._passedInOptions.release !== 'boolean',
+					when: () => !this._skipQuestions && typeof this._passedInOptions.release !== 'boolean',
 				},
 			]).then((answers) => {
 				this.options.name = answers.name || this.options.name;

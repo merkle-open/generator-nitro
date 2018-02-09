@@ -12,44 +12,6 @@ describe('nitro:app', () => {
 
 	jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
 
-	describe('when using default options', () => {
-		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test')) // Clear the directory and set it as the CWD
-				.withOptions({ 'skip-install': true }) // Mock options passed in
-				.on('end', done);
-		});
-
-		it('creates blueprint files', () => {
-			assert.file([
-				'app',
-				'config',
-				'gulp',
-				'project',
-				'public',
-				'.node-version',
-				'package.json',
-				'README.md',
-				'server.js',
-				'src/assets',
-				'src/patterns',
-				'src/views',
-			]);
-		});
-
-		it('includes namics frontend-defaults', () => {
-			assert.file([
-				'.editorconfig',
-				'.eslintignore',
-				'.eslintrc.js',
-				'.gitattributes',
-				'.gitignore',
-				'.stylelintignore',
-				'.stylelintrc',
-			]);
-		});
-	});
-
 	describe('when using less', () => {
 		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))

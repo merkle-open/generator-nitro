@@ -55,6 +55,10 @@ It's possible to pass in these options through the command line:
 
     yo nitro --name=myproject --pre=less --viewExt=hbs --clientTpl
 
+You may bypass the questions with `--skip-questions`. This will use the defaults for not specified options
+
+   yo nitro --name=myproject --clientTpl --exporter --skip-questions
+
 ### Update a project
 
 In your project, first update the generator to the newest version:

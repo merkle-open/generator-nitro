@@ -41,19 +41,23 @@ Run:
 
 You will be guided through some configuration options:
 
-* Desired Name (default: current directory name)
-* Desired CSS preprocessor (`less` or `scss`; default: `less`)
-* Desired view file extension (`html`, `hbs` or `mustache`; default: `html`)
-* Using client side templates (default: false)
-* Including example code (default: true)
-* Installing [`nitro-exporter`](https://www.npmjs.com/package/nitro-exporter) (default: false)
-* Installing [`nitro-release`](https://www.npmjs.com/package/nitro-release) (default: false)
+* Desired Name `--name=` (default: current directory name)
+* Desired CSS preprocessor `--pre=` (`less` or `scss`; default: `scss`)
+* Desired view file extension `--viewExt=` (`html`, `hbs` or `mustache`; default: `hbs`)
+* Using client side templates `--clientTpl` (default: false)
+* Including example code `--exampleCode` (default: false)
+* Installing [`nitro-exporter`](https://www.npmjs.com/package/nitro-exporter) `--exporter` (default: false)
+* Installing [`nitro-release`](https://www.npmjs.com/package/nitro-release) `--release` (default: false)
 
 The choosen options will be stored for the next project generation.
 
 It's possible to pass in these options through the command line:
 
     yo nitro --name=myproject --pre=less --viewExt=hbs --clientTpl
+
+You may bypass the questions with `--skip-questions`. This will use the defaults for not specified options
+
+   yo nitro --name=myproject --clientTpl --exporter --skip-questions
 
 ### Update a project
 

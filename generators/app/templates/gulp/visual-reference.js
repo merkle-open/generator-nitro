@@ -15,6 +15,7 @@ module.exports = (gulp, plugins) => {
 				const server = plugins.liveServer('server', {
 					env: {
 						PORT: port,
+						NODE_ENV: 'production',
 					},
 				}, false);
 

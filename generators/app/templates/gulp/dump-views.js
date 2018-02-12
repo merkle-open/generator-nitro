@@ -36,6 +36,7 @@ function startTmpServer(port, gulp, plugins, cb) {
 	server = plugins.liveServer('server', {
 		env: {
 			PORT: port,
+			NODE_ENV: 'production',
 		},
 	}, false);
 

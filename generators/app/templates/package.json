@@ -55,7 +55,7 @@
     "autoprefixer": "7.2.6",
     "babel-core": "6.26.0",
     "babel-preset-env": "1.6.1",
-    "backstopjs": "3.0.39",
+    "backstopjs": "3.1.17",
     "body-parser": "1.18.2",
     "browser-sync": "2.23.6",
     "chalk": "2.3.1",
@@ -85,7 +85,7 @@
     "gulp-htmllint": "0.0.15",
     "gulp-if": "2.0.2",
     "gulp-imagemin": "4.1.0",<% if (options.pre === 'less') { %>
-    "gulp-less": "3.4.0",<% } %>
+    "gulp-less": "3.5.0",<% } %>
     "gulp-live-server": "0.0.31",
     "gulp-load-plugins": "1.5.0",
     "gulp-newer": "1.4.0",
@@ -108,7 +108,7 @@
     "gulp-wrap": "0.13.0",<% } %>
     "hbs": "4.0.1",
     "hbs-utils": "0.0.4",
-    "htmllint": "0.7.0",
+    "htmllint": "0.7.2",
     "i18next": "10.3.0",
     "i18next-express-middleware": "1.0.10",
     "i18next-node-fs-backend": "1.0.0",
@@ -125,7 +125,7 @@
     "nitro-exporter": "1.0.0",<% } %><% if (options.release) { %>
     "nitro-release": "0.1.1",<% } %>
     "npm-run-all": "4.1.2",
-    "nsp": "3.1.0",
+    "nsp": "3.2.1",
     "stylelint": "8.4.0",
     "text-table": "0.2.0",
     "yargs": "11.0.0",

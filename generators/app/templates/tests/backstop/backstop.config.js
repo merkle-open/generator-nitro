@@ -60,6 +60,9 @@ module.exports = (options) => {
 		engineFlags: [],
 		engine: 'chrome',
 		report: ['browser'],
+		resembleOutputOptions: {
+			ignoreAntialiasing: true,
+		},
 		asyncCaptureLimit: 5,
 		debug: false,
 		debugWindow: false,

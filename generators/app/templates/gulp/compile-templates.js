@@ -49,7 +49,7 @@ module.exports = (gulp, plugins) => {
 				imports: {
 					processPartialName: (fileName) => {
 						// Escape the output with JSON.stringify
-						return JSON.stringify(path.basename(fileName, '.hbs'));
+						return JSON.stringify(path.basename(fileName, '.js'));
 					},
 				},
 			}))

@@ -64,7 +64,7 @@
     "del": "3.0.0",
     "dot-object": "1.7.0",
     "es6-promise": "4.2.4",
-    "eslint": "4.17.0",
+    "eslint": "4.18.0",
     "eslint-plugin-import": "2.8.0",
     "express": "4.16.2",
     "extend": "3.0.1",
@@ -80,7 +80,7 @@
     "gulp-cssnano": "2.1.2",<% if (options.clientTpl) { %>
     "gulp-declare": "0.3.0",<% } %>
     "gulp-eslint": "4.0.2",<% if (options.clientTpl) { %>
-    "gulp-handlebars": "5.0.0",<% } %>
+    "gulp-handlebars": "5.0.2",<% } %>
     "gulp-header": "2.0.1",
     "gulp-htmllint": "0.0.15",
     "gulp-if": "2.0.2",
@@ -109,7 +109,7 @@
     "hbs": "4.0.1",
     "hbs-utils": "0.0.4",
     "htmllint": "0.7.2",
-    "i18next": "10.3.0",
+    "i18next": "10.4.1",
     "i18next-express-middleware": "1.0.10",
     "i18next-node-fs-backend": "1.0.0",
     "i18next-sprintf-postprocessor": "0.2.2",

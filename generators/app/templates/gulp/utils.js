@@ -7,10 +7,6 @@ const plugins = require('gulp-load-plugins')();
 let browserSync;
 let assets = {};
 
-function getBrowserCompatibility() {
-	return config.get('code.compatibility.browserslist');
-}
-
 function getBrowserSyncInstance() {
 	const name = `Nitro${config.get('server.port')}`;
 	if (config.get('nitro.mode.livereload') && !browserSync) {
@@ -96,7 +92,6 @@ function splitJsAssets(asset) {
 }
 <% } %>
 module.exports = {
-	getBrowserCompatibility,
 	getBrowserSyncInstance,
 	getSourcePatterns,
 	getTask,

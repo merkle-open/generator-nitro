@@ -31,9 +31,6 @@ const defaultConfig = {
 		// patterns: {},
 	},
 	code: {
-		compatibility: {
-			browserslist: ['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1'],
-		},
 		validation: {
 			eslint: {
 				live: true,
@@ -55,6 +52,7 @@ const defaultConfig = {
 		production: process.env.NODE_ENV && process.env.NODE_ENV.replace((/\s/g), '') === 'production' ? true : false,
 	},
 };
+const warnings = [];
 
 // get legacy config and convert properties to camelCase
 function convertToCamelCase(key) {
@@ -71,10 +69,7 @@ function getLegacyConfig() {
 	};
 
 	if (fs.existsSync(legacyConfigFile)) {
-		console.log('-------------------------------------------------------');
-		console.log('Attention: you still use the outdated config system 1.x with `config.json`.');
-		console.log('You should migrate to the new config system 2.x');
-		console.log('-------------------------------------------------------');
+		warnings.push('You still use the outdated config system 1.x with `config.json`. Migrate to the new config system 2.x');
 		config = JSON.parse(fs.readFileSync(legacyConfigFile, readOptions));
 		if (config.nitro) {
 			// view_file_extension -> viewFileExtension, ...
@@ -104,8 +99,20 @@ function getLegacyConfig() {
 
 	return config;
 }
+function checkConfig(config) {
+	if (config.code.compatibility) {
+		warnings.push('Browserslist configuration has to be placed in `package.json`');
+	}
+	if (warnings.length) {
+		console.warn('-------------------------------------------------------');
+		console.warn('Attention:');
+		warnings.forEach((string) => console.warn(`- ${string}`));
+		console.warn('-------------------------------------------------------');
+	}
+}
 
 // merge with default config
 const config = extend(true, {}, defaultConfig, getLegacyConfig());
+checkConfig(config);
 
 module.exports = config;

@@ -68,15 +68,6 @@ You can configure as many different assets as you wish.
 
 ## Code
 
-### Compatibility
-
-#### `code.compatibility.browserslist`
-
-* Type: Array
-* Default: `['> 1%', 'last 2 versions', 'ie 9', 'android 4', 'Firefox ESR', 'Opera 12.1']`
-
-Array of [browserslist](https://github.com/ai/browserslist) strings for tools like autoprefixer.
-
 ### Validation
 
 #### `code.validation.eslint`

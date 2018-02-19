@@ -130,5 +130,12 @@
     "text-table": "0.2.0",
     "yargs": "11.0.0",
     "yo": "2.0.1"
-  }
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "ie 11",
+    "android 4",
+    "Firefox ESR"
+  ]
 }

@@ -99,9 +99,20 @@ set NODE_ENV=production && yarn prod
 
 ## Configuring
 
+### Config Package
+
 Nitro uses the flexible [config package](https://www.npmjs.com/package/config) for project configuration. 
 This lets you to extend the default configuration for different deployment environments or local usage.  
 See details in [config readme](nitro-config.md)
+
+### Global Configuration
+
+Some global configuration is placed in `package.json`
+
+#### Target Browsers
+
+For defining target browsers, [browserslist](https://github.com/ai/browserslist) is used.    
+This config is shareable between different frontend tools. If not defined, the default browsers from browserslist would be taken.
 
 ## Daily Work - Creating Patterns & Pages
 

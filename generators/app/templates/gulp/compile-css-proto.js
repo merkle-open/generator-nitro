@@ -16,10 +16,8 @@ const cssDependencies = [<% if (options.exampleCode) { %>
 <% } %>];
 const assetName = 'prototype.css';
 const browserSync = utils.getBrowserSyncInstance();
-const browserCompatibility = utils.getBrowserCompatibility();
 const processors = [
 	autoprefixer({
-		browsers: browserCompatibility,
 		cascade: true,
 	}),
 ];

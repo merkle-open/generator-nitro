@@ -21,7 +21,6 @@ const banner = ['/*! ',
 module.exports = (gulp, plugins) => {
 	return () => {
 		const assets = utils.getSourcePatterns('css');
-		const browserCompatibility = utils.getBrowserCompatibility();
 		const browserSync = utils.getBrowserSyncInstance();
 		const promises = [];
 
@@ -29,7 +28,6 @@ module.exports = (gulp, plugins) => {
 			promises.push(new Promise((resolve) => {
 				const processors = [
 					autoprefixer({
-						browsers: browserCompatibility,
 						cascade: true,
 					}),
 				];

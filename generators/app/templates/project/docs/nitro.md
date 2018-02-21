@@ -57,7 +57,7 @@ yarn install
 Use
 
 ```
-yarn dev
+yarn start
 ```
 
 ... to start in development mode
@@ -80,7 +80,7 @@ The Nitro app will run on port `8080` by default, the proxy on `8081` (only run 
 If you want the app to run on another port put them before the start task like this:
 
 ```
-PORT=8000 PROXY=8001 yarn dev
+PORT=8000 PROXY=8001 yarn start
 ```
 
 The port to be used in production can be set the same way:
@@ -92,7 +92,7 @@ PORT=3000 node server
 This works a bit different on **Windows**. Use the following commands in prompt:
 
 ```
-set PORT=8000 && set PROXY=8001 && yarn dev
+set PORT=8000 && set PROXY=8001 && yarn start
 set PORT=3000 && node server
 set NODE_ENV=production && yarn prod
 ```

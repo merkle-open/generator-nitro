@@ -32,7 +32,7 @@
     "export": "gulp export",<% } %>
     "dev": "gulp develop",
     "prod": "gulp production",
-    "start": "node server"
+    "start": "yarn dev"
   },
   "keywords": [
     "frontend",

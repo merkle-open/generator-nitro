@@ -33,7 +33,7 @@
   ],
   "dependencies": {
     "adm-zip": "0.4.7",
-    "chalk": "2.3.1",
+    "chalk": "2.3.2",
     "config": "1.30.0",
     "git-config": "0.0.7",
     "glob": "7.1.2",
@@ -45,7 +45,7 @@
   "devDependencies": {
     "@namics/eslint-config": "5.0.0",
     "ejs": "2.5.7",
-    "eslint": "4.18.1",
+    "eslint": "4.18.2",
     "eslint-plugin-import": "2.9.0",
     "fs-extra": "5.0.0",
     "jasmine": "3.1.0",

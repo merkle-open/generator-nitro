@@ -34,7 +34,7 @@
   "dependencies": {
     "adm-zip": "0.4.7",
     "chalk": "2.3.1",
-    "config": "1.29.4",
+    "config": "1.30.0",
     "git-config": "0.0.7",
     "glob": "7.1.2",
     "lodash": "4.17.5",
@@ -43,12 +43,12 @@
     "yosay": "2.0.1"
   },
   "devDependencies": {
-    "@namics/eslint-config": "4.2.0",
+    "@namics/eslint-config": "5.0.0",
     "ejs": "2.5.7",
     "eslint": "4.18.1",
     "eslint-plugin-import": "2.9.0",
     "fs-extra": "5.0.0",
-    "jasmine": "3.0.0",
+    "jasmine": "3.1.0",
     "nsp": "3.2.1",
     "yeoman-assert": "3.1.0",
     "yeoman-test": "1.7.0"

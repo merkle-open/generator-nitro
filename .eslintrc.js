@@ -1,3 +1,3 @@
 module.exports = {
-	'extends': '@namics/eslint-config/configurations/es6-node.js'
+	'extends': '@namics/eslint-config/configurations/es7-node.js'
 };

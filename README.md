@@ -65,6 +65,8 @@ In your project, first update the generator to the newest version:
 
     yarn add generator-nitro
 
+and delete the `yarn.lock`
+
 If you then run `yo nitro` you will be asked to update the project. 
 It is best to overwrite all local files and check the differences after.
 

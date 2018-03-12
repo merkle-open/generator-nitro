@@ -51,7 +51,7 @@
   "devDependencies": {
     "@namics/eslint-config": "5.0.0",
     "@namics/stylelint-bem": "4.0.0",
-    "ajv": "6.2.0",
+    "ajv": "6.2.1",
     "autoprefixer": "8.1.0",
     "babel-core": "6.26.0",
     "babel-preset-env": "1.6.1",
@@ -81,7 +81,7 @@
     "gulp-declare": "0.3.0",<% } %>
     "gulp-eslint": "4.0.2",<% if (options.clientTpl) { %>
     "gulp-handlebars": "5.0.2",<% } %>
-    "gulp-header": "2.0.1",
+    "gulp-header": "2.0.5",
     "gulp-htmllint": "0.0.15",
     "gulp-if": "2.0.2",
     "gulp-imagemin": "4.1.0",<% if (options.pre === 'less') { %>
@@ -110,7 +110,7 @@
     "hbs-utils": "0.0.4",
     "htmllint": "0.7.2",
     "i18next": "10.5.0",
-    "i18next-express-middleware": "1.0.11",
+    "i18next-express-middleware": "1.1.1",
     "i18next-node-fs-backend": "1.0.0",
     "i18next-sprintf-postprocessor": "0.2.2",
     "imagemin-pngquant": "5.0.1",

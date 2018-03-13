@@ -47,7 +47,6 @@ You will be guided through some configuration options:
 * Using client side templates `--clientTpl` (default: false)
 * Including example code `--exampleCode` (default: false)
 * Installing [`nitro-exporter`](https://www.npmjs.com/package/nitro-exporter) `--exporter` (default: false)
-* Installing [`nitro-release`](https://www.npmjs.com/package/nitro-release) `--release` (default: false)
 
 The choosen options will be stored for the next project generation.
 

@@ -195,14 +195,14 @@ module.exports = class extends Generator {
 					store: true,
 					when: () => !this._skipQuestions && typeof this._passedInOptions.exporter !== 'boolean',
 				},
-				{
-					name: 'release',
-					type: 'confirm',
-					message: 'Would you like to include release management?',
-					default: this.options.release,
-					store: true,
-					when: () => !this._skipQuestions && typeof this._passedInOptions.release !== 'boolean',
-				},
+				// {
+				// 	name: 'release',
+				// 	type: 'confirm',
+				// 	message: 'Would you like to include release management?',
+				// 	default: this.options.release,
+				// 	store: true,
+				// 	when: () => !this._skipQuestions && typeof this._passedInOptions.release !== 'boolean',
+				// },
 			]).then((answers) => {
 				this.options.name = answers.name || this.options.name;
 				this.options.pre = answers.pre || this.options.pre;
@@ -211,7 +211,6 @@ module.exports = class extends Generator {
 				this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
 				this.options.exampleCode = answers.exampleCode !== undefined ? answers.exampleCode : this.options.exampleCode;
 				this.options.exporter = answers.exporter !== undefined ? answers.exporter : this.options.exporter;
-				this.options.release = answers.release !== undefined ? answers.release : this.options.release;
 
 				this.config.set('name', this.options.name);
 				this.config.set('preprocessor', this.options.pre);
@@ -220,7 +219,6 @@ module.exports = class extends Generator {
 				this.config.set('clientTemplates', this.options.clientTpl);
 				this.config.set('exampleCode', this.options.exampleCode);
 				this.config.set('exporter', this.options.exporter);
-				this.config.set('release', this.options.release);
 
 				this.config.save();
 			});

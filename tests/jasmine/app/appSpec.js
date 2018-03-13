@@ -379,48 +379,4 @@ describe('nitro:app', () => {
 			]);
 		});
 	});
-
-	describe('when including release package', () => {
-		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
-				.withOptions({ 'skip-install': true })
-				.withPrompts({ release: true })
-				.on('end', done);
-		});
-
-		it('package.json contains exporter dependency', () => {
-			assert.fileContent([
-				['package.json', /nitro-release/],
-			]);
-		});
-
-		it('config does not contain default exporter properties', () => {
-			assert.fileContent([
-				['config/default.js', /release:/],
-			]);
-		});
-	});
-
-	describe('when not including release package', () => {
-		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
-				.withOptions({ 'skip-install': true })
-				.withPrompts({ release: false })
-				.on('end', done);
-		});
-
-		it('package.json does not contain exporter dependency', () => {
-			assert.noFileContent([
-				['package.json', /nitro-release/],
-			]);
-		});
-
-		it('config does not contain default exporter properties', () => {
-			assert.noFileContent([
-				['config/default.js', /release:/],
-			]);
-		});
-	});
 });

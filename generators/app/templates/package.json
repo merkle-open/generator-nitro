@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@namics/eslint-config": "5.0.0",
-    "@namics/stylelint-bem": "4.0.0",
+    "@namics/stylelint-bem": "5.0.0",
     "ajv": "6.2.1",
     "autoprefixer": "8.1.0",
     "babel-core": "6.26.0",
@@ -126,7 +126,7 @@
     "nitro-release": "0.1.1",<% } %>
     "npm-run-all": "4.1.2",
     "nsp": "3.2.1",
-    "stylelint": "9.1.1",
+    "stylelint": "9.1.2",
     "text-table": "0.2.0",
     "yargs": "11.0.0",
     "yo": "2.0.1"

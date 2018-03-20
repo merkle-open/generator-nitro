@@ -18,7 +18,7 @@
     "lint:data": "node app/scripts/validate-pattern-data.js",
     "lint:html": "gulp lint-html",
     "lint:js": "eslint ./src/patterns ./src/assets/js",
-    "lint:license": "license-checker --production --summary --exclude \"Apache-2.0, BSD, ISC, LGPL, MIT, MPL\" --failOn \"AGPL, EPL, GPL\"",
+    "lint:license": "license-checker --production --summary --exclude \"Apache-2.0, BSD, ISC, LGPL, MIT, MPL\" --failOn \"AGPL; EPL; GPL\"",
     "postinstall": "<% if (options.pre === 'scss') { %>npm rebuild node-sass && <% } %>yarn githooks",
     "prepublish": "nsp check --output summary",
     "visual-approve": "gulp visual-approve",
@@ -109,7 +109,7 @@
     "hbs": "4.0.1",
     "hbs-utils": "0.0.4",
     "htmllint": "0.7.2",
-    "i18next": "10.5.1",
+    "i18next": "10.6.0",
     "i18next-express-middleware": "1.1.1",
     "i18next-node-fs-backend": "1.0.0",
     "i18next-sprintf-postprocessor": "0.2.2",
@@ -120,7 +120,7 @@
     "karma-chrome-launcher": "2.2.0",
     "karma-jasmine": "1.1.1",
     "karma-phantomjs-launcher": "1.0.4",
-    "license-checker": "16.0.0",
+    "license-checker": "18.0.0",
     "merge-stream": "1.0.1",<% if (options.exporter) { %>
     "nitro-exporter": "1.0.0",<% } %><% if (options.release) { %>
     "nitro-release": "0.1.1",<% } %>

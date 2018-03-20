@@ -48,7 +48,7 @@ const logMissingSchemaAsWarning = config.has('code.validation.jsonSchema.logMiss
 let errorCouter = 0;
 let patternCouter = 0;
 
-globby.sync(patternGlobs, {onlyFiles: false}).forEach((patternPath) => {
+globby.sync(patternGlobs, {nodir: false}).forEach((patternPath) => {
 	const schemaFilePath = `${patternPath}/schema.json`;
 	patternCouter += 1;
 

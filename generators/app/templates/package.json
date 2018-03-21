@@ -70,7 +70,7 @@
     "extend": "3.0.1",
     "generator-nitro": "<%= version %>",
     "get-port": "3.2.0",
-    "globby": "6.1.0",
+    "globby": "7.1.1",
     "gulp": "3.9.1",
     "gulp-accessibility": "3.1.1",
     "gulp-babel": "7.0.1",

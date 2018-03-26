@@ -51,11 +51,11 @@
   "devDependencies": {
     "@namics/eslint-config": "5.0.0",
     "@namics/stylelint-bem": "5.0.0",
-    "ajv": "6.3.0",
-    "autoprefixer": "8.1.0",
+    "ajv": "6.4.0",
+    "autoprefixer": "8.2.0",
     "babel-core": "6.26.0",
     "babel-preset-env": "1.6.1",
-    "backstopjs": "3.1.19",
+    "backstopjs": "3.1.21",
     "body-parser": "1.18.2",
     "browser-sync": "2.23.6",
     "chalk": "2.3.2",
@@ -64,7 +64,7 @@
     "del": "3.0.0",
     "dot-object": "1.7.0",
     "es6-promise": "4.2.4",
-    "eslint": "4.19.0",
+    "eslint": "4.19.1",
     "eslint-plugin-import": "2.9.0",
     "express": "4.16.3",
     "extend": "3.0.1",
@@ -94,7 +94,7 @@
     "gulp-remember": "1.0.1",
     "gulp-remote-src": "0.4.3",
     "gulp-rename": "1.2.2",<% if (options.pre === 'scss') { %>
-    "gulp-sass": "3.1.0",<% } %>
+    "gulp-sass": "3.2.1",<% } %>
     "gulp-sequence": "1.0.0",
     "gulp-size": "3.0.0",
     "gulp-sourcemaps": "2.6.4",

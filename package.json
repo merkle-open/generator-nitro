@@ -40,17 +40,17 @@
     "lodash": "4.17.5",
     "request": "2.85.0",
     "yeoman-generator": "2.0.3",
-    "yosay": "2.0.1"
+    "yosay": "2.0.2"
   },
   "devDependencies": {
     "@namics/eslint-config": "5.0.0",
-    "ejs": "2.5.7",
-    "eslint": "4.19.0",
+    "ejs": "2.5.8",
+    "eslint": "4.19.1",
     "eslint-plugin-import": "2.9.0",
     "fs-extra": "5.0.0",
     "jasmine": "3.1.0",
     "nsp": "3.2.1",
-    "yeoman-assert": "3.1.0",
+    "yeoman-assert": "3.1.1",
     "yeoman-test": "1.7.0"
   }
 }

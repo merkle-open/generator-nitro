@@ -33,7 +33,7 @@ const options = {
 	debug: false,
 };
 const middlewareOptions = {
-	ignoreRoutes: ['api/', 'assets/', 'dist/'],
+	ignoreRoutes: ['api/', 'assets/', 'dist/', 'proto/'],
 };
 
 i18next

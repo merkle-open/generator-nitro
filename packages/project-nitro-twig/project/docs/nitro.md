@@ -225,7 +225,7 @@ Different layouts are placed in `views/_layouts/`. Link them to your view [in yo
 Pages are meant to be compositions of your patterns. Use the pattern's name as the first parameter. Be aware, the
 pattern name is case-sensitive and should be unique.
 
-Nitro uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
+Nitro uses [twig](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
 
 Render the example pattern (file: `example.html`, data-file: `example.json`):
 

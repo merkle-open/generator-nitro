@@ -123,6 +123,7 @@
     "stylelint": "9.2.0",
     "text-table": "0.2.0",
     "yargs": "11.0.0",
+    "twig": "1.10.5",
     "yo": "2.0.1"
   },
   "browserslist": [

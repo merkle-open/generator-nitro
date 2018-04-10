@@ -1,0 +1,9 @@
+<script src="/assets/js/app{{#if _nitro.minified}}.min{{/if}}.js"></script>
+<script>
+	$(document).ready(function () {
+		var application = new T.Application();
+		application.registerModules();
+		application.start();
+	});
+</script>
+<script src="/proto/js/prototype.js"></script>

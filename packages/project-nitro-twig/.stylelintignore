@@ -1,0 +1,7 @@
+assets/css/**/reset.css
+assets/css/**/variables.*
+assets/css/**/mixins.*
+node_modules/
+src/assets/css/**/reset.css
+src/assets/css/**/variables.*
+src/assets/css/**/mixins.*

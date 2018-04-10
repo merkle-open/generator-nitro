@@ -1,0 +1,9 @@
+// -----------------------------------------
+// Helper
+// -----------------------------------------
+@mixin ellipsis() {
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

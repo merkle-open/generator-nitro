@@ -157,14 +157,6 @@ Default: true
 
 Browser livereload on changes (develop mode only)
 
-#### `nitro.mode.minified`
-
-Type: Boolean  
-Default: false
-
-Indicator to use minified assests.  
-This property is passed as `_nitro.minified` to handlebars views.
-
 #### `nitro.mode.offline`
 
 Type: Boolean  

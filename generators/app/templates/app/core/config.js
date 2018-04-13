@@ -18,7 +18,6 @@ const defaultConfig = {
 		defaultLayout: 'default',
 		mode: {
 			livereload: true,
-			minified: false,
 			offline: false,
 		},
 		watch: {

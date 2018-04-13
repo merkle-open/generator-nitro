@@ -31,7 +31,6 @@ const defaultConfig = {
 		patterns: require('./default/patterns'),
 		mode: {
 			livereload: true,
-			minified: false,
 			offline: false,
 		},
 		watch: {

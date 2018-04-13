@@ -5,37 +5,11 @@
 'use strict';
 
 const Twig = require('twig');
-const componentTagFactory = require('./tags/component');
+const patternTagFactory = require('./helpers/pattern');
 
+// expose pattern function
 Twig.extend(function(Twig) {
-	Twig.exports.extendTag(componentTagFactory(Twig));
-});
-
-/**
- * Returns placeholder image url, appended with params
- */
-Twig.extendFunction('placeholderImageUrl', function(src, width, height) {
-	const params = {
-		w: width,
-		h: height,
-		txt: width + '×' + height,
-		fit: 'crop',
-		crop: 'entropy',
-		txtalign: 'center%2Cmiddle',
-		txtsize: '30.0',
-		txtclr: 'FFFFFF',
-		txtshad: '10',
-	};
-	const separator = '&';
-
-	// Convert params into query parts
-	let queryParts = [];
-	for (let key of Object.keys(params)) {
-		let value = params[key];
-		queryParts.push(`${key}=${value}`);
-	}
-
-	return src + '?' + queryParts.join(separator);
+	Twig.exports.extendTag(patternTagFactory(Twig));
 });
 
 Twig.renderWithLayout = function(path, options, fn) {

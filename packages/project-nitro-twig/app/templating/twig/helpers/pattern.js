@@ -6,8 +6,8 @@ const twigUtils = require('../utils');
 
 module.exports = function (Twig) {
 	return {
-		type: 'component',
-		regex: /^component\s+(\S*)\s*([\S\s]+?)?\s*(only)?$/,
+		type: 'pattern',
+		regex: /^pattern\s+(\S*)\s*([\S\s]+?)?\s*(only)?$/,
 		next: [],
 		open: true,
 		compile: function(token) {

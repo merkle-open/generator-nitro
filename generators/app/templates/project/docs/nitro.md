@@ -70,14 +70,14 @@ node server
 
 ... to start the server only
 
-For production mode add `NODE_ENV=production` environment variable
+For production (prototype server) mode use:
 
 ```
-NODE_ENV=production && yarn prod
+yarn prod
 ```
 
-The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `dev` task).  
-If you want the app to run on another port put them before the start task like this:
+The Nitro app will run on port `8080` by default, the proxy on `8081` (only runs with `dev` task).  
+If you want the app to run on another port use [config](nitro-config.md) or add env vars to the tasks:
 
 ```
 PORT=8000 PROXY=8001 yarn start
@@ -86,7 +86,7 @@ PORT=8000 PROXY=8001 yarn start
 The port to be used in production can be set the same way:
 
 ```
-PORT=3000 node server
+PORT=3000 yarn prod
 ```
 
 This works a bit different on **Windows**. Use the following commands in prompt:
@@ -94,7 +94,7 @@ This works a bit different on **Windows**. Use the following commands in prompt:
 ```
 set PORT=8000 && set PROXY=8001 && yarn start
 set PORT=3000 && node server
-set NODE_ENV=production && yarn prod
+set PORT=3001 && yarn prod
 ```
 
 ## Configuring

@@ -9,7 +9,7 @@ const defaultConfig = {
 	// assets: {},
 	nitro: {
 		basePath,
-		viewFileExtension: 'html',
+		viewFileExtension: 'twig',
 		viewDirectory: 'src/views',
 		viewPartialsDirectory: 'src/views/_partials',
 		viewDataDirectory: 'src/views/_data',

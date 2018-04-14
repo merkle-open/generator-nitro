@@ -14,7 +14,7 @@ const cssDependencies = [<% if (options.exampleCode) { %>
 	'src/assets/css/example/variables.<%= options.pre %>',
 	'src/assets/css/example/mixins.<%= options.pre %>',
 <% } %>];
-const assetName = 'prototype.css';
+const assetName = 'proto.css';
 const browserSync = utils.getBrowserSyncInstance();
 const processors = [
 	autoprefixer({

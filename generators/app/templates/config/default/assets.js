@@ -10,7 +10,7 @@ const getRelativeDependencyPath = (dependency) => path.relative(getCwd(), requir
 
 const config = {
 	assets: {
-		'app.css': [<% if (options.exampleCode) { %>
+		'ui.css': [<% if (options.exampleCode) { %>
 			'+src/assets/css/example/variables.<%= options.pre %>',
 			'+src/assets/css/example/mixins.<%= options.pre %>',
 			'src/assets/css/example/reset.css',<% } %>
@@ -18,7 +18,7 @@ const config = {
 			'src/patterns/**/css/*.<%= options.pre %>',
 			'src/patterns/**/css/modifier/*.<%= options.pre %>',
 		],
-		'app.js': [
+		'ui.js': [
 			getRelativeDependencyPath('babel-polyfill/dist/polyfill.min.js'),
 			getRelativeDependencyPath('jquery/dist/jquery.min.js'),
 			getRelativeDependencyPath('terrific/dist/terrific.min.js'),<% if (options.clientTpl) { %>

@@ -7,7 +7,7 @@ const jsFiles = [
 	'src/proto/js/*.js',
 	'src/patterns/**/proto/**/*.js',
 ];
-const assetName = 'prototype.js';
+const assetName = 'proto.js';
 
 module.exports = (gulp, plugins) => {
 	return () => {

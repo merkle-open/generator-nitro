@@ -462,9 +462,9 @@ To stay consistent you should favour the use of relative paths with a leading sl
 Link to resources relatively to the `project`-folder **with** a leading slash.
 
 ```html
-<link rel="stylesheet" href="/assets/app.css" type="text/css" />
+<link rel="stylesheet" href="/assets/ui.css" type="text/css" />
 <link rel="shortcut icon" href="/assets/img/icon/favicon.ico" type="image/x-icon" />
-<script src="/assets/app.js"></script>
+<script src="/assets/ui.js"></script>
 background: url(/assets/img/bg/texture.png) scroll 0 0 no-repeat;
 <a href="/content.html">Contentpage</a>
 ```

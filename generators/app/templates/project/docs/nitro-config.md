@@ -14,14 +14,14 @@ You can configure the include order of your assets by defining patterns in `conf
 ```js
 const config = {
    assets: {
-        'app.css': [
+        'ui.css': [
             '!src/assets/css/somefile.*',
             'src/assets/css/cssreset.css',
             'src/assets/css/*.*',
             'src/patterns/**/css/*.*',
             'src/patterns/**/css/modifier/*.*',
         ],
-        'app.js': [
+        'ui.js': [
             '!src/assets/js/somefile.js',
             'src/assets/vendor/jquery/dist/jquery.min.js',
             'src/assets/vendor/terrific/dist/terrific.min.js',

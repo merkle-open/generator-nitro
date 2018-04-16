@@ -17,29 +17,43 @@ Before using, you need of course [node](https://nodejs.org/) installed.
 Nitro and the Nitro generator are tested with the current 
 ["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 6.x and 8.x).
 
-Install `yarn`, `yo` and `generator-nitro` globally:
+The generator uses [yarn](https://yarnpkg.com) as package manager because it's much faster than npm.
 
-    npm install -g yarn yo generator-nitro
+### Create or update a project
 
-Keep your global packages up to date:
+#### The simple way
 
-    npm outdated -g --depth=0
+Using [npx](https://www.npmjs.com/package/npx):
 
-Do an update if necessary:
+```
+npx -p yo -p generator-nitro@latest -- yo nitro
+```
 
-    npm update -g
+This creates a new project or updates an existing project in the current directory to the newest nitro version.
 
-## Project Generation
+#### The alternative way
 
-Create a new directory, and `cd` into it:
+Install `yo` and `generator-nitro` globally:
 
-    mkdir my-new-project && cd my-new-project
+```
+yarn global add yo generator-nitro
+```
 
-Run:
+Then run:
 
-    yo nitro
+```
+yo nitro
+```
 
-You will be guided through some configuration options:
+If you want to update an existing project, update the generator to the newest version before you run `yo nitro`:
+
+```
+yarn add generator-nitro
+```
+
+### Project Generation
+
+On creating a new project, you will be guided through some configuration options:
 
 * Desired Name `--name=` (default: current directory name)
 * Desired CSS preprocessor `--pre=` (`less` or `scss`; default: `scss`)
@@ -52,21 +66,23 @@ The choosen options will be stored for the next project generation.
 
 It's possible to pass in these options through the command line:
 
-    yo nitro --name=myproject --pre=less --viewExt=hbs --clientTpl
+```
+npx -p yo -p generator-nitro@latest -- yo nitro --name=myproject --pre=less --viewExt=hbs --clientTpl
+# or
+yo nitro --name=myproject --pre=less --viewExt=hbs --clientTpl
+```
 
 You may bypass the questions with `--skip-questions`. This will use the defaults for not specified options
 
-   yo nitro --name=myproject --clientTpl --exporter --skip-questions
+```
+npx -p yo -p generator-nitro@latest -- yo nitro --name=myproject --clientTpl --exporter --skip-questions
+# or
+yo nitro --name=myproject --clientTpl --exporter --skip-questions
+```
 
-### Update a project
+### Project Update
 
-In your project, first update the generator to the newest version:
-
-    yarn add generator-nitro
-
-and delete the `yarn.lock`
-
-If you then run `yo nitro` you will be asked to update the project. 
+If you start the generator in an existing project, you will be asked to update the project. 
 It is best to overwrite all local files and check the differences after.
 
 Updating to a new major version needs some more work. Please check the [release notes](https://github.com/namics/generator-nitro/releases)
@@ -88,7 +104,9 @@ See how to use the [generated app](generators/app/templates/project/docs/nitro.m
 
 Running `yarn test` will run the `jasmine` unit tests.
 
-    yarn test
+```
+yarn test
+```
 
 ## Contribute
 

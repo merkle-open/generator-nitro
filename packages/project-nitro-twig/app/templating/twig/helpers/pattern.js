@@ -154,18 +154,22 @@ module.exports = function (Twig) {
 				// get basic pattern information
 				const pattern = getPattern(folder, templateFile, dataFile);
 
-				// merge pattern data with locals
+				// merge global view data with patternData
 				if (context._locals) {
 					extend(true, patternData, context._locals);
 				}
 
+				// take passedData if it's defined or reade the default data json file
 				if (passedData) {
 					extend(true, patternData, passedData);
 				} else if (fs.existsSync(pattern.jsonFilePath)) {
 					extend(true, patternData, JSON.parse(fs.readFileSync(pattern.jsonFilePath, 'utf8')));
 				}
 
-				// TODO contextDataRoot._query
+				// merge query data with patternData
+				if (context._query) {
+					extend(true, patternData, context._query);
+				}
 
 				// Add additional attributes e.g. "disabled" of {% pattern "button" additionalData={ disabled: true } %}
 				if (additionalData !== null) {

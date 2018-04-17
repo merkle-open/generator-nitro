@@ -6,16 +6,10 @@
 
 const Twig = require('twig');
 const patternTagFactory = require('./helpers/pattern');
-const partialTagFactory = require('./helpers/partial');
 
 // expose pattern function
 Twig.extend(function(Twig) {
 	Twig.exports.extendTag(patternTagFactory(Twig));
-});
-
-// expose partial function
-Twig.extend(function(Twig) {
-	Twig.exports.extendTag(partialTagFactory(Twig));
 });
 
 Twig.renderWithLayout = function(path, options, fn) {

@@ -39,27 +39,51 @@ function _findDirectoryByComponentName(name) {
 	throw new Error('Pattern Directory Not Found');
 }
 
-function findTemplate(name) {
+function findPartial(name) {
 	try {
 		return path.join(
-			_findDirectoryByComponentName(name),
+			config.get('nitro.viewPartialsDirectory').toString(),
 			'/',
 			name.toLowerCase() + '.' + config.get('nitro.viewFileExtension')
 		);
 	} catch (e) {
-		throw new Error('No Valid Template Found');
+		throw new Error('No Valid Partial Found');
 	}
 }
 
-function getDataJSON(name, variant) {
+function findTemplate(name, variation) {
+	try {
+
+		let assembledName = name.toLowerCase();
+
+		if (variation !== undefined) {
+			assembledName += `-${variation.toLowerCase()}`;
+		}
+
+		const templateFilePath = path.join(
+			_findDirectoryByComponentName(name),
+			'/',
+			assembledName + '.' + config.get('nitro.viewFileExtension')
+		);
+
+		if (!fs.existsSync(templateFilePath)) {
+			throw new Error('Template File ' + assembledName + '.' + config.get('nitro.viewFileExtension') + ' for pattern ' + name  + ' not found');
+		}
+
+		return templateFilePath;
+
+	} catch (e) {
+		console.warn(e.message);
+	}
+}
+
+function getDataJSON(pattern, data) {
 	const DATA_DIR = '_data';
 
-	const fileName = (!!variant)
-		? name + '-' + variant + '.json'
-		: name.toLowerCase().concat('.json');
+	const fileName = data.toLowerCase().concat('.json');
 
 	try {
-		const componentDir = _findDirectoryByComponentName(name);
+		const componentDir = _findDirectoryByComponentName(pattern);
 		const dataFilePath = path.join(
 			componentDir,
 			'/',
@@ -68,18 +92,19 @@ function getDataJSON(name, variant) {
 		);
 
 		if (!fs.existsSync(dataFilePath)) {
-			throw new Error('Not Data File ' + fileName + ' Found');
+			throw new Error('Data File ' + fileName + ' for pattern ' + pattern + ' not found');
 		}
 
 		return JSON.parse(fs.readFileSync(dataFilePath, 'utf-8'));
 
 	} catch (e) {
-		throw e;
+		console.warn(e.message);
 	}
 }
 
 module.exports = {
 	logAndRenderError: logAndRenderError,
 	findTemplate: findTemplate,
+	findPartial: findPartial,
 	getDataJSON: getDataJSON
 };

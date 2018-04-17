@@ -154,7 +154,10 @@ module.exports = function (Twig) {
 				// get basic pattern information
 				const pattern = getPattern(folder, templateFile, dataFile);
 
-				// TODO contextDataRoot._locals
+				// merge pattern data with locals
+				if (context._locals) {
+					extend(true, patternData, context._locals);
+				}
 
 				if (passedData) {
 					extend(true, patternData, passedData);

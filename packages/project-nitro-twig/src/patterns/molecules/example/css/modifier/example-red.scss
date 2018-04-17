@@ -3,6 +3,10 @@
 	animation: red-background-change 10s infinite;
 }
 
+.m-example__text {
+	color: #fff;
+}
+
 /* stylelint-disable color-named  */
 @keyframes red-background-change {
 	0%,100% { background-color: lightslategray; }

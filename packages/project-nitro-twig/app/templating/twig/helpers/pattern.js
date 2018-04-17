@@ -79,59 +79,56 @@ function getPattern(folder, templateFile, dataFile) {
 module.exports = function (Twig) {
 	return {
 		type: 'pattern',
-		regex: /^pattern\s+(\w+='\S*')\s*(\w+='\S*')?\s*(\w+='\S*')?$/,
+		regex: /^pattern\s+(\w+='\S*')\s*(\w+='\S*')?\s*(\w+='\S*')?\s*([\S\s]+?)?$/,
 		next: [],
 		open: true,
 		compile: function(token) {
 
-			// get value for name parameter
-			const nameKeyValue = token.match[1];
-			const nameValue = nameKeyValue.split('=')[1];
+			token.match.map((paramKeyValue, index) => {
+				// our params are available in indexes 1-4
+				if (index > 0 && index < 5) {
+					if (paramKeyValue !== undefined) {
+						const keyValueArray = paramKeyValue.split('=');
+						let key = keyValueArray[0];
+						const value = keyValueArray[1];
 
-			// get value for data parameter
-			const dataKeyValue = token.match[2];
-			let dataValue = '';
+						token[key] = Twig.expression.compile.apply(this, [{
+							type: Twig.expression.type.expression,
+							value: value.trim()
+						}]).stack;
+					}
 
-			if (dataKeyValue !== undefined) {
-				dataValue = dataKeyValue.split('=')[1];
-			}
-
-			// get value for template parameter
-			const templateKeyValue = token.match[3];
-			let templateValue = '';
-
-			if (templateKeyValue !== undefined) {
-				templateValue = templateKeyValue.split('=')[1];
-			}
-
-			// compile and store values in token
-			token.name = Twig.expression.compile.apply(this, [{
-				type: Twig.expression.type.expression,
-				value: nameValue.trim()
-			}]).stack;
-
-			token.data = Twig.expression.compile.apply(this, [{
-				type: Twig.expression.type.expression,
-				value: dataValue.trim()
-			}]).stack;
-
-			token.templateFile = Twig.expression.compile.apply(this, [{
-				type: Twig.expression.type.expression,
-				value: templateValue.trim()
-			}]).stack;
+				}
+			});
 
 			delete token.match;
+
 			return token;
 		},
 		parse: function(token, context, chain) {
 			try {
 				const name = Twig.expression.parse.apply(this, [token.name, context]);
 				const folder = name.replace(/[^A-Za-z0-9-]/g, '');
-				const dataFromPatternHelper = Twig.expression.parse.apply(this, [token.data, context]);
-				let templateFile = Twig.expression.parse.apply(this, [token.templateFile, context]);
 
-				if (templateFile === undefined) {
-					templateFile = folder.toLowerCase();
+				// check if data attribute was provided in pattern helper
+				let dataFromPatternHelper = undefined;
+				if (token.data !== undefined) {
+					// calling Twig.expression.parse on undefined property through's an exception
+					dataFromPatternHelper = Twig.expression.parse.apply(this, [token.data, context]);
+				}
+
+				// check if template was provided in pattern helper
+				let templateFile = folder.toLowerCase();
+				if (token.template !== undefined) {
+					// calling Twig.expression.parse on undefined property through's an exception
+					templateFile = Twig.expression.parse.apply(this, [token.template, context]);
+				}
+
+				// check if additional data was provided in pattern helper
+				let additionalData = null;
+				if (token.additionalData !== undefined) {
+					// calling Twig.expression.parse on undefined property through's an exception
+					additionalData = Twig.expression.parse.apply(this, [token.additionalData, context]);
 				}
 
 				const patternData = {};                                                // collected pattern data
@@ -158,8 +155,6 @@ module.exports = function (Twig) {
 							break;
 					}
 
-					// TODO Add additional argument for partial extending / overriding of data params
-
 					const pattern = getPattern(folder, templateFile, dataFile);
 
 					if (pattern) {
@@ -174,9 +169,15 @@ module.exports = function (Twig) {
 
 							// TODO contextDataRoot._query
 
-							// TODO context.hash
-
-							// TODO check pattern children
+							// Add additional attributes e.g. "disabled" of {% pattern "button" additionalData={ disabled: true } %}
+							if (additionalData !== null) {
+								for (let key in additionalData) {
+									if (additionalData.hasOwnProperty(key)) {
+										// extend or override patternData with additional data
+										patternData[key] = additionalData[key];
+									}
+								}
+							}
 
 							// TODO Validate with JSON schema
 
@@ -186,11 +187,13 @@ module.exports = function (Twig) {
 								base: '',
 								async: false,
 								options: this.options,
-								id: pattern.templateFilePath
+								id: pattern.templateFilePath,
 							});
 						} catch (e) {
 							throw new Error(`Parse Error in Pattern ${name}: ${e.message}`);
 						}
+					} else {
+						throw new Error(`Pattern \`${name}\` with template file \`${templateFile}.${config.get('nitro.viewFileExtension')}\` not found in folder \`${folder}\`.`);
 					}
 				}
 
@@ -199,7 +202,10 @@ module.exports = function (Twig) {
 					output: template.render(patternData)
 				};
 			} catch (e) {
-				return twigUtils.logAndRenderError(e);
+				return {
+					chain: chain,
+					output: twigUtils.logAndRenderError(e)
+				};
 			}
 		}
 	};

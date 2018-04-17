@@ -1,12 +1,16 @@
-const twig = require('twig');
+const Twig = require('twig');
 
 function logAndRenderError(e) {
-	console.info(e.message);
-	return twig({
-		data: '<p class="nitro-msg nitro-msg--error">' + e.message + '</p>',
-	}).render();
+	console.warn(e.message);
+
+	const template = Twig.twig({
+		id: "error",
+		data: '<p class="nitro-msg nitro-msg--error">{{ message }}</p>',
+	});
+
+	return template.render({ message: e.message});
 }
 
 module.exports = {
-	logAndRenderError,
+	logAndRenderError: logAndRenderError,
 };

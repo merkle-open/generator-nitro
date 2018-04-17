@@ -5,4 +5,7 @@
 			<li><button class="m-example__button">{{link.text}}</button></li>
 		{% endfor %}
 	</ul>
+	{% if showText %}
+		<p class="m-example__text">This text get's shown because additional data is provided to the pattern via additionalData parameter.</p>
+	{% endif %}
 </div>

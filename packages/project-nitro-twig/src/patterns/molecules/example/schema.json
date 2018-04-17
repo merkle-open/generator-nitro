@@ -6,7 +6,7 @@
 	"properties": {
 		"modifier": {
 			"description": "A pattern modifier",
-			"enum": ["", "blue"]
+			"enum": ["", "blue", "red"]
 		},
 		"decorator": {
 			"description": "A pattern decorator",

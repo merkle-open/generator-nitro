@@ -13,7 +13,6 @@
 const fs = require('fs');
 const path = require('path');
 const extend = require('extend');
-const globby = require('globby');
 
 const Ajv = require('ajv');
 const ajv = new Ajv({ schemaId: 'auto', allErrors: true });
@@ -175,7 +174,21 @@ module.exports = function (Twig) {
 					}
 				}
 
-				// TODO Validate with JSON schema
+				// Validate with JSON schema
+				if (!config.get('server.production') && config.get('code.validation.jsonSchema.live')) {
+					if (fs.existsSync(pattern.schemaFilePath)) {
+						const schema = JSON.parse(fs.readFileSync(pattern.schemaFilePath, 'utf8'));
+						const valid = ajv.validate(schema, patternData);
+						if (!valid) {
+							return {
+								chain: chain,
+								output: twigUtils.logAndRenderError(
+									new Error(`JSON Schema: ${ajv.errorsText()}`)
+								)
+							};
+						}
+					}
+				}
 
 				// check if the twig template already exists
 				if (Twig.Templates.registry[pattern.templateFilePath]) {

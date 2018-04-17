@@ -110,11 +110,16 @@ module.exports = function (Twig) {
 				const name = Twig.expression.parse.apply(this, [token.name, context]);
 				const folder = name.replace(/[^A-Za-z0-9-]/g, '');
 
+				const patternData = {};                                                // collected pattern data
+				let dataFile = folder.toLowerCase();                                   // default data file
+				let passedData = undefined;                                            // passed data to pattern helper
+				let passedDataParsed = undefined;                                      // passed data after parsing it
+				let template;
+
 				// check if data attribute was provided in pattern helper
-				let dataFromPatternHelper = undefined;
 				if (token.data !== undefined) {
 					// calling Twig.expression.parse on undefined property through's an exception
-					dataFromPatternHelper = Twig.expression.parse.apply(this, [token.data, context]);
+					passedDataParsed = Twig.expression.parse.apply(this, [token.data, context]);
 				}
 
 				// check if template was provided in pattern helper
@@ -131,22 +136,17 @@ module.exports = function (Twig) {
 					additionalData = Twig.expression.parse.apply(this, [token.additionalData, context]);
 				}
 
-				const patternData = {};                                                // collected pattern data
-				let dataFile = folder.toLowerCase();                                   // default data file
-				let passedData = null;                                                 // passed data to pattern helper
-				let template;
-
 				// check if a data parameter was provided in the pattern helper
-				switch (typeof dataFromPatternHelper) {
+				switch (typeof passedDataParsed) {
 					case 'string':
-						dataFile = dataFromPatternHelper.replace(/\.json$/i, '').toLowerCase();
+						dataFile = passedDataParsed.replace(/\.json$/i, '').toLowerCase();
 						break;
 					case 'object':
-						passedData = extend(true, passedData, dataFromPatternHelper);
+						passedData = extend(true, passedData, passedDataParsed);
 						break;
 					case 'number':
 					case 'boolean':
-						passedData = dataFromPatternHelper;
+						passedData = passedDataParsed;
 						break;
 					default:
 						break;

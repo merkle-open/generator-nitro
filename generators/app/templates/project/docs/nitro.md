@@ -394,7 +394,6 @@ Translations are stored in `project/locales/[lang]/translation.json`.
 Express Middleware configuration:
 
 * Fallback language: `default`
-* Language detection from request header
 * Language switch with query parameter: `?lang=de`
 
 ### Translation handlebars helper

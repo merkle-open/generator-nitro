@@ -183,9 +183,9 @@ Type: Object
 * `nitro.watch.throttle.cache` - default: 3000  
   The CSS cache invalidation (on changing css dependencies) is only initiated <throttle.cache> ms after the last run.
 
-### Server
+## Server
 
-#### `server.port`
+### `server.port`
 
 Type: Integer
 Default: 8080
@@ -193,10 +193,26 @@ Default: 8080
 The express server runs on this port.  
 An environment variable PORT will overwrite this property.
 
-#### `server.proxy`
+### `server.proxy`
 
 Type: Integer
 Default: 8081
 
 The proxy server with livereload functionality runs on this port.  
 An environment variable PROXY will overwrite this property.
+
+## Feature
+
+### i18next express middleware
+
+The node `feature.i18next` contains:
+
+* two configuration objects for i18next express middleware (default)  
+* or the boolean `false` to disable the feature completely.
+
+If you want to change the defaults in `feature.i18next.options` (configuration options)
+and `feature.i18next.optionsMiddleware` (mainly for express routes to ignore),
+check following documentations:
+
+* [i18next express middleware](https://github.com/i18next/i18next-express-middleware)
+* [configuration options](https://www.i18next.com/overview/configuration-options)

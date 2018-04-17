@@ -15,15 +15,20 @@ const i18nextMiddleware = require('i18next-express-middleware');
 const config = require('config');
 
 // The middleware changes options, so we have to clone the locked objects
-const options = Object.assign({}, config.get('feature.i18next.options'));
-const middlewareOptions = Object.assign({}, config.get('feature.i18next.middlewareOptions'));
+const usei18next = !!config.has('feature.i18next') && config.get('feature.i18next');
+const options = config.has('feature.i18next.options') ? Object.assign({}, config.get('feature.i18next.options')) : {};
+const middlewareOptions = config.has('feature.i18next.middlewareOptions') ? Object.assign({}, config.get('feature.i18next.middlewareOptions')) : {};
 
-i18next
-	.use(i18nextMiddleware.LanguageDetector)
-	.use(FilesystemBackend)
-	.use(sprintf)
-	.init(options);
+if (usei18next) {
+	i18next
+		.use(i18nextMiddleware.LanguageDetector)
+		.use(FilesystemBackend)
+		.use(sprintf)
+		.init(options);
+}
 
 module.exports = function (app) {
-	app.use(i18nextMiddleware.handle(i18next, middlewareOptions));
+	if (usei18next) {
+		app.use(i18nextMiddleware.handle(i18next, middlewareOptions));
+	}
 };

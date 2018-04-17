@@ -19,8 +19,6 @@ const ajv = new Ajv({ schemaId: 'auto', allErrors: true });
 ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
 
 const config = require('config');
-
-
 const twigUtils = require('../utils');
 
 const patternBasePaths = Object.keys(config.get('nitro.patterns')).map((key) => {
@@ -86,6 +84,8 @@ module.exports = function (Twig) {
 			token.match.map((paramKeyValue, index) => {
 				// our params are available in indexes 1-4
 				if (index > 0 && index < 5) {
+
+					// if the param in question is defined, we split the key=value pair and compile a twig expression
 					if (paramKeyValue !== undefined) {
 						const keyValueArray = paramKeyValue.split('=');
 						let key = keyValueArray[0];
@@ -96,7 +96,6 @@ module.exports = function (Twig) {
 							value: value.trim()
 						}]).stack;
 					}
-
 				}
 			});
 
@@ -171,7 +170,7 @@ module.exports = function (Twig) {
 					extend(true, patternData, context._query);
 				}
 
-				// Add additional attributes e.g. "disabled" of {% pattern "button" additionalData={ disabled: true } %}
+				// Add additional attributes e.g. {% pattern name='button' additionalData={ disabled: true } %}
 				if (additionalData !== null) {
 					for (let key in additionalData) {
 						if (additionalData.hasOwnProperty(key)) {

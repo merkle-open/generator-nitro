@@ -7,48 +7,62 @@ const twigUtils = require('../utils');
 module.exports = function (Twig) {
 	return {
 		type: 'pattern',
-		regex: /^pattern\s+(\S*)\s*([\S\s]+?)?\s*(only)?$/,
+		regex: /^pattern\s+(\w+='\S*')\s*(\w+='\S*')?\s*(\w+='\S*')?$/,
 		next: [],
 		open: true,
 		compile: function(token) {
-			const expression = token.match[1];
-			let data = (typeof token.match[2] !== 'undefined') ? token.match[2] : '';
-			let only = ((token.match[3] !== undefined) && token.match[3].length > 0);
 
-			if (data === 'only' && only === false) {
-				data = '';
-				only = true;
+			// get value for name parameter
+			const nameKeyValue = token.match[1];
+			const nameValue = nameKeyValue.split('=')[1];
+
+			// get value for data parameter
+			const dataKeyValue = token.match[2];
+			let dataValue = '';
+
+			if (dataKeyValue !== undefined) {
+				dataValue = dataKeyValue.split('=')[1];
 			}
 
-			token.only = only;
+			// get value for template parameter
+			const templateKeyValue = token.match[3];
+			let templateValue = '';
 
-			token.stack = Twig.expression.compile.apply(this, [{
+			if (templateKeyValue !== undefined) {
+				templateValue = templateKeyValue.split('=')[1];
+			}
+
+			// compile and store values in token
+			token.name = Twig.expression.compile.apply(this, [{
 				type: Twig.expression.type.expression,
-				value: expression.trim()
+				value: nameValue.trim()
 			}]).stack;
 
-			token.variantStack = Twig.expression.compile.apply(this, [{
+			token.data = Twig.expression.compile.apply(this, [{
 				type: Twig.expression.type.expression,
-				value: data.trim()
+				value: dataValue.trim()
+			}]).stack;
+
+			token.templateVariation = Twig.expression.compile.apply(this, [{
+				type: Twig.expression.type.expression,
+				value: templateValue.trim()
 			}]).stack;
 
 			delete token.match;
 			return token;
 		},
 		parse: function(token, context, chain) {
-			const component = Twig.expression.parse.apply(this, [token.stack, context]);
-			const data = Twig.expression.parse.apply(this, [token.variantStack, context]);
+			const pattern = Twig.expression.parse.apply(this, [token.name, context]);
+			const data = Twig.expression.parse.apply(this, [token.data, context]);
+			const templateVariation = Twig.expression.parse.apply(this, [token.templateVariation, context]);
+
 			let innerContext = {};
 			let template;
 
-			if (!token.only) {
-				innerContext = Twig.ChildContext(context);
-			}
-
-			if (component instanceof Twig.Template) {
-				template = component;
+			if (pattern instanceof Twig.Template) {
+				template = pattern;
 			} else {
-				const url = config.get('nitro.basePath').concat(twigUtils.findTemplate(component));
+				const url = config.get('nitro.basePath').concat(twigUtils.findTemplate(pattern, templateVariation));
 
 				// Import file
 				template = Twig.Templates.loadRemote(url, {
@@ -61,9 +75,8 @@ module.exports = function (Twig) {
 
 				if (typeof data === 'object') {
 					extend(true, innerContext, data);
-
-				} else if (typeof data === 'string' || typeof data === 'undefined') {
-					const dataObject = twigUtils.getDataJSON(component, data);
+				} else if (typeof data === 'string' && data !== '') {
+					const dataObject = twigUtils.getDataJSON(pattern, data);
 					extend(true, innerContext, dataObject);
 				}
 			}

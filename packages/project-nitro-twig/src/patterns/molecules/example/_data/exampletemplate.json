@@ -1,0 +1,27 @@
+{
+	"modifier": "red",
+	"decorator": "",
+	"title": "Example Module with a different markup",
+	"links": [
+		{
+			"uri": "index",
+			"text": "Example 1"
+		},
+		{
+			"uri": "index",
+			"text": "Example 2"
+		},
+		{
+			"uri": "index",
+			"text": "Example 3"
+		},
+		{
+			"uri": "index",
+			"text": "Example 4"
+		},
+		{
+			"uri": "index",
+			"text": "Example 5"
+		}
+	]
+}

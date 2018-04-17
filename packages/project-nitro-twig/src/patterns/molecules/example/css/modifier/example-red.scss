@@ -1,0 +1,12 @@
+.m-example--red {
+	background: $red;
+	animation: red-background-change 10s infinite;
+}
+
+/* stylelint-disable color-named  */
+@keyframes red-background-change {
+	0%,100% { background-color: lightslategray; }
+	30% { background-color: lightcoral; }
+	60% { background-color: darkred; }
+}
+/* stylelint-enable color-named  */

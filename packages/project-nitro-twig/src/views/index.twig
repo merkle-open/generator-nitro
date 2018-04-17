@@ -1,6 +1,9 @@
 <div class="container">
-	<h1>{% pattern 'icon' { icon: 'nitro' } %}&nbsp;Nitro example page</h1>
-	{% pattern 'example' %}
-	{% pattern 'example' 'blue' %}
-	{% pattern 'example' 'template' %}
+	<h1>{% pattern name='icon' data='icon' %}&nbsp;Nitro example page</h1>
+	{% pattern name='example' data='example' %}
+	{% pattern name='example' data='exampleBlue' %}
+	{% pattern name='example' data='exampleDecorator' %}
+	{% pattern name='example' data='exampleTemplate' template='variation' %}
+
+	{% partial name='test-with-hyphen' %}
 </div>

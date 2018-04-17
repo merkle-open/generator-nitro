@@ -33,7 +33,7 @@
   ],
   "dependencies": {
     "adm-zip": "0.4.7",
-    "chalk": "2.3.2",
+    "chalk": "2.4.0",
     "config": "1.30.0",
     "git-config": "0.0.7",
     "glob": "7.1.2",

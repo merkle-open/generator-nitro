@@ -13,9 +13,10 @@
 const fs = require('fs');
 const path = require('path');
 const extend = require('extend');
-
 const config = require('config');
 const twigUtils = require('../utils');
+const lint = require('../../../lib/lint');
+const htmllintOptions = lint.getHtmllintOptions(true);
 
 module.exports = function (Twig) {
 	return {
@@ -118,7 +119,7 @@ module.exports = function (Twig) {
 				// check if the twig template already exists
 				if (Twig.Templates.registry[templateFilePath]) {
 					template = Twig.Templates.registry[templateFilePath];
-				} else {
+				} else if (fs.existsSync(templateFilePath)) {
 					// otherwise try to load it
 					try {
 						// Import file
@@ -138,12 +139,26 @@ module.exports = function (Twig) {
 							)
 						};
 					}
+				} else {
+					return {
+						chain: chain,
+						output: twigUtils.logAndRenderError(
+							new Error(`Placeholder ${templateFilePath} not found.`)
+						)
+					};
+				}
+
+				const html = template.render(placeholderData);
+
+				// lint html snippet
+				if (!config.get('server.production') && config.get('code.validation.htmllint.live')) {
+					lint.lintSnippet(templateFilePath, html, htmllintOptions);
 				}
 
 				// return the rendered template
 				return {
 					chain: chain,
-					output: template.render(placeholderData)
+					output: html
 				};
 
 			} catch (e) {

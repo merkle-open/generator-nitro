@@ -6,10 +6,16 @@
 
 const Twig = require('twig');
 const patternTagFactory = require('./helpers/pattern');
+const placeholderTagFactory = require('./helpers/placeholder');
 
 // expose pattern function
 Twig.extend(function(Twig) {
 	Twig.exports.extendTag(patternTagFactory(Twig));
+});
+
+// expose placeholder function
+Twig.extend(function(Twig) {
+	Twig.exports.extendTag(placeholderTagFactory(Twig));
 });
 
 Twig.renderWithLayout = function(path, options, fn) {

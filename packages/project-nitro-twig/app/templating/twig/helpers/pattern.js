@@ -13,13 +13,13 @@
 const fs = require('fs');
 const path = require('path');
 const extend = require('extend');
-
 const Ajv = require('ajv');
 const ajv = new Ajv({ schemaId: 'auto', allErrors: true });
 ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
-
 const config = require('config');
 const twigUtils = require('../utils');
+const lint = require('../../../lib/lint');
+const htmllintOptions = lint.getHtmllintOptions(true);
 
 const patternBasePaths = Object.keys(config.get('nitro.patterns')).map((key) => {
 	const configKey = `nitro.patterns.${key}.path`;
@@ -227,10 +227,17 @@ module.exports = function (Twig) {
 					};
 				}
 
+				const html = template.render(patternData);
+
+				// lint html snippet
+				if (!config.get('server.production') && config.get('code.validation.htmllint.live')) {
+					lint.lintSnippet(pattern.templateFilePath, html, htmllintOptions);
+				}
+
 				// return the rendered template
 				return {
 					chain: chain,
-					output: template.render(patternData)
+					output: html
 				};
 
 			} catch (e) {

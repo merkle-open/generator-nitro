@@ -136,71 +136,84 @@ module.exports = function (Twig) {
 				let passedData = null;                                                 // passed data to pattern helper
 				let template;
 
-				// check if the twig template already exists
-				if (name instanceof Twig.Template) {
-					template = pattern;
-				} else {
-					switch (typeof dataFromPatternHelper) {
-						case 'string':
-							dataFile = dataFromPatternHelper.replace(/\.json$/i, '').toLowerCase();
-							break;
-						case 'object':
-							passedData = extend(true, passedData, dataFromPatternHelper);
-							break;
-						case 'number':
-						case 'boolean':
-							passedData = dataFromPatternHelper;
-							break;
-						default:
-							break;
-					}
+				// check if a data parameter was provided in the pattern helper
+				switch (typeof dataFromPatternHelper) {
+					case 'string':
+						dataFile = dataFromPatternHelper.replace(/\.json$/i, '').toLowerCase();
+						break;
+					case 'object':
+						passedData = extend(true, passedData, dataFromPatternHelper);
+						break;
+					case 'number':
+					case 'boolean':
+						passedData = dataFromPatternHelper;
+						break;
+					default:
+						break;
+				}
 
-					const pattern = getPattern(folder, templateFile, dataFile);
+				// get basic pattern information
+				const pattern = getPattern(folder, templateFile, dataFile);
 
-					if (pattern) {
-						try {
-							// TODO contextDataRoot._locals
+				// TODO contextDataRoot._locals
 
-							if (passedData) {
-								extend(true, patternData, passedData);
-							} else if (fs.existsSync(pattern.jsonFilePath)) {
-								extend(true, patternData, JSON.parse(fs.readFileSync(pattern.jsonFilePath, 'utf8')));
-							}
+				if (passedData) {
+					extend(true, patternData, passedData);
+				} else if (fs.existsSync(pattern.jsonFilePath)) {
+					extend(true, patternData, JSON.parse(fs.readFileSync(pattern.jsonFilePath, 'utf8')));
+				}
 
-							// TODO contextDataRoot._query
+				// TODO contextDataRoot._query
 
-							// Add additional attributes e.g. "disabled" of {% pattern "button" additionalData={ disabled: true } %}
-							if (additionalData !== null) {
-								for (let key in additionalData) {
-									if (additionalData.hasOwnProperty(key)) {
-										// extend or override patternData with additional data
-										patternData[key] = additionalData[key];
-									}
-								}
-							}
-
-							// TODO Validate with JSON schema
-
-							// Import file
-							template = Twig.Templates.loadRemote(pattern.templateFilePath, {
-								method: 'fs',
-								base: '',
-								async: false,
-								options: this.options,
-								id: pattern.templateFilePath,
-							});
-						} catch (e) {
-							throw new Error(`Parse Error in Pattern ${name}: ${e.message}`);
+				// Add additional attributes e.g. "disabled" of {% pattern "button" additionalData={ disabled: true } %}
+				if (additionalData !== null) {
+					for (let key in additionalData) {
+						if (additionalData.hasOwnProperty(key)) {
+							// extend or override patternData with additional data
+							patternData[key] = additionalData[key];
 						}
-					} else {
-						throw new Error(`Pattern \`${name}\` with template file \`${templateFile}.${config.get('nitro.viewFileExtension')}\` not found in folder \`${folder}\`.`);
 					}
 				}
 
+				// TODO Validate with JSON schema
+
+				// check if the twig template already exists
+				if (Twig.Templates.registry[pattern.templateFilePath]) {
+					template = Twig.Templates.registry[pattern.templateFilePath];
+				} else if (pattern) {
+					// otherwise try to load it
+					try {
+						// Import file
+						template = Twig.Templates.loadRemote(pattern.templateFilePath, {
+							method: 'fs',
+							base: '',
+							async: false,
+							options: this.options,
+							id: pattern.templateFilePath,
+						});
+					} catch (e) {
+						return {
+							chain: chain,
+							output: twigUtils.logAndRenderError(
+								new Error(`Parse Error in Pattern ${name}: ${e.message}`)
+							)
+						};
+					}
+				} else {
+					return {
+						chain: chain,
+						output: twigUtils.logAndRenderError(
+							new Error(`Pattern \`${name}\` with template file \`${templateFile}.${config.get('nitro.viewFileExtension')}\` not found in folder \`${folder}\`.`)
+						)
+					};
+				}
+
+				// return the rendered template
 				return {
 					chain: chain,
 					output: template.render(patternData)
 				};
+
 			} catch (e) {
 				return {
 					chain: chain,

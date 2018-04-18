@@ -228,7 +228,7 @@ Different layouts are placed in `views/_layouts/`. Link them to your view [in yo
 Pages are meant to be compositions of your patterns. Use the pattern's name as the first parameter. Be aware, the
 pattern name is case-sensitive and should be unique.
 
-Nitro uses [twig](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
+Nitro uses [twig](https://www.npmjs.com/package/twig) as the view engine and provides custom helpers.
 
 Render the example pattern (file: `example.twig`, data-file: `example.json`):
 
@@ -485,7 +485,7 @@ Navigation   -> T.Module.Navigation   -> m-navigation
 NavMain      -> T.Module.NavMain      -> m-nav-main
 AdminNavMain -> T.Module.AdminNavMain -> m-admin-nav-main
 ```
-### Custom Handlebars helpers
+### Custom Twig helpers
 
 Custom Twig helpers will be automatically loaded if put into to `project/helpers` directory. An example could look like 
 this:
@@ -546,7 +546,7 @@ into the [`project/routes` directory](project/routes/).
 
 ### Using another Template Engine
 
-If you don't want to use [Handlebars](http://handlebarsjs.com/) as Nitro's Template Engine
+If you don't want to use [Handlebars](http://handlebarsjs.com/) or [Twig](https://github.com/twigjs/twig.js) as Nitro's Template Engine
 you can configure your own Engine.  
 This example shows how to replace Handlebars with [Nunjucks](https://mozilla.github.io/nunjucks/) as an example.
 

@@ -4,30 +4,36 @@
 
 'use strict';
 
+const fs = require('fs');
+const path = require('path');
 const Twig = require('twig');
-const patternTagFactory = require('./helpers/pattern');
-const placeholderTagFactory = require('./helpers/placeholder');
-const partialTagFactory = require('./helpers/partial');
-const viewlistTagFactory = require('./helpers/viewlist');
+const config = require('config');
 
-// expose pattern function
-Twig.extend(function(Twig) {
-	Twig.exports.extendTag(patternTagFactory(Twig));
+const files = {};
+const coreHelpersDir = `${config.get('nitro.basePath')}app/templating/twig/helpers/`;
+const projectHelpersDir = `${config.get('nitro.basePath')}project/helpers/`;
+const coreFiles = fs.readdirSync(coreHelpersDir);
+const projectFiles = fs.readdirSync(projectHelpersDir);
+
+coreFiles.map((file) => {
+	if (path.extname(file) === '.js') {
+		files[path.basename(file, '.js')] = coreHelpersDir + file;
+	}
 });
 
-// expose placeholder function
-Twig.extend(function(Twig) {
-	Twig.exports.extendTag(placeholderTagFactory(Twig));
+projectFiles.map((file) => {
+	if (path.extname(file) === '.js') {
+		files[path.basename(file, '.js')] = projectHelpersDir + file;
+	}
 });
 
-// expose partial function
-Twig.extend(function(Twig) {
-	Twig.exports.extendTag(partialTagFactory(Twig));
-});
+Object.keys(files).forEach((key) => {
+	const helperTagFactory = require(files[key]);
 
-// expose viewlist function
-Twig.extend(function(Twig) {
-	Twig.exports.extendTag(viewlistTagFactory(Twig));
+	// expose helper as custom tag
+	Twig.extend(function(Twig) {
+		Twig.exports.extendTag(helperTagFactory(Twig));
+	});
 });
 
 Twig.renderWithLayout = function(path, options, fn) {

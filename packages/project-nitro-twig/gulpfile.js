@@ -8,7 +8,7 @@ gulp.task('sync-githooks', getTask('sync-githooks'));
 gulp.task('compile-css', getTask('compile-css'));
 gulp.task('compile-css-proto', getTask('compile-css-proto'));
 gulp.task('compile-templates', getTask('compile-templates'));
-gulp.task('compile-js', getTask('compile-js'));
+gulp.task('compile-js', ['compile-templates'], getTask('compile-js'));
 gulp.task('compile-js-proto', getTask('compile-js-proto'));
 gulp.task('minify-css', ['compile-css'], getTask('minify-css'));
 gulp.task('minify-js', ['compile-js'], getTask('minify-js'));

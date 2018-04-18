@@ -23,9 +23,8 @@ module.exports = (gulp, plugins) => {
 				const matches = content.match(compilePattern);
 				if (matches) {
 					matches.forEach((match) => {
-						const compiled = new hbs.handlebars.SafeString(
-							hbs.handlebars.compile(match, { compat: true })()
-						);
+						const template = Twig.twig({ data: match });
+						const compiled = template.render({});
 						content = content.replace(match, compiled);
 					});
 				}

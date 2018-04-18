@@ -128,7 +128,7 @@ A pattern uses the following structure:
 
 ```
 /example
-/example/example.html
+/example/example.twig
 /example/schema.json
 /example/css/example.css
 /example/js/example.js
@@ -171,7 +171,7 @@ Element `example-sub` in pattern `example`:
 
 ```
 /example/elements/example-sub
-/example/elements/example-sub/example-sub.html
+/example/elements/example-sub/example-sub.twig
 /example/elements/example-sub/css/example-sub.css
 /example/elements/example-sub/js/example-sub.js
 /example/elements/example-sub/_data/example-sub.json
@@ -181,12 +181,12 @@ It's recommended to start the name of a subpattern with the pattern name.
 
 ### Creating pages
 
-Create a new `*.html` file in the `views` folder. (You can make as many subfolders as you want.)
+Create a new `*.twig` file in the `views` folder. (You can make as many subfolders as you want.)
 
 ```
-/views/index.html
-/views/content.html
-/views/content/variant.html
+/views/index.twig
+/views/content.twig
+/views/content/variant.twig
 ```
 
 Your new page can then be called by the according URL (with or without an extension).  
@@ -201,18 +201,21 @@ http://localhost:8080/content-variant
 #### Layout
 
 By default views use a simple layout mechanism.
-The default layout template `views/_layouts/default.html` is used for every view.
-The block `{{{body}}}` includes the contents from a view.
+The default layout template `views/_layouts/default.twig` is used for every view.
+The snippet `<!-- Replace With Body -->` includes the contents from a view.
 
 Simple default layout:
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head></head>
-<body>
-    {{{body}}}
-</body>
+  <head>
+     {% partial 'head' %}
+  </head>
+  <body>
+      <!-- Replace With Body -->
+      {% partial 'foot' %}
+  </body>
 </html>
 ```
 
@@ -227,35 +230,35 @@ pattern name is case-sensitive and should be unique.
 
 Nitro uses [twig](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
 
-Render the example pattern (file: `example.html`, data-file: `example.json`):
+Render the example pattern (file: `example.twig`, data-file: `example.json`):
 
 ```
-{{pattern name='example'}}
-{{pattern name='example' data='example'}}
+{% pattern name='example' %}
+{% pattern name='example' data='example' %}
 ```
 
-Render a "variant" from the example pattern (file: `example.html`, data-file: `example-variant.json`):
+Render a "variant" from the example pattern (file: `example.twig`, data-file: `example-variant.json`):
 
 ```
-{{pattern name='example' data='example-variant'}}
+{% pattern name='example' data='example-variant' %}
 ```
 
 There also is a possibility to pass data to subpatterns by providing a data object as hash option.
 
 ```
-{{pattern name='example' data=exampleContent}}
+{% pattern name='example' data=exampleContent %}
 ```
 
-...and if you really need this you may provide a second template file. (file: `example-2.html`, data-file: `example-variant.json`)
+...and if you really need this you may provide a second template file. (file: `example-2.twig`, data-file: `example-variant.json`)
 
 ```
-{{pattern name='example' data='example-variant' template='example-2'}}
+{% pattern name='example' data='example-variant' template='example-2' %}
 ```
 
-To be more flexible, you may also pass individual arguments to the pattern, which overrides the defaults from the data-file.
+To be more flexible, you may also pass additional arguments to the pattern, which overrides the defaults from the data-file.
 
 ```
-{{pattern name='example' modifier='blue'}}
+{% pattern name='example' additionalData={ modifier='blue' } %}
 ```
 
 #### Render patterns (simplified notation)
@@ -265,17 +268,17 @@ A simplified but less clear variant is to use the pattern helper with one or two
 * the first parameter: pattern folder with the default template file
 * the second parameter (optional): the data-file to be used
 
-Render the example pattern (file: `example.html`, data-file: `example.json`):
+Render the example pattern (file: `example.twig`, data-file: `example.json`):
 
 ```
-{{pattern 'example'}}
-{{pattern 'example' 'example'}}
+{% pattern 'example' %}
+{% pattern 'example' 'example' %}
 ```
 
 Or you may use the simplified notation with a data object as second parameter:
 
 ```
-{{pattern 'example' exampleContent}}
+{% pattern 'example' exampleContent %}
 ```
 
 #### Render patterns with children
@@ -302,34 +305,30 @@ Call it as block like this:
 The pattern helper will find also pattern elements.
 
 ```
-{{pattern 'example-sub'}}
+{% pattern 'example-sub' %}
 ```
 
 ... looks for following paths
 
-- Pattern with name `example-sub`: `<type>/example-sub/example-sub.html`
-- Element with name `example-sub`: `<type>/*/elements/example-sub/example-sub.html`
+- Pattern with name `example-sub`: `<type>/example-sub/example-sub.twig`
+- Element with name `example-sub`: `<type>/*/elements/example-sub/example-sub.twig`
 
 ### Render partials
 
-Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.html` files (e.g. `head.html`).
+Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.twig` files (e.g. `head.twig`).
 
 ```
-{{> head}}
+{% partial 'head' %}
 ```
-
-Partials are registered with [hbs-utils](https://www.npmjs.com/package/hbs-utils#partials), 
-so keep in mind that every space or hyphen in filenames is replaced with an underscore.
-(e.g. use `{{> file_name}}` to load `views/_partials/file-name.html`)
 
 ### Render placeholders
 
-Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `views/_placeholders/` as `*.html` files.  
-The following two examples do the same and render the file `content/example.html` from `views/_placeholders/`.
+Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `views/_placeholders/` as `*.twig` files.  
+The following two examples do the same and render the file `content/example.twig` from `views/_placeholders/`.
 
 ```
-{{placeholder 'content' 'example'}}
-{{placeholder name='content' template='example'}}
+{% placeholder 'content' 'example' %}
+{% placeholder name='content' template='example' %}
 ```
 
 ### Passing data
@@ -340,11 +339,11 @@ You may pass data to your templates (view, layout, partial, pattern) per view.
 Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`. (Use the same folder structure as in `views`)
 
 ```
-/views/index.html
+/views/index.twig
 /views/_data/index.json
 http://localhost:8080/index
 
-/views/content/variant.html
+/views/content/variant.twig
 /views/_data/content/variant.json
 http://localhost:8080/content-variant
 ```
@@ -352,7 +351,7 @@ http://localhost:8080/content-variant
 It's also possible to use a custom data file by requesting with a query param `?_data=...`:
 
 ```
-/views/index.html
+/views/index.twig
 /views/_data/index-test.json
 http://localhost:8080/index?_data=index-test
 ```
@@ -368,15 +367,15 @@ If you need a different layout for a page, do so in the corresponding view data 
         "_layout": "home"
     }
 
-    /views/_layouts/home.html
+    /views/_layouts/home.twig
     http://localhost:8080/index
 ```
 
 ...or you may change the layout temporarily by requesting a page with the query param `?_layout=...`
 
 ```
-/views/index.html
-/views/_layouts/home.html
+/views/index.twig
+/views/_layouts/home.twig
 http://localhost:8080/index?_layout=home
 ```
 
@@ -398,7 +397,7 @@ Pattern data will overwrite data from views. (Use as described above)
 
 You may overwrite data from views & patterns in request parameters.
 
-`?_nitro.pageTitle=Testpage` will overwrite the data for the handlebars expression `{{_nitro.pageTitle}}`
+`?_nitro.pageTitle=Testpage` will overwrite the data for the twig expression `{{_nitro.pageTitle}}`
 
 ## Assets
 
@@ -413,7 +412,7 @@ Place [code for development](../../src/proto/readme.md) in the corresponding dir
 
 ## Translations
 
-Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the Handlebars helper `{{t}}`.  
+Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the Twig helper `{% t %}`.  
 Translations are stored in `project/locales/[lang]/translation.json`.
 
 Express Middleware configuration:
@@ -422,7 +421,7 @@ Express Middleware configuration:
 * Language detection from request header
 * Language switch with query parameter: `?lang=de`
 
-### Translation handlebars helper
+### Translation twig helper
 
 The helper uses the given [library features](http://i18next.com/translate/).
 
@@ -445,11 +444,11 @@ data = {
     }
 }
 
-{{t 'test.example.string'}}
-{{t 'test.example.nested'}}
-{{t 'test.example.sprintf' 'alphabet' 'a' 'l' 'p'}}
-{{t 'test.example.interpolation' name='developer'}}
-{{t 'test.example.interpolation' data}}
+{% t 'test.example.string' %}
+{% t 'test.example.nested' %}
+{% t 'test.example.sprintf' 'alphabet' 'a' 'l' 'p' %}
+{% t 'test.example.interpolation' name='developer' %}
+{% t 'test.example.interpolation' data %}
 ```
 
 ## Conventions
@@ -464,20 +463,20 @@ Link to resources relatively to the `project`-folder **with** a leading slash.
 <link rel="shortcut icon" href="/assets/img/icon/favicon.ico" type="image/x-icon" />
 <script src="/assets/app.js"></script>
 background: url(/assets/img/bg/texture.png) scroll 0 0 no-repeat;
-<a href="/content.html">Contentpage</a>
+<a href="/content.twig">Contentpage</a>
 ```
 
 ### Upper & lower case letters
 
 Use all lowercase if possible. (Exception: TerrificJS uses upper case for its namespace `T` and class names `T.Module.Example`)
 
-All files must be lowercase. It's allowed to use uppercase letters for pattern folders, keep care of case sensitive filesystems and use handlebars helpers with the *exact* folder name.
+All files must be lowercase. It's allowed to use uppercase letters for pattern folders, keep care of case sensitive filesystems and use twig helpers with the *exact* folder name.
 
 ```
-{{pattern name='NavMain'}}
+{% pattern name='NavMain' %}
 ```
 
-... looks for a template `navmain.html` in the folder `NavMain`.
+... looks for a template `navmain.twig` in the folder `NavMain`.
 
 Note that uppercase letters in pattern names are represented in CSS with hyphens.
 
@@ -538,7 +537,7 @@ nunjucks.configure(
 Now Restart Nitro and it'll run with Nunjucks.
 
 **Be aware**, you'll need to adjust all your views and patterns to work with the new engine. 
-Nitro only provides a `pattern` helper for handlebars.
+Nitro only provides a `pattern` helper for handlebars / twig.
 
 ## Miscellaneous
 

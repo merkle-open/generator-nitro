@@ -7,6 +7,7 @@
 const Twig = require('twig');
 const patternTagFactory = require('./helpers/pattern');
 const placeholderTagFactory = require('./helpers/placeholder');
+const partialTagFactory = require('./helpers/partial');
 const viewlistTagFactory = require('./helpers/viewlist');
 
 // expose pattern function
@@ -17,6 +18,11 @@ Twig.extend(function(Twig) {
 // expose placeholder function
 Twig.extend(function(Twig) {
 	Twig.exports.extendTag(placeholderTagFactory(Twig));
+});
+
+// expose partial function
+Twig.extend(function(Twig) {
+	Twig.exports.extendTag(partialTagFactory(Twig));
 });
 
 // expose viewlist function

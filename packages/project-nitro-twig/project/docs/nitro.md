@@ -487,16 +487,48 @@ AdminNavMain -> T.Module.AdminNavMain -> m-admin-nav-main
 ```
 ### Custom Handlebars helpers
 
-Custom handlebars helpers will be automatically loaded if put into to `project/helpers` directory. An example could look like 
+Custom Twig helpers will be automatically loaded if put into to `project/helpers` directory. An example could look like 
 this:
 
 ```js
-module.exports = function(foo) {
-    // Helper Logic
+const twigUtils = require('../utils');
+
+module.exports = function (Twig) {
+	return {
+		type: 'helper-name',
+		regex: /^helper-name/,
+		next: [],
+		open: true,
+		compile: function(token) {
+			// do any parameter logic here
+			delete token.match;
+			return token;
+		},
+		parse: function(token, context, chain) {
+			try {
+				// do any template / render logic here
+
+				// return the markup
+				return {
+					chain: chain,
+					output: 'Output Markup'
+				};
+
+			} catch (e) {
+				return {
+					chain: chain,
+					output: twigUtils.logAndRenderError(e)
+				};
+			}
+		}
+	};
 };
 ```
 
-The helper name will automatically match the filename, so if you name your file `foo.js` your helper will be called `foo`.
+The helper name get's defined in the type property above. 
+The regex property needs to be extended to contain any possible arguments of the helper.
+For more complex example's please check out the core helpers.
+
 
 ### JSON Endpoints
 

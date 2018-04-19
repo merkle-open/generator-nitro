@@ -2,25 +2,31 @@
 
 const path = require('path');
 const fs = require('fs');
+const Twig = require('twig');
 const hbs = require('hbs');
 const merge = require('merge-stream');
 
 module.exports = (gulp, plugins) => {
 	return () => {
-		// register nitro handlebars pattern helper
-		const helpersDir = path.join(__dirname, '../app/templating/hbs/helpers');
+		// register nitro twig pattern helper
+		const helpersDir = path.join(__dirname, '../app/templating/twig/helpers');
 		fs.readdirSync(helpersDir).forEach((helper) => {
 			const name = helper.replace('.js', '');
 			if (name === 'pattern') {
-				hbs.registerHelper(name, require(path.join(helpersDir, name)));
+				const patternTagFactory = require(path.join(helpersDir, name));
+
+				Twig.extend(function(Twig) {
+					Twig.exports.extendTag(patternTagFactory(Twig));
+				});
 			}
 		});
 
 		const templates = gulp.src('src/patterns/**/template/*.hbs')
 			// compile nitro pattern
 			.pipe(plugins.change((content) => {
-				const compilePattern = /{{(pattern)\s[^}]*}}/gi;
+				const compilePattern = /{%\s?(pattern)\s[^]*\s?%}/gi;
 				const matches = content.match(compilePattern);
+
 				if (matches) {
 					matches.forEach((match) => {
 						const template = Twig.twig({ data: match });

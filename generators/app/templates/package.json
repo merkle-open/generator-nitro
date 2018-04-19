@@ -95,7 +95,7 @@
     "gulp-remember": "1.0.1",
     "gulp-remote-src": "0.4.3",
     "gulp-rename": "1.2.2",<% if (options.pre === 'scss') { %>
-    "gulp-sass": "3.2.1",<% } %>
+    "gulp-sass": "4.0.1",<% } %>
     "gulp-sequence": "1.0.0",
     "gulp-size": "3.0.0",
     "gulp-sourcemaps": "2.6.4",
@@ -110,7 +110,7 @@
     "hbs": "4.0.1",
     "hbs-utils": "0.0.4",
     "htmllint": "0.7.2",
-    "i18next": "11.2.2",
+    "i18next": "11.2.3",
     "i18next-express-middleware": "1.1.1",
     "i18next-node-fs-backend": "1.0.0",
     "i18next-sprintf-postprocessor": "0.2.2",

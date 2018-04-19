@@ -153,71 +153,87 @@ module.exports = function (Twig) {
 				// get basic pattern information
 				const pattern = getPattern(folder, templateFile, dataFile);
 
-				// merge global view data with patternData
-				if (context._locals) {
-					extend(true, patternData, context._locals);
-				}
+				if (pattern) {
+					// merge global view data with patternData
+					if (context._locals) {
+						extend(true, patternData, context._locals);
+					}
 
-				// take passedData if it's defined or reade the default data json file
-				if (passedData) {
-					extend(true, patternData, passedData);
-				} else if (fs.existsSync(pattern.jsonFilePath)) {
-					extend(true, patternData, JSON.parse(fs.readFileSync(pattern.jsonFilePath, 'utf8')));
-				}
+					// take passedData if it's defined or reade the default data json file
+					if (passedData) {
+						extend(true, patternData, passedData);
+					} else if (fs.existsSync(pattern.jsonFilePath)) {
+						extend(true, patternData, JSON.parse(fs.readFileSync(pattern.jsonFilePath, 'utf8')));
+					}
 
-				// merge query data with patternData
-				if (context._query) {
-					extend(true, patternData, context._query);
-				}
+					// merge query data with patternData
+					if (context._query) {
+						extend(true, patternData, context._query);
+					}
 
-				// Add additional attributes e.g. {% pattern name='button' additionalData={ disabled: true } %}
-				if (additionalData !== null) {
-					for (let key in additionalData) {
-						if (additionalData.hasOwnProperty(key)) {
-							// extend or override patternData with additional data
-							patternData[key] = additionalData[key];
+					// Add additional attributes e.g. {% pattern name='button' additionalData={ disabled: true } %}
+					if (additionalData !== null) {
+						for (let key in additionalData) {
+							if (additionalData.hasOwnProperty(key)) {
+								// extend or override patternData with additional data
+								patternData[key] = additionalData[key];
+							}
 						}
 					}
-				}
 
-				// Validate with JSON schema
-				if (!config.get('server.production') && config.get('code.validation.jsonSchema.live')) {
-					if (fs.existsSync(pattern.schemaFilePath)) {
-						const schema = JSON.parse(fs.readFileSync(pattern.schemaFilePath, 'utf8'));
-						const valid = ajv.validate(schema, patternData);
-						if (!valid) {
+					// Validate with JSON schema
+					if (!config.get('server.production') && config.get('code.validation.jsonSchema.live')) {
+						if (fs.existsSync(pattern.schemaFilePath)) {
+							const schema = JSON.parse(fs.readFileSync(pattern.schemaFilePath, 'utf8'));
+							const valid = ajv.validate(schema, patternData);
+							if (!valid) {
+								return {
+									chain: chain,
+									output: twigUtils.logAndRenderError(
+										new Error(`JSON Schema: ${ajv.errorsText()}`)
+									)
+								};
+							}
+						}
+					}
+
+					// check if the twig template already exists
+					if (Twig.Templates.registry[pattern.templateFilePath]) {
+						template = Twig.Templates.registry[pattern.templateFilePath];
+					} else {
+						// otherwise try to load it
+						try {
+							// Import file
+							template = Twig.Templates.loadRemote(pattern.templateFilePath, {
+								method: 'fs',
+								base: '',
+								async: false,
+								options: this.options,
+								id: pattern.templateFilePath,
+							});
+						} catch (e) {
 							return {
 								chain: chain,
 								output: twigUtils.logAndRenderError(
-									new Error(`JSON Schema: ${ajv.errorsText()}`)
+									new Error(`Parse Error in Pattern ${name}: ${e.message}`)
 								)
 							};
 						}
 					}
-				}
 
-				// check if the twig template already exists
-				if (Twig.Templates.registry[pattern.templateFilePath]) {
-					template = Twig.Templates.registry[pattern.templateFilePath];
-				} else if (pattern) {
-					// otherwise try to load it
-					try {
-						// Import file
-						template = Twig.Templates.loadRemote(pattern.templateFilePath, {
-							method: 'fs',
-							base: '',
-							async: false,
-							options: this.options,
-							id: pattern.templateFilePath,
-						});
-					} catch (e) {
-						return {
-							chain: chain,
-							output: twigUtils.logAndRenderError(
-								new Error(`Parse Error in Pattern ${name}: ${e.message}`)
-							)
-						};
+					const html = template.render(patternData);
+
+					// lint html snippet
+					if (!config.get('server.production') && config.get('code.validation.htmllint.live')) {
+						lint.lintSnippet(pattern.templateFilePath, html, htmllintOptions);
 					}
+
+					// return the rendered template
+					return {
+						chain: chain,
+						output: html
+					};
+
 				} else {
 					return {
 						chain: chain,
@@ -226,19 +242,6 @@ module.exports = function (Twig) {
 						)
 					};
 				}
-
-				const html = template.render(patternData);
-
-				// lint html snippet
-				if (!config.get('server.production') && config.get('code.validation.htmllint.live')) {
-					lint.lintSnippet(pattern.templateFilePath, html, htmllintOptions);
-				}
-
-				// return the rendered template
-				return {
-					chain: chain,
-					output: html
-				};
 
 			} catch (e) {
 				return {

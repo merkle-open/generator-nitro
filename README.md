@@ -19,19 +19,19 @@ Nitro and the Nitro generator are tested with the current
 
 The generator uses [yarn](https://yarnpkg.com) as package manager because it's much faster than npm.
 
-### Create or update a project
+### Create a new project
 
-#### The simple way
+This creates a new project in the current directory.
 
-Using [npx](https://www.npmjs.com/package/npx):
+#### The npx way
+
+Using [npx](https://www.npmjs.com/package/npx) (npm >= 5.2):
 
 ```
 npx -p yo -p generator-nitro@latest -- yo nitro
 ```
 
-This creates a new project or updates an existing project in the current directory to the newest nitro version.
-
-#### The alternative way
+#### The global way
 
 Install `yo` and `generator-nitro` globally:
 
@@ -45,10 +45,12 @@ Then run:
 yo nitro
 ```
 
-If you want to update an existing project, update the generator to the newest version before you run `yo nitro`:
+### Update a project
+
+Updating a project to the newest nitro version is quite simple:
 
 ```
-yarn add generator-nitro
+yarn nitro:update
 ```
 
 ### Project Generation

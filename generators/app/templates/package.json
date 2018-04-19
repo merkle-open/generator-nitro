@@ -11,6 +11,8 @@
   },
   "scripts": {
     "create-pattern": "yo nitro:pattern",
+    "nitro:pattern": "yarn create-pattern",
+    "nitro:update": "yarn add generator-nitro --exact && yo nitro",
     "githooks": "gulp sync-githooks",
     "lint": "npm-run-all lint:*",
     "lint:accessibility": "gulp lint-accessibility",

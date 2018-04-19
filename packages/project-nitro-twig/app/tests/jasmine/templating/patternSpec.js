@@ -1,19 +1,25 @@
 'use strict';
 
-const helper = require('../../../templating/hbs/helpers/pattern');
+const Twig = require('../../../templating/twig/engine');
 
 describe('Pattern Helper', () => {
 
 	it('returns an error message if module is unknown', () => {
-		expect(helper('inexistent')).toMatch('<p class="nitro-msg nitro-msg--error">Pattern `inexistent` with template file `inexistent.html` not found in folder `inexistent`.</p>');
+		const template = Twig.twig({ data: '{% pattern name=\'inexistent\' data=\'inexistent\' %}' });
+
+		expect(template.render({})).toMatch('<p class="nitro-msg nitro-msg--error">Pattern `inexistent` with template file `inexistent.twig` not found in folder `inexistent`.</p>');
 	});
 
-	it('returns an object containing a string if module was found', () => {
-		expect(helper('example').hasOwnProperty('string')).toBe(true);
+	it('returns a string containing the rendered markup if module was found', () => {
+		const template = Twig.twig({ data: '{% pattern name=\'example\' data=\'example\' %}' });
+		const markup = template.render({});
+		expect(typeof markup).toBe('string');
 	});
 
-	it('has a non-emtpy return value', () => {
-		expect(helper('example').string.length).toBeGreaterThan(0);
+	it('returns a string being not empty', () => {
+		const template = Twig.twig({ data: '{% pattern name=\'example\' data=\'example\' %}' });
+		const markup = template.render({});
+		expect(markup.length).toBeGreaterThan(0);
 	});
 
 });

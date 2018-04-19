@@ -24,7 +24,7 @@ module.exports = function (Twig) {
 		parse: function(token, context, chain) {
 			try {
 				const partial = Twig.expression.parse.apply(this, [token.name, context]);
-				let innerContext = {};
+				let innerContext = Twig.ChildContext(context);
 				let template;
 				let templateFile = `${partial}.${config.get('nitro.viewFileExtension')}`;
 

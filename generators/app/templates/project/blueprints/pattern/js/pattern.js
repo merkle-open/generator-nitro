@@ -7,7 +7,7 @@
 	 */
 
 	// const selectors = { button: '.js-<%= pattern.css %>__button' };
-	// const stateClasses = { disabled: 'state-<%= pattern.css %>-disabled' };
+	// const stateClasses = { disabled: 'state-<%= pattern.css %>--disabled' };
 
 	T.Module.<%= pattern.js %> = T.createModule({
 		start(resolve) {

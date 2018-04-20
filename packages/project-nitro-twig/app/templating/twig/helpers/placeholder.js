@@ -1,15 +1,13 @@
 'use strict';
 
 /**
- * twig helper: {% placeholder PlaceholderName Data Variation %}
+ * twig helper: {% placeholder name='PlaceholderName' template='TemplateName' %}
  *
  * Usage
  * {% placeholder name='TeaserArea' template='default' %}
  *
- * Usage (passing arguments)
- * {% placeholder name='TeaserArea' template='default' %}
- *
  */
+
 const fs = require('fs');
 const path = require('path');
 const extend = require('extend');

@@ -1,5 +1,13 @@
 'use strict';
 
+/**
+ * twig helper: {% partial Partial Name %}
+ *
+ * Usage
+ * {% partial 'head' %}
+ *
+ */
+
 const fs = require('fs');
 const path = require('path');
 const config = require('config');

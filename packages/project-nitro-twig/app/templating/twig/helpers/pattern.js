@@ -1,15 +1,13 @@
 'use strict';
 
 /**
- * twig helper: {% pattern PatternName Data Variation %}
+ * twig helper: {% pattern name='pattern-name' data='data-variation' template='template-variation' additionalData={ param1: 'value', param2: true } %}
  *
  * Usage
  * {% pattern name='button' data='button-fancy' %}
  *
- * Usage (passing arguments)
- * {% pattern name='button' disabled=true %}
- *
  */
+
 const fs = require('fs');
 const path = require('path');
 const extend = require('extend');

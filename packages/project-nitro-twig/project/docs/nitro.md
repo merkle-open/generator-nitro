@@ -425,7 +425,7 @@ Express Middleware configuration:
 
 The helper uses the given [library features](http://i18next.com/translate/).
 
-You may use hash values or an object to transfer data to the helper. Use two brackets as interpolation pre- and suffixes
+You may use an object / array to transfer data to the helper. Use two brackets as interpolation pre- and suffixes
 or use `%s` placeholders for sprintf functionality.
 
 Some examples:
@@ -446,9 +446,8 @@ data = {
 
 {% t 'test.example.string' %}
 {% t 'test.example.nested' %}
-{% t 'test.example.sprintf' 'alphabet' 'a' 'l' 'p' %}
-{% t 'test.example.interpolation' name='developer' %}
-{% t 'test.example.interpolation' data %}
+{% t 'test.example.sprintf' data=['alphabet', 'a', 'l', 'p'] %}
+{% t 'test.example.interpolation' data={ name:'developer' } %}
 ```
 
 ## Conventions

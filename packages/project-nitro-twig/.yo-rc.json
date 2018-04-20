@@ -5,7 +5,7 @@
       "viewExt": "html",
       "clientTpl": true,
       "exampleCode": true,
-      "exporter": false
+      "exporter": true
     },
     "name": "nitro-project-twig",
     "preprocessor": "scss",
@@ -13,6 +13,6 @@
     "viewExtension": "html",
     "clientTemplates": true,
     "exampleCode": true,
-    "exporter": false
+    "exporter": true
   }
 }

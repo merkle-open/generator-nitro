@@ -30,6 +30,7 @@
     "test:nitro": "jasmine --config=app/tests/jasmine/support/jasmine.json",
     "prebuild": "yarn test",
     "build": "gulp build",
+    "export": "gulp export",
     "dev": "gulp develop",
     "prod": "gulp production",
     "start": "yarn dev"
@@ -120,6 +121,7 @@
     "karma-phantomjs-launcher": "1.0.4",
     "license-checker": "18.0.0",
     "merge-stream": "1.0.1",
+    "nitro-exporter": "1.0.0",
     "npm-run-all": "4.1.2",
     "nsp": "3.2.1",
     "stylelint": "9.2.0",

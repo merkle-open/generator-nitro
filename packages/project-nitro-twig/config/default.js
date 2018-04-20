@@ -46,6 +46,7 @@ const defaultConfig = {
 		port: 8080,
 		proxy: 8081,
 	},
+	exporter: require('./default/exporter'),
 };
 
 const config = extend(true, {}, baseConfig, defaultConfig);

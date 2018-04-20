@@ -223,9 +223,9 @@ module.exports = function (Twig) {
 						}
 					}
 
-					// check if the twig template already exists
-					if (Twig.Templates.registry[pattern.templateFilePath]) {
-						template = Twig.Templates.registry[pattern.templateFilePath];
+					// TODO CHECK WHAT THIS IF SHOULD DO
+					if (name instanceof Twig.Template) {
+						template = name;
 					} else {
 						// otherwise try to load it
 						try {

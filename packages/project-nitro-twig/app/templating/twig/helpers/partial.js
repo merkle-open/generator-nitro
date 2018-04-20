@@ -42,8 +42,9 @@ module.exports = function (Twig) {
 					templateFile
 				);
 
-				if (Twig.Templates.registry[templateFilePath]) {
-					template = Twig.Templates.registry[templateFilePath];
+				// TODO CHECK WHAT THIS IF SHOULD DO
+				if (name instanceof Twig.Template) {
+					template = name;
 				} else if (fs.existsSync(templateFilePath)) {
 					// Import file
 					template = Twig.Templates.loadRemote(templateFilePath, {

@@ -2,7 +2,7 @@
   "generator-nitro": {
     "promptValues": {
       "pre": "scss",
-      "viewExt": "html",
+      "viewExt": "twig",
       "clientTpl": true,
       "exampleCode": true,
       "exporter": true
@@ -10,7 +10,7 @@
     "name": "nitro-project-twig",
     "preprocessor": "scss",
     "jscompiler": "JavaScript",
-    "viewExtension": "html",
+    "viewExtension": "twig",
     "clientTemplates": true,
     "exampleCode": true,
     "exporter": true

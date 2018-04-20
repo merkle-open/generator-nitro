@@ -235,6 +235,8 @@ To be more flexible, you may also pass individual arguments to the pattern, whic
 
 #### Render patterns (simplified notation)
 
+**Deprecated** – will be removed in Version 4
+
 A simplified but less clear variant is to use the pattern helper with one or two parameters.
 
 * the first parameter: pattern folder with the default template file
@@ -546,10 +548,10 @@ You may [change this or add other hooks](../.githooks/readme.md) in `project/.gi
 
 The following packages are installed by the [app](#name) generator as dependencies:
 
-* [jQuery 3.2.0](http://jquery.com/)
+* [jQuery 3.3.1](http://jquery.com/)
 * [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)<% if (options.clientTpl) { %>
-* [Handlebars 4.0.7](https://github.com/components/handlebars.js)<% } %>
-* [Babel Polyfill 6.23.0](https://www.npmjs.com/package/babel-polyfill)
+* [Handlebars 4.0.11](https://github.com/components/handlebars.js)<% } %>
+* [Babel Polyfill 6.26.0](https://www.npmjs.com/package/babel-polyfill)
 
 ### Credits
 

@@ -6,7 +6,8 @@ describe('Nitro\'s Handlebars helper loader', () => {
 		expect(typeof hbs.handlebars.helpers.pattern).toBe('function');
 	});
 
-	it('has registered the component helper', () => {
+	// deprecated
+	it('has registered the pattern helper', () => {
 		const hbs = require('../../../templating/hbs/engine');
 		expect(typeof hbs.handlebars.helpers.component).toBe('function');
 	});

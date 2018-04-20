@@ -11,6 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 const extend = require('extend');
+const globby = require('globby');
 const Ajv = require('ajv');
 const ajv = new Ajv({ schemaId: 'auto', allErrors: true });
 ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
@@ -66,6 +67,33 @@ function getPattern(folder, templateFile, dataFile) {
 			}
 		}
 	});
+
+	// maybe its an element...
+	if (!pattern) {
+
+		const elementGlobs = patternBasePaths.map((patternBasePath) => {
+			return `${patternBasePath}/*/elements/${folder}/${templateFile}.${config.get('nitro.viewFileExtension')}`;
+		});
+
+		globby.sync(elementGlobs).forEach((templatePath) => {
+			if (pattern) {
+				throw new Error(`You have multiple elements defined with the name \`${folder}\``);
+			} else {
+				pattern = {
+					templateFilePath: templatePath,
+					jsonFilePath: path.join(
+						path.dirname(templatePath),
+						'/_data/',
+						`${dataFile}.json`
+					),
+					schemaFilePath: path.join(
+						path.dirname(templatePath),
+						'schema.json'
+					),
+				};
+			}
+		});
+	}
 
 	return pattern;
 }

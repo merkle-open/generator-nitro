@@ -27,6 +27,14 @@ This creates a new project in the current directory.
 
 Using [npx](https://www.npmjs.com/package/npx) (npm >= 5.2):
 
+First, uninstall the previously installed global package "generator-nitro"
+
+```
+npm uninstall -g generator-nitro
+```
+
+... then run:
+
 ```
 npx -p yo -p generator-nitro@latest -- yo nitro
 ```

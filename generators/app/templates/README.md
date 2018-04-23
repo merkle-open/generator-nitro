@@ -2,6 +2,26 @@
 
 Introduction …
 
+## Usage
+
+Before using, you need of course [node](https://nodejs.org/) installed.  
+Ensure correct [node-version](./.node-version)
+
+We use [yarn](https://yarnpkg.com) as package manager because it's much faster than npm.
+
+Run:
+
+```
+yarn install
+```
+
+and start the devleopment environment
+
+```
+yarn start
+```
+ 
+
 ## Nitro
 
 For information on how to use Nitro, please refer to [nitro.md](project/docs/nitro.md) .

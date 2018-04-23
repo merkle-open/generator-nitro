@@ -235,8 +235,6 @@ To be more flexible, you may also pass individual arguments to the pattern, whic
 
 #### Render patterns (simplified notation)
 
-**Deprecated** – will be removed in Version 4
-
 A simplified but less clear variant is to use the pattern helper with one or two parameters.
 
 * the first parameter: pattern folder with the default template file

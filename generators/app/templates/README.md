@@ -15,7 +15,7 @@ Run:
 yarn install
 ```
 
-and start the devleopment environment
+and start in development mode
 
 ```
 yarn start

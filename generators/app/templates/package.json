@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@namics/eslint-config": "5.0.0",
-    "@namics/stylelint-bem": "5.0.0",
+    "@namics/stylelint-bem": "5.1.0",
     "ajv": "6.4.0",
     "autoprefixer": "8.3.0",
     "babel-core": "6.26.0",

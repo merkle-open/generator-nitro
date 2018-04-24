@@ -210,12 +210,9 @@ Simple default layout:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-     {% partial 'head' %}
-  </head>
+  <head></head>
   <body>
       <!-- Replace With Body -->
-      {% partial 'foot' %}
   </body>
 </html>
 ```
@@ -229,7 +226,7 @@ Different layouts are placed in `views/_layouts/`. Link them to your view [in yo
 Pages are meant to be compositions of your patterns. Use the pattern's name as the first parameter. Be aware, the
 pattern name is case-sensitive and should be unique.
 
-Nitro uses [twig](https://www.npmjs.com/package/twig) as the view engine and provides custom helpers.
+Nitro uses [twig](https://www.npmjs.com/package/twig) as the view engine and provides custom tags.
 
 Render the example pattern (file: `example.twig`, data-file: `example.json`):
 
@@ -260,45 +257,6 @@ To be more flexible, you may also pass additional arguments to the pattern, whic
 
 ```
 {% pattern name='example' additionalData={ modifier='blue' } %}
-```
-
-#### Render patterns (simplified notation)
-
-A simplified but less clear variant is to use the pattern helper with one or two parameters.
-
-* the first parameter: pattern folder with the default template file
-* the second parameter (optional): the data-file to be used
-
-Render the example pattern (file: `example.twig`, data-file: `example.json`):
-
-```
-{% pattern 'example' %}
-{% pattern 'example' 'example' %}
-```
-
-Or you may use the simplified notation with a data object as second parameter:
-
-```
-{% pattern 'example' exampleContent %}
-```
-
-#### Render patterns with children
-
-Maybe using your pattern templates with transclusion could be helpful in some cases.
-
-```html
-// example box template
-<div class="a-box">
-    {{{children}}}
-</div>
-```
-
-Call it as block like this:
-
-```
-{{#pattern 'box'}}
-    {{pattern 'example'}}
-{{/pattern}}
 ```
 
 #### Render pattern elements
@@ -413,7 +371,7 @@ Place [code for development](../../src/proto/readme.md) in the corresponding dir
 
 ## Translations
 
-Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the Twig helper `{% t %}`.  
+Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the helper described in the following section.  
 Translations are stored in `project/locales/[lang]/translation.json`.
 
 Express Middleware configuration:

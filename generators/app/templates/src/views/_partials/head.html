@@ -9,5 +9,11 @@
 <meta name="msapplication-TileColor" content="#5133ab">
 <meta name="msapplication-TileImage" content="/assets/img/icon/tile-icon.png"><% } %>
 <title>{{_nitro.pageTitle}}</title>
+
+<% if (options.templateEng === 'twig') { %>
+<link href="/assets/css/ui{% if _nitro.minified %}.min{% endif %}.css" rel="stylesheet">
+<% } else { %>
 <link href="/assets/css/ui{{#if _nitro.production}}.min{{/if}}.css" rel="stylesheet">
+<% } %>
+
 <link href="/proto/css/proto.css" rel="stylesheet">

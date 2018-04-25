@@ -1,4 +1,9 @@
 <div class="container">
 	<h1>404 - Not Found</h1>
-	{{viewlist}}
+
+	<% if (options.templateEng === 'twig') { %>
+		{% viewlist %}
+	<% } else { %>
+		{{viewlist}}
+	<% } %>
 </div>

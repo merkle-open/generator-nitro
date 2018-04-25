@@ -1,7 +1,21 @@
 <div class="container"><% if (options.exampleCode) { %>
-	<h1>{{pattern name='icon' icon='nitro'}}&nbsp;Nitro example page</h1>
-	{{pattern name='example'}}
-	{{pattern name='example' data='example-blue'}}<% if (options.clientTpl) { %>
-	{{pattern name='example' data='example-template'}}<% } %><% } else { %>
-	<h1>Index</h1><% } %>
+	<% if (options.templateEng === 'twig') { %>
+		<h1>{% pattern name='icon' data='icon' %}&nbsp;Nitro example page</h1>
+		{% pattern name='example' data='example' %}
+		{% pattern name='example' data='example-blue' %}
+	<% } else { %>
+		<h1>{{pattern name='icon' icon='nitro'}}&nbsp;Nitro example page</h1>
+		{{pattern name='example'}}
+		{{pattern name='example' data='example-blue'}}
+	<% } %>
+
+	<% if (options.clientTpl) { %>
+		<% if (options.templateEng === 'twig') { %>
+			{% pattern name='example' data='example-template' %}
+		<% } else { %>
+			{{pattern name='example' data='example-template'}}
+		<% } %>
+	<% } %><% } else { %>
+	<h1>Index</h1>
+	<% } %>
 </div>

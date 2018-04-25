@@ -14,7 +14,8 @@
     "lint": "eslint .",
     "pretest": "yarn lint",
     "test": "jasmine --config=tests/jasmine/support/jasmine.json",
-    "prepublish": "nsp check --output summary"
+    "prepublish": "nsp check --output summary",
+    "prepublishOnly": "pkg-ok --bin generators/app/templates/project/.githooks/pre-commit generators/app/templates/project/.githooks/post-merge"
   },
   "files": [
     "generators/app",
@@ -32,7 +33,7 @@
     "modular"
   ],
   "dependencies": {
-    "adm-zip": "0.4.9",
+    "adm-zip": "0.4.7",
     "chalk": "2.4.0",
     "config": "1.30.0",
     "git-config": "0.0.7",
@@ -50,6 +51,7 @@
     "fs-extra": "5.0.0",
     "jasmine": "3.1.0",
     "nsp": "3.2.1",
+    "pkg-ok": "2.1.0",
     "yeoman-assert": "3.1.1",
     "yeoman-test": "1.7.0"
   }

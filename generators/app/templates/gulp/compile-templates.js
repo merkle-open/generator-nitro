@@ -7,25 +7,44 @@ const merge = require('merge-stream');
 
 module.exports = (gulp, plugins) => {
 	return () => {
-		// register nitro handlebars pattern helper
-		const helpersDir = path.join(__dirname, '../app/templating/hbs/helpers');
+		// register nitro <%= options.templateEng %> pattern helper
+		const helpersDir = path.join(__dirname, '../app/templating/<%= options.templateEng %>/helpers');
 		fs.readdirSync(helpersDir).forEach((helper) => {
 			const name = helper.replace('.js', '');
 			if (name === 'pattern') {
+				<% if (options.templateEng === 'twig') { %>
+				const patternTagFactory = require(path.join(helpersDir, name));
+
+				Twig.extend(function(Twig) {
+					Twig.exports.extendTag(patternTagFactory(Twig));
+				});
+				<% } else { %>
 				hbs.registerHelper(name, require(path.join(helpersDir, name)));
+				<% } %>
 			}
 		});
 
 		const templates = gulp.src('src/patterns/**/template/*.hbs')
 			// compile nitro pattern
 			.pipe(plugins.change((content) => {
+				<% if (options.templateEng === 'twig') { %>
+				const compilePattern = /{%\s?(pattern)\s[^]*\s?%}/gi;
+				<% } else { %>
 				const compilePattern = /{{(pattern)\s[^}]*}}/gi;
+				<% } %>
+
 				const matches = content.match(compilePattern);
 				if (matches) {
 					matches.forEach((match) => {
+						<% if (options.templateEng === 'twig') { %>
+						const template = Twig.twig({ data: match });
+						const compiled = template.render({});
+						<% } else { %>
 						const compiled = new hbs.handlebars.SafeString(
 							hbs.handlebars.compile(match, { compat: true })()
 						);
+						<% } %>
+
 						content = content.replace(match, compiled);
 					});
 				}

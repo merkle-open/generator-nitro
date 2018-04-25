@@ -25,6 +25,7 @@ module.exports = class extends Generator {
 			pre: this.options.pre,
 			js: this.options.js,
 			viewExt: this.options.viewExt,
+			templateEng: this.options.templateEng,
 			clientTpl: this.options.clientTpl,
 			exampleCode: this.options.exampleCode,
 			exporter: this.options.exporter,
@@ -52,7 +53,14 @@ module.exports = class extends Generator {
 			defaults: this._passedInOptions.js || this._jsOptions[0],
 		});
 
-		this._viewExtOptions = ['html', 'hbs', 'mustache'];
+		this._templateEngOptions = ['hbs', 'twig'];
+		this.option('viewExt', {
+			desc: `your desired template engine [${this._templateEngOptions.join('|')}]`,
+			type: String,
+			defaults: this._passedInOptions.templateEng || this._templateEngOptions[0],
+		});
+
+		this._viewExtOptions = ['html', 'hbs', 'twig', 'mustache'];
 		this.option('viewExt', {
 			desc: `your desired view file extension [${this._viewExtOptions.join('|')}]`,
 			type: String,
@@ -129,6 +137,7 @@ module.exports = class extends Generator {
 					this.options.pre = config.preprocessor || this.options.pre;
 					this.options.js = config.jscompiler || this.options.js;
 					this.options.viewExt = config.viewExtension || this.options.viewExt;
+					this.options.templateEng = config.templateEng || this.options.templateEng;
 					this.options.clientTpl = typeof config.clientTemplates === 'boolean' ? config.clientTemplates : this.options.clientTpl;
 					this.options.exampleCode = typeof config.exampleCode === 'boolean' ? config.exampleCode : this.options.exampleCode;
 					this.options.exporter = typeof config.exporter === 'boolean' ? config.exporter : this.options.exporter;
@@ -162,6 +171,15 @@ module.exports = class extends Generator {
 					store: true,
 					when: () => !this._skipQuestions && !this._passedInOptions.js,
 				},*/
+				{
+					name: 'templateEng',
+					type: 'list',
+					message: 'What\'s your desired template engine?',
+					choices: this._templateEngOptions,
+					default: this.options.templateEng,
+					store: true,
+					when: () => !this._skipQuestions && !this._passedInOptions.templateEng,
+				},
 				{
 					name: 'viewExt',
 					type: 'list',
@@ -208,6 +226,7 @@ module.exports = class extends Generator {
 				this.options.pre = answers.pre || this.options.pre;
 				this.options.js = answers.js || this.options.js;
 				this.options.viewExt = answers.viewExt || this.options.viewExt;
+				this.options.templateEng = answers.templateEng || this.options.templateEng;
 				this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
 				this.options.exampleCode = answers.exampleCode !== undefined ? answers.exampleCode : this.options.exampleCode;
 				this.options.exporter = answers.exporter !== undefined ? answers.exporter : this.options.exporter;
@@ -216,6 +235,7 @@ module.exports = class extends Generator {
 				this.config.set('preprocessor', this.options.pre);
 				this.config.set('jscompiler', this.options.js);
 				this.config.set('viewExtension', this.options.viewExt);
+				this.config.set('templateEng', this.options.templateEng);
 				this.config.set('clientTemplates', this.options.clientTpl);
 				this.config.set('exampleCode', this.options.exampleCode);
 				this.config.set('exporter', this.options.exporter);
@@ -285,6 +305,7 @@ module.exports = class extends Generator {
 		const tplFiles = [
 			// files to process with copyTpl
 			'app/core/config.js',
+			'app/tests/jasmine/templating/engineSpec.js',
 			'app/tests/jasmine/templating/patternSpec.js',
 			'config/default.js',
 			'config/default/assets.js',
@@ -299,6 +320,7 @@ module.exports = class extends Generator {
 			'src/patterns/molecules/example/schema.json',
 			'src/proto/js/prototype.js',
 			'src/views/index.html',
+			'src/views/_layouts/default.html',
 			'src/views/_partials/head.html',
 			'src/views/_partials/foot.html',
 			'tests/backstop/backstop.config.js',

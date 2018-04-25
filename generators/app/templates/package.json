@@ -130,7 +130,8 @@
     "npm-run-all": "4.1.2",
     "nsp": "3.2.1",
     "stylelint": "9.2.0",
-    "text-table": "0.2.0",
+    "text-table": "0.2.0",<% if (options.templateEng === 'twig') { %>
+    "twig": "1.10.5",<% }
     "yargs": "11.0.0",
     "yo": "2.0.2"
   },

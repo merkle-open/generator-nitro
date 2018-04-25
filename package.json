@@ -32,12 +32,12 @@
     "modular"
   ],
   "dependencies": {
-    "adm-zip": "0.4.7",
+    "adm-zip": "0.4.9",
     "chalk": "2.4.0",
     "config": "1.30.0",
     "git-config": "0.0.7",
     "glob": "7.1.2",
-    "lodash": "4.17.5",
+    "lodash": "4.17.10",
     "request": "2.85.0",
     "yeoman-generator": "2.0.4",
     "yosay": "2.0.2"

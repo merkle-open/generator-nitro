@@ -29,9 +29,11 @@ atlassian-ide-plugin.xml
 /generators/app/templates/.stylelintignore
 /generators/app/templates/.stylelintrc
 
-# Project
+# Node
 /node_modules
 npm-debug.log
+yarn-error.log
+lerna-debug.log
 
 # allow
 !.gitkeep

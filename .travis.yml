@@ -4,6 +4,7 @@ node_js:
   - '8'
   - '6'
 deploy:
+  skip_cleanup: true
   provider: npm
   email: oss@namics.com
   api_key: $NPM_TOKEN

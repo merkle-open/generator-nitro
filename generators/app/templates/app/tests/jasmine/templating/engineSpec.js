@@ -1,6 +1,6 @@
 'use strict';
 
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 	const Twig = require('../../../templating/twig/engine');
 
 	describe('Nitro\'s Twig helper loader', () => {

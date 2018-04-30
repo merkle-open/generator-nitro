@@ -177,7 +177,7 @@ http://localhost:8080/content-variant
 
 By default views use a simple layout mechanism.
 The default layout template `views/_layouts/default.<%= options.viewExt %>` is used for every view.
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 The snippet `<!-- Replace With Body -->` includes the contents from a view.
 <% } else { %>
 The block `{{{body}}}` includes the contents from a view.
@@ -190,7 +190,7 @@ Simple default layout:
 <html lang="en">
 <head></head>
 <body>
-    <% if (options.templateEng === 'twig') { %>
+    <% if (options.templateEngine === 'twig') { %>
     <!-- Replace With Body -->
     <% } else { %>
     {{{body}}}
@@ -208,7 +208,7 @@ Different layouts are placed in `views/_layouts/`. Link them to your view [in yo
 Pages are meant to be compositions of your patterns. Use the pattern's name as the first parameter. Be aware, the
 pattern name is case-sensitive and should be unique.
 
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 Nitro uses [twig](https://www.npmjs.com/package/twig) as the view engine and provides custom helpers.
 <% } else { %>
 Nitro uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
@@ -217,7 +217,7 @@ Nitro uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine an
 Render the example pattern (file: `example.<%= options.viewExt %>`, data-file: `example.json`):
 
 ```
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 {% pattern name='example' %}
 {% pattern name='example' data='example' %}
 <% } else { %>
@@ -229,7 +229,7 @@ Render the example pattern (file: `example.<%= options.viewExt %>`, data-file: `
 Render a "variant" from the example pattern (file: `example.<%= options.viewExt %>`, data-file: `example-variant.json`):
 
 ```
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 {% pattern name='example' data='example-variant' %}
 <% } else { %>
 {{pattern name='example' data='example-variant'}}
@@ -239,7 +239,7 @@ Render a "variant" from the example pattern (file: `example.<%= options.viewExt 
 There also is a possibility to pass data to subpatterns by providing a data object as hash option.
 
 ```
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 {% pattern name='example' data=exampleContent %}
 <% } else { %>
 {{pattern name='example' data=exampleContent}}
@@ -249,28 +249,28 @@ There also is a possibility to pass data to subpatterns by providing a data obje
 ...and if you really need this you may provide a second template file. (file: `example-2.<%= options.viewExt %>`, data-file: `example-variant.json`)
 
 ```
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 {% pattern name='example' data='example-variant' template='example-2' %}
 <% } else { %>
 {{pattern name='example' data='example-variant' template='example-2'}}
 <% } %>
 ```
 
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 To be more flexible, you may also pass additional arguments to the pattern, which overrides the defaults from the data-file.
 <% } else { %>
 To be more flexible, you may also pass individual arguments to the pattern, which overrides the defaults from the data-file.
 <% } %>
 
 ```
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 {% pattern name='example' additionalData={ modifier='blue' } %}
 <% } else { %>
 {{pattern name='example' modifier='blue'}}
 <% } %>
 ```
 
-<% if (options.templateEng !== 'twig') { %>
+<% if (options.templateEngine !== 'twig') { %>
 #### Render patterns with children
 
 Maybe using your pattern templates with transclusion could be helpful in some cases.
@@ -289,14 +289,14 @@ Call it as block like this:
     {{pattern 'example'}}
 {{/pattern}}
 ```
-<% }
+<% } %>
 
 #### Render pattern elements
 
 The pattern helper will find also pattern elements.
 
 ```
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 {% pattern 'example-sub' %}
 <% } else { %>
 {{pattern 'example-sub'}}
@@ -310,7 +310,7 @@ The pattern helper will find also pattern elements.
 
 ### Render partials
 
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.twig` files (e.g. `head.twig`).
 
 ```
@@ -334,7 +334,7 @@ Using a placeholder is another way to output some markup. Placeholders are place
 The following two examples do the same and render the file `content/example.<%= options.viewExt %>` from `views/_placeholders/`.
 
 ```
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 {% placeholder 'content' 'example' %}
 {% placeholder name='content' template='example' %}
 <% } else { %>
@@ -409,7 +409,7 @@ Pattern data will overwrite data from views. (Use as described above)
 
 You may overwrite data from views & patterns in request parameters.
 
-`?_nitro.pageTitle=Testpage` will overwrite the data for the <%= options.templateEng %> expression `{{_nitro.pageTitle}}`
+`?_nitro.pageTitle=Testpage` will overwrite the data for the <%= options.templateEngine %> expression `{{_nitro.pageTitle}}`
 
 ## Assets
 
@@ -432,11 +432,11 @@ Express Middleware configuration:
 * Fallback language: `default`
 * Language switch with query parameter: `?lang=de`
 
-### Translation <%= options.templateEng %> helper
+### Translation <%= options.templateEngine %> helper
 
 The helper uses the given [library features](http://i18next.com/translate/).
 
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 You may use an object / array to transfer data to the helper. Use two brackets as interpolation pre- and suffixes
 or use `%s` placeholders for sprintf functionality.
 <% } else { %>
@@ -460,7 +460,7 @@ data = {
     }
 }
 
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 {% t 'test.example.string' %}
 {% t 'test.example.nested' %}
 {% t 'test.example.sprintf' data=['alphabet', 'a', 'l', 'p'] %}
@@ -496,7 +496,7 @@ Use all lowercase if possible. (Exception: TerrificJS uses upper case for its na
 All files must be lowercase. It's allowed to use uppercase letters for pattern folders, keep care of case sensitive filesystems and use handlebars helpers with the *exact* folder name.
 
 ```
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 {% pattern name='NavMain' %}
 <% } else { %>
 {{pattern name='NavMain'}}
@@ -512,13 +512,13 @@ Navigation   -> T.Module.Navigation   -> m-navigation
 NavMain      -> T.Module.NavMain      -> m-nav-main
 AdminNavMain -> T.Module.AdminNavMain -> m-admin-nav-main
 ```
-### Custom <%= options.templateEng %> helpers
+### Custom <%= options.templateEngine %> helpers
 
-Custom <%= options.templateEng %> helpers will be automatically loaded if put into to `project/helpers` directory. An example could look like 
+Custom <%= options.templateEngine %> helpers will be automatically loaded if put into to `project/helpers` directory. An example could look like 
 this:
 
 ```js
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 const twigUtils = require('../utils');
 
 module.exports = function (Twig) {
@@ -558,7 +558,7 @@ module.exports = function(foo) {
 <% } %>
 ```
 
-<% if (options.templateEng === 'twig') { %>
+<% if (options.templateEngine === 'twig') { %>
 The helper name get's defined in the type property above. 
 The regex property needs to be extended to contain any possible arguments of the helper.
 For more complex example's please check out the core helpers.

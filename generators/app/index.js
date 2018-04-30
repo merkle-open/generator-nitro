@@ -456,6 +456,11 @@ module.exports = class extends Generator {
 				return;
 			}
 
+			// if we have a template engine option other than hbs, we return for files with different extensions
+			if (this._templateEngOptions !== 'hbs' && ext !== this._templateEngOptions) {
+				return;
+			}
+
 			const sourcePath = this.templatePath(file);
 			let destinationPath = this.destinationPath(file);
 

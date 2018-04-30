@@ -60,7 +60,7 @@ module.exports = class extends Generator {
 			defaults: this._passedInOptions.templateEngine || this._templateEngineOptions[0],
 		});
 
-		this._viewExtOptions = ['html', 'hbs', 'twig', 'mustache'];
+		this._viewExtOptions = ['html', 'hbs', 'mustache', 'twig'];
 		this.option('viewExt', {
 			desc: `your desired view file extension [${this._viewExtOptions.join('|')}]`,
 			type: String,
@@ -187,7 +187,16 @@ module.exports = class extends Generator {
 					choices: this._viewExtOptions,
 					default: this.options.viewExt,
 					store: true,
-					when: () => !this._skipQuestions && !this._passedInOptions.viewExt,
+					when: (answers) => {
+						if(this._skipQuestions || this._passedInOptions.viewExt || answers.templateEngine !== 'hbs') {
+							// if the templateEngine is not hbs, we automatically set the viewExt
+							this.options.viewExt = answers.templateEngine;
+
+							return false;
+						}
+
+						return true;
+					},
 				},
 				{
 					name: 'clientTpl',
@@ -359,7 +368,7 @@ module.exports = class extends Generator {
 			'gulp/clean-templates.js',
 			'gulp/compile-templates.js',
 		];
-		const viewFiles = [
+		const viewFilesHtml = [
 			// files that might change file extension
 			'src/views/404.html',
 			'src/views/index.html',
@@ -464,16 +473,20 @@ module.exports = class extends Generator {
 			const sourcePath = this.templatePath(file);
 			let destinationPath = this.destinationPath(file);
 
-			// adjust destination template file extension for view files
-			if (_.indexOf(this._viewExtOptions, ext) !== -1 && _.indexOf(viewFiles, file) !== -1) {
+			if (this.options.templateEngine === 'hbs') {
+				// additional logic needed for templateEngine hbs
+				 if (_.indexOf(this._viewExtOptions, ext) !== -1 && _.indexOf(viewFilesHtml, file) !== -1) {
+					// adjust destination template file extension (base .html) for view files (for case templateEngine hbs and viewExt hbs / mustache)
 
-				// if we have a template engine option other than hbs, we return for files with different extensions
-				if (this.options.templateEngine !== 'hbs' && ext !== this.options.templateEngine) {
-					return;
-				}
-
-				const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this._viewExtOptions[0]}`;
-				destinationPath = destinationPath.replace(path.extname(destinationPath), targetExt);
+					const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this._viewExtOptions[0]}`;
+					destinationPath = destinationPath.replace(path.extname(destinationPath), targetExt);
+				} else if (_.indexOf(this._viewExtOptions, ext) !== -1 && ext !== 'html') {
+				 	// return for non .html view files
+					 return;
+				 }
+			} else if (_.indexOf(this._viewExtOptions, ext) !== -1 && _.indexOf(viewFilesHtml, file) !== -1) {
+				// for all other view files, we return for html files
+				return;
 			}
 
 			if (_.indexOf(tplFiles, file) !== -1) {

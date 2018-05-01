@@ -6,6 +6,7 @@ Thumbs.db
 _.*
 .project
 .idea
+/*.iml
 .vscode
 .cache
 .settings

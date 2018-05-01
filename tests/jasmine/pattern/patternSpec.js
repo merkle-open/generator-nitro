@@ -37,7 +37,7 @@ describe('nitro:pattern', () => {
 			it('the pattern files are created', () => {
 				assert.file([
 					'src/patterns/organisms/Test',
-					'src/patterns/organisms/Test/test.html',
+					'src/patterns/organisms/Test/test.hbs',
 					'src/patterns/organisms/Test/_data/test.json',
 					'src/patterns/organisms/Test/css/test.less',
 					'src/patterns/organisms/Test/js/test.js',
@@ -60,7 +60,7 @@ describe('nitro:pattern', () => {
 			it('the pattern and modifier files are created', () => {
 				assert.file([
 					'src/patterns/organisms/Test',
-					'src/patterns/organisms/Test/test.html',
+					'src/patterns/organisms/Test/test.hbs',
 					'src/patterns/organisms/Test/_data/test.json',
 					'src/patterns/organisms/Test/_data/test-more.json',
 					'src/patterns/organisms/Test/css/test.less',
@@ -93,7 +93,7 @@ describe('nitro:pattern', () => {
 			it('the pattern and decorator files are created', () => {
 				assert.file([
 					'src/patterns/organisms/Test',
-					'src/patterns/organisms/Test/test.html',
+					'src/patterns/organisms/Test/test.hbs',
 					'src/patterns/organisms/Test/_data/test.json',
 					'src/patterns/organisms/Test/_data/test-more.json',
 					'src/patterns/organisms/Test/css/test.less',
@@ -127,7 +127,7 @@ describe('nitro:pattern', () => {
 		it('the pattern and modifier/decorator files are created', () => {
 			assert.file([
 				'src/patterns/molecules/NavMain',
-				'src/patterns/molecules/NavMain/navmain.html',
+				'src/patterns/molecules/NavMain/navmain.hbs',
 				'src/patterns/molecules/NavMain/_data/navmain.json',
 				'src/patterns/molecules/NavMain/_data/navmain-specialcase.json',
 				'src/patterns/molecules/NavMain/css/navmain.less',
@@ -169,7 +169,7 @@ describe('nitro:pattern', () => {
 		it('the pattern and modifier/decorator files are created', () => {
 			assert.file([
 				'src/patterns/molecules/nav-main',
-				'src/patterns/molecules/nav-main/nav-main.html',
+				'src/patterns/molecules/nav-main/nav-main.hbs',
 				'src/patterns/molecules/nav-main/_data/nav-main.json',
 				'src/patterns/molecules/nav-main/_data/nav-main-special-case.json',
 				'src/patterns/molecules/nav-main/css/nav-main.less',
@@ -211,7 +211,7 @@ describe('nitro:pattern', () => {
 		it('the pattern and decorator files are created', () => {
 			assert.file([
 				'src/patterns/molecules/NavMain',
-				'src/patterns/molecules/NavMain/navmain.html',
+				'src/patterns/molecules/NavMain/navmain.hbs',
 				'src/patterns/molecules/NavMain/_data/navmain.json',
 				'src/patterns/molecules/NavMain/_data/navmain-lightblue.json',
 				'src/patterns/molecules/NavMain/css/navmain.less',

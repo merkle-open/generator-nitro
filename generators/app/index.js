@@ -60,7 +60,7 @@ module.exports = class extends Generator {
 			defaults: this._passedInOptions.templateEngine || this._templateEngineOptions[0],
 		});
 
-		/*this._viewExtOptions = ['hbs', 'twig'];
+		/* this._viewExtOptions = ['hbs', 'twig'];
 		this.option('viewExt', {
 			desc: `your desired view file extension [${this._viewExtOptions.join('|')}]`,
 			type: String,
@@ -180,7 +180,7 @@ module.exports = class extends Generator {
 					store: true,
 					when: () => !this._skipQuestions && !this._passedInOptions.templateEngine,
 				},
-				/*{
+				/* {
 					name: 'viewExt',
 					type: 'list',
 					message: 'What\'s your desired view file extension?',

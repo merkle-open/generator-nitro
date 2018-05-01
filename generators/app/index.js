@@ -60,12 +60,12 @@ module.exports = class extends Generator {
 			defaults: this._passedInOptions.templateEngine || this._templateEngineOptions[0],
 		});
 
-		this._viewExtOptions = ['html', 'hbs', 'mustache', 'twig'];
+		/*this._viewExtOptions = ['hbs', 'twig'];
 		this.option('viewExt', {
 			desc: `your desired view file extension [${this._viewExtOptions.join('|')}]`,
 			type: String,
 			defaults: this._passedInOptions.viewExt || this._viewExtOptions[1],
-		});
+		});*/
 
 		this.option('clientTpl', {
 			desc: 'do you need client side templates',
@@ -180,54 +180,22 @@ module.exports = class extends Generator {
 					store: true,
 					when: () => !this._skipQuestions && !this._passedInOptions.templateEngine,
 				},
-				{
+				/*{
 					name: 'viewExt',
 					type: 'list',
 					message: 'What\'s your desired view file extension?',
 					choices: this._viewExtOptions,
 					default: this.options.viewExt,
 					store: true,
-					when: (answers) => {
-
-						// temporary remove all viewExt which not work with templateEngine hbs
-						if (this.options.templateEngine === 'hbs') {
-							for (let templateEngine of this._templateEngineOptions) {
-								if (templateEngine !== 'hbs') {
-									const viewExtIndex = this._viewExtOptions.indexOf('twig');
-									this._viewExtOptions.splice(viewExtIndex, 1);
-								}
-							}
-						}
-
-						if(this._skipQuestions || this._passedInOptions.viewExt || answers.templateEngine !== 'hbs') {
-							// if the templateEngine is not hbs, we automatically set the viewExt
-							this.options.viewExt = answers.templateEngine;
-
-							return false;
-						}
-
-						return true;
-					},
-				},
+					when: () => !this._skipQuestions || !this._passedInOptions.viewExt,
+				},*/
 				{
 					name: 'clientTpl',
 					type: 'confirm',
 					message: 'Would you like to include client side templates?',
 					default: this.options.clientTpl,
 					store: true,
-					when: () => {
-
-						// re-add all viewExt which where removed in the previous question because they are needed later in the generation process
-						if (this.options.templateEngine === 'hbs') {
-							for (let templateEngine of this._templateEngineOptions) {
-								if (templateEngine !== 'hbs') {
-									this._viewExtOptions.push(templateEngine);
-								}
-							}
-						}
-
-						return !this._skipQuestions && typeof this._passedInOptions.clientTpl !== 'boolean';
-					},
+					when: () => !this._skipQuestions && typeof this._passedInOptions.clientTpl !== 'boolean',
 				},
 				{
 					name: 'exampleCode',
@@ -257,8 +225,8 @@ module.exports = class extends Generator {
 				this.options.name = answers.name || this.options.name;
 				this.options.pre = answers.pre || this.options.pre;
 				this.options.js = answers.js || this.options.js;
-				this.options.viewExt = answers.viewExt || this.options.viewExt;
 				this.options.templateEngine = answers.templateEngine || this.options.templateEngine;
+				this.options.viewExt = answers.templateEngine || this.options.templateEngine;
 				this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
 				this.options.exampleCode = answers.exampleCode !== undefined ? answers.exampleCode : this.options.exampleCode;
 				this.options.exporter = answers.exporter !== undefined ? answers.exporter : this.options.exporter;
@@ -349,15 +317,15 @@ module.exports = class extends Generator {
 			'gulp/watch-assets.js',
 			'project/.githooks/pre-commit',
 			'project/docs/nitro.md',
-			'src/patterns/molecules/example/example.html',
+			'src/patterns/molecules/example/example.hbs',
 			'src/patterns/molecules/example/example.twig',
 			'src/patterns/molecules/example/schema.json',
 			'src/proto/js/prototype.js',
-			'src/views/index.html',
+			'src/views/index.hbs',
 			'src/views/index.twig',
-			'src/views/_partials/head.html',
+			'src/views/_partials/head.hbs',
 			'src/views/_partials/head.twig',
-			'src/views/_partials/foot.html',
+			'src/views/_partials/foot.hbs',
 			'src/views/_partials/foot.twig',
 			'tests/backstop/backstop.config.js',
 			'server.js',
@@ -391,16 +359,16 @@ module.exports = class extends Generator {
 			'gulp/clean-templates.js',
 			'gulp/compile-templates.js',
 		];
-		const viewFilesHtml = [
+		const viewFiles = [
 			// files that might change file extension
-			'src/views/404.html',
-			'src/views/index.html',
-			'src/views/_layouts/default.html',
-			'src/views/_partials/foot.html',
-			'src/views/_partials/head.html',
-			'src/patterns/atoms/icon/icon.html',
-			'src/patterns/molecules/example/example.html',
-			'project/blueprints/pattern/pattern.html',
+			'src/views/404',
+			'src/views/index',
+			'src/views/_layouts/default',
+			'src/views/_partials/foot',
+			'src/views/_partials/head',
+			'src/patterns/atoms/icon/icon',
+			'src/patterns/molecules/example/example',
+			'project/blueprints/pattern/pattern',
 		];
 		const enginePath = 'app/templating/';
 		const examplePaths = [
@@ -508,20 +476,18 @@ module.exports = class extends Generator {
 			const sourcePath = this.templatePath(file);
 			let destinationPath = this.destinationPath(file);
 
-			if (this.options.templateEngine === 'hbs') {
-				// additional logic needed for templateEngine hbs
-				 if (_.indexOf(this._viewExtOptions, ext) !== -1 && _.indexOf(viewFilesHtml, file) !== -1) {
-					// adjust destination template file extension (base .html) for view files (for case templateEngine hbs and viewExt hbs / mustache)
-
-					const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this._viewExtOptions[0]}`;
+			// check if it's a view file
+			const fileWithoutExt = file.substring(0, (file.length - ext.length - 1));
+			if (_.indexOf(viewFiles, fileWithoutExt) !== -1) {
+				if (this.options.viewExt !== this.options.templateEngine) {
+					// sanity check for update case of old generated app's having viewExt other than hbs
+					const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this._templateEngineOptions[0]}`;
 					destinationPath = destinationPath.replace(path.extname(destinationPath), targetExt);
-				} else if (_.indexOf(this._viewExtOptions, ext) !== -1 && ext !== 'html') {
-				 	// return for non .html view files
-					 return;
-				 }
-			} else if (_.indexOf(this._viewExtOptions, ext) !== -1 && _.indexOf(viewFilesHtml, file) !== -1) {
-				// for all other view files, we return for html files
-				return;
+
+				} else if (ext !== this.options.templateEngine) {
+					// return for view files with ext not matching the current templateEngine
+					return;
+				}
 			}
 
 			if (_.indexOf(tplFiles, file) !== -1) {

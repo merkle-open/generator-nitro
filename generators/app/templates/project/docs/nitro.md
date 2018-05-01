@@ -126,7 +126,7 @@ Different data variations have to be placed in the `_data` folder:
 ### Creating pattern with npm script
 
 ```
-yarn nitro:pattern
+yarn create-pattern
 ```
 
 This will copy the templates (nitro.patterns.<type>.template) from config to the configured target.
@@ -134,7 +134,7 @@ This will copy the templates (nitro.patterns.<type>.template) from config to the
 Optionally you can give the name:
 
 ```
-yarn nitro:pattern <name>
+yarn create-pattern <name>
 ```
 
 ### Creating pattern elements
@@ -152,7 +152,7 @@ Element `example-sub` in pattern `example`:
 /example/elements/example-sub/_data/example-sub.json
 ```
 
-It's recommended to start the name of a subpattern with the pattern name.
+It's recommended to start the name of a subpattern with the pattern name and to use the same pattern type for the sub element.
 
 ### Creating pages
 

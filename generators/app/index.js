@@ -188,6 +188,17 @@ module.exports = class extends Generator {
 					default: this.options.viewExt,
 					store: true,
 					when: (answers) => {
+
+						// temporary remove all viewExt which not work with templateEngine hbs
+						if (this.options.templateEngine === 'hbs') {
+							for (let templateEngine of this._templateEngineOptions) {
+								if (templateEngine !== 'hbs') {
+									const viewExtIndex = this._viewExtOptions.indexOf('twig');
+									this._viewExtOptions.splice(viewExtIndex, 1);
+								}
+							}
+						}
+
 						if(this._skipQuestions || this._passedInOptions.viewExt || answers.templateEngine !== 'hbs') {
 							// if the templateEngine is not hbs, we automatically set the viewExt
 							this.options.viewExt = answers.templateEngine;
@@ -204,7 +215,19 @@ module.exports = class extends Generator {
 					message: 'Would you like to include client side templates?',
 					default: this.options.clientTpl,
 					store: true,
-					when: () => !this._skipQuestions && typeof this._passedInOptions.clientTpl !== 'boolean',
+					when: () => {
+
+						// re-add all viewExt which where removed in the previous question because they are needed later in the generation process
+						if (this.options.templateEngine === 'hbs') {
+							for (let templateEngine of this._templateEngineOptions) {
+								if (templateEngine !== 'hbs') {
+									this._viewExtOptions.push(templateEngine);
+								}
+							}
+						}
+
+						return !this._skipQuestions && typeof this._passedInOptions.clientTpl !== 'boolean';
+					},
 				},
 				{
 					name: 'exampleCode',
@@ -379,6 +402,7 @@ module.exports = class extends Generator {
 			'src/patterns/molecules/example/example.html',
 			'project/blueprints/pattern/pattern.html',
 		];
+		const enginePath = 'app/templating/';
 		const examplePaths = [
 			// paths only for this.options.exampleCode===true
 			'src/patterns/atoms/icon/',
@@ -431,6 +455,17 @@ module.exports = class extends Generator {
 			// Client side templates only Files
 			if (!this.options.clientTpl) {
 				if (_.indexOf(clientTplFiles, file) !== -1) {
+					return;
+				}
+			}
+
+			// check if the file is within the app/templating/ path
+			if (file.indexOf(enginePath) !== -1) {
+				if (this.options.templateEngine === 'hbs' && file.indexOf(`${enginePath}${this.options.templateEngine}`) === -1) {
+					// for templateEngine hbs we return for all non hbs engine files
+					return;
+				} else if (file.indexOf(`${enginePath}hbs`) === -1 && file.indexOf(`${enginePath}${this.options.templateEngine}`) === -1) {
+					// for templateEngine other than hbs, we return for non hbs and other engine files
 					return;
 				}
 			}

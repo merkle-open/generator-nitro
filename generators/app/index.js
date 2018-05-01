@@ -180,6 +180,7 @@ module.exports = class extends Generator {
 					store: true,
 					when: () => !this._skipQuestions && !this._passedInOptions.templateEngine,
 				},
+				// viewExt is automatically derived from templateEngine
 				/* {
 					name: 'viewExt',
 					type: 'list',

@@ -310,16 +310,12 @@ The pattern helper will find also pattern elements.
 
 ### Render partials
 
+Render a partial (<%= options.viewExt %> snippet). Partials are placed in `views/_partials/` as `*.<%= options.viewExt %>` files (e.g. `head.<%= options.viewExt %>`).
+
+```
 <% if (options.templateEngine === 'twig') { %>
-Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.twig` files (e.g. `head.twig`).
-
-```
 {% partial 'head' %}
-```
 <% } else { %>
-Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.<%= options.viewExt %>` files (e.g. `head.<%= options.viewExt %>`).
-
-```
 {{> head}}
 ```
 
@@ -514,8 +510,8 @@ AdminNavMain -> T.Module.AdminNavMain -> m-admin-nav-main
 ```
 ### Custom <%= options.templateEngine %> helpers
 
-Custom <%= options.templateEngine %> helpers will be automatically loaded if put into to `project/helpers` directory. An example could look like 
-this:
+Custom <%= options.templateEngine %> helpers will be automatically loaded if put into to `project/helpers` directory. 
+An example could look like this:
 
 ```js
 <% if (options.templateEngine === 'twig') { %>

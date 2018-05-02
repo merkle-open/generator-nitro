@@ -60,12 +60,12 @@ module.exports = class extends Generator {
 			defaults: this._passedInOptions.templateEngine || this._templateEngineOptions[0],
 		});
 
-		/* this._viewExtOptions = ['hbs', 'twig'];
+		this._viewExtOptions = ['hbs', 'twig'];
 		this.option('viewExt', {
 			desc: `your desired view file extension [${this._viewExtOptions.join('|')}]`,
 			type: String,
-			defaults: this._passedInOptions.viewExt || this._viewExtOptions[1],
-		});*/
+			defaults: this._passedInOptions.viewExt || this._viewExtOptions[0],
+		});
 
 		this.option('clientTpl', {
 			desc: 'do you need client side templates',
@@ -227,15 +227,13 @@ module.exports = class extends Generator {
 				this.options.pre = answers.pre || this.options.pre;
 				this.options.js = answers.js || this.options.js;
 				this.options.templateEngine = answers.templateEngine || this.options.templateEngine;
-				this.options.viewExt = answers.templateEngine || this.options.templateEngine;
+				this.options.viewExt = this.options.templateEngine;
 				this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
 				this.options.exampleCode = answers.exampleCode !== undefined ? answers.exampleCode : this.options.exampleCode;
 				this.options.exporter = answers.exporter !== undefined ? answers.exporter : this.options.exporter;
 
 				this.config.set('name', this.options.name);
 				this.config.set('preprocessor', this.options.pre);
-				this.config.set('jscompiler', this.options.js);
-				this.config.set('viewExtension', this.options.viewExt);
 				this.config.set('templateEngine', this.options.templateEngine);
 				this.config.set('clientTemplates', this.options.clientTpl);
 				this.config.set('exampleCode', this.options.exampleCode);
@@ -340,7 +338,7 @@ module.exports = class extends Generator {
 			'frontend-defaults.zip',
 		];
 		const ignoresOnUpdate = [
-			// files to ignore ono updating projects
+			// files to ignore on updating projects
 			'config/local.js',
 		];
 		const typeScriptFiles = [
@@ -430,11 +428,8 @@ module.exports = class extends Generator {
 
 			// check if the file is within the app/templating/ path
 			if (file.indexOf(enginePath) !== -1) {
-				if (this.options.templateEngine === 'hbs' && file.indexOf(`${enginePath}${this.options.templateEngine}`) === -1) {
-					// for templateEngine hbs we return for all non hbs engine files
-					return;
-				} else if (file.indexOf(`${enginePath}hbs`) === -1 && file.indexOf(`${enginePath}${this.options.templateEngine}`) === -1) {
-					// for templateEngine other than hbs, we return for non hbs and other engine files
+				if (file.indexOf(`${enginePath}${this.options.templateEngine}`) === -1) {
+					// only matching engine files
 					return;
 				}
 			}

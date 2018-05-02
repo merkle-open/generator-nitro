@@ -359,7 +359,7 @@ module.exports = class extends Generator {
 			'gulp/compile-templates.js',
 		];
 		const viewFiles = [
-			// files that might change file extension
+			// all view files exists in different templateEngine variants
 			'src/views/404',
 			'src/views/index',
 			'src/views/_layouts/default',
@@ -459,6 +459,7 @@ module.exports = class extends Generator {
 			}
 
 			const ext = path.extname(file).substring(1);
+			const fileWithoutExt = file.substring(0, (file.length - ext.length - 1));
 
 			// exclude unnecessary preprocessor files
 			if (_.indexOf(this._preOptions, ext) !== -1 && this.options.pre !== ext) {
@@ -473,16 +474,15 @@ module.exports = class extends Generator {
 			let destinationPath = this.destinationPath(file);
 
 			// check if it's a view file
-			const fileWithoutExt = file.substring(0, (file.length - ext.length - 1));
 			if (_.indexOf(viewFiles, fileWithoutExt) !== -1) {
+				if (ext !== this.options.templateEngine) {
+					// return view files with ext not matching the current templateEngine
+					return;
+				}
 				if (this.options.viewExt !== this.options.templateEngine) {
 					// sanity check for update case of old generated app's having viewExt other than hbs
-					const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this._templateEngineOptions[0]}`;
+					const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this._viewExtOptions[0]}`;
 					destinationPath = destinationPath.replace(path.extname(destinationPath), targetExt);
-
-				} else if (ext !== this.options.templateEngine) {
-					// return for view files with ext not matching the current templateEngine
-					return;
 				}
 			}
 

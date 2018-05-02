@@ -10,10 +10,10 @@ const compression = require('compression');
 const bodyParser = require('body-parser');
 
 <% if (options.templateEngine === 'twig') { %>
-	twig.cache(false);
+twig.cache(false);
 <% } else { %>
-	// partials
-	require('./app/templating/hbs/partials')(hbs);
+// partials
+require('./app/templating/hbs/partials')(hbs);
 <% } %>
 
 // compress all requests
@@ -31,9 +31,9 @@ app.set('view engine', config.get('nitro.viewFileExtension'));
 app.set('views', config.get('nitro.basePath') + config.get('nitro.viewDirectory'));
 
 <% if (options.templateEngine === 'twig') { %>
-	app.engine(config.get('nitro.viewFileExtension'), twig.renderWithLayout);
+app.engine(config.get('nitro.viewFileExtension'), twig.renderWithLayout);
 <% } else { %>
-	app.engine(config.get('nitro.viewFileExtension'), hbs.__express);
+app.engine(config.get('nitro.viewFileExtension'), hbs.__express);
 <% } %>
 
 

@@ -25,6 +25,7 @@ module.exports = class extends Generator {
 			pre: this.options.pre,
 			js: this.options.js,
 			viewExt: this.options.viewExt,
+			templateEngine: this.options.templateEngine,
 			clientTpl: this.options.clientTpl,
 			exampleCode: this.options.exampleCode,
 			exporter: this.options.exporter,
@@ -52,11 +53,18 @@ module.exports = class extends Generator {
 			defaults: this._passedInOptions.js || this._jsOptions[0],
 		});
 
-		this._viewExtOptions = ['html', 'hbs', 'mustache'];
+		this._templateEngineOptions = ['hbs', 'twig'];
+		this.option('templateEngine', {
+			desc: `your desired template engine [${this._templateEngineOptions.join('|')}]`,
+			type: String,
+			defaults: this._passedInOptions.templateEngine || this._templateEngineOptions[0],
+		});
+
+		this._viewExtOptions = ['hbs', 'twig'];
 		this.option('viewExt', {
 			desc: `your desired view file extension [${this._viewExtOptions.join('|')}]`,
 			type: String,
-			defaults: this._passedInOptions.viewExt || this._viewExtOptions[1],
+			defaults: this._passedInOptions.viewExt || this._viewExtOptions[0],
 		});
 
 		this.option('clientTpl', {
@@ -129,6 +137,7 @@ module.exports = class extends Generator {
 					this.options.pre = config.preprocessor || this.options.pre;
 					this.options.js = config.jscompiler || this.options.js;
 					this.options.viewExt = config.viewExtension || this.options.viewExt;
+					this.options.templateEngine = config.templateEngine || this.options.templateEngine;
 					this.options.clientTpl = typeof config.clientTemplates === 'boolean' ? config.clientTemplates : this.options.clientTpl;
 					this.options.exampleCode = typeof config.exampleCode === 'boolean' ? config.exampleCode : this.options.exampleCode;
 					this.options.exporter = typeof config.exporter === 'boolean' ? config.exporter : this.options.exporter;
@@ -163,14 +172,24 @@ module.exports = class extends Generator {
 					when: () => !this._skipQuestions && !this._passedInOptions.js,
 				},*/
 				{
+					name: 'templateEngine',
+					type: 'list',
+					message: 'What\'s your desired template engine?',
+					choices: this._templateEngineOptions,
+					default: this.options.templateEngine,
+					store: true,
+					when: () => !this._skipQuestions && !this._passedInOptions.templateEngine,
+				},
+				// viewExt is automatically derived from templateEngine
+				/* {
 					name: 'viewExt',
 					type: 'list',
 					message: 'What\'s your desired view file extension?',
 					choices: this._viewExtOptions,
 					default: this.options.viewExt,
 					store: true,
-					when: () => !this._skipQuestions && !this._passedInOptions.viewExt,
-				},
+					when: () => !this._skipQuestions || !this._passedInOptions.viewExt,
+				},*/
 				{
 					name: 'clientTpl',
 					type: 'confirm',
@@ -207,15 +226,15 @@ module.exports = class extends Generator {
 				this.options.name = answers.name || this.options.name;
 				this.options.pre = answers.pre || this.options.pre;
 				this.options.js = answers.js || this.options.js;
-				this.options.viewExt = answers.viewExt || this.options.viewExt;
+				this.options.templateEngine = answers.templateEngine || this.options.templateEngine;
+				this.options.viewExt = this.options.templateEngine;
 				this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
 				this.options.exampleCode = answers.exampleCode !== undefined ? answers.exampleCode : this.options.exampleCode;
 				this.options.exporter = answers.exporter !== undefined ? answers.exporter : this.options.exporter;
 
 				this.config.set('name', this.options.name);
 				this.config.set('preprocessor', this.options.pre);
-				this.config.set('jscompiler', this.options.js);
-				this.config.set('viewExtension', this.options.viewExt);
+				this.config.set('templateEngine', this.options.templateEngine);
 				this.config.set('clientTemplates', this.options.clientTpl);
 				this.config.set('exampleCode', this.options.exampleCode);
 				this.config.set('exporter', this.options.exporter);
@@ -285,23 +304,31 @@ module.exports = class extends Generator {
 		const tplFiles = [
 			// files to process with copyTpl
 			'app/core/config.js',
+			'app/tests/jasmine/templating/engineSpec.js',
 			'app/tests/jasmine/templating/patternSpec.js',
 			'config/default.js',
 			'config/default/assets.js',
 			'gulp/compile-css.js',
 			'gulp/compile-css-proto.js',
 			'gulp/compile-js.js',
+			'gulp/compile-templates.js',
 			'gulp/utils.js',
 			'gulp/watch-assets.js',
 			'project/.githooks/pre-commit',
 			'project/docs/nitro.md',
-			'src/patterns/molecules/example/example.html',
+			'project/docs/client-templates.md',
+			'src/patterns/molecules/example/example.hbs',
+			'src/patterns/molecules/example/example.twig',
 			'src/patterns/molecules/example/schema.json',
 			'src/proto/js/prototype.js',
-			'src/views/index.html',
-			'src/views/_partials/head.html',
-			'src/views/_partials/foot.html',
+			'src/views/index.hbs',
+			'src/views/index.twig',
+			'src/views/_partials/head.hbs',
+			'src/views/_partials/head.twig',
+			'src/views/_partials/foot.hbs',
+			'src/views/_partials/foot.twig',
 			'tests/backstop/backstop.config.js',
+			'server.js',
 			'gulpfile.js',
 			'package.json',
 		];
@@ -312,7 +339,7 @@ module.exports = class extends Generator {
 			'frontend-defaults.zip',
 		];
 		const ignoresOnUpdate = [
-			// files to ignore ono updating projects
+			// files to ignore on updating projects
 			'config/local.js',
 		];
 		const typeScriptFiles = [
@@ -333,16 +360,17 @@ module.exports = class extends Generator {
 			'gulp/compile-templates.js',
 		];
 		const viewFiles = [
-			// files that might change file extension
-			'src/views/404.html',
-			'src/views/index.html',
-			'src/views/_layouts/default.html',
-			'src/views/_partials/foot.html',
-			'src/views/_partials/head.html',
-			'src/patterns/atoms/icon/icon.html',
-			'src/patterns/molecules/example/example.html',
-			'project/blueprints/pattern/pattern.html',
+			// all view files exists in different templateEngine variants
+			'src/views/404',
+			'src/views/index',
+			'src/views/_layouts/default',
+			'src/views/_partials/foot',
+			'src/views/_partials/head',
+			'src/patterns/atoms/icon/icon',
+			'src/patterns/molecules/example/example',
+			'project/blueprints/pattern/pattern',
 		];
+		const enginePath = 'app/templating/';
 		const examplePaths = [
 			// paths only for this.options.exampleCode===true
 			'src/patterns/atoms/icon/',
@@ -399,6 +427,14 @@ module.exports = class extends Generator {
 				}
 			}
 
+			// check if the file is within the app/templating/ path
+			if (file.indexOf(enginePath) !== -1) {
+				if (file.indexOf(`${enginePath}${this.options.templateEngine}`) === -1) {
+					// only matching engine files
+					return;
+				}
+			}
+
 			// Example only Files
 			if (!this.options.exampleCode) {
 				if (
@@ -424,6 +460,7 @@ module.exports = class extends Generator {
 			}
 
 			const ext = path.extname(file).substring(1);
+			const fileWithoutExt = file.substring(0, (file.length - ext.length - 1));
 
 			// exclude unnecessary preprocessor files
 			if (_.indexOf(this._preOptions, ext) !== -1 && this.options.pre !== ext) {
@@ -437,11 +474,17 @@ module.exports = class extends Generator {
 			const sourcePath = this.templatePath(file);
 			let destinationPath = this.destinationPath(file);
 
-			// adjust destination template file extension for view files
-			if (_.indexOf(this._viewExtOptions, ext) !== -1 && _.indexOf(viewFiles, file) !== -1) {
-				const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this._viewExtOptions[0]}`;
-
-				destinationPath = destinationPath.replace(path.extname(destinationPath), targetExt);
+			// check if it's a view file
+			if (_.indexOf(viewFiles, fileWithoutExt) !== -1) {
+				if (ext !== this.options.templateEngine) {
+					// return view files with ext not matching the current templateEngine
+					return;
+				}
+				if (this.options.viewExt !== this.options.templateEngine) {
+					// sanity check for update case of old generated app's having viewExt other than hbs
+					const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this._viewExtOptions[0]}`;
+					destinationPath = destinationPath.replace(path.extname(destinationPath), targetExt);
+				}
 			}
 
 			if (_.indexOf(tplFiles, file) !== -1) {

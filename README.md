@@ -67,7 +67,7 @@ On creating a new project, you will be guided through some configuration options
 
 * Desired Name `--name=` (default: current directory name)
 * Desired CSS preprocessor `--pre=` (`less` or `scss`; default: `scss`)
-* Desired view file extension `--viewExt=` (`html`, `hbs` or `mustache`; default: `hbs`)
+* Desired template engine `--templateEngine=` (`hbs` or `twig`; default: `hbs`)
 * Using client side templates `--clientTpl` (default: false)
 * Including example code `--exampleCode` (default: false)
 * Installing [`nitro-exporter`](https://www.npmjs.com/package/nitro-exporter) `--exporter` (default: false)
@@ -77,9 +77,9 @@ The choosen options will be stored for the next project generation.
 It's possible to pass in these options through the command line:
 
 ```
-npx -p yo -p generator-nitro@latest -- yo nitro --name=myproject --pre=less --viewExt=hbs --clientTpl
+npx -p yo -p generator-nitro@latest -- yo nitro --name=myproject --pre=less --templateEngine=hbs --clientTpl
 # or
-yo nitro --name=myproject --pre=less --viewExt=hbs --clientTpl
+yo nitro --name=myproject --pre=less --templateEngine=hbs --clientTpl
 ```
 
 You may bypass the questions with `--skip-questions`. This will use the defaults for not specified options

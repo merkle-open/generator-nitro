@@ -11,7 +11,8 @@
  *
  * {{t 'test.example.string'}}
  * {{t 'test.example.sprintf' 'alphabet' 'a' 'l' 'p'}}
- * {{t 'test.example.interpolation' word='alphabet' one='a'}}
+ * {{t 'test.example.interpolation' name='developer'}}
+ * {{t 'test.example.interpolation' data}}
  *
  * It should be also possible to use other translation features from i18next (http://i18next.com/translate/)
  */

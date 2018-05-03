@@ -2,7 +2,7 @@
 
 /**
  * Karma configuration
- * Requires that asset `app.js` is compiled
+ * Requires that asset `ui.js` is compiled
  */
 
 module.exports = function (config) {

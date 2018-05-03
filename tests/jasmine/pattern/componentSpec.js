@@ -37,7 +37,7 @@ describe('nitro:component', () => {
 			it('the pattern files are created', () => {
 				assert.file([
 					'src/patterns/organisms/Test',
-					'src/patterns/organisms/Test/test.html',
+					'src/patterns/organisms/Test/test.hbs',
 					'src/patterns/organisms/Test/_data/test.json',
 					'src/patterns/organisms/Test/css/test.less',
 					'src/patterns/organisms/Test/js/test.js',

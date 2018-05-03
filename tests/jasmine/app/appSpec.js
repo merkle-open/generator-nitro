@@ -66,36 +66,12 @@ describe('nitro:app', () => {
 		});
 	});
 
-	describe('when using view file extension html', () => {
+	describe('when using template engine hbs', () => {
 		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ viewExt: 'html' })
-				.on('end', done);
-		});
-
-		it('view files have the .html file extension', () => {
-			assert.file([
-				'src/views/index.html',
-				'src/views/404.html',
-				'src/views/_partials/head.html',
-				'src/views/_partials/foot.html',
-				'project/blueprints/pattern/pattern.html',
-			]);
-		});
-
-		it('config contain the correct view file extension', () => {
-			assert.fileContent('app/core/config.js', /viewFileExtension: 'html'/);
-		});
-	});
-
-	describe('when using view file extension hbs', () => {
-		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
-				.withOptions({ 'skip-install': true })
-				.withPrompts({ viewExt: 'hbs' })
+				.withPrompts({ templateEngine: 'hbs' })
 				.on('end', done);
 		});
 
@@ -114,27 +90,27 @@ describe('nitro:app', () => {
 		});
 	});
 
-	describe('when using view file extension mustache', () => {
+	describe('when using template engine twig', () => {
 		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ viewExt: 'mustache' })
+				.withPrompts({ templateEngine: 'twig' })
 				.on('end', done);
 		});
 
-		it('view files have the .mustache file extension', () => {
+		it('view files have the .twig file extension', () => {
 			assert.file([
-				'src/views/index.mustache',
-				'src/views/404.mustache',
-				'src/views/_partials/head.mustache',
-				'src/views/_partials/foot.mustache',
-				'project/blueprints/pattern/pattern.mustache',
+				'src/views/index.twig',
+				'src/views/404.twig',
+				'src/views/_partials/head.twig',
+				'src/views/_partials/foot.twig',
+				'project/blueprints/pattern/pattern.twig',
 			]);
 		});
 
 		it('config contains the correct view file extension', () => {
-			assert.fileContent('app/core/config.js', /viewFileExtension: 'mustache'/);
+			assert.fileContent('app/core/config.js', /viewFileExtension: 'twig'/);
 		});
 	});
 

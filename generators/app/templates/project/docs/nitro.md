@@ -126,7 +126,7 @@ Different data variations have to be placed in the `_data` folder:
 ### Creating pattern with npm script
 
 ```
-yarn nitro:pattern
+yarn create-pattern
 ```
 
 This will copy the templates (nitro.patterns.<type>.template) from config to the configured target.
@@ -134,7 +134,7 @@ This will copy the templates (nitro.patterns.<type>.template) from config to the
 Optionally you can give the name:
 
 ```
-yarn nitro:pattern <name>
+yarn create-pattern <name>
 ```
 
 ### Creating pattern elements
@@ -152,7 +152,7 @@ Element `example-sub` in pattern `example`:
 /example/elements/example-sub/_data/example-sub.json
 ```
 
-It's recommended to start the name of a subpattern with the pattern name.
+It's recommended to start the name of a subpattern with the pattern name and to use the same pattern type for the sub element.
 
 ### Creating pages
 
@@ -176,8 +176,9 @@ http://localhost:8080/content-variant
 #### Layout
 
 By default views use a simple layout mechanism.
-The default layout template `views/_layouts/default.<%= options.viewExt %>` is used for every view.
-The block `{{{body}}}` includes the contents from a view.
+The default layout template `views/_layouts/default.<%= options.viewExt %>` is used for every view.<% if (options.templateEngine === 'twig') { %>
+The snippet `<!-- Replace With Body -->` includes the contents from a view.<% } else { %>
+The block `{{{body}}}` includes the contents from a view.<% } %>
 
 Simple default layout:
 
@@ -185,8 +186,9 @@ Simple default layout:
 <!DOCTYPE html>
 <html lang="en">
 <head></head>
-<body>
-    {{{body}}}
+<body><% if (options.templateEngine === 'twig') { %>
+    <!-- Replace With Body --><% } else { %>
+    {{{body}}}<% } %>
 </body>
 </html>
 ```
@@ -199,60 +201,47 @@ Different layouts are placed in `views/_layouts/`. Link them to your view [in yo
 
 Pages are meant to be compositions of your patterns. Use the pattern's name as the first parameter. Be aware, the
 pattern name is case-sensitive and should be unique.
-
-Nitro uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
+<% if (options.templateEngine === 'twig') { %>
+Nitro uses [twig](https://www.npmjs.com/package/twig) as the view engine and provides custom helpers.<% } else { %>
+Nitro uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.<% } %>
 
 Render the example pattern (file: `example.<%= options.viewExt %>`, data-file: `example.json`):
 
-```
+```<% if (options.templateEngine === 'twig') { %>
+{% pattern name='example' %}
+{% pattern name='example' data='example' %}<% } else { %>
 {{pattern name='example'}}
-{{pattern name='example' data='example'}}
+{{pattern name='example' data='example'}}<% } %>
 ```
 
 Render a "variant" from the example pattern (file: `example.<%= options.viewExt %>`, data-file: `example-variant.json`):
 
-```
-{{pattern name='example' data='example-variant'}}
+```<% if (options.templateEngine === 'twig') { %>
+{% pattern name='example' data='example-variant' %}<% } else { %>
+{{pattern name='example' data='example-variant'}}<% } %>
 ```
 
 There also is a possibility to pass data to subpatterns by providing a data object as hash option.
 
-```
-{{pattern name='example' data=exampleContent}}
+```<% if (options.templateEngine === 'twig') { %>
+{% pattern name='example' data=exampleContent %}<% } else { %>
+{{pattern name='example' data=exampleContent}}<% } %>
 ```
 
 ...and if you really need this you may provide a second template file. (file: `example-2.<%= options.viewExt %>`, data-file: `example-variant.json`)
 
-```
-{{pattern name='example' data='example-variant' template='example-2'}}
-```
-
-To be more flexible, you may also pass individual arguments to the pattern, which overrides the defaults from the data-file.
-
-```
-{{pattern name='example' modifier='blue'}}
+```<% if (options.templateEngine === 'twig') { %>
+{% pattern name='example' data='example-variant' template='example-2' %}<% } else { %>
+{{pattern name='example' data='example-variant' template='example-2'}}<% } %>
 ```
 
-#### Render patterns (simplified notation)
+To be more flexible, you may also pass additional arguments to the pattern, which overrides the defaults from the data-file.
 
-A simplified but less clear variant is to use the pattern helper with one or two parameters.
-
-* the first parameter: pattern folder with the default template file
-* the second parameter (optional): the data-file to be used
-
-Render the example pattern (file: `example.<%= options.viewExt %>`, data-file: `example.json`):
-
+```<% if (options.templateEngine === 'twig') { %>
+{% pattern name='example' additionalData={ modifier='blue' } %}<% } else { %>
+{{pattern name='example' modifier='blue'}}<% } %>
 ```
-{{pattern 'example'}}
-{{pattern 'example' 'example'}}
-```
-
-Or you may use the simplified notation with a data object as second parameter:
-
-```
-{{pattern 'example' exampleContent}}
-```
-
+<% if (options.templateEngine !== 'twig') { %>
 #### Render patterns with children
 
 Maybe using your pattern templates with transclusion could be helpful in some cases.
@@ -270,14 +259,15 @@ Call it as block like this:
 {{#pattern 'box'}}
     {{pattern 'example'}}
 {{/pattern}}
-```
+```<% } %>
 
 #### Render pattern elements
 
 The pattern helper will find also pattern elements.
 
-```
-{{pattern 'example-sub'}}
+```<% if (options.templateEngine === 'twig') { %>
+{% pattern 'example-sub' %}<% } else { %>
+{{pattern 'example-sub'}}<% } %>
 ```
 
 ... looks for following paths
@@ -287,24 +277,27 @@ The pattern helper will find also pattern elements.
 
 ### Render partials
 
-Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.<%= options.viewExt %>` files (e.g. `head.<%= options.viewExt %>`).
+Render a partial (<%= options.viewExt %> snippet). Partials are placed in `views/_partials/` as `*.<%= options.viewExt %>` files (e.g. `head.<%= options.viewExt %>`).
 
-```
+```<% if (options.templateEngine === 'twig') { %>
+{% partial 'head' %}<% } else { %>
 {{> head}}
 ```
 
 Partials are registered with [hbs-utils](https://www.npmjs.com/package/hbs-utils#partials), 
 so keep in mind that every space or hyphen in filenames is replaced with an underscore.
-(e.g. use `{{> file_name}}` to load `views/_partials/file-name.<%= options.viewExt %>`)
+(e.g. use `{{> file_name}}` to load `views/_partials/file-name.<%= options.viewExt %>`)<% } %>
 
 ### Render placeholders
 
 Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `views/_placeholders/` as `*.<%= options.viewExt %>` files.  
 The following two examples do the same and render the file `content/example.<%= options.viewExt %>` from `views/_placeholders/`.
 
-```
+```<% if (options.templateEngine === 'twig') { %>
+{% placeholder 'content' 'example' %}
+{% placeholder name='content' template='example' %}<% } else { %>
 {{placeholder 'content' 'example'}}
-{{placeholder name='content' template='example'}}
+{{placeholder name='content' template='example'}}<% } %>
 ```
 
 ### Passing data
@@ -373,7 +366,7 @@ Pattern data will overwrite data from views. (Use as described above)
 
 You may overwrite data from views & patterns in request parameters.
 
-`?_nitro.pageTitle=Testpage` will overwrite the data for the handlebars expression `{{_nitro.pageTitle}}`
+`?_nitro.pageTitle=Testpage` will overwrite the data for the <%= options.templateEngine %> expression `{{_nitro.pageTitle}}`
 
 ## Assets
 
@@ -388,7 +381,7 @@ Place [code for development](../../src/proto/readme.md) in the corresponding dir
 
 ## Translations
 
-Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the Handlebars helper `{{t}}`.  
+Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the helper described in the following section.  
 Translations are stored in `project/locales/[lang]/translation.json`.
 
 Express Middleware configuration:
@@ -396,12 +389,14 @@ Express Middleware configuration:
 * Fallback language: `default`
 * Language switch with query parameter: `?lang=de`
 
-### Translation handlebars helper
+### Translation <%= options.templateEngine %> helper
 
 The helper uses the given [library features](http://i18next.com/translate/).
-
+<% if (options.templateEngine === 'twig') { %>
+You may use an object / array to transfer data to the helper. Use two brackets as interpolation pre- and suffixes
+or use `%s` placeholders for sprintf functionality.<% } else { %>
 You may use hash values or an object to transfer data to the helper. Use two brackets as interpolation pre- and suffixes
-or use `%s` placeholders for sprintf functionality.
+or use `%s` placeholders for sprintf functionality.<% } %>
 
 Some examples:
 
@@ -418,12 +413,16 @@ data = {
         "interpolation" : "Hello {{name}}"
     }
 }
-
+<% if (options.templateEngine === 'twig') { %>
+{% t 'test.example.string' %}
+{% t 'test.example.nested' %}
+{% t 'test.example.sprintf' data=['alphabet', 'a', 'l', 'p'] %}
+{% t 'test.example.interpolation' data={ name:'developer' } %}<% } else { %>
 {{t 'test.example.string'}}
 {{t 'test.example.nested'}}
 {{t 'test.example.sprintf' 'alphabet' 'a' 'l' 'p'}}
 {{t 'test.example.interpolation' name='developer'}}
-{{t 'test.example.interpolation' data}}
+{{t 'test.example.interpolation' data}}<% } %>
 ```
 
 ## Conventions
@@ -438,7 +437,7 @@ Link to resources relatively to the `project`-folder **with** a leading slash.
 <link rel="shortcut icon" href="/assets/img/icon/favicon.ico" type="image/x-icon" />
 <script src="/assets/ui.js"></script>
 background: url(/assets/img/bg/texture.png) scroll 0 0 no-repeat;
-<a href="/content.html">Contentpage</a>
+<a href="/content.<%= options.viewExt %>">Contentpage</a>
 ```
 
 ### Upper & lower case letters
@@ -447,8 +446,9 @@ Use all lowercase if possible. (Exception: TerrificJS uses upper case for its na
 
 All files must be lowercase. It's allowed to use uppercase letters for pattern folders, keep care of case sensitive filesystems and use handlebars helpers with the *exact* folder name.
 
-```
-{{pattern name='NavMain'}}
+```<% if (options.templateEngine === 'twig') { %>
+{% pattern name='NavMain' %}<% } else { %>
+{{pattern name='NavMain'}}<% } %>
 ```
 
 ... looks for a template `navmain.<%= options.viewExt %>` in the folder `NavMain`.
@@ -460,18 +460,53 @@ Navigation   -> T.Module.Navigation   -> m-navigation
 NavMain      -> T.Module.NavMain      -> m-nav-main
 AdminNavMain -> T.Module.AdminNavMain -> m-admin-nav-main
 ```
-### Custom Handlebars helpers
+### Custom <%= options.templateEngine %> helpers
 
-Custom handlebars helpers will be automatically loaded if put into to `project/helpers` directory. An example could look like 
-this:
+Custom <%= options.templateEngine %> helpers will be automatically loaded if put into to `project/helpers` directory. 
+An example could look like this:
 
-```js
+```js<% if (options.templateEngine === 'twig') { %>
+const twigUtils = require('../utils');
+
+module.exports = function (Twig) {
+	return {
+		type: 'helper-name',
+		regex: /^helper-name/,
+		next: [],
+		open: true,
+		compile: function(token) {
+			// do any parameter logic here
+			delete token.match;
+			return token;
+		},
+		parse: function(token, context, chain) {
+			try {
+				// do any template / render logic here
+
+				// return the markup
+				return {
+					chain: chain,
+					output: 'Output Markup'
+				};
+
+			} catch (e) {
+				return {
+					chain: chain,
+					output: twigUtils.logAndRenderError(e)
+				};
+			}
+		}
+	};
+};<% } else { %>
 module.exports = function(foo) {
     // Helper Logic
-};
+};<% } %>
 ```
-
-The helper name will automatically match the filename, so if you name your file `foo.js` your helper will be called `foo`.
+<% if (options.templateEngine === 'twig') { %>
+The helper name get's defined in the type property above. 
+The regex property needs to be extended to contain any possible arguments of the helper.
+For more complex example's please check out the core helpers.<% } else { %>
+The helper name will automatically match the filename, so if you name your file `foo.js` your helper will be called `foo`.<% } %>
 
 ### JSON Endpoints
 
@@ -489,7 +524,7 @@ into the [`project/routes` directory](project/routes/).
 
 ### Using another Template Engine
 
-If you don't want to use [Handlebars](http://handlebarsjs.com/) as Nitro's Template Engine
+If you don't want to use [Handlebars](http://handlebarsjs.com/) or [Twig](https://github.com/twigjs/twig.js) as Nitro's Template Engine
 you can configure your own Engine.  
 This example shows how to replace Handlebars with [Nunjucks](https://mozilla.github.io/nunjucks/) as an example.
 
@@ -512,7 +547,7 @@ nunjucks.configure(
 Now Restart Nitro and it'll run with Nunjucks.
 
 **Be aware**, you'll need to adjust all your views and patterns to work with the new engine. 
-Nitro only provides a `pattern` helper for handlebars.
+Nitro only provides a `pattern` helper for handlebars / twig.
 
 ## Miscellaneous
 

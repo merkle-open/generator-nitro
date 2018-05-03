@@ -6,7 +6,7 @@
   "repository": "namics/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=6 <9",
+    "node": ">=6 <11",
     "npm": ">=3 <6"
   },
   "main": "generators/app/index.js",
@@ -44,11 +44,11 @@
     "yosay": "2.0.2"
   },
   "devDependencies": {
-    "@namics/eslint-config": "5.0.0",
+    "@namics/eslint-config": "5.0.1",
     "ejs": "2.5.9",
     "eslint": "4.19.1",
     "eslint-plugin-import": "2.11.0",
-    "fs-extra": "5.0.0",
+    "fs-extra": "6.0.0",
     "jasmine": "3.1.0",
     "nsp": "3.2.1",
     "pkg-ok": "2.2.0",

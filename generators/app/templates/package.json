@@ -6,7 +6,7 @@
   "private": true,
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=6 <9",
+    "node": ">=6 <11",
     "npm": ">=3 <6"
   },
   "scripts": {
@@ -51,7 +51,7 @@
     "terrific": "3.0.0"
   },
   "devDependencies": {
-    "@namics/eslint-config": "5.0.0",
+    "@namics/eslint-config": "5.0.1",
     "@namics/stylelint-bem": "5.1.0",
     "ajv": "6.4.0",
     "autoprefixer": "8.4.1",
@@ -121,7 +121,7 @@
     "karma": "2.0.2",
     "karma-babel-preprocessor": "7.0.0",
     "karma-chrome-launcher": "2.2.0",
-    "karma-jasmine": "1.1.1",
+    "karma-jasmine": "1.1.2",
     "karma-phantomjs-launcher": "1.0.4",
     "license-checker": "18.0.0",
     "merge-stream": "1.0.1",<% if (options.exporter) { %>

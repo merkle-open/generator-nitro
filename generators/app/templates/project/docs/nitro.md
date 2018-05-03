@@ -176,12 +176,9 @@ http://localhost:8080/content-variant
 #### Layout
 
 By default views use a simple layout mechanism.
-The default layout template `views/_layouts/default.<%= options.viewExt %>` is used for every view.
-<% if (options.templateEngine === 'twig') { %>
-The snippet `<!-- Replace With Body -->` includes the contents from a view.
-<% } else { %>
-The block `{{{body}}}` includes the contents from a view.
-<% } %>
+The default layout template `views/_layouts/default.<%= options.viewExt %>` is used for every view.<% if (options.templateEngine === 'twig') { %>
+The snippet `<!-- Replace With Body -->` includes the contents from a view.<% } else { %>
+The block `{{{body}}}` includes the contents from a view.<% } %>
 
 Simple default layout:
 
@@ -189,12 +186,9 @@ Simple default layout:
 <!DOCTYPE html>
 <html lang="en">
 <head></head>
-<body>
-    <% if (options.templateEngine === 'twig') { %>
-    <!-- Replace With Body -->
-    <% } else { %>
-    {{{body}}}
-    <% } %>
+<body><% if (options.templateEngine === 'twig') { %>
+    <!-- Replace With Body --><% } else { %>
+    {{{body}}}<% } %>
 </body>
 </html>
 ```
@@ -207,69 +201,46 @@ Different layouts are placed in `views/_layouts/`. Link them to your view [in yo
 
 Pages are meant to be compositions of your patterns. Use the pattern's name as the first parameter. Be aware, the
 pattern name is case-sensitive and should be unique.
-
 <% if (options.templateEngine === 'twig') { %>
-Nitro uses [twig](https://www.npmjs.com/package/twig) as the view engine and provides custom helpers.
-<% } else { %>
-Nitro uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.
-<% } %>
+Nitro uses [twig](https://www.npmjs.com/package/twig) as the view engine and provides custom helpers.<% } else { %>
+Nitro uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.<% } %>
 
 Render the example pattern (file: `example.<%= options.viewExt %>`, data-file: `example.json`):
 
-```
-<% if (options.templateEngine === 'twig') { %>
+```<% if (options.templateEngine === 'twig') { %>
 {% pattern name='example' %}
-{% pattern name='example' data='example' %}
-<% } else { %>
+{% pattern name='example' data='example' %}<% } else { %>
 {{pattern name='example'}}
-{{pattern name='example' data='example'}}
-<% } %>
+{{pattern name='example' data='example'}}<% } %>
 ```
 
 Render a "variant" from the example pattern (file: `example.<%= options.viewExt %>`, data-file: `example-variant.json`):
 
-```
-<% if (options.templateEngine === 'twig') { %>
-{% pattern name='example' data='example-variant' %}
-<% } else { %>
-{{pattern name='example' data='example-variant'}}
-<% } %>
+```<% if (options.templateEngine === 'twig') { %>
+{% pattern name='example' data='example-variant' %}<% } else { %>
+{{pattern name='example' data='example-variant'}}<% } %>
 ```
 
 There also is a possibility to pass data to subpatterns by providing a data object as hash option.
 
-```
-<% if (options.templateEngine === 'twig') { %>
-{% pattern name='example' data=exampleContent %}
-<% } else { %>
-{{pattern name='example' data=exampleContent}}
-<% } %>
+```<% if (options.templateEngine === 'twig') { %>
+{% pattern name='example' data=exampleContent %}<% } else { %>
+{{pattern name='example' data=exampleContent}}<% } %>
 ```
 
 ...and if you really need this you may provide a second template file. (file: `example-2.<%= options.viewExt %>`, data-file: `example-variant.json`)
 
-```
-<% if (options.templateEngine === 'twig') { %>
-{% pattern name='example' data='example-variant' template='example-2' %}
-<% } else { %>
-{{pattern name='example' data='example-variant' template='example-2'}}
-<% } %>
+```<% if (options.templateEngine === 'twig') { %>
+{% pattern name='example' data='example-variant' template='example-2' %}<% } else { %>
+{{pattern name='example' data='example-variant' template='example-2'}}<% } %>
 ```
 
-<% if (options.templateEngine === 'twig') { %>
 To be more flexible, you may also pass additional arguments to the pattern, which overrides the defaults from the data-file.
-<% } else { %>
-To be more flexible, you may also pass individual arguments to the pattern, which overrides the defaults from the data-file.
-<% } %>
 
+```<% if (options.templateEngine === 'twig') { %>
+{% pattern name='example' additionalData={ modifier='blue' } %}<% } else { %>
+{{pattern name='example' modifier='blue'}}<% } %>
 ```
-<% if (options.templateEngine === 'twig') { %>
-{% pattern name='example' additionalData={ modifier='blue' } %}
-<% } else { %>
-{{pattern name='example' modifier='blue'}}
-<% } %>
-```
-
 <% if (options.templateEngine !== 'twig') { %>
 #### Render patterns with children
 
@@ -288,19 +259,15 @@ Call it as block like this:
 {{#pattern 'box'}}
     {{pattern 'example'}}
 {{/pattern}}
-```
-<% } %>
+```<% } %>
 
 #### Render pattern elements
 
 The pattern helper will find also pattern elements.
 
-```
-<% if (options.templateEngine === 'twig') { %>
-{% pattern 'example-sub' %}
-<% } else { %>
-{{pattern 'example-sub'}}
-<% } %>
+```<% if (options.templateEngine === 'twig') { %>
+{% pattern 'example-sub' %}<% } else { %>
+{{pattern 'example-sub'}}<% } %>
 ```
 
 ... looks for following paths
@@ -312,31 +279,25 @@ The pattern helper will find also pattern elements.
 
 Render a partial (<%= options.viewExt %> snippet). Partials are placed in `views/_partials/` as `*.<%= options.viewExt %>` files (e.g. `head.<%= options.viewExt %>`).
 
-```
-<% if (options.templateEngine === 'twig') { %>
-{% partial 'head' %}
-<% } else { %>
+```<% if (options.templateEngine === 'twig') { %>
+{% partial 'head' %}<% } else { %>
 {{> head}}
 ```
 
 Partials are registered with [hbs-utils](https://www.npmjs.com/package/hbs-utils#partials), 
 so keep in mind that every space or hyphen in filenames is replaced with an underscore.
-(e.g. use `{{> file_name}}` to load `views/_partials/file-name.<%= options.viewExt %>`)
-<% } %>
+(e.g. use `{{> file_name}}` to load `views/_partials/file-name.<%= options.viewExt %>`)<% } %>
 
 ### Render placeholders
 
 Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `views/_placeholders/` as `*.<%= options.viewExt %>` files.  
 The following two examples do the same and render the file `content/example.<%= options.viewExt %>` from `views/_placeholders/`.
 
-```
-<% if (options.templateEngine === 'twig') { %>
+```<% if (options.templateEngine === 'twig') { %>
 {% placeholder 'content' 'example' %}
-{% placeholder name='content' template='example' %}
-<% } else { %>
+{% placeholder name='content' template='example' %}<% } else { %>
 {{placeholder 'content' 'example'}}
-{{placeholder name='content' template='example'}}
-<% } %>
+{{placeholder name='content' template='example'}}<% } %>
 ```
 
 ### Passing data
@@ -431,14 +392,11 @@ Express Middleware configuration:
 ### Translation <%= options.templateEngine %> helper
 
 The helper uses the given [library features](http://i18next.com/translate/).
-
 <% if (options.templateEngine === 'twig') { %>
 You may use an object / array to transfer data to the helper. Use two brackets as interpolation pre- and suffixes
-or use `%s` placeholders for sprintf functionality.
-<% } else { %>
+or use `%s` placeholders for sprintf functionality.<% } else { %>
 You may use hash values or an object to transfer data to the helper. Use two brackets as interpolation pre- and suffixes
-or use `%s` placeholders for sprintf functionality.
-<% } %>
+or use `%s` placeholders for sprintf functionality.<% } %>
 
 Some examples:
 
@@ -455,19 +413,16 @@ data = {
         "interpolation" : "Hello {{name}}"
     }
 }
-
 <% if (options.templateEngine === 'twig') { %>
 {% t 'test.example.string' %}
 {% t 'test.example.nested' %}
 {% t 'test.example.sprintf' data=['alphabet', 'a', 'l', 'p'] %}
-{% t 'test.example.interpolation' data={ name:'developer' } %}
-<% } else { %>
+{% t 'test.example.interpolation' data={ name:'developer' } %}<% } else { %>
 {{t 'test.example.string'}}
 {{t 'test.example.nested'}}
 {{t 'test.example.sprintf' 'alphabet' 'a' 'l' 'p'}}
 {{t 'test.example.interpolation' name='developer'}}
-{{t 'test.example.interpolation' data}}
-<% } %>
+{{t 'test.example.interpolation' data}}<% } %>
 ```
 
 ## Conventions
@@ -491,12 +446,9 @@ Use all lowercase if possible. (Exception: TerrificJS uses upper case for its na
 
 All files must be lowercase. It's allowed to use uppercase letters for pattern folders, keep care of case sensitive filesystems and use handlebars helpers with the *exact* folder name.
 
-```
-<% if (options.templateEngine === 'twig') { %>
-{% pattern name='NavMain' %}
-<% } else { %>
-{{pattern name='NavMain'}}
-<% } %>
+```<% if (options.templateEngine === 'twig') { %>
+{% pattern name='NavMain' %}<% } else { %>
+{{pattern name='NavMain'}}<% } %>
 ```
 
 ... looks for a template `navmain.<%= options.viewExt %>` in the folder `NavMain`.
@@ -513,8 +465,7 @@ AdminNavMain -> T.Module.AdminNavMain -> m-admin-nav-main
 Custom <%= options.templateEngine %> helpers will be automatically loaded if put into to `project/helpers` directory. 
 An example could look like this:
 
-```js
-<% if (options.templateEngine === 'twig') { %>
+```js<% if (options.templateEngine === 'twig') { %>
 const twigUtils = require('../utils');
 
 module.exports = function (Twig) {
@@ -546,21 +497,16 @@ module.exports = function (Twig) {
 			}
 		}
 	};
-};
-<% } else { %>
+};<% } else { %>
 module.exports = function(foo) {
     // Helper Logic
-};
-<% } %>
+};<% } %>
 ```
-
 <% if (options.templateEngine === 'twig') { %>
 The helper name get's defined in the type property above. 
 The regex property needs to be extended to contain any possible arguments of the helper.
-For more complex example's please check out the core helpers.
-<% } else { %>
-The helper name will automatically match the filename, so if you name your file `foo.js` your helper will be called `foo`.
-<% } %>
+For more complex example's please check out the core helpers.<% } else { %>
+The helper name will automatically match the filename, so if you name your file `foo.js` your helper will be called `foo`.<% } %>
 
 ### JSON Endpoints
 

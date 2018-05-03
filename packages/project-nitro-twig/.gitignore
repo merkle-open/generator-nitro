@@ -20,30 +20,34 @@ _.*
 .deployables
 atlassian-ide-plugin.xml
 
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+lerna-debug.log
+
+# Build
+/node
+/target
+
 # Project (deprecated)
 /assets/vendor
 /components/**/template/*.js
 /components/**/template/partial/*.js
 /patterns/**/template/*.js
 /patterns/**/template/partial/*.js
+/.servepid
 
 # Project
 /config/local*
 debug.log
 /dist
-/node_modules
-npm-debug.log
 /project/tmp
 /public/assets
 /public/proto
 /public/reports
 /src/patterns/**/template/*.js
 /src/patterns/**/template/partial/*.js
-/.servepid
-
-# Build
-/node
-/target
 
 # allow
 !.gitkeep

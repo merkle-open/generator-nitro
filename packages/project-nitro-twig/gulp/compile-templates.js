@@ -14,7 +14,6 @@ module.exports = (gulp, plugins) => {
 			const name = helper.replace('.js', '');
 			if (name === 'pattern') {
 				const patternTagFactory = require(path.join(helpersDir, name));
-
 				Twig.extend(function(Twig) {
 					Twig.exports.extendTag(patternTagFactory(Twig));
 				});
@@ -26,7 +25,6 @@ module.exports = (gulp, plugins) => {
 			.pipe(plugins.change((content) => {
 				const compilePattern = /{%\s?(pattern)\s[^]*\s?%}/gi;
 				const matches = content.match(compilePattern);
-
 				if (matches) {
 					matches.forEach((match) => {
 						const template = Twig.twig({ data: match });

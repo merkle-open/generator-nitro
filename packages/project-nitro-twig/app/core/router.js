@@ -14,7 +14,6 @@ const router = express.Router({
 });
 const isProduction = config.get('server.production');
 const isOffline = config.get('nitro.mode.offline');
-const useMinifiedAssets = config.get('nitro.mode.minified');
 
 /**
  * static routes
@@ -30,7 +29,6 @@ function getNitroViewData(pageTitle) {
 			pageTitle: pageTitle,
 			production: isProduction,
 			offline: isOffline,
-			minified: useMinifiedAssets,
 		}
 	}
 }

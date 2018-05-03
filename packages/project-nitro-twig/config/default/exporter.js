@@ -36,15 +36,6 @@ const config = {
 					},
 				],
 			},
-			{
-				glob: ['dist/*.html'],
-				replace: [
-					{
-						from: '([a-z]+)\\.(css|js)',
-						to: '$1.min.$2',
-					},
-				],
-			},
 		],
 		views: true,
 		zip: false,

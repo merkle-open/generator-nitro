@@ -14,7 +14,7 @@ const cssDependencies = [
 	'src/assets/css/example/variables.scss',
 	'src/assets/css/example/mixins.scss',
 ];
-const assetName = 'prototype.css';
+const assetName = 'proto.css';
 const browserSync = utils.getBrowserSyncInstance();
 const processors = [
 	autoprefixer({

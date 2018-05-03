@@ -10,7 +10,7 @@ const getRelativeDependencyPath = (dependency) => path.relative(getCwd(), requir
 
 const config = {
 	assets: {
-		'app.css': [
+		'ui.css': [
 			'+src/assets/css/example/variables.scss',
 			'+src/assets/css/example/mixins.scss',
 			'src/assets/css/example/reset.css',
@@ -18,7 +18,7 @@ const config = {
 			'src/patterns/**/css/*.scss',
 			'src/patterns/**/css/modifier/*.scss',
 		],
-		'app.js': [
+		'ui.js': [
 			getRelativeDependencyPath('babel-polyfill/dist/polyfill.min.js'),
 			getRelativeDependencyPath('jquery/dist/jquery.min.js'),
 			getRelativeDependencyPath('terrific/dist/terrific.min.js'),

@@ -5,11 +5,19 @@
 	 *
 	 * @author Pre Name <pre.name@domain.com>
 	 */
+
+	const selectors = {
+		addButton: '.js-m-example__add',
+		moreButton: '.js-m-example__more',
+		list: '.js-m-example__list',
+	};
+	// const stateClasses = { disabled: 'state-m-example--disabled' };
+
 	T.Module.Example.Template = T.createDecorator({
 		start(resolve) {
 			const $ctx = $(this._ctx);
 
-			$ctx.on('click', '.js-m-example__add', () => {
+			$ctx.on('click', selectors.addButton, () => {
 				if (T.tpl && T.tpl.example) {
 					const tplData = {
 						decorator: 'Template',
@@ -37,7 +45,7 @@
 				}
 			});
 
-			$ctx.on('click', '.js-m-example__more', () => {
+			$ctx.on('click', selectors.moreButton, () => {
 				if (T.tpl && T.tpl.example && T.tpl.example.links) {
 					const tplData = {
 						links: [
@@ -54,7 +62,7 @@
 					const links = T.tpl.example.links(tplData);
 					const $links = $(links);
 
-					$ctx.find('.js-m-example__list').append($links);
+					$ctx.find(selectors.list).append($links);
 				}
 			});
 

@@ -26,7 +26,7 @@ gulp.task('serve', getTask('serve'));
 gulp.task('watch-serve', ['serve'], getTask('watch-serve'));
 gulp.task('develop', ['watch-assets', 'watch-serve']);
 gulp.task('build', gulpSequence(['clean-assets', 'clean-templates'], 'assets'));
-gulp.task('production', ['assets', 'assets-proto'], getTask('production'));
+gulp.task('production', gulpSequence(['assets', 'assets-proto'], 'serve'));
 gulp.task('dump-views', getTask('dump-views'));
 gulp.task('lint-accessibility', ['dump-views'], getTask('lint-accessibility'));
 gulp.task('lint-html', ['dump-views'], getTask('lint-html'));

@@ -2,7 +2,7 @@
 
 /**
  * Karma configuration
- * Requires that asset `app.js` is compiled
+ * Requires that asset `ui.js` is compiled
  */
 
 module.exports = function (config) {
@@ -17,7 +17,7 @@ module.exports = function (config) {
 
 		// list of files / patterns to load in the browser
 		files: [
-			'public/assets/js/app.js',
+			'public/assets/js/ui.js',
 			'src/patterns/**/test/*.test.js',
 		],
 

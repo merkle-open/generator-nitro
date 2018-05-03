@@ -25,25 +25,7 @@ Before using, you need of course [node](https://nodejs.org/) installed.
 Nitro is tested with the current 
 ["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 6.x and 8.x).
 
-And also you need [yarn](https://www.npmjs.com/package/yarn), 
-the [yeoman cli tool](https://www.npmjs.com/package/yo) and
-the yeoman [generator-nitro](https://www.npmjs.com/package/generator-nitro) installed globally.
-
-```
-npm install -g yarn yo generator-nitro
-```
-
-Keep your global packages up to date:
-
-```
-npm outdated -g --depth=0
-```
-
-Make an update if necessary:
-
-```
-npm update -g
-```
+And also you need [yarn](https://www.npmjs.com/package/yarn).
 
 Install the project dependencies in the project root:
 
@@ -61,22 +43,14 @@ yarn start
 
 ... to start in development mode
 
-or
+For production (prototype server) mode use:
 
 ```
-node server
+yarn prod
 ```
 
-... to start the server only
-
-For production mode add `NODE_ENV=production` environment variable
-
-```
-NODE_ENV=production && yarn prod
-```
-
-The Nitro app will run on port `8080` by default, the proxy on `8081` (only run with `dev` task).  
-If you want the app to run on another port put them before the start task like this:
+The Nitro app will run on port `8080` by default, the proxy on `8081` (only runs with `dev` task).  
+If you want the app to run on another port use [config](nitro-config.md) or add env vars to the tasks:
 
 ```
 PORT=8000 PROXY=8001 yarn start
@@ -85,15 +59,14 @@ PORT=8000 PROXY=8001 yarn start
 The port to be used in production can be set the same way:
 
 ```
-PORT=3000 node server
+PORT=3000 yarn prod
 ```
 
 This works a bit different on **Windows**. Use the following commands in prompt:
 
 ```
 set PORT=8000 && set PROXY=8001 && yarn start
-set PORT=3000 && node server
-set NODE_ENV=production && yarn prod
+set PORT=3001 && yarn prod
 ```
 
 ## Configuring
@@ -178,7 +151,7 @@ Element `example-sub` in pattern `example`:
 /example/elements/example-sub/_data/example-sub.json
 ```
 
-It's recommended to start the name of a subpattern with the pattern name.
+It's recommended to start the name of a subpattern with the pattern name and to use the same pattern type for the sub element.
 
 ### Creating pages
 
@@ -210,10 +183,10 @@ Simple default layout:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-  <head></head>
-  <body>
-      <!-- Replace With Body -->
-  </body>
+<head></head>
+<body>
+    <!-- Replace With Body -->
+</body>
 </html>
 ```
 
@@ -226,7 +199,7 @@ Different layouts are placed in `views/_layouts/`. Link them to your view [in yo
 Pages are meant to be compositions of your patterns. Use the pattern's name as the first parameter. Be aware, the
 pattern name is case-sensitive and should be unique.
 
-Nitro uses [twig](https://www.npmjs.com/package/twig) as the view engine and provides custom tags.
+Nitro uses [twig](https://www.npmjs.com/package/twig) as the view engine and provides custom helpers.
 
 Render the example pattern (file: `example.twig`, data-file: `example.json`):
 
@@ -259,6 +232,7 @@ To be more flexible, you may also pass additional arguments to the pattern, whic
 {% pattern name='example' additionalData={ modifier='blue' } %}
 ```
 
+
 #### Render pattern elements
 
 The pattern helper will find also pattern elements.
@@ -274,11 +248,10 @@ The pattern helper will find also pattern elements.
 
 ### Render partials
 
-Render a partial (HTML snippet). Partials are placed in `views/_partials/` as `*.twig` files (e.g. `head.twig`).
+Render a partial (twig snippet). Partials are placed in `views/_partials/` as `*.twig` files (e.g. `head.twig`).
 
 ```
 {% partial 'head' %}
-```
 
 ### Render placeholders
 
@@ -377,7 +350,6 @@ Translations are stored in `project/locales/[lang]/translation.json`.
 Express Middleware configuration:
 
 * Fallback language: `default`
-* Language detection from request header
 * Language switch with query parameter: `?lang=de`
 
 ### Translation twig helper
@@ -417,9 +389,9 @@ To stay consistent you should favour the use of relative paths with a leading sl
 Link to resources relatively to the `project`-folder **with** a leading slash.
 
 ```html
-<link rel="stylesheet" href="/assets/app.css" type="text/css" />
+<link rel="stylesheet" href="/assets/ui.css" type="text/css" />
 <link rel="shortcut icon" href="/assets/img/icon/favicon.ico" type="image/x-icon" />
-<script src="/assets/app.js"></script>
+<script src="/assets/ui.js"></script>
 background: url(/assets/img/bg/texture.png) scroll 0 0 no-repeat;
 <a href="/content.twig">Contentpage</a>
 ```
@@ -428,7 +400,7 @@ background: url(/assets/img/bg/texture.png) scroll 0 0 no-repeat;
 
 Use all lowercase if possible. (Exception: TerrificJS uses upper case for its namespace `T` and class names `T.Module.Example`)
 
-All files must be lowercase. It's allowed to use uppercase letters for pattern folders, keep care of case sensitive filesystems and use twig helpers with the *exact* folder name.
+All files must be lowercase. It's allowed to use uppercase letters for pattern folders, keep care of case sensitive filesystems and use handlebars helpers with the *exact* folder name.
 
 ```
 {% pattern name='NavMain' %}
@@ -443,10 +415,10 @@ Navigation   -> T.Module.Navigation   -> m-navigation
 NavMain      -> T.Module.NavMain      -> m-nav-main
 AdminNavMain -> T.Module.AdminNavMain -> m-admin-nav-main
 ```
-### Custom Twig helpers
+### Custom twig helpers
 
-Custom Twig helpers will be automatically loaded if put into to `project/helpers` directory. An example could look like 
-this:
+Custom twig helpers will be automatically loaded if put into to `project/helpers` directory. 
+An example could look like this:
 
 ```js
 const twigUtils = require('../utils');
@@ -486,7 +458,6 @@ module.exports = function (Twig) {
 The helper name get's defined in the type property above. 
 The regex property needs to be extended to contain any possible arguments of the helper.
 For more complex example's please check out the core helpers.
-
 
 ### JSON Endpoints
 
@@ -533,18 +504,24 @@ Nitro only provides a `pattern` helper for handlebars / twig.
 
 ### Commandline
 
-Nitro uses [Gulp](http://gulpjs.com/) under the hood and can therefore be used on the CLI.
+Use or create new scripts in `package.json` to run with yarn.
 
 ### Git Hooks
 
-Nitro tries to install a `post-merge` git hook with every `yarn install` (if we are in git root).
+Info: In next major version, we possibly switch to [husky](https://github.com/typicode/husky), so it's kind of deprecated ;-)
 
-This hook will:
-
-* run `yarn install` if someone changes `yarn.lock`
-* sync this git hooks if someone changes one.
+Nitro tries to install a "post-merge" and a "pre-commit" git hook with every `yarn install` (if we are in git root).
 
 You may [change this or add other hooks](../.githooks/readme.md) in `project/.githooks`.
+
+#### post-merge
+
+* runs `yarn install` if someone changes `yarn.lock`
+* syncs the git hooks if someone changes one.
+
+#### pre-commit
+
+* runs `yarn test` 
 
 ### Contributing
 
@@ -561,11 +538,11 @@ You may [change this or add other hooks](../.githooks/readme.md) in `project/.gi
 
 The following packages are installed by the [app](#name) generator as dependencies:
 
-* [jQuery 3.2.0](http://jquery.com/)
+* [jQuery 3.3.1](http://jquery.com/)
 * [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)
-* [Handlebars 4.0.7](https://github.com/components/handlebars.js)
-* [Babel Polyfill 6.23.0](https://www.npmjs.com/package/babel-polyfill)
+* [Handlebars 4.0.11](https://github.com/components/handlebars.js)
+* [Babel Polyfill 6.26.0](https://www.npmjs.com/package/babel-polyfill)
 
 ### Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 3.4.2).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 3.5.5).

@@ -6,7 +6,7 @@
 # Run `chmod +x pre-commit` to make it executable then put it into `.git/hooks/`.
 
 # ok if there are no changed source files
-FILES_PATTERN="src*\.(scss|js|html|json)$"
+FILES_PATTERN="src.*\.(scss|js|twig|json)$"
 if git diff --cached --name-only | grep -E --quiet "$FILES_PATTERN"
 then
   yarn test

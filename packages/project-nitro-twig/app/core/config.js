@@ -18,7 +18,6 @@ const defaultConfig = {
 		defaultLayout: 'default',
 		mode: {
 			livereload: true,
-			minified: false,
 			offline: false,
 		},
 		watch: {
@@ -50,6 +49,35 @@ const defaultConfig = {
 		port: 8080,
 		proxy: 8081,
 		production: process.env.NODE_ENV && process.env.NODE_ENV.replace((/\s/g), '') === 'production' ? true : false,
+	},
+	feature: {
+		i18next: {
+			/*
+			 * used in ./i18n.js
+			 *
+			 * Fallback translation file: project/locales/default/translation.json
+			 * Other languages in project/locales/[lang]/translation.json
+			 * Language switch with query parameter: ?lang=de
+			 */
+			options: {
+				// defaultNS: 'translation',
+				// whitelist: ['en', 'de', 'default'],
+				fallbackLng: 'default',
+				backend: {
+					'loadPath': 'project/locales/{{lng}}/{{ns}}.json',
+				},
+				detection: {
+					// order and from where user language should be detected
+					order: ['querystring'],
+					// keys or params to lookup language from
+					lookupQuerystring: 'lang',
+				},
+				debug: false,
+			},
+			middlewareOptions: {
+				ignoreRoutes: ['api/', 'assets/', 'dist/', 'proto/'],
+			},
+		},
 	},
 };
 const warnings = [];

@@ -30,7 +30,7 @@ describe('nitro:app', () => {
 				'public',
 				'.node-version',
 				'package.json',
-				'README.md',
+				'readme.md',
 				'server.js',
 				'src/assets',
 				'src/patterns',

@@ -53,7 +53,7 @@
   "devDependencies": {
     "@namics/eslint-config": "5.0.1",
     "@namics/stylelint-bem": "5.1.0",
-    "ajv": "6.4.0",
+    "ajv": "6.5.0",
     "autoprefixer": "8.4.1",
     "babel-core": "6.26.3",
     "babel-preset-env": "1.6.1",
@@ -112,7 +112,7 @@
     "hbs": "4.0.1",
     "hbs-utils": "0.0.4",
     "htmllint": "0.7.2",
-    "i18next": "11.2.3",
+    "i18next": "11.3.1",
     "i18next-express-middleware": "1.1.1",
     "i18next-node-fs-backend": "1.0.0",
     "i18next-sprintf-postprocessor": "0.2.2",

@@ -25,9 +25,9 @@
     "gulp-zip": "4.1.0"
   },
   "devDependencies": {
-    "@namics/eslint-config": "4.2.0",
-    "eslint": "4.15.0",
-    "eslint-plugin-import": "2.8.0",
-	"nsp": "3.1.0"
+    "@namics/eslint-config": "5.0.1",
+    "eslint": "4.19.1",
+    "eslint-plugin-import": "2.11.0",
+	"nsp": "3.2.1"
   }
 }

@@ -67,9 +67,7 @@ module.exports = (gulp, plugins) => {
 
 		plugins.watch([
 			'src/assets/js/**/*.js',
-			'src/patterns/**/js/**/*.js',<% if (options.js === 'TypeScript') { %>
-			'src/assets/js/**/*.ts',
-			'src/patterns/**/js/**/*.ts',<% } %><% if (options.clientTpl) { %>
+			'src/patterns/**/js/**/*.js',<% if (options.clientTpl) { %>
 			'src/patterns/**/template/**/*.hbs',<% } %>
 		], () => {
 			processChange('js', () => {

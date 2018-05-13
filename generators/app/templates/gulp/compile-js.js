@@ -21,12 +21,9 @@ module.exports = (gulp, plugins) => {
 		const browserSync = utils.getBrowserSyncInstance();
 		const promises = [];
 
-		assets.forEach((asset) => {<% if (options.js === 'TypeScript') { %>
-				let tsAssets = utils.splitJsAssets(asset);
-				tsAssets.js.push('public/assets/js/' + asset.name.replace('.js', '.ts.js'));
-			<% } %>
+		assets.forEach((asset) => {
 			promises.push(new Promise((resolve) => {
-				gulp.src(<% if (options.js === 'TypeScript') { %>tsAssets.js<% } else { %>asset.src<% } %>, { base: '.' })
+				gulp.src(asset.src, { base: '.' })
 					.pipe(plugins.plumber())
 					.pipe(plugins.cached(asset.name))
 					.pipe(plugins.sourcemaps.init({ loadMaps: true }))

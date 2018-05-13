@@ -72,30 +72,11 @@ function getTmpDirectory(subPath) {
 	}
 	return tmpPath;
 }
-<% if (options.js === 'TypeScript') { %>
-function splitJsAssets(asset) {
-	let tsAssets = [];
-	let jsAssets = [];
 
-	asset.src.forEach((value) => {
-		if (value.indexOf('.ts') !== -1) {
-			tsAssets.push(value);
-		} else {
-			jsAssets.push(value);
-		}
-	});
-
-	return {
-		ts: tsAssets,
-		js: jsAssets,
-	};
-}
-<% } %>
 module.exports = {
 	getBrowserSyncInstance,
 	getSourcePatterns,
 	getTask,
-	getTmpDirectory,<% if (options.js === 'TypeScript') { %>
-	splitJsAssets,<% } %>
+	getTmpDirectory,
 	updateSourcePatterns,
 };

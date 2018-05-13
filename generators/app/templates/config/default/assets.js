@@ -23,12 +23,9 @@ const config = {
 			getRelativeDependencyPath('jquery/dist/jquery.min.js'),
 			getRelativeDependencyPath('terrific/dist/terrific.min.js'),<% if (options.clientTpl) { %>
 			getRelativeDependencyPath('handlebars/dist/handlebars.runtime.min.js'),<% } %>
-			'src/assets/js/*.js',<% if (options.js === 'TypeScript') { %>
-			'src/assets/js/*.ts',
-			'src/patterns/**/js/*.ts',
-			'src/patterns/**/js/decorator/*.ts',<% } else { %>
+			'src/assets/js/*.js',
 			'src/patterns/**/js/*.js',
-			'src/patterns/**/js/decorator/*.js',<% } %><% if (options.clientTpl) { %>
+			'src/patterns/**/js/decorator/*.js',<% if (options.clientTpl) { %>
 			'src/patterns/**/template/*.js',
 			'src/patterns/**/template/partial/*.js',<% } %>
 		],

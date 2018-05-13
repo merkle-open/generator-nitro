@@ -23,7 +23,6 @@ module.exports = class extends Generator {
 		this._passedInOptions = {
 			name: this.options.name,
 			pre: this.options.pre,
-			js: this.options.js,
 			viewExt: this.options.viewExt,
 			templateEngine: this.options.templateEngine,
 			clientTpl: this.options.clientTpl,
@@ -44,13 +43,6 @@ module.exports = class extends Generator {
 			desc: `your desired preprocessor [${this._preOptions.join('|')}]`,
 			type: String,
 			defaults: this._passedInOptions.pre || this._preOptions[1],
-		});
-
-		this._jsOptions = ['JavaScript', 'TypeScript'];
-		this.option('js', {
-			desc: `your desired js compiler [${this._jsOptions.join('|')}]`,
-			type: String,
-			defaults: this._passedInOptions.js || this._jsOptions[0],
 		});
 
 		this._templateEngineOptions = ['hbs', 'twig'];
@@ -135,7 +127,6 @@ module.exports = class extends Generator {
 				if (config) {
 					this.options.name = config.name || this.options.name;
 					this.options.pre = config.preprocessor || this.options.pre;
-					this.options.js = config.jscompiler || this.options.js;
 					this.options.viewExt = config.viewExtension || this.options.viewExt;
 					this.options.templateEngine = config.templateEngine || this.options.templateEngine;
 					this.options.clientTpl = typeof config.clientTemplates === 'boolean' ? config.clientTemplates : this.options.clientTpl;
@@ -162,15 +153,6 @@ module.exports = class extends Generator {
 					store: true,
 					when: () => !this._skipQuestions && !this._passedInOptions.pre,
 				},
-				/* {
-					name: 'js',
-					type: 'list',
-					message: 'What\'s your desired javascript compiler?',
-					choices: this._jsOptions,
-					default: this.options.js,
-					store: true,
-					when: () => !this._skipQuestions && !this._passedInOptions.js,
-				},*/
 				{
 					name: 'templateEngine',
 					type: 'list',
@@ -225,7 +207,6 @@ module.exports = class extends Generator {
 			]).then((answers) => {
 				this.options.name = answers.name || this.options.name;
 				this.options.pre = answers.pre || this.options.pre;
-				this.options.js = answers.js || this.options.js;
 				this.options.templateEngine = answers.templateEngine || this.options.templateEngine;
 				this.options.viewExt = this.options.templateEngine;
 				this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
@@ -342,11 +323,6 @@ module.exports = class extends Generator {
 			// files to ignore on updating projects
 			'config/local.js',
 		];
-		const typeScriptFiles = [
-			// files only for this.options.js==='TypeScript'
-			'tsd.json',
-			'gulp/compile-ts.js',
-		];
 		const clientTplFiles = [
 			// files only for this.options.clientTpl===true
 			'src/patterns/molecules/example/_data/example-template.json',
@@ -413,13 +389,6 @@ module.exports = class extends Generator {
 				}
 			}
 
-			// TypeScript only Files
-			if (this.options.js !== 'TypeScript') {
-				if (_.indexOf(typeScriptFiles, file) !== -1) {
-					return;
-				}
-			}
-
 			// Client side templates only Files
 			if (!this.options.clientTpl) {
 				if (_.indexOf(clientTplFiles, file) !== -1) {
@@ -467,10 +436,6 @@ module.exports = class extends Generator {
 				return;
 			}
 
-			if ((_.startsWith(file, 'project') || _.startsWith(file, 'src/patterns')) && (ext === 'js' || ext === 'ts') && (this.options.js === 'JavaScript' && ext !== 'js' || this.options.js === 'TypeScript' && ext !== 'ts')) {
-				return;
-			}
-
 			const sourcePath = this.templatePath(file);
 			let destinationPath = this.destinationPath(file);
 
@@ -503,12 +468,6 @@ module.exports = class extends Generator {
 			yarn: true,
 			skipInstall: this.options.skipInstall,
 		});
-
-		if (this.options.js === 'TypeScript') {
-			this.spawnCommand('tsd', ['reinstall']).on('close', () => {
-				this.spawnCommand('tsd', ['rebundle']);
-			});
-		}
 	}
 
 	end() {

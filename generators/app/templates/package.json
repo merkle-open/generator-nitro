@@ -103,9 +103,7 @@
     "gulp-sourcemaps": "2.6.4",
     "gulp-stylelint": "3.9.0",
     "gulp-svgmin": "1.2.4",
-    "gulp-svgstore": "6.1.1",<% if (options.js === 'TypeScript') { %>
-    "typescript": "1.5.0-beta",
-    "gulp-typescript": "2.7.5", <% } %>
+    "gulp-svgstore": "6.1.1",
     "gulp-uglify": "3.0.0",
     "gulp-watch": "5.0.0",<% if (options.clientTpl) { %>
     "gulp-wrap": "0.13.0",<% } %>
@@ -123,7 +121,7 @@
     "karma-chrome-launcher": "2.2.0",
     "karma-jasmine": "1.1.2",
     "karma-phantomjs-launcher": "1.0.4",
-    "license-checker": "18.0.0",
+    "license-checker": "19.0.0",
     "merge-stream": "1.0.1",<% if (options.exporter) { %>
     "nitro-exporter": "1.0.0",<% } %><% if (options.release) { %>
     "nitro-release": "0.1.1",<% } %>

@@ -9,10 +9,9 @@ require('nitro-release')(gulp, config);<% } %>
 
 gulp.task('sync-githooks', getTask('sync-githooks'));
 gulp.task('compile-css', getTask('compile-css'));
-gulp.task('compile-css-proto', getTask('compile-css-proto'));<% if (options.js === 'TypeScript') { %>
-gulp.task('compile-ts', getTask('compile-ts'));<% } %><% if (options.clientTpl) { %>
+gulp.task('compile-css-proto', getTask('compile-css-proto'));<% if (options.clientTpl) { %>
 gulp.task('compile-templates', getTask('compile-templates'));<% } %>
-gulp.task('compile-js', <% if (options.js === 'TypeScript') { %>['compile-ts'<% if (options.clientTpl) { %>, 'compile-templates'<% } %>], <% } else if (options.clientTpl) { %>['compile-templates'], <% } %>getTask('compile-js'));
+gulp.task('compile-js', <% if (options.clientTpl) { %>['compile-templates'], <% } %>getTask('compile-js'));
 gulp.task('compile-js-proto', getTask('compile-js-proto'));
 gulp.task('minify-css', ['compile-css'], getTask('minify-css'));
 gulp.task('minify-js', ['compile-js'], getTask('minify-js'));

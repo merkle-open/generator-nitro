@@ -10,6 +10,7 @@ module.exports = function (gulp, config) {
 	if (config.has('nitro.tmpDirectory')) {
 		nitroTmpDirectory = `${config.get('nitro.tmpDirectory')}/views`;
 	} else {
+		// eslint-disable-next-line
 		const nitroGulpUtils = require(path.resolve(cwd, 'gulp', 'utils'));
 		nitroTmpDirectory = nitroGulpUtils.getTmpDirectory('views');
 	}

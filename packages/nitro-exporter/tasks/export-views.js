@@ -1,14 +1,18 @@
 const cwd = process.cwd();
 const filter = require('gulp-filter');
 const path = require('path');
-
 const utils = require('../lib/utils.js');
-
-const nitroGulpUtils = require(path.resolve(cwd, 'gulp', 'utils'));
-const nitroTmpDirectory = nitroGulpUtils.getTmpDirectory('views');
 
 module.exports = function (gulp, config) {
 	'use strict';
+
+	let nitroTmpDirectory = '';
+	if (config.has('nitro.tmpDirectory')) {
+		nitroTmpDirectory = `${config.get('nitro.tmpDirectory')}/views`;
+	} else {
+		const nitroGulpUtils = require(path.resolve(cwd, 'gulp', 'utils'));
+		nitroTmpDirectory = nitroGulpUtils.getTmpDirectory('views');
+	}
 
 	const processes = [];
 

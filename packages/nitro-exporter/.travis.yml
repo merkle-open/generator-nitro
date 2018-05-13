@@ -4,3 +4,10 @@ node_js:
   - '10'
   - '8'
   - '6'
+deploy:
+  provider: npm
+  email: oss@namics.com
+  api_key: $NPM_TOKEN
+  on:
+    branch: master
+    tags: true

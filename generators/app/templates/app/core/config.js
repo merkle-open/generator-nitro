@@ -16,6 +16,7 @@ const defaultConfig = {
 		viewLayoutsDirectory: 'src/views/_layouts',
 		placeholdersDirectory: 'src/views/_placeholders',
 		defaultLayout: 'default',
+		tmpDirectory: 'project/tmp',
 		mode: {
 			livereload: true,
 			offline: false,

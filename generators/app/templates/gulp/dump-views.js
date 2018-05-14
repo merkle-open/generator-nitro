@@ -20,8 +20,7 @@ const config = require('config');
 const view = require('../app/lib/view');
 const del = require('del');
 const getPort = require('get-port');
-const utils = require('./utils');
-const tmpDirectory = utils.getTmpDirectory('views');
+const tmpDirectory = `${config.get('nitro.tmpDirectory')}/views`;
 let isRunning = false;
 let server;
 

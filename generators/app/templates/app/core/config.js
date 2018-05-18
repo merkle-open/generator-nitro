@@ -79,6 +79,16 @@ const defaultConfig = {
 				ignoreRoutes: ['api/', 'assets/', 'dist/', 'proto/'],
 			},
 		},
+		dumpViews: {
+			/*
+			 * used in gulp task `dump-views`
+			 * filter corrupt, incomplete or irrelevant views
+			 * with the function viewFilter
+			 *
+			 * example:
+			 * viewFilter: (url) => url !== 'incomplete',
+			 */
+		},
 	},
 };
 const warnings = [];

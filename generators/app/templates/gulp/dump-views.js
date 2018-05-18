@@ -20,14 +20,21 @@ const config = require('config');
 const view = require('../app/lib/view');
 const del = require('del');
 const getPort = require('get-port');
+
 const tmpDirectory = `${config.get('nitro.tmpDirectory')}/views`;
+const viewFilter = (viewItem) => {
+	if (config.has('feature.dumpViews.viewFilter') && typeof config.get('feature.dumpViews.viewFilter') === 'function') {
+		return config.get('feature.dumpViews.viewFilter')(viewItem.url);
+	}
+	return true;
+};
 let isRunning = false;
 let server;
 
 function getViews() {
 	return view
 		.getViews(`${config.get('nitro.basePath')}${config.get('nitro.viewDirectory')}`)
-		//.filter((viewItem) => viewItem.url !== 'incomplete') // filter corrupt or incomplete views
+		.filter(viewFilter)
 		.map((viewItem) => viewItem.url);
 }
 

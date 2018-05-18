@@ -44,6 +44,13 @@ const defaultConfig = {
 	server: {
 		port: 8080,
 		proxy: 8081,
+	},
+	feature: {
+		dumpViews: {
+			// filter corrupt, incomplete or irrelevant views
+			// example:
+			// viewFilter: (url) => url !== 'incomplete',
+		},
 	},<% if (options.exporter) { %>
 	exporter: require('./default/exporter'),<% } %><% if (options.release) { %>
 	release: require('./default/release'),<% } %>

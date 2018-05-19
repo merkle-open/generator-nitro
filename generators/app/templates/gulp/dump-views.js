@@ -23,8 +23,8 @@ const getPort = require('get-port');
 
 const tmpDirectory = `${config.get('nitro.tmpDirectory')}/views`;
 const viewFilter = (viewItem) => {
-	if (config.has('feature.dumpViews.viewFilter') && typeof config.get('feature.dumpViews.viewFilter') === 'function') {
-		return config.get('feature.dumpViews.viewFilter')(viewItem.url);
+	if (config.has('gulp.dumpViews.viewFilter') && typeof config.get('gulp.dumpViews.viewFilter') === 'function') {
+		return config.get('gulp.dumpViews.viewFilter')(viewItem.url);
 	}
 	return true;
 };

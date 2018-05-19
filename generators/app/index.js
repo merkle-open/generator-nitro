@@ -293,7 +293,6 @@ module.exports = class extends Generator {
 			'gulp/compile-css-proto.js',
 			'gulp/compile-js.js',
 			'gulp/compile-templates.js',
-			'gulp/utils.js',
 			'gulp/watch-assets.js',
 			'project/.githooks/pre-commit',
 			'project/docs/nitro.md',

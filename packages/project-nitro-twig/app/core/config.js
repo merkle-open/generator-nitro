@@ -9,13 +9,15 @@ const defaultConfig = {
 	// assets: {},
 	nitro: {
 		basePath,
-		viewFileExtension: 'twig',
+		viewFileExtension: 'hbs',
 		viewDirectory: 'src/views',
 		viewPartialsDirectory: 'src/views/_partials',
 		viewDataDirectory: 'src/views/_data',
 		viewLayoutsDirectory: 'src/views/_layouts',
 		placeholdersDirectory: 'src/views/_placeholders',
 		defaultLayout: 'default',
+		tmpDirectory: 'project/tmp',
+		templateEngine: 'hbs',
 		mode: {
 			livereload: true,
 			offline: false,
@@ -49,6 +51,42 @@ const defaultConfig = {
 		port: 8080,
 		proxy: 8081,
 		production: process.env.NODE_ENV && process.env.NODE_ENV.replace((/\s/g), '') === 'production' ? true : false,
+	},
+	gulp: {
+		dumpViews: {
+			/*
+			 * used in gulp task `dump-views`
+			 * filter corrupt, incomplete or irrelevant views
+			 * with the function viewFilter
+			 *
+			 * example:
+			 * viewFilter: (url) => url !== 'incomplete',
+			 */
+		},
+		svgSprite: {
+			/*
+			 * used in gulp task svg-sprite
+			 * generates icon sprite with the name of the last folder in src
+			 */
+			src: 'src/patterns/atoms/icon/img/icons/*.svg',
+			dest: 'public/assets/svg',
+		},
+		minifyImg: {
+			/*
+			 * used in gulp task minify-img
+			 * copies and minifies all source images to dest folder
+			 */
+			src: 'src/assets/img/**/*',
+			dest: 'public/assets/img',
+		},
+		copyAssets: {
+			/*
+			 * used in gulp task copy-assets
+			 * copies all sources to dest folder
+			 */
+			src: 'src/assets/font/**/*.*',
+			dest: 'public/assets/font',
+		},
 	},
 	feature: {
 		i18next: {

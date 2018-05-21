@@ -55,6 +55,7 @@ module.exports = (gulp, plugins) => {
 	return () => {
 		const browserSync = utils.getBrowserSyncInstance();
 
+		// styles
 		plugins.watch([
 			'src/assets/css/**/*.scss',
 			'src/patterns/**/css/**/*.scss',
@@ -65,6 +66,7 @@ module.exports = (gulp, plugins) => {
 			});
 		});
 
+		// js
 		plugins.watch([
 			'src/assets/js/**/*.js',
 			'src/patterns/**/js/**/*.js',
@@ -75,6 +77,7 @@ module.exports = (gulp, plugins) => {
 			});
 		});
 
+		// proto css
 		plugins.watch([
 			'src/proto/css/*.scss',
 			'src/patterns/**/proto/**/*.scss'
@@ -84,6 +87,7 @@ module.exports = (gulp, plugins) => {
 			});
 		});
 
+		// proto js
 		plugins.watch([
 			'src/proto/js/*.js',
 			'src/patterns/**/proto/**/*.js'
@@ -93,6 +97,7 @@ module.exports = (gulp, plugins) => {
 			});
 		});
 
+		// views & data
 		plugins.watch([
 			`src/views/**/*.${config.get('nitro.viewFileExtension')}`,
 			`${config.get('nitro.viewDataDirectory')}/**/*.json`,
@@ -108,22 +113,31 @@ module.exports = (gulp, plugins) => {
 			});
 		});
 
-		plugins.watch([
-			'src/assets/img/**/*',
-		], () => {
-			gulp.start('minify-img');
-		});
+		// minify-img
+		if (config.has('gulp.minifyImg.src') && config.get('gulp.minifyImg.src')) {
+			plugins.watch([
+				config.get('gulp.minifyImg.src'),
+			], () => {
+				gulp.start('minify-img');
+			});
+		}
 
-		plugins.watch([
-			'src/patterns/atoms/icon/img/icons/*.svg',
-		], () => {
-			gulp.start('svg-sprite');
-		});
+		// svg-sprite
+		if (config.has('gulp.svgSprite.src') && config.get('gulp.svgSprite.src')) {
+			plugins.watch([
+				config.get('gulp.svgSprite.src'),
+			], () => {
+				gulp.start('svg-sprite');
+			});
+		}
 
-		plugins.watch([
-			'src/assets/font/**/*',
-		], () => {
-			gulp.start('copy-assets');
-		});
+		// copy-assets
+		if (config.has('gulp.copyAssets.src') && config.get('gulp.copyAssets.src')) {
+			plugins.watch([
+				config.get('gulp.copyAssets.src'),
+			], () => {
+				gulp.start('copy-assets');
+			});
+		}
 	};
 };

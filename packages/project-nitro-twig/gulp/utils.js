@@ -65,18 +65,9 @@ function getTask(task) {
 	return require('./' + task)(gulp, plugins);
 }
 
-function getTmpDirectory(subPath) {
-	let tmpPath = 'project/tmp';
-	if (subPath && typeof subPath === 'string') {
-		tmpPath += `/${subPath}`;
-	}
-	return tmpPath;
-}
-
 module.exports = {
 	getBrowserSyncInstance,
 	getSourcePatterns,
 	getTask,
-	getTmpDirectory,
 	updateSourcePatterns,
 };

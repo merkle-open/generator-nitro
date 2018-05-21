@@ -1,8 +1,8 @@
 'use strict';
 
-const utils = require('./utils');
 const lint = require('../app/lib/lint');
-const srcPattern = `${utils.getTmpDirectory('views')}/*.html`;
+const config = require('config');
+const srcPattern = `${config.get('nitro.tmpDirectory')}/views/*.html`;
 
 module.exports = (gulp, plugins) => {
 	return () => {

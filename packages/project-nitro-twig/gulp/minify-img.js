@@ -1,12 +1,13 @@
 'use strict';
 
+const config = require('config');
 const pngquant = require('imagemin-pngquant');
 
 module.exports = (gulp, plugins) => {
 	return () => {
 		return gulp
-			.src('src/assets/img/**/*')
-			.pipe(plugins.newer('public/assets/img'))
+			.src(config.get('gulp.minifyImg.src'))
+			.pipe(plugins.newer(config.get('gulp.minifyImg.dest')))
 			.pipe(plugins.imagemin([
 				plugins.imagemin.gifsicle({ interlaced: true }),
 				plugins.imagemin.jpegtran({ progressive: true }),
@@ -14,6 +15,6 @@ module.exports = (gulp, plugins) => {
 				plugins.imagemin.svgo({ plugins: [{ collapseGroups: false }, { cleanupIDs: false }, { removeUnknownsAndDefaults: false }, { removeViewBox: false }] }),
 				pngquant(),
 			]))
-			.pipe(gulp.dest('public/assets/img'));
+			.pipe(gulp.dest(config.get('gulp.minifyImg.dest')));
 	};
 };

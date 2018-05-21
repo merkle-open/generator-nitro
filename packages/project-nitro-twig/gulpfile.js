@@ -34,4 +34,3 @@ gulp.task('visual-approve', getTask('visual-approve'));
 gulp.task('visual-reference', ['assets'], getTask('visual-reference'));
 gulp.task('visual-test', ['assets'], getTask('visual-test'));
 gulp.task('test', ['compile-css', 'compile-js'], getTask('test'));
-gulp.task('watch-test', ['test'], getTask('watch-test'));

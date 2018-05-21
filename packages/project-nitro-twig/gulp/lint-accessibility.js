@@ -1,8 +1,8 @@
 'use strict';
 
-const utils = require('./utils');
 const del = require('del');
 const fs = require('fs');
+const config = require('config');
 const lintOptions = fs.existsSync('.accessibilityrc') ? JSON.parse(fs.readFileSync('.accessibilityrc', 'utf8')) : { force: true, accessibilityLevel: 'WCAG2A' };
 const reportOptions = {
 	reportType: 'json',
@@ -12,8 +12,8 @@ const reportOptions = {
 		error: true,
 	},
 };
-const tmpDirectory = utils.getTmpDirectory('views');
-const destDirectory = utils.getTmpDirectory(`reports/${lintOptions.accessibilityLevel}`);
+const tmpDirectory = `${config.get('nitro.tmpDirectory')}/views`;
+const destDirectory = `${config.get('nitro.tmpDirectory')}/reports/${lintOptions.accessibilityLevel}`;
 
 module.exports = (gulp, plugins) => {
 	return () => {

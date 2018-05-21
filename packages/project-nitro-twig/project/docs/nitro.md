@@ -125,7 +125,7 @@ Different data variations have to be placed in the `_data` folder:
 ### Creating pattern with npm script
 
 ```
-yarn create-pattern
+yarn nitro:pattern
 ```
 
 This will copy the templates (nitro.patterns.<type>.template) from config to the configured target.
@@ -133,7 +133,7 @@ This will copy the templates (nitro.patterns.<type>.template) from config to the
 Optionally you can give the name:
 
 ```
-yarn create-pattern <name>
+yarn nitro:pattern <name>
 ```
 
 ### Creating pattern elements
@@ -545,4 +545,4 @@ The following packages are installed by the [app](#name) generator as dependenci
 
 ### Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 3.5.5).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 3.6.1).

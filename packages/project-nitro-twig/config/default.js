@@ -28,6 +28,8 @@ const defaultConfig = {
 		},
 	},
 	nitro: {
+		viewFileExtension: 'twig',
+		templateEngine: 'twig',
 		patterns: require('./default/patterns'),
 		mode: {
 			livereload: true,
@@ -45,6 +47,8 @@ const defaultConfig = {
 		port: 8080,
 		proxy: 8081,
 	},
+	gulp: require('./default/gulp'),
+	feature: {},
 	exporter: require('./default/exporter'),
 };
 

@@ -107,6 +107,13 @@ Enable/disable CSS linting on change.
 
 The node `nitro` contains following properties
 
+### Simple Properties
+
+* `nitro.viewFileExtension`: String (default: 'hbs') - possible values: 'hbs' or 'twig'
+  Extension of all view files (pattern & views) 
+* `nitro.templateEngine`: String (default: 'hbs') - possible values: 'hbs' or 'twig'
+  Currently used serverside rendering engine
+
 ### Patterns
 
 #### `nitro.patterns`
@@ -200,6 +207,36 @@ Default: 8081
 
 The proxy server with livereload functionality runs on this port.  
 An environment variable PROXY will overwrite this property.
+
+## Gulp
+
+### `gulp.dumpViews.viewFilter`
+
+Type: function
+
+Used in gulp task `dump-views`
+
+Filters unwanted views (should return false for unwanted view urls)
+
+e.g.: ```viewFilter: (url) => url !== 'incomplete'```
+
+### `gulp.svgSprite`
+
+Generates icon sprite with the name of the last folder in src
+
+Properties:
+
+* `gulp.svgSprite.src` Sting (default: 'src/patterns/atoms/icon/img/icons/*.svg')
+* `gulp.svgSprite.dest` Sting (default: 'public/assets/svg')
+
+### `gulp.minifyImg`
+
+Copies and minifies all source images to dest folder
+
+Properties:
+
+* `gulp.minifyImg.src` Sting (default: 'src/assets/img/\*\*/*')
+* `gulp.minifyImg.dest` Sting (default: 'public/assets/img')
 
 ## Feature
 

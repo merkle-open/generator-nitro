@@ -86,7 +86,7 @@ describe('nitro:app', () => {
 		});
 
 		it('config contains the correct view file extension', () => {
-			assert.fileContent('app/core/config.js', /viewFileExtension: 'hbs'/);
+			assert.fileContent('config/default.js', /viewFileExtension: 'hbs'/);
 		});
 	});
 
@@ -110,7 +110,7 @@ describe('nitro:app', () => {
 		});
 
 		it('config contains the correct view file extension', () => {
-			assert.fileContent('app/core/config.js', /viewFileExtension: 'twig'/);
+			assert.fileContent('config/default.js', /viewFileExtension: 'twig'/);
 		});
 	});
 

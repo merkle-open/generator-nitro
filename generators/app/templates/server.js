@@ -3,15 +3,19 @@
 const express = require('express');
 const app = express();
 const config = require('config');
-const router = require('./app/core/router');<% if (options.templateEngine === 'twig') { %>
-const twig = require('./app/templating/twig/engine');<% } else { %>
-const hbs = require('./app/templating/hbs/engine');<% } %>
+const router = require('./app/core/router');
 const compression = require('compression');
 const bodyParser = require('body-parser');
-<% if (options.templateEngine === 'twig') { %>
-twig.cache(false);<% } else { %>
-// partials
-require('./app/templating/hbs/partials')(hbs);<% } %>
+
+const isTwig = config.get('nitro.templateEngine') === 'twig';
+let engine;
+if (isTwig) {
+	engine = require('./app/templating/twig/engine');
+	engine.cache(false);
+} else {
+	engine = require('./app/templating/hbs/engine');
+	require('./app/templating/hbs/partials')(engine);
+}
 
 // compress all requests
 app.use(compression());
@@ -25,8 +29,12 @@ require('./app/core/routeLoader')(app);
 app.use(router);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', config.get('nitro.viewFileExtension'));
-app.set('views', config.get('nitro.basePath') + config.get('nitro.viewDirectory'));<% if (options.templateEngine === 'twig') { %>
-app.engine(config.get('nitro.viewFileExtension'), twig.renderWithLayout);<% } else { %>
-app.engine(config.get('nitro.viewFileExtension'), hbs.__express);<% } %>
+app.set('views', config.get('nitro.basePath') + config.get('nitro.viewDirectory'));
+
+if (isTwig) {
+	app.engine(config.get('nitro.viewFileExtension'), engine.renderWithLayout);
+} else {
+	app.engine(config.get('nitro.viewFileExtension'), engine.__express);
+}
 
 require('./app/core/listen')(app);

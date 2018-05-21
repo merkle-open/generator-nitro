@@ -9,7 +9,7 @@ const defaultConfig = {
 	// assets: {},
 	nitro: {
 		basePath,
-		viewFileExtension: '<%= options.viewExt %>',
+		viewFileExtension: 'hbs',
 		viewDirectory: 'src/views',
 		viewPartialsDirectory: 'src/views/_partials',
 		viewDataDirectory: 'src/views/_data',
@@ -17,6 +17,7 @@ const defaultConfig = {
 		placeholdersDirectory: 'src/views/_placeholders',
 		defaultLayout: 'default',
 		tmpDirectory: 'project/tmp',
+		templateEngine: 'hbs',
 		mode: {
 			livereload: true,
 			offline: false,

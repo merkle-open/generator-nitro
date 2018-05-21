@@ -27,6 +27,14 @@ describe('Nitro Config', () => {
 		expect(config.get('nitro.viewLayoutsDirectory')).toBeDefined();
 	});
 
+	it('contains a tmp directory', () => {
+		expect(config.get('nitro.tmpDirectory')).toBeDefined();
+	});
+
+	it('contains a templateEngine', () => {
+		expect(config.get('nitro.templateEngine')).toBeDefined();
+	});
+
 	it('contains a pattern map', () => {
 		expect(config.get('nitro.patterns')).toEqual(jasmine.any(Object));
 	});

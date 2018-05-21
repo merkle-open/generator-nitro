@@ -284,9 +284,6 @@ module.exports = class extends Generator {
 
 		const tplFiles = [
 			// files to process with copyTpl
-			'app/core/config.js',
-			'app/tests/jasmine/templating/engineSpec.js',
-			'app/tests/jasmine/templating/patternSpec.js',
 			'config/default.js',
 			'config/default/assets.js',
 			'gulp/compile-css.js',
@@ -308,7 +305,6 @@ module.exports = class extends Generator {
 			'src/views/_partials/foot.hbs',
 			'src/views/_partials/foot.twig',
 			'tests/backstop/backstop.config.js',
-			'server.js',
 			'gulpfile.js',
 			'package.json',
 		];
@@ -345,7 +341,6 @@ module.exports = class extends Generator {
 			'src/patterns/molecules/example/example',
 			'project/blueprints/pattern/pattern',
 		];
-		const enginePath = 'app/templating/';
 		const examplePaths = [
 			// paths only for this.options.exampleCode===true
 			'src/patterns/atoms/icon/',
@@ -391,14 +386,6 @@ module.exports = class extends Generator {
 			// Client side templates only Files
 			if (!this.options.clientTpl) {
 				if (_.indexOf(clientTplFiles, file) !== -1) {
-					return;
-				}
-			}
-
-			// check if the file is within the app/templating/ path
-			if (file.indexOf(enginePath) !== -1) {
-				if (file.indexOf(`${enginePath}${this.options.templateEngine}`) === -1) {
-					// only matching engine files
 					return;
 				}
 			}

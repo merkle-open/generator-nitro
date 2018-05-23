@@ -5,8 +5,7 @@
   "license": "MIT",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=8 <11",
-    "npm": ">=5 <6"
+    "node": ">=8 <11"
   },
   "scripts": {
     "test": "npm-run-all test:*",
@@ -14,6 +13,10 @@
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint ./gulp"
   },
+  "files": [
+    "tasks",
+    "utils"
+  ],
   "keywords": [
     "frontend",
     "nitro"

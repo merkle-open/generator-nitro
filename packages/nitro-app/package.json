@@ -6,10 +6,11 @@
   "repository": "namics/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=8 <11",
-    "npm": ">=5 <6"
+    "node": ">=8 <11"
   },
-  "main": "generators/app/index.js",
+  "bin": {
+    "nitro-app-validate-pattern-data": "./bin/validate-pattern-data.js"
+  },
   "scripts": {
     "lint": "eslint .",
     "pretest": "yarn lint",
@@ -19,7 +20,8 @@
   },
   "files": [
     "app",
-    "bin"
+    "bin",
+    "server.js"
   ],
   "keywords": [
     "frontend",

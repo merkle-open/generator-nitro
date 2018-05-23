@@ -1,0 +1,157 @@
+{
+  "name": "nitro-project",
+  "version": "0.0.0",
+  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 3.5.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "author": "The Nitro Team",
+  "engines": {
+    "node": ">=8 <11",
+    "npm": ">=5 <6"
+  },
+  "scripts": {
+    "nitro:pattern": "yo nitro:pattern",
+    "nitro:update": "yarn add generator-nitro --exact && yo nitro",
+    "lint": "npm-run-all lint:*",
+    "lint:accessibility": "gulp lint-accessibility",
+    "lint:css": "stylelint src/patterns/**/*.*ss src/share/**/*.*ss",
+    "lint:data": "node app/scripts/validate-pattern-data.js",
+    "lint:html": "gulp lint-html",
+    "lint:js": "eslint ./src/patterns ./src/share ./src/*.js",
+    "lint:license": "license-checker --production --summary --exclude \"Apache-2.0, BSD, ISC, LGPL, MIT, MPL\" --failOn \"AGPL; EPL; GPL\"",
+    "postinstall": "npm rebuild node-sass",
+    "prepublish": "nsp check --output summary",
+    "visual-approve": "gulp visual-approve",
+    "visual-reference": "gulp visual-reference",
+    "visual-test": "gulp visual-test",
+    "test": "npm-run-all test:*",
+    "test:lint": "yarn lint",
+    "XXXtest:karma": "yarn build && karma start ./tests/karma/karma.conf.js",
+    "XXXprebuild": "yarn test",
+
+    "build": "npm-run-all build:*",
+    "build:clean": "rimraf public/assets",
+    "build:assets": "gulp assets",
+    "build:webpack": "webpack --mode production --config config/webpack/webpack.config.prod.js",
+
+    "export": "yarn run build && gulp export",
+
+    "dev": "gulp develop",
+
+    "prod": "npm-run-all prod:*",
+    "prod:build": "yarn build",
+    "prod:serve": "cross-env NODE_ENV=production gulp serve",
+
+    "start": "npm-run-all start:*",
+    "start:dev": "yarn dev"
+  },
+  "keywords": [
+    "frontend",
+    "app",
+    "nitro",
+    "component",
+    "pattern",
+    "modular"
+  ],
+  "dependencies": {
+    "@babel/polyfill": "7.0.0-beta.47",
+    "@nitro/app": "0.1.0",
+    "@nitro/gulp": "0.1.0",
+    "handlebars": "4.0.11",
+    "jquery": "3.3.1",
+    "lazysizes": "4.0.2",
+    "lodash": "4.17.10",
+    "prevent-window-opener-attacks": "0.2.4",
+    "svg4everybody": "2.1.9",
+    "terrific": "3.0.0"
+  },
+  "devDependencies": {
+    "@namics/eslint-config": "5.0.1",
+    "@namics/stylelint-bem": "5.1.0",
+    "ajv": "6.5.0",
+    "autoprefixer": "8.5.0",
+    "backstopjs": "3.2.16",
+    "body-parser": "1.18.3",
+    "browser-sync": "2.24.4",
+    "chalk": "2.4.1",
+    "compression": "1.7.2",
+    "config": "1.30.0",
+    "cross-env": "5.1.5",
+    "del": "3.0.0",
+    "dot-object": "1.7.0",
+    "es6-promise": "4.2.4",
+    "eslint": "4.19.1",
+    "eslint-plugin-import": "2.12.0",
+    "express": "4.16.3",
+    "extend": "3.0.1",
+    "generator-nitro": "3.6.1",
+    "get-port": "3.2.0",
+    "globby": "7.1.1",
+    "gulp": "3.9.1",
+    "gulp-load-plugins": "1.5.0",
+    "gulp-sequence": "1.0.0",
+    "htmllint": "0.7.2",
+    "jasmine-core": "3.1.0",
+    "karma": "2.0.2",
+    "karma-babel-preprocessor": "8.0.0-beta.0",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-jasmine": "1.1.2",
+    "karma-phantomjs-launcher": "1.0.4",
+    "license-checker": "20.0.0",
+    "nitro-exporter": "1.0.1",
+    "npm-run-all": "4.1.3",
+    "nsp": "3.2.1",
+    "rimraf": "2.6.2",
+    "stylelint": "9.2.1",
+    "yo": "2.0.2",
+
+
+
+
+
+
+
+    "webpack": "4.8.3",
+    "webpack-cli": "2.1.3",
+    "webpack-dev-middleware": "3.1.3",
+    "webpack-hot-middleware": "2.22.2",
+    "webpack-bundle-analyzer": "2.11.3",
+    "git-revision-webpack-plugin": "3.0.3",
+
+    "mini-css-extract-plugin": "0.4.0",
+    "sass-loader": "7.0.1",
+    "node-sass": "4.9.0",
+    "style-loader": "0.21.0",
+    "css-loader": "0.28.11",
+    "postcss-loader": "2.1.5",
+    "stylelint-webpack-plugin": "0.10.5",
+    "iconfont-webpack-plugin": "2.0.0",
+
+    "eslint-friendly-formatter": "4.0.1",
+    "eslint-loader": "2.0.0",
+    "uglifyjs-webpack-plugin": "1.2.5",
+    "optimize-css-assets-webpack-plugin": "4.0.1",
+
+    "@babel/core": "7.0.0-beta.47",
+    "@babel/preset-env": "7.0.0-beta.47",
+    "babel-loader": "8.0.0-beta.2",
+    "handlebars-loader": "1.7.0",
+
+    "file-loader": "1.1.11",
+    "url-loader": "1.0.1",
+    "img-loader": "3.0.0",
+    "imagemin": "5.3.1",
+    "imagemin-gifsicle": "5.2.0",
+    "imagemin-jpegtran": "5.0.2",
+    "imagemin-optipng": "5.2.1",
+    "imagemin-svgo": "6.0.0",
+    "imagemin-pngquant": "5.1.0"
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "ie 11",
+    "android 4",
+    "Firefox ESR"
+  ]
+}

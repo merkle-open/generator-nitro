@@ -1,0 +1,62 @@
+@import "../../../../shared/utils/colors2/css/colors2.scss";
+@import "../../../../shared/utils/hidden/css/hidden.scss";
+
+$checkbox-border: 2px;
+$checkbox-size : 1.3em;
+$checkbox-color: $color-gray-5;
+
+.a-checkbox {
+	color: inherit;
+	position: relative;
+
+	input[type="checkbox"] {
+		// Checkbox Replacement: Hide default
+		@include input-visually-hidden();
+
+		// Checkbox Replacement: Box
+		+ label::before {
+			content: '';
+			position: absolute;
+			top: -1px;
+			left: 0;
+			display: block;
+			width: $checkbox-size;
+			height: $checkbox-size;
+
+			border: $checkbox-border solid $checkbox-color;
+			border-radius: 4px;
+		};
+
+		// Checkbox Replacement - checked state: Check-Icon
+		&:checked + label::after {
+			font-icon: url('../img/check.svg');
+			color: $color-gray-4;
+			position: absolute;
+			top: 6px;
+			left: 5px;
+		};
+	}
+
+	label {
+		display: inline-block;
+		padding: 0.2em 1em 0.2em (1 + $checkbox-size) ;
+
+		cursor: pointer;
+		user-select: none;
+
+		color: inherit;
+		font-family: inherit;
+		font-weight: inherit;
+		font-size: inherit;
+		line-height: inherit;
+		text-transform: none;
+	}
+}
+
+// states
+.state-a-checkbox--disabled {
+	opacity: 0.4;
+	label {
+		cursor: default;
+	}
+}

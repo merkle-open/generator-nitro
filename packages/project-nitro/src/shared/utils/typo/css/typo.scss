@@ -1,0 +1,178 @@
+@import "~css/deps/layout";
+
+$typography-default-family: 'minion';
+$typography-default-size: 'm';
+$typography-default-style: null;
+
+$typography-normal-ascender: 0.225rem;
+
+$typography-definition-mobile: (
+	sans: (
+		s: (
+			'font-size': 17px,
+			'line-height': 24px,
+			'letter-spacing': 0.3px
+		),
+		m: (
+			'font-size': 18px,
+			'line-height': 24px,
+			'letter-spacing': 0.3px
+		),
+		l: (
+			'font-size': 22px,
+			'line-height': 28px,
+			'letter-spacing': 0.3px
+		),
+		xl: (
+			'font-size': 22px,
+			'line-height': 28px,
+			'letter-spacing': 0.3px
+		),
+		xxl: (
+			'font-size': 26px,
+			'line-height': 32px,
+			'letter-spacing': 0.3px
+		),
+		xxxl: (
+			'font-size': 32px,
+			'line-height': 40px,
+			'letter-spacing': 0.5px
+		)
+	),
+	serif: (
+		s: (
+			'font-size': 14px,
+			'line-height': 20px,
+			'letter-spacing': 0.3px
+		),
+		m: (
+			'font-size': 16px,
+			'line-height': 24px,
+			'letter-spacing': 0.3px
+		),
+	)
+);
+
+$typography-definition-desktop: (
+	sans: (
+		s: (
+			'font-size': 21px,
+			'line-height': 32px,
+			'letter-spacing': 0.75px
+		),//subtitle
+		m: (
+			'font-size': 22px,
+			'line-height': 32px,
+			'letter-spacing': 0.5px
+		),//copy-text
+		l: (
+			'font-size': 26px,
+			'line-height': 32px,
+			'letter-spacing': 0.5px
+		),//h3
+		xl: (
+			'font-size': 26px,
+			'line-height': 36px,
+			'letter-spacing': 0.5px
+		),//lead-2
+		xxl: (
+			'font-size': 34px,
+			'line-height': 44px,
+			'letter-spacing': 0.5px
+		),//teaser
+		xxxl: (
+			'font-size': 50px,
+			'line-height': 64px,
+			'letter-spacing': 1px
+		) //heading-1
+	),
+	serif: (
+		s: (
+			'font-size': 14px,
+			'line-height': 20px,
+			'letter-spacing': 0.3px
+		),
+		m: (
+			'font-size': 16px,
+			'line-height': 24px,
+			'letter-spacing': 0.3px
+		),
+	)
+);
+
+/*
+	Functions to get the definition
+*/
+
+@function typography-get-definition($breakpoint) {
+	@if ($breakpoint == 'mobile') {
+		@return $typography-definition-mobile;
+	}
+	@if ($breakpoint == 'desktop') {
+		@return $typography-definition-desktop;
+	}
+	@warn 'Unknown typography breakpoint '#{$breakpoint}'.';
+}
+
+@function typography-get-font-definition($breakpoint, $size, $family) {
+	$typography-breakpoint: typography-get-definition($breakpoint);
+	$typography-family: map-get($typography-breakpoint, $family);
+	@if ($typography-family == null) {
+		@warn 'Unknown typography definition for breakpoint '#{$breakpoint}' and family '#{$family}'.';
+	}
+	$typography-font-definition: map-get($typography-family, $size);
+	@if ($typography-font-definition == null) {
+		@warn 'Unknown typography definition for breakpoint '#{$breakpoint}', family '#{$family}' and size #{$size}.';
+	}
+	@return $typography-font-definition;
+}
+
+@mixin getDefinition($font-definition, $style, $family) {
+	font-size: map-get($font-definition, 'font-size');
+	line-height: map-get($font-definition, 'line-height');
+	letter-spacing: map-get($font-definition, 'letter-spacing');
+
+	@if($family == 'sans') {
+		font-family: Arial, sans-serif;
+
+		@if ($style == 'bold') {
+			font-family: Arial, sans-serif;
+			font-weight: bold;
+		}
+		@if ($style == 'italic') {
+			font-family: Arial, sans-serif;
+			font-style: italic;
+		}
+	}
+	@if($family == 'serif') {
+		font-family: Arial, sans-serif;
+
+		@if ($style == 'serif') {
+			font-family: Arial, sans-serif;
+		}
+		@if ($style == 'semi-bold') {
+			font-family: Arial, sans-serif;
+		}
+	}
+}
+
+/*
+	mixin to use in the code
+
+	Params:
+		- $size: gets the typo definition according to the size (e.g. s, m, l)
+		- $style: defines the style of the font. Accepted Values are 'bold', 'italic', 'semi-bold'. Default is null
+		- $family: defines the family of the language. Currently is minion default.
+		- $margin-bottom: adds a calculated margin at the bottom.
+*/
+
+@mixin typography($size: $typography-default-size, $style: $typography-default-style, $family: $typography-default-family, $margin-bottom: 0) {
+
+	$font-definition: typography-get-font-definition('mobile', $size, $family);
+	@include getDefinition($font-definition, $style, $family);
+
+	@media screen and (min-width: $bp-m) {
+		$font-definition: typography-get-font-definition('desktop', $size, $family);
+		@include getDefinition($font-definition, $style, $family);
+	}
+}

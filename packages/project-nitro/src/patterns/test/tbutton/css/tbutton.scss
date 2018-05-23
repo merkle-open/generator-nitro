@@ -1,0 +1,33 @@
+@import "../../../../shared/utils/colors2/css/colors2.scss";
+
+.a-button {
+	cursor: pointer;
+
+	font-size: 24px;
+	background-color: #ff4500;
+	border: 0 solid $color-gray-5;
+	border-bottom-width: 5px;
+	padding: 10px 20px;
+	display: inline-block;
+	color: $color-white;
+	margin: 1rem 0;
+	outline: none;
+	position: relative;
+	transition: all 0.3s ease;
+
+	&[disabled] {
+		opacity: 0.4;
+		cursor: default;
+	}
+
+	&:hover {
+		transform: translate(0, -1px);
+		box-shadow: 0 2px 10px rgba(102, 102, 102, 0.5);
+	}
+}
+
+/* stylelint-disable plugin/stylelint-bem-namics */
+.z-button {
+	display: block;
+}
+/* stylelint-enable plugin/stylelint-bem-namics */

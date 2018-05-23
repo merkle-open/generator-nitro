@@ -1,0 +1,9 @@
+{
+  "generator-nitro": {
+    "name": "project-nitro",
+    "templateEngine": "hbs",
+    "clientTemplates": true,
+	"exampleCode": true,
+	"exporter": true
+  }
+}

@@ -1,0 +1,4 @@
+{
+	"modifier": "<%= modifier.css %>"<% if (decorator.name) { %>,
+	"decorator": ""<% } %>
+}

@@ -1,0 +1,17 @@
+{
+	"modifier": "mix",
+	"listItems": [
+		{
+			"text": "Nicolas - the rock",
+			"icon": "check"
+		},
+		{
+			"text": "Nicolas - the rock",
+			"icon": "arrow"
+		},
+		{
+			"text": "Nitro - the rocket",
+			"icon": "nitro"
+		}
+	]
+}

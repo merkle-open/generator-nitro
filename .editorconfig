@@ -35,6 +35,6 @@ indent_style = space
 indent_size = 2
 
 ### Specific files
-[{package,bower}.json]
+[{package,bower,lerna}.json]
 indent_style = space
 indent_size = 2

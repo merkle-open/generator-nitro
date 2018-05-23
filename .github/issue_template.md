@@ -14,10 +14,13 @@ Before creating an issue please make sure you are using:
 * Feature request
 * Documentation issue or request
 
-The issue refers to:
+The issue refers to the:
 
-* The generator
-* A generated nitro project
+* generator (generator-nitro)
+* nitro app (nitro-app)
+* nitro webpack config (nitro-webpack)
+* nitro gulp tasks (nitro-gulp)
+* generated nitro project (project-nitro)
 
 <!-- Please delete the rest of the template if it's not a bug report -->
 

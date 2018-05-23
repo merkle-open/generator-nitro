@@ -1,27 +1,18 @@
 {
-  "name": "generator-nitro",
-  "version": "3.7.0",
-  "description": "Yeoman generator for the nitro frontend framework",
+  "name": "nitro",
+  "private": true,
+  "description": "Nitro related packages",
   "license": "MIT",
   "repository": "namics/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=6 <11",
-    "npm": ">=3 <6"
+    "node": ">=8 <11",
+    "npm": ">=5 <6"
   },
-  "main": "generators/app/index.js",
   "scripts": {
-    "lint": "eslint .",
-    "pretest": "yarn lint",
-    "test": "jasmine --config=tests/jasmine/support/jasmine.json",
-    "prepublish": "nsp check --output summary",
-    "prepublishOnly": "pkg-ok --bin generators/app/templates/project/.githooks/pre-commit generators/app/templates/project/.githooks/post-merge"
+    "install": "lerna bootstrap",
+    "test": "echo test passed"
   },
-  "files": [
-    "generators/app",
-    "generators/pattern",
-    "generators/component"
-  ],
   "keywords": [
     "yeoman-generator",
     "scaffold",
@@ -32,27 +23,7 @@
     "pattern",
     "modular"
   ],
-  "dependencies": {
-    "adm-zip": "0.4.7",
-    "chalk": "2.4.1",
-    "config": "1.30.0",
-    "git-config": "0.0.7",
-    "glob": "7.1.2",
-    "lodash": "4.17.10",
-    "request": "2.87.0",
-    "yeoman-generator": "2.0.5",
-    "yosay": "2.0.2"
-  },
   "devDependencies": {
-    "@namics/eslint-config": "5.0.1",
-    "ejs": "2.6.1",
-    "eslint": "4.19.1",
-    "eslint-plugin-import": "2.12.0",
-    "fs-extra": "6.0.1",
-    "jasmine": "3.1.0",
-    "nsp": "3.2.1",
-    "pkg-ok": "2.2.0",
-    "yeoman-assert": "3.1.1",
-    "yeoman-test": "1.7.2"
+    "lerna": "2.11.0"
   }
 }

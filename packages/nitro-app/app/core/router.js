@@ -120,6 +120,8 @@ function getView(req, res, next) {
 }
 router.get('/', getView);
 router.get('/:view', getView);
+// subpathes will be routed to the main view if it exists
+router.get('/:view/*', getView);
 
 /**
  * everything else gets a 404

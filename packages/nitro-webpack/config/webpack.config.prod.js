@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
@@ -22,188 +24,193 @@ const banner = `${bannerData.pkg.name}
 	@date ${bannerData.date}
 	@source ${bannerData.git.branch}|${bannerData.git.version}`;
 
-module.exports = {
-	devtool: 'source-map',
-	context: appDirectory,
-	entry: {
-		ui: './src/ui.js',
-		proto: './src/proto.js',
-	},
-	output: {
-		path: path.resolve(appDirectory, 'public', 'assets'),
-		filename: 'js/[name].min.js',
-		publicPath: '/assets/',
-	},
-	module: {
-		rules: [
-			// styles
-			{
-				test: /\.?scss$/,
-				use: [
-					MiniCssExtractPlugin.loader,
-					{
-						loader: 'css-loader',
-						options: {
-							sourceMap: true,
-							importLoaders: 2,
-						}
-					},
-					{
-						loader: 'postcss-loader',
-						options: {
-							plugins: (loader) => {
-								return [
-									require('iconfont-webpack-plugin')({
-										resolve: loader.resolve,
-									}),
-									require('autoprefixer'),
-								];
+module.exports = () => {
+	return {
+		devtool: 'source-map',
+		context: appDirectory,
+		entry: {
+			ui: './src/ui.js',
+			proto: './src/proto.js',
+		},
+		output: {
+			path: path.resolve(appDirectory, 'public', 'assets'),
+			filename: 'js/[name].min.js',
+			publicPath: '/assets/',
+		},
+		module: {
+			rules: [
+				// styles
+				{
+					test: /\.?scss$/,
+					use: [
+						MiniCssExtractPlugin.loader,
+						{
+							loader: 'css-loader',
+							options: {
+								sourceMap: true,
+								importLoaders: 2,
+							}
+						},
+						{
+							loader: 'postcss-loader',
+							options: {
+								plugins: (loader) => {
+									return [
+										require('iconfont-webpack-plugin')({
+											resolve: loader.resolve,
+										}),
+										require('autoprefixer'),
+									];
+								},
+								sourceMap: true,
+							}
+						},
+						{
+							loader: require.resolve('resolve-url-loader'),
+						},
+						{
+							loader: 'sass-loader',
+							options: {
+								sourceMap: true,
 							},
-							sourceMap: true,
-						}
-					},
-					{
-						loader: 'sass-loader',
+						},
+					],
+				},
+				// js
+				{
+					test: /\.js$/,
+					exclude: /node_modules/,
+					use: {
+						// loader: require.resolve('babel-loader'),
+						loader: 'babel-loader',
 						options: {
-							sourceMap: true,
+							babelrc: false,
+							presets: [
+								[
+									'@babel/preset-env',
+									{
+										useBuiltIns: 'entry',
+									},
+								],
+							],
 						},
 					},
-				],
-			},
-			// js
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				use: {
-					// loader: require.resolve('babel-loader'),
-					loader: 'babel-loader',
-					options: {
-						babelrc: false,
-						presets: [
-							[
-								'@babel/preset-env',
-								{
-									useBuiltIns: 'entry',
-								},
-							],
-						],
+				},
+				// handlebars precompiled templates
+				{
+					test: /\.hbs$/,
+					exclude: /node_modules/,
+					use: {
+						loader: 'handlebars-loader',
+						options: {
+							// helperDirs: [
+							// 	path.resolve(__dirname, '../../app/templating/hbs/helpers'),
+							// ],
+							// knownHelpers: [],
+							// runtime: '',
+							// partialDirs: ''
+						},
 					},
 				},
-			},
-			// handlebars precompiled templates
-			{
-				test: /\.hbs$/,
-				exclude: /node_modules/,
-				use: {
-					loader: 'handlebars-loader',
+				// woff fonts (for example, in CSS files)
+				{
+					test: /.(woff(2)?)(\?[a-z0-9]+)?$/,
+					loader: 'file-loader',
 					options: {
-						// helperDirs: [
-						// 	path.resolve(__dirname, '../../app/templating/hbs/helpers'),
-						// ],
-						// knownHelpers: [],
-						// runtime: '',
-						// partialDirs: ''
+						name: 'media/fonts/[name]-[hash:7].[ext]',
 					},
 				},
-			},
-			// woff fonts (for example, in CSS files)
-			{
-				test: /.(woff(2)?)(\?[a-z0-9]+)?$/,
-				loader: 'file-loader',
-				options: {
-					name: 'media/fonts/[name]-[hash:7].[ext]',
+				// image loader & minification
+				{
+					test: /\.(png|jpg|gif|svg|ico)$/,
+					loader: 'img-loader',
+					// Specify enforce: 'pre' to apply the loader before url-loader
+					enforce: 'pre',
+					options: {
+						plugins: [
+							require('imagemin-gifsicle')({
+								interlaced: false
+							}),
+							require('imagemin-jpegtran')({
+								progressive: true
+							}),
+							require('imagemin-optipng')({
+								optimizationLevel: 7
+							}),
+							require('imagemin-pngquant')({
+								// floyd: 0.5,
+								// speed: 2
+							}),
+							require('imagemin-svgo')({
+								plugins: [
+									{ collapseGroups: false },
+									{ cleanupIDs: false },
+									{ removeUnknownsAndDefaults: false },
+									{ removeViewBox: false }
+								]
+							})
+						]
+					}
 				},
-			},
-			// image loader & minification
-			{
-				test: /\.(png|jpg|gif|svg|ico)$/,
-				loader: 'img-loader',
-				// Specify enforce: 'pre' to apply the loader before url-loader
-				enforce: 'pre',
-				options: {
-					plugins: [
-						require('imagemin-gifsicle')({
-							interlaced: false
-						}),
-						require('imagemin-jpegtran')({
-							progressive: true
-						}),
-						require('imagemin-optipng')({
-							optimizationLevel: 7
-						}),
-						require('imagemin-pngquant')({
-							// floyd: 0.5,
-							// speed: 2
-						}),
-						require('imagemin-svgo')({
-							plugins: [
-								{ collapseGroups: false },
-								{ cleanupIDs: false },
-								{ removeUnknownsAndDefaults: false },
-								{ removeViewBox: false }
-							]
-						})
-					]
-				}
-			},
-			// url loader for images (for example, in CSS files)
-			// inlines assets below a limit
-			{
-				test: /\.(png|jpg|gif|svg)$/,
-				loader: 'url-loader',
-				options: {
-					limit: 3 * 1028,
-					name: 'media/[ext]/[name]-[hash:7].[ext]',
+				// url loader for images (for example, in CSS files)
+				// inlines assets below a limit
+				{
+					test: /\.(png|jpg|gif|svg)$/,
+					loader: 'url-loader',
+					options: {
+						limit: 3 * 1028,
+						name: 'media/[ext]/[name]-[hash:7].[ext]',
+					},
 				},
-			},
-		],
-	},
-	optimization: {
-		// minimizer: [
-		// 	new UglifyJsPlugin({
-		// 		cache: true,
-		// 		parallel: true,
-		// 		sourceMap: true // set to true if you want JS source maps
-		// 	}),
-		// 	new OptimizeCSSAssetsPlugin({}),
-		// ],
-		splitChunks: {
-			cacheGroups: {
-				vendor: {
-					test: /node_modules/,
-					chunks: 'initial',
-					name: 'vendor',
-					priority: 10,
-					enforce: true,
-				}
-			}
+			],
 		},
-	},
-	stats: {
-		all: undefined,
-		assets: true,
-		children: false,
-		chunks: false,
-		modules: false,
-		colors: true,
-		depth: false,
-		entrypoints: false,
-		errors: true,
-		errorDetails: false,
-		hash: false,
-		warnings: false,
-	},
-	plugins: [
-		new webpack.BannerPlugin({ banner }),
-		new MiniCssExtractPlugin({
-			filename: 'css/[name].min.css',
-			chunkFilename: '[id].css',
-		}),
-		new OptimizeCSSAssetsPlugin({
-			// cssProcessorOptions: {
-			// 	sourceMap: true,
-			// },
-		}),
-		// new BundleAnalyzerPlugin(),
-	],
+		optimization: {
+			// minimizer: [
+			// 	new UglifyJsPlugin({
+			// 		cache: true,
+			// 		parallel: true,
+			// 		sourceMap: true // set to true if you want JS source maps
+			// 	}),
+			// 	new OptimizeCSSAssetsPlugin({}),
+			// ],
+			splitChunks: {
+				cacheGroups: {
+					vendor: {
+						test: /node_modules/,
+						chunks: 'initial',
+						name: 'vendor',
+						priority: 10,
+						enforce: true,
+					}
+				}
+			},
+		},
+		stats: {
+			all: undefined,
+			assets: true,
+			children: false,
+			chunks: false,
+			modules: false,
+			colors: true,
+			depth: false,
+			entrypoints: false,
+			errors: true,
+			errorDetails: false,
+			hash: false,
+			warnings: false,
+		},
+		plugins: [
+			new webpack.BannerPlugin({ banner }),
+			new MiniCssExtractPlugin({
+				filename: 'css/[name].min.css',
+				chunkFilename: '[id].css',
+			}),
+			new OptimizeCSSAssetsPlugin({
+				// cssProcessorOptions: {
+				// 	sourceMap: true,
+				// },
+			}),
+			// new BundleAnalyzerPlugin(),
+		],
+	};
 };

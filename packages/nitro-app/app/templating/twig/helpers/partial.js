@@ -13,13 +13,13 @@ const path = require('path');
 const config = require('config');
 const twigUtils = require('../utils');
 
-module.exports = function (Twig) {
+module.exports = (Twig) => {
 	return {
 		type: 'partial',
 		regex: /^partial\s+('\S*')$/,
 		next: [],
 		open: true,
-		compile: function(token) {
+		compile: (token) => {
 
 			token.name = Twig.expression.compile.apply(this, [{
 				type: Twig.expression.type.expression,
@@ -29,12 +29,12 @@ module.exports = function (Twig) {
 			delete token.match;
 			return token;
 		},
-		parse: function(token, context, chain) {
+		parse: (token, context, chain) => {
 			try {
 				const partial = Twig.expression.parse.apply(this, [token.name, context]);
-				let innerContext = Twig.ChildContext(context);
+				const innerContext = Twig.ChildContext(context);
 				let template;
-				let templateFile = `${partial}.${config.get('nitro.viewFileExtension')}`;
+				const templateFile = `${partial}.${config.get('nitro.viewFileExtension')}`;
 
 				const templateFilePath = path.join(
 					config.get('nitro.basePath'),
@@ -56,7 +56,7 @@ module.exports = function (Twig) {
 					});
 				} else {
 					return {
-						chain: chain,
+						chain,
 						output: twigUtils.logAndRenderError(
 							new Error(`Partial ${templateFilePath} not found.`)
 						)
@@ -64,12 +64,12 @@ module.exports = function (Twig) {
 				}
 
 				return {
-					chain: chain,
+					chain,
 					output: template.render(innerContext)
 				};
 			} catch (e) {
 				return {
-					chain: chain,
+					chain,
 					output: twigUtils.logAndRenderError(e)
 				};
 			}

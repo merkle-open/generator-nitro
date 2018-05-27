@@ -15,13 +15,13 @@ const projectHelpersDir = `${config.get('nitro.basePath')}project/helpers`;
 const coreFiles = fs.readdirSync(coreHelpersDir);
 const projectFiles = fs.readdirSync(projectHelpersDir);
 
-coreFiles.map((file) => {
+coreFiles.forEach((file) => {
 	if (path.extname(file) === '.js') {
 		files[path.basename(file, '.js')] = `${coreHelpersDir}/${file}`;
 	}
 });
 
-projectFiles.map((file) => {
+projectFiles.forEach((file) => {
 	if (path.extname(file) === '.js') {
 		files[path.basename(file, '.js')] = `${projectHelpersDir}/${file}`;
 	}
@@ -31,16 +31,17 @@ Object.keys(files).forEach((key) => {
 	const helperTagFactory = require(files[key]);
 
 	// expose helper as custom tag
-	Twig.extend(function(Twig) {
+	Twig.extend(() => {
 		Twig.exports.extendTag(helperTagFactory(Twig));
 	});
 });
 
-Twig.renderWithLayout = function(path, options, fn) {
-	const layoutPath = options.settings.views + '/' +  options.layout + '.' + options.settings['view engine'];
+// eslint-disable-next-line
+Twig.renderWithLayout = (path, options, fn) => {
+	const layoutPath = `${options.settings.views}/${options.layout}.${options.settings['view engine']}`;
 
 	function layoutRendered(error, layout) {
-		function bodyRendered(error, body) {
+		function bodyRendered(body) {
 			layout = layout.replace('<!-- Replace With Body -->', body);
 			return fn(null, layout);
 		}

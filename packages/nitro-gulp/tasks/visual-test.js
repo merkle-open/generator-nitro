@@ -27,7 +27,7 @@ module.exports = (gulp, plugins) => {
 							isRunning = true;
 							return backstop('test', {
 								config: require(`${projectPath}tests/backstop/backstop.config.js`)({
-									port: port,
+									port,
 								}),
 							})
 								.then(() => {

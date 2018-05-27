@@ -22,16 +22,16 @@ module.exports = function (Twig) {
 		regex: /^placeholder\s+(\w+='\S*')\s*(\w+='\S*')?\s*([\S\s]+?)?$/,
 		next: [],
 		open: true,
-		compile: function(token) {
+		compile: (token) => {
 
-			token.match.map((paramKeyValue, index) => {
+			token.match.forEach((paramKeyValue, index) => {
 				// our params are available in indexes 1-3
 				if (index > 0 && index < 4) {
 
 					// if the param in question is defined, we split the key=value pair and compile a twig expression
 					if (paramKeyValue !== undefined) {
 						const keyValueArray = paramKeyValue.split('=');
-						let key = keyValueArray[0];
+						const key = keyValueArray[0];
 						const value = keyValueArray[1];
 
 						token[key] = Twig.expression.compile.apply(this, [{
@@ -46,7 +46,7 @@ module.exports = function (Twig) {
 
 			return token;
 		},
-		parse: function(token, context, chain) {
+		parse: (token, context, chain) => {
 			try {
 				let name = '';
 				let templateFile = '';
@@ -60,7 +60,7 @@ module.exports = function (Twig) {
 					name = Twig.expression.parse.apply(this, [token.name, context]);
 				} else {
 					return {
-						chain: chain,
+						chain,
 						output: twigUtils.logAndRenderError(
 							new Error('Placeholder name parameter not set')
 						)
@@ -73,7 +73,7 @@ module.exports = function (Twig) {
 					templateFile = Twig.expression.parse.apply(this, [token.template, context]);
 				} else {
 					return {
-						chain: chain,
+						chain,
 						output: twigUtils.logAndRenderError(
 							new Error('Placeholder template parameter not set')
 						)
@@ -98,12 +98,10 @@ module.exports = function (Twig) {
 
 				// Add additional attributes e.g. {% placeholder name="TeaserArea" additionalData={ teaserItems: [...] } %}
 				if (additionalData !== null) {
-					for (let key in additionalData) {
-						if (additionalData.hasOwnProperty(key)) {
-							// extend or override placeholderData with additional data
-							placeholderData[key] = additionalData[key];
-						}
-					}
+					// extend or override placeholderData with additional data
+					Object.keys(additionalData).forEach(key => {
+						placeholderData[key] = additionalData[key];
+					});
 				}
 
 				templateFile += `.${config.get('nitro.viewFileExtension')}`;
@@ -131,7 +129,7 @@ module.exports = function (Twig) {
 
 					} catch (e) {
 						return {
-							chain: chain,
+							chain,
 							output: twigUtils.logAndRenderError(
 								new Error(`Parse Error for Placeholder ${name}: ${e.message}`)
 							)
@@ -139,7 +137,7 @@ module.exports = function (Twig) {
 					}
 				} else {
 					return {
-						chain: chain,
+						chain,
 						output: twigUtils.logAndRenderError(
 							new Error(`Placeholder ${templateFilePath} not found.`)
 						)
@@ -155,13 +153,13 @@ module.exports = function (Twig) {
 
 				// return the rendered template
 				return {
-					chain: chain,
+					chain,
 					output: html
 				};
 
 			} catch (e) {
 				return {
-					chain: chain,
+					chain,
 					output: twigUtils.logAndRenderError(e)
 				};
 			}

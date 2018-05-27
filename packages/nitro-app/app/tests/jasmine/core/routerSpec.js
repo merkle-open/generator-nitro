@@ -30,7 +30,7 @@ describe('Nitro Router', () => {
 	it('contains one static route', () => {
 		let noOfStaticRoutes = 0;
 
-		router.stack.forEach(function (route) {
+		router.stack.forEach((route) => {
 			if (!!route.name && route.name === 'serveStatic') {
 				noOfStaticRoutes++;
 			}

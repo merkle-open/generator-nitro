@@ -11,7 +11,8 @@
   },
   "scripts": {
     "install": "lerna bootstrap",
-    "test": "echo test passed"
+    "test": "lerna run test --parallel",
+    "lint": "lerna run lint --parallel"
   },
   "keywords": [
     "yeoman-generator",

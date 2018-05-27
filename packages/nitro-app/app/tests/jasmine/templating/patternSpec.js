@@ -33,6 +33,7 @@ if (config.get('nitro.templateEngine') === 'twig') {
 		});
 
 		it('returns an object containing a string if module was found', () => {
+			// eslint-disable-next-line
 			expect(helper('example').hasOwnProperty('string')).toBe(true);
 		});
 

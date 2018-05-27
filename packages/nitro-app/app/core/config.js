@@ -50,7 +50,7 @@ const defaultConfig = {
 	server: {
 		port: 8080,
 		proxy: 8081,
-		production: process.env.NODE_ENV && process.env.NODE_ENV.replace((/\s/g), '') === 'production' ? true : false,
+		production: !!(process.env.NODE_ENV && process.env.NODE_ENV.replace((/\s/g), '') === 'production'),
 	},
 	gulp: {
 		dumpViews: {
@@ -165,6 +165,8 @@ function getLegacyConfig() {
 
 	return config;
 }
+
+/* eslint-disable no-console */
 function checkConfig(config) {
 	if (config.code.compatibility) {
 		warnings.push('Browserslist configuration has to be placed in `package.json`');
@@ -176,6 +178,7 @@ function checkConfig(config) {
 		console.warn('-------------------------------------------------------');
 	}
 }
+/* eslint-enable no-console */
 
 // merge with default config
 const config = extend(true, {}, defaultConfig, getLegacyConfig());

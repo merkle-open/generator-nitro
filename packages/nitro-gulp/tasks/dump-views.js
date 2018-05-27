@@ -72,7 +72,7 @@ function dumpViews(port, gulp, plugins) {
 
 			if (languages.length) {
 				languages.filter((lng) => lng !== 'default').forEach((lng) => {
-					dumpedViews = dumpedViews.concat(views.map((v) => v += `?lang=${lng}`));
+					dumpedViews = dumpedViews.concat(views.map((v) => `${v}?lang=${lng}`));
 				});
 				if (languages.includes('default')) {
 					Array.prototype.unshift.apply(dumpedViews, views);

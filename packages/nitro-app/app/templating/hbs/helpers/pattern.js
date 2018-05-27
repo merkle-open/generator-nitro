@@ -30,8 +30,7 @@ const htmllintOptions = lint.getHtmllintOptions(true);
 
 const patternBasePaths = Object.keys(config.get('nitro.patterns')).map((key) => {
 	const configKey = `nitro.patterns.${key}.path`;
-	const patternPath = config.has(configKey) ? config.get(configKey) : false;
-	return patternPath;
+	return config.has(configKey) ? config.get(configKey) : false;
 });
 
 function getPattern(folder, templateFile, dataFile) {
@@ -106,8 +105,7 @@ function getPattern(folder, templateFile, dataFile) {
 	return pattern;
 }
 
-module.exports = function pattern() {
-
+module.exports = () => {
 	try {
 		const context = arguments[arguments.length - 1];
 		const contextDataRoot = context.data && context.data.root ? context.data.root : {};    // default pattern data from controller & view
@@ -169,7 +167,7 @@ module.exports = function pattern() {
 					extend(true, patternData, contextDataRoot._query);
 				}
 
-				// Add attribtues e.g. "disabled" of {{pattern "button" disabled=true}}
+				// Add attributes e.g. "disabled" of {{pattern "button" disabled=true}}
 				if (context.hash) {
 					extend(true, patternData, context.hash);
 				}

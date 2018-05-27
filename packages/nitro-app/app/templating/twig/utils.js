@@ -11,5 +11,5 @@ function logAndRenderError(error) {
 }
 
 module.exports = {
-	logAndRenderError: logAndRenderError,
+	logAndRenderError,
 };

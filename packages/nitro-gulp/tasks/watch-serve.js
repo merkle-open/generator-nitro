@@ -4,7 +4,7 @@ const config = require('config');
 const utils = require('../utils/utils');
 const compression = require('compression');
 
-module.exports = (gulp, plugins) => {
+module.exports = () => {
 	return () => {
 		if (config.get('nitro.mode.livereload')) {
 			const browserSync = utils.getBrowserSyncInstance();

@@ -8,6 +8,7 @@ const view = require('../lib/view');
 const dot = require('dot-object');
 const extend = require('extend');
 const express = require('express');
+// eslint-disable-next-line
 const router = express.Router({
 	caseSensitive: false,
 	strict: false,
@@ -18,15 +19,16 @@ const isOffline = config.get('nitro.mode.offline');
 /**
  * static routes
  */
-router.use('/', express.static(config.get('nitro.basePath') + '/public/'));
+router.use('/', express.static(`${config.get('nitro.basePath')}/public/`));
 
 /**
  * views
+ * @returns _nitro object
  */
 function getNitroViewData(pageTitle) {
 	return {
 		_nitro: {
-			pageTitle: pageTitle,
+			pageTitle,
 			production: isProduction,
 			offline: isOffline,
 		}
@@ -47,45 +49,47 @@ function collectViewData(viewPath, defaultData, req) {
 
 	if (!fs.existsSync(tplPath)) {
 		return false;
-	} else {
-		// collect data
-		const dataPath = path.join(
-			config.get('nitro.basePath'),
-			config.get('nitro.viewDataDirectory'),
-			'/',
-			`${viewPath}.json`
-		);
-		const customDataPath = req.query._data ? path.join(
-			config.get('nitro.basePath'),
-			config.get('nitro.viewDataDirectory'),
-			`/${req.query._data}.json`
-		) : false;
+	}
 
-		if (customDataPath && fs.existsSync(customDataPath)) {
-			extend(true, data, JSON.parse(fs.readFileSync(customDataPath, 'utf8')));
-		} else if (fs.existsSync(dataPath)) {
-			extend(true, data, JSON.parse(fs.readFileSync(dataPath, 'utf8')));
-		}
+	// collect data
+	const dataPath = path.join(
+		config.get('nitro.basePath'),
+		config.get('nitro.viewDataDirectory'),
+		'/',
+		`${viewPath}.json`
+	);
+	const customDataPath = req.query._data ? path.join(
+		config.get('nitro.basePath'),
+		config.get('nitro.viewDataDirectory'),
+		`/${req.query._data}.json`
+	) : false;
 
-		// handle query string parameters
-		if (Object.keys(req.query).length !== 0) {
-			const reqQuery = JSON.parse(JSON.stringify(req.query)); // simple clone
-			dot.object(reqQuery);
-			extend(true, data, reqQuery);
-			data._query = reqQuery; // save query for use in patterns
-		}
+	if (customDataPath && fs.existsSync(customDataPath)) {
+		extend(true, data, JSON.parse(fs.readFileSync(customDataPath, 'utf8')));
+	} else if (fs.existsSync(dataPath)) {
+		extend(true, data, JSON.parse(fs.readFileSync(dataPath, 'utf8')));
+	}
 
-		// layout handling
-		if (data._layout) {
-			if (utils.layoutExists(data._layout)) {
-				data.layout = utils.getLayoutPath(data._layout);
-			}
+	// handle query string parameters
+	if (Object.keys(req.query).length !== 0) {
+		// simple clone
+		const reqQuery = JSON.parse(JSON.stringify(req.query));
+		dot.object(reqQuery);
+		extend(true, data, reqQuery);
+		// save query for use in patterns
+		data._query = reqQuery;
+	}
+
+	// layout handling
+	if (data._layout) {
+		if (utils.layoutExists(data._layout)) {
+			data.layout = utils.getLayoutPath(data._layout);
 		}
-		if (!data.layout || !utils.layoutExists(utils.getLayoutName(data.layout))) {
-			// use default layout if present
-			if (utils.layoutExists(config.get('nitro.defaultLayout'))) {
-				data.layout = utils.getLayoutPath(config.get('nitro.defaultLayout'));
-			}
+	}
+	if (!data.layout || !utils.layoutExists(utils.getLayoutName(data.layout))) {
+		// use default layout if present
+		if (utils.layoutExists(config.get('nitro.defaultLayout'))) {
+			data.layout = utils.getLayoutPath(config.get('nitro.defaultLayout'));
 		}
 	}
 

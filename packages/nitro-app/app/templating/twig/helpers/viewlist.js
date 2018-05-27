@@ -12,17 +12,17 @@ const config = require('config');
 const view = require('../../../lib/view.js');
 const twigUtils = require('../utils');
 
-module.exports = function (Twig) {
+module.exports = function () {
 	return {
 		type: 'viewlist',
 		regex: /^viewlist$/,
 		next: [],
 		open: true,
-		compile: function(token) {
+		compile: (token) => {
 			delete token.match;
 			return token;
 		},
-		parse: function(token, context, chain) {
+		parse: (token, context, chain) => {
 			try {
 				const views = view.getViews(config.get('nitro.basePath') + config.get('nitro.viewDirectory'));
 				const markup = ['<ul>'];
@@ -35,13 +35,13 @@ module.exports = function (Twig) {
 
 				// return the markup
 				return {
-					chain: chain,
+					chain,
 					output: markup.join('')
 				};
 
 			} catch (e) {
 				return {
-					chain: chain,
+					chain,
 					output: twigUtils.logAndRenderError(e)
 				};
 			}

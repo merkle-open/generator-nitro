@@ -59,32 +59,32 @@ $typography-definition-desktop: (
 			'font-size': 21px,
 			'line-height': 32px,
 			'letter-spacing': 0.75px
-		),//subtitle
+		),
 		m: (
 			'font-size': 22px,
 			'line-height': 32px,
 			'letter-spacing': 0.5px
-		),//copy-text
+		),
 		l: (
 			'font-size': 26px,
 			'line-height': 32px,
 			'letter-spacing': 0.5px
-		),//h3
+		),
 		xl: (
 			'font-size': 26px,
 			'line-height': 36px,
 			'letter-spacing': 0.5px
-		),//lead-2
+		),
 		xxl: (
 			'font-size': 34px,
 			'line-height': 44px,
 			'letter-spacing': 0.5px
-		),//teaser
+		),
 		xxxl: (
 			'font-size': 50px,
 			'line-height': 64px,
 			'letter-spacing': 1px
-		) //heading-1
+		)
 	),
 	serif: (
 		s: (
@@ -96,7 +96,7 @@ $typography-definition-desktop: (
 			'font-size': 16px,
 			'line-height': 24px,
 			'letter-spacing': 0.3px
-		),
+		)
 	)
 );
 

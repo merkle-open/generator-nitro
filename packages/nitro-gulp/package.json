@@ -10,8 +10,7 @@
   "scripts": {
     "test": "npm-run-all test:*",
     "test:lint": "npm run lint",
-    "lint": "npm-run-all lint:*",
-    "lint:js": "eslint ./gulp ./utils"
+    "lint": "eslint ./tasks ./utils"
   },
   "files": [
     "tasks",

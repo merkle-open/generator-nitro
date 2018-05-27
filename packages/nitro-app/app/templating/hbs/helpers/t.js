@@ -21,7 +21,7 @@ const hbs = require('hbs');
 
 // initialised in ../../../core/i18n.js
 
-module.exports = function t(key) {
+module.exports = (key) => {
 
 	const context = arguments[arguments.length - 1];
 	const contextDataRoot = context.data && context.data.root ? context.data.root : {};

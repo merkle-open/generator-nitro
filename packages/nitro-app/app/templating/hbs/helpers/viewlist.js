@@ -4,7 +4,7 @@ const hbs = require('hbs');
 const config = require('config');
 const view = require('../../../lib/view.js');
 
-module.exports = function viewlist() {
+module.exports = () => {
 	const views = view.getViews(config.get('nitro.basePath') + config.get('nitro.viewDirectory'));
 	const markup = ['<ul>'];
 

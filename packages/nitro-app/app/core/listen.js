@@ -4,6 +4,7 @@ const config = require('config');
 const port = config.get('server.port');
 const mode = config.get('server.production') ? 'production' : 'development';
 
+/* eslint-disable no-console */
 module.exports = function (app) {
 
 	app.listen(port, () => {
@@ -18,3 +19,4 @@ module.exports = function (app) {
 			process.exit(1);
 		});
 };
+/* eslint-enable no-console */

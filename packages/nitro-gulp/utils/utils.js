@@ -14,7 +14,7 @@ function getBrowserSyncInstance() {
 }
 
 function getTask(task) {
-	return require('../tasks/' + task)(gulp, plugins);
+	return require(`../tasks/${task}`)(gulp, plugins);
 }
 
 function getProjectPath() {

@@ -8,21 +8,23 @@ module.exports = (gulp, plugins) => {
 	const throttleBase = config.get('nitro.watch.throttle.base');
 	const lastRun = {};
 
+	/* eslint-disable complexity */
+	const processChange = (type, func, throttle) => {
+		type = type || 'other';
+		func = func || function () {};
+		throttle = throttle || throttleBase;
+
+		// call function only once in defined time
+		lastRun[type] = lastRun[type] || 0;
+		if (new Date() - lastRun[type] > throttle) {
+			func();
+		}
+		lastRun[type] = new Date();
+	};
+	/* eslint-enable complexity */
+
 	return () => {
 		const browserSync = utils.getBrowserSyncInstance();
-
-		function processChange(type, func, throttle) {
-			type = type || 'other';
-			func = func || function () {};
-			throttle = throttle || throttleBase;
-
-			// call function only once in defined time
-			lastRun[type] = lastRun[type] || 0;
-			if (new Date() - lastRun[type] > throttle) {
-				func();
-			}
-			lastRun[type] = new Date();
-		}
 
 		plugins.watch([
 			`src/views/**/*.${config.get('nitro.viewFileExtension')}`,

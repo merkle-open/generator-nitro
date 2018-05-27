@@ -45,14 +45,14 @@ module.exports = () => {
 					use: [
 						MiniCssExtractPlugin.loader,
 						{
-							loader: 'css-loader',
+							loader: require.resolve('css-loader'),
 							options: {
 								sourceMap: true,
 								importLoaders: 2,
 							}
 						},
 						{
-							loader: 'postcss-loader',
+							loader: require.resolve('postcss-loader'),
 							options: {
 								plugins: (loader) => {
 									return [
@@ -69,7 +69,7 @@ module.exports = () => {
 							loader: require.resolve('resolve-url-loader'),
 						},
 						{
-							loader: 'sass-loader',
+							loader: require.resolve('sass-loader'),
 							options: {
 								sourceMap: true,
 							},
@@ -82,12 +82,12 @@ module.exports = () => {
 					exclude: /node_modules/,
 					use: {
 						// loader: require.resolve('babel-loader'),
-						loader: 'babel-loader',
+						loader: require.resolve('babel-loader'),
 						options: {
 							babelrc: false,
 							presets: [
 								[
-									'@babel/preset-env',
+									require.resolve('@babel/preset-env'),
 									{
 										useBuiltIns: 'entry',
 									},
@@ -101,7 +101,7 @@ module.exports = () => {
 					test: /\.hbs$/,
 					exclude: /node_modules/,
 					use: {
-						loader: 'handlebars-loader',
+						loader: require.resolve('handlebars-loader'),
 						options: {
 							// helperDirs: [
 							// 	path.resolve(__dirname, '../../app/templating/hbs/helpers'),
@@ -115,7 +115,7 @@ module.exports = () => {
 				// woff fonts (for example, in CSS files)
 				{
 					test: /.(woff(2)?)(\?[a-z0-9]+)?$/,
-					loader: 'file-loader',
+					loader: require.resolve('file-loader'),
 					options: {
 						name: 'media/fonts/[name]-[hash:7].[ext]',
 					},
@@ -123,7 +123,7 @@ module.exports = () => {
 				// image loader & minification
 				{
 					test: /\.(png|jpg|gif|svg|ico)$/,
-					loader: 'img-loader',
+					loader: require.resolve('img-loader'),
 					// Specify enforce: 'pre' to apply the loader before url-loader
 					enforce: 'pre',
 					options: {
@@ -156,7 +156,7 @@ module.exports = () => {
 				// inlines assets below a limit
 				{
 					test: /\.(png|jpg|gif|svg)$/,
-					loader: 'url-loader',
+					loader: require.resolve('url-loader'),
 					options: {
 						limit: 3 * 1028,
 						name: 'media/[ext]/[name]-[hash:7].[ext]',

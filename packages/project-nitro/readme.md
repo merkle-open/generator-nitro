@@ -5,12 +5,14 @@ Introduction …
 ## do / issues
 
 * test with bigger project
+  * ...and more features e.g. dynamicImport('...');
 * check stylelint config (works unreliable & lintDirtyModulesOnly does not work as expected)
-* cleanup (_app, examples, ... )
+* work on generator
+* which webpack deps for dev/prod in project? does it work?
+* cleanup (_app, examples, ...)
 
 ### prio 2
 
-* how to handle eslint error concerning `module` not defined
 * lerna compatibility of babel-loader with excludes
 * what to do with malfunctioning iconfont feature?
 * use husky v1 for githooks when ready
@@ -23,7 +25,7 @@ Introduction …
 * eslint should lint only changed files
 * use "gondel"
 * rename `app` to `server` or move to package
-* split into subparts (lerna packages)
+* include nitro-exporter
 
 ## Nitro
 

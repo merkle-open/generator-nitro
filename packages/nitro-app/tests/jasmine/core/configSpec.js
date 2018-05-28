@@ -38,8 +38,4 @@ describe('Nitro Config', () => {
 	it('contains a pattern map', () => {
 		expect(config.get('nitro.patterns')).toEqual(jasmine.any(Object));
 	});
-
-	it('contains an assets map', () => {
-		expect(config.get('assets')).toEqual(jasmine.any(Object));
-	});
 });

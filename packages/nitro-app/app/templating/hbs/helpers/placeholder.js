@@ -9,7 +9,7 @@ const hbsUtils = require('../utils');
 const lint = require('../../../lib/lint');
 const htmllintOptions = lint.getHtmllintOptions(true);
 
-module.exports = () => {
+module.exports = function () {
 
 	try {
 		const context = arguments[arguments.length - 1];

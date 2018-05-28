@@ -31,7 +31,8 @@ Object.keys(files).forEach((key) => {
 	const helperTagFactory = require(files[key]);
 
 	// expose helper as custom tag
-	Twig.extend(() => {
+	/* eslint-disable-next-line */
+	Twig.extend(function(Twig) {
 		Twig.exports.extendTag(helperTagFactory(Twig));
 	});
 });

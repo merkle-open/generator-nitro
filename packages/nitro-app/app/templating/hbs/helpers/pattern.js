@@ -105,7 +105,7 @@ function getPattern(folder, templateFile, dataFile) {
 	return pattern;
 }
 
-module.exports = () => {
+module.exports = function () {
 	try {
 		const context = arguments[arguments.length - 1];
 		const contextDataRoot = context.data && context.data.root ? context.data.root : {};    // default pattern data from controller & view

@@ -11,7 +11,7 @@
   },
   "scripts": {
     "install": "lerna bootstrap",
-    "test": "lerna run test --parallel",
+    "test": "lerna run lint --parallel",
     "lint": "lerna run lint --parallel"
   },
   "keywords": [

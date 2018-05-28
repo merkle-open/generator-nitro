@@ -3,7 +3,7 @@
 const config = require('config');
 
 if (config.get('nitro.templateEngine') === 'twig') {
-	const Twig = require('../../../templating/twig/engine');
+	const Twig = require('../../../app/templating/twig/engine');
 	describe('Twig Pattern Helper', () => {
 
 		it('returns an error message if module is unknown', () => {
@@ -25,7 +25,7 @@ if (config.get('nitro.templateEngine') === 'twig') {
 
 	});
 } else {
-	const helper = require('../../../templating/hbs/helpers/pattern');
+	const helper = require('../../../app/templating/hbs/helpers/pattern');
 	describe('Hbs Pattern Helper', () => {
 
 		it('returns an error message if module is unknown', () => {

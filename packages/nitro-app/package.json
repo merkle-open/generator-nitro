@@ -14,7 +14,7 @@
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "jasmine --config=tests/jasmine/support/jasmine.json",
+    "test": "jasmine --config=./tests/jasmine/support/jasmine.json",
     "prepublish": "nsp check --output summary"
   },
   "files": [
@@ -47,6 +47,7 @@
     "i18next-express-middleware": "1.1.1",
     "i18next-node-fs-backend": "1.0.0",
     "i18next-sprintf-postprocessor": "0.2.2",
+    "jasmine": "3.1.0",
     "jasmine-core": "3.1.0",
     "nsp": "3.2.1",
     "pkg-ok": "2.2.0",

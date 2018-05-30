@@ -12,7 +12,7 @@
   "main": "generators/app/index.js",
   "scripts": {
     "lint": "eslint .",
-    "pretest": "yarn lint",
+    "pretest": "npm run lint",
     "test": "jasmine --config=tests/jasmine/support/jasmine.json",
     "prepublish": "nsp check --output summary",
     "prepublishOnly": "pkg-ok --bin generators/app/templates/project/.githooks/pre-commit generators/app/templates/project/.githooks/post-merge"

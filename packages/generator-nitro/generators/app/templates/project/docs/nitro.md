@@ -91,7 +91,7 @@ This config is shareable between different frontend tools. If not defined, the d
 
 ### Creating Patterns
 
-Patterns are created in the `patterns` folder. A pattern is an encapsulated block of markup
+Patterns are created in the `src/patterns` folder. A pattern is an encapsulated block of markup
 with corresponding styles, scripts and data. The pattern data can be described in `schema.json`
 with [JSON schema](http://json-schema.org) format (draft-04). Nitro uses [ajv](http://epoberezkin.github.io/ajv/) for validation.
 
@@ -129,7 +129,7 @@ Different data variations have to be placed in the `_data` folder:
 yarn nitro:pattern
 ```
 
-This will copy the templates (nitro.patterns.<type>.template) from config to the configured target.
+This will copy the templates (nitro.patterns.\<type\>.template) from config to the configured target.
 
 Optionally you can give the name:
 

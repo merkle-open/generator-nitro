@@ -238,10 +238,10 @@ module.exports = class extends Generator {
 
 			// filename replacements
 			const fileReplacements = {
-				pattern: replacements.pattern.file,
-				component: replacements.pattern.file,
-				modifier: replacements.modifier.file,
-				decorator: replacements.decorator.file,
+				'$pattern$': replacements.pattern.file,
+				'$component$': replacements.pattern.file,
+				'$modifier$': replacements.modifier.file,
+				'$decorator$': replacements.decorator.file,
 			};
 
 			let filename = file;

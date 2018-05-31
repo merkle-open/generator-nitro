@@ -8,11 +8,11 @@
     "node": ">=8 <11"
   },
   "scripts": {
-    "lint": "eslint ./config",
+    "lint": "eslint ./cfg",
     "test": "npm run lint"
   },
   "files": [
-    "config"
+    "cfg"
   ],
   "keywords": [
     "frontend",
@@ -51,7 +51,7 @@
     "stylelint-webpack-plugin": "0.10.5",
     "uglifyjs-webpack-plugin": "1.2.5",
     "url-loader": "1.0.1",
-    "webpack": "4.10.1",
+    "webpack": "4.10.2",
     "webpack-cli": "2.1.4",
     "webpack-bundle-analyzer": "2.13.1",
     "webpack-dev-middleware": "3.1.3",

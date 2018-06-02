@@ -124,7 +124,10 @@ module.exports = () => {
 				// handlebars precompiled templates
 				{
 					test: /\.hbs$/,
-					exclude: /node_modules/,
+					exclude: [
+						/node_modules/,
+						path.resolve(appDirectory, 'src/views'),
+					],
 					use: {
 						loader: require.resolve('handlebars-loader'),
 						options: {

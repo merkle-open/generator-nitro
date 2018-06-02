@@ -1,3 +1,9 @@
 # Nitro
 
-nitro related lerna packages
+Nitro monorepo:
+
+* `packages/generator-nitro`
+* `packages/nitro-app`
+* `packages/nitro-gulp`
+* `packages/nitro-webpack`
+* `packages/project-nitro`

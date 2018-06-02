@@ -13,7 +13,6 @@ gulp.task('watch-assets', ['assets'], getTask('watch-assets'));
 gulp.task('serve', getTask('serve'));
 gulp.task('watch-serve', ['serve'], getTask('watch-serve'));
 gulp.task('develop', ['watch-assets', 'watch-serve']);
-gulp.task('watch-assets');
 gulp.task('production', gulpSequence('assets', 'serve'));
 gulp.task('dump-views', getTask('dump-views'));
 gulp.task('lint-accessibility', ['dump-views'], getTask('lint-accessibility'));

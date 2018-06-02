@@ -7,6 +7,7 @@ module.exports = (gulp, plugins) => {
 
 	const throttleBase = config.get('nitro.watch.throttle.base');
 	const lastRun = {};
+	const projectPath = utils.getProjectPath();
 
 	/* eslint-disable complexity */
 	const processChange = (type, func, throttle) => {
@@ -25,30 +26,38 @@ module.exports = (gulp, plugins) => {
 
 	return () => {
 		const browserSync = utils.getBrowserSyncInstance();
+		const options = {
+			base: projectPath,
+			read: false,
+		};
+		const minifyImgSrc = config.has('gulp.minifyImg.src') ? config.get('gulp.minifyImg.src') : false;
+		const svgSpriteSrc = config.has('gulp.svgSprite.src') ? config.get('gulp.svgSprite.src') : false;
 
-		plugins.watch([
-			`src/views/**/*.${config.get('nitro.viewFileExtension')}`,
-			`${config.get('nitro.viewDataDirectory')}/**/*.json`,
-			`src/patterns/**/*.${config.get('nitro.viewFileExtension')}`,
-			'!src/patterns/**/template/**/*.hbs',
-			'src/patterns/**/schema.json',
-			'src/patterns/**/_data/*.json',
-		], () => {
-			processChange('data', () => {
-				if (config.get('nitro.mode.livereload')) {
+		if (config.get('nitro.mode.livereload')) {
+			plugins.watch([
+				`src/views/**/*.${config.get('nitro.viewFileExtension')}`,
+				`${config.get('nitro.viewDataDirectory')}/**/*.json`,
+				`src/patterns/**/*.${config.get('nitro.viewFileExtension')}`,
+				'!src/patterns/**/template/**/*.hbs',
+				'src/patterns/**/schema.json',
+				'src/patterns/**/_data/*.json',
+			], options, () => {
+				processChange('data', () => {
 					browserSync.reload('*.html');
-				}
+				});
 			});
-		});
+		}
 
-		plugins.watch(['src/shared/assets/img/**/*'], () => {
-			gulp.start('minify-img');
-		});
+		if (minifyImgSrc) {
+			plugins.watch(minifyImgSrc, options, () => {
+				gulp.start('minify-img');
+			});
+		}
 
-		plugins.watch([
-			'src/patterns/atoms/icon/img/icons/*.svg',
-		], () => {
-			gulp.start('svg-sprite');
-		});
+		if (svgSpriteSrc) {
+			plugins.watch(svgSpriteSrc, options, () => {
+				gulp.start('svg-sprite');
+			});
+		}
 	};
 };

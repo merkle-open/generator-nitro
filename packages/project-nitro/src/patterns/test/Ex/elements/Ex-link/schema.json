@@ -1,0 +1,17 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Ex-link",
+	"description": "An Ex-link element",
+	"type": "object",
+	"properties": {
+		"uri": {
+			"description": "the target uri",
+			"type": "string"
+		},
+		"text": {
+			"description": "The link text",
+			"type": "string"
+		}
+	},
+	"required": [ "uri", "text" ]
+}

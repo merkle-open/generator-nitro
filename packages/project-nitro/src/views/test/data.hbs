@@ -1,0 +1,19 @@
+<p>{{_nitro.pageTitle}} = pageTitle (view)</p>
+<p>{{test.text}} = test.text (view)</p>
+
+{{#unless _nitro.production}}
+<div class="container">
+	{{pattern 't' 't-red'}}
+	<hr>
+	{{pattern 't'}}
+	<hr>
+	{{pattern 't' 't-red'}}
+	<hr>
+	{{pattern 'Ex'}}
+</div>
+{{/unless}}
+
+<hr>
+{{pattern 'Ex' 'ex-subpattern'}}
+<hr />
+<p>{{test.text}} = test.text (view)</p>

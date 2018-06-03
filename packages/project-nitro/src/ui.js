@@ -23,9 +23,11 @@ import './patterns/atoms/loader';
 import './patterns/atoms/stage';
 import './patterns/molecules/example';
 
+import './patterns/test/Ex';
 import './patterns/test/tbox';
 import './patterns/test/tbutton';
 import './patterns/test/tcheckbox';
+import './patterns/test/t';
 
 if (module.hot) {
 	module.hot.accept();

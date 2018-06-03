@@ -1,0 +1,27 @@
+{
+	"modifier": "",
+	"decorator": "",
+	"title": "Ex Module (data: ex.json)",
+	"links": [
+		{
+			"uri": "index",
+			"text": "Ex 1"
+		},
+		{
+			"uri": "index",
+			"text": "Ex 2"
+		},
+		{
+			"uri": "index",
+			"text": "Ex 3"
+		},
+		{
+			"uri": "index",
+			"text": "Ex 4"
+		},
+		{
+			"uri": "index",
+			"text": "Ex 5"
+		}
+	]
+}

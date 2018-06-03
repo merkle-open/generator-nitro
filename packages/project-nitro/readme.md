@@ -4,19 +4,15 @@ Introduction …
 
 ## do / issues
 
-* test with bigger project
-  * ...and more features e.g. dynamicImport('...');
-* check stylelint config (works unreliable & lintDirtyModulesOnly does not work as expected)
-* work on generator
+* work on generator & documentation
 * which webpack deps for dev/prod in project? does it work?
 * cleanup (_app, examples, ...)
 
 ### prio 2
 
 * lerna compatibility of babel-loader with excludes
-* what to do with malfunctioning iconfont feature?
-* use husky v1 for githooks when ready
-* documentation
+* what to do with malfunctioning iconfont feature? maybe move css & image processing to project
+* check stylelint config (works unreliable & lintDirtyModulesOnly does not work as expected)
 
 ### prio 3 (after launch)
 

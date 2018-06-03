@@ -1,12 +1,13 @@
 # Contributing
 
-We are more than happy to accept external contributions to the project in the form of feedback, bug reports and even better - pull requests :)
+We are more than happy to accept external contributions to the project
+in the form of feedback, bug reports and even better - pull requests :)
 
 ## How to contribute
 
 ### Give feedback on issues
 
-We're always looking for more opinions on discussions in the [issue tracker](https://github.com/namics/generator-nitro/issues). 
+We're always looking for more opinions on discussions in the [issue tracker](https://github.com/namics/generator-nitro/issues).
 It's a good opportunity to influence the future direction of nitro and the generator.
 
 ### Creating Issues
@@ -15,7 +16,8 @@ In order for us to help you please check that you've completed the following ste
 
 * Make sure you're on the latest version `npm install -g generator-nitro`
 * Use the search feature to ensure that the issue hasn't been reported before
-* Include as much information about the issue as possible, including any output you've received, what OS and version you're on, etc.
+* Include as much information about the issue as possible, including
+any output you've received, what OS and version you're on, etc.
   
 [Submit your issue](https://github.com/namics/generator-nitro/issues/new)
 

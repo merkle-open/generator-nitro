@@ -1,0 +1,19 @@
+{
+	"modifier": "blue",
+	"decorator": "Blue",
+	"title": "Ex Module with Skin Blue (data: ex-blue.json)",
+	"links": [
+		{
+			"uri": "index",
+			"text": "Ex One"
+		},
+		{
+			"uri": "index",
+			"text": "Ex Two"
+		},
+		{
+			"uri": "index",
+			"text": "Ex Three"
+		}
+	]
+}

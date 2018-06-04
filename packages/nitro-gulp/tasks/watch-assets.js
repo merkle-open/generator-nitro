@@ -3,13 +3,13 @@
 const config = require('config');
 const utils = require('../utils/utils');
 
+/* eslint-disable complexity */
 module.exports = (gulp, plugins) => {
 
 	const throttleBase = config.get('nitro.watch.throttle.base');
 	const lastRun = {};
 	const projectPath = utils.getProjectPath();
 
-	/* eslint-disable complexity */
 	const processChange = (type, func, throttle) => {
 		type = type || 'other';
 		func = func || function () {};
@@ -22,7 +22,6 @@ module.exports = (gulp, plugins) => {
 		}
 		lastRun[type] = new Date();
 	};
-	/* eslint-enable complexity */
 
 	return () => {
 		const browserSync = utils.getBrowserSyncInstance();
@@ -61,3 +60,4 @@ module.exports = (gulp, plugins) => {
 		}
 	};
 };
+/* eslint-enable complexity */

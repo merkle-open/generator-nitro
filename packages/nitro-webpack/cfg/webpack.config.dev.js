@@ -10,7 +10,8 @@ const appDirectory = fs.realpathSync(process.cwd());
 
 module.exports = () => {
 	const webpackConfig = {
-		devtool: 'inline-source-map',
+		// devtool: 'eval',
+		devtool: 'eval-source-map',
 		context: appDirectory,
 		entry: {
 			ui: [

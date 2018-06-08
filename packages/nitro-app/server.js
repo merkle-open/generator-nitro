@@ -8,6 +8,7 @@ const compression = require('compression');
 const bodyParser = require('body-parser');
 
 const isProduction = config.get('server.production');
+const useCompression = config.get('server.compression');
 const isTwig = config.get('nitro.templateEngine') === 'twig';
 let engine;
 
@@ -25,7 +26,9 @@ if (isTwig) {
 }
 
 // compress all requests
-app.use(compression());
+if (useCompression) {
+	app.use(compression());
+}
 
 // translations
 require('./app/core/i18n')(app);

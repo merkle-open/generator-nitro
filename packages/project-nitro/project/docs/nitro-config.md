@@ -201,6 +201,13 @@ Default: 8081
 The proxy server with livereload functionality runs on this port.  
 An environment variable PROXY will overwrite this property.
 
+### `server.compression`
+
+Type: Boolean
+Default: true
+
+If set to `true`, all requests through express will be compressed.
+
 ## Feature
 
 ### i18next express middleware

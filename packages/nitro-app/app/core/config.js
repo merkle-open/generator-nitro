@@ -50,6 +50,7 @@ const defaultConfig = {
 		port: 8080,
 		proxy: 8081,
 		production: !!(process.env.NODE_ENV && process.env.NODE_ENV.replace((/\s/g), '') === 'production'),
+		compression: true,
 	},
 	gulp: {
 		dumpViews: {

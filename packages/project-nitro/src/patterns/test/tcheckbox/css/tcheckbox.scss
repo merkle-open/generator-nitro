@@ -5,7 +5,7 @@ $checkbox-border: 2px;
 $checkbox-size : 1.3em;
 $checkbox-color: $color-gray-5;
 
-.a-checkbox {
+.a-tcheckbox {
 	color: inherit;
 	position: relative;
 
@@ -54,7 +54,7 @@ $checkbox-color: $color-gray-5;
 }
 
 // states
-.state-a-checkbox--disabled {
+.state-a-tcheckbox--disabled {
 	opacity: 0.4;
 	label {
 		cursor: default;

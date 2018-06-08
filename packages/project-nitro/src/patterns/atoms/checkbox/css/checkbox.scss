@@ -29,11 +29,11 @@ $checkbox-color: $color-gray-5;
 
 		// Checkbox Replacement - checked state: Check-Icon
 		&:checked + label::after {
-			font-icon: url('../img/check.svg');
+			font-icon: -0.4 + $checkbox-size url('../img/check.svg');
 			color: $color-gray-4;
 			position: absolute;
-			top: 6px;
-			left: 5px;
+			top: 20%;
+			left: 4px;
 		};
 	}
 

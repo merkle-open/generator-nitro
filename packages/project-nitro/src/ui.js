@@ -34,8 +34,9 @@ if (module.hot) {
 }
 
 // custom code
-console.log('I\'m from the entry point'); // eslint-disable-line
+console.log('I\'m from the entry point ui'); // eslint-disable-line
 
+// terrifijs
 $(document).ready(() => {
 	const application = new T.Application();
 	application.registerModules();

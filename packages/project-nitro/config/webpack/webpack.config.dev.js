@@ -1,3 +1,3 @@
-const webpackConfig = require('@nitro/webpack/cfg/webpack.config.dev')();
+const webpackConfig = require('@nitro/webpack/webpack-config/webpack.config.dev')();
 
 module.exports = webpackConfig;

@@ -6,9 +6,12 @@ const webpack = require('webpack');
 // const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const gitRevisionPlugin = new GitRevisionPlugin({ branch: true });
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 const appDirectory = fs.realpathSync(process.cwd());
 
 const bannerData = {
@@ -37,9 +40,12 @@ module.exports = () => {
 			filename: 'js/[name].min.js',
 			publicPath: '/assets/',
 		},
+		resolve: {
+			extensions: ['.ts', '.tsx', '.mjs', '.js', '.d.ts'],
+		},
 		module: {
 			rules: [
-				// styles
+				// CSS & SCSS
 				{
 					test: /\.?scss$/,
 					use: [
@@ -76,7 +82,8 @@ module.exports = () => {
 						},
 					],
 				},
-				// js
+
+				// JS
 				{
 					test: /\.js$/,
 					exclude: /node_modules/,
@@ -96,6 +103,38 @@ module.exports = () => {
 						},
 					},
 				},
+
+				// TS
+				// From https://github.com/TypeStrong/ts-loader/blob/master/examples/thread-loader/webpack.config.js
+				{
+					test: /\.(tsx?|d.ts)$/,
+					use: [
+						{
+							loader: require.resolve('cache-loader'),
+							options: {
+								cacheDirectory: path.resolve('node_modules/.cache-loader'),
+							},
+						},
+						{
+							loader: require.resolve('thread-loader'),
+							options: {
+								// there should be 1 cpu for the fork-ts-checker-webpack-plugin
+								workers: require('os').cpus().length - 1,
+							},
+						},
+						{
+							loader: require.resolve('ts-loader'),
+							options: {
+								// Increase build speed
+								// by disabling typechecking for the main process
+								// and is required to be used with thread-loader
+								// see https://github.com/TypeStrong/ts-loader/blob/master/examples/thread-loader/webpack.config.js
+								happyPackMode: true,
+							},
+						},
+					],
+				},
+
 				// handlebars precompiled templates
 				{
 					test: /\.hbs$/,
@@ -167,6 +206,24 @@ module.exports = () => {
 				},
 			],
 		},
+		plugins: [
+			new webpack.BannerPlugin({ banner }),
+			new MiniCssExtractPlugin({
+				filename: 'css/[name].min.css',
+				chunkFilename: '[id].css',
+			}),
+			new OptimizeCSSAssetsPlugin({
+				// cssProcessorOptions: {
+				// 	sourceMap: true,
+				// },
+			}),
+			new CaseSensitivePathsPlugin({ debug: false }),
+			new ForkTsCheckerWebpackPlugin({
+				async: false,
+				checkSyntacticErrors: true,
+			}),
+			// new BundleAnalyzerPlugin(),
+		],
 		optimization: {
 			// minimizer: [
 			// 	new UglifyJsPlugin({
@@ -202,18 +259,5 @@ module.exports = () => {
 			hash: false,
 			warnings: false,
 		},
-		plugins: [
-			new webpack.BannerPlugin({ banner }),
-			new MiniCssExtractPlugin({
-				filename: 'css/[name].min.css',
-				chunkFilename: '[id].css',
-			}),
-			new OptimizeCSSAssetsPlugin({
-				// cssProcessorOptions: {
-				// 	sourceMap: true,
-				// },
-			}),
-			// new BundleAnalyzerPlugin(),
-		],
 	};
 };

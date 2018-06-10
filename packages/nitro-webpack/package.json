@@ -8,7 +8,7 @@
     "node": ">=8 <11"
   },
   "scripts": {
-    "lint": "eslint ./cfg",
+    "lint": "eslint ./webpack-config",
     "test": "npm run lint"
   },
   "files": [
@@ -23,12 +23,15 @@
     "@babel/preset-env": "7.0.0-beta.49",
     "@namics/eslint-config": "5.0.1",
     "babel-loader": "8.0.0-beta.3",
+    "cache-loader": "1.2.2",
+    "case-sensitive-paths-webpack-plugin": "2.1.2",
     "config": "1.30.0",
     "css-loader": "0.28.11",
     "eslint": "4.19.1",
     "eslint-loader": "2.0.0",
     "eslint-plugin-import": "2.12.0",
     "file-loader": "1.1.11",
+    "fork-ts-checker-webpack-plugin": "0.4.2",
     "git-revision-webpack-plugin": "3.0.3",
     "handlebars-loader": "1.7.0",
     "iconfont-webpack-plugin": "2.0.0",
@@ -49,6 +52,9 @@
     "style-loader": "0.21.0",
     "stylelint": "9.2.1",
     "stylelint-webpack-plugin": "0.10.5",
+    "thread-loader": "1.1.5",
+    "ts-loader": "4.4.1",
+    "typescript": "2.9.1",
     "uglifyjs-webpack-plugin": "1.2.5",
     "url-loader": "1.0.1",
     "webpack": "4.12.0",

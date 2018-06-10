@@ -4,8 +4,11 @@ const webpack = require('webpack');
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const config = require('config');
-const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 const appDirectory = fs.realpathSync(process.cwd());
 
 module.exports = () => {
@@ -28,9 +31,12 @@ module.exports = () => {
 			filename: 'js/[name].js',
 			publicPath: '/assets/',
 		},
+		resolve: {
+			extensions: ['.ts', '.tsx', '.mjs', '.js', '.d.ts'],
+		},
 		module: {
 			rules: [
-				// styles
+				// CSS & SCSS
 				{
 					test: /\.?scss$/,
 					use: [
@@ -74,7 +80,9 @@ module.exports = () => {
 						},
 					],
 				},
-				// styles (MiniCSSExtract Plugin)
+
+				// CSS & SCSS with MiniCSSExtract Plugin
+				// waiting for HMR support
 				// {
 				// 	test: /\.s?css$/,
 				// 	use: [
@@ -103,9 +111,10 @@ module.exports = () => {
 				// 		},
 				// 	],
 				// },
-				// js
+
+				// JS
 				{
-					test: /\.js$/,
+					test: /\.(js|jsx|mjs)$/,
 					exclude: /node_modules/,
 					use: {
 						loader: require.resolve('babel-loader'),
@@ -122,6 +131,38 @@ module.exports = () => {
 						},
 					},
 				},
+
+				// TS
+				// From https://github.com/TypeStrong/ts-loader/blob/master/examples/thread-loader/webpack.config.js
+				{
+					test: /\.(tsx?|d.ts)$/,
+					use: [
+						{
+							loader: require.resolve('cache-loader'),
+							options: {
+								cacheDirectory: path.resolve('node_modules/.cache-loader'),
+							},
+						},
+						{
+							loader: require.resolve('thread-loader'),
+							options: {
+								// there should be 1 cpu for the fork-ts-checker-webpack-plugin
+								workers: require('os').cpus().length - 1,
+							},
+						},
+						{
+							loader: require.resolve('ts-loader'),
+							options: {
+								// Increase build speed
+								// by disabling typechecking for the main process
+								// and is required to be used with thread-loader
+								// see https://github.com/TypeStrong/ts-loader/blob/master/examples/thread-loader/webpack.config.js
+								happyPackMode: true,
+							},
+						},
+					],
+				},
+
 				// handlebars precompiled templates
 				{
 					test: /\.hbs$/,
@@ -141,11 +182,13 @@ module.exports = () => {
 						},
 					},
 				},
+
 				// woff fonts (for example, in CSS files)
 				{
 					test: /.(woff(2)?)(\?[a-z0-9]+)?$/,
 					use: require.resolve('file-loader'),
 				},
+
 				// image loader
 				{
 					test: /\.(png|jpg|gif|svg)$/,
@@ -158,6 +201,11 @@ module.exports = () => {
 			// 	filename: 'css/[name].css',
 			// 	// chunkFilename: '[id].css',
 			// }),
+			new CaseSensitivePathsPlugin({ debug: false }),
+			new ForkTsCheckerWebpackPlugin({
+				async: false,
+				checkSyntacticErrors: true,
+			}),
 			new webpack.HotModuleReplacementPlugin(),
 			// new BundleAnalyzerPlugin(),
 		],
@@ -198,11 +246,13 @@ module.exports = () => {
 		webpackConfig.module.rules.push(
 			{
 				enforce: 'pre',
-				test: /\.js$/,
-				exclude: /node_modules/,
+				test: /\.(js|jsx|mjs)$/,
+				// include: paths.srcPaths,
+				exclude: [/[/\\\\]node_modules[/\\\\]/],
 				use: {
 					loader: require.resolve('eslint-loader'),
 					options: {
+						eslintPath: require.resolve('eslint'),
 						cache: true,
 						// formatter: require('eslint-friendly-formatter'),
 					},

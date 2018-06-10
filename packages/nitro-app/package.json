@@ -1,6 +1,6 @@
 {
-  "name": "@nitro/app",
-  "version": "0.1.0",
+  "name": "@nitrooo/app",
+  "version": "0.0.1",
   "description": "Nitro server",
   "license": "MIT",
   "repository": "namics/generator-nitro",
@@ -29,7 +29,7 @@
   ],
   "devDependencies": {
     "@namics/eslint-config": "5.0.1",
-    "ajv": "6.5.0",
+    "ajv": "6.5.1",
     "body-parser": "1.18.3",
     "chalk": "2.4.1",
     "compression": "1.7.2",

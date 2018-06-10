@@ -1,6 +1,6 @@
 'use strict';
 
-const lint = require('@nitro/app/app/lib/lint');
+const lint = require('@nitrooo/app/app/lib/lint');
 const config = require('config');
 const srcPattern = `${config.get('nitro.tmpDirectory')}/views/*.html`;
 

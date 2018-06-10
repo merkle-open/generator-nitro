@@ -6,7 +6,7 @@
  */
 
 const extend = require('extend');
-const baseConfig = require('@nitro/app/app/core/config');
+const baseConfig = require('@nitrooo/app/app/core/config');
 const defaultConfig = {
 	code: {
 		validation: {

@@ -1,7 +1,7 @@
 'use strict';
 
 const config = require('config');
-const serverPath = require('@nitro/app/app/lib/utils').getServerPath();
+const serverPath = require('@nitrooo/app/app/lib/utils').getServerPath();
 
 module.exports = (gulp, plugins) => {
 	let taskCallbackCalled = false;

@@ -1,6 +1,6 @@
 {
-  "name": "@nitro/gulp",
-  "version": "0.1.0",
+  "name": "@nitrooo/gulp",
+  "version": "0.0.1",
   "description": "nitro gulp",
   "license": "MIT",
   "author": "The Nitro Team",
@@ -21,7 +21,7 @@
   ],
   "devDependencies": {
     "@namics/eslint-config": "5.0.1",
-    "@nitro/app": "0.1.0",
+    "@nitrooo/app": "*",
     "backstopjs": "3.2.16",
     "browser-sync": "2.24.4",
     "compression": "1.7.2",

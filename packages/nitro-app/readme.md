@@ -23,8 +23,8 @@ Todo: Recent changes can be viewed on Github on the [Releases Page](https://gith
 
 [MIT license](http://opensource.org/licenses/MIT)
 
-[npm-image]: https://badge.fury.io/js/@nitro/app.svg
-[npm-url]: https://npmjs.org/package/@nitro/app
+[npm-image]: https://badge.fury.io/js/@nitrooo/app.svg
+[npm-url]: https://npmjs.org/package/@nitrooo/app
 [travis-image]: https://travis-ci.org/namics/generator-nitro.svg?branch=master
 [travis-url]: https://travis-ci.org/namics/generator-nitro
 [appveyor-image]: https://ci.appveyor.com/api/projects/status/0580phm813ccdbhr/branch/master?svg=true

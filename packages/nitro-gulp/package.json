@@ -1,6 +1,6 @@
 {
   "name": "@nitrooo/gulp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "nitro gulp",
   "license": "MIT",
   "author": "The Nitro Team",
@@ -19,16 +19,12 @@
     "frontend",
     "nitro"
   ],
-  "devDependencies": {
-    "@namics/eslint-config": "5.0.1",
-    "@nitrooo/app": "*",
+  "dependencies": {
     "backstopjs": "3.2.16",
     "browser-sync": "2.24.4",
     "compression": "1.7.2",
     "config": "1.30.0",
     "del": "3.0.0",
-    "eslint": "4.19.1",
-    "eslint-plugin-import": "2.12.0",
     "get-port": "3.2.0",
     "globby": "7.1.1",
     "gulp": "3.9.1",
@@ -51,7 +47,13 @@
     "gulp-watch": "5.0.0",
     "gulp-wrap": "0.14.0",
     "imagemin-pngquant": "5.1.0",
-    "nsp": "3.2.1",
     "yargs": "11.0.0"
+  },
+  "devDependencies": {
+    "@namics/eslint-config": "5.0.1",
+    "@nitrooo/app": "*",
+    "eslint": "4.19.1",
+    "eslint-plugin-import": "2.12.0",
+    "nsp": "3.2.1"
   }
 }

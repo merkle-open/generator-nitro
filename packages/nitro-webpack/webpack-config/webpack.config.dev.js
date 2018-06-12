@@ -33,6 +33,7 @@ module.exports = () => {
 		},
 		resolve: {
 			extensions: ['.ts', '.tsx', '.mjs', '.js', '.d.ts'],
+			symlinks: false,
 		},
 		module: {
 			rules: [
@@ -120,6 +121,7 @@ module.exports = () => {
 						loader: require.resolve('babel-loader'),
 						options: {
 							babelrc: false,
+							cacheDirectory: true,
 							presets: [
 								[
 									require.resolve('@babel/preset-env'),

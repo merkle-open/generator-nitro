@@ -42,6 +42,7 @@ module.exports = () => {
 		},
 		resolve: {
 			extensions: ['.ts', '.tsx', '.mjs', '.js', '.d.ts'],
+			symlinks: false,
 		},
 		module: {
 			rules: [
@@ -92,6 +93,7 @@ module.exports = () => {
 						loader: require.resolve('babel-loader'),
 						options: {
 							babelrc: false,
+							cacheDirectory: true,
 							presets: [
 								[
 									require.resolve('@babel/preset-env'),
@@ -154,6 +156,7 @@ module.exports = () => {
 						},
 					},
 				},
+
 				// woff fonts (for example, in CSS files)
 				{
 					test: /.(woff(2)?)(\?[a-z0-9]+)?$/,
@@ -162,6 +165,7 @@ module.exports = () => {
 						name: 'media/fonts/[name]-[hash:7].[ext]',
 					},
 				},
+
 				// image loader & minification
 				{
 					test: /\.(png|jpg|gif|svg|ico)$/,

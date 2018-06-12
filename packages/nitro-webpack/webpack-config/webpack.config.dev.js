@@ -62,10 +62,6 @@ module.exports = () => {
 									require('iconfont-webpack-plugin')({
 										resolve: loader.resolve,
 									}),
-									// new IconfontWebpackPlugin(loader),
-									// new IconfontWebpackPlugin({
-									// 	resolve: loader.resolve,
-									// }),
 								],
 								sourceMap: true,
 							}

@@ -15,7 +15,7 @@
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "jasmine --config=./tests/jasmine/support/jasmine.json",
-    "prepublish": "nsp check --output summary"
+    "prepublishOnly": "nsp check --output summary"
   },
   "files": [
     "app",

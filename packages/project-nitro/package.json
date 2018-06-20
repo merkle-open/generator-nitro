@@ -1,7 +1,7 @@
 {
-  "name": "nitro-project",
+  "name": "project-nitro",
   "version": "0.0.0",
-  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 3.5.0",
+  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 4.0.0",
   "license": "UNLICENSED",
   "private": true,
   "author": "The Nitro Team",
@@ -68,7 +68,7 @@
     "@nitrooo/gulp": "*",
     "@nitrooo/webpack": "*",
     "ajv": "6.5.1",
-      "autoprefixer": "8.6.2",
+    "autoprefixer": "8.6.3",
     "body-parser": "1.18.3",
     "browser-sync": "2.24.4",
     "chalk": "2.4.1",

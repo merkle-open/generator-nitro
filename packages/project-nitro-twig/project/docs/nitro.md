@@ -23,7 +23,7 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 This application was created by the yeoman generator for nitro.  
 Before using, you need of course [node](https://nodejs.org/) installed.
 Nitro is tested with the current 
-["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 6.x and 8.x).
+["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x and 10.x).
 
 And also you need [yarn](https://www.npmjs.com/package/yarn).
 
@@ -508,20 +508,7 @@ Use or create new scripts in `package.json` to run with yarn.
 
 ### Git Hooks
 
-Info: In next major version, we possibly switch to [husky](https://github.com/typicode/husky), so it's kind of deprecated ;-)
-
-Nitro tries to install a "post-merge" and a "pre-commit" git hook with every `yarn install` (if we are in git root).
-
-You may [change this or add other hooks](../.githooks/readme.md) in `project/.githooks`.
-
-#### post-merge
-
-* runs `yarn install` if someone changes `yarn.lock`
-* syncs the git hooks if someone changes one.
-
-#### pre-commit
-
-* runs `yarn test` 
+We're using [husky](https://github.com/typicode/husky) for githooks.
 
 ### Contributing
 
@@ -545,4 +532,4 @@ The following packages are installed by the [app](#name) generator as dependenci
 
 ### Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 3.6.1).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 4.0.0).

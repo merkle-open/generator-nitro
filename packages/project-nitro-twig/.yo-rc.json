@@ -1,35 +1,6 @@
 {
   "generator-nitro": {
-    "promptValues": {
-      "pre": "scss",
-      "viewExt": "twig",
-      "templateEngine": "twig",
-      "clientTpl": true,
-      "exampleCode": true,
-      "exporter": true
-    },
-    "name": "nitro-project-twig",
-    "preprocessor": "scss",
-    "jscompiler": "JavaScript",
-    "viewExtension": "twig",
-    "templateEngine": "twig",
-    "clientTemplates": true,
-    "exampleCode": true,
-    "exporter": true
-  },
-  "generator-nitro-dev": {
-    "promptValues": {
-      "pre": "scss",
-      "viewExt": "twig",
-      "templateEngine": "twig",
-      "clientTpl": true,
-      "exampleCode": true,
-      "exporter": true
-    },
-    "name": "nitro-project-twig",
-    "preprocessor": "scss",
-    "jscompiler": "JavaScript",
-    "viewExtension": "twig",
+    "name": "project-nitro-twig",
     "templateEngine": "twig",
     "clientTemplates": true,
     "exampleCode": true,

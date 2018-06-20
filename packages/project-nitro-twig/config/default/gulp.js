@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Nitro Gulp Config
+ * Nitro gulp config
  */
 
 const config = {
@@ -13,21 +13,13 @@ const config = {
 		},
 		svgSprite: {
 			// generates icon sprite with the name of the last folder in src
-			// default:
 			// src: 'src/patterns/atoms/icon/img/icons/*.svg',
 			// dest: 'public/assets/svg',
 		},
 		minifyImg: {
 			// copies and minifies all source images to dest folder
-			// default:
-			// src: 'src/assets/img/**/*',
+			// src: 'src/shared/assets/img/**/*',
 			// dest: 'public/assets/img',
-		},
-		copyAssets: {
-			// copies all sources to dest folder
-			// default
-			// src: 'src/assets/font/**/*.*',
-			// dest: 'public/assets/font',
 		},
 	},
 };

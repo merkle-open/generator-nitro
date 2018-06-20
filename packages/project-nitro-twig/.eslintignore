@@ -1,20 +1,9 @@
-app/
 config/
-gulp/
 node_modules/
 project/
 public/
-src/assets/js/*.ts.js
 src/patterns/**/template/*.js
 src/patterns/**/template/partial/*.js
 src/patterns/**/test/*.test.js
 src/views/
 tests/
-
-# deprecated
-assets/js/*.ts.js
-patterns/**/template/*.js
-patterns/**/template/partial/*.js
-patterns/**/*Spec.js
-spec/
-views/

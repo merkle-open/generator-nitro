@@ -88,7 +88,7 @@
     "husky": "1.0.0-rc.9",
     "htmllint": "0.7.2",
     "jasmine-core": "3.1.0",
-    "karma": "2.0.3",
+    "karma": "2.0.4",
     "karma-babel-preprocessor": "8.0.0-beta.0",
     "karma-chrome-launcher": "2.2.0",
     "karma-jasmine": "1.1.2",
@@ -117,8 +117,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "post-checkout": "npm install"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {

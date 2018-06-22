@@ -27,7 +27,7 @@
     "@babel/preset-env": "7.0.0-beta.51",
     "@namics/eslint-config": "5.0.1",
     "autoprefixer": "8.6.3",
-    "babel-loader": "8.0.0-beta.3",
+    "babel-loader": "8.0.0-beta.4",
     "cache-loader": "1.2.2",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
     "config": "1.30.0",

@@ -1,8 +1,10 @@
 @import "../../../../shared/utils/colors/css/colors.scss";
 
 .m-example {
-	padding: 1em 2em;
+	padding: 22px 25px;
+	margin: 1em 0;
 	background: darken($gray, 15%);
+	border-radius: 1em;
 }
 .m-example__headline {
 	font-size: 1.6em;

@@ -1,17 +1,19 @@
+/* eslint-disable */
+
 const path = require('path');
 const fs = require('fs');
+const config = require('config');
 const webpack = require('webpack');
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-const config = require('config');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 const appDirectory = fs.realpathSync(process.cwd());
 
-module.exports = () => {
+module.exports = (options = { rules: {}, features: {} }) => {
+
 	const webpackConfig = {
 		// devtool: 'eval',
 		devtool: 'eval-source-map',
@@ -32,83 +34,11 @@ module.exports = () => {
 			publicPath: '/assets/',
 		},
 		resolve: {
-			extensions: ['.ts', '.tsx', '.mjs', '.js', '.d.ts'],
+			extensions: ['.mjs', '.js'],
 			symlinks: false,
 		},
 		module: {
 			rules: [
-				// CSS & SCSS
-				{
-					test: /\.?scss$/,
-					use: [
-						{
-							loader: require.resolve('style-loader'),
-							options: {
-								sourceMap: true,
-							},
-						},
-						{
-							loader: require.resolve('css-loader'),
-							options: {
-								sourceMap: true,
-								importLoaders: 3,
-							},
-						},
-						{
-							loader: require.resolve('postcss-loader'),
-							options: {
-								plugins: (loader) => [
-									require('autoprefixer'),
-									require('iconfont-webpack-plugin')({
-										resolve: loader.resolve,
-									}),
-								],
-								sourceMap: true,
-							}
-						},
-						{
-							loader: require.resolve('resolve-url-loader'),
-						},
-						{
-							loader: require.resolve('sass-loader'),
-							options: {
-								sourceMap: true,
-							},
-						},
-					],
-				},
-
-				// CSS & SCSS with MiniCSSExtract Plugin
-				// waiting for HMR support
-				// {
-				// 	test: /\.s?css$/,
-				// 	use: [
-				// 		MiniCssExtractPlugin.loader,
-				// 		{
-				// 			loader: require.resolve('css-loader'),
-				// 			options: {
-				// 				importLoaders: 2,
-				// 				sourceMap: true,
-				// 			}
-				// 		},
-				// 		{
-				// 			loader: require.resolve('postcss-loader'),
-				// 			options: {
-				// 				plugins: () => [
-				// 					require('autoprefixer'),
-				// 				],
-				// 				sourceMap: true,
-				// 			}
-				// 		},
-				// 		{
-				// 			loader: require.resolve('sass-loader'),
-				// 			options: {
-				// 				sourceMap: true,
-				// 			},
-				// 		},
-				// 	],
-				// },
-
 				// JS
 				{
 					test: /\.(js|jsx|mjs)$/,
@@ -129,83 +59,11 @@ module.exports = () => {
 						},
 					},
 				},
-
-				// TS
-				// From https://github.com/TypeStrong/ts-loader/blob/master/examples/thread-loader/webpack.config.js
-				{
-					test: /\.(tsx?|d.ts)$/,
-					use: [
-						{
-							loader: require.resolve('cache-loader'),
-							options: {
-								cacheDirectory: path.resolve('node_modules/.cache-loader'),
-							},
-						},
-						{
-							loader: require.resolve('thread-loader'),
-							options: {
-								// there should be 1 cpu for the fork-ts-checker-webpack-plugin
-								workers: require('os').cpus().length - 1,
-							},
-						},
-						{
-							loader: require.resolve('ts-loader'),
-							options: {
-								// Increase build speed
-								// by disabling typechecking for the main process
-								// and is required to be used with thread-loader
-								// see https://github.com/TypeStrong/ts-loader/blob/master/examples/thread-loader/webpack.config.js
-								happyPackMode: true,
-							},
-						},
-					],
-				},
-
-				// handlebars precompiled templates
-				{
-					test: /\.hbs$/,
-					exclude: [
-						/node_modules/,
-						path.resolve(appDirectory, 'src/views'),
-					],
-					use: {
-						loader: require.resolve('handlebars-loader'),
-						options: {
-							// helperDirs: [
-							// 	path.resolve(__dirname, '../../app/templating/hbs/helpers'),
-							// ],
-							// knownHelpers: [],
-							// runtime: '',
-							// partialDirs: ''
-						},
-					},
-				},
-
-				// woff fonts (for example, in CSS files)
-				{
-					test: /.(woff(2)?)(\?[a-z0-9]+)?$/,
-					use: require.resolve('file-loader'),
-				},
-
-				// image loader
-				{
-					test: /\.(png|jpg|gif|svg)$/,
-					use: require.resolve('file-loader'),
-				},
 			],
 		},
 		plugins: [
-			// new MiniCssExtractPlugin({
-			// 	filename: 'css/[name].css',
-			// 	// chunkFilename: '[id].css',
-			// }),
 			new CaseSensitivePathsPlugin({ debug: false }),
-			new ForkTsCheckerWebpackPlugin({
-				async: false,
-				checkSyntacticErrors: true,
-			}),
 			new webpack.HotModuleReplacementPlugin(),
-			// new BundleAnalyzerPlugin(),
 		],
 		optimization: {
 			noEmitOnErrors: true,
@@ -227,6 +85,179 @@ module.exports = () => {
 		// stats: 'minimal',
 	};
 
+	// typescript
+	if (options.rules.ts) {
+
+		webpackConfig.resolve.extensions.push('.ts', '.tsx', '.d.ts');
+
+		webpackConfig.module.rules.push(
+			// From https://github.com/TypeStrong/ts-loader/blob/master/examples/thread-loader/webpack.config.js
+			{
+				test: /\.(tsx?|d.ts)$/,
+				use: [
+					{
+						loader: require.resolve('cache-loader'),
+						options: {
+							cacheDirectory: path.resolve('node_modules/.cache-loader'),
+						},
+					},
+					{
+						loader: require.resolve('thread-loader'),
+						options: {
+							// there should be 1 cpu for the fork-ts-checker-webpack-plugin
+							workers: require('os').cpus().length - 1,
+						},
+					},
+					{
+						loader: require.resolve('ts-loader'),
+						options: {
+							// Increase build speed
+							// by disabling typechecking for the main process
+							// and is required to be used with thread-loader
+							// see https://github.com/TypeStrong/ts-loader/blob/master/examples/thread-loader/webpack.config.js
+							happyPackMode: true,
+						},
+					},
+				],
+			}
+		);
+
+		webpackConfig.plugins.push(
+			new ForkTsCheckerWebpackPlugin({
+				async: false,
+				checkSyntacticErrors: true,
+			}),
+		);
+	}
+
+	// CSS & SCSS
+	if (options.rules.scss) {
+		webpackConfig.module.rules.push(
+			{
+				test: /\.?scss$/,
+				use: [
+					{
+						loader: require.resolve('style-loader'),
+						options: {
+							sourceMap: true,
+						},
+					},
+					{
+						loader: require.resolve('css-loader'),
+						options: {
+							sourceMap: true,
+							importLoaders: 3,
+						},
+					},
+					{
+						loader: require.resolve('postcss-loader'),
+						options: {
+							plugins: (loader) => [
+								require('autoprefixer'),
+								require('iconfont-webpack-plugin')({
+									resolve: loader.resolve,
+								}),
+							],
+							sourceMap: true,
+						}
+					},
+					{
+						loader: require.resolve('resolve-url-loader'),
+					},
+					{
+						loader: require.resolve('sass-loader'),
+						options: {
+							sourceMap: true,
+						},
+					},
+				],
+			}
+
+			// CSS & SCSS with MiniCSSExtract Plugin
+			// waiting for HMR support
+			// {
+			// 	test: /\.s?css$/,
+			// 	use: [
+			// 		MiniCssExtractPlugin.loader,
+			// 		{
+			// 			loader: require.resolve('css-loader'),
+			// 			options: {
+			// 				importLoaders: 2,
+			// 				sourceMap: true,
+			// 			}
+			// 		},
+			// 		{
+			// 			loader: require.resolve('postcss-loader'),
+			// 			options: {
+			// 				plugins: () => [
+			// 					require('autoprefixer'),
+			// 				],
+			// 				sourceMap: true,
+			// 			}
+			// 		},
+			// 		{
+			// 			loader: require.resolve('sass-loader'),
+			// 			options: {
+			// 				sourceMap: true,
+			// 			},
+			// 		},
+			// 	],
+			// },
+		);
+
+		// webpackConfig.plugins.push(
+		// 	new MiniCssExtractPlugin({
+		// 		filename: 'css/[name].css',
+		// 		// chunkFilename: '[id].css',
+		// 	}),
+		// );
+	}
+
+	// handlebars precompiled templates
+	if (options.rules.hbs) {
+		webpackConfig.module.rules.push(
+			{
+				test: /\.hbs$/,
+				exclude: [
+					/node_modules/,
+					path.resolve(appDirectory, 'src/views'),
+				],
+				use: {
+					loader: require.resolve('handlebars-loader'),
+					options: {
+						// helperDirs: [
+						// 	path.resolve(__dirname, '../../app/templating/hbs/helpers'),
+						// ],
+						// knownHelpers: [],
+						// runtime: '',
+						// partialDirs: ''
+					},
+				},
+			}
+		);
+	}
+
+	// woff fonts (for example, in CSS files)
+	if (options.rules.woff) {
+		webpackConfig.module.rules.push(
+			{
+				test: /.(woff(2)?)(\?[a-z0-9]+)?$/,
+				use: require.resolve('file-loader'),
+			}
+		);
+	}
+
+	// image loader
+	if (options.rules.image) {
+		webpackConfig.module.rules.push(
+			{
+				test: /\.(png|jpg|gif|svg)$/,
+				use: require.resolve('file-loader'),
+			}
+		);
+	}
+
+	// stylelint live validation
 	if (config.get('code.validation.stylelint.live')) {
 		webpackConfig.plugins.push(
 			new StyleLintPlugin({
@@ -240,6 +271,7 @@ module.exports = () => {
 		);
 	}
 
+	// eslint live validation
 	if (config.get('code.validation.eslint.live')) {
 		webpackConfig.module.rules.push(
 			{
@@ -261,3 +293,5 @@ module.exports = () => {
 
 	return webpackConfig;
 };
+
+/* eslint-enable */

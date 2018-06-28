@@ -18,11 +18,11 @@ module.exports = function () {
 		regex: /^viewlist$/,
 		next: [],
 		open: true,
-		compile: (token) => {
+		compile (token) {
 			delete token.match;
 			return token;
 		},
-		parse: (token, context, chain) => {
+		parse (token, context, chain) {
 			try {
 				const views = view.getViews(config.get('nitro.basePath') + config.get('nitro.viewDirectory'));
 				const markup = ['<ul>'];

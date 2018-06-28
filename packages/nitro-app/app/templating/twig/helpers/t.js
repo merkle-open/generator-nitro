@@ -25,7 +25,7 @@ module.exports = function (Twig) {
 		regex: /^t\s+(\S*)\s*([\S\s]+?)?$/,
 		next: [],
 		open: true,
-		compile: (token) => {
+		compile (token) {
 
 			token.key = Twig.expression.compile.apply(this, [{
 				type: Twig.expression.type.expression,
@@ -45,7 +45,7 @@ module.exports = function (Twig) {
 			delete token.match;
 			return token;
 		},
-		parse: (token, context, chain) => {
+		parse (token, context, chain) {
 			try {
 				const key = Twig.expression.parse.apply(this, [token.key, context]);
 				let params = undefined;

@@ -104,8 +104,7 @@ module.exports = function (Twig) {
 		regex: /^pattern\s+(\w+='\S*')\s*(\w+='\S*')?\s*(\w+='\S*')?\s*([\S\s]+?)?$/,
 		next: [],
 		open: true,
-		compile: (token) => {
-
+		compile (token) {
 			token.match.forEach((paramKeyValue, index) => {
 				// our params are available in indexes 1-4
 				if (index > 0 && index < 5) {
@@ -128,7 +127,7 @@ module.exports = function (Twig) {
 
 			return token;
 		},
-		parse: (token, context, chain) => {
+		parse (token, context, chain) {
 			try {
 				const name = Twig.expression.parse.apply(this, [token.name, context]);
 				const folder = name.replace(/[^A-Za-z0-9-]/g, '');
@@ -256,6 +255,7 @@ module.exports = function (Twig) {
 						chain,
 						output: html
 					};
+
 				}
 
 				return {

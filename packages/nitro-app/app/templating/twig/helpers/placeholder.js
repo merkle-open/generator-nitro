@@ -22,7 +22,7 @@ module.exports = function (Twig) {
 		regex: /^placeholder\s+(\w+='\S*')\s*(\w+='\S*')?\s*([\S\s]+?)?$/,
 		next: [],
 		open: true,
-		compile: (token) => {
+		compile (token) {
 
 			token.match.forEach((paramKeyValue, index) => {
 				// our params are available in indexes 1-3
@@ -46,7 +46,7 @@ module.exports = function (Twig) {
 
 			return token;
 		},
-		parse: (token, context, chain) => {
+		parse (token, context, chain) {
 			try {
 				let name = '';
 				let templateFile = '';

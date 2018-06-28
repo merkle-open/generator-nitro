@@ -13,13 +13,13 @@ const path = require('path');
 const config = require('config');
 const twigUtils = require('../utils');
 
-module.exports = (Twig) => {
+module.exports = function (Twig) {
 	return {
 		type: 'partial',
 		regex: /^partial\s+('\S*')$/,
 		next: [],
 		open: true,
-		compile: (token) => {
+		compile (token) {
 
 			token.name = Twig.expression.compile.apply(this, [{
 				type: Twig.expression.type.expression,
@@ -29,7 +29,7 @@ module.exports = (Twig) => {
 			delete token.match;
 			return token;
 		},
-		parse: (token, context, chain) => {
+		parse (token, context, chain) {
 			try {
 				const partial = Twig.expression.parse.apply(this, [token.name, context]);
 				const innerContext = Twig.ChildContext(context);

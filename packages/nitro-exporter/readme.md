@@ -4,7 +4,7 @@ With this package, Nitro can generate static exports of your project by using `n
 
     $ npm run export
 
-The exporter configuration can be found in [config.json](//github.com/namics/generator-nitro/app/templates/config.json).
+The exporter configuration can be found in [config](//github.com/namics/generator-nitro/app/templates/config.json).
 
 ## Configuration options
 

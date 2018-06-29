@@ -1,21 +1,23 @@
 {
-  "name": "nitro-exporter",
-  "version": "1.0.1",
+  "name": "@nitrooo/exporter",
+  "version": "0.0.1",
   "description": "An exporting package for nitro. Generate static packages with ease.",
+  "license": "MIT",
+  "repository": "namics/generator-nitro",
+  "author": "The Nitro Team",
+  "engines": {
+    "node": ">=8 <11"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "prepublishOnly": "nsp check --output summary",
+    "test": "npm run lint"
+  },
+  "main": "index.js",
   "keywords": [
     "nitro",
     "exporter"
   ],
-  "homepage": "https://github.com/namics/nitro-exporter#readme",
-  "bugs": "https://github.com/namics/nitro-exporter/issues",
-  "license": "MIT",
-  "author": "Christian Stuff <christianstuff90@gmail.com> (http://github.com/Regaddi)",
-  "main": "index.js",
-  "repository": "namics/nitro-exporter.git",
-  "scripts": {
-	"prepublish": "nsp check --output summary",
-    "test": "eslint ."
-  },
   "dependencies": {
     "array-unique": "0.3.2",
     "del": "3.0.0",
@@ -28,6 +30,6 @@
     "@namics/eslint-config": "5.0.1",
     "eslint": "4.19.1",
     "eslint-plugin-import": "2.11.0",
-	"nsp": "3.2.1"
+    "nsp": "3.2.1"
   }
 }

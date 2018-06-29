@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
 	each(exporter, cb) {
 		if (exporter.length) {

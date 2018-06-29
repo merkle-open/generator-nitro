@@ -1,3 +1,5 @@
+'use strict';
+
 const del = require('del');
 const utils = require('../lib/utils.js');
 

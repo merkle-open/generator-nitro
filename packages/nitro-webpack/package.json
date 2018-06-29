@@ -9,8 +9,8 @@
   },
   "scripts": {
     "lint": "eslint ./webpack-config",
-    "test": "npm run lint",
-    "prepublishOnly": "nsp check --output summary"
+    "prepublishOnly": "nsp check --output summary",
+    "test": "npm run lint"
   },
   "files": [
     "webpack-config"

@@ -4,7 +4,7 @@ const gulp = require('gulp');
 const getTask = require('@nitrooo/gulp/utils/utils').getTask;
 const gulpSequence = require('gulp-sequence').use(gulp);
 const config = require('config');
-require('nitro-exporter')(gulp, config);
+require('@nitrooo/exporter')(gulp, config);
 
 gulp.task('minify-img', getTask('minify-img'));
 gulp.task('svg-sprite', getTask('svg-sprite'));

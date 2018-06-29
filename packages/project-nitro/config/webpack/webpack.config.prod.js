@@ -1,14 +1,4 @@
-const webpackConfig = require('@nitrooo/webpack/webpack-config/webpack.config.prod')({
-	rules: {
-		ts: false,
-		scss: true,
-		hbs: true,
-		woff: true,
-		image: true,
-	},
-	features: {
-		gitInfo: false,
-	},
-});
+const options = require('./options');
+const webpackConfig = require('@nitrooo/webpack/webpack-config/webpack.config.prod')(options);
 
 module.exports = webpackConfig;

@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "backstopjs": "3.2.19",
-    "browser-sync": "2.24.4",
+    "browser-sync": "2.24.5",
     "compression": "1.7.2",
     "config": "1.30.0",
     "del": "3.0.0",
@@ -48,7 +48,7 @@
     "gulp-watch": "5.0.0",
     "gulp-wrap": "0.14.0",
     "imagemin-pngquant": "5.1.0",
-    "yargs": "11.0.0"
+    "yargs": "12.0.1"
   },
   "devDependencies": {
     "@namics/eslint-config": "5.0.1",

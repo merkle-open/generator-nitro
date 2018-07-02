@@ -82,7 +82,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			hash: false,
 			warnings: false,
 		},
-		// stats: 'minimal',
 	};
 
 	// typescript
@@ -172,39 +171,44 @@ module.exports = (options = { rules: {}, features: {} }) => {
 					},
 				],
 			}
-
-			// CSS & SCSS with MiniCSSExtract Plugin
-			// waiting for HMR support
-			// {
-			// 	test: /\.s?css$/,
-			// 	use: [
-			// 		MiniCssExtractPlugin.loader,
-			// 		{
-			// 			loader: require.resolve('css-loader'),
-			// 			options: {
-			// 				importLoaders: 2,
-			// 				sourceMap: true,
-			// 			}
-			// 		},
-			// 		{
-			// 			loader: require.resolve('postcss-loader'),
-			// 			options: {
-			// 				plugins: () => [
-			// 					require('autoprefixer'),
-			// 				],
-			// 				sourceMap: true,
-			// 			}
-			// 		},
-			// 		{
-			// 			loader: require.resolve('sass-loader'),
-			// 			options: {
-			// 				sourceMap: true,
-			// 			},
-			// 		},
-			// 	],
-			// },
 		);
 
+		// CSS & SCSS with MiniCSSExtract Plugin
+		// waiting for HMR support
+		// webpackConfig.module.rules.push(
+		// 	{
+		// 		test: /\.s?css$/,
+		// 		use: [
+		// 			MiniCssExtractPlugin.loader,
+		// 			{
+		// 				loader: require.resolve('css-loader'),
+		// 				options: {
+		// 					importLoaders: 2,
+		// 					sourceMap: true,
+		// 				}
+		// 			},
+		// 			{
+		// 				loader: require.resolve('postcss-loader'),
+		// 				options: {
+		// 					plugins: (loader) => [
+		// 						require('autoprefixer'),
+		// 						require('iconfont-webpack-plugin')({
+		// 							resolve: loader.resolve,
+		// 						}),
+		// 					],
+		// 					sourceMap: true,
+		// 				}
+		// 			},
+		// 			{
+		// 				loader: require.resolve('sass-loader'),
+		// 				options: {
+		// 					sourceMap: true,
+		// 				},
+		// 			},
+		// 		],
+		// 	},
+		// );
+		//
 		// webpackConfig.plugins.push(
 		// 	new MiniCssExtractPlugin({
 		// 		filename: 'css/[name].css',

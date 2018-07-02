@@ -1,19 +1,23 @@
-<p>{{_nitro.pageTitle}} = pageTitle (view)</p>
-<p>{{test.text}} = test.text (view)</p>
-
-{{#unless _nitro.production}}
 <div class="container">
-	{{pattern 't' 't-red'}}
-	<hr>
-	{{pattern 't'}}
-	<hr>
-	{{pattern 't' 't-red'}}
-	<hr>
-	{{pattern 'Ex'}}
-</div>
-{{/unless}}
+	<div class="row">
+		<div class="col-md-8 offset-md-2">
+			<p>{{_nitro.pageTitle}} = pageTitle (view)</p>
+			<p>{{test.text}} = test.text (view)</p>
 
-<hr>
-{{pattern 'Ex' 'ex-subpattern'}}
-<hr />
-<p>{{test.text}} = test.text (view)</p>
+			{{#unless _nitro.production}}
+				{{pattern 't' 't-red'}}
+				<hr>
+				{{pattern 't'}}
+				<hr>
+				{{pattern 't' 't-red'}}
+				<hr>
+				{{pattern 'Ex'}}
+			{{/unless}}
+
+			<hr>
+			{{pattern 'Ex' 'ex-subpattern'}}
+			<hr />
+			<p>{{test.text}} = test.text (view)</p>
+		</div>
+	</div>
+</div>

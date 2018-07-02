@@ -6,9 +6,8 @@
  */
 
 const extend = require('extend');
-const baseConfig = require('../app/core/config');
+const baseConfig = require('@nitrooo/app/app/core/config');
 const defaultConfig = {
-	assets: require('./default/assets'),
 	code: {
 		validation: {
 			eslint: {
@@ -48,9 +47,14 @@ const defaultConfig = {
 		proxy: 8081,
 	},
 	gulp: require('./default/gulp'),
-	feature: {},<% if (options.exporter) { %>
-	exporter: require('./default/exporter'),<% } %><% if (options.release) { %>
-	release: require('./default/release'),<% } %>
+	feature: {
+		i18next: {
+			middlewareOptions: {
+				ignoreRoutes: ['api/', 'assets/', 'dist/', 'content/'],
+			}
+		},
+	},<% if (options.exporter) { %>
+	exporter: require('./default/exporter'),<% } %>
 };
 
 const config = extend(true, {}, baseConfig, defaultConfig);

@@ -22,13 +22,11 @@ module.exports = class extends Generator {
 
 		this._passedInOptions = {
 			name: this.options.name,
-			pre: this.options.pre,
 			viewExt: this.options.viewExt,
 			templateEngine: this.options.templateEngine,
 			clientTpl: this.options.clientTpl,
 			exampleCode: this.options.exampleCode,
 			exporter: this.options.exporter,
-			release: this.options.release,
 		};
 
 		this.option('name', {
@@ -37,13 +35,6 @@ module.exports = class extends Generator {
 			defaults: this._passedInOptions.name || path.basename(process.cwd()),
 		});
 		this.options.name = _.kebabCase(this.options.name);
-
-		this._preOptions = ['less', 'scss'];
-		this.option('pre', {
-			desc: `your desired preprocessor [${this._preOptions.join('|')}]`,
-			type: String,
-			defaults: this._passedInOptions.pre || this._preOptions[1],
-		});
 
 		this._templateEngineOptions = ['hbs', 'twig'];
 		this.option('templateEngine', {
@@ -75,12 +66,6 @@ module.exports = class extends Generator {
 			desc: 'do you need static exporting functionalities',
 			type: Boolean,
 			defaults: this._passedInOptions.exporter || false,
-		});
-
-		this.option('release', {
-			desc: 'do you need release management',
-			type: Boolean,
-			defaults: this._passedInOptions.release || false,
 		});
 
 		this.option('skipQuestions', {
@@ -126,13 +111,11 @@ module.exports = class extends Generator {
 				const config = this.config.getAll();
 				if (config) {
 					this.options.name = config.name || this.options.name;
-					this.options.pre = config.preprocessor || this.options.pre;
 					this.options.viewExt = config.viewExtension || this.options.viewExt;
 					this.options.templateEngine = config.templateEngine || this.options.templateEngine;
 					this.options.clientTpl = typeof config.clientTemplates === 'boolean' ? config.clientTemplates : this.options.clientTpl;
 					this.options.exampleCode = typeof config.exampleCode === 'boolean' ? config.exampleCode : this.options.exampleCode;
 					this.options.exporter = typeof config.exporter === 'boolean' ? config.exporter : this.options.exporter;
-					this.options.release = typeof config.release === 'boolean' ? config.release : this.options.release;
 				}
 			});
 		} else {
@@ -145,15 +128,6 @@ module.exports = class extends Generator {
 					when: () => !this._skipQuestions && !this._passedInOptions.name,
 				},
 				{
-					name: 'pre',
-					type: 'list',
-					message: 'What\'s your desired preprocessor?',
-					choices: this._preOptions,
-					default: this.options.pre,
-					store: true,
-					when: () => !this._skipQuestions && !this._passedInOptions.pre,
-				},
-				{
 					name: 'templateEngine',
 					type: 'list',
 					message: 'What\'s your desired template engine?',
@@ -162,16 +136,6 @@ module.exports = class extends Generator {
 					store: true,
 					when: () => !this._skipQuestions && !this._passedInOptions.templateEngine,
 				},
-				// viewExt is automatically derived from templateEngine
-				/* {
-					name: 'viewExt',
-					type: 'list',
-					message: 'What\'s your desired view file extension?',
-					choices: this._viewExtOptions,
-					default: this.options.viewExt,
-					store: true,
-					when: () => !this._skipQuestions || !this._passedInOptions.viewExt,
-				},*/
 				{
 					name: 'clientTpl',
 					type: 'confirm',
@@ -196,17 +160,8 @@ module.exports = class extends Generator {
 					store: true,
 					when: () => !this._skipQuestions && typeof this._passedInOptions.exporter !== 'boolean',
 				},
-				// {
-				// 	name: 'release',
-				// 	type: 'confirm',
-				// 	message: 'Would you like to include release management?',
-				// 	default: this.options.release,
-				// 	store: true,
-				// 	when: () => !this._skipQuestions && typeof this._passedInOptions.release !== 'boolean',
-				// },
 			]).then((answers) => {
 				this.options.name = answers.name || this.options.name;
-				this.options.pre = answers.pre || this.options.pre;
 				this.options.templateEngine = answers.templateEngine || this.options.templateEngine;
 				this.options.viewExt = this.options.templateEngine;
 				this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
@@ -214,7 +169,6 @@ module.exports = class extends Generator {
 				this.options.exporter = answers.exporter !== undefined ? answers.exporter : this.options.exporter;
 
 				this.config.set('name', this.options.name);
-				this.config.set('preprocessor', this.options.pre);
 				this.config.set('templateEngine', this.options.templateEngine);
 				this.config.set('clientTemplates', this.options.clientTpl);
 				this.config.set('exampleCode', this.options.exampleCode);
@@ -285,13 +239,7 @@ module.exports = class extends Generator {
 		const tplFiles = [
 			// files to process with copyTpl
 			'config/default.js',
-			'config/default/assets.js',
-			'gulp/compile-css.js',
-			'gulp/compile-css-proto.js',
-			'gulp/compile-js.js',
-			'gulp/compile-templates.js',
-			'gulp/watch-assets.js',
-			'project/.githooks/pre-commit',
+			'config/webpack/options.js',
 			'project/docs/nitro.md',
 			'project/docs/client-templates.md',
 			'src/patterns/molecules/example/example.hbs',
@@ -327,8 +275,6 @@ module.exports = class extends Generator {
 			'src/patterns/molecules/example/template/partial/example.link.hbs',
 			'project/docs/client-templates.md',
 			'project/blueprints/pattern/template/pattern.hbs',
-			'gulp/clean-templates.js',
-			'gulp/compile-templates.js',
 		];
 		const viewFiles = [
 			// all view files exists in different templateEngine variants
@@ -343,6 +289,7 @@ module.exports = class extends Generator {
 		];
 		const examplePaths = [
 			// paths only for this.options.exampleCode===true
+
 			'src/patterns/atoms/icon/',
 			'src/patterns/molecules/example/',
 			'src/assets/css/example/',
@@ -357,10 +304,6 @@ module.exports = class extends Generator {
 		const exporterFiles = [
 			// files for this.options.exporter===true
 			'config/default/exporter.js',
-		];
-		const releaseFiles = [
-			// files for this.options.release===true
-			'config/default/release.js',
 		];
 
 		const templateData = {
@@ -407,21 +350,8 @@ module.exports = class extends Generator {
 				}
 			}
 
-			// Release only Files
-			if (!this.options.release) {
-				if (_.indexOf(releaseFiles, file) !== -1) {
-					return;
-				}
-			}
-
 			const ext = path.extname(file).substring(1);
 			const fileWithoutExt = file.substring(0, (file.length - ext.length - 1));
-
-			// exclude unnecessary preprocessor files
-			if (_.indexOf(this._preOptions, ext) !== -1 && this.options.pre !== ext) {
-				return;
-			}
-
 			const sourcePath = this.templatePath(file);
 			let destinationPath = this.destinationPath(file);
 
@@ -449,9 +379,9 @@ module.exports = class extends Generator {
 
 	install() {
 		this.installDependencies({
-			npm: false,
+			npm: true,
 			bower: false,
-			yarn: true,
+			yarn: false,
 			skipInstall: this.options.skipInstall,
 		});
 	}
@@ -463,12 +393,6 @@ module.exports = class extends Generator {
 				src: 'node_modules/nitro-exporter/README.md',
 				srcWeb: 'https://raw.githubusercontent.com/namics/nitro-exporter/master/README.md',
 				dest: 'project/docs/nitro-exporter.md',
-			},
-			{
-				do: this.options.release,
-				src: 'node_modules/nitro-release/README.md',
-				srcWeb: 'https://raw.githubusercontent.com/namics/nitro-release/master/README.md',
-				dest: 'project/docs/nitro-release.md',
 			},
 		];
 		try {

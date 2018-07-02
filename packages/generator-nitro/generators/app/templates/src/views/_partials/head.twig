@@ -8,6 +8,8 @@
 <meta name="application-name" content="Nitro">
 <meta name="msapplication-TileColor" content="#5133ab">
 <meta name="msapplication-TileImage" content="/assets/img/icon/tile-icon.png"><% } %>
-<title>{{_nitro.pageTitle}}</title>
-<link href="/assets/css/ui{% if _nitro.production %}.min{% endif %}.css" rel="stylesheet">
-<link href="/proto/css/proto.css" rel="stylesheet">
+<title>{{ _nitro.pageTitle }}</title>
+{% if _nitro.production %}
+<link href="/assets/css/ui.min.css" rel="stylesheet">
+<link href="/assets/css/proto.min.css" rel="stylesheet">
+{% endif %}

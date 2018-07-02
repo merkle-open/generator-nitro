@@ -5,66 +5,8 @@ Starting with version 2, nitro uses [config](https://www.npmjs.com/package/confi
 This lets you extend the nitro default parameters for different environments (local, development, production, ...).  
 The configuration is placed in the [`/config`](../../config) directory. Read more about [configuration files](https://github.com/lorenwest/node-config/wiki/Configuration-Files)
 
-For your own functionality you can add new nodes as you like. It is certainly useful not to use the four main nodes from nitro: `assets`, `code`, `nitro` & `server`.
-
-## Assets Configuration
-
-You can configure the include order of your assets by defining patterns in `config/default/assets.js`.
-
-```js
-const config = {
-   assets: {
-        'ui.css': [
-            '!src/assets/css/somefile.*',
-            'src/assets/css/cssreset.css',
-            'src/assets/css/*.*',
-            'src/patterns/**/css/*.*',
-            'src/patterns/**/css/modifier/*.*',
-        ],
-        'ui.js': [
-            '!src/assets/js/somefile.js',
-            'src/assets/vendor/jquery/dist/jquery.min.js',
-            'src/assets/vendor/terrific/dist/terrific.min.js',
-            'src/assets/js/*.js',
-            'src/patterns/**/js/*.js',
-            'src/patterns/**/js/decorator/*.js',
-        ],
-   },
-};
-```
-
-### Pattern
-
-The matching patterns follow the standard node glob patterns.  
-Glob patterns are similar to regular expression but simplified. They are used by several shells.  
-You should always try to keep the patterns simple. Usually you only need the asterisks `*` `**` and the exclamation mark `!` for negation.
-
-You can read more on the standard [node glob patterns](https://github.com/isaacs/node-glob#glob-primer).
-
-### Special Pattern Prefixes
-
-* You can negate a pattern by starting with an exclamation mark `!`.
-  `!` = exclude pattern
-* Define all your dependencies for the compiling-process with the `+` prefix
-  `+` = exclude file but prepend it to every compile call for files with the same file extension.
-
-The order of these special patterns does not matter.
-
-### Examples
-
-* `"!src/patterns/*/test*"`         Exclude all patterns starting with `test`
-* `"!**/*-test.*"`                  Exclude all filenames ending with `-test`.
-* `"+src/assets/css/mixins.less"`   Exclude `src/assets/css/mixins.less` but prepend to every compile call of every .less file
-
-### Other asset files
-
-You can configure as many different assets as you wish.
-
-```
-    'brand.css': [
-        'src/assets/css/reset.css',
-        ...
-```
+For your own functionality you can add new nodes as you like. It is certainly useful not to use
+the main nodes from nitro: `code`, `nitro`,`server`, `gulp`, `feature` & `exporter`.
 
 ## Code
 
@@ -123,7 +65,7 @@ Type: Object
 Configuration of pattern types. These types are used for:
 
 * handlebars pattern helper (`{{pattern name='pattern'}}`) to evaluate the pathes
-* pattern generator `yo nitro:pattern`
+* pattern generator `npm run nitro:pattern`
 
 A type contains following properties:
 

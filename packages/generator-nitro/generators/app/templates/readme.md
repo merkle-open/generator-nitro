@@ -7,20 +7,17 @@ Introduction …
 Before using, you need of course [node](https://nodejs.org/) installed.  
 Ensure correct [node-version](./.node-version)
 
-We use [yarn](https://yarnpkg.com) as package manager because it's much faster than npm.
-
 Run:
 
 ```
-yarn install
+npm install
 ```
 
 and start in development mode
 
 ```
-yarn start
+npm start
 ```
- 
 
 ## Nitro
 

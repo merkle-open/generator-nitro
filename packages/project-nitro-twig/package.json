@@ -7,7 +7,7 @@
   "author": "The Nitro Team",
   "engines": {
     "node": ">=8 <11",
-    "npm": ">=5 <6"
+    "npm": ">=5 <7"
   },
   "scripts": {
     "nitro:pattern": "yo nitro:pattern",

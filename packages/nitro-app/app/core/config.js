@@ -5,7 +5,6 @@ const extend = require('extend');
 const basePath = `${path.normalize(process.cwd())}/`;
 
 const defaultConfig = {
-	// assets: {},
 	nitro: {
 		basePath,
 		viewFileExtension: 'hbs',
@@ -76,16 +75,8 @@ const defaultConfig = {
 			 * used in gulp task minify-img
 			 * copies and minifies all source images to dest folder
 			 */
-			src: 'src/assets/img/**/*',
+			src: 'src/shared/assets/img/**/*',
 			dest: 'public/assets/img',
-		},
-		copyAssets: {
-			/*
-			 * used in gulp task copy-assets
-			 * copies all sources to dest folder
-			 */
-			src: 'src/assets/font/**/*.*',
-			dest: 'public/assets/font',
 		},
 	},
 	feature: {

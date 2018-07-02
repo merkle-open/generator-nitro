@@ -4,6 +4,7 @@ Nitro monorepo:
 
 * `packages/generator-nitro`
 * `packages/nitro-app`
+* `packages/nitro-exporter`
 * `packages/nitro-gulp`
 * `packages/nitro-webpack`
 * `packages/project-nitro`
@@ -12,7 +13,6 @@ Nitro monorepo:
 ## do / issues
 
 * work on generator & documentation
-* include nitro-exporter
 
 ### prio 2
 
@@ -23,3 +23,4 @@ Nitro monorepo:
 * enable hot module reloading with `mini-css-extract-plugin` when ready
 * eslint should lint only changed files
 * use "gondel"
+* performance

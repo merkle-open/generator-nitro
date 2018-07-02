@@ -5,7 +5,7 @@ Configurable and easy to use webpack config for nitro projects.
 ## Usage
 
 ```
-const webpackConfig = require('@nitrooo/webpack/webpack-config/webpack.config.dev')({
+const options = {
 	rules: {
 		ts: false,
 		scss: true,
@@ -13,8 +13,11 @@ const webpackConfig = require('@nitrooo/webpack/webpack-config/webpack.config.de
 		woff: true,
 		image: true,
 	},
-	features: {},
-});
+	features: {
+	    gitInfo: false,
+	},
+};
+const webpackConfig = require('@nitrooo/webpack/webpack-config/webpack.config.dev')(options);
 
 module.exports = webpackConfig;
 ```

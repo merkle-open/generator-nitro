@@ -2,9 +2,11 @@
 
 With this package, Nitro can generate static exports of your project by using `npm run export`.
 
-    $ npm run export
+```
+npm run export
+```
 
-The exporter configuration can be found in [config](//github.com/namics/generator-nitro/app/templates/config.json).
+The exporter configuration can be found in your [config](../../config),
 
 ## Configuration options
 
@@ -39,12 +41,13 @@ Renaming is used with native `gulp.src(...).pipe(gulp.dest(...))`.
 
 - example:
 
-        [{
-            "src": "dist/assets/**",
-            "base": "dist/assets",
-            "dest": "dist/"
-        }]
-
+```
+[{
+    "src": "dist/assets/**",
+    "base": "dist/assets",
+    "dest": "dist/"
+}]
+```
 
 ### exporter.replacements (Array)
 
@@ -55,13 +58,15 @@ Defines string replacements. Takes an array of objects with `glob` and `replace`
 
 - example:
 
-        [{
-            "glob": ["dist/*.html", "dist/css/*.css"],
-            "replace": [{
-                "from": "/assets",
-                "to": ""
-            }]
-        }]
+```
+[{
+    "glob": ["dist/*.html", "dist/css/*.css"],
+    "replace": [{
+        "from": "/assets",
+        "to": ""
+    }]
+}]
+```
 
 ### exporter.views (Boolean / Array)
 

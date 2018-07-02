@@ -1,4 +1,3 @@
-const cwd = process.cwd();
 const filter = require('gulp-filter');
 const path = require('path');
 const utils = require('../lib/utils.js');
@@ -6,15 +5,7 @@ const utils = require('../lib/utils.js');
 module.exports = function (gulp, config) {
 	'use strict';
 
-	let nitroTmpDirectory = '';
-	if (config.has('nitro.tmpDirectory')) {
-		nitroTmpDirectory = `${config.get('nitro.tmpDirectory')}/views`;
-	} else {
-		// eslint-disable-next-line
-		const nitroGulpUtils = require(path.resolve(cwd, 'gulp', 'utils'));
-		nitroTmpDirectory = nitroGulpUtils.getTmpDirectory('views');
-	}
-
+	const nitroTmpDirectory = `${config.get('nitro.tmpDirectory')}/views`;
 	const processes = [];
 
 	utils.each(config.exporter, (configEntry) => {

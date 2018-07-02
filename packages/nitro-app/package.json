@@ -1,6 +1,6 @@
 {
   "name": "@nitrooo/app",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Nitro server",
   "license": "MIT",
   "repository": "namics/generator-nitro",
@@ -25,7 +25,8 @@
   "keywords": [
     "frontend",
     "app",
-    "nitro"
+    "nitro",
+    "nitrooo"
   ],
   "dependencies": {
     "ajv": "6.5.2",

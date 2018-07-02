@@ -1,6 +1,6 @@
 {
   "name": "@nitrooo/gulp",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "nitro gulp",
   "license": "MIT",
   "author": "The Nitro Team",
@@ -18,7 +18,8 @@
   ],
   "keywords": [
     "frontend",
-    "nitro"
+    "nitro",
+    "nitrooo"
   ],
   "dependencies": {
     "backstopjs": "3.2.19",

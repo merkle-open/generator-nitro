@@ -21,8 +21,13 @@ function getProjectPath() {
 	return config.get('nitro.basePath');
 }
 
+function getEmptyStream() {
+	return gulp.src([]);
+}
+
 module.exports = {
 	getBrowserSyncInstance,
 	getTask,
 	getProjectPath,
+	getEmptyStream,
 };

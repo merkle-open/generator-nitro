@@ -1,6 +1,6 @@
 # Assets
 
-Images in this folder will be copied to the `/public/assets` folder by the gulp task "minify-img" 
+Images in this folder will be minified and copied to the folder `/public/assets` by the gulp task "minify-images" 
 
 In views you can use them with "/assets/"
 

@@ -29,8 +29,9 @@ module.exports = (gulp, plugins) => {
 			base: projectPath,
 			read: false,
 		};
-		const minifyImgSrc = config.has('gulp.minifyImg.src') ? config.get('gulp.minifyImg.src') : false;
-		const svgSpriteSrc = config.has('gulp.svgSprite.src') ? config.get('gulp.svgSprite.src') : false;
+		const copyAssetsSrc = config.has('gulp.copyAssets.src') ? config.get('gulp.copyAssets.src') : false;
+		const minifyImagesSrc = config.has('gulp.minifyImages.src') ? config.get('gulp.minifyImages.src') : false;
+		const svgSpritesSrc = config.has('gulp.svgSprites.src') ? config.get('gulp.svgSprites.src') : false;
 
 		if (config.get('nitro.mode.livereload')) {
 			plugins.watch([
@@ -47,15 +48,21 @@ module.exports = (gulp, plugins) => {
 			});
 		}
 
-		if (minifyImgSrc) {
-			plugins.watch(minifyImgSrc, options, () => {
-				gulp.start('minify-img');
+		if (copyAssetsSrc) {
+			plugins.watch(copyAssetsSrc, options, () => {
+				gulp.start('copy-assets');
 			});
 		}
 
-		if (svgSpriteSrc) {
-			plugins.watch(svgSpriteSrc, options, () => {
-				gulp.start('svg-sprite');
+		if (minifyImagesSrc) {
+			plugins.watch(minifyImagesSrc, options, () => {
+				gulp.start('minify-images');
+			});
+		}
+
+		if (svgSpritesSrc) {
+			plugins.watch(svgSpritesSrc, options, () => {
+				gulp.start('svg-sprites');
 			});
 		}
 	};

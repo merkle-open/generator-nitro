@@ -162,23 +162,32 @@ Filters unwanted views (should return false for unwanted view urls)
 
 e.g.: ```viewFilter: (url) => url !== 'incomplete'```
 
-### `gulp.svgSprite`
+### `gulp.copyAssets`
 
-Generates icon sprite with the name of the last folder in src
+Copies all source files to dest folder
 
 Properties:
 
-* `gulp.svgSprite.src` Sting (default: 'src/patterns/atoms/icon/img/icons/*.svg')
-* `gulp.svgSprite.dest` Sting (default: 'public/assets/svg')
+* `gulp.copyAssets.src` Sting (default: '')
+* `gulp.copyAssets.dest` Sting (default: '')
 
-### `gulp.minifyImg`
+### `gulp.minifyImages`
 
 Copies and minifies all source images to dest folder
 
 Properties:
 
-* `gulp.minifyImg.src` Sting (default: 'src/assets/img/\*\*/*')
-* `gulp.minifyImg.dest` Sting (default: 'public/assets/img')
+* `gulp.minifyImages.src` Sting (default: 'src/shared/assets/img/\*\*/*')
+* `gulp.minifyImages.dest` Sting (default: 'public/assets/img')
+
+### `gulp.svgSprites`
+
+Generates icon sprite with the name of the last folder in src
+
+Properties:
+
+* `gulp.svgSprites.src` Sting (default: 'src/patterns/atoms/icon/img/icons/*.svg')
+* `gulp.svgSprites.dest` Sting (default: 'public/assets/svg')
 
 ## Feature
 

@@ -62,30 +62,36 @@ const defaultConfig = {
 			 * viewFilter: (url) => url !== 'incomplete',
 			 */
 		},
-		copyAssets: {
+		copyAssets: [
 			/*
 			 * used in gulp task copy-assets
 			 * copies all sources to dest folder
 			 */
-			src: '',
-			dest: '',
-		},
-		minifyImages: {
+			{
+				src: '',
+				dest: '',
+			}
+		],
+		minifyImages: [
 			/*
 			 * used in gulp task minify-images
 			 * copies and minifies all source images to dest folder
 			 */
-			src: 'src/shared/assets/img/**/*',
-			dest: 'public/assets/img',
-		},
-		svgSprites: {
+			{
+				src: '',
+				dest: '',
+			},
+		],
+		svgSprites: [
 			/*
 			 * used in gulp task svg-sprites
 			 * generates icon sprite with the name of the last folder in src
 			 */
-			src: 'src/patterns/atoms/icon/img/icons/*.svg',
-			dest: 'public/assets/svg',
-		},
+			{
+				src: '',
+				dest: '',
+			},
+		],
 	},
 	feature: {
 		i18next: {

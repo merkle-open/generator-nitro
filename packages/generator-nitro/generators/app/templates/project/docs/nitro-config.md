@@ -150,6 +150,13 @@ Default: 8081
 The proxy server with livereload functionality runs on this port.  
 An environment variable PROXY will overwrite this property.
 
+### `server.compression`
+
+Type: Boolean
+Default: true
+
+If set to `true`, all requests through express will be compressed.
+
 ## Gulp
 
 ### `gulp.dumpViews.viewFilter`
@@ -164,30 +171,36 @@ e.g.: ```viewFilter: (url) => url !== 'incomplete'```
 
 ### `gulp.copyAssets`
 
+Type: Array of Objects
+
 Copies all source files to dest folder
 
-Properties:
+Object Properties:
 
 * `gulp.copyAssets.src` Sting (default: '')
 * `gulp.copyAssets.dest` Sting (default: '')
 
 ### `gulp.minifyImages`
 
+Type: Array of Objects
+
 Copies and minifies all source images to dest folder
 
-Properties:
+Object Properties:
 
-* `gulp.minifyImages.src` Sting (default: 'src/shared/assets/img/\*\*/*')
-* `gulp.minifyImages.dest` Sting (default: 'public/assets/img')
+* `gulp.minifyImages.src` Sting (default: ''; example: 'src/shared/assets/img/\*\*/*')
+* `gulp.minifyImages.dest` Sting (default: ''; example: 'public/assets/img')
 
 ### `gulp.svgSprites`
+
+Type: Array of Objects
 
 Generates icon sprite with the name of the last folder in src
 
 Properties:
 
-* `gulp.svgSprites.src` Sting (default: 'src/patterns/atoms/icon/img/icons/*.svg')
-* `gulp.svgSprites.dest` Sting (default: 'public/assets/svg')
+* `gulp.svgSprites.src` Sting (default: ''; example: 'src/patterns/atoms/icon/img/icons/*.svg')
+* `gulp.svgSprites.dest` Sting (default: ''; example: 'public/assets/svg')
 
 ## Feature
 

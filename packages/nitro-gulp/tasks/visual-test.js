@@ -6,7 +6,7 @@
 
 const backstop = require('backstopjs');
 const getPort = require('get-port');
-const projectPath = require('../utils/utils').getProjectPath();
+const projectPath = require('../lib/utils').getProjectPath();
 const serverPath = require('@nitrooo/app/app/lib/utils').getServerPath();
 let isRunning = false;
 

@@ -2,7 +2,7 @@
 
 const config = require('config');
 // const merge = require('merge-stream');
-const utils = require('../utils/utils');
+const utils = require('../lib/utils');
 
 module.exports = (gulp, plugins) => {
 	return () => {

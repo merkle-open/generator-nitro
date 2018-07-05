@@ -2,7 +2,7 @@
 
 const config = require('config');
 const pngquant = require('imagemin-pngquant');
-const utils = require('../utils/utils');
+const utils = require('../lib/utils');
 
 module.exports = (gulp, plugins) => {
 	return () => {

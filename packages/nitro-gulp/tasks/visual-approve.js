@@ -5,7 +5,7 @@
  */
 
 const backstop = require('backstopjs');
-const projectPath = require('../utils/utils').getProjectPath();
+const projectPath = require('../lib/utils').getProjectPath();
 
 module.exports = () => {
 	return () => {

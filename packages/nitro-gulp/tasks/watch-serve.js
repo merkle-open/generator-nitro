@@ -1,7 +1,7 @@
 'use strict';
 
 const config = require('config');
-const utils = require('../utils/utils');
+const utils = require('../lib/utils');
 const compression = require('compression');
 
 module.exports = () => {

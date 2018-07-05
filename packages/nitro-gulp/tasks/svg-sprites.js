@@ -2,7 +2,7 @@
 
 const path = require('path');
 const config = require('config');
-const utils = require('../utils/utils');
+const utils = require('../lib/utils');
 
 module.exports = (gulp, plugins) => {
 	return () => {

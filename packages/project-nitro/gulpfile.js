@@ -1,7 +1,7 @@
 'use strict';
 
 const gulp = require('gulp');
-const getTask = require('@nitrooo/gulp/utils/utils').getTask;
+const getTask = require('@nitrooo/gulp/lib/utils').getTask;
 const gulpSequence = require('gulp-sequence').use(gulp);
 const config = require('config');
 require('@nitrooo/exporter')(gulp, config);

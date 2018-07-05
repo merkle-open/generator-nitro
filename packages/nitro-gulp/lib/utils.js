@@ -25,9 +25,20 @@ function getEmptyStream() {
 	return gulp.src([]);
 }
 
+function each(cfgs, fn) {
+	if (cfgs.length) {
+		cfgs.forEach((cfg) => {
+			fn(cfg);
+		});
+	} else {
+		fn(cfgs);
+	}
+}
+
 module.exports = {
 	getBrowserSyncInstance,
 	getTask,
 	getProjectPath,
 	getEmptyStream,
+	each,
 };

@@ -24,10 +24,10 @@
     "autoprefixer": ">=8.6.0"
   },
   "dependencies": {
-    "@babel/core": "7.0.0-beta.51",
-    "@babel/preset-env": "7.0.0-beta.51",
+    "@babel/core": "7.0.0-beta.52",
+    "@babel/preset-env": "7.0.0-beta.52",
     "@namics/eslint-config": "5.0.1",
-    "autoprefixer": "8.6.4",
+    "autoprefixer": "8.6.5",
     "babel-loader": "8.0.0-beta.4",
     "cache-loader": "1.2.2",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
@@ -49,7 +49,7 @@
     "imagemin-svgo": "6.0.0",
     "img-loader": "3.0.0",
     "mini-css-extract-plugin": "0.4.1",
-    "node-sass": "4.9.0",
+    "node-sass": "4.9.1",
     "optimize-css-assets-webpack-plugin": "4.0.3",
     "postcss-loader": "2.1.5",
     "resolve-url-loader": "2.3.0",
@@ -62,7 +62,7 @@
     "typescript": "2.9.2",
     "uglifyjs-webpack-plugin": "1.2.7",
     "url-loader": "1.0.1",
-    "webpack": "4.15.0",
+    "webpack": "4.15.1",
     "webpack-bundle-analyzer": "2.13.1"
   },
   "devDependencies": {

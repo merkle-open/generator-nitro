@@ -1,6 +1,6 @@
 {
-  "name": "@nitrooo/exporter",
-  "version": "0.0.1",
+  "name": "@nitro/exporter",
+  "version": "0.1.0",
   "description": "An exporting package for nitro. Generate static packages with ease.",
   "license": "MIT",
   "repository": "namics/generator-nitro",
@@ -16,7 +16,6 @@
   "main": "index.js",
   "keywords": [
     "nitro",
-    "nitrooo",
     "exporter"
   ],
   "dependencies": {

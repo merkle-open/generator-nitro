@@ -17,11 +17,11 @@
 
 const argv = require('yargs').argv;
 const config = require('config');
-const view = require('@nitrooo/app/app/lib/view');
+const view = require('@nitro/app/app/lib/view');
 const del = require('del');
 const getPort = require('get-port');
 
-const serverPath = require('@nitrooo/app/app/lib/utils').getServerPath();
+const serverPath = require('@nitro/app/app/lib/utils').getServerPath();
 const tmpDirectory = `${config.get('nitro.tmpDirectory')}/views`;
 const viewFilter = (viewItem) => {
 	if (config.has('gulp.dumpViews.viewFilter') && typeof config.get('gulp.dumpViews.viewFilter') === 'function') {

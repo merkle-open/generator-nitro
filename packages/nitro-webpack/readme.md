@@ -17,7 +17,7 @@ const options = {
 	    gitInfo: false,
 	},
 };
-const webpackConfig = require('@nitrooo/webpack/webpack-config/webpack.config.dev')(options);
+const webpackConfig = require('@nitro/webpack/webpack-config/webpack.config.dev')(options);
 
 module.exports = webpackConfig;
 ```

@@ -1,6 +1,6 @@
 {
-  "name": "@nitrooo/webpack",
-  "version": "0.0.1",
+  "name": "@nitro/webpack",
+  "version": "0.1.0",
   "description": "nitro webpack",
   "license": "MIT",
   "author": "The Nitro Team",
@@ -17,8 +17,7 @@
   ],
   "keywords": [
     "frontend",
-    "nitro",
-    "nitrooo"
+    "nitro"
   ],
   "peerDependencies": {
     "autoprefixer": ">=8.6.0"

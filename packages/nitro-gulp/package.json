@@ -1,6 +1,6 @@
 {
-  "name": "@nitrooo/gulp",
-  "version": "0.0.3",
+  "name": "@nitro/gulp",
+  "version": "0.1.0",
   "description": "nitro gulp",
   "license": "MIT",
   "author": "The Nitro Team",
@@ -19,7 +19,7 @@
   "keywords": [
     "frontend",
     "nitro",
-    "nitrooo"
+    "gulp"
   ],
   "dependencies": {
     "backstopjs": "3.2.19",
@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@namics/eslint-config": "5.0.1",
-    "@nitrooo/app": "*",
+    "@nitro/app": "*",
     "eslint": "4.19.1",
     "eslint-plugin-import": "2.12.0",
     "nsp": "3.2.1"

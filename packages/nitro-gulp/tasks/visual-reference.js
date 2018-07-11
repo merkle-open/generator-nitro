@@ -7,7 +7,7 @@
 const backstop = require('backstopjs');
 const getPort = require('get-port');
 const projectPath = require('../lib/utils').getProjectPath();
-const serverPath = require('@nitrooo/app/app/lib/utils').getServerPath();
+const serverPath = require('@nitro/app/app/lib/utils').getServerPath();
 let isRunning = false;
 
 module.exports = (gulp, plugins) => {

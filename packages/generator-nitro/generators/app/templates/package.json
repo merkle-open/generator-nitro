@@ -1,12 +1,12 @@
 {
-  "name": "nitro-project",
+  "name": "project-nitro",
   "version": "0.0.0",
   "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro <%= version %>",
   "license": "UNLICENSED",
   "private": true,
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=6 <11",
+    "node": ">=8 <11",
     "npm": ">=5 <7"
   },
   "scripts": {
@@ -26,14 +26,14 @@
     "visual-reference": "gulp visual-reference",
     "visual-test": "gulp visual-test",
     "test": "npm-run-all test:*",
-    "test:lint": "yarn lint",
+    "test:lint": "npm run lint",
     "test:karma": "npm run build && karma start ./tests/karma/karma.conf.js",
     "prebuild": "npm test",
     "build": "npm-run-all build:*",
     "build:clean": "rimraf public/assets",
     "build:assets": "gulp assets",
     "build:webpack": "webpack --mode production --config config/webpack/webpack.config.prod.js",<% if (options.exporter) { %>
-    "export": "gulp export",<% } %>
+    "export": "npm run build && gulp export",<% } %>
     "dev": "gulp develop",
     "prod": "npm-run-all prod:*",
     "prod:build": "npm run build",
@@ -50,7 +50,7 @@
     "modular"
   ],
   "dependencies": {
-    "@babel/polyfill": "7.0.0-beta.51",
+    "@babel/polyfill": "7.0.0-beta.52",
     "bootstrap": "4.1.1",
     "handlebars": "4.0.11",
     "jquery": "3.3.1",
@@ -64,11 +64,11 @@
     "@namics/eslint-config": "5.0.1",
     "@namics/stylelint-bem": "5.1.0",
     "@namics/tslint-config": "0.1.0",
-    "@nitrooo/app": "*",
-    "@nitrooo/exporter": "*",
-    "@nitrooo/gulp": "*",
-    "@nitrooo/webpack": "*",
-    "ajv": "6.5.1",
+    "@nitro/app": "*",
+    "@nitro/exporter": "*",
+    "@nitro/gulp": "*",
+    "@nitro/webpack": "*",
+    "ajv": "6.5.2",
     "autoprefixer": "8.6.5",
     "body-parser": "1.18.3",
     "browser-sync": "2.24.5",
@@ -89,7 +89,7 @@
     "gulp": "3.9.1",
     "gulp-load-plugins": "1.5.0",
     "gulp-sequence": "1.0.0",
-    "husky": "1.0.0-rc.12",
+    "husky": "1.0.0-rc.13",
     "htmllint": "0.7.2",
     "jasmine-core": "3.1.0",
     "karma": "2.0.4",
@@ -101,14 +101,15 @@
     "lint-staged": "7.2.0",
     "npm-run-all": "4.1.3",
     "nsp": "3.2.1",
+    "rimraf": "2.6.2",
     "stylelint": "9.3.0",
     "tslint": "5.10.0",
     "typescript": "2.9.2",
-    "webpack": "4.12.1",
+    "webpack": "4.15.1",
     "webpack-cli": "3.0.8",
     "webpack-dev-middleware": "3.1.3",
     "webpack-hot-middleware": "2.22.2",
-    "yo": "2.0.2"
+    "yo": "2.0.4"
   },
   "browserslist": [
     "> 0.5%",

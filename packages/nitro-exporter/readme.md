@@ -42,11 +42,13 @@ Renaming is used with native `gulp.src(...).pipe(gulp.dest(...))`.
 - example:
 
 ```
-[{
-    "src": "dist/assets/**",
-    "base": "dist/assets",
-    "dest": "dist/"
-}]
+[
+    {
+        "src": "dist/assets/**",
+        "base": "dist/assets",
+        "dest": "dist/"
+}
+]
 ```
 
 ### exporter.replacements (Array)
@@ -59,13 +61,17 @@ Defines string replacements. Takes an array of objects with `glob` and `replace`
 - example:
 
 ```
-[{
-    "glob": ["dist/*.html", "dist/css/*.css"],
-    "replace": [{
-        "from": "/assets",
-        "to": ""
-    }]
-}]
+[
+    {
+        "glob": ["dist/*.html", "dist/css/*.css"],
+        "replace": [
+            {
+                "from": "/assets",
+                "to": ""
+            }
+        ]
+    }
+]
 ```
 
 ### exporter.views (Boolean / Array)
@@ -139,21 +145,24 @@ You can define multiple exporter configuration objects, by setting the `exporter
 ### Example
 
 ```
-"exporter": [{
-    "dest": "dist",
-    "i18n": [],
-    "publics": true,
-    "renames": [],
-    "replacements": [],
-    "views": true,
-    "zip": false
-}, {
-    "dest": "static",
-    "i18n": [],
-    "publics": true,
-    "renames": [],
-    "replacements": [],
-    "views": true,
-    "zip": false
-}]
+"exporter": [
+    {
+        "dest": "dist",
+        "i18n": [],
+        "publics": true,
+        "renames": [],
+        "replacements": [],
+        "views": true,
+        "zip": false
+    },
+    {
+        "dest": "static",
+        "i18n": [],
+        "publics": true,
+        "renames": [],
+        "replacements": [],
+        "views": true,
+        "zip": false
+}
+]
 ```

@@ -1,4 +1,4 @@
-@import "~css/deps/layout";
+@import '../../breakpoints/css/breakpoints';
 
 $typography-default-family: 'minion';
 $typography-default-size: 'm';
@@ -171,7 +171,7 @@ $typography-definition-desktop: (
 	$font-definition: typography-get-font-definition('mobile', $size, $family);
 	@include getDefinition($font-definition, $style, $family);
 
-	@media screen and (min-width: $bp-m) {
+	@media screen and (min-width: $size-md-min) {
 		$font-definition: typography-get-font-definition('desktop', $size, $family);
 		@include getDefinition($font-definition, $style, $family);
 	}

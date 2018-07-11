@@ -17,7 +17,7 @@ $checkbox-color: $color-gray-5;
 		+ label::before {
 			content: '';
 			position: absolute;
-			top: -1px;
+			top: 14%;
 			left: 0;
 			display: block;
 			width: $checkbox-size;
@@ -32,14 +32,14 @@ $checkbox-color: $color-gray-5;
 			font-icon: -0.4 + $checkbox-size url('../img/check.svg');
 			color: $color-gray-4;
 			position: absolute;
-			top: 20%;
+			top: 32%;
 			left: 4px;
 		};
 	}
 
 	label {
 		display: inline-block;
-		padding: 0.2em 1em 0.2em (1 + $checkbox-size) ;
+		padding: 0.3em 1em 0.3em (1 + $checkbox-size) ;
 
 		cursor: pointer;
 		user-select: none;

@@ -1,6 +1,6 @@
 {
   "name": "@nitro/gulp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "nitro gulp",
   "license": "MIT",
   "author": "The Nitro Team",
@@ -14,7 +14,7 @@
   },
   "files": [
     "tasks",
-    "utils"
+    "lib"
   ],
   "keywords": [
     "frontend",

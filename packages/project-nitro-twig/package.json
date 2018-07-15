@@ -115,6 +115,7 @@
     "android 4",
     "Firefox ESR"
   ],
+  "postcss": {},
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"

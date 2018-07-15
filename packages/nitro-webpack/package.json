@@ -32,6 +32,7 @@
     "case-sensitive-paths-webpack-plugin": "2.1.2",
     "config": "1.30.0",
     "css-loader": "1.0.0",
+    "css-hot-loader": "1.4.0",
     "eslint": "4.19.1",
     "eslint-loader": "2.0.0",
     "eslint-plugin-import": "2.13.0",

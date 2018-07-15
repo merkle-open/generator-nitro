@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const config = require('config');
 const webpack = require('webpack');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
@@ -15,7 +15,6 @@ const appDirectory = fs.realpathSync(process.cwd());
 module.exports = (options = { rules: {}, features: {} }) => {
 
 	const webpackConfig = {
-		// devtool: 'eval',
 		devtool: 'eval-source-map',
 		context: appDirectory,
 		entry: {
@@ -133,20 +132,19 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	if (options.rules.scss) {
 		webpackConfig.module.rules.push(
 			{
-				test: /\.?scss$/,
+				test: /\.s?css$/,
 				use: [
-					{
-						loader: require.resolve('style-loader'),
-						options: {
-							sourceMap: true,
-						},
-					},
+					// css-hot-loader removes the flash on unstyled content (FOUC) from style-loader
+					// may be removed when MiniCssExtractPlugin supports HMR
+					// related: https://github.com/webpack-contrib/mini-css-extract-plugin/issues/34
+					require.resolve('css-hot-loader'),
+					MiniCssExtractPlugin.loader,
 					{
 						loader: require.resolve('css-loader'),
 						options: {
+							importLoaders: 2,
 							sourceMap: true,
-							importLoaders: 3,
-						},
+						}
 					},
 					{
 						loader: require.resolve('postcss-loader'),
@@ -170,51 +168,20 @@ module.exports = (options = { rules: {}, features: {} }) => {
 						},
 					},
 				],
-			}
+			},
 		);
 
-		// CSS & SCSS with MiniCSSExtract Plugin
-		// waiting for HMR support
-		// webpackConfig.module.rules.push(
-		// 	{
-		// 		test: /\.s?css$/,
-		// 		use: [
-		// 			MiniCssExtractPlugin.loader,
-		// 			{
-		// 				loader: require.resolve('css-loader'),
-		// 				options: {
-		// 					importLoaders: 2,
-		// 					sourceMap: true,
-		// 				}
-		// 			},
-		// 			{
-		// 				loader: require.resolve('postcss-loader'),
-		// 				options: {
-		// 					plugins: (loader) => [
-		// 						require('autoprefixer'),
-		// 						require('iconfont-webpack-plugin')({
-		// 							resolve: loader.resolve,
-		// 						}),
-		// 					],
-		// 					sourceMap: true,
-		// 				}
-		// 			},
-		// 			{
-		// 				loader: require.resolve('sass-loader'),
-		// 				options: {
-		// 					sourceMap: true,
-		// 				},
-		// 			},
-		// 		],
-		// 	},
-		// );
-		//
-		// webpackConfig.plugins.push(
-		// 	new MiniCssExtractPlugin({
-		// 		filename: 'css/[name].css',
-		// 		// chunkFilename: '[id].css',
-		// 	}),
-		// );
+		webpackConfig.plugins.push(
+			new MiniCssExtractPlugin({
+				filename: 'css/[name].css',
+			}),
+			// we need SourceMapDevToolPlugin to make sourcemaps work
+			// with MiniCSSExtractPlugin and css-hot-loader
+			// related: https://github.com/webpack-contrib/mini-css-extract-plugin/issues/29
+			new webpack.SourceMapDevToolPlugin({
+				filename: '[file].map',
+			}),
+		);
 	}
 
 	// handlebars precompiled templates

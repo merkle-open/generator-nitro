@@ -250,8 +250,7 @@ module.exports = class extends Generator {
 			'src/views/index.twig',
 			'src/views/_partials/head.hbs',
 			'src/views/_partials/head.twig',
-			'src/views/_partials/foot.hbs',
-			'src/views/_partials/foot.twig',
+			'src/ui.js',
 			'tests/backstop/backstop.config.js',
 			'gulpfile.js',
 			'package.json',
@@ -274,31 +273,41 @@ module.exports = class extends Generator {
 			'src/patterns/molecules/example/template/example.links.hbs',
 			'src/patterns/molecules/example/template/partial/example.link.hbs',
 			'project/docs/client-templates.md',
-			'project/blueprints/pattern/template/pattern.hbs',
+			'project/blueprints/pattern/template/$pattern$.hbs',
 		];
 		const viewFiles = [
 			// all view files exists in different templateEngine variants
 			'src/views/404',
 			'src/views/index',
+			'src/views/example/patterns',
 			'src/views/_layouts/default',
 			'src/views/_partials/foot',
 			'src/views/_partials/head',
+			'src/patterns/atoms/box/box',
+			'src/patterns/atoms/button/button',
+			'src/patterns/atoms/checkbox/checkbox',
+			'src/patterns/atoms/cta/cta',
+			'src/patterns/atoms/heading/heading',
 			'src/patterns/atoms/icon/icon',
+			'src/patterns/atoms/image/image',
+			'src/patterns/atoms/list/list',
+			'src/patterns/atoms/loader/loader',
+			'src/patterns/atoms/stage/stage',
 			'src/patterns/molecules/example/example',
-			'project/blueprints/pattern/pattern',
+			'project/blueprints/pattern/$pattern$',
 		];
 		const examplePaths = [
 			// paths only for this.options.exampleCode===true
-
-			'src/patterns/atoms/icon/',
-			'src/patterns/molecules/example/',
-			'src/assets/css/example/',
-			'src/assets/img/icon/',
+			'src/views/example/',
+			'src/patterns/',
+			'src/shared/',
 			'project/routes/',
 		];
 		const exampleIncludeAnyway = [
 			// example file "parts" included for this.options.exampleCode===false
 			'project/routes/readme.md',
+			'src/patterns/readme.md',
+			'src/shared/readme.md',
 			'.gitkeep',
 		];
 		const exporterFiles = [
@@ -390,8 +399,8 @@ module.exports = class extends Generator {
 		const filesToCopy = [
 			{
 				do: this.options.exporter,
-				src: 'node_modules/nitro-exporter/README.md',
-				srcWeb: 'https://raw.githubusercontent.com/namics/nitro-exporter/master/README.md',
+				src: 'node_modules/@nitro/exporter/readme.md',
+				srcWeb: 'https://raw.githubusercontent.com/namics/generator-nitro/master/packages/nitro-exporter/README.md',
 				dest: 'project/docs/nitro-exporter.md',
 			},
 		];

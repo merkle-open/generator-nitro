@@ -1,0 +1,50 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "image",
+	"description": "A image atom",
+	"type": "object",
+	"properties": {
+		"modifier": {
+			"description": "A modifier",
+			"enum": [
+				"fit-parent"
+			]
+		},
+		"alt": {
+			"type": "string"
+		},
+		"srcset": {
+			"type": "object",
+			"properties": {
+				"renditions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"media": {
+								"description": "sizes",
+								"enum": ["100", "180", "230", "290", "320", "360", "460", "580", "640", "760", "960", "1200", "1496", "1960", "2880", "3920"]
+							},
+							"x1": {
+								"type": "string"
+							}
+						},
+						"required": ["media", "x1"]
+					}
+				},
+				"fallback": {
+					"type": "object",
+					"description": "The fallback image",
+					"properties": {
+						"x1": {
+							"type": "string"
+						}
+					},
+					"required": ["x1"]
+				}
+			}
+		}
+	},
+	"required": ["alt", "srcset"],
+	"dependencies": {}
+}

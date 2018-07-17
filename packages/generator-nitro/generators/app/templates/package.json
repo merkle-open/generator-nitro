@@ -50,7 +50,7 @@
     "modular"
   ],
   "dependencies": {
-    "@babel/polyfill": "7.0.0-beta.52",
+    "@babel/polyfill": "7.0.0-beta.52"<% if (options.exampleCode) { %>,
     "bootstrap": "4.1.1",
     "handlebars": "4.0.11",
     "jquery": "3.3.1",
@@ -58,7 +58,7 @@
     "lodash": "4.17.10",
     "prevent-window-opener-attacks": "0.2.4",
     "svg4everybody": "2.1.9",
-    "terrific": "3.0.0"
+    "terrific": "3.0.0"<% } %>
   },
   "devDependencies": {
     "@namics/eslint-config": "5.0.1",

@@ -12,60 +12,6 @@ describe('nitro:app', () => {
 
 	jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
 
-	describe('when using less', () => {
-		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
-				.withOptions({ 'skip-install': true })
-				.withPrompts({ pre: 'less' })
-				.on('end', done);
-		});
-
-		it('package.json contains gulp-less dependency', () => {
-			assert.fileContent('package.json', /gulp-less/);
-		});
-
-		it('compile-css uses gulp-less dependency', () => {
-			assert.fileContent('gulp/compile-css.js', /plugins.less/);
-		});
-
-		it('config loads .less files', () => {
-			assert.fileContent('config/default/assets.js', /\.less/);
-		});
-
-		it('pattern blueprint does not contain .scss files', () => {
-			assert.noFile('project/blueprints/pattern/css/pattern.scss');
-			assert.noFile('project/blueprints/pattern/css/modifier/pattern-modifier.scss');
-		});
-	});
-
-	describe('when using scss', () => {
-		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
-				.withOptions({ 'skip-install': true })
-				.withPrompts({ pre: 'scss' })
-				.on('end', done);
-		});
-
-		it('package.json contains gulp-sass dependency', () => {
-			assert.fileContent('package.json', /gulp-sass/);
-		});
-
-		it('compile-css uses gulp-sass dependency', () => {
-			assert.fileContent('gulp/compile-css.js', /plugins.sass/);
-		});
-
-		it('config loads .scss files', () => {
-			assert.fileContent('config/default/assets.js', /\.scss/);
-		});
-
-		it('pattern blueprint does not contain .less files', () => {
-			assert.noFile('project/blueprints/pattern/css/pattern.less');
-			assert.noFile('project/blueprints/pattern/css/modifier/pattern-modifier.less');
-		});
-	});
-
 	describe('when using template engine hbs', () => {
 		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))
@@ -81,7 +27,7 @@ describe('nitro:app', () => {
 				'src/views/404.hbs',
 				'src/views/_partials/head.hbs',
 				'src/views/_partials/foot.hbs',
-				'project/blueprints/pattern/pattern.hbs',
+				'project/blueprints/pattern/$pattern$.hbs',
 			]);
 		});
 
@@ -105,7 +51,7 @@ describe('nitro:app', () => {
 				'src/views/404.twig',
 				'src/views/_partials/head.twig',
 				'src/views/_partials/foot.twig',
-				'project/blueprints/pattern/pattern.twig',
+				'project/blueprints/pattern/$pattern$.twig',
 			]);
 		});
 
@@ -123,36 +69,14 @@ describe('nitro:app', () => {
 				.on('end', done);
 		});
 
-		it('package.json contains some specific dependencies', () => {
-			assert.fileContent([
-				['package.json', /gulp-change/],
-				['package.json', /gulp-declare/],
-				['package.json', /gulp-handlebars/],
-				['package.json', /gulp-wrap/],
-			]);
-		});
-
 		it('pattern blueprint contains template file', () => {
-			assert.file('project/blueprints/pattern/template/pattern.hbs');
+			assert.file('project/blueprints/pattern/template/$pattern$.hbs');
 		});
 
-		it('config loads template files', () => {
-			assert.fileContent([
-				['config/default/assets.js', 'patterns/**/template/*.js'],
-				['config/default/assets.js', 'patterns/**/template/partial/*.js'],
-			]);
+		it('webpack config enables hbs loader', () => {
+			assert.fileContent('config/webpack/options.js', /hbs: true,/);
 		});
 
-		it('gulpfile has compile-templates task', () => {
-			assert.fileContent('gulpfile.js', /compile-templates/);
-		});
-
-		it('gulp task watch-assets handles template files correct', () => {
-			assert.fileContent([
-				['gulp/watch-assets.js', 'src/patterns/**/template/**/*.hbs'],
-				['gulp/watch-assets.js', '!src/patterns/**/template/**/*.hbs'],
-			]);
-		});
 	});
 
 	describe('when not including client templates', () => {
@@ -164,45 +88,12 @@ describe('nitro:app', () => {
 				.on('end', done);
 		});
 
-		it('package.json does not contain some specific dependencies', () => {
-			assert.noFileContent([
-				['package.json', /gulp-change/],
-				['package.json', /gulp-declare/],
-				['package.json', /gulp-handlebars/],
-				['package.json', /gulp-wrap/],
-			]);
-		});
-
 		it('pattern blueprint does not contain template file', () => {
-			assert.noFile('project/blueprints/pattern/template/pattern.hbs');
+			assert.noFile('project/blueprints/pattern/template/$pattern$.hbs');
 		});
 
-		it('example pattern does not contain template files', () => {
-			assert.noFile([
-				'src/patterns/molecules/example/template/example.hbs',
-				'src/patterns/molecules/example/template/example.links.hbs',
-				'src/patterns/molecules/example/template/partial/example.link.hbs',
-				'src/patterns/molecules/example/_data/example-template.json',
-				'src/patterns/molecules/example/js/decorator/example-template.js',
-			]);
-		});
-
-		it('config does not load template files', () => {
-			assert.noFileContent([
-				['config/default/assets.js', 'patterns/**/template/*.js'],
-				['config/default/assets.js', 'patterns/**/template/partial/*.js'],
-			]);
-		});
-
-		it('gulpfile does not have compile-templates task', () => {
-			assert.noFileContent('gulpfile.js', /compile-templates/);
-		});
-
-		it('gulp task watch-assets does not handle template files', () => {
-			assert.noFileContent([
-				['gulp/watch-assets.js', 'patterns/**/template/**/*.hbs'],
-				['gulp/watch-assets.js', '!patterns/**/template/**/*.hbs'],
-			]);
+		it('webpack config disables hbs loader', () => {
+			assert.fileContent('config/webpack/options.js', /hbs: false,/);
 		});
 
 	});
@@ -214,20 +105,6 @@ describe('nitro:app', () => {
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ exampleCode: true })
 				.on('end', done);
-		});
-
-		it('example reset.css is present', () => {
-			assert.file([
-				'src/assets/css/example/reset.css',
-			]);
-		});
-
-		it('example icons are present', () => {
-			assert.file([
-				'src/assets/img/icon/favicon.ico',
-				'src/assets/img/icon/tile-icon.png',
-				'src/assets/img/icon/apple-touch-icon.png',
-			]);
 		});
 
 		it('example pattern is present', () => {
@@ -244,6 +121,25 @@ describe('nitro:app', () => {
 				'src/patterns/atoms/icon/readme.md',
 				'src/patterns/atoms/icon/schema.json',
 				'src/patterns/atoms/icon/_data/icon.json',
+			]);
+		});
+
+		it('more example files are present', () => {
+			assert.file([
+				'src/patterns/atoms/box/box.hbs',
+				'src/patterns/atoms/button/button.hbs',
+				'src/patterns/atoms/checkbox/checkbox.hbs',
+				'src/shared/base/document/css/document.scss',
+				'src/shared/utils/breakpoints/css/breakpoints.scss',
+				'src/views/example/patterns.hbs',
+			]);
+		});
+
+		it('example icons are present', () => {
+			assert.file([
+				'src/shared/assets/img/icon/favicon.ico',
+				'src/shared/assets/img/icon/tile-icon.png',
+				'src/shared/assets/img/icon/apple-touch-icon.png',
 			]);
 		});
 
@@ -266,20 +162,6 @@ describe('nitro:app', () => {
 				.on('end', done);
 		});
 
-		it('example reset.css is not present', () => {
-			assert.noFile([
-				'src/assets/css/example/reset.css',
-			]);
-		});
-
-		it('example icons are not present', () => {
-			assert.noFile([
-				'src/assets/img/icon/favicon.ico',
-				'src/assets/img/icon/tile-icon.png',
-				'src/assets/img/icon/apple-touch-icon.png',
-			]);
-		});
-
 		it('example pattern is not present', () => {
 			assert.noFile([
 				'src/patterns/molecules/example/readme.md',
@@ -294,6 +176,25 @@ describe('nitro:app', () => {
 				'src/patterns/atoms/icon/readme.md',
 				'src/patterns/atoms/icon/schema.json',
 				'src/patterns/atoms/icon/_data/icon.json',
+			]);
+		});
+
+		it('more example files are not present', () => {
+			assert.noFile([
+				'src/patterns/atoms/box/box.hbs',
+				'src/patterns/atoms/button/button.hbs',
+				'src/patterns/atoms/checkbox/checkbox.hbs',
+				'src/shared/base/document/css/document.scss',
+				'src/shared/utils/breakpoints/css/breakpoints.scss',
+				'src/views/example/patterns.hbs',
+			]);
+		});
+
+		it('example icons are not present', () => {
+			assert.noFile([
+				'src/shared/assets/img/icon/favicon.ico',
+				'src/shared/assets/img/icon/tile-icon.png',
+				'src/shared/assets/img/icon/apple-touch-icon.png',
 			]);
 		});
 
@@ -321,12 +222,6 @@ describe('nitro:app', () => {
 				.on('end', done);
 		});
 
-		it('package.json contains exporter dependency', () => {
-			assert.fileContent([
-				['package.json', /nitro-exporter/],
-			]);
-		});
-
 		it('config contains default exporter properties', () => {
 			assert.fileContent([
 				['config/default.js', /exporter:/],
@@ -341,12 +236,6 @@ describe('nitro:app', () => {
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ exporter: false })
 				.on('end', done);
-		});
-
-		it('package.json does not contain exporter dependency', () => {
-			assert.noFileContent([
-				['package.json', /nitro-exporter/],
-			]);
 		});
 
 		it('config does not contain default exporter properties', () => {

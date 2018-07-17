@@ -1,6 +1,6 @@
 /* global module */
 
-import '@babel/polyfill';
+import '@babel/polyfill';<% if (options.exampleCode) { %>
 import * as T from 'terrific';
 import $ from 'jquery';
 
@@ -21,7 +21,7 @@ import './patterns/atoms/image';
 import './patterns/atoms/list';
 import './patterns/atoms/loader';
 import './patterns/atoms/stage';
-import './patterns/molecules/example';
+import './patterns/molecules/example';<% } %>
 
 if (module.hot) {
 	module.hot.accept();
@@ -29,10 +29,10 @@ if (module.hot) {
 
 // custom code
 console.log('I\'m from the entry point ui'); // eslint-disable-line
-
+<% if (options.exampleCode) { %>
 // terrificjs
 $(() => {
 	const application = new T.Application();
 	application.registerModules();
 	application.start();
-});
+});<% } %>

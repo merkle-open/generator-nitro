@@ -1,0 +1,17 @@
+
+.a-list--mix {
+	.a-list__item {
+		/* stylelint-disable max-nesting-depth */
+		&:nth-child(2n) {
+			&::before {
+				font-icon: url('../../img/arrow.svg');
+			}
+		}
+		&:nth-child(3n) {
+			&::before {
+				font-icon: url('../../img/nitro.svg');
+			}
+		}
+		/* stylelint-enable max-nesting-depth */
+	}
+}

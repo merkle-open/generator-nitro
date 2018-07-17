@@ -23,18 +23,19 @@ describe('nitro:app', () => {
 		// base files
 		it('creates blueprint files', () => {
 			assert.file([
-				'app',
 				'config',
-				'gulp',
 				'project',
 				'public',
 				'.node-version',
+				'gulpfile.js',
 				'package.json',
 				'readme.md',
-				'server.js',
-				'src/assets',
 				'src/patterns',
+				'src/proto',
+				'src/shared',
 				'src/views',
+				'src/proto.js',
+				'src/ui.js',
 			]);
 		});
 
@@ -50,81 +51,40 @@ describe('nitro:app', () => {
 			]);
 		});
 
-		// scss
-		it('package.json contains gulp-sass dependency', () => {
-			assert.fileContent('package.json', /gulp-sass/);
+		it('package.json contains @nitro dependencies', () => {
+			assert.fileContent([
+				['package.json', '@nitro/app'],
+				['package.json', '@nitro/exporter'],
+				['package.json', '@nitro/gulp'],
+				['package.json', '@nitro/webpack'],
+			]);
 		});
 
-		it('compile-css uses gulp-sass dependency', () => {
-			assert.fileContent('gulp/compile-css.js', /plugins.sass/);
-		});
-
-		it('pattern blueprint does not contain .less files', () => {
-			assert.noFile('project/blueprints/pattern/css/pattern.less');
-			assert.noFile('project/blueprints/pattern/css/modifier/pattern-modifier.less');
-		});
-
-		// hbs
+		// viewFileExtension (hbs)
 		it('view files have the .hbs file extension', () => {
 			assert.file([
 				'src/views/index.hbs',
 				'src/views/404.hbs',
 				'src/views/_partials/head.hbs',
 				'src/views/_partials/foot.hbs',
-				'project/blueprints/pattern/pattern.hbs',
+				'project/blueprints/pattern/$pattern$.hbs',
 			]);
 		});
 
 		it('config contains the correct view file extension', () => {
-			assert.fileContent('app/core/config.js', /viewFileExtension: 'hbs'/);
+			assert.fileContent('config/default.js', /viewFileExtension: 'hbs'/);
 		});
 
-		// not including client templates
-		it('package.json does not contain some specific dependencies', () => {
-			assert.noFileContent([
-				['package.json', /gulp-change/],
-				['package.json', /gulp-declare/],
-				['package.json', /gulp-handlebars/],
-				['package.json', /gulp-wrap/],
-			]);
-		});
-
+		// clientTemplates (false)
 		it('pattern blueprint does not contain template file', () => {
-			assert.noFile('project/blueprints/pattern/template/pattern.hbs');
+			assert.noFile('project/blueprints/pattern/template/$pattern$.hbs');
 		});
 
-		it('example pattern does not contain template files', () => {
-			assert.noFile([
-				'src/patterns/molecules/example/template/example.hbs',
-				'src/patterns/molecules/example/template/example.links.hbs',
-				'src/patterns/molecules/example/template/partial/example.link.hbs',
-				'src/patterns/molecules/example/_data/example-template.json',
-				'src/patterns/molecules/example/js/decorator/example-template.js',
-			]);
+		it('webpack config disables hbs loader', () => {
+			assert.fileContent('config/webpack/options.js', /hbs: false,/);
 		});
 
-		it('config does not load template files', () => {
-			assert.noFileContent([
-				['config/default/assets.js', 'patterns/**/template/*.js'],
-				['config/default/assets.js', 'patterns/**/template/partial/*.js'],
-			]);
-		});
-
-		// not including example files
-		it('example reset.css is not present', () => {
-			assert.noFile([
-				'src/assets/css/example/reset.css',
-			]);
-		});
-
-		it('example icons are not present', () => {
-			assert.noFile([
-				'src/assets/img/icon/favicon.ico',
-				'src/assets/img/icon/tile-icon.png',
-				'src/assets/img/icon/apple-touch-icon.png',
-			]);
-		});
-
+		// exampleCode (false)
 		it('example pattern is not present', () => {
 			assert.noFile([
 				'src/patterns/molecules/example/readme.md',
@@ -134,30 +94,53 @@ describe('nitro:app', () => {
 			]);
 		});
 
-		// not including exporter
-		it('package.json does not contain exporter dependency', () => {
-			assert.noFileContent([
-				['package.json', /nitro-exporter/],
+		it('icon pattern is not present', () => {
+			assert.noFile([
+				'src/patterns/atoms/icon/readme.md',
+				'src/patterns/atoms/icon/schema.json',
+				'src/patterns/atoms/icon/_data/icon.json',
 			]);
 		});
 
+		it('more example files are not present', () => {
+			assert.noFile([
+				'src/patterns/atoms/box/box.hbs',
+				'src/patterns/atoms/button/button.hbs',
+				'src/patterns/atoms/checkbox/checkbox.hbs',
+				'src/shared/base/document/css/document.scss',
+				'src/shared/utils/breakpoints/css/breakpoints.scss',
+				'src/views/example/patterns.hbs',
+			]);
+		});
+
+		it('example icons are not present', () => {
+			assert.noFile([
+				'src/shared/assets/img/icon/favicon.ico',
+				'src/shared/assets/img/icon/tile-icon.png',
+				'src/shared/assets/img/icon/apple-touch-icon.png',
+			]);
+		});
+
+		it('country project route is not present', () => {
+			assert.noFile([
+				'project/routes/countries.js',
+				'project/routes/data/countries.json',
+				'project/routes/helpers/utils.js',
+			]);
+		});
+
+		it('but project route readme.md is present', () => {
+			assert.file([
+				'project/routes/readme.md',
+			]);
+		});
+
+		// not including exporter
 		it('config does not contain default exporter properties', () => {
 			assert.noFileContent([
 				['config/default.js', /exporter:/],
 			]);
 		});
 
-		// not including release
-		it('package.json does not contain exporter dependency', () => {
-			assert.noFileContent([
-				['package.json', /nitro-release/],
-			]);
-		});
-
-		it('config does not contain default exporter properties', () => {
-			assert.noFileContent([
-				['config/default.js', /release:/],
-			]);
-		});
 	});
 });

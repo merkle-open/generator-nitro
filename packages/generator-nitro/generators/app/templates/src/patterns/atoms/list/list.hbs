@@ -1,0 +1,7 @@
+<ul class="a-list{{#if modifier}} a-list--{{modifier}}{{/if}}">
+	{{#each listItems}}
+		<li class="a-list__item">
+			{{{text}}}&nbsp; {{#if icon}}<span class="a-list__icon">{{pattern name="icon" icon=icon}}</span>{{/if}}
+		</li>
+	{{/each}}
+</ul>

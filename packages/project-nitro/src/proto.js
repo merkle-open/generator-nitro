@@ -12,10 +12,11 @@ function requireAll(requireContext) {
 
 /* eslint-disable no-useless-escape */
 
-// js files
+// all js files from 'proto/js' and'patterns/*/proto'
 requireAll(require.context('./proto/js', true,	/^.*(js)$/));
+requireAll(require.context('./patterns', true, /[\/\\]proto[\/\\](?:[a-z0-9\-]+).(js)$/));
 
-// css files
+// all css files from 'proto/css' and 'patterns/*/proto'
 requireAll(require.context('./proto/css', true, /^.*(s?css)$/));
 requireAll(require.context('./patterns', true, /[\/\\]proto[\/\\](?:[a-z0-9\-]+).(s?css)$/));
 

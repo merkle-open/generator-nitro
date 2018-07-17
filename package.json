@@ -11,7 +11,7 @@
   "scripts": {
     "commit": "git-cz",
     "install": "lerna bootstrap",
-    "test": "lerna run lint --parallel",
+    "test": "lerna run test --parallel",
     "lint": "lerna run lint --parallel",
     "lint:md": "markdownlint ./readme.md ./.github"
   },

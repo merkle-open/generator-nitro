@@ -39,7 +39,7 @@ describe('nitro:component', () => {
 					'src/patterns/organisms/Test',
 					'src/patterns/organisms/Test/test.hbs',
 					'src/patterns/organisms/Test/_data/test.json',
-					'src/patterns/organisms/Test/css/test.less',
+					'src/patterns/organisms/Test/css/test.scss',
 					'src/patterns/organisms/Test/js/test.js',
 					'src/patterns/organisms/Test/test/test.test.js',
 				]);

@@ -35,12 +35,12 @@
     "config": "1.30.0",
     "dot-object": "1.7.0",
     "express": "4.16.3",
-    "extend": "3.0.1",
+    "extend": "3.0.2",
     "globby": "7.1.1",
     "hbs": "4.0.1",
     "hbs-utils": "0.0.4",
     "htmllint": "0.7.2",
-    "i18next": "11.3.6",
+    "i18next": "11.4.0",
     "i18next-express-middleware": "1.2.0",
     "i18next-node-fs-backend": "1.2.1",
     "i18next-sprintf-postprocessor": "0.2.2",
@@ -51,7 +51,7 @@
     "twig": "1.12.0",
     "webpack": "4.16.1",
     "webpack-dev-middleware": "3.1.3",
-    "webpack-hot-middleware": "2.22.2"
+    "webpack-hot-middleware": "2.22.3"
   },
   "devDependencies": {
     "@namics/eslint-config": "5.0.1",

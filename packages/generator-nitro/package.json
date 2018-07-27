@@ -35,12 +35,12 @@
   "dependencies": {
     "adm-zip": "0.4.7",
     "chalk": "2.4.1",
-    "config": "1.30.0",
+    "config": "1.31.0",
     "git-config": "0.0.7",
     "glob": "7.1.2",
     "lodash": "4.17.10",
     "request": "2.87.0",
-    "yeoman-generator": "3.0.0",
+    "yeoman-generator": "3.1.0",
     "yosay": "2.0.2"
   },
   "devDependencies": {

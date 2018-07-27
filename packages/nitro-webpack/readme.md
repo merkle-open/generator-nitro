@@ -1,4 +1,4 @@
-# nitro-webpack
+# nitro webpack
 
 Configurable and easy to use webpack config for nitro projects.
 
@@ -7,6 +7,7 @@ Configurable and easy to use webpack config for nitro projects.
 ```
 const options = {
 	rules: {
+	    js: true,
 		ts: false,
 		scss: true,
 		hbs: true,
@@ -26,7 +27,14 @@ module.exports = webpackConfig;
 
 ### Rules
 
-Only js loader rule is enabled by default. Activate following prepared rules you need in `options.rules` 
+No loader rule is enabled by default. Activate following prepared rules you need in `options.rules` 
+
+#### `options.rules.js`
+
+* Type: boolean
+* default: false
+
+`true` will activate JavaScript support
 
 #### `options.rules.ts`
 

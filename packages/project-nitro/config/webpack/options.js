@@ -1,5 +1,6 @@
 const options = {
 	rules: {
+		js: true,
 		ts: false,
 		scss: true,
 		hbs: true,

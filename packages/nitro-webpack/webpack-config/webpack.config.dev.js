@@ -33,32 +33,11 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			publicPath: '/assets/',
 		},
 		resolve: {
-			extensions: ['.mjs', '.js'],
+			extensions: [],
 			symlinks: false,
 		},
 		module: {
-			rules: [
-				// JS
-				{
-					test: /\.(js|jsx|mjs)$/,
-					exclude: /node_modules/,
-					use: {
-						loader: require.resolve('babel-loader'),
-						options: {
-							babelrc: false,
-							cacheDirectory: true,
-							presets: [
-								[
-									require.resolve('@babel/preset-env'),
-									{
-										useBuiltIns: 'entry',
-									},
-								],
-							],
-						},
-					},
-				},
-			],
+			rules: [],
 		},
 		plugins: [
 			new CaseSensitivePathsPlugin({ debug: false }),
@@ -82,6 +61,33 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			warnings: false,
 		},
 	};
+
+	// JS
+	if (options.rules.js) {
+		webpackConfig.resolve.extensions.push('.js', '.jsx', '.mjs');
+
+		webpackConfig.module.rules.push(
+			{
+				test: /\.(js|jsx|mjs)$/,
+				exclude: /node_modules/,
+				use: {
+					loader: require.resolve('babel-loader'),
+					options: {
+						babelrc: false,
+						cacheDirectory: true,
+						presets: [
+							[
+								require.resolve('@babel/preset-env'),
+								{
+									useBuiltIns: 'entry',
+								},
+							],
+						],
+					},
+				},
+			},
+		);
+	}
 
 	// typescript
 	if (options.rules.ts) {

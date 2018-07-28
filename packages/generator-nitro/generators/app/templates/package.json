@@ -129,7 +129,7 @@
       "stylelint"
     ],
     "src/**/*.json": [
-      "yarn lint:data"
+      "npm run lint:data"
     ],
     "src/**/*.js": [
       "eslint"

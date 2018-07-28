@@ -17,7 +17,7 @@ default configuration:
 
 Use following npm scripts for your test workflow:
 
-* `yarn visual-reference` generates new reference screenshots with current configuration
-* `yarn visual-test` runs the tests, compares the results against the reference screenshots 
+* `npm run visual-reference` generates new reference screenshots with current configuration
+* `npm run visual-test` runs the tests, compares the results against the reference screenshots 
 and generates a report under `public/reports/backstop/html/`
-* `yarn visual-approve` updates the references with results from last test
+* `npm run visual-approve` updates the references with results from last test

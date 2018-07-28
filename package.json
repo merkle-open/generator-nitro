@@ -6,7 +6,7 @@
   "author": "The Nitro Team",
   "engines": {
     "node": ">=8 <11",
-    "npm": ">=5 <7"
+    "npm": ">=5.2 <7"
   },
   "scripts": {
     "commit": "git-cz",

@@ -6,8 +6,8 @@
   "repository": "namics/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=6 <11",
-    "npm": ">=3 <7"
+    "node": ">=8 <11",
+    "npm": ">=5.2 <7"
   },
   "main": "generators/app/index.js",
   "scripts": {
@@ -35,12 +35,12 @@
   "dependencies": {
     "adm-zip": "0.4.7",
     "chalk": "2.4.1",
-    "config": "1.31.0",
+    "config": "2.0.0",
     "git-config": "0.0.7",
     "glob": "7.1.2",
     "lodash": "4.17.10",
     "request": "2.87.0",
-    "yeoman-generator": "3.1.0",
+    "yeoman-generator": "3.1.1",
     "yosay": "2.0.2"
   },
   "devDependencies": {

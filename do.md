@@ -1,6 +1,6 @@
 # do / issues
 
-* work on generator & documentation
+* test
 
 ## prio 2
 

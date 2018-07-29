@@ -11,10 +11,15 @@ Thanks for taking the time to submit a pull request
 * Enhancement
 * Other, please explain:
 
-The pull request refers to:
+The pull request refers to the:
 
-* The generator
-* The nitro project template
+* generator (generator-nitro)
+* nitro app (@nitro/app)
+* nitro exporter (@nitro/exporter)
+* nitro gulp tasks (@nitro/gulp)
+* nitro webpack config (@nitro/webpack)
+* example nitro project (project-nitro)
+* example nitro project with twig engine (project-nitro-twig)
 
 ## What changes did you make?
 

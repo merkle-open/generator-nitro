@@ -21,8 +21,8 @@ The issue refers to the:
 * nitro exporter (@nitro/exporter)
 * nitro gulp tasks (@nitro/gulp)
 * nitro webpack config (@nitro/webpack)
-* generated nitro project (project-nitro)
-* generated nitro project with twig engine (project-nitro-twig)
+* example nitro project (project-nitro)
+* example nitro project with twig engine (project-nitro-twig)
 
 <!-- Please delete the rest of the template if it's not a bug report -->
 

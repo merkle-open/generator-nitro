@@ -19,11 +19,8 @@ Nitro and the Nitro generator are tested with the current
 
 ### Create a new project
 
-This creates a new project in the current directory.
-
-#### The npx way
-
-Using [npx](https://www.npmjs.com/package/npx) (npm >= 5.2):
+This creates a new project in the current directory 
+using [npx](https://www.npmjs.com/package/npx) (npm >= 5.2):
 
 First, uninstall the previously installed global package "generator-nitro"
 
@@ -37,26 +34,12 @@ npm uninstall -g generator-nitro
 npx -p yo -p generator-nitro@latest -- yo nitro
 ```
 
-#### The global way
-
-Install `yo` and `generator-nitro` globally:
-
-```
-yarn global add yo generator-nitro
-```
-
-Then run:
-
-```
-yo nitro
-```
-
 ### Update a project
 
 Updating a project to the newest nitro version is quite simple:
 
 ```
-yarn nitro:update
+npm run nitro:update
 ```
 
 ### Project Generation
@@ -64,7 +47,6 @@ yarn nitro:update
 On creating a new project, you will be guided through some configuration options:
 
 * Desired Name `--name=` (default: current directory name)
-* Desired CSS preprocessor `--pre=` (`less` or `scss`; default: `scss`)
 * Desired template engine `--templateEngine=` (`hbs` or `twig`; default: `hbs`)
 * Using client side templates `--clientTpl` (default: false)
 * Including example code `--exampleCode` (default: false)
@@ -75,9 +57,7 @@ The choosen options will be stored for the next project generation.
 It's possible to pass in these options through the command line:
 
 ```
-npx -p yo -p generator-nitro@latest -- yo nitro --name=myproject --pre=less --templateEngine=hbs --clientTpl
-# or
-yo nitro --name=myproject --pre=less --templateEngine=hbs --clientTpl
+npx -p yo -p generator-nitro@latest -- yo nitro --name=myproject --templateEngine=hbs --clientTpl
 ```
 
 You may bypass the questions with `--skip-questions`. This will use the defaults for not specified options
@@ -110,10 +90,10 @@ See how to use the [generated app](generators/app/templates/project/docs/nitro.m
 
 ## Testing
 
-Running `yarn test` will run the `jasmine` unit tests.
+Running `npm test` will run the lint task and the `jasmine` unit tests.
 
 ```
-yarn test
+npm test
 ```
 
 ## Contribute

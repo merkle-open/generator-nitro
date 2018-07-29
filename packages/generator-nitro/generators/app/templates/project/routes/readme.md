@@ -1,4 +1,4 @@
-## Custom routes
+# Custom routes
 
 If your project needs any additional or custom routes (e.g. to simulate an ajax call to an api) you can define 
 them in this folder. Every file which has the .js extension will be included. 

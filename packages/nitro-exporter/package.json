@@ -8,12 +8,17 @@
   "engines": {
     "node": ">=8 <11"
   },
+  "main": "index.js",
   "scripts": {
     "lint": "eslint .",
     "prepublishOnly": "nsp check --output summary",
     "test": "npm run lint"
   },
-  "main": "index.js",
+  "files": [
+    "lib",
+    "tasks",
+    "index.js"
+  ],
   "keywords": [
     "nitro",
     "exporter"

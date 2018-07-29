@@ -242,6 +242,7 @@ module.exports = class extends Generator {
 			'config/webpack/options.js',
 			'project/docs/nitro.md',
 			'project/docs/client-templates.md',
+			'project/helpers/readme.md',
 			'src/patterns/molecules/example/example.hbs',
 			'src/patterns/molecules/example/example.twig',
 			'src/patterns/molecules/example/schema.json',

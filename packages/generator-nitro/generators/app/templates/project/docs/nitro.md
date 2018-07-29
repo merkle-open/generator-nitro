@@ -9,29 +9,24 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 ## Features
 
 * Simple and proven project structure
-* CSS/JS concatenation and minification
-* LESS/SCSS support (with caching for optimal performance)
-* ES2015 with babel transpiling
+* Webpack Builder
+* Gulp Tasks for additional functionality
 * Linting, Source Maps, PostCSS & Browsersync
-* Jasmine tests with Karma test runner
-* Yeoman pattern generator<% if (options.clientTpl) { %>
+* Pattern generator<% if (options.clientTpl) { %>
 * [Client side templates](client-templates.md)<% } %><% if (options.exporter) { %>
-* [Static Exports](nitro-exporter.md)<% } %><% if (options.release) { %>
-* [Releases](nitro-release.md)<% } %>
+* [Static Exports](nitro-exporter.md)<% } %>
 
 ## Preparation
 
 This application was created by the yeoman generator for nitro.  
 Before using, you need of course [node](https://nodejs.org/) installed.
 Nitro is tested with the current 
-["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 6.x and 8.x).
-
-And also you need [yarn](https://www.npmjs.com/package/yarn).
+["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x).
 
 Install the project dependencies in the project root:
 
 ```
-yarn install
+npm install
 ```
 
 ## Starting the app
@@ -39,7 +34,7 @@ yarn install
 Use
 
 ```
-yarn start
+npm start
 ```
 
 ... to start in development mode
@@ -47,27 +42,27 @@ yarn start
 For production (prototype server) mode use:
 
 ```
-yarn prod
+npm run prod
 ```
 
-The Nitro app will run on port `8080` by default, the proxy on `8081` (only runs with `dev` task).  
+The Nitro app will run on port `8080` by default, the proxy on `8081` (only runs in develpment mode).  
 If you want the app to run on another port use [config](nitro-config.md) or add env vars to the tasks:
 
 ```
-PORT=8000 PROXY=8001 yarn start
+PORT=8000 PROXY=8001 npm start
 ```
 
 The port to be used in production can be set the same way:
 
 ```
-PORT=3000 yarn prod
+PORT=3000 npm run prod
 ```
 
 This works a bit different on **Windows**. Use the following commands in prompt:
 
 ```
-set PORT=8000 && set PROXY=8001 && yarn start
-set PORT=3001 && yarn prod
+set PORT=8000 && set PROXY=8001 && npm start
+set PORT=3001 && npm run prod
 ```
 
 ## Configuring
@@ -87,6 +82,12 @@ Some global configuration is placed in `package.json`
 For defining target browsers, [browserslist](https://github.com/ai/browserslist) is used.    
 This config is shareable between different frontend tools. If not defined, the default browsers from browserslist would be taken.
 
+#### githooks
+
+Nitro uses [husky](https://github.com/typicode/husky) for githooks.
+
+The configuration is placed in the "husky" and the corresponding "lint-staged" node in `package.json`
+
 ## Daily Work - Creating Patterns & Pages
 
 ### Creating Patterns
@@ -97,36 +98,37 @@ with [JSON schema](http://json-schema.org) format (draft-04). Nitro uses [ajv](h
 
 For a better overview it is useful to define different types of patterns in [config](nitro-config.md).
 
-It is recommended to make subfolders like `atoms`, `molecules` & `organisms`.
+It is recommended to make subfolders like `atoms`, `molecules`, `organisms`, ...
 
 A pattern uses the following structure:
 
 ```
-/example
-/example/example.<%= options.viewExt %>
-/example/schema.json
-/example/css/example.css
-/example/js/example.js
-/example/_data/example.json
+example/
+example/readme.md
+example/example.<%= options.viewExt %>
+example/schema.json
+example/css/example.scss
+example/js/example.js
+example/_data/example.json
 ```
 
 Modifiers (CSS) and decorators (JavaScript) are created using the following conventions:
 
 ```
-/example/css/modifier/example-<modifier>.css
-/example/js/decorator/example-<decorator>.js
+example/css/modifier/example-<modifier>.scss
+example/js/decorator/example-<decorator>.js
 ```
 
-Different data variations have to be placed in the `_data` folder:
+Different data variations may be placed in the `_data` folder:
 
 ```
-/example/_data/example-variant.json
+example/_data/example-variant.json
 ```
 
 ### Creating pattern with npm script
 
 ```
-yarn nitro:pattern
+npm run nitro:pattern
 ```
 
 This will copy the templates (nitro.patterns.\<type\>.template) from config to the configured target.
@@ -134,7 +136,7 @@ This will copy the templates (nitro.patterns.\<type\>.template) from config to t
 Optionally you can give the name:
 
 ```
-yarn nitro:pattern <name>
+npm run nitro:pattern <name>
 ```
 
 ### Creating pattern elements
@@ -145,23 +147,24 @@ For this, place a new pattern in the folder `elements` inside a pattern.
 Element `example-sub` in pattern `example`:
 
 ```
-/example/elements/example-sub
-/example/elements/example-sub/example-sub.<%= options.viewExt %>
-/example/elements/example-sub/css/example-sub.css
-/example/elements/example-sub/js/example-sub.js
-/example/elements/example-sub/_data/example-sub.json
+example/elements/example-sub/
+example/elements/example-sub/readme.md
+example/elements/example-sub/example-sub.<%= options.viewExt %>
+example/elements/example-sub/css/example-sub.scss
+example/elements/example-sub/js/example-sub.js
+example/elements/example-sub/_data/example-sub.json
 ```
 
 It's recommended to start the name of a subpattern with the pattern name and to use the same pattern type for the sub element.
 
 ### Creating pages
 
-Create a new `*.<%= options.viewExt %>` file in the `views` folder. (You can make as many subfolders as you want.)
+Create a new `*.<%= options.viewExt %>` file in the `/src/views` folder. (You can make as many subfolders as you want.)
 
 ```
-/views/index.<%= options.viewExt %>
-/views/content.<%= options.viewExt %>
-/views/content/variant.<%= options.viewExt %>
+/src/views/index.<%= options.viewExt %>
+/src/views/content.<%= options.viewExt %>
+/src/views/content/variant.<%= options.viewExt %>
 ```
 
 Your new page can then be called by the according URL (with or without an extension).  
@@ -176,7 +179,7 @@ http://localhost:8080/content-variant
 #### Layout
 
 By default views use a simple layout mechanism.
-The default layout template `views/_layouts/default.<%= options.viewExt %>` is used for every view.<% if (options.templateEngine === 'twig') { %>
+The default layout template `/src/views/_layouts/default.<%= options.viewExt %>` is used for every view.<% if (options.templateEngine === 'twig') { %>
 The snippet `<!-- Replace With Body -->` includes the contents from a view.<% } else { %>
 The block `{{{body}}}` includes the contents from a view.<% } %>
 
@@ -195,7 +198,7 @@ Simple default layout:
 
 To remove the layout feature, simply delete the folder `views/_layout`.
 
-Different layouts are placed in `views/_layouts/`. Link them to your view [in your page datafile](#use-different-layout).
+Different layouts are placed in `/src/views/_layouts/`. Link them to your view [in your page datafile](#use-different-layout).
 
 ### Render patterns
 
@@ -256,8 +259,8 @@ Maybe using your pattern templates with transclusion could be helpful in some ca
 Call it as block like this:
 
 ```
-{{#pattern 'box'}}
-    {{pattern 'example'}}
+{{#pattern name='box'}}
+    {{pattern name='example'}}
 {{/pattern}}
 ```<% } %>
 
@@ -266,8 +269,8 @@ Call it as block like this:
 The pattern helper will find also pattern elements.
 
 ```<% if (options.templateEngine === 'twig') { %>
-{% pattern 'example-sub' %}<% } else { %>
-{{pattern 'example-sub'}}<% } %>
+{% pattern name='example-sub' %}<% } else { %>
+{{pattern name='example-sub'}}<% } %>
 ```
 
 ... looks for following paths
@@ -286,17 +289,15 @@ Render a partial (<%= options.viewExt %> snippet). Partials are placed in `views
 
 Partials are registered with [hbs-utils](https://www.npmjs.com/package/hbs-utils#partials), 
 so keep in mind that every space or hyphen in filenames is replaced with an underscore.
-(e.g. use `{{> file_name}}` to load `views/_partials/file-name.<%= options.viewExt %>`)<% } %>
+(e.g. use `{{> file_name}}` to load `/src/views/_partials/file-name.<%= options.viewExt %>`)<% } %>
 
 ### Render placeholders
 
-Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `views/_placeholders/` as `*.<%= options.viewExt %>` files.  
-The following two examples do the same and render the file `content/example.<%= options.viewExt %>` from `views/_placeholders/`.
+Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `/src/views/_placeholders/` as `*.<%= options.viewExt %>` files.  
+The following example renders the file `content/example.<%= options.viewExt %>` from `/src/views/_placeholders/`.
 
 ```<% if (options.templateEngine === 'twig') { %>
-{% placeholder 'content' 'example' %}
 {% placeholder name='content' template='example' %}<% } else { %>
-{{placeholder 'content' 'example'}}
 {{placeholder name='content' template='example'}}<% } %>
 ```
 
@@ -305,23 +306,23 @@ The following two examples do the same and render the file `content/example.<%= 
 #### Data per page
 
 You may pass data to your templates (view, layout, partial, pattern) per view.  
-Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`. (Use the same folder structure as in `views`)
+Put a file with the same name as the view in the folder `/src/views/_data/` with the file extension `.json`. (Use the same folder structure as in `/src/views`)
 
 ```
-/views/index.<%= options.viewExt %>
-/views/_data/index.json
+/src/views/index.<%= options.viewExt %>
+/src/views/_data/index.json
 http://localhost:8080/index
 
-/views/content/variant.<%= options.viewExt %>
-/views/_data/content/variant.json
+/src/views/content/variant.<%= options.viewExt %>
+/src/views/_data/content/variant.json
 http://localhost:8080/content-variant
 ```
 
 It's also possible to use a custom data file by requesting with a query param `?_data=...`:
 
 ```
-/views/index.<%= options.viewExt %>
-/views/_data/index-test.json
+/src/views/index.<%= options.viewExt %>
+/src/views/_data/index-test.json
 http://localhost:8080/index?_data=index-test
 ```
 
@@ -331,20 +332,20 @@ If you need a different layout for a page, do so in the corresponding view data 
 (View data files needs to be placed in same directory structure than views)
 
 ```
-    /views/_data/index.json
+    /src/views/_data/index.json
     {
         "_layout": "home"
     }
 
-    /views/_layouts/home.<%= options.viewExt %>
+    /src/views/_layouts/home.<%= options.viewExt %>
     http://localhost:8080/index
 ```
 
 ...or you may change the layout temporarily by requesting a page with the query param `?_layout=...`
 
 ```
-/views/index.<%= options.viewExt %>
-/views/_layouts/home.<%= options.viewExt %>
+/src/views/index.<%= options.viewExt %>
+/src/views/_layouts/home.<%= options.viewExt %>
 http://localhost:8080/index?_layout=home
 ```
 
@@ -368,12 +369,9 @@ You may overwrite data from views & patterns in request parameters.
 
 `?_nitro.pageTitle=Testpage` will overwrite the data for the <%= options.templateEngine %> expression `{{_nitro.pageTitle}}`
 
-## Assets
+## Webpack
 
-One of Nitro's main feature is asset concatenation for CSS and JavaScript files.
-If changed, the files will be updated on every change, therefore you'll always get the latest version.
-
-You can configure the include order of your assets by defining patterns in [config](nitro-config.md).
+### todo
 
 ### Prototype Assets
 
@@ -382,7 +380,7 @@ Place [code for development](../../src/proto/readme.md) in the corresponding dir
 ## Translations
 
 Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the helper described in the following section.  
-Translations are stored in `project/locales/[lang]/translation.json`.
+Translations are stored in `/project/locales/[lang]/translation.json`.
 
 Express Middleware configuration:
 
@@ -429,14 +427,13 @@ data = {
 
 ### Resource linking
 
-To stay consistent you should favour the use of relative paths with a leading slash.
+To stay consistent you should favour the use of relative paths with a leading slash in all your view files.
 Link to resources relatively to the `project`-folder **with** a leading slash.
 
 ```html
 <link rel="stylesheet" href="/assets/ui.css" type="text/css" />
 <link rel="shortcut icon" href="/assets/img/icon/favicon.ico" type="image/x-icon" />
 <script src="/assets/ui.js"></script>
-background: url(/assets/img/bg/texture.png) scroll 0 0 no-repeat;
 <a href="/content.<%= options.viewExt %>">Contentpage</a>
 ```
 
@@ -460,60 +457,13 @@ Navigation   -> T.Module.Navigation   -> m-navigation
 NavMain      -> T.Module.NavMain      -> m-nav-main
 AdminNavMain -> T.Module.AdminNavMain -> m-admin-nav-main
 ```
-### Custom <%= options.templateEngine %> helpers
-
-Custom <%= options.templateEngine %> helpers will be automatically loaded if put into to `project/helpers` directory. 
-An example could look like this:
-
-```js<% if (options.templateEngine === 'twig') { %>
-const twigUtils = require('../utils');
-
-module.exports = function (Twig) {
-	return {
-		type: 'helper-name',
-		regex: /^helper-name/,
-		next: [],
-		open: true,
-		compile: function(token) {
-			// do any parameter logic here
-			delete token.match;
-			return token;
-		},
-		parse: function(token, context, chain) {
-			try {
-				// do any template / render logic here
-
-				// return the markup
-				return {
-					chain: chain,
-					output: 'Output Markup'
-				};
-
-			} catch (e) {
-				return {
-					chain: chain,
-					output: twigUtils.logAndRenderError(e)
-				};
-			}
-		}
-	};
-};<% } else { %>
-module.exports = function(foo) {
-    // Helper Logic
-};<% } %>
-```
-<% if (options.templateEngine === 'twig') { %>
-The helper name get's defined in the type property above. 
-The regex property needs to be extended to contain any possible arguments of the helper.
-For more complex example's please check out the core helpers.<% } else { %>
-The helper name will automatically match the filename, so if you name your file `foo.js` your helper will be called `foo`.<% } %>
 
 ### JSON Endpoints
 
 If you need to mock service endpoints, you can simply put JSON files into a directory inside the `/public` directory as
 those are directly exposed.
 
-`/public/service/posts.json` will be available under `/service/posts.json`
+`/public/api/posts.json` will be available under `/api/posts.json`
 and can be used for things like AJAX requests.
 
 ### Custom Routes
@@ -522,55 +472,11 @@ If you need more custom functionality in endpoints
 you can put your custom routes with their logic
 into the [`project/routes` directory](project/routes/).
 
-### Using another Template Engine
-
-If you don't want to use [Handlebars](http://handlebarsjs.com/) or [Twig](https://github.com/twigjs/twig.js) as Nitro's Template Engine
-you can configure your own Engine.  
-This example shows how to replace Handlebars with [Nunjucks](https://mozilla.github.io/nunjucks/) as an example.
-
-All these steps need to be performed in `server.js`.
-
-1. Replace the line `hbs = require('./app/templating/hbs/engine')` with `nunjucks = require('nunjucks')`
-2. Remove the partials line and  `app.engine(config.get('nitro.viewFileExtension'), hbs.__express);`
-3. Configure nunjucks as Express' Template Engine with the following block:
-
-```js
-nunjucks.configure(
-    config.get('nitro.basePath') + config.get('nitro.viewDirectory'),
-    {
-        autoescape: true,
-        express: app
-    },
-);
-```
-
-Now Restart Nitro and it'll run with Nunjucks.
-
-**Be aware**, you'll need to adjust all your views and patterns to work with the new engine. 
-Nitro only provides a `pattern` helper for handlebars / twig.
-
 ## Miscellaneous
 
 ### Commandline
 
-Use or create new scripts in `package.json` to run with yarn.
-
-### Git Hooks
-
-Info: In next major version, we possibly switch to [husky](https://github.com/typicode/husky), so it's kind of deprecated ;-)
-
-Nitro tries to install a "post-merge" and a "pre-commit" git hook with every `yarn install` (if we are in git root).
-
-You may [change this or add other hooks](../.githooks/readme.md) in `project/.githooks`.
-
-#### post-merge
-
-* runs `yarn install` if someone changes `yarn.lock`
-* syncs the git hooks if someone changes one.
-
-#### pre-commit
-
-* runs `yarn test` 
+Use or create new scripts in `package.json` to run with npm.
 
 ### Contributing
 
@@ -579,19 +485,9 @@ You may [change this or add other hooks](../.githooks/readme.md) in `project/.gi
 <% if (options.exampleCode) { %>
 ### Example Project Includes
 
-* [YUI CSS Reset 3.18.1](http://yuilibrary.com/yui/docs/cssreset/)
 * Favicon & Home-Icons from Nitro (replace with your own)
-* Pattern `example` and `icon` and some styles in src/assets/css (you don't need them)
+* Some patterns in `/src/patterns/` and some code examples in `/src/shared/`
 <% } %>
-#### Client Dependencies
-
-The following packages are installed by the [app](#name) generator as dependencies:
-
-* [jQuery 3.3.1](http://jquery.com/)
-* [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)<% if (options.clientTpl) { %>
-* [Handlebars 4.0.11](https://github.com/components/handlebars.js)<% } %>
-* [Babel Polyfill 6.26.0](https://www.npmjs.com/package/babel-polyfill)
-
 ### Credits
 
 This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version <%= version %>).

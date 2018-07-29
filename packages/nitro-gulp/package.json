@@ -13,8 +13,8 @@
     "prepublishOnly": "nsp check --output summary"
   },
   "files": [
-    "tasks",
-    "lib"
+    "lib",
+    "tasks"
   ],
   "keywords": [
     "frontend",

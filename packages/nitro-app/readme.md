@@ -2,22 +2,11 @@
 
 # Nitro App
 
-Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.  
-It provides a proven but flexible structure to develop your frontend code, even in a large team.  
-Keep track of your code with a modularized frontend. This app and the suggested
-[atomic design](http://bradfrost.com/blog/post/atomic-web-design/) and [BEM](https://en.bem.info/method/definitions/)
-concepts could help.  
-Nitro is simple, fast and flexible. It works on macOS, Windows and Linux. Use this app for all your frontend work.
-
-## Usage
-
-Before using, you need of course [node](https://nodejs.org/) installed.  
-Nitro and the Nitro generator are tested with the current 
-["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x).
+This package is the main server app for a [nitro](https://github.com/namics/generator-nitro/) project.
 
 ## Changelog
 
-Todo: Recent changes can be viewed on Github on the [Releases Page](https://github.com/namics/generator-nitro/releases)
+Recent changes can be viewed on Github on the [Releases Page](https://github.com/namics/generator-nitro/releases)
 
 ## License
 

@@ -1,6 +1,6 @@
 # shared
 
-## Directories
+Recommended Directory structure:
 
 * `assets/`
 * `base/`

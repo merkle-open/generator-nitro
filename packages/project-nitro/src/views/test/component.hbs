@@ -1,0 +1,85 @@
+<style>
+	h1 {
+		font: italic small-caps bold 1.2rem Georgia;
+		padding: 1rem 2rem 0;
+	}
+</style>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 offset-md-2">
+			<h1>Ex</h1>
+			{{pattern 'Ex'}}
+			{{component 'Ex' 'ex-blue'}}
+			{{pattern 'Ex' 'ex-blue' name='NavMain' data='ex'}}
+
+			<h1>Ex Tests</h1>
+			{{pattern 'Ex' 'ex' data='ex-blue'}}
+			{{pattern name='Ex' template='ex2'}}
+			{{pattern name='Ex' data='ex-blue' template='ex'}}
+			{{pattern name='Ex' data='ex-blue' template='ex2'}}
+			{{pattern name='Ex' data='ex' template='ex2'}}
+
+			<h1>NavMain ...</h1>
+			{{pattern 'NavMain'}}
+			{{pattern 'NavMain' 'navmain-dec'}}
+			{{pattern 'NavMain' data='navmain-dec' template='navmain2'}}
+			{{pattern 'nav-mains'}}
+			{{pattern 'nav-mains' template='nav-mains2'}}
+			{{pattern 'Nav Mai'}}
+
+			<h1>Fehlerfälle</h1>
+			{{pattern 'Ex' 'ex-blue' name='Ex' data='ex' template='XXX'}}
+			{{pattern 'Ex' template='other-ex'}}
+			{{pattern 'subelement'}}
+			{{pattern name='btn' data='btn-error'}}
+
+			<h1>Placeholder</h1>
+			{{placeholder 'content' 'xample'}}
+			{{placeholder 'content' template='xample'}}
+			{{placeholder name='content' template='xample'}}
+			{{#each accordion}}
+				{{placeholder 'accordion' template}}
+			{{/each}}
+			{{#each accordion}}
+				{{placeholder 'accordion' template=template}}
+				{{placeholder name='accordion' template=template}}
+			{{/each}}
+
+			<h1>Data as attributes</h1>
+			{{pattern 'button'}}
+			{{pattern name='button' disabled=true text='special button'}}
+			{{pattern name='box'}}
+			{{pattern 'box' modifier='dark'}}
+
+			<h1>Transclusion</h1>
+			{{#pattern 'button'}}My Text{{/pattern}}
+			{{#component name='box'}}Mein <strong>Markup</strong>{{/component}}
+			{{#pattern 'box'}}
+				This box is filled with Text<br />
+				{{#pattern 'button'}}Send{{/pattern}}
+				{{#pattern 'button' disabled=true}}Reset{{/pattern}}
+			{{/pattern}}
+
+			<h1>Icons</h1>
+			{{#pattern 'box'}}
+				{{#pattern 'button'}}Send {{pattern name='ico' icon='arrow-right'}}{{/pattern}}
+				<p style="font-size: 5rem;">
+					{{pattern name='ico' icon='arrow-right'}}
+					{{pattern name='ico' icon='chevron-up'}}
+					{{pattern name='ico' icon='flag-ch'}}
+					{{pattern name='ico' icon='close'}}
+					{{pattern name='ico' icon='exit-search'}}
+					{{pattern name='ico' icon='expert-tool-user'}}
+					{{pattern name='ico' icon='icon-info'}}
+				</p>
+			{{/pattern}}
+
+			<h1>Special</h1>
+			<h2>Reserved Words</h2>
+			{{pattern name='foo' data='foo-bar'}}
+			{{pattern name='map' data='map-map'}}
+			{{pattern name='new' data='new-delete'}}
+		</div>
+	</div>
+</div>

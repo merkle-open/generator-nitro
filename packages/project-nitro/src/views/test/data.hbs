@@ -5,17 +5,17 @@
 			<p>{{test.text}} = test.text (view)</p>
 
 			{{#unless _nitro.production}}
-				{{pattern 't' 't-red'}}
+				{{pattern name='t' data='t-red'}}
 				<hr>
-				{{pattern 't'}}
+				{{pattern name='t'}}
 				<hr>
-				{{pattern 't' 't-red'}}
+				{{pattern name='t' data='t-red'}}
 				<hr>
-				{{pattern 'Ex'}}
+				{{pattern name='Ex'}}
 			{{/unless}}
 
 			<hr>
-			{{pattern 'Ex' 'ex-subpattern'}}
+			{{pattern name='Ex' data='ex-subpattern'}}
 			<hr />
 			<p>{{test.text}} = test.text (view)</p>
 		</div>

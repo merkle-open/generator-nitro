@@ -24,6 +24,10 @@ const config = {
 				src: 'src/patterns/atoms/icon/img/icons/*.svg',
 				dest: 'public/assets/svg',
 			},
+			{
+				src: 'src/patterns/test/ico/img/icos/*.svg',
+				dest: 'public/assets/svg',
+			},
 		],
 		minifyImages: [
 			// copies and minifies all source images to dest folder

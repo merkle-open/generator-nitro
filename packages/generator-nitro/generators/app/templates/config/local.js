@@ -9,7 +9,7 @@
 module.exports = {
 	nitro: {
 		mode: {
-			offline: true,
+			offline: false,
 		},
 	},
 };

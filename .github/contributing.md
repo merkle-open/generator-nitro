@@ -14,7 +14,7 @@ It's a good opportunity to influence the future direction of nitro and the gener
 
 In order for us to help you please check that you've completed the following steps:
 
-* Make sure you're on the latest version `npm install -g generator-nitro`
+* Make sure you're on the latest version
 * Use the search feature to ensure that the issue hasn't been reported before
 * Include as much information about the issue as possible, including
 any output you've received, what OS and version you're on, etc.
@@ -27,7 +27,7 @@ any output you've received, what OS and version you're on, etc.
 * Non-trivial changes should be discussed in an issue first
 * Please check project guidelines from `.editorconfig` & `.eslintrc`
 * Develop in a topic branch
-* Make sure test-suite passes: `yarn test` (This includes linting).
+* Make sure test-suite passes: `npm run test` (This includes linting).
 * Push to your fork and submit a pull request to the development branch
 
 Some things that will increase the chance that your pull request is accepted:
@@ -38,10 +38,8 @@ Some things that will increase the chance that your pull request is accepted:
 
 #### Quick Start
 
-- Install node & yarn and the `yo` package globally
-- Fork, then clone the generator-nitro repo and then run `yarn install` in them
-- Link the generator using `npm link`. (Before, you may change the generator name in `package.json` to a new name, e.g. `generator-nitro-dev`)
-- Run `yo` and you should now see the linked generator in the list (e.g. Nitro Dev)
-- Start hacking ;-)
+* You need [node](../.node-version) of course
+* Fork, then clone the generator-nitro repo and then run `npm install` in them
+* Start hacking ;-)
 
 You can keep your repo up to date by running `git pull --rebase upstream master`.

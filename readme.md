@@ -1,25 +1,38 @@
 # Nitro
 
-Nitro monorepo:
+Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.
+It provides a proven but flexible structure to develop your frontend code, even in a large team.
 
-* `packages/generator-nitro`
-* `packages/nitro-app`
-* `packages/nitro-exporter`
-* `packages/nitro-gulp`
-* `packages/nitro-webpack`
-* `packages/project-nitro`
-* `packages/project-nitro-twig`
+The codebase is split up in different packages, organized in a monorepo.
+Besides the main functionality including a yeoman generator, this monorepo includes also example projects
 
-## do / issues
+* `packages/generator-nitro` (yeoman generator)
+* `packages/nitro-app` (main serverside app)
+* `packages/nitro-exporter` (nitro exporter package)
+* `packages/nitro-gulp` (nitro gulp task runner)
+* `packages/nitro-webpack` (nitro webpack config)
+* `packages/project-nitro` (example project with handlebars rendering engine)
+* `packages/project-nitro-twig` (example project with twig rendering engine)
 
-* work on generator & documentation
+## Getting started
 
-### prio 2
+Before using, you need of course [node](https://nodejs.org/) installed.  
+Nitro and the Nitro generator are tested with the current 
+["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x).
 
-### prio 3 (after launch)
+1.  Install base project:
 
-* check stylelint config (works unreliable & lintDirtyModulesOnly does not work as expected)
-* sourcemaps for production? [issue](https://github.com/webpack-contrib/mini-css-extract-plugin/issues/141)
-* eslint should lint only changed files
-* use "gondel"
-* performance
+```
+npm install
+```
+
+2.  Start example project:
+
+```
+cd packages/project-nitro
+npm start
+```
+
+## Changelog
+
+Recent changes can be viewed on Github on the [Releases Page](https://github.com/namics/generator-nitro/releases)

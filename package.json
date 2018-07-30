@@ -37,6 +37,6 @@
     "eslint": "4.19.1",
     "eslint-plugin-import": "2.13.0",
     "lerna": "3.0.0-rc.0",
-    "markdownlint-cli": "0.11.0"
+    "markdownlint-cli": "0.12.0"
   }
 }

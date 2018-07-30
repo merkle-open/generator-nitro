@@ -35,7 +35,7 @@
   "dependencies": {
     "adm-zip": "0.4.7",
     "chalk": "2.4.1",
-    "config": "2.0.0",
+    "config": "2.0.1",
     "git-config": "0.0.7",
     "glob": "7.1.2",
     "lodash": "4.17.10",
@@ -53,6 +53,6 @@
     "nsp": "3.2.1",
     "pkg-ok": "2.2.0",
     "yeoman-assert": "3.1.1",
-    "yeoman-test": "1.8.0"
+    "yeoman-test": "1.9.0"
   }
 }

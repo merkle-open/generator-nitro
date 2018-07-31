@@ -1,0 +1,23 @@
+{
+	"modifier": "",
+	"decorator": "",
+	"linkText": "Go to (t): ",
+	"dynInsert" : {
+		"you": "ernscht"
+	},
+	"dynChildren": {
+		"count": 1
+	},
+	"first" : "first",
+	"one" : "a",
+	"two" : "b",
+	"three" : "c",
+	"four" : "d",
+
+	"content": "content string",
+	"linkText": "linkText (t)",
+	"test" : {
+		"text": "test.text (t)",
+		"test": "test.test (t)"
+	}
+}

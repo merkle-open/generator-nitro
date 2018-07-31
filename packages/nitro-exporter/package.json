@@ -1,0 +1,40 @@
+{
+  "name": "@nitro/exporter",
+  "version": "0.1.0",
+  "description": "An exporting package for nitro. Generate static packages with ease.",
+  "license": "MIT",
+  "repository": "namics/generator-nitro",
+  "author": "The Nitro Team",
+  "engines": {
+    "node": ">=8 <11"
+  },
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "prepublishOnly": "nsp check --output summary",
+    "test": "npm run lint"
+  },
+  "files": [
+    "lib",
+    "tasks",
+    "index.js"
+  ],
+  "keywords": [
+    "nitro",
+    "exporter"
+  ],
+  "dependencies": {
+    "array-unique": "0.3.2",
+    "del": "3.0.0",
+    "glob": "7.1.2",
+    "gulp-filter": "5.1.0",
+    "gulp-sequence": "1.0.0",
+    "gulp-zip": "4.2.0"
+  },
+  "devDependencies": {
+    "@namics/eslint-config": "5.0.1",
+    "eslint": "4.19.1",
+    "eslint-plugin-import": "2.13.0",
+    "nsp": "3.2.1"
+  }
+}

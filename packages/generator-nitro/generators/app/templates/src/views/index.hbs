@@ -1,0 +1,14 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 offset-md-2"><% if (options.exampleCode) { %>
+			<h1>{{pattern name='icon' icon='nitro'}}&nbsp;Nitro example page</h1>
+			{{pattern name='example'}}
+			{{pattern name='example' data='example-blue'}}<% if (options.clientTpl) { %>
+			{{pattern name='example' data='example-template'}}<% } %>
+			{{#pattern name='box'}}
+				<a href="example-patterns">more examples</a>
+			{{/pattern}}<% } else { %>
+			<h1>Index</h1><% } %>
+		</div>
+	</div>
+</div>

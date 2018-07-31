@@ -1,0 +1,9 @@
+<div class="m-ex{{#if modifier}} m-ex--{{modifier}}{{/if}}" data-t-name="Ex"{{#if decorator}} data-t-decorator="{{decorator}}"{{/if}}>
+	<h2 class="m-ex__headline">{{title}}</h2>
+	<ul class="js-m-ex__list">
+		{{#each links}}
+			{{> partial/ex.link}}
+		{{/each}}
+	</ul>
+	<button class="m-ex__button js-m-ex__more">more links</button>
+</div>

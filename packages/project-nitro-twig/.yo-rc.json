@@ -1,0 +1,9 @@
+{
+  "generator-nitro": {
+    "name": "project-nitro-twig",
+    "templateEngine": "twig",
+    "clientTemplates": true,
+    "exampleCode": true,
+    "exporter": true
+  }
+}

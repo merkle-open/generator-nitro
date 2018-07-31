@@ -14,10 +14,15 @@ Before creating an issue please make sure you are using:
 * Feature request
 * Documentation issue or request
 
-The issue refers to:
+The issue refers to the:
 
-* The generator
-* A generated nitro project
+* generator (generator-nitro)
+* nitro app (@nitro/app)
+* nitro exporter (@nitro/exporter)
+* nitro gulp tasks (@nitro/gulp)
+* nitro webpack config (@nitro/webpack)
+* example nitro project (project-nitro)
+* example nitro project with twig engine (project-nitro-twig)
 
 <!-- Please delete the rest of the template if it's not a bug report -->
 
@@ -26,12 +31,14 @@ The issue refers to:
 ## Environment
 
 <!--
-Tell us which operating system you are using, as well as which versions of Node.js, npm and generator-nitro. Run the following to get it quickly:
+Tell us which operating system you are using, as well as which versions of Node.js, 
+npm you are using and give us some information about your dev dependencies. 
+Run the following in your project root to get it quickly:
 
 ```
 node -e "var os=require('os');console.log('Node.js ' + process.version + '\n' + os.platform() + ' ' + os.release())"
 npm --version
-npm list -g generator-nitro
+node -p "require('./package.json').devDependencies" | grep nitro
 ```
 -->
 

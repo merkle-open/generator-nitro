@@ -1,0 +1,10 @@
+{
+	"test": {
+		"example": {
+			"string": "gold",
+			"nested": "All that glitters is not $t(test.example.string).",
+			"sprintf": "The first three letters of %s are: %s, %s and %s",
+			"interpolation": "Hello {{name}}"
+		}
+	}
+}

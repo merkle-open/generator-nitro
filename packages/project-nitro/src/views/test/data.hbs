@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 offset-md-2">
+			<p>{{_nitro.pageTitle}} = pageTitle (view)</p>
+			<p>{{test.text}} = test.text (view)</p>
+
+			{{#unless _nitro.production}}
+				{{pattern name='t' data='t-red'}}
+				<hr>
+				{{pattern name='t'}}
+				<hr>
+				{{pattern name='t' data='t-red'}}
+				<hr>
+				{{pattern name='Ex'}}
+			{{/unless}}
+
+			<hr>
+			{{pattern name='Ex' data='ex-subpattern'}}
+			<hr />
+			<p>{{test.text}} = test.text (view)</p>
+		</div>
+	</div>
+</div>

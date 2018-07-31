@@ -1,0 +1,39 @@
+@import "../../../../shared/utils/colors2/css/colors2.scss";
+
+.a-box {
+	position: relative;
+	margin: 2rem 0 2rem 2rem;
+	padding: 2rem 2rem 1.5rem 2rem;
+	color: $color-gray-1;
+	background-color: $color-gray-8;
+	min-height: 5em;
+
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+		left: -4rem;
+		top: 0;
+		width: 0;
+		height: 0;
+
+		border-bottom: 2rem solid transparent;
+		border-left: 2rem solid transparent;
+		border-right: 2rem solid $color-gray-8;
+	}
+}
+
+// inline mixins
+@mixin box-mixin() {
+	display: block;
+}
+.a-box {
+	@include box-mixin();
+}
+@mixin box-mixin-alternative($display: block) {
+	display: $display;
+}
+.a-box {
+	@include box-mixin-alternative();
+	@include box-mixin-alternative(block);
+}

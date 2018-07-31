@@ -1,0 +1,62 @@
+{
+  "name": "@nitro/gulp",
+  "version": "0.1.1",
+  "description": "nitro gulp",
+  "license": "MIT",
+  "author": "The Nitro Team",
+  "engines": {
+    "node": ">=8 <11"
+  },
+  "scripts": {
+    "lint": "eslint ./tasks ./utils",
+    "test": "npm run lint",
+    "prepublishOnly": "nsp check --output summary"
+  },
+  "files": [
+    "lib",
+    "tasks"
+  ],
+  "keywords": [
+    "frontend",
+    "nitro",
+    "gulp"
+  ],
+  "dependencies": {
+    "backstopjs": "3.5.2",
+    "browser-sync": "2.24.6",
+    "compression": "1.7.3",
+    "config": "2.0.1",
+    "del": "3.0.0",
+    "get-port": "4.0.0",
+    "globby": "7.1.1",
+    "gulp": "3.9.1",
+    "gulp-accessibility": "3.1.1",
+    "gulp-cached": "1.1.1",
+    "gulp-change": "1.0.0",
+    "gulp-declare": "0.3.0",
+    "gulp-header": "2.0.5",
+    "gulp-imagemin": "4.1.0",
+    "gulp-htmllint": "0.0.15",
+    "gulp-live-server": "0.0.31",
+    "gulp-load-plugins": "1.5.0",
+    "gulp-newer": "1.4.0",
+    "gulp-plumber": "1.2.0",
+    "gulp-remote-src": "0.4.3",
+    "gulp-rename": "1.4.0",
+    "gulp-sequence": "1.0.0",
+    "gulp-svgmin": "1.2.4",
+    "gulp-svgstore": "6.1.1",
+    "gulp-watch": "5.0.1",
+    "gulp-wrap": "0.14.0",
+    "imagemin-pngquant": "6.0.0",
+    "merge-stream": "1.0.1",
+    "yargs": "12.0.1"
+  },
+  "devDependencies": {
+    "@namics/eslint-config": "5.0.1",
+    "@nitro/app": "*",
+    "eslint": "4.19.1",
+    "eslint-plugin-import": "2.13.0",
+    "nsp": "3.2.1"
+  }
+}

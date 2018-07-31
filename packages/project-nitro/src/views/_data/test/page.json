@@ -1,0 +1,52 @@
+{
+	"_nitro": {
+		"pageTitle": "pageTitle (view)"
+	},
+	"test": {
+		"text": "test.text (view)"
+	},
+	"listitems": [
+		{
+			"text": "from viewwwwwww"
+		},
+		{
+			"text": "from viewwwwwww"
+		},
+		{
+			"text": "from viewwwwwww"
+		},
+		{
+			"text": "from viewwwwwww"
+		},
+		{
+			"text": "from viewwwwwww"
+		},
+		{
+			"text": "from viewwwwwww"
+		},
+		{
+			"text": "from viewwwwwww"
+		},
+		{
+			"text": "from viewwwwwww"
+		},
+		{
+			"text": "from viewwwwwww"
+		},
+		{
+			"text": "from viewwwwwww"
+		},
+		{
+			"text": "from viewwwwwww"
+		},
+		{
+			"text": "from viewwwwwww"
+		},
+		{
+			"text": "from viewwwwwww"
+		}
+	],
+	"headline": {
+		"title": "the view title"
+	}
+}

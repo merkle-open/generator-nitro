@@ -1,0 +1,27 @@
+{
+	"test": {
+		"example": {
+			"string" : "Gold",
+			"nested": "Nicht alles was glänzt ist $t(test.example.string)",
+			"sprintf" : "Die ersten drei Buchstaben von %s sind: %s, %s und %s",
+			"interpolation" : "Hallo {{you}} & {{you}}",
+			"interpolation1" : "Die letzten zwei Buchstaben von {{word}} sind: {{two}} und {{one}}",
+			"interpolation2" : "Erster Buchstabe von {{word}} ist: {{one}}"
+		}
+	},
+	"app": {
+		"so": "min schtring",
+		"name": "i18n",
+		"company": {
+			"name": "Meine \"%s\" Firma"
+		},
+		"area": "Area 51",
+		"district": "District 9 ist spassiger als $t(app.area)",
+
+		"child": "__count__ Kind",
+		"child_plural": "__count__ Kinder",
+		"friend_context": "Ein Freund",
+		"friend_context_male": "Ein Freund",
+		"friend_context_female": "Eine Freundin"
+	}
+}

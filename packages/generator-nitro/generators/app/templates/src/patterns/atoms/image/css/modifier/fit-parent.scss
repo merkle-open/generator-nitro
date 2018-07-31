@@ -1,0 +1,19 @@
+// keep image ratio and fit image within its parent (max-height = parent-height, max-width = parent-width)
+.a-image--fit-parent {
+	height: 100%;
+	> .a-image__image,
+	> .a-image__image[data-sizes="auto"] {
+		float: right; // aligned to the right
+		max-height: 100%;
+		max-width: 100%;
+
+		// object-fit does not work in IE11
+		// width: auto recalculates container on resizing in chrome & android
+		// so we use a css hack to target IE10 and higher
+		object-fit: contain;
+		object-position: 100% 50%;
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+			width: auto;
+		}
+	}
+}

@@ -1,0 +1,8 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "stage",
+	"description": "A stage atom",
+	"type": "object",
+	"properties": {
+	}
+}

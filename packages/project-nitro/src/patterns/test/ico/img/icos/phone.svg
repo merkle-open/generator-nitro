@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="52px" height="53px" viewBox="0 0 52 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <rect id="path-1" x="0" y="0" width="48" height="48" rx="4"></rect>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="1024-&amp;-320" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1024-Artikel-12er-Ohne-Rand" transform="translate(-553.000000, -5786.000000)">
+            <g id="Expertenmeinung" transform="translate(239.000000, 5460.500000)">
+                <g id="Schnellkontakt" transform="translate(296.000000, 147.000000)">
+                    <g id="BTN" transform="translate(20.000000, 180.000000)">
+                        <g id="Rectangle-171">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        </g>
+                        <path d="M12,47.9827787 L48,20.693305 L48,43.9854293 C48,46.1931044 46.2147544,47.9827787 44.0098214,47.9827787 L12,47.9827787 Z" id="Rectangle-171" fill="#FFF452" style="mix-blend-mode: multiply;"></path>
+                        <path d="M18.8640503,21.4764803 C18.8647042,20.0326904 22.4144212,18.6156979 22.0116535,17.2287707 C21.6265396,15.9052422 18.7849353,11.9908657 17.6387474,12.000016 C15.0201037,12.0215846 12,16.5235424 12,18.9444558 C12,22.988244 18.7679353,29.4366057 18.7679353,29.4366057 C18.7679353,29.4366057 25.0069112,36 29.0528955,36 C31.4747323,36 35.9777533,32.9810478 35.999984,30.3627489 C36.0091378,29.2176516 32.0932683,26.376477 30.769235,25.9921635 C29.381125,25.5888958 27.963592,29.1372595 26.5192515,29.1372595 C24.9925266,29.1372595 21.9286154,26.1143857 21.9286154,26.1143857 C21.9286154,26.1143857 18.8640503,23.0032766 18.8640503,21.4764803 Z" id="Stroke-38" stroke="#424758" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,42 @@
+{
+	"modifier": "blue",
+	"decorator": "Blue",
+	"title": "Ex Module with Skin Blue (data: ex-blue.json)",
+	"links": [
+		{
+			"uri": "index",
+			"text": "Ex One"
+		},
+		{
+			"uri": "index",
+			"text": "Ex Two"
+		},
+		{
+			"uri": "index",
+			"text": "Ex Three"
+		}
+	],
+	"subpattern" : {
+		"modifier": "",
+		"decorator": "",
+		"linkText": "Go to (subpattern): ",
+		"dynInsert" : {
+			"you": "ernscht (subpattern)"
+		},
+		"dynChildren": {
+			"count": 1
+		},
+		"first" : "first",
+		"one" : "a",
+		"two" : "b",
+		"three" : "c",
+		"four" : "d",
+
+		"content": "content string (subpattern)",
+		"linkText": "linkText (subpattern)",
+		"test" : {
+			"text": "test.text (subpattern)",
+			"test": "test.test (subpattern)"
+		}
+	}
+}

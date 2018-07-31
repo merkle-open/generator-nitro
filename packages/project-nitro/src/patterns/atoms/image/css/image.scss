@@ -1,0 +1,22 @@
+.a-image {
+	position: relative;
+	min-height: 100px;
+}
+
+.a-image__image {
+	opacity: 0;
+	max-width: 100%;
+	transition: opacity 0.3s linear;
+
+	&[data-sizes="auto"] {
+		display: block;
+		width: 100%;
+	}
+
+	&.state-a-image--loaded {
+		opacity: 1;
+		+ .a-loader {
+			display: none;
+		}
+	}
+}

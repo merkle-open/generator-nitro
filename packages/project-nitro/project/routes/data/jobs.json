@@ -1,0 +1,223 @@
+{
+	"id": "jobs",
+	"messages": {
+		"noResults": "Keine Jobs gefunden"
+	},
+	"filter": {
+		"expert": {
+			"enabled": true,
+			"name": "job-search-1",
+			"id": "job-search-1",
+			"items": [
+				{
+					"title": "Rechtsabteilung",
+					"val": "legal-department"
+				},
+				{
+					"title": "Generalsekretariat",
+					"val": "general-secretariat"
+				},
+				{
+					"title": "Informatik",
+					"val": "computer-science",
+					"selected": true
+				},
+				{
+					"title": "Finanzen",
+					"val": "finances"
+				}
+			]
+		},
+		"location": {
+			"enabled": true,
+			"name": "job-search-2",
+			"id": "job-search-2",
+			"items": [
+				{
+					"title": "Alle",
+					"val": "all"
+				},
+				{
+					"title": "Aarau",
+					"val": "aarau"
+				},
+				{
+					"title": "Bern",
+					"val": "bern"
+				},
+				{
+					"title": "St. Gallen",
+					"val": "stgallen"
+				},
+				{
+					"title": "Zürich",
+					"val": "zurich"
+				}
+			]
+		},
+		"sector": {
+			"enabled": true,
+			"name": "job-search-3",
+			"id": "job-search-3",
+			"items": [
+				{
+					"title": "Alle",
+					"val": "all"
+				},
+				{
+					"title": "Option 1",
+					"val": "option1"
+				},
+				{
+					"title": "Option 2",
+					"val": "option2"
+				},
+				{
+					"title": "Option 3",
+					"val": "option3"
+				},{
+					"title": "Option 4",
+					"val": "option4"
+				}
+			]
+		},
+		"pensum": {
+			"enabled": true,
+			"name": "optionsCheckbox",
+			"id": "pensum"
+		}
+	},
+	"jobs": [
+		{
+			"profile": {
+				"title": "Business Analyst / Developer Investment Management",
+				"description": "Abteilung Finanzen",
+				"workplace": "Luzern",
+				"action": "api/material/career/jobs",
+				"fulltime": true
+			}
+		},
+		{
+			"profile": {
+				"title": "Rechtsanwalt",
+				"description": "Rechtsabteilung",
+				"workplace": "Luzern",
+				"action": "api/material/career/jobs",
+				"fulltime": true
+			}
+		},
+		{
+			"profile": {
+				"title": "Digital Compliance Officer 80-90 %",
+				"description": "Generalsekretariat",
+				"workplace": "Luzern",
+				"action": "api/material/career/jobs"
+			}
+		},
+		{
+			"profile": {
+				"title": "Facharzt/-ärztin Neurologie 50–90 %",
+				"description": "Abteilung Versicherungsmedizin",
+				"workplace": "Aarau",
+				"action": "api/material/career/jobs"
+			}
+		},
+		{
+			"profile": {
+				"title": "Prämiensachbearbeiter/in",
+				"description": "Agentur Aarau",
+				"workplace": "Aarau",
+				"action": "api/material/career/jobs"
+			}
+		},
+		{
+			"profile": {
+				"title": "Teamleiter/in Schaden- und Leistungserbringermanagement",
+				"description": "Agentur Aarau",
+				"workplace": "Aarau",
+				"action": "api/material/career/jobs",
+				"fulltime": true
+			}
+		},
+		{
+			"profile": {
+				"title": "Business Analyst (m/w) Digitalisierung",
+				"description": "Abteilung Versicherungsleistungen",
+				"workplace": "Luzern",
+				"action": "api/material/career/jobs",
+				"fulltime": true
+			}
+		},
+		{
+			"profile": {
+				"title": "Kundenberater/in für Risiko- und Versicherungsfragen",
+				"description": "Agentur Bern",
+				"workplace": "Bern",
+				"action": "api/material/career/jobs",
+				"fulltime": true
+			}
+		},
+		{
+			"profile": {
+				"title": "Prämiensachbearbeiter/in",
+				"description": "Agentur Zürich",
+				"workplace": "Zürich",
+				"action": "api/material/career/jobs",
+				"fulltime": true
+			}
+		},
+		{
+			"profile": {
+				"title": "Ausbildung als Versicherungsassistent/in VBV",
+				"description": "Agentur Solothurn",
+				"workplace": "Solothurn",
+				"action": "api/material/career/jobs",
+				"fulltime": true
+			}
+		},
+		{
+			"profile": {
+				"title": "Sicherheitsingenieurin",
+				"description": "Abteilung Sicherhei",
+				"workplace": "Basel",
+				"action": "api/material/career/jobs",
+				"fulltime": true
+			}
+		},
+		{
+			"profile": {
+				"title": "Lisa Notebook",
+				"description": "Sicherheitsingenieurin",
+				"workplace": "Luzern",
+				"ction": "api/material/career/jobs",
+				"fulltime": true
+			}
+		},
+		{
+			"profile": {
+				"title": "Sicherheitsingenieurin",
+				"description": "Sicherheit",
+				"workplace": "Luzern",
+				"action": "api/material/career/jobs",
+				"fulltime": true
+			}
+		},
+		{
+			"profile": {
+				"title": "Facharzt/-ärztin Neurologie 50–100 %",
+				"description": "Abteilung Versicherungsmedizin",
+				"workplace": "Luzern",
+				"action": "api/material/career/jobs"
+			}
+		},
+		{
+			"profile": {
+				"title": "Prämiensachbearbeiter/in",
+				"description": "Abteilung Sicherheit",
+				"workplace": "Luzern",
+				"action": "api/material/career/jobs",
+				"fulltime": true
+			}
+		}
+	]
+}

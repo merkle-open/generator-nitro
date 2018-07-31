@@ -1,0 +1,20 @@
+{
+	"modifier": "",
+	"decorator": "Template",
+	"title": "Ex Module with Decorator Template",
+	"links": [
+		{
+			"uri": "index",
+			"text": "Ex One"
+		},
+		{
+			"uri": "index",
+			"text": "Ex Two"
+		},
+		{
+			"uri": "index",
+			"text": "Ex Three"
+		}
+	],
+	"buttons": true
+}

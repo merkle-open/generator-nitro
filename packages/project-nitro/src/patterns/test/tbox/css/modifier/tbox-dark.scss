@@ -1,0 +1,19 @@
+@import "../../../../../shared/utils/colors2/css/colors2.scss";
+
+.a-tbox--dark {
+
+	color: $color-gray-8;
+	background-color: $color-gray-1;
+
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+		left: -4rem;
+		top: 0;
+		width: 0;
+		height: 0;
+
+		border-right-color: $color-gray-1;
+	}
+}

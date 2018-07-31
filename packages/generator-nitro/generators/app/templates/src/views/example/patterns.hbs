@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 offset-md-2">
+			{{pattern name='heading' tag='h1'}}
+			{{pattern name='example'}}
+			{{#pattern name='box'}}
+				<h3>{{pattern name='icon' icon='nitro'}}&nbsp;Nitro example patterns</h3>
+				{{pattern name='button'}}
+				{{pattern name='checkbox'}}
+			{{/pattern}}
+			{{pattern name='box' modifier='dark'}}
+			{{pattern name='cta'}}
+			{{#pattern name='box'}}
+				{{pattern name='loader'}}
+			{{/pattern}}
+			<!-- htmllint tag-bans="false" -->
+			<style>
+				.box {
+					outline: 0.5vw solid lightcoral;
+					margin: 0 auto;
+					position: relative;
+				}
+			</style>
+			<div class="box">{{pattern name='image'}}</div>
+			{{pattern name='list'}}{{pattern name='list' data='mix'}}
+
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+	{{pattern name='stage'}}
+	</div>
+</div>

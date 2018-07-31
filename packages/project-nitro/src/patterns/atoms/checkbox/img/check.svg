@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+	<title>check_16x16px</title>
+	<desc>Created with Sketch.</desc>
+	<defs>
+		<path d="M5.5148,11.9997 L0.3738,7.9557 C-0.0562,7.6167 -0.1262,6.9997 0.2208,6.5787 C0.5668,6.1577 1.1958,6.0887 1.6258,6.4277 L5.3448,9.3537 L14.2818,0.2977 C14.6658,-0.0893 15.2978,-0.1013 15.6958,0.2747 C16.0918,0.6507 16.1028,1.2707 15.7188,1.6607 L5.5148,11.9997 Z" id="path-1"></path>
+	</defs>
+	<g id="check_16x16px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+		<g id="check-icon" transform="translate(0.000000, 2.000000)">
+			<mask id="mask-2" fill="white">
+				<use xlink:href="#path-1"></use>
+			</mask>
+			<use id="Mask" fill="#000000" xlink:href="#path-1"></use>
+			<g id="corporate/Green" mask="url(#mask-2)">
+				<g transform="translate(-8.000000, -11.000000)"></g>
+			</g>
+		</g>
+	</g>
+</svg>

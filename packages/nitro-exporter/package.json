@@ -36,5 +36,8 @@
     "eslint": "4.19.1",
     "eslint-plugin-import": "2.13.0",
     "nsp": "3.2.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

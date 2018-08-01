@@ -1,7 +1,7 @@
 {
   "name": "@nitro/gulp",
-  "version": "0.1.1",
-  "description": "nitro gulp",
+  "version": "0.2.0",
+  "description": "Nitro gulp",
   "license": "MIT",
   "author": "The Nitro Team",
   "engines": {
@@ -54,10 +54,12 @@
   },
   "devDependencies": {
     "@namics/eslint-config": "5.0.1",
-    "@nitro/app": "*",
     "eslint": "4.19.1",
     "eslint-plugin-import": "2.13.0",
     "nsp": "3.2.1"
+  },
+  "peerDependencies": {
+    "@nitro/app": ">=0.2.0"
   },
   "publishConfig": {
     "access": "public"

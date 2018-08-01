@@ -1,3 +1,5 @@
+@import "../../../../../shared/utils/colors/css/colors.scss";
+
 .m-example--blue {
 	background: $blue;
 	animation: blue-background-change 10s infinite;

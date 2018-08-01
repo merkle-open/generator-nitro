@@ -206,19 +206,14 @@ module.exports = class extends Generator {
 				try {
 					// extract entries
 					zip.extractEntryTo('frontend-defaults-master/codequality/accessibility/.accessibilityrc', this.sourceRoot(), false, true);
-					zip.extractEntryTo('frontend-defaults-master/codequality/eslint/.eslintrc.js', this.sourceRoot(), false, true);
-					zip.extractEntryTo('frontend-defaults-master/codequality/eslint/nitro.eslintignore', this.sourceRoot(), false, true);
 					zip.extractEntryTo('frontend-defaults-master/codequality/htmllint/.htmllintrc', this.sourceRoot(), false, true);
 					zip.extractEntryTo('frontend-defaults-master/codequality/stylelint/.stylelintrc', this.sourceRoot(), false, true);
-					zip.extractEntryTo('frontend-defaults-master/codequality/stylelint/nitro.stylelintignore', this.sourceRoot(), false, true);
 					zip.extractEntryTo('frontend-defaults-master/editorconfig/.editorconfig', this.sourceRoot(), false, true);
 					zip.extractEntryTo('frontend-defaults-master/repo/gitignore/nitro.gitignore', this.sourceRoot(), false, true);
 					zip.extractEntryTo('frontend-defaults-master/repo/gitattributes/.gitattributes', this.sourceRoot(), false, true);
 
 					// rename files
-					fs.renameSync(this.templatePath('nitro.eslintignore'), this.templatePath('.eslintignore'));
 					fs.renameSync(this.templatePath('nitro.gitignore'), this.templatePath('.gitignore'));
-					fs.renameSync(this.templatePath('nitro.stylelintignore'), this.templatePath('.stylelintignore'));
 				} catch (e) {
 					this.log(chalk.red(e.message));
 				}
@@ -246,6 +241,7 @@ module.exports = class extends Generator {
 			'src/patterns/molecules/example/example.hbs',
 			'src/patterns/molecules/example/example.twig',
 			'src/patterns/molecules/example/schema.json',
+			'src/patterns/molecules/example/index.js',
 			'src/proto/js/prototype.js',
 			'src/views/index.hbs',
 			'src/views/index.twig',
@@ -303,6 +299,7 @@ module.exports = class extends Generator {
 			'src/patterns/',
 			'src/shared/',
 			'project/routes/',
+			'public/content/',
 		];
 		const exampleIncludeAnyway = [
 			// example file "parts" included for this.options.exampleCode===false

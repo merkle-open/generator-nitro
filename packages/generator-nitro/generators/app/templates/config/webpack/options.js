@@ -1,5 +1,6 @@
 const options = {
 	rules: {
+		js: true,
 		ts: false,
 		scss: true,
 		hbs: <% if (options.clientTpl) { %>true<% } else { %>false<% } %>,

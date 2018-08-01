@@ -39,14 +39,19 @@ describe('nitro:app', () => {
 			]);
 		});
 
+		it('includes project config files', () => {
+			assert.file([
+				'.eslintignore',
+				'.eslintrc.js',
+				'.stylelintignore',
+			]);
+		});
+
 		it('includes namics frontend-defaults', () => {
 			assert.file([
 				'.editorconfig',
-				'.eslintignore',
-				'.eslintrc.js',
 				'.gitattributes',
 				'.gitignore',
-				'.stylelintignore',
 				'.stylelintrc',
 			]);
 		});

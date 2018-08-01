@@ -8,8 +8,8 @@ require('@nitro/exporter')(gulp, config);<% } %>
 
 gulp.task('copy-assets', getTask('copy-assets'));
 gulp.task('minify-images', getTask('minify-images'));
-gulp.task('svg-sprite', getTask('svg-sprite'));
-gulp.task('assets', ['copy-assets', 'svg-sprite', 'minify-images']);
+gulp.task('svg-sprites', getTask('svg-sprites'));
+gulp.task('assets', ['copy-assets', 'minify-images', 'svg-sprites']);
 gulp.task('watch-assets', ['assets'], getTask('watch-assets'));
 gulp.task('serve', getTask('serve'));
 gulp.task('watch-serve', ['serve'], getTask('watch-serve'));

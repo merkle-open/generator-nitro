@@ -1,6 +1,6 @@
 {
   "name": "generator-nitro",
-  "version": "4.0.0-rc.1",
+  "version": "4.0.0-rc.2",
   "description": "Yeoman generator for the nitro frontend framework",
   "license": "MIT",
   "repository": "namics/generator-nitro",
@@ -14,8 +14,7 @@
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "jasmine --config=tests/jasmine/support/jasmine.json",
-    "prepublish": "nsp check --output summary",
-    "prepublishOnly": "pkg-ok --bin generators/app/templates/project/.githooks/pre-commit generators/app/templates/project/.githooks/post-merge"
+    "prepublishOnly": "nsp check --output summary"
   },
   "files": [
     "generators/app",

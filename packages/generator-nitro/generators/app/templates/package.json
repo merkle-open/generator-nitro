@@ -66,7 +66,7 @@
     "@namics/tslint-config": "0.1.0",
     "@nitro/app": "0.2.0",
     "@nitro/exporter": "0.2.0",
-    "@nitro/gulp": "0.2.0",
+    "@nitro/gulp": "0.2.1",
     "@nitro/webpack": "0.2.0",
     "ajv": "6.5.2",
     "autoprefixer": "8.6.5",

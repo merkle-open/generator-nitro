@@ -13,7 +13,6 @@ const viewExcludes = {
 		'.svn',
 	],
 	files: [
-		`404.${config.get('nitro.viewFileExtension')}`,
 		'.DS_Store',
 		'Thumbs.db',
 		'Desktop.ini',

@@ -22,7 +22,7 @@
     "gulp"
   ],
   "dependencies": {
-    "@nitro/app": "0.2.0",
+    "@nitro/app": "*",
     "backstopjs": "3.5.2",
     "browser-sync": "2.24.6",
     "compression": "1.7.3",

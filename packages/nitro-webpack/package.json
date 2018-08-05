@@ -23,8 +23,8 @@
     "autoprefixer": ">=8.6.0"
   },
   "dependencies": {
-    "@babel/core": "7.0.0-beta.55",
-    "@babel/preset-env": "7.0.0-beta.55",
+    "@babel/core": "7.0.0-beta.56",
+    "@babel/preset-env": "7.0.0-beta.56",
     "@namics/eslint-config": "5.0.1",
     "autoprefixer": "9.1.0",
     "babel-loader": "8.0.0-beta.4",

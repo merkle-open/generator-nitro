@@ -3,8 +3,8 @@
 Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.
 It provides a proven but flexible structure to develop your frontend code, even in a large team.
 
-The codebase is split up in different packages, organized in a monorepo.
-Besides the main functionality including a yeoman generator, this monorepo includes also example projects
+The codebase is split up in different packages, organized in this monorepo.
+Besides the main functionality including a yeoman generator, this repo includes also example projects.
 
 * `packages/generator-nitro` (yeoman generator)
 * `packages/nitro-app` (main serverside app)
@@ -16,7 +16,7 @@ Besides the main functionality including a yeoman generator, this monorepo inclu
 
 ## Getting started
 
-Before using, you need of course [node](https://nodejs.org/) installed.  
+Before using, you need of course [node](https://nodejs.org/) installed ([Version](.node-version)).  
 Nitro and the Nitro generator are tested with the current 
 ["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x).
 

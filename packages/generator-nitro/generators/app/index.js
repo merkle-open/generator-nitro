@@ -420,6 +420,8 @@ module.exports = class extends Generator {
 			this.log(chalk.red(e.message));
 		}
 
-		this.log(chalk.green('All done – have fun'));
+		this.log(yosay(
+			`All done – run \`npm start\` to start ${chalk.cyan('Nitro')} in development mode`
+		));
 	}
 };

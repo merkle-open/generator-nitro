@@ -15,6 +15,7 @@ const router = express.Router({
 });
 const isProduction = config.get('server.production');
 const isOffline = config.get('nitro.mode.offline');
+const view404 = config.get('nitro.view404');
 
 /**
  * static routes
@@ -132,16 +133,15 @@ router.get('/:view/*', getView);
  */
 router.use((req, res) => {
 	const data = getNitroViewData('404 - Not Found');
-	const viewPath = '404';
 	extend(true, data, res.locals);
 
-	const viewData = collectViewData(viewPath, data, req);
+	const viewData = collectViewData(view404, data, req);
 	if (viewData) {
 		res.locals = viewData.data;
 	}
 
 	res.status(404);
-	res.render(viewPath, (err, html) => {
+	res.render(view404, (err, html) => {
 		if (err) {
 			res.send('404 - Not Found');
 		}

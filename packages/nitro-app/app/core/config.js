@@ -14,6 +14,7 @@ const defaultConfig = {
 		viewLayoutsDirectory: 'src/views/_layouts',
 		placeholdersDirectory: 'src/views/_placeholders',
 		defaultLayout: 'default',
+		view404: '404',
 		tmpDirectory: 'project/tmp',
 		templateEngine: 'hbs',
 		mode: {

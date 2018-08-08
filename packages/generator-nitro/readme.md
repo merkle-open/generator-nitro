@@ -1,4 +1,8 @@
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Build Status][appveyor-image]][appveyor-url] [![Dependency Status][daviddm-image]][daviddm-url]
+[![NPM version](https://badge.fury.io/js/generator-nitro.svg)](https://npmjs.org/package/generator-nitro)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](http://opensource.org/licenses/MIT) 
+[![Build Status](https://travis-ci.org/namics/generator-nitro.svg?branch=master)](https://travis-ci.org/namics/generator-nitro)
+[![Dependency Status](https://david-dm.org/namics/generator-nitro.svg?theme=shields.io)](https://david-dm.org/namics/generator-nitro)
+<!-- [![Build Status](https://ci.appveyor.com/api/projects/status/0580phm813ccdbhr/branch/master?svg=true)](https://ci.appveyor.com/project/namics/generator-nitro/branch/master)-->
 
 # Yeoman Nitro Generator
 
@@ -22,7 +26,7 @@ Nitro and the Nitro generator are tested with the current
 This creates a new project in the current directory 
 using [npx](https://www.npmjs.com/package/npx) (npm >= 5.2):
 
-First, uninstall the previously installed global package "generator-nitro"
+First, uninstall a previously installed global package "generator-nitro"
 
 ```
 npm uninstall -g generator-nitro
@@ -52,8 +56,6 @@ On creating a new project, you will be guided through some configuration options
 * Including example code `--exampleCode` (default: false)
 * Installing [`nitro-exporter`](https://www.npmjs.com/package/nitro-exporter) `--exporter` (default: false)
 
-The choosen options will be stored for the next project generation.
-
 It's possible to pass in these options through the command line:
 
 ```
@@ -64,8 +66,6 @@ You may bypass the questions with `--skip-questions`. This will use the defaults
 
 ```
 npx -p yo -p generator-nitro@latest -- yo nitro --name=myproject --clientTpl --exporter --skip-questions
-# or
-yo nitro --name=myproject --clientTpl --exporter --skip-questions
 ```
 
 ### Project Update
@@ -105,16 +105,3 @@ See the [contributing docs](.github/contributing.md)
 ## Changelog
 
 Recent changes can be viewed on Github on the [Releases Page](https://github.com/namics/generator-nitro/releases)
-
-## License
-
-[MIT license](http://opensource.org/licenses/MIT)
-
-[npm-image]: https://badge.fury.io/js/generator-nitro.svg
-[npm-url]: https://npmjs.org/package/generator-nitro
-[travis-image]: https://travis-ci.org/namics/generator-nitro.svg?branch=master
-[travis-url]: https://travis-ci.org/namics/generator-nitro
-[appveyor-image]: https://ci.appveyor.com/api/projects/status/0580phm813ccdbhr/branch/master?svg=true
-[appveyor-url]: https://ci.appveyor.com/project/namics/generator-nitro/branch/master
-[daviddm-image]: https://david-dm.org/namics/generator-nitro.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/namics/generator-nitro

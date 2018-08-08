@@ -9,12 +9,12 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 ## Features
 
 * Simple and proven project structure
-* Webpack Builder
+* Webpack Builder with HMR
 * Gulp Tasks for additional functionality
 * Linting, Source Maps, PostCSS & Browsersync
 * Pattern generator<% if (options.clientTpl) { %>
-* [Client side templates](client-templates.md)<% } %><% if (options.exporter) { %>
-* [Static Exports](nitro-exporter.md)<% } %>
+* [Client side templates](./client-templates.md)<% } %><% if (options.exporter) { %>
+* [Static Exports](./nitro-exporter.md)<% } %>
 
 ## Preparation
 
@@ -46,7 +46,7 @@ npm run prod
 ```
 
 The Nitro app will run on port `8080` by default, the proxy on `8081` (only runs in develpment mode).  
-If you want the app to run on another port use [config](nitro-config.md) or add env vars to the tasks:
+If you want the app to run on another port use [config](./nitro-config.md) or add env vars to the tasks:
 
 ```
 PORT=8000 PROXY=8001 npm start
@@ -75,18 +75,20 @@ See details in [config readme](nitro-config.md)
 
 ### Global Configuration
 
-Some global configuration is placed in `package.json`
+Some global configuration is placed in [`package.json`](../../package.json)
 
 #### Target Browsers
 
 For defining target browsers, [browserslist](https://github.com/ai/browserslist) is used.    
 This config is shareable between different frontend tools. If not defined, the default browsers from browserslist would be taken.
 
-#### githooks
+#### Git Hooks
 
 Nitro uses [husky](https://github.com/typicode/husky) for githooks.
 
 The configuration is placed in the "husky" and the corresponding "lint-staged" node in `package.json`
+
+Githooks Configuration is placed in the "husky" and the corresponding "lint-staged" node in [package.json](../../package.json)
 
 ## Daily Work - Creating Patterns & Pages
 
@@ -196,7 +198,7 @@ Simple default layout:
 </html>
 ```
 
-To remove the layout feature, simply delete the folder `views/_layout`.
+To remove the layout feature, simply delete the folder `/src/views/_layout`.
 
 Different layouts are placed in `/src/views/_layouts/`. Link them to your view [in your page datafile](#use-different-layout).
 
@@ -280,7 +282,7 @@ The pattern helper will find also pattern elements.
 
 ### Render partials
 
-Render a partial (<%= options.viewExt %> snippet). Partials are placed in `views/_partials/` as `*.<%= options.viewExt %>` files (e.g. `head.<%= options.viewExt %>`).
+Render a partial (<%= options.viewExt %> snippet). Partials are placed in `src/views/_partials/` as `*.<%= options.viewExt %>` files (e.g. `head.<%= options.viewExt %>`).
 
 ```<% if (options.templateEngine === 'twig') { %>
 {% partial 'head' %}<% } else { %>
@@ -357,7 +359,7 @@ It's not recommended to use view data for data variations of patterns.
 #### Dynamic view data
 
 If you want to use dynamic view data (i.e. using data from a database or data which is available in different views),
-you can define those "routes" in the directory [`project/viewData/`](../viewData/readme.md).
+you can define those "routes" in the directory [`/project/viewData/`](../viewData/readme.md).
 
 #### Data per pattern
 
@@ -369,9 +371,26 @@ You may overwrite data from views & patterns in request parameters.
 
 `?_nitro.pageTitle=Testpage` will overwrite the data for the <%= options.templateEngine %> expression `{{_nitro.pageTitle}}`
 
-## Webpack
+## Assets
 
-### todo
+### Webpack
+
+The main assets will be bundled with an easy to use webpack config.
+
+The configuration includes loaders for JavaScript, TypeScript, CSS & SCSS,
+clientside handlebars, webfonts and images (with minification). It also includes an iconfont generator.
+
+You only have to enable the desired loaders and features. And of course, it is possible to extend the configuration to your needs.
+
+The configuration is placed in `/config/webpack`  
+See [readme](./nitro-webpack.md) for configuration options.
+
+### Other Assets
+
+Nitro also gives you some gulp tasks to use for additional assets you need in your build. 
+You may copy assets, minify images or generate an svg sprites.
+
+Configuration for gulp tasks is done in [config package](../../config/default/gulp.js) and [`gulpfile.js`](../../gulpfile.js)
 
 ### Prototype Assets
 
@@ -431,15 +450,15 @@ To stay consistent you should favour the use of relative paths with a leading sl
 Link to resources relatively to the `project`-folder **with** a leading slash.
 
 ```html
-<link rel="stylesheet" href="/assets/ui.css" type="text/css" />
+<link rel="stylesheet" href="/assets/css/ui.css" type="text/css" />
 <link rel="shortcut icon" href="/assets/img/icon/favicon.ico" type="image/x-icon" />
-<script src="/assets/ui.js"></script>
+<script src="/assets/js/ui.js"></script>
 <a href="/content.<%= options.viewExt %>">Contentpage</a>
 ```
 
 ### Upper & lower case letters
 
-Use all lowercase if possible. (Exception: TerrificJS uses upper case for its namespace `T` and class names `T.Module.Example`)
+Use all lowercase if possible.
 
 All files must be lowercase. It's allowed to use uppercase letters for pattern folders, keep care of case sensitive filesystems and use handlebars helpers with the *exact* folder name.
 
@@ -458,36 +477,49 @@ NavMain      -> T.Module.NavMain      -> m-nav-main
 AdminNavMain -> T.Module.AdminNavMain -> m-admin-nav-main
 ```
 
-### JSON Endpoints
-
-If you need to mock service endpoints, you can simply put JSON files into a directory inside the `/public` directory as
-those are directly exposed.
-
-`/public/api/posts.json` will be available under `/api/posts.json`
-and can be used for things like AJAX requests.
+## Miscellaneous
 
 ### Custom Routes
 
 If you need more custom functionality in endpoints
 you can put your custom routes with their logic
-into the [`project/routes` directory](project/routes/).
+into the [`/project/routes` directory](../routes/).
 
-## Miscellaneous
+### Custom Handlebars helpers
 
-### Commandline
+Custom handlebars helpers will be automatically loaded if put into to `project/helpers` directory. An example could look like 
+this:
+
+```js
+module.exports = function(foo) {
+    // Helper Logic
+};
+```
+
+### API Endpoints
+
+If you need to mock service endpoints...
+
+#### Simple
+
+You can simply put static files inside the `/public/api` directory, as this route is directly exposed.
+
+`/public/api/posts.json` will be available under `/api/posts.json`
+or `/public/api/snippets/teaser.html` under `/api/snippets/teaser.html`
+
+#### More Complex
+
+If you need more control, you may place some functionality in [`/project/routes`](../routes/readme.md).
+
+## Commandline
 
 Use or create new scripts in `package.json` to run with npm.
 
-### Contributing
+## Contributing
 
 * For bugs and features please use [GitHub Issues](https://github.com/namics/generator-nitro/issues)
 * Feel free to fork and send PRs to the current `develop` branch. That's a good way to discuss your ideas.
-<% if (options.exampleCode) { %>
-### Example Project Includes
 
-* Favicon & Home-Icons from Nitro (replace with your own)
-* Some patterns in `/src/patterns/` and some code examples in `/src/shared/`
-<% } %>
-### Credits
+## Credits
 
 This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version <%= version %>).

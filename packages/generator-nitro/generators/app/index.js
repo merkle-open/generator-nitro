@@ -297,6 +297,7 @@ module.exports = class extends Generator {
 			// paths only for this.options.exampleCode===true
 			'src/views/example/',
 			'src/patterns/',
+			'src/proto/js/',
 			'src/shared/',
 			'project/routes/',
 			'public/content/',
@@ -305,6 +306,8 @@ module.exports = class extends Generator {
 			// example file "parts" included for this.options.exampleCode===false
 			'project/routes/readme.md',
 			'src/patterns/readme.md',
+			'src/proto/js/prototype.js',
+			'src/proto/readme.md',
 			'src/shared/readme.md',
 			'.gitkeep',
 		];

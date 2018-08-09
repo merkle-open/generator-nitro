@@ -8,7 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const appDirectory = fs.realpathSync(process.cwd());
 
@@ -57,7 +57,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		plugins: [
 			new webpack.BannerPlugin({ banner }),
 			new CaseSensitivePathsPlugin({ debug: false }),
-			// new BundleAnalyzerPlugin(),
 		],
 		optimization: {
 			// minimizer: [
@@ -308,6 +307,11 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				},
 			},
 		);
+	}
+
+	// feature bundle analyzer
+	if (options.features.bundleAnalyzer) {
+		webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 	}
 
 	return webpackConfig;

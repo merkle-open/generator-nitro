@@ -8,6 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 const appDirectory = fs.realpathSync(process.cwd());
@@ -266,6 +267,10 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				},
 			},
 		);
+	}
+
+	if (options.features.bundleAnalyzer) {
+		webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 	}
 
 	return webpackConfig;

@@ -78,6 +78,13 @@ No loader rule is enabled by default. Activate following prepared rules you need
 
 Enable some additional features
 
+#### `options.features.bundleAnalyzer`
+
+* Type: boolean
+* default: false
+
+`true` will add the bundleAnalyser plugin and opens a browser window with the stats
+
 #### `options.features.gitInfo`
 
 * Type: boolean

@@ -29,7 +29,7 @@
     "glob": "7.1.2",
     "gulp-filter": "5.1.0",
     "gulp-sequence": "1.0.0",
-    "gulp-zip": "4.2.0"
+    "gulp-vinyl-zip": "2.1.0"
   },
   "devDependencies": {
     "@namics/eslint-config": "5.0.1",

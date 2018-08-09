@@ -3,7 +3,7 @@
 const del = require('del');
 const fs = require('fs');
 const path = require('path');
-const gulpZip = require('gulp-zip');
+const gulpZip = require('gulp-vinyl-zip').zip;
 const glob = require('glob');
 const unique = require('array-unique');
 const utils = require('../lib/utils.js');
@@ -136,7 +136,7 @@ module.exports = function (gulp, config) {
 							encoding: 'utf-8',
 							flag: 'r',
 						}));
-						gulp.src(`${configEntry.dest}${path.sep}**`)
+						gulp.src(`${configEntry.dest}/**/*`)
 							.pipe(gulpZip(`${pkg.name}-${pkg.version}.zip`))
 							.pipe(gulp.dest(configEntry.dest))
 							.on('end', () => {

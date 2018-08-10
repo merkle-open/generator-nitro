@@ -54,7 +54,7 @@ On creating a new project, you will be guided through some configuration options
 * Desired template engine `--templateEngine=` (`hbs` or `twig`; default: `hbs`)
 * Using client side templates `--clientTpl` (default: false)
 * Including example code `--exampleCode` (default: false)
-* Installing [`nitro-exporter`](https://www.npmjs.com/package/nitro-exporter) `--exporter` (default: false)
+* Installing nitro-exporter" `--exporter` (default: false)
 
 It's possible to pass in these options through the command line:
 

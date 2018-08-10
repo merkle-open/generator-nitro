@@ -59,7 +59,7 @@ On creating a new project, you will be guided through some configuration options
 It's possible to pass in these options through the command line:
 
 ```
-npx -p yo -p generator-nitro@latest -- yo nitro --name=myproject --templateEngine=hbs --clientTpl
+npx -p yo -p generator-nitro@latest -- yo nitro --name=myproject --templateEngine=hbs --clientTpl --exampleCode --exporter
 ```
 
 You may bypass the questions with `--skip-questions`. This will use the defaults for not specified options
@@ -86,7 +86,7 @@ Note: Generators are to be run from the root directory of your project.
 
 ## Generated app
 
-See how to use the [generated app](generators/app/templates/project/docs/nitro.md)
+See how to use the [generated app](../project-nitro/project/docs/nitro.md)
 
 ## Testing
 
@@ -100,7 +100,7 @@ npm test
 
 We are more than happy to accept external contributions to the project in the form of feedback, bug reports and pull requests :)
 
-See the [contributing docs](.github/contributing.md)  
+See the [contributing docs](../../.github/contributing.md)  
 
 ## Changelog
 

@@ -10,12 +10,12 @@ It provides a proven but flexible structure to develop your frontend code, even 
 The codebase is split up in different packages, organized in this monorepo.
 Besides the main functionality including a yeoman generator, this repo includes also example projects.
 
-* `packages/generator-nitro` (yeoman generator)
+* [`packages/generator-nitro`](./packages/generator-nitro) (yeoman generator)
 * `packages/nitro-app` (main serverside app)
 * `packages/nitro-exporter` (nitro exporter package)
 * `packages/nitro-gulp` (nitro gulp task runner)
 * `packages/nitro-webpack` (nitro webpack config)
-* `packages/project-nitro` (example project with handlebars rendering engine)
+* [`packages/project-nitro`](./packages/project-nitro) (example project with handlebars rendering engine)
 * `packages/project-nitro-twig` (example project with twig rendering engine)
 
 ## Getting started

@@ -10,15 +10,20 @@ Configurable and easy to use webpack 4 config for nitro projects.
 ```
 const options = {
     rules: {
-        js: true,
+        js: {
+            eslint: false,
+        },
         ts: false,
-        scss: true,
+        scss: {
+            stylelint: false,
+        },
         hbs: true,
         woff: true,
         image: true,
     },
     features: {
         gitInfo: false,
+        bundleAnalyzer: false,
     },
 };
 const webpackConfig = require('@nitro/webpack/webpack-config/webpack.config.dev')(options);
@@ -34,10 +39,11 @@ No loader rule is enabled by default. Activate following prepared rules you need
 
 #### `options.rules.js`
 
-* Type: boolean
+* Type: boolean || object
 * default: false
 
-`true` will activate JavaScript support
+* `true` activates JavaScript support
+* `{ eslint: true }` additionally adds eslint live linting feature (only relevant for development build)
 
 #### `options.rules.ts`
 
@@ -48,10 +54,11 @@ No loader rule is enabled by default. Activate following prepared rules you need
 
 #### `options.rules.scss`
 
-* Type: boolean
+* Type: boolean || object
 * default: false
 
-`true` will activate scss support
+* `true` will activate scss support
+* `{ stylelint: true }` additionally adds stylelint live linting feature (only relevant for development build)
 
 #### `options.rules.hbs`
 

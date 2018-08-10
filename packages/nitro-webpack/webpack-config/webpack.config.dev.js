@@ -2,7 +2,6 @@
 
 const path = require('path');
 const fs = require('fs');
-const config = require('config');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
@@ -88,6 +87,26 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				},
 			},
 		);
+
+		// eslint live validation
+		if (options.rules.js.eslint) {
+			webpackConfig.module.rules.push(
+				{
+					enforce: 'pre',
+					test: /\.(js|jsx|mjs)$/,
+					// include: paths.srcPaths,
+					exclude: [/[/\\\\]node_modules[/\\\\]/],
+					use: {
+						loader: require.resolve('eslint-loader'),
+						options: {
+							eslintPath: require.resolve('eslint'),
+							cache: true,
+							// formatter: require('eslint-friendly-formatter'),
+						},
+					},
+				},
+			);
+		}
 	}
 
 	// typescript
@@ -189,6 +208,20 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				filename: '[file].map',
 			}),
 		);
+
+		// stylelint live validation
+		if (options.rules.scss.stylelint) {
+			webpackConfig.plugins.push(
+				new StyleLintPlugin({
+					files: ['src/**/*.?(s)css'],
+					// lintDirtyModulesOnly: true,
+					syntax: 'scss',
+					quiet: false,
+					failOnError: false,
+					emitErrors: true,
+				})
+			);
+		}
 	}
 
 	// handlebars precompiled templates
@@ -232,40 +265,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				test: /\.(png|jpg|gif|svg)$/,
 				use: require.resolve('file-loader'),
 			}
-		);
-	}
-
-	// stylelint live validation
-	if (config.get('code.validation.stylelint.live')) {
-		webpackConfig.plugins.push(
-			new StyleLintPlugin({
-				files: ['src/**/*.?(s)css'],
-				// lintDirtyModulesOnly: true,
-				syntax: 'scss',
-				quiet: false,
-				failOnError: false,
-				emitErrors: true,
-			})
-		);
-	}
-
-	// eslint live validation
-	if (config.get('code.validation.eslint.live')) {
-		webpackConfig.module.rules.push(
-			{
-				enforce: 'pre',
-				test: /\.(js|jsx|mjs)$/,
-				// include: paths.srcPaths,
-				exclude: [/[/\\\\]node_modules[/\\\\]/],
-				use: {
-					loader: require.resolve('eslint-loader'),
-					options: {
-						eslintPath: require.resolve('eslint'),
-						cache: true,
-						// formatter: require('eslint-friendly-formatter'),
-					},
-				},
-			},
 		);
 	}
 

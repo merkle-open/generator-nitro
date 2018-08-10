@@ -16,7 +16,7 @@ the main nodes from nitro: `code`, `nitro`,`server`, `gulp`, `feature` & `export
 
 Type: Object
 
-* `code.validation.eslint.live` - default: true
+* `code.validation.eslint.live` - default: false
 
 Enable/disable JavaScript linting on change.
 
@@ -41,7 +41,7 @@ Type: Object
 
 Type: Object
 
-* `code.validation.stylelint.live` - default: true
+* `code.validation.stylelint.live` - default: false
 
 Enable/disable CSS linting on change.
 

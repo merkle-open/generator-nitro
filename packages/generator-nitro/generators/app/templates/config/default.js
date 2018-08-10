@@ -11,7 +11,7 @@ const defaultConfig = {
 	code: {
 		validation: {
 			eslint: {
-				live: true,
+				live: false,
 			},
 			htmllint: {
 				live: true,
@@ -22,7 +22,7 @@ const defaultConfig = {
 				logMissingSchemaAsWarning: true,
 			},
 			stylelint: {
-				live: true,
+				live: false,
 			},
 		},
 	},

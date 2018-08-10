@@ -38,7 +38,7 @@
     "git-config": "0.0.7",
     "glob": "7.1.2",
     "lodash": "4.17.10",
-    "request": "2.87.0",
+    "request": "2.88.0",
     "yeoman-generator": "3.1.1",
     "yosay": "2.0.2"
   },

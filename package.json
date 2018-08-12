@@ -36,7 +36,7 @@
     "cz-conventional-changelog": "2.1.0",
     "eslint": "4.19.1",
     "eslint-plugin-import": "2.13.0",
-    "lerna": "3.0.1",
+    "lerna": "3.0.3",
     "markdownlint-cli": "0.12.0"
   }
 }

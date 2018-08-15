@@ -23,7 +23,7 @@
   ],
   "dependencies": {
     "@nitro/app": "*",
-    "backstopjs": "3.5.2",
+    "backstopjs": "3.5.3",
     "browser-sync": "2.24.6",
     "compression": "1.7.3",
     "config": "2.0.1",
@@ -56,7 +56,7 @@
   "devDependencies": {
     "@namics/eslint-config": "5.0.1",
     "eslint": "4.19.1",
-    "eslint-plugin-import": "2.13.0",
+    "eslint-plugin-import": "2.14.0",
     "nsp": "3.2.1"
   },
   "publishConfig": {

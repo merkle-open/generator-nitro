@@ -11,6 +11,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const appDirectory = fs.realpathSync(process.cwd());
+const includePath = path.join(appDirectory, 'src');
 
 const bannerData = {
 	date: new Date().toISOString().slice(0, 19),
@@ -104,6 +105,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.module.rules.push(
 			{
 				test: /\.(js|jsx|mjs)$/,
+				include: includePath,
 				exclude: /node_modules/,
 				use: {
 					loader: require.resolve('babel-loader'),
@@ -133,6 +135,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			// From https://github.com/TypeStrong/ts-loader/blob/master/examples/thread-loader/webpack.config.js
 			{
 				test: /\.(tsx?|d.ts)$/,
+				include: includePath,
 				use: [
 					{
 						loader: require.resolve('cache-loader'),
@@ -174,6 +177,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.module.rules.push(
 			{
 				test: /\.?scss$/,
+				include: includePath,
 				use: [
 					MiniCssExtractPlugin.loader,
 					{
@@ -228,6 +232,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.module.rules.push(
 			{
 				test: /\.hbs$/,
+				include: includePath,
 				exclude: [
 					/node_modules/,
 					path.resolve(appDirectory, 'src/views'),
@@ -253,6 +258,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.module.rules.push(
 			{
 				test: /.(woff(2)?)(\?[a-z0-9]+)?$/,
+				include: includePath,
 				loader: require.resolve('file-loader'),
 				options: {
 					name: 'media/fonts/[name]-[hash:7].[ext]',
@@ -267,6 +273,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			// image loader & minification
 			{
 				test: /\.(png|jpg|gif|svg|ico)$/,
+				include: includePath,
 				loader: require.resolve('img-loader'),
 				// Specify enforce: 'pre' to apply the loader before url-loader
 				enforce: 'pre',
@@ -300,6 +307,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			// inlines assets below a limit
 			{
 				test: /\.(png|jpg|gif|svg)$/,
+				include: includePath,
 				loader: require.resolve('url-loader'),
 				options: {
 					limit: 3 * 1028,

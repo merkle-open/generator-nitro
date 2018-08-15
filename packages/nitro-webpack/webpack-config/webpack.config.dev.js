@@ -11,6 +11,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 const appDirectory = fs.realpathSync(process.cwd());
+const includePath = path.join(appDirectory, 'src');
 
 module.exports = (options = { rules: {}, features: {} }) => {
 
@@ -31,6 +32,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			path: path.resolve(appDirectory, 'public', 'assets'),
 			filename: 'js/[name].js',
 			publicPath: '/assets/',
+			pathinfo: false,
 		},
 		resolve: {
 			extensions: [],
@@ -43,6 +45,9 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			new CaseSensitivePathsPlugin({ debug: false }),
 			new webpack.HotModuleReplacementPlugin(),
 		],
+		watchOptions: {
+			ignored: /node_modules/,
+		},
 		optimization: {
 			noEmitOnErrors: true,
 		},
@@ -69,6 +74,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.module.rules.push(
 			{
 				test: /\.(js|jsx|mjs)$/,
+				include: includePath,
 				exclude: /node_modules/,
 				use: {
 					loader: require.resolve('babel-loader'),
@@ -94,14 +100,13 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				{
 					enforce: 'pre',
 					test: /\.(js|jsx|mjs)$/,
-					// include: paths.srcPaths,
-					exclude: [/[/\\\\]node_modules[/\\\\]/],
+					include: includePath,
+					exclude: /node_modules/,
 					use: {
 						loader: require.resolve('eslint-loader'),
 						options: {
 							eslintPath: require.resolve('eslint'),
 							cache: true,
-							// formatter: require('eslint-friendly-formatter'),
 						},
 					},
 				},
@@ -118,6 +123,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			// From https://github.com/TypeStrong/ts-loader/blob/master/examples/thread-loader/webpack.config.js
 			{
 				test: /\.(tsx?|d.ts)$/,
+				include: includePath,
 				use: [
 					{
 						loader: require.resolve('cache-loader'),
@@ -159,6 +165,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.module.rules.push(
 			{
 				test: /\.s?css$/,
+				include: includePath,
 				use: [
 					// css-hot-loader removes the flash on unstyled content (FOUC) from style-loader
 					// may be removed when MiniCssExtractPlugin supports HMR
@@ -229,6 +236,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.module.rules.push(
 			{
 				test: /\.hbs$/,
+				include: includePath,
 				exclude: [
 					/node_modules/,
 					path.resolve(appDirectory, 'src/views'),
@@ -253,6 +261,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.module.rules.push(
 			{
 				test: /.(woff(2)?)(\?[a-z0-9]+)?$/,
+				include: includePath,
 				use: require.resolve('file-loader'),
 			}
 		);
@@ -263,6 +272,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.module.rules.push(
 			{
 				test: /\.(png|jpg|gif|svg)$/,
+				include: includePath,
 				use: require.resolve('file-loader'),
 			}
 		);

@@ -10,9 +10,11 @@ Before creating an issue please make sure you are using:
 
 <!-- Choose the right options and remove others -->
 
+* Regression (a behavior that used to work and stopped working in a new release)
 * Bug report
 * Feature request
 * Documentation issue or request
+* Other... Please describe
 
 The issue refers to the:
 

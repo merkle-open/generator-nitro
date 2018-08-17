@@ -23,7 +23,7 @@ const viewports = [
 		label: 'desktop',
 		width: 1280,
 		height: 1024,
-	}
+	},
 ];
 
 module.exports = (options) => {
@@ -35,9 +35,7 @@ module.exports = (options) => {
 			readyEvent: null,
 			delay: 1000,
 			hideSelectors: [],
-			removeSelectors: [
-				'.m-example--blue',
-			],
+			removeSelectors: ['.m-example--blue'],
 			onReadyScript: 'onReady.js',
 			selectors: ['.m-example'],
 			selectorExpansion: true,
@@ -66,5 +64,5 @@ module.exports = (options) => {
 		asyncCaptureLimit: 5,
 		debug: false,
 		debugWindow: false,
-	}
+	};
 };

@@ -32,5 +32,4 @@ const chalk = require('chalk');
 	const timer2 = new Date();
 	const diff = timer2 - timer1;
 	console.log(`${chalk.yellow('Time for globby:')} ${diff} ms`);
-}());
-
+})();

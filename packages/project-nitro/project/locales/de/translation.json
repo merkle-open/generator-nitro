@@ -1,12 +1,12 @@
 {
 	"test": {
 		"example": {
-			"string" : "Gold",
+			"string": "Gold",
 			"nested": "Nicht alles was glänzt ist $t(test.example.string)",
-			"sprintf" : "Die ersten drei Buchstaben von %s sind: %s, %s und %s",
-			"interpolation" : "Hallo {{you}} & {{you}}",
-			"interpolation1" : "Die letzten zwei Buchstaben von {{word}} sind: {{two}} und {{one}}",
-			"interpolation2" : "Erster Buchstabe von {{word}} ist: {{one}}"
+			"sprintf": "Die ersten drei Buchstaben von %s sind: %s, %s und %s",
+			"interpolation": "Hallo {{you}} & {{you}}",
+			"interpolation1": "Die letzten zwei Buchstaben von {{word}} sind: {{two}} und {{one}}",
+			"interpolation2": "Erster Buchstabe von {{word}} ist: {{one}}"
 		}
 	},
 	"app": {

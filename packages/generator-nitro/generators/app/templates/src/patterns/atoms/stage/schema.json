@@ -3,6 +3,5 @@
 	"title": "stage",
 	"description": "A stage atom",
 	"type": "object",
-	"properties": {
-	}
+	"properties": {}
 }

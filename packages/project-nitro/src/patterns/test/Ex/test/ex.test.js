@@ -2,7 +2,7 @@
 
 describe('Ex module', () => {
 	let mod;
-	beforeEach(function(){
+	beforeEach(function() {
 		const application = new T.Application();
 		mod = new T.Module.Ex(document.createElement('div'), application._sandbox);
 	});

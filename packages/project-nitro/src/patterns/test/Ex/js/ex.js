@@ -16,9 +16,9 @@ T.Module.Ex = T.createModule({
 
 		/* eslint-disable no-console */
 		console.log(`Ex - start [id:${$ctx.data('t-id')}]`);
-		console.log('alles gut so?'.startsWith('alles')
-			? 'ES2015.startWith feature works'
-			: 'broken ES2015.startWith feature');
+		console.log(
+			'alles gut so?'.startsWith('alles') ? 'ES2015.startWith feature works' : 'broken ES2015.startWith feature'
+		);
 		/* eslint-enable no-console */
 
 		resolve();

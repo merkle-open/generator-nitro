@@ -14,7 +14,7 @@
 				"type": "object",
 				"properties": {
 					"icon": {
-						"enum": [ "arrow", "check", "nitro" ]
+						"enum": ["arrow", "check", "nitro"]
 					},
 					"text": {
 						"type": "string"

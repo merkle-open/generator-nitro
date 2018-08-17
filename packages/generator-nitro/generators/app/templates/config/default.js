@@ -51,7 +51,7 @@ const defaultConfig = {
 		i18next: {
 			middlewareOptions: {
 				ignoreRoutes: ['api/', 'assets/', 'dist/', 'content/'],
-			}
+			},
 		},
 	},<% if (options.exporter) { %>
 	exporter: require('./default/exporter'),<% } %>

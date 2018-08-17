@@ -30,10 +30,9 @@ function search(req, res, next) {
 
 	setTimeout(() => {
 		return res.json(items);
-	}, utils.getRandomInt(250,1000));
+	}, utils.getRandomInt(250, 1000));
 }
 
 module.exports = (app) => {
-	app.route('/api/countries/search')
-		.get(search);
+	app.route('/api/countries/search').get(search);
 };

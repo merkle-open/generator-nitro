@@ -5,5 +5,5 @@ function getRandomInt(min, max) {
 }
 
 module.exports = {
-	getRandomInt
+	getRandomInt,
 };

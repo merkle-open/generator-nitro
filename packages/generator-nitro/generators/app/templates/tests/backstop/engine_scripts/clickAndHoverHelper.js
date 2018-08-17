@@ -11,15 +11,13 @@ module.exports = (chromy, scenario) => {
 			.wait(hoverSelector)
 			.wait(1000)
 			.rect(hoverSelector)
-			.result(function (rect) {
-				chromy.mouseMoved(rect.left, rect.top)
-			})
+			.result(function(rect) {
+				chromy.mouseMoved(rect.left, rect.top);
+			});
 	}
 
 	if (clickSelector) {
-		chromy
-			.wait(clickSelector)
-			.click(clickSelector)
+		chromy.wait(clickSelector).click(clickSelector);
 	}
 
 	// // TODO: DONT KNOW IF THIS WORKS YET!

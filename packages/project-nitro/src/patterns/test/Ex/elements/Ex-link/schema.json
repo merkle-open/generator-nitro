@@ -13,5 +13,5 @@
 			"type": "string"
 		}
 	},
-	"required": [ "uri", "text" ]
+	"required": ["uri", "text"]
 }

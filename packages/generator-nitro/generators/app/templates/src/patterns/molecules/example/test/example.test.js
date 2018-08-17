@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Example module', function () {
+describe('Example module', function() {
 	let mod;
 
 	beforeEach(() => {

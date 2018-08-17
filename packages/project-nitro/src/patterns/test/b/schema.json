@@ -6,16 +6,13 @@
 	"properties": {
 		"modifier": {
 			"description": "A modifier",
-			"enum": [
-				"",
-				"aaff"
-			]
+			"enum": ["", "aaff"]
 		},
 		"headline": {
 			"type": "object",
 			"properties": {
-				"title": {"type": "string"},
-				"count": {"type": "string"}
+				"title": { "type": "string" },
+				"count": { "type": "string" }
 			}
 		},
 		"listitems": {

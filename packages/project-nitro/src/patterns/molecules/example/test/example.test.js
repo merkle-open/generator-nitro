@@ -2,7 +2,7 @@
 
 import * as T from 'terrific';
 
-describe('Example module', function () {
+describe('Example module', function() {
 	let mod;
 
 	beforeEach(() => {

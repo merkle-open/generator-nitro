@@ -15,7 +15,6 @@
 		"company": {
 			"name": "my \"%s\" company (default)"
 		}
-
 	},
 	"attr": {
 		"placeholder": "translated placeholder (default)",

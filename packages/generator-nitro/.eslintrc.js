@@ -6,7 +6,7 @@ module.exports = {
 	globals: {
 		__dirname: true,
 	},
-	'rules': {
+	rules: {
 		'require-jsdoc': 'off',
 	},
 };

@@ -3,7 +3,7 @@ module.exports = {
 		'@namics/eslint-config/configurations/es8-node.js',
 		'@namics/eslint-config/configurations/es8-node-disable-styles.js',
 	].map(require.resolve),
-	'rules': {
+	rules: {
 		'complexity': 'off',
 		'global-require': 'off',
 		'new-cap': 'off',

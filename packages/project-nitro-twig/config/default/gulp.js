@@ -11,7 +11,7 @@ const config = {
 			// example:
 			// viewFilter: (url) => url !== 'incomplete',
 		},
-		copyAssets:	[
+		copyAssets: [
 			// copies all source files to dest folder
 			{
 				src: '',

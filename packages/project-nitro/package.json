@@ -22,6 +22,7 @@
     "lint:ts": "tslint 'src/**/*.{ts,tsx}'",
     "postinstall": "npm rebuild node-sass",
     "prepublish": "nsp check --output summary",
+    "prettier": "prettier --write \"**/*.*(js|jsx|ts|tsx|json)\"",
     "visual-approve": "gulp visual-approve",
     "visual-reference": "npm run build && gulp visual-reference",
     "visual-test": "npm run build && gulp visual-test",
@@ -100,6 +101,7 @@
     "lint-staged": "7.2.2",
     "npm-run-all": "4.1.3",
     "nsp": "3.2.1",
+    "prettier": "1.14.2",
     "rimraf": "2.6.2",
     "stylelint": "9.5.0",
     "tslint": "5.11.0",
@@ -128,9 +130,11 @@
       "stylelint"
     ],
     "src/**/*.json": [
+      "prettier --list-different --write \"**/*.*(json)\"",
       "npm run lint:data"
     ],
     "src/**/*.js": [
+      "prettier --list-different --write \"**/*.*(js|jsx|ts|tsx)\"",
       "eslint"
     ]
   }

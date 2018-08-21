@@ -16,7 +16,7 @@ if (module.hot) {
 }
 
 // custom code
-console.log('I\'m from the entry point ui'); // eslint-disable-line
+console.log("I'm from the entry point ui"); // eslint-disable-line
 
 // terrificjs
 $(() => {

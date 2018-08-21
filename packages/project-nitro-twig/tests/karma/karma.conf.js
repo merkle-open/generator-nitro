@@ -5,9 +5,8 @@
  * Requires that asset `ui.js` is compiled
  */
 
-module.exports = function (config) {
+module.exports = function(config) {
 	config.set({
-
 		// base path that will be used to resolve all patterns (eg. files, exclude)
 		basePath: '../../',
 
@@ -16,10 +15,7 @@ module.exports = function (config) {
 		frameworks: ['jasmine'],
 
 		// list of files / patterns to load in the browser
-		files: [
-			'public/assets/js/ui.js',
-			'src/patterns/**/test/*.test.js',
-		],
+		files: ['public/assets/js/ui.js', 'src/patterns/**/test/*.test.js'],
 
 		// list of files to exclude
 		exclude: [],

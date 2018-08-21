@@ -10,8 +10,5 @@
 		"children": { "type": "string" },
 		"text": { "type": "string" }
 	},
-	"anyOf": [
-		{"required": ["children"]},
-		{"required": ["text"]}
-	]
+	"anyOf": [{ "required": ["children"] }, { "required": ["text"] }]
 }

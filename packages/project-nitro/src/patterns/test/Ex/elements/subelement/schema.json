@@ -13,8 +13,5 @@
 			"type": "string"
 		}
 	},
-	"anyOf": [
-		{"required": ["children"]},
-		{"required": ["content"]}
-	]
+	"anyOf": [{ "required": ["children"] }, { "required": ["content"] }]
 }

@@ -68,4 +68,3 @@ T.Module.Example.Template = T.createDecorator({
 		this._parent.start(resolve);
 	},
 });
-

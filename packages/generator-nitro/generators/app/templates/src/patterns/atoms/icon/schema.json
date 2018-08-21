@@ -6,11 +6,7 @@
 	"properties": {
 		"icon": {
 			"description": "The short name of the icon",
-			"enum": [
-				"check",
-				"arrow",
-				"nitro"
-			]
+			"enum": ["check", "arrow", "nitro"]
 		}
 	},
 	"required": ["icon"],

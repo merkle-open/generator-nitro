@@ -92,16 +92,21 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			errors: true,
 			errorDetails: true,
 			hash: false,
-			performance: false,
-			warnings: true,
+			performance: true,
+			warnings: false,
 		},
 	};
 
 	// JS
 	if (options.rules.js) {
 
-		webpackConfig.resolve.extensions.push( '.js', '.jsx', '.mjs');
+		// Prepend missing js file extensions
+		const jsExtensions = ['.js', '.jsx', '.mjs'].filter(
+			ext => !webpackConfig.resolve.extensions.includes(ext)
+		);
+		webpackConfig.resolve.extensions.unshift(...jsExtensions);
 
+		// Add js rule
 		webpackConfig.module.rules.push(
 			{
 				test: /\.(js|jsx|mjs)$/,
@@ -129,8 +134,13 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	// typescript
 	if (options.rules.ts) {
 
-		webpackConfig.resolve.extensions.push('.ts', '.tsx', '.d.ts');
+		// Prepend missing typescript file extensions
+		const tsExtensions = ['.ts', '.tsx', '.d.ts', '.js'].filter(
+			ext => !webpackConfig.resolve.extensions.includes(ext)
+		);
+		webpackConfig.resolve.extensions.unshift(...tsExtensions);
 
+		// Add js rule
 		webpackConfig.module.rules.push(
 			// From https://github.com/TypeStrong/ts-loader/blob/master/examples/thread-loader/webpack.config.js
 			{

@@ -9,13 +9,11 @@
 			"enum": ["h1", "h2", "h3"]
 		},
 		"title": {
-			"type":  "string"
+			"type": "string"
 		},
 		"subtitle": {
-			"type":  "string"
+			"type": "string"
 		}
 	},
-	"required": [
-		"title"
-	]
+	"required": ["title"]
 }

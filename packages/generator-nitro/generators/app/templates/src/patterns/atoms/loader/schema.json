@@ -6,10 +6,7 @@
 	"properties": {
 		"modifier": {
 			"description": "A modifier",
-			"enum": [
-				"",
-				"white"
-			]
+			"enum": ["", "white"]
 		}
 	}
 }

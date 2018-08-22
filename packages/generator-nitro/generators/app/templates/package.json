@@ -29,7 +29,6 @@
     "test": "npm-run-all test:*",
     "test:lint": "npm run lint",
     "test:karma": "npm run build && karma start ./tests/karma/karma.conf.js",
-    "prebuild": "npm test",
     "build": "npm-run-all build:*",
     "build:clean": "rimraf public/assets",
     "build:assets": "gulp assets",

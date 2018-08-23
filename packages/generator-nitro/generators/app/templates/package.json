@@ -7,9 +7,10 @@
   "author": "The Nitro Team",
   "engines": {
     "node": ">=8 <11",
-    "npm": ">=5 <7"
+    "npm": ">=5.2 <7"
   },
   "scripts": {
+    "commit": "git-cz",
     "nitro:pattern": "yo nitro:pattern",
     "nitro:update": "npm install generator-nitro --save-exact && yo nitro",
     "lint": "npm-run-all lint:*",
@@ -28,7 +29,7 @@
     "visual-test": "npm run build && gulp visual-test",
     "test": "npm-run-all test:*",
     "test:lint": "npm run lint",
-    "test:karma": "npm run build && karma start ./tests/karma/karma.conf.js",
+    "donottest:karma": "npm run build && karma start ./tests/karma/karma.conf.js",
     "build": "npm-run-all build:*",
     "build:clean": "rimraf public/assets",
     "build:assets": "gulp assets",
@@ -72,9 +73,11 @@
     "body-parser": "1.18.3",
     "browser-sync": "2.24.6",
     "chalk": "2.4.1",
+    "commitizen": "2.10.1",
     "compression": "1.7.3",
     "config": "2.0.1",
     "cross-env": "5.2.0",
+    "cz-conventional-changelog": "2.1.0",
     "del": "3.0.0",
     "dot-object": "1.7.0",
     "es6-promise": "4.2.4",
@@ -119,6 +122,11 @@
     "Firefox ESR"
   ],
   "postcss": {},
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"

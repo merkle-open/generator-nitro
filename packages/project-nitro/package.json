@@ -51,7 +51,7 @@
     "modular"
   ],
   "dependencies": {
-    "@babel/polyfill": "7.0.0-rc.3",
+    "@babel/polyfill": "7.0.0",
     "bootstrap": "4.1.3",
     "handlebars": "4.0.11",
     "jquery": "3.3.1",
@@ -71,7 +71,7 @@
     "@nitro/webpack": "*",
     "ajv": "6.5.3",
     "body-parser": "1.18.3",
-    "browser-sync": "2.24.6",
+    "browser-sync": "2.24.7",
     "chalk": "2.4.1",
     "commitizen": "2.10.1",
     "compression": "1.7.3",

@@ -8,7 +8,6 @@ const yosay = require('yosay');
 const request = require('request');
 const path = require('path');
 const fs = require('fs');
-const Admzip = require('adm-zip');
 const glob = require('glob');
 const _ = require('lodash');
 
@@ -77,11 +76,7 @@ module.exports = class extends Generator {
 		this._skipQuestions = this.options.skipQuestions;
 	}
 
-	initializing() {
-		// namics frontend-defaults
-		this.srcZip = 'http://github.com/namics/frontend-defaults/archive/master.zip';
-		this.destZip = this.templatePath('frontend-defaults.zip');
-	}
+	initializing() {}
 
 	prompting() {
 
@@ -183,44 +178,52 @@ module.exports = class extends Generator {
 		return {
 			download() {
 				const done = this.async();
+				const filesToDownload = [
+					{
+						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/codequality/accessibility/.accessibilityrc',
+						dest: '.accessibilityrc',
+					},
+					{
+						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/codequality/htmllint/.htmllintrc',
+						dest: '.htmllintrc',
+					},
+					{
+						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/codequality/stylelint/.stylelintrc',
+						dest: '.stylelintrc',
+					},
+					{
+						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/editorconfig/.editorconfig',
+						dest: '.editorconfig',
+					},
+					{
+						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/gitignore/nitro.gitignore',
+						dest: '.gitignore',
+					},
+					{
+						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/gitattributes/.gitattributes',
+						dest: '.gitattributes',
+					},
+				];
 
-				this.log(`Download ${chalk.cyan(this.srcZip)}`);
+				this.log('Downloading frontend-defaults files');
 
-				const dl = request
-					.get(this.srcZip)
-					.on('error', (err) => {
-						this.log(chalk.red(err));
-					})
-					.pipe(fs.createWriteStream(this.destZip));
+				const promises = filesToDownload.map(file => {
+					return new Promise((resolve, reject) => {
+						request
+							.get(file.src)
+							.on('error', (err) => {
+								reject(err);
+							})
+							.on('end', () => {
+								resolve(file.dest);
+							})
+							.pipe(fs.createWriteStream(this.destinationPath(file.dest)));
+					});
+				});
 
-				dl.on('finish', () => {
+				Promise.all(promises).then(() => {
 					done();
 				});
-			},
-			extract() {
-				const done = this.async();
-				const zip = new Admzip(this.destZip);
-
-				this.log('Extracting frontend-defaults templates');
-
-				try {
-					// extract entries
-					zip.extractEntryTo('frontend-defaults-master/codequality/accessibility/.accessibilityrc', this.sourceRoot(), false, true);
-					zip.extractEntryTo('frontend-defaults-master/codequality/htmllint/.htmllintrc', this.sourceRoot(), false, true);
-					zip.extractEntryTo('frontend-defaults-master/codequality/stylelint/.stylelintrc', this.sourceRoot(), false, true);
-					zip.extractEntryTo('frontend-defaults-master/editorconfig/.editorconfig', this.sourceRoot(), false, true);
-					zip.extractEntryTo('frontend-defaults-master/repo/gitignore/nitro.gitignore', this.sourceRoot(), false, true);
-					zip.extractEntryTo('frontend-defaults-master/repo/gitattributes/.gitattributes', this.sourceRoot(), false, true);
-
-					// rename files
-					fs.renameSync(this.templatePath('nitro.gitignore'), this.templatePath('.gitignore'));
-				} catch (e) {
-					this.log(chalk.red(e.message));
-				}
-
-				// remove zip
-				fs.unlinkSync(this.destZip);
-				done();
 			},
 		};
 	}

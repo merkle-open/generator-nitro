@@ -32,7 +32,6 @@
     "modular"
   ],
   "dependencies": {
-    "adm-zip": "0.4.7",
     "chalk": "2.4.1",
     "config": "2.0.1",
     "git-config": "0.0.7",

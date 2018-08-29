@@ -43,6 +43,8 @@ describe('nitro:app', () => {
 			assert.file([
 				'.eslintignore',
 				'.eslintrc.js',
+				'.prettierignore',
+				'.prettierrc.js',
 				'.stylelintignore',
 			]);
 		});

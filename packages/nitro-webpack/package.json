@@ -1,6 +1,6 @@
 {
   "name": "@nitro/webpack",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "nitro webpack",
   "license": "MIT",
   "author": "The Nitro Team",

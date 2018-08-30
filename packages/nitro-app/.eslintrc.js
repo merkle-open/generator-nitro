@@ -13,6 +13,6 @@ module.exports = {
 		'no-implicit-coercion': 'off',
 		'prefer-rest-params': 'off',
 		'require-jsdoc': 'off',
-		'valid-jsdoc': 'off'
+		'valid-jsdoc': 'off',
 	},
 };

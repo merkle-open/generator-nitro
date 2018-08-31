@@ -46,6 +46,7 @@ describe('nitro:app', () => {
 				'.prettierignore',
 				'.prettierrc.js',
 				'.stylelintignore',
+				'stylelint.config.js',
 			]);
 		});
 
@@ -54,7 +55,6 @@ describe('nitro:app', () => {
 				'.editorconfig',
 				'.gitattributes',
 				'.gitignore',
-				'.stylelintrc',
 			]);
 		});
 

@@ -188,19 +188,15 @@ module.exports = class extends Generator {
 						dest: '.htmllintrc',
 					},
 					{
-						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/codequality/stylelint/.stylelintrc',
-						dest: '.stylelintrc',
-					},
-					{
 						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/editorconfig/.editorconfig',
 						dest: '.editorconfig',
 					},
 					{
-						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/gitignore/nitro.gitignore',
+						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/repo/gitignore/nitro.gitignore',
 						dest: '.gitignore',
 					},
 					{
-						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/gitattributes/.gitattributes',
+						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/repo/gitattributes/.gitattributes',
 						dest: '.gitattributes',
 					},
 				];

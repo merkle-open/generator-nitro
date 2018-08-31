@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "@namics/eslint-config": "6.0.1",
-    "@namics/stylelint-bem": "5.1.1",
+    "@namics/stylelint-config": "0.2.1",
     "@namics/tslint-config": "0.1.0",
     "@nitro/app": "0.3.4",
     "@nitro/exporter": "0.3.4",

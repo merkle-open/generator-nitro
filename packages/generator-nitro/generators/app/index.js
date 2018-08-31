@@ -188,10 +188,6 @@ module.exports = class extends Generator {
 						dest: '.htmllintrc',
 					},
 					{
-						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/codequality/stylelint/.stylelintrc',
-						dest: '.stylelintrc',
-					},
-					{
 						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/editorconfig/.editorconfig',
 						dest: '.editorconfig',
 					},

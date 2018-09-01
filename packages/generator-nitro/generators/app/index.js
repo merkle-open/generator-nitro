@@ -106,7 +106,7 @@ module.exports = class extends Generator {
 				const config = this.config.getAll();
 				if (config) {
 					this.options.name = config.name || this.options.name;
-					this.options.viewExt = config.viewExtension || this.options.viewExt;
+					this.options.viewExt = config.viewExtension || config.templateEngine ? config.templateEngine : this.options.viewExt;
 					this.options.templateEngine = config.templateEngine || this.options.templateEngine;
 					this.options.clientTpl = typeof config.clientTemplates === 'boolean' ? config.clientTemplates : this.options.clientTpl;
 					this.options.exampleCode = typeof config.exampleCode === 'boolean' ? config.exampleCode : this.options.exampleCode;

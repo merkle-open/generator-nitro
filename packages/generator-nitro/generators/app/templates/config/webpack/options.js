@@ -13,6 +13,7 @@ const options = {
 		image: true,
 	},
 	features: {
+		bundleAnalyzer: false,
 		gitInfo: false,
 	},
 };

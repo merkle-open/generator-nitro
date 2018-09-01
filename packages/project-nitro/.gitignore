@@ -31,6 +31,14 @@ lerna-debug.log
 /node
 /target
 
+# Project (deprecated)
+/assets/vendor
+/components/**/template/*.js
+/components/**/template/partial/*.js
+/patterns/**/template/*.js
+/patterns/**/template/partial/*.js
+/.servepid
+
 # Project
 /config/local*
 debug.log

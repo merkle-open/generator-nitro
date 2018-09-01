@@ -2,4 +2,4 @@
 
 .svg files placed in this folder will be processed automatically 
 and are combined into the svg sprite `public/assets/svg/icons.svg`
-with the gulp task `svg-sprite`.
+with the gulp task `svg-sprites`.

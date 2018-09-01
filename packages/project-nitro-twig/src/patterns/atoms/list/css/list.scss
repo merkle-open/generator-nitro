@@ -1,0 +1,16 @@
+$a-list-size: 2rem;
+
+.a-list {
+	font-size: $a-list-size;
+	margin: 5rem 0 5rem 3 * $a-list-size;
+}
+
+.a-list__item {
+	margin: 0.3 * $a-list-size 0;
+	&::before {
+		position: absolute;
+		margin-top: 0.1 * $a-list-size;
+		margin-left: -1.8 * $a-list-size;
+		font-icon: url('../img/check.svg');
+	}
+}

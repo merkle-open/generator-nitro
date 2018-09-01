@@ -5,7 +5,8 @@ Starting with version 2, nitro uses [config](https://www.npmjs.com/package/confi
 This lets you extend the nitro default parameters for different environments (local, development, production, ...).  
 The configuration is placed in the [`/config`](../../config) directory. Read more about [configuration files](https://github.com/lorenwest/node-config/wiki/Configuration-Files)
 
-For your own functionality you can add new nodes as you like. It is certainly useful not to use the four main nodes from nitro: `assets`, `code`, `nitro` & `server`.
+For your own functionality you can add new nodes as you like. It is certainly useful not to use
+the main nodes from nitro: `code`, `nitro`,`server`, `gulp`, `feature` & `exporter`.
 
 ## Code
 
@@ -15,7 +16,7 @@ For your own functionality you can add new nodes as you like. It is certainly us
 
 Type: Object
 
-* `code.validation.eslint.live` - default: true
+* `code.validation.eslint.live` - default: false
 
 Enable/disable JavaScript linting on change.
 
@@ -40,13 +41,20 @@ Type: Object
 
 Type: Object
 
-* `code.validation.stylelint.live` - default: true
+* `code.validation.stylelint.live` - default: false
 
 Enable/disable CSS linting on change.
 
 ## Nitro
 
 The node `nitro` contains following properties
+
+### Simple Properties
+
+* `nitro.viewFileExtension`: String (default: 'hbs') - possible values: 'hbs' or 'twig'
+  Extension of all view files (pattern & views) 
+* `nitro.templateEngine`: String (default: 'hbs') - possible values: 'hbs' or 'twig'
+  Currently used serverside rendering engine
 
 ### Patterns
 
@@ -57,7 +65,7 @@ Type: Object
 Configuration of pattern types. These types are used for:
 
 * handlebars pattern helper (`{{pattern name='pattern'}}`) to evaluate the pathes
-* pattern generator `yo nitro:pattern`
+* pattern generator `npm run nitro:pattern`
 
 A type contains following properties:
 
@@ -148,6 +156,51 @@ Type: Boolean
 Default: true
 
 If set to `true`, all requests through express will be compressed.
+
+## Gulp
+
+### `gulp.dumpViews.viewFilter`
+
+Type: function
+
+Used in gulp task `dump-views`
+
+Filters unwanted views (should return false for unwanted view urls)
+
+e.g.: ```viewFilter: (url) => url !== 'incomplete'```
+
+### `gulp.copyAssets`
+
+Type: Array of Objects
+
+Copies all source files to dest folder
+
+Object Properties:
+
+* `gulp.copyAssets.src` Sting (default: '')
+* `gulp.copyAssets.dest` Sting (default: '')
+
+### `gulp.minifyImages`
+
+Type: Array of Objects
+
+Copies and minifies all source images to dest folder
+
+Object Properties:
+
+* `gulp.minifyImages.src` Sting (default: ''; example: 'src/shared/assets/img/\*\*/*')
+* `gulp.minifyImages.dest` Sting (default: ''; example: 'public/assets/img')
+
+### `gulp.svgSprites`
+
+Type: Array of Objects
+
+Generates icon sprite with the name of the last folder in src
+
+Properties:
+
+* `gulp.svgSprites.src` Sting (default: ''; example: 'src/patterns/atoms/icon/img/icons/*.svg')
+* `gulp.svgSprites.dest` Sting (default: ''; example: 'public/assets/svg')
 
 ## Feature
 

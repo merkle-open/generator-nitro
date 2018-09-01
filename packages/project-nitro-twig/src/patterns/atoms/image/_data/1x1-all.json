@@ -1,0 +1,74 @@
+{
+	"srcset": {
+		"renditions": [
+			{
+				"media": "100",
+				"x1": "/content/size/1x1-100.png?100"
+			},
+			{
+				"media": "180",
+				"x1": "/content/size/1x1-180.png?180"
+			},
+			{
+				"media": "230",
+				"x1": "/content/size/1x1-230.png?230"
+			},
+			{
+				"media": "290",
+				"x1": "/content/size/1x1-290.png?290"
+			},
+			{
+				"media": "320",
+				"x1": "/content/size/1x1-320.png?320"
+			},
+			{
+				"media": "360",
+				"x1": "/content/size/1x1-360.png?360"
+			},
+			{
+				"media": "460",
+				"x1": "/content/size/1x1-460.png?460"
+			},
+			{
+				"media": "580",
+				"x1": "/content/size/1x1-580.png?580"
+			},
+			{
+				"media": "640",
+				"x1": "/content/size/1x1-640.png?640"
+			},
+			{
+				"media": "760",
+				"x1": "/content/size/1x1-760.png?760"
+			},
+			{
+				"media": "960",
+				"x1": "/content/size/1x1-960.png?960"
+			},
+			{
+				"media": "1200",
+				"x1": "/content/size/1x1-1200.png?1200"
+			},
+			{
+				"media": "1496",
+				"x1": "/content/size/1x1-1496.png?1496"
+			},
+			{
+				"media": "1960",
+				"x1": "/content/size/1x1-1960.png?1960"
+			},
+			{
+				"media": "2880",
+				"x1": "/content/size/1x1-2880.png?2880"
+			},
+			{
+				"media": "3920",
+				"x1": "/content/size/1x1-3920.png?3920"
+			}
+		],
+		"fallback": {
+			"x1": "/content/size/1x1-100.png?100"
+		}
+	},
+	"alt": "Alt-Attribute"
+}

@@ -1,4 +1,4 @@
-## Dynamic view data
+# Dynamic view data
 
 If you want to use dynamic view data (i.e. using data from a database or data which is available in different views), 
 you can define those routes in here. 

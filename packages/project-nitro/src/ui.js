@@ -23,16 +23,6 @@ import './patterns/atoms/loader';
 import './patterns/atoms/stage';
 import './patterns/molecules/example';
 
-import './patterns/test/a';
-import './patterns/test/b';
-import './patterns/test/Ex';
-import './patterns/test/ico';
-import './patterns/test/t';
-import './patterns/test/tbox';
-import './patterns/test/tbutton';
-import './patterns/test/tcheckbox';
-
-// needed for hot reload
 if (module.hot) {
 	module.hot.accept();
 }
@@ -46,7 +36,3 @@ $(() => {
 	application.registerModules();
 	application.start();
 });
-
-// Uncomment one of the following lines to see error handling
-// require('unknown-module')
-// } syntax-error

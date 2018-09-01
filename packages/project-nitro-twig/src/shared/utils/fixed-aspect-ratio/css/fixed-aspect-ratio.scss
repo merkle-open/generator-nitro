@@ -1,0 +1,27 @@
+@mixin fixed-aspect-ratio($ratio:75%, $width:100%, $display:'inline-block', $child:'>*', $elementPadding: 0) {
+	display: #{$display};
+	position: relative;
+	width: $width;
+
+	&::after {
+		content: '';
+		display: block;
+		margin-top: $ratio;
+	}
+
+	#{$child} { // stylelint-disable-line
+		bottom: 0;
+		left: 0;
+		max-height: 100%;
+		padding-left: $elementPadding;
+		padding-right: $elementPadding;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}
+
+@mixin fluid-height($x, $y) {
+	padding: 0 0 percentage($y/$x) 0;
+	height: 0;
+}

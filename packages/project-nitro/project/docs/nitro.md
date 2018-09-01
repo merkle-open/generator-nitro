@@ -21,7 +21,7 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 This application was created by the yeoman generator for nitro.  
 Before using, you need of course [node](https://nodejs.org/) installed.
 Nitro is tested with the current 
-["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x and 10.x).
+["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x).
 
 Install the project dependencies in the project root:
 
@@ -45,7 +45,7 @@ For production (prototype server) mode use:
 npm run prod
 ```
 
-The Nitro app will run on port `8080` by default, the proxy on `8081` (only runs with `dev` task).  
+The Nitro app will run on port `8080` by default, the proxy on `8081` (only runs in develpment mode).  
 If you want the app to run on another port use [config](./nitro-config.md) or add env vars to the tasks:
 
 ```
@@ -105,7 +105,8 @@ It is recommended to make subfolders like `atoms`, `molecules`, `organisms`, ...
 A pattern uses the following structure:
 
 ```
-example
+example/
+example/readme.md
 example/example.hbs
 example/schema.json
 example/css/example.scss
@@ -116,11 +117,11 @@ example/_data/example.json
 Modifiers (CSS) and decorators (JavaScript) are created using the following conventions:
 
 ```
-example/css/modifier/example-<modifier>.css
+example/css/modifier/example-<modifier>.scss
 example/js/decorator/example-<decorator>.js
 ```
 
-Different data variations have to be placed in the `_data` folder:
+Different data variations may be placed in the `_data` folder:
 
 ```
 example/_data/example-variant.json
@@ -132,7 +133,7 @@ example/_data/example-variant.json
 npm run nitro:pattern
 ```
 
-This will copy the templates (nitro.patterns.<type>.template) from config to the configured target.
+This will copy the templates (nitro.patterns.\<type\>.template) from config to the configured target.
 
 Optionally you can give the name:
 
@@ -160,7 +161,7 @@ It's recommended to start the name of a subpattern with the pattern name and to 
 
 ### Creating pages
 
-Create a new `*.hbs` file in the `views` folder. (You can make as many subfolders as you want.)
+Create a new `*.hbs` file in the `/src/views` folder. (You can make as many subfolders as you want.)
 
 ```
 /src/views/index.hbs
@@ -180,7 +181,7 @@ http://localhost:8080/content-variant
 #### Layout
 
 By default views use a simple layout mechanism.
-The default layout template `views/_layouts/default.hbs` is used for every view.
+The default layout template `/src/views/_layouts/default.hbs` is used for every view.
 The block `{{{body}}}` includes the contents from a view.
 
 Simple default layout:
@@ -231,7 +232,7 @@ There also is a possibility to pass data to subpatterns by providing a data obje
 {{pattern name='example' data='example-variant' template='example-2'}}
 ```
 
-To be more flexible, you may also pass individual arguments to the pattern, which overrides the defaults from the data-file.
+To be more flexible, you may also pass additional arguments to the pattern, which overrides the defaults from the data-file.
 
 ```
 {{pattern name='example' modifier='blue'}}
@@ -271,7 +272,7 @@ The pattern helper will find also pattern elements.
 
 ### Render partials
 
-Render a partial (HTML snippet). Partials are placed in `src/views/_partials/` as `*.hbs` files (e.g. `head.hbs`).
+Render a partial (hbs snippet). Partials are placed in `src/views/_partials/` as `*.hbs` files (e.g. `head.hbs`).
 
 ```
 {{> head}}
@@ -284,7 +285,7 @@ so keep in mind that every space or hyphen in filenames is replaced with an unde
 ### Render placeholders
 
 Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `/src/views/_placeholders/` as `*.hbs` files.  
-The following two examples do the same and render the file `content/example.hbs` from `/src/views/_placeholders/`.
+The following example renders the file `content/example.hbs` from `/src/views/_placeholders/`.
 
 ```
 {{placeholder name='content' template='example'}}
@@ -295,15 +296,15 @@ The following two examples do the same and render the file `content/example.hbs`
 #### Data per page
 
 You may pass data to your templates (view, layout, partial, pattern) per view.  
-Put a file with the same name as the view in the folder `/src/views/_data/` with the file extension `.json`. (Use the same folder structure as in `views`)
+Put a file with the same name as the view in the folder `/src/views/_data/` with the file extension `.json`. (Use the same folder structure as in `/src/views`)
 
 ```
-/views/index.hbs
-/views/_data/index.json
+/src/views/index.hbs
+/src/views/_data/index.json
 http://localhost:8080/index
 
-/views/content/variant.hbs
-/views/_data/content/variant.json
+/src/views/content/variant.hbs
+/src/views/_data/content/variant.json
 http://localhost:8080/content-variant
 ```
 
@@ -356,7 +357,7 @@ Pattern data will overwrite data from views. (Use as described above)
 
 You may overwrite data from views & patterns in request parameters.
 
-`?_nitro.pageTitle=Testpage` will overwrite the data for the handlebars expression `{{_nitro.pageTitle}}`
+`?_nitro.pageTitle=Testpage` will overwrite the data for the hbs expression `{{_nitro.pageTitle}}`
 
 ## Assets
 
@@ -385,7 +386,7 @@ Place [code for development](../../src/proto/readme.md) in the corresponding dir
 
 ## Translations
 
-Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the Handlebars helper `{{t}}`.  
+Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the helper described in the following section.  
 Translations are stored in `/project/locales/[lang]/translation.json`.
 
 Express Middleware configuration:
@@ -393,7 +394,7 @@ Express Middleware configuration:
 * Fallback language: `default`
 * Language switch with query parameter: `?lang=de`
 
-### Translation handlebars helper
+### Translation hbs helper
 
 The helper uses the given [library features](http://i18next.com/translate/).
 
@@ -427,7 +428,7 @@ data = {
 
 ### Resource linking
 
-To stay consistent you should favour the use of relative paths with a leading slash.
+To stay consistent you should favour the use of relative paths with a leading slash in all your view files.
 Link to resources relatively to the `project`-folder **with** a leading slash.
 
 ```html
@@ -495,15 +496,11 @@ If you need more control, you may place some functionality in [`/project/routes`
 
 Use or create new scripts in `package.json` to run with npm.
 
-### Git Hooks
-
-We're using [husky](https://github.com/typicode/husky) for githooks.
-
-### Contributing
+## Contributing
 
 * For bugs and features please use [GitHub Issues](https://github.com/namics/generator-nitro/issues)
 * Feel free to fork and send PRs to the current `develop` branch. That's a good way to discuss your ideas.
 
-### Credits
+## Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 4.0.0).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 4.0.9).

@@ -2,7 +2,7 @@
 
 /**
  * Karma configuration
- * Requires that asset `ui.min.js` and `vendor.min.js` is compiled
+ * Requires that asset `ui.js` is compiled
  */
 
 module.exports = function(config) {
@@ -15,13 +15,7 @@ module.exports = function(config) {
 		frameworks: ['jasmine'],
 
 		// list of files / patterns to load in the browser
-		files: [
-			// 'node_modules/terrific/dist/terrific.min.js',
-			// 'node_modules/@babel/polyfill/dist/polyfill.js',
-			'public/assets/js/vendor.min.js',
-			'public/assets/js/ui.min.js',
-			'src/patterns/**/test/*.test.js',
-		],
+		files: ['public/assets/js/ui.js', 'src/patterns/**/test/*.test.js'],
 
 		// list of files to exclude
 		exclude: [],
@@ -33,7 +27,7 @@ module.exports = function(config) {
 		},
 		babelPreprocessor: {
 			options: {
-				presets: ['@babel/env'],
+				presets: ['env'],
 				sourceMap: 'inline',
 			},
 		},
@@ -68,7 +62,7 @@ module.exports = function(config) {
 
 		// transport methods between the browser and testing server
 		// not using 'websocket' prevents PhantomJS crashes on some systems
-		// transports: ['polling'],
+		transports: ['polling'],
 
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits

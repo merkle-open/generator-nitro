@@ -18,18 +18,18 @@ const config = {
 				dest: '',
 			},
 		],
-		svgSprites: [
-			// generates icon sprite with the name of the last folder in src
-			{
-				src: 'src/patterns/atoms/icon/img/icons/*.svg',
-				dest: 'public/assets/svg',
-			},
-		],
 		minifyImages: [
 			// copies and minifies all source images to dest folder
 			{
 				src: 'src/shared/assets/img/**/*',
 				dest: 'public/assets/img',
+			},
+		],
+		svgSprites: [
+			// generates icon sprite with the name of the last folder in src
+			{
+				src: 'src/patterns/atoms/icon/img/icons/*.svg',
+				dest: 'public/assets/svg',
 			},
 		],
 	},

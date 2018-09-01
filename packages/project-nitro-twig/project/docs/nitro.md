@@ -9,28 +9,24 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 ## Features
 
 * Simple and proven project structure
-* CSS/JS concatenation and minification
-* LESS/SCSS support (with caching for optimal performance)
-* ES2015 with babel transpiling
+* Webpack Builder with HMR
+* Gulp Tasks for additional functionality
 * Linting, Source Maps, PostCSS & Browsersync
-* Jasmine tests with Karma test runner
-* Yeoman pattern generator
-* [Client side templates](client-templates.md)
-* [Static Exports](nitro-exporter.md)
+* Pattern generator
+* [Client side templates](./client-templates.md)
+* [Static Exports](./nitro-exporter.md)
 
 ## Preparation
 
 This application was created by the yeoman generator for nitro.  
 Before using, you need of course [node](https://nodejs.org/) installed.
 Nitro is tested with the current 
-["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x and 10.x).
-
-And also you need [yarn](https://www.npmjs.com/package/yarn).
+["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x).
 
 Install the project dependencies in the project root:
 
 ```
-yarn install
+npm install
 ```
 
 ## Starting the app
@@ -38,7 +34,7 @@ yarn install
 Use
 
 ```
-yarn start
+npm start
 ```
 
 ... to start in development mode
@@ -46,27 +42,27 @@ yarn start
 For production (prototype server) mode use:
 
 ```
-yarn prod
+npm run prod
 ```
 
-The Nitro app will run on port `8080` by default, the proxy on `8081` (only runs with `dev` task).  
-If you want the app to run on another port use [config](nitro-config.md) or add env vars to the tasks:
+The Nitro app will run on port `8080` by default, the proxy on `8081` (only runs in develpment mode).  
+If you want the app to run on another port use [config](./nitro-config.md) or add env vars to the tasks:
 
 ```
-PORT=8000 PROXY=8001 yarn start
+PORT=8000 PROXY=8001 npm start
 ```
 
 The port to be used in production can be set the same way:
 
 ```
-PORT=3000 yarn prod
+PORT=3000 npm run prod
 ```
 
 This works a bit different on **Windows**. Use the following commands in prompt:
 
 ```
-set PORT=8000 && set PROXY=8001 && yarn start
-set PORT=3001 && yarn prod
+set PORT=8000 && set PROXY=8001 && npm start
+set PORT=3001 && npm run prod
 ```
 
 ## Configuring
@@ -79,61 +75,70 @@ See details in [config readme](nitro-config.md)
 
 ### Global Configuration
 
-Some global configuration is placed in `package.json`
+Some global configuration is placed in [`package.json`](../../package.json)
 
 #### Target Browsers
 
 For defining target browsers, [browserslist](https://github.com/ai/browserslist) is used.    
 This config is shareable between different frontend tools. If not defined, the default browsers from browserslist would be taken.
 
+#### Git Hooks
+
+Nitro uses [husky](https://github.com/typicode/husky) for githooks.
+
+The configuration is placed in the "husky" and the corresponding "lint-staged" node in `package.json`
+
+Githooks Configuration is placed in the "husky" and the corresponding "lint-staged" node in [package.json](../../package.json)
+
 ## Daily Work - Creating Patterns & Pages
 
 ### Creating Patterns
 
-Patterns are created in the `patterns` folder. A pattern is an encapsulated block of markup
+Patterns are created in the `src/patterns` folder. A pattern is an encapsulated block of markup
 with corresponding styles, scripts and data. The pattern data can be described in `schema.json`
 with [JSON schema](http://json-schema.org) format (draft-04). Nitro uses [ajv](http://epoberezkin.github.io/ajv/) for validation.
 
 For a better overview it is useful to define different types of patterns in [config](nitro-config.md).
 
-It is recommended to make subfolders like `atoms`, `molecules` & `organisms`.
+It is recommended to make subfolders like `atoms`, `molecules`, `organisms`, ...
 
 A pattern uses the following structure:
 
 ```
-/example
-/example/example.twig
-/example/schema.json
-/example/css/example.css
-/example/js/example.js
-/example/_data/example.json
+example/
+example/readme.md
+example/example.twig
+example/schema.json
+example/css/example.scss
+example/js/example.js
+example/_data/example.json
 ```
 
 Modifiers (CSS) and decorators (JavaScript) are created using the following conventions:
 
 ```
-/example/css/modifier/example-<modifier>.css
-/example/js/decorator/example-<decorator>.js
+example/css/modifier/example-<modifier>.scss
+example/js/decorator/example-<decorator>.js
 ```
 
-Different data variations have to be placed in the `_data` folder:
+Different data variations may be placed in the `_data` folder:
 
 ```
-/example/_data/example-variant.json
+example/_data/example-variant.json
 ```
 
 ### Creating pattern with npm script
 
 ```
-yarn nitro:pattern
+npm run nitro:pattern
 ```
 
-This will copy the templates (nitro.patterns.<type>.template) from config to the configured target.
+This will copy the templates (nitro.patterns.\<type\>.template) from config to the configured target.
 
 Optionally you can give the name:
 
 ```
-yarn nitro:pattern <name>
+npm run nitro:pattern <name>
 ```
 
 ### Creating pattern elements
@@ -144,23 +149,24 @@ For this, place a new pattern in the folder `elements` inside a pattern.
 Element `example-sub` in pattern `example`:
 
 ```
-/example/elements/example-sub
-/example/elements/example-sub/example-sub.twig
-/example/elements/example-sub/css/example-sub.css
-/example/elements/example-sub/js/example-sub.js
-/example/elements/example-sub/_data/example-sub.json
+example/elements/example-sub/
+example/elements/example-sub/readme.md
+example/elements/example-sub/example-sub.twig
+example/elements/example-sub/css/example-sub.scss
+example/elements/example-sub/js/example-sub.js
+example/elements/example-sub/_data/example-sub.json
 ```
 
 It's recommended to start the name of a subpattern with the pattern name and to use the same pattern type for the sub element.
 
 ### Creating pages
 
-Create a new `*.twig` file in the `views` folder. (You can make as many subfolders as you want.)
+Create a new `*.twig` file in the `/src/views` folder. (You can make as many subfolders as you want.)
 
 ```
-/views/index.twig
-/views/content.twig
-/views/content/variant.twig
+/src/views/index.twig
+/src/views/content.twig
+/src/views/content/variant.twig
 ```
 
 Your new page can then be called by the according URL (with or without an extension).  
@@ -175,7 +181,7 @@ http://localhost:8080/content-variant
 #### Layout
 
 By default views use a simple layout mechanism.
-The default layout template `views/_layouts/default.twig` is used for every view.
+The default layout template `/src/views/_layouts/default.twig` is used for every view.
 The snippet `<!-- Replace With Body -->` includes the contents from a view.
 
 Simple default layout:
@@ -190,9 +196,9 @@ Simple default layout:
 </html>
 ```
 
-To remove the layout feature, simply delete the folder `views/_layout`.
+To remove the layout feature, simply delete the folder `/src/views/_layout`.
 
-Different layouts are placed in `views/_layouts/`. Link them to your view [in your page datafile](#use-different-layout).
+Different layouts are placed in `/src/views/_layouts/`. Link them to your view [in your page datafile](#use-different-layout).
 
 ### Render patterns
 
@@ -238,7 +244,7 @@ To be more flexible, you may also pass additional arguments to the pattern, whic
 The pattern helper will find also pattern elements.
 
 ```
-{% pattern 'example-sub' %}
+{% pattern name='example-sub' %}
 ```
 
 ... looks for following paths
@@ -248,18 +254,17 @@ The pattern helper will find also pattern elements.
 
 ### Render partials
 
-Render a partial (twig snippet). Partials are placed in `views/_partials/` as `*.twig` files (e.g. `head.twig`).
+Render a partial (twig snippet). Partials are placed in `src/views/_partials/` as `*.twig` files (e.g. `head.twig`).
 
 ```
 {% partial 'head' %}
 
 ### Render placeholders
 
-Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `views/_placeholders/` as `*.twig` files.  
-The following two examples do the same and render the file `content/example.twig` from `views/_placeholders/`.
+Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `/src/views/_placeholders/` as `*.twig` files.  
+The following example renders the file `content/example.twig` from `/src/views/_placeholders/`.
 
 ```
-{% placeholder 'content' 'example' %}
 {% placeholder name='content' template='example' %}
 ```
 
@@ -268,23 +273,23 @@ The following two examples do the same and render the file `content/example.twig
 #### Data per page
 
 You may pass data to your templates (view, layout, partial, pattern) per view.  
-Put a file with the same name as the view in the folder `views/_data/` with the file extension `.json`. (Use the same folder structure as in `views`)
+Put a file with the same name as the view in the folder `/src/views/_data/` with the file extension `.json`. (Use the same folder structure as in `/src/views`)
 
 ```
-/views/index.twig
-/views/_data/index.json
+/src/views/index.twig
+/src/views/_data/index.json
 http://localhost:8080/index
 
-/views/content/variant.twig
-/views/_data/content/variant.json
+/src/views/content/variant.twig
+/src/views/_data/content/variant.json
 http://localhost:8080/content-variant
 ```
 
 It's also possible to use a custom data file by requesting with a query param `?_data=...`:
 
 ```
-/views/index.twig
-/views/_data/index-test.json
+/src/views/index.twig
+/src/views/_data/index-test.json
 http://localhost:8080/index?_data=index-test
 ```
 
@@ -294,20 +299,20 @@ If you need a different layout for a page, do so in the corresponding view data 
 (View data files needs to be placed in same directory structure than views)
 
 ```
-    /views/_data/index.json
+    /src/views/_data/index.json
     {
         "_layout": "home"
     }
 
-    /views/_layouts/home.twig
+    /src/views/_layouts/home.twig
     http://localhost:8080/index
 ```
 
 ...or you may change the layout temporarily by requesting a page with the query param `?_layout=...`
 
 ```
-/views/index.twig
-/views/_layouts/home.twig
+/src/views/index.twig
+/src/views/_layouts/home.twig
 http://localhost:8080/index?_layout=home
 ```
 
@@ -319,7 +324,7 @@ It's not recommended to use view data for data variations of patterns.
 #### Dynamic view data
 
 If you want to use dynamic view data (i.e. using data from a database or data which is available in different views),
-you can define those "routes" in the directory [`project/viewData/`](../viewData/readme.md).
+you can define those "routes" in the directory [`/project/viewData/`](../viewData/readme.md).
 
 #### Data per pattern
 
@@ -333,10 +338,24 @@ You may overwrite data from views & patterns in request parameters.
 
 ## Assets
 
-One of Nitro's main feature is asset concatenation for CSS and JavaScript files.
-If changed, the files will be updated on every change, therefore you'll always get the latest version.
+### Webpack
 
-You can configure the include order of your assets by defining patterns in [config](nitro-config.md).
+The main assets will be bundled with an easy to use webpack config.
+
+The configuration includes loaders for JavaScript, TypeScript, CSS & SCSS,
+clientside handlebars, webfonts and images (with minification). It also includes an iconfont generator.
+
+You only have to enable the desired loaders and features. And of course, it is possible to extend the configuration to your needs.
+
+The configuration is placed in `/config/webpack`  
+See [readme](./nitro-webpack.md) for configuration options.
+
+### Other Assets
+
+Nitro also gives you some gulp tasks to use for additional assets you need in your build. 
+You may copy assets, minify images or generate an svg sprites.
+
+Configuration for gulp tasks is done in [config package](../../config/default/gulp.js) and [`gulpfile.js`](../../gulpfile.js)
 
 ### Prototype Assets
 
@@ -345,7 +364,7 @@ Place [code for development](../../src/proto/readme.md) in the corresponding dir
 ## Translations
 
 Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the helper described in the following section.  
-Translations are stored in `project/locales/[lang]/translation.json`.
+Translations are stored in `/project/locales/[lang]/translation.json`.
 
 Express Middleware configuration:
 
@@ -385,20 +404,19 @@ data = {
 
 ### Resource linking
 
-To stay consistent you should favour the use of relative paths with a leading slash.
+To stay consistent you should favour the use of relative paths with a leading slash in all your view files.
 Link to resources relatively to the `project`-folder **with** a leading slash.
 
 ```html
-<link rel="stylesheet" href="/assets/ui.css" type="text/css" />
+<link rel="stylesheet" href="/assets/css/ui.css" type="text/css" />
 <link rel="shortcut icon" href="/assets/img/icon/favicon.ico" type="image/x-icon" />
-<script src="/assets/ui.js"></script>
-background: url(/assets/img/bg/texture.png) scroll 0 0 no-repeat;
+<script src="/assets/js/ui.js"></script>
 <a href="/content.twig">Contentpage</a>
 ```
 
 ### Upper & lower case letters
 
-Use all lowercase if possible. (Exception: TerrificJS uses upper case for its namespace `T` and class names `T.Module.Example`)
+Use all lowercase if possible.
 
 All files must be lowercase. It's allowed to use uppercase letters for pattern folders, keep care of case sensitive filesystems and use handlebars helpers with the *exact* folder name.
 
@@ -415,121 +433,50 @@ Navigation   -> T.Module.Navigation   -> m-navigation
 NavMain      -> T.Module.NavMain      -> m-nav-main
 AdminNavMain -> T.Module.AdminNavMain -> m-admin-nav-main
 ```
-### Custom twig helpers
 
-Custom twig helpers will be automatically loaded if put into to `project/helpers` directory. 
-An example could look like this:
-
-```js
-const twigUtils = require('../utils');
-
-module.exports = function (Twig) {
-	return {
-		type: 'helper-name',
-		regex: /^helper-name/,
-		next: [],
-		open: true,
-		compile: function(token) {
-			// do any parameter logic here
-			delete token.match;
-			return token;
-		},
-		parse: function(token, context, chain) {
-			try {
-				// do any template / render logic here
-
-				// return the markup
-				return {
-					chain: chain,
-					output: 'Output Markup'
-				};
-
-			} catch (e) {
-				return {
-					chain: chain,
-					output: twigUtils.logAndRenderError(e)
-				};
-			}
-		}
-	};
-};
-```
-
-The helper name get's defined in the type property above. 
-The regex property needs to be extended to contain any possible arguments of the helper.
-For more complex example's please check out the core helpers.
-
-### JSON Endpoints
-
-If you need to mock service endpoints, you can simply put JSON files into a directory inside the `/public` directory as
-those are directly exposed.
-
-`/public/service/posts.json` will be available under `/service/posts.json`
-and can be used for things like AJAX requests.
+## Miscellaneous
 
 ### Custom Routes
 
 If you need more custom functionality in endpoints
 you can put your custom routes with their logic
-into the [`project/routes` directory](project/routes/).
+into the [`/project/routes` directory](../routes/).
 
-### Using another Template Engine
+### Custom Handlebars helpers
 
-If you don't want to use [Handlebars](http://handlebarsjs.com/) or [Twig](https://github.com/twigjs/twig.js) as Nitro's Template Engine
-you can configure your own Engine.  
-This example shows how to replace Handlebars with [Nunjucks](https://mozilla.github.io/nunjucks/) as an example.
-
-All these steps need to be performed in `server.js`.
-
-1. Replace the line `hbs = require('./app/templating/hbs/engine')` with `nunjucks = require('nunjucks')`
-2. Remove the partials line and  `app.engine(config.get('nitro.viewFileExtension'), hbs.__express);`
-3. Configure nunjucks as Express' Template Engine with the following block:
+Custom handlebars helpers will be automatically loaded if put into to `project/helpers` directory. An example could look like 
+this:
 
 ```js
-nunjucks.configure(
-    config.get('nitro.basePath') + config.get('nitro.viewDirectory'),
-    {
-        autoescape: true,
-        express: app
-    },
-);
+module.exports = function(foo) {
+    // Helper Logic
+};
 ```
 
-Now Restart Nitro and it'll run with Nunjucks.
+### API Endpoints
 
-**Be aware**, you'll need to adjust all your views and patterns to work with the new engine. 
-Nitro only provides a `pattern` helper for handlebars / twig.
+If you need to mock service endpoints...
 
-## Miscellaneous
+#### Simple
 
-### Commandline
+You can simply put static files inside the `/public/api` directory, as this route is directly exposed.
 
-Use or create new scripts in `package.json` to run with yarn.
+`/public/api/posts.json` will be available under `/api/posts.json`
+or `/public/api/snippets/teaser.html` under `/api/snippets/teaser.html`
 
-### Git Hooks
+#### More Complex
 
-We're using [husky](https://github.com/typicode/husky) for githooks.
+If you need more control, you may place some functionality in [`/project/routes`](../routes/readme.md).
 
-### Contributing
+## Commandline
+
+Use or create new scripts in `package.json` to run with npm.
+
+## Contributing
 
 * For bugs and features please use [GitHub Issues](https://github.com/namics/generator-nitro/issues)
 * Feel free to fork and send PRs to the current `develop` branch. That's a good way to discuss your ideas.
 
-### Example Project Includes
+## Credits
 
-* [YUI CSS Reset 3.18.1](http://yuilibrary.com/yui/docs/cssreset/)
-* Favicon & Home-Icons from Nitro (replace with your own)
-* Pattern `example` and `icon` and some styles in src/assets/css (you don't need them)
-
-#### Client Dependencies
-
-The following packages are installed by the [app](#name) generator as dependencies:
-
-* [jQuery 3.3.1](http://jquery.com/)
-* [TerrificJS 3.0.0](https://github.com/brunschgi/terrificjs)
-* [Handlebars 4.0.11](https://github.com/components/handlebars.js)
-* [Babel Polyfill 6.26.0](https://www.npmjs.com/package/babel-polyfill)
-
-### Credits
-
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 4.0.0).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 4.0.9).

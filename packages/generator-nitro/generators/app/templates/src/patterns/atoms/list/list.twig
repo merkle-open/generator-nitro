@@ -1,7 +1,7 @@
 <ul class="a-list{% if modifier %} a-list--{{modifier}}{% endif %}">
 	{% for listItem in listItems %}
 		<li class="a-list__item">
-			{{text}}&nbsp; {% if icon %}<span class="a-list__icon">{% pattern name='icon' icon=icon %}</span>{% endif %}
+			{{ listItem.text }}
 		</li>
 	{% endfor %}
 </ul>

@@ -3,7 +3,7 @@
 		data-sizes="auto"
 		src="{{srcset.fallback.x1}}"
 		srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-		data-srcset="{% for renditions in srcset.renditions %}{{rendition.x1}} {{rendition.media}}w{% if not loop.last %}, {% endif %}{% endfor %}"
+		data-srcset="{% for rendition in srcset.renditions %}{{rendition.x1}} {{rendition.media}}w{% if not loop.last %}, {% endif %}{% endfor %}"
 		alt="{{alt}}">
 	{% pattern name='loader' %}
 </div>

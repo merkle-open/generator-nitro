@@ -12,7 +12,7 @@
   "scripts": {
     "commit": "git-cz",
     "nitro:pattern": "yo nitro:pattern",
-    "nitro:update": "npm install generator-nitro --save-exact && yo nitro",
+    "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
     "lint": "npm-run-all lint:*",
     "lint:accessibility": "gulp lint-accessibility",
     "lint:css": "stylelint src/**/*.*ss",

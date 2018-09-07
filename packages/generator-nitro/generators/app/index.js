@@ -98,6 +98,7 @@ module.exports = class extends Generator {
 				},
 			]).then((answers) => {
 				this._update = answers.update;
+				this.options.skipInstall = true;
 
 				if (!this._update) {
 					return;
@@ -428,8 +429,14 @@ module.exports = class extends Generator {
 			this.log(chalk.red(e.message));
 		}
 
-		this.log(yosay(
-			`All done – run \`npm start\` to start ${chalk.cyan('Nitro')} in development mode`
-		));
+		if (this._update) {
+			this.log(yosay(
+				`All done – Check local changes and then\nrun \`npm install\` to update your project.`
+			));
+		} else {
+			this.log(yosay(
+				`All done –\nrun \`npm start\` to start ${chalk.cyan('Nitro')} in development mode.`
+			));
+		}
 	}
 };

@@ -3,7 +3,6 @@
 const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
-// const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
@@ -19,8 +18,8 @@ const bannerData = {
 };
 
 let banner = `${bannerData.pkg.name}
-	@version v${bannerData.pkg.version}
-	@date ${bannerData.date}`;
+@version v${bannerData.pkg.version}
+@date ${bannerData.date}`;
 
 module.exports = (options = { rules: {}, features: {} }) => {
 
@@ -33,7 +32,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		};
 
 		banner += `
-	@source ${bannerData.git.branch}|${bannerData.git.version}`;
+@source ${bannerData.git.branch}|${bannerData.git.version}`;
 	}
 
 	const webpackConfig = {

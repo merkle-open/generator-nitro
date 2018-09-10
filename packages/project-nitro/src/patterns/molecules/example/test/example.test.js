@@ -1,7 +1,5 @@
 'use strict';
 
-import * as T from 'terrific';
-
 describe('Example module', function() {
 	let mod;
 

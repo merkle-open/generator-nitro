@@ -1,10 +1,15 @@
-# nitro-exporter
+[![npm version](https://badge.fury.io/js/%40nitro%2Fexporter.svg)](https://badge.fury.io/js/%40nitro%2Fexporter)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](http://opensource.org/licenses/MIT)
+
+# Nitro Exporter
 
 With this package, Nitro can generate static exports of your project by using `npm run export`.
 
-    $ npm run export
+```
+npm run export
+```
 
-The exporter configuration can be found in [config.json](//github.com/namics/generator-nitro/app/templates/config.json).
+The exporter configuration can be found in your [config](../../config),
 
 ## Configuration options
 
@@ -39,12 +44,15 @@ Renaming is used with native `gulp.src(...).pipe(gulp.dest(...))`.
 
 - example:
 
-        [{
-            "src": "dist/assets/**",
-            "base": "dist/assets",
-            "dest": "dist/"
-        }]
-
+```
+[
+    {
+        "src": "dist/assets/**",
+        "base": "dist/assets",
+        "dest": "dist/"
+}
+]
+```
 
 ### exporter.replacements (Array)
 
@@ -55,13 +63,19 @@ Defines string replacements. Takes an array of objects with `glob` and `replace`
 
 - example:
 
-        [{
-            "glob": ["dist/*.html", "dist/css/*.css"],
-            "replace": [{
+```
+[
+    {
+        "glob": ["dist/*.html", "dist/css/*.css"],
+        "replace": [
+            {
                 "from": "/assets",
                 "to": ""
-            }]
-        }]
+            }
+        ]
+    }
+]
+```
 
 ### exporter.views (Boolean / Array)
 
@@ -134,21 +148,27 @@ You can define multiple exporter configuration objects, by setting the `exporter
 ### Example
 
 ```
-"exporter": [{
-    "dest": "dist",
-    "i18n": [],
-    "publics": true,
-    "renames": [],
-    "replacements": [],
-    "views": true,
-    "zip": false
-}, {
-    "dest": "static",
-    "i18n": [],
-    "publics": true,
-    "renames": [],
-    "replacements": [],
-    "views": true,
-    "zip": false
-}]
+"exporter": [
+    {
+        "dest": "dist",
+        "i18n": [],
+        "publics": true,
+        "renames": [],
+        "replacements": [],
+        "views": true,
+        "zip": false
+    },
+    {
+        "dest": "static",
+        "i18n": [],
+        "publics": true,
+        "renames": [],
+        "replacements": [],
+        "views": true,
+        "zip": false
+}
+]
 ```
+## Changelog
+
+Recent changes can be viewed on Github on the [Releases Page](https://github.com/namics/generator-nitro/releases)

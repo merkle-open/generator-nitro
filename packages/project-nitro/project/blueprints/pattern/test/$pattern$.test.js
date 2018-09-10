@@ -1,7 +1,5 @@
 'use strict';
 
-import * as T from 'terrific';
-
 describe('<%= pattern.name %> module', () => {
 	let mod;
 

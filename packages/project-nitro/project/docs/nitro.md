@@ -435,7 +435,7 @@ Link to resources relatively to the `project`-folder **with** a leading slash.
 <link rel="stylesheet" href="/assets/css/ui.css" type="text/css" />
 <link rel="shortcut icon" href="/assets/img/icon/favicon.ico" type="image/x-icon" />
 <script src="/assets/js/ui.js"></script>
-<a href="/content.html">Contentpage</a>
+<a href="/content">Contentpage</a>
 ```
 
 ### Upper & lower case letters
@@ -503,4 +503,4 @@ Use or create new scripts in `package.json` to run with npm.
 
 ## Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 4.0.9).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 4.0.11).

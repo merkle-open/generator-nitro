@@ -32,9 +32,10 @@ module.exports = (gulp, plugins) => {
 							})
 								.then(() => {
 									server.stop();
+									return true;
 								}).catch(() => {
 									server.stop();
-									process.exit(1);
+									return false;
 								});
 						}
 					});

@@ -1,7 +1,6 @@
 [![NPM version](https://badge.fury.io/js/generator-nitro.svg)](https://npmjs.org/package/generator-nitro)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](http://opensource.org/licenses/MIT) 
-[![Build Status](https://travis-ci.org/namics/generator-nitro.svg?branch=master)](https://travis-ci.org/namics/generator-nitro)
-[![Build Status](https://ci.appveyor.com/api/projects/status/0580phm813ccdbhr/branch/master?svg=true)](https://ci.appveyor.com/project/namics/generator-nitro/branch/master)
+[![Build Status](https://dev.azure.com/namics/nitro/_apis/build/status/namics.generator-nitro)](https://dev.azure.com/namics/nitro/_build/latest?definitionId=1)
 [![Dependency Status](https://david-dm.org/namics/generator-nitro.svg?theme=shields.io)](https://david-dm.org/namics/generator-nitro)
 
 # Yeoman Nitro Generator

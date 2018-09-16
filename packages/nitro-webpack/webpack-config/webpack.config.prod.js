@@ -116,6 +116,9 @@ module.exports = (options = { rules: {}, features: {} }) => {
 					options: {
 						babelrc: false,
 						cacheDirectory: true,
+						plugins: [
+							[ require.resolve('@babel/plugin-proposal-decorators'), { 'legacy': true } ],
+						],
 						presets: [
 							[
 								require.resolve('@babel/preset-env'),

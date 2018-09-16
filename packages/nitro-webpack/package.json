@@ -22,6 +22,7 @@
   "dependencies": {
     "@babel/core": "7.0.0",
     "@babel/preset-env": "7.0.0",
+    "@babel/plugin-proposal-decorators": "7.0.0",
     "autoprefixer": "9.1.5",
     "babel-loader": "8.0.2",
     "cache-loader": "1.2.2",

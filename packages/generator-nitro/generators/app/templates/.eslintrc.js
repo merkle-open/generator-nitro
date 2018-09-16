@@ -5,5 +5,7 @@ module.exports = {
 	].map(require.resolve),
 	rules: {
 		'require-jsdoc': 'off',
+		'new-cap': [2, { capIsNew: false }],
 	},
+	parser: 'babel-eslint',
 };

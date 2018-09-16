@@ -3,6 +3,7 @@
 import '@babel/polyfill';
 import * as T from 'terrific';
 import $ from 'jquery';
+import { startComponents } from '@gondel/core';
 
 import './shared/base/security/js/security';
 import './shared/base/reset/css/reset.scss';
@@ -15,6 +16,7 @@ import './patterns/atoms/box';
 import './patterns/atoms/button';
 import './patterns/atoms/checkbox';
 import './patterns/atoms/cta';
+import './patterns/atoms/gondel';
 import './patterns/atoms/heading';
 import './patterns/atoms/icon';
 import './patterns/atoms/image';
@@ -30,9 +32,12 @@ if (module.hot) {
 // custom code
 console.log("I'm from the entry point ui"); // eslint-disable-line
 
-// terrificjs
+// bootstrap terrificjs
 $(() => {
 	const application = new T.Application();
 	application.registerModules();
 	application.start();
 });
+
+// bootstrap gondel
+startComponents();

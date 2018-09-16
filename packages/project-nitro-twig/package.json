@@ -52,6 +52,7 @@
   ],
   "dependencies": {
     "@babel/polyfill": "7.0.0",
+    "@gondel/core": "0.0.3",
     "bootstrap": "4.1.3",
     "handlebars": "4.0.12",
     "jquery": "3.3.1",

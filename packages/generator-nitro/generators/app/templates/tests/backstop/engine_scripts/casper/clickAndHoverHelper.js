@@ -8,7 +8,7 @@ module.exports = function(casper, scenario) {
 
 	if (hoverSelector) {
 		waitFor(hoverSelector);
-		casper.then(function () {
+		casper.then(function() {
 			casper.mouse.move(hoverSelector);
 		});
 	}

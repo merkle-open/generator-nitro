@@ -1,10 +1,13 @@
 /* global module */
 
-import '@babel/polyfill';
+<% if (options.exampleCode) { %>import '@babel/polyfill';
+import { hot } from '@gondel/plugin-hot';
 
-if (module.hot) {
-	module.hot.accept();
-}
+hot(module);
+// only necessary if we don't use gondel hot reloading
+// if (module.hot) { module.hot.accept() }
+<% } else { %>
+if (module.hot) { module.hot.accept() }<% } %>
 
 function requireAll(requireContext) {
 	return requireContext.keys().map(requireContext);

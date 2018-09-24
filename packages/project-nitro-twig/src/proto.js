@@ -1,10 +1,7 @@
 /* global module */
 
 import '@babel/polyfill';
-
-if (module.hot) {
-	module.hot.accept();
-}
+import { hot } from '@gondel/plugin-hot';
 
 function requireAll(requireContext) {
 	return requireContext.keys().map(requireContext);
@@ -21,3 +18,7 @@ requireAll(require.context('./proto/css', true, /^.*(s?css)$/));
 requireAll(require.context('./patterns', true, /[\/\\]proto[\/\\](?:[a-z0-9\-]+).(s?css)$/));
 
 /* eslint-enable no-useless-escape */
+
+hot(module);
+// only necessary if we don't use gondel hot reloading
+// if (module.hot) { module.hot.accept() }

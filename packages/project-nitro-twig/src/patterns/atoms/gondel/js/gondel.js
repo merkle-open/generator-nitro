@@ -1,6 +1,6 @@
 'use strict';
 
-import {Component, EventListener, GondelBaseComponent} from '@gondel/core';
+import { Component, EventListener, GondelBaseComponent } from '@gondel/core';
 
 const states = {
 	motion: 'state-a-gondel--motion',

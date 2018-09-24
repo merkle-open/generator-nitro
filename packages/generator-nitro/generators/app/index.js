@@ -248,6 +248,7 @@ module.exports = class extends Generator {
 			'src/views/_partials/head.hbs',
 			'src/views/_partials/head.twig',
 			'src/ui.js',
+			'src/proto.js',
 			'tests/backstop/backstop.config.js',
 			'gulpfile.js',
 			'package.json',

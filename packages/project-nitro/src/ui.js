@@ -3,7 +3,7 @@
 import '@babel/polyfill';
 import * as T from 'terrific';
 import $ from 'jquery';
-import { startComponents } from '@gondel/core';
+import { hot } from '@gondel/plugin-hot';
 
 import './shared/base/security/js/security';
 import './shared/base/reset/css/reset.scss';
@@ -25,9 +25,7 @@ import './patterns/atoms/loader';
 import './patterns/atoms/stage';
 import './patterns/molecules/example';
 
-if (module.hot) {
-	module.hot.accept();
-}
+hot(module);
 
 // custom code
 console.log("I'm from the entry point ui"); // eslint-disable-line
@@ -38,6 +36,3 @@ $(() => {
 	application.registerModules();
 	application.start();
 });
-
-// bootstrap gondel
-startComponents();

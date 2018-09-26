@@ -1,4 +1,4 @@
-import 'tota11y';
+import 'tota11y/build/tota11y';
 import { addKeyboardAction, getFromLocalStorage, setToLocalStorage } from './developHelpers';
 
 // toggle tota11y helper on CTRL+3 / ALT+3

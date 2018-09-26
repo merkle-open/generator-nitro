@@ -298,7 +298,7 @@ module.exports = class extends Generator {
 			// paths only for this.options.exampleCode===true
 			'src/views/example/',
 			'src/patterns/',
-			'src/proto/js/',
+			'src/proto/',
 			'src/shared/',
 			'project/routes/',
 			'public/content/',

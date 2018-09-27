@@ -16,6 +16,7 @@ import './patterns/atoms/box';
 import './patterns/atoms/button';
 import './patterns/atoms/checkbox';
 import './patterns/atoms/cta';
+import './patterns/atoms/gondel';
 import './patterns/atoms/heading';
 import './patterns/atoms/icon';
 import './patterns/atoms/image';
@@ -24,8 +25,7 @@ import './patterns/atoms/loader';
 import './patterns/atoms/stage';
 import './patterns/molecules/example';
 
-hot(module);
-<% } else { %>
+hot(module);<% } else { %>
 if (module.hot) { module.hot.accept() }<% } %>
 
 // custom code

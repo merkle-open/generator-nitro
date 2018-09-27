@@ -1,6 +1,6 @@
 {
   "name": "@nitro/exporter",
-  "version": "0.3.8",
+  "version": "0.4.0",
   "description": "An exporting package for nitro. Generate static packages with ease.",
   "license": "MIT",
   "repository": "namics/generator-nitro",

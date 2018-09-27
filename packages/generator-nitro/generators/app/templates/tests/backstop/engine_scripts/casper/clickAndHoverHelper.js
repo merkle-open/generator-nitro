@@ -15,7 +15,7 @@ module.exports = function(casper, scenario) {
 
 	if (clickSelector) {
 		waitFor(clickSelector);
-		casper.then(function () {
+		casper.then(function() {
 			casper.click(clickSelector);
 		});
 	}

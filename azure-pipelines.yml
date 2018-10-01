@@ -16,10 +16,10 @@ strategy:
 steps:
 - task: NodeTool@0
   inputs:
-    version: $(node_version)
+    versionSpec: $(node_version)
   displayName: 'Install Node.js'
 
 - script: |
     npm install
-    npm run test
+    npm test
   displayName: 'npm install and test'

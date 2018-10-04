@@ -76,7 +76,7 @@
     "body-parser": "1.18.3",
     "browser-sync": "2.24.7",
     "chalk": "2.4.1",
-    "commitizen": "3.0.1",
+    "commitizen": "3.0.2",
     "compression": "1.7.3",
     "config": "2.0.1",
     "cross-env": "5.2.0",

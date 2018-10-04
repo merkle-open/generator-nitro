@@ -23,7 +23,7 @@
   ],
   "dependencies": {
     "@nitro/app": "*",
-    "backstopjs": "3.5.16",
+    "backstopjs": "3.7.0",
     "browser-sync": "2.24.7",
     "compression": "1.7.3",
     "config": "2.0.1",
@@ -45,7 +45,7 @@
     "gulp-remote-src": "0.4.3",
     "gulp-rename": "1.4.0",
     "gulp-sequence": "1.0.0",
-    "gulp-svgmin": "1.2.4",
+    "gulp-svgmin": "2.1.0",
     "gulp-svgstore": "7.0.0",
     "gulp-watch": "5.0.1",
     "gulp-wrap": "0.14.0",

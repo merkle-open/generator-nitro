@@ -24,6 +24,8 @@ module.exports = (gulp, plugins) => {
 								{
 									removeDoctype: true,
 								}, {
+									removeViewBox: false
+								}, {
 									cleanupIDs: {
 										prefix: `${prefix}-`,
 										minify: true,

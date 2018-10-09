@@ -16,6 +16,25 @@
 	}
 }
 
+.a-gondel__cab {
+	position: relative;
+	display: inline-block;
+	transition: transform ease-in-out 1s 0.1s;
+	will-change: transform;
+}
+
+.state-a-gondel--prepare {
+	.a-gondel__cab {
+		transform: rotate(10deg);
+	}
+}
+
 .state-a-gondel--motion {
 	transform: translate3d(20vw, 20vh, 0) scale(1.5);
+	&.state-a-gondel--prepare {
+		.a-gondel__cab {
+			transition: transform ease-in-out 1s 0.7s;
+			transform: rotate(-10deg);
+		}
+	}
 }

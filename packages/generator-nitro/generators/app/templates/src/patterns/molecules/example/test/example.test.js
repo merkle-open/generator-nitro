@@ -1,6 +1,9 @@
 'use strict';
 
-describe('Example module', function() {
+import * as T from 'terrific';
+import '../js/example';
+
+describe('Example module', () => {
 	let mod;
 
 	beforeEach(() => {

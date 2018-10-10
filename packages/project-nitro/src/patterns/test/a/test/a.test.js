@@ -1,5 +1,8 @@
 'use strict';
 
+import * as T from 'terrific';
+import '../js/a';
+
 describe('a module', () => {
 	let mod;
 

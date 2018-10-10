@@ -1,8 +1,10 @@
 'use strict';
 
-describe('Example module', function() {
-	let mod;
+import * as T from 'terrific';
+import '../js/example';
 
+describe('Example module', () => {
+	let mod;
 	beforeEach(() => {
 		const application = new T.Application();
 		mod = new T.Module.Example(document.createElement('div'), application._sandbox);

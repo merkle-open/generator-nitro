@@ -1,8 +1,11 @@
 'use strict';
 
+import * as T from 'terrific';
+import '../js/ex';
+
 describe('Ex module', () => {
 	let mod;
-	beforeEach(function() {
+	beforeEach(() => {
 		const application = new T.Application();
 		mod = new T.Module.Ex(document.createElement('div'), application._sandbox);
 	});

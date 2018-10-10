@@ -1,5 +1,8 @@
 'use strict';
 
+import * as T from 'terrific';
+import '../js/t';
+
 describe('t module', () => {
 	let mod;
 	beforeEach(() => {

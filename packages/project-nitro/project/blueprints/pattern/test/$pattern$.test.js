@@ -1,5 +1,8 @@
 'use strict';
 
+import * as T from 'terrific';
+import '../js/<%= pattern.file %>';
+
 describe('<%= pattern.name %> module', () => {
 	let mod;
 

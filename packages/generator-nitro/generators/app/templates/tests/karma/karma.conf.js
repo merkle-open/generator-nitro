@@ -2,10 +2,14 @@
 
 /**
  * Karma configuration
- * Requires that asset `ui.js` is compiled
  */
 
 const webpackConfig = require('../../config/webpack/webpack.config.dev');
+
+// disable vendors chunk
+webpackConfig.optimization.splitChunks.cacheGroups = {
+	default: false,
+};
 
 module.exports = function(config) {
 	config.set({

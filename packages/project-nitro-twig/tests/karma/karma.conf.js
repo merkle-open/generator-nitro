@@ -2,8 +2,14 @@
 
 /**
  * Karma configuration
- * Requires that asset `ui.js` is compiled
  */
+
+const webpackConfig = require('../../config/webpack/webpack.config.dev');
+
+// disable vendors chunk
+webpackConfig.optimization.splitChunks.cacheGroups = {
+	default: false,
+};
 
 module.exports = function(config) {
 	config.set({
@@ -15,7 +21,11 @@ module.exports = function(config) {
 		frameworks: ['jasmine'],
 
 		// list of files / patterns to load in the browser
-		files: ['public/assets/js/ui.js', 'src/patterns/**/test/*.test.js'],
+		files: [
+			// PhantomJS needs polyfills
+			'node_modules/@babel/polyfill/dist/polyfill.min.js',
+			{ pattern: 'src/patterns/**/test/*.test.js', watched: false },
+		],
 
 		// list of files to exclude
 		exclude: [],
@@ -23,13 +33,11 @@ module.exports = function(config) {
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
-			'src/patterns/**/test/*.test.js': ['babel'],
+			'src/patterns/**/test/*.test.js': ['webpack'],
 		},
-		babelPreprocessor: {
-			options: {
-				presets: ['env'],
-				sourceMap: 'inline',
-			},
+		webpack: webpackConfig,
+		webpackMiddleware: {
+			stats: 'errors-only',
 		},
 
 		// test results reporter to use

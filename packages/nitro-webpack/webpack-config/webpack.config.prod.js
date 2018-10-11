@@ -59,20 +59,13 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			new CaseSensitivePathsPlugin({ debug: false }),
 		],
 		optimization: {
-			// minimizer: [
-			// 	new UglifyJsPlugin({
-			// 		cache: true,
-			// 		parallel: true,
-			// 		sourceMap: true // set to true if you want JS source maps
-			// 	}),
-			// 	new OptimizeCSSAssetsPlugin({}),
-			// ],
 			splitChunks: {
 				cacheGroups: {
-					vendor: {
-						test: /node_modules/,
-						chunks: 'initial',
-						name: 'vendor',
+					vendors: {
+						test: /[\\/]node_modules[\\/]/,
+						name: 'vendors',
+						// Exclude proto dependencies going into vendors
+						chunks: chunk => chunk.name !== 'proto',
 						priority: 10,
 						enforce: true,
 					}

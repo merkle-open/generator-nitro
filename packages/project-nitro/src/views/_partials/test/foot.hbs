@@ -1,10 +1,5 @@
-{{#if _nitro.production}}<script src="/assets/js/vendor.min.js"></script>{{/if}}
+<script src="/assets/js/vendors{{#if _nitro.production}}.min{{/if}}.js"></script>
 <script src="/assets/js/ui{{#if _nitro.production}}.min{{/if}}.js"></script>
 <script src="/assets/js/proto{{#if _nitro.production}}.min{{/if}}.js"></script>
 
 <p>{{_nitro.pageTitle}} = pageTitle (view)</p>
-{{#if _nitro.offline}}
-<script src="static/khan.github.io/tota11y/tota11y/build/tota11y.min.js"></script>
-{{else}}
-<script src="https://khan.github.io/tota11y/tota11y/build/tota11y.min.js"></script>
-{{/if}}

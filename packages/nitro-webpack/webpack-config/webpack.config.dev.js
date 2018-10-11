@@ -50,6 +50,18 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		},
 		optimization: {
 			noEmitOnErrors: true,
+			splitChunks: {
+				cacheGroups: {
+					vendors: {
+						test: /[\\/]node_modules[\\/]/,
+						name: 'vendors',
+						// Exclude proto dependencies going into vendors
+						chunks: chunk => chunk.name !== 'proto',
+						priority: 10,
+						enforce: true,
+					}
+				}
+			}
 		},
 		stats: {
 			all: undefined,

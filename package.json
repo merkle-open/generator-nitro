@@ -9,6 +9,7 @@
     "npm": ">=5.2 <7"
   },
   "scripts": {
+    "clean": "lerna clean",
     "commit": "git-cz",
     "postinstall": "lerna bootstrap",
     "test": "lerna run test --parallel",
@@ -31,7 +32,7 @@
     }
   },
   "devDependencies": {
-    "commitizen": "3.0.3",
+    "commitizen": "3.0.4",
     "cz-conventional-changelog": "2.1.0",
     "lerna": "3.4.3",
     "markdownlint-cli": "0.13.0"

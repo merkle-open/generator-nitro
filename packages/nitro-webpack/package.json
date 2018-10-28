@@ -9,7 +9,6 @@
   },
   "scripts": {
     "lint": "eslint ./webpack-config",
-    "prepublishOnly": "nsp check --output summary",
     "test": "npm run lint"
   },
   "files": [
@@ -62,8 +61,7 @@
     "webpack-bundle-analyzer": "3.0.3"
   },
   "devDependencies": {
-    "@namics/eslint-config": "6.0.1",
-    "nsp": "3.2.1"
+    "@namics/eslint-config": "6.0.1"
   },
   "publishConfig": {
     "access": "public"

@@ -11,7 +11,7 @@
   "scripts": {
     "clean": "lerna clean",
     "commit": "git-cz",
-    "postinstall": "lerna bootstrap",
+    "install": "lerna bootstrap --hoist",
     "test": "lerna run test --parallel",
     "lint": "lerna run lint --parallel",
     "lint:md": "markdownlint ./readme.md ./.github"

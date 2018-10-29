@@ -43,10 +43,10 @@
   "devDependencies": {
     "@namics/eslint-config": "6.0.1",
     "ejs": "2.6.1",
-    "eslint": "5.7.0",
+    "eslint": "5.8.0",
     "eslint-plugin-import": "2.14.0",
     "fs-extra": "7.0.0",
-    "jasmine": "3.2.0",
+    "jasmine": "3.3.0",
     "pkg-ok": "2.3.1",
     "yeoman-assert": "3.1.1",
     "yeoman-test": "1.9.1"

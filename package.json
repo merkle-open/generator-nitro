@@ -9,7 +9,10 @@
     "npm": ">=5.2 <7"
   },
   "scripts": {
-    "clean": "lerna clean",
+    "clean": "npm-run-all clean:*",
+    "clean:lerna": "lerna clean --yes",
+    "clean:lock": "rimraf **/package-lock.json",
+    "clean:modules": "npx rimraf node_modules",
     "commit": "git-cz",
     "install": "lerna bootstrap --hoist",
     "test": "lerna run test --parallel",

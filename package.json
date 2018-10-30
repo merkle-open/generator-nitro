@@ -14,7 +14,7 @@
     "clean:lock": "rimraf **/package-lock.json",
     "clean:modules": "npx rimraf node_modules",
     "commit": "git-cz",
-    "install": "lerna bootstrap --hoist",
+    "postinstall": "lerna bootstrap --hoist",
     "test": "lerna run test --parallel",
     "lint": "lerna run lint --parallel",
     "lint:md": "markdownlint ./readme.md ./.github"

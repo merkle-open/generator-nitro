@@ -1,6 +1,6 @@
 [![npm version](https://badge.fury.io/js/%40nitro%2Fexporter.svg)](https://badge.fury.io/js/%40nitro%2Fexporter)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](http://opensource.org/licenses/MIT)
-[![Build Status](https://dev.azure.com/namics/nitro/_apis/build/status/namics.generator-nitro)](https://dev.azure.com/namics/nitro/_build/latest?definitionId=1)
+[![Build Status](https://travis-ci.org/namics/generator-nitro.svg?branch=master)](https://travis-ci.org/namics/generator-nitro)
 
 # Nitro Exporter
 

@@ -19,11 +19,28 @@ const config = {
 		],
 		replacements: [
 			{
-				glob: ['dist/*.html', 'dist/css/*.css'],
+				glob: ['dist/*.html'],
 				replace: [
 					{
 						from: '/assets/',
 						to: '',
+					},
+					{
+						from: '/content/',
+						to: 'content/',
+					},
+				],
+			},
+			{
+				glob: ['dist/css/*.css'],
+				replace: [
+					{
+						from: '/assets/',
+						to: '../',
+					},
+					{
+						from: '/content/',
+						to: '../content/',
 					},
 				],
 			},

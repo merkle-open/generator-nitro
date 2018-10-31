@@ -23,7 +23,7 @@ Besides the main functionality including a yeoman generator, this repo includes 
 
 Before using, you need of course [node](https://nodejs.org/) installed ([Version](.node-version)).  
 Nitro and the Nitro generator are tested with the current 
-["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x).
+["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x and 10.x).
 
 1.  Install base project:
 

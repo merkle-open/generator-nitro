@@ -18,7 +18,7 @@ Nitro is simple, fast and flexible. It works on macOS, Windows and Linux. Use th
 
 Before using, you need of course [node](https://nodejs.org/) installed.  
 Nitro and the Nitro generator are tested with the current 
-["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x).
+["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x and 10.x).
 
 ### Create a new project
 

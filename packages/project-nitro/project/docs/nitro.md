@@ -1,10 +1,7 @@
 # Nitro Usage
 
 Nitro is a Node.js application for simple and complex frontend development with a tiny footprint.
-It provides a proven but flexible structure to develop your frontend code, even in a large team.  
-Keep track of your code with a modularized frontend. This app and the suggested concepts could help -
-[atomic design](http://bradfrost.com/blog/post/atomic-web-design/) and [BEM](https://en.bem.info/method/definitions/).  
-Nitro is simple, fast and flexible. Use this app for all your frontend work.
+It provides a proven but flexible structure to develop your frontend col frontend work.
 
 ## Features
 
@@ -21,7 +18,7 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 This application was created by the yeoman generator for nitro.  
 Before using, you need of course [node](https://nodejs.org/) installed.
 Nitro is tested with the current 
-["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x).
+["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x and 10.x).
 
 Install the project dependencies in the project root:
 

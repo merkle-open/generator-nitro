@@ -4,6 +4,7 @@
  * Karma configuration
  */
 
+const polyfill = require.resolve('@babel/polyfill/dist/polyfill.min.js');
 const webpackConfig = require('../../config/webpack/webpack.config.dev');
 
 // disable vendors chunk
@@ -23,7 +24,7 @@ module.exports = function(config) {
 		// list of files / patterns to load in the browser
 		files: [
 			// PhantomJS needs polyfills
-			'node_modules/@babel/polyfill/dist/polyfill.min.js',
+			polyfill,
 			{ pattern: 'src/patterns/**/test/*.test.js', watched: false },
 		],
 

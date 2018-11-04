@@ -6,6 +6,7 @@ const path = require('path');
 const gulpZip = require('gulp-vinyl-zip').zip;
 const glob = require('glob');
 const unique = require('array-unique');
+const deleteEmpty = require('delete-empty');
 const utils = require('../lib/utils.js');
 
 module.exports = function (gulp, config) {
@@ -27,6 +28,9 @@ module.exports = function (gulp, config) {
 			};
 			let getRenamesPromise = function () {
 				return Promise.resolve();
+			};
+			let getCleanupPromise = function () {
+				return deleteEmpty(configEntry.dest + path.sep);
 			};
 			let getZipPromise = function () {
 				return Promise.resolve();
@@ -151,6 +155,7 @@ module.exports = function (gulp, config) {
 			getPublicsPromise()
 				.then(getRenamesPromise)
 				.then(getReplacementsPromise)
+				.then(getCleanupPromise)
 				.then(getZipPromise)
 				.then(() => {
 					resolveConfigEntry();

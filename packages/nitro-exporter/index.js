@@ -17,7 +17,6 @@ module.exports = function (gulp, config) {
 	if (shouldExportViews) {
 		gulp.task('export', gulpSequence(
 			'export-clean',
-			'assets',
 			'dump-views',
 			'export-views',
 			'export-processing'
@@ -25,7 +24,6 @@ module.exports = function (gulp, config) {
 	} else {
 		gulp.task('export', gulpSequence(
 			'export-clean',
-			'assets',
 			'export-processing'
 		));
 	}

@@ -29,7 +29,7 @@ module.exports = function (gulp, config) {
 			let getRenamesPromise = function () {
 				return Promise.resolve();
 			};
-			let getCleanupPromise = function () {
+			const getCleanupPromise = function () {
 				return deleteEmpty(configEntry.dest + path.sep);
 			};
 			let getZipPromise = function () {

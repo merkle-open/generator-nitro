@@ -10,9 +10,13 @@ With this package, Nitro can generate static exports of your project by using `n
 npm run export
 ```
 
-The exporter configuration can be found in your [config](../../config),
+## Requirements
+
+The gulp task "dump-views" must be present in your project.
 
 ## Configuration options
+
+The exporter configuration can be found in your [config](../../config).
 
 ### exporter.dest (String)
 
@@ -32,11 +36,11 @@ The nitro-exporter will export all dumped views per default. You can filter out 
 
 Controls which public files should be exported statically. `true` will export all files from your `public` directory.
 
-You can define an array of strings, like `["build/assets/css/app.css", "build/assets/js/app.js"]` to export only those files.
+You can define an array of strings, like `["public/assets/css/app.css", "public/assets/js/app.js"]` to export only those files.
 
 When defining strings you can use globbing patterns.
 
-- example: `true`
+- example: `['public/*', 'public/assets/**/*', 'public/content/**/*']`
 
 ### exporter.renames (Array)
 
@@ -110,13 +114,30 @@ Defines, if the export should be zipped.
     ],
     "replacements": [
         {
-            "glob": ["dist/*.html", "dist/css/*.css"],
-            "replace": [
+            glob: ['dist/*.html'],
+            replace: [
                 {
-                    "from": "/assets/",
-                    "to": ""
-                }
-            ]
+                    from: '/assets/',
+                    to: '',
+                },
+                {
+                    from: '/content/',
+                    to: 'content/',
+                },
+            ],
+        },
+        {
+            glob: ['dist/css/*.css'],
+            replace: [
+                {
+                    from: '/assets/',
+                    to: '../',
+                },
+                {
+                    from: '/content/',
+                    to: '../content/',
+                },
+            ],
         },
         {
             "glob": ["dist/js/*.js"],
@@ -127,18 +148,9 @@ Defines, if the export should be zipped.
                 }
             ]
         },
-        {
-            "glob": ["dist/*.html"],
-            "replace": [
-                {
-                    "from": "([a-z]+)\\.(css|js)",
-                    "to": "$1.min.$2"
-                }
-            ]
-        }
     ],
     "views": true,
-    "zip": false
+    "zip": false,
 }
 ```
 
@@ -157,7 +169,7 @@ You can define multiple exporter configuration objects, by setting the `exporter
         "renames": [],
         "replacements": [],
         "views": true,
-        "zip": false
+        "zip": false,
     },
     {
         "dest": "static",
@@ -166,10 +178,7 @@ You can define multiple exporter configuration objects, by setting the `exporter
         "renames": [],
         "replacements": [],
         "views": true,
-        "zip": false
-}
+        "zip": false,
+    },
 ]
 ```
-## Changelog
-
-Recent changes can be viewed on Github on the [Releases Page](https://github.com/namics/generator-nitro/releases)

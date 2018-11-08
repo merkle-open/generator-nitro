@@ -27,7 +27,7 @@
     "nitro"
   ],
   "dependencies": {
-    "ajv": "6.5.4",
+    "ajv": "6.5.5",
     "body-parser": "1.18.3",
     "chalk": "2.4.1",
     "compression": "1.7.3",
@@ -40,14 +40,14 @@
     "hbs-utils": "0.0.4",
     "htmllint": "0.7.2",
     "i18next": "12.0.0",
-    "i18next-express-middleware": "1.4.1",
+    "i18next-express-middleware": "1.5.0",
     "i18next-node-fs-backend": "2.1.0",
     "i18next-sprintf-postprocessor": "0.2.2",
     "jasmine": "3.3.0",
     "jasmine-core": "3.3.0",
     "text-table": "0.2.0",
     "twig": "1.12.0",
-    "webpack": "4.24.0",
+    "webpack": "4.25.1",
     "webpack-dev-middleware": "3.4.0",
     "webpack-hot-middleware": "2.24.3"
   },

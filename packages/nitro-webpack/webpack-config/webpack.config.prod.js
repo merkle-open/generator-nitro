@@ -8,6 +8,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const WebpackBar = require('webpackbar');
 
 const appDirectory = fs.realpathSync(process.cwd());
 const includePath = path.join(appDirectory, 'src');
@@ -57,6 +58,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		plugins: [
 			new webpack.BannerPlugin({ banner }),
 			new CaseSensitivePathsPlugin({ debug: false }),
+			new WebpackBar(),
 		],
 		optimization: {
 			splitChunks: {

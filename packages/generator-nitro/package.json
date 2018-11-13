@@ -12,6 +12,7 @@
   "main": "generators/app/index.js",
   "scripts": {
     "lint": "eslint .",
+    "prepublishOnly": "pkg-ok",
     "pretest": "npm run lint",
     "test": "jasmine --config=tests/jasmine/support/jasmine.json"
   },

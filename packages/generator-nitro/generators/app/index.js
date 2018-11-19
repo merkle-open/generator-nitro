@@ -257,7 +257,6 @@ module.exports = class extends Generator {
 			// files to ignore
 			'.DS_Store',
 			'.npmignore',
-			'frontend-defaults.zip',
 		];
 		const ignoresOnUpdate = [
 			// files to ignore on updating projects

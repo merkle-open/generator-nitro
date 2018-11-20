@@ -142,7 +142,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	if (options.rules.ts) {
 
 		// Prepend missing typescript file extensions
-		const tsExtensions = ['.ts', '.tsx', '.d.ts', '.js'].filter(
+		const tsExtensions = ['.ts', '.tsx', '.js'].filter(
 			ext => !webpackConfig.resolve.extensions.includes(ext)
 		);
 		webpackConfig.resolve.extensions.unshift(...tsExtensions);

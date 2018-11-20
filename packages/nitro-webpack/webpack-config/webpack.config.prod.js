@@ -46,6 +46,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		output: {
 			path: path.resolve(appDirectory, 'public', 'assets'),
 			filename: 'js/[name].min.js',
+			chunkFilename: 'js/[name]-[hash:7].min.js',
 			publicPath: '/assets/',
 		},
 		resolve: {
@@ -62,16 +63,27 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		],
 		optimization: {
 			splitChunks: {
+				name: true,
+				automaticNameDelimiter: '/',
 				cacheGroups: {
+					// allow dynamic imports for node_modules also
+					dynamic: {
+						test: /[\\/]node_modules[\\/]/,
+						minSize: 3000,
+						chunks: 'async',
+						priority: 0,
+					},
+					// extract node_modules to vendors file
 					vendors: {
 						test: /[\\/]node_modules[\\/]/,
-						name: 'vendors',
+						// fix filename for usage in view
+						filename: 'js/vendors.min.js',
 						// Exclude proto dependencies going into vendors
 						chunks: chunk => chunk.name !== 'proto',
-						priority: 10,
+						priority: -10,
 						enforce: true,
-					}
-				}
+					},
+				},
 			},
 		},
 		stats: {
@@ -113,6 +125,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 						cacheDirectory: true,
 						plugins: [
 							[ require.resolve('@babel/plugin-proposal-decorators'), { 'legacy': true } ],
+							require.resolve('@babel/plugin-syntax-dynamic-import'),
 						],
 						presets: [
 							[

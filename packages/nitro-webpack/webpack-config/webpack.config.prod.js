@@ -73,10 +73,10 @@ module.exports = (options = { rules: {}, features: {} }) => {
 						chunks: 'async',
 						priority: 0,
 					},
-					// extract node_modules to vendors file
+					// extract js node_modules to vendors file
 					vendors: {
-						test: /[\\/]node_modules[\\/]/,
-						// fix filename for usage in view
+						test: /[\\/]node_modules[\\/].*\.(js|jsx|mjs|ts|tsx)/,
+						// use fix filename for usage in view
 						filename: 'js/vendors.min.js',
 						// Exclude proto dependencies going into vendors
 						chunks: chunk => chunk.name !== 'proto',
@@ -237,7 +237,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.plugins.push(
 			new MiniCssExtractPlugin({
 				filename: 'css/[name].min.css',
-				chunkFilename: '[id].css',
+				chunkFilename: 'css/[name]-[id].min.css',
 			}),
 			new OptimizeCSSAssetsPlugin({
 				// cssProcessorOptions: {

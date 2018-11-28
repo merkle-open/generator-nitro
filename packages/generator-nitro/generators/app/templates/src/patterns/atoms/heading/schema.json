@@ -11,7 +11,7 @@
 		"title": {
 			"type": "string"
 		},
-		"subtitle": {
+		"subTitle": {
 			"type": "string"
 		}
 	},

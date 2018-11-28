@@ -1,9 +1,9 @@
 <div class="a-image{{#if modifier}} a-image--{{modifier}}{{/if}}">
 	<img class="a-image__image js-a-image--lazyload"
 		data-sizes="auto"
-		src="{{srcset.fallback.x1}}"
+		src="{{srcset.fallback.src}}"
 		srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-		data-srcset="{{#each srcset.renditions}}{{x1}} {{media}}w{{#unless @last}}, {{/unless}}{{/each}}"
+		data-srcset="{{#each srcset.renditions}}{{src}} {{width}}w{{#unless @last}}, {{/unless}}{{/each}}"
 		alt="{{alt}}">
 	{{pattern name='loader'}}
 </div>

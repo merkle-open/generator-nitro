@@ -6,7 +6,7 @@
 	"properties": {
 		"modifier": {
 			"description": "A modifier",
-			"enum": ["fit-parent"]
+			"enum": ["", "fit-parent", "1x1"]
 		},
 		"alt": {
 			"type": "string"
@@ -19,7 +19,7 @@
 					"items": {
 						"type": "object",
 						"properties": {
-							"media": {
+							"width": {
 								"description": "sizes",
 								"enum": [
 									"100",
@@ -40,22 +40,22 @@
 									"3920"
 								]
 							},
-							"x1": {
+							"src": {
 								"type": "string"
 							}
 						},
-						"required": ["media", "x1"]
+						"required": ["width", "src"]
 					}
 				},
 				"fallback": {
 					"type": "object",
 					"description": "The fallback image",
 					"properties": {
-						"x1": {
+						"src": {
 							"type": "string"
 						}
 					},
-					"required": ["x1"]
+					"required": ["src"]
 				}
 			}
 		}

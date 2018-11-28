@@ -5,7 +5,7 @@
 	margin: 2rem 0 2rem 2rem;
 	padding: 2rem 2rem 1.5rem 2rem;
 	color: $color-gray-1;
-	background-color: $color-gray-8;
+	background-color: $brand-color-5;
 	min-height: 5em;
 
 	&:after {
@@ -19,7 +19,7 @@
 
 		border-bottom: 2rem solid transparent;
 		border-left: 2rem solid transparent;
-		border-right: 2rem solid $color-gray-8;
+		border-right: 2rem solid $brand-color-5;
 	}
 }
 

@@ -2,20 +2,12 @@
 // breakpoint variables
 //////////////////////////////////////////////////////////
 
-// Extra small screen
-$size-xs: 480px;
-$size-xs-min: $size-xs;
-
-// Medium small screen
-$size-ms: 480px;
-$size-ms-min: $size-ms;
-
 // Small screen
-$size-sm: 768px;
+$size-sm: 576px;
 $size-sm-min: $size-sm;
 
 // Medium screen
-$size-md: 992px;
+$size-md: 768px;
 $size-md-min: $size-md;
 
 // Large screen
@@ -31,8 +23,7 @@ $size-xxl: 1920px;
 $size-xxl-min: $size-xxl;
 
 // So media queries don't overlap when required, provide a maximum
-$size-xs-max: ($size-ms-min - 1);
-$size-ms-max: ($size-sm-min - 1);
+$size-xs-max: ($size-sm-min - 1);
 $size-sm-max: ($size-md-min - 1);
 $size-md-max: ($size-lg-min - 1);
 $size-lg-max: ($size-xl-min - 1);

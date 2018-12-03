@@ -68,7 +68,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				cacheGroups: {
 					// allow dynamic imports for node_modules also
 					dynamic: {
-						test: /[\\/]node_modules[\\/]/,
 						minSize: 3000,
 						chunks: 'async',
 						priority: 0,

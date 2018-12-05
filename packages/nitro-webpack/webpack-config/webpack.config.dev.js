@@ -8,7 +8,6 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const WebpackBar = require('webpackbar');
 
 const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 const appDirectory = fs.realpathSync(process.cwd());
@@ -46,7 +45,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		plugins: [
 			new CaseSensitivePathsPlugin({ debug: false }),
 			new webpack.HotModuleReplacementPlugin(),
-			new WebpackBar(),
 		],
 		watchOptions: {
 			ignored: /node_modules/,

@@ -13,8 +13,8 @@ const utils = require('./helpers/utils.js');
 
 function animation(req, res, next) {
 	// load animation data
-	const file = path.join(__dirname, './data/lottie',  req.params.animation);
-	let data = {'error':true};
+	const file = path.join(__dirname, './data/lottie', req.params.animation);
+	let data = { error: true };
 	if (fs.existsSync(file)) {
 		data = JSON.parse(fs.readFileSync(file));
 	}

@@ -3,7 +3,7 @@
 import { Component, GondelBaseComponent } from '@gondel/core';
 
 const selectors = {
-	input: '.js-a-datepicker__input'
+	input: '.js-a-datepicker__input',
 };
 
 @Component('Datepicker')

@@ -48,6 +48,10 @@ const config = {
 				glob: ['dist/js/*.js'],
 				replace: [
 					{
+						from: '/assets/',
+						to: '',
+					},
+					{
 						from: '/api',
 						to: 'api',
 					},

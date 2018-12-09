@@ -81,7 +81,7 @@ Defines string replacements. Takes an array of objects with `glob` and `replace`
 
 Controls which views should be exported statically. `true` will export all views from your `views` directory.
 
-You can define an array of strings, like `["index.hbs", "404.hbs"]` to export only those views.
+You can define an array of strings, like `["index", "404"]` to export only those views.
 
 When defining strings you can use globbing patterns.
 

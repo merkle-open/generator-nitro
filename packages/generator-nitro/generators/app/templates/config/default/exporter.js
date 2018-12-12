@@ -29,6 +29,10 @@ const config = {
 						from: '/content/',
 						to: 'content/',
 					},
+					{
+						from: ' href="([a-z\-]+)"',
+						to: ' href="$1.html"',
+					},
 				],
 			},
 			{

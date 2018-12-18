@@ -15,6 +15,7 @@
 	"indent-style": "nonmixed",
 	"label-req-for": true,
 	"line-end-style": false,
+	"line-no-trailing-whitespace": false,
 	"tag-bans": ["style", "b", "i"],
 	"tag-close": false,
 	"tag-name-lowercase": true,

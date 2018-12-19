@@ -8,7 +8,7 @@ module.exports = function (gulp, config) {
 	const gulpSequence = require('gulp-sequence').use(gulp);
 	const shouldExportViews = !config.exporter.length ?
 		config.exporter.views :
-		config.exporter.some((exporterConfig) => exporterConfig.views === true);
+		config.exporter.some((exporterConfig) => exporterConfig.views !== false);
 
 	gulp.task('export-clean', exportClean(config));
 	gulp.task('export-views', () => exportViews(gulp, config));

@@ -28,11 +28,11 @@
     "nitro"
   ],
   "dependencies": {
-    "ajv": "6.6.1",
+    "ajv": "6.6.2",
     "body-parser": "1.18.3",
     "chalk": "2.4.1",
     "compression": "1.7.3",
-    "config": "3.0.0",
+    "config": "3.0.1",
     "dot-object": "1.7.1",
     "express": "4.16.4",
     "extend": "3.0.2",

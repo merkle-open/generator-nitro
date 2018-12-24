@@ -88,7 +88,7 @@ const config = {
 							to: '404',
 						},
 						{
-							from: ' href="\/?([a-z0-9\-]+)"',
+							from: ' href="/?([a-z0-9-]+)"',
 							to: ' href="$1.html"',
 						},
 					],

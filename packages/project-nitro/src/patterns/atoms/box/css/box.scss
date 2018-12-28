@@ -8,7 +8,7 @@
 	background-color: $brand-color-5;
 	min-height: 5em;
 
-	&:after {
+	&::after {
 		content: '';
 		display: block;
 		position: absolute;
@@ -23,7 +23,7 @@
 	}
 }
 
-// inline mixins
+// inline mixin examples
 @mixin box-mixin() {
 	display: block;
 }

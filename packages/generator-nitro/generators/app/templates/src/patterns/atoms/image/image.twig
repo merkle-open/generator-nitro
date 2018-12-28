@@ -5,5 +5,5 @@
 		srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 		data-srcset="{% for rendition in srcset.renditions %}{{rendition.src}} {{rendition.width}}w{% if not loop.last %}, {% endif %}{% endfor %}"
 		alt="{{alt}}">
-	{% pattern name='loader' %}
+	<div class="a-image__loader">{% pattern name='loader' %}</div>
 </div>

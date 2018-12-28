@@ -1,3 +1,7 @@
 <button class="a-button" {{#if disabled}} disabled{{/if}}>
-{{{children}}}{{#unless children}}{{text}}{{/unless}}{{#if disabled}} !{{/if}}
+	{{#if children}}
+		{{{children}}}
+	{{else}}
+		{{{text}}}{{#if disabled}} !{{/if}}
+	{{/if}}
 </button>

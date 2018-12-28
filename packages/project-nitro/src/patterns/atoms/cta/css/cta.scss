@@ -20,9 +20,10 @@
 	&:focus {
 		outline: none;
 	}
+}
 
-	/* stylelint-disable max-nesting-depth */
-	@media (min-width: $size-md-min) {
+@media (min-width: $size-md-min) {
+	.a-cta {
 		&:hover {
 			.a-cta__circle--size-s {
 				background-color: rgba($brand-color-2, 1);
@@ -38,7 +39,6 @@
 			}
 		}
 	}
-	/* stylelint-enable max-nesting-depth */
 }
 
 .a-cta__icon {

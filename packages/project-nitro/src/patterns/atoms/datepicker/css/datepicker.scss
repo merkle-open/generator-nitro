@@ -6,7 +6,7 @@
 	position: relative;
 	line-height: 1;
 
-	&:after {
+	&::after {
 		content: '📅';
 		position: absolute;
 		top: 50%;

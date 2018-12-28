@@ -14,11 +14,11 @@
 	width: 100%;
 	opacity: 0;
 	transition: opacity 0.3s linear;
+}
 
-	&.state-a-image--loaded {
-		opacity: 1;
-		+ .a-loader {
-			display: none;
-		}
+.state-a-image__image--loaded {
+	opacity: 1;
+	+ .a-image__loader {
+		display: none;
 	}
 }

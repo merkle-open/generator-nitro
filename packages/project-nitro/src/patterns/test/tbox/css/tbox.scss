@@ -8,7 +8,7 @@
 	background-color: $color-gray-8;
 	min-height: 5em;
 
-	&:after {
+	&::after {
 		content: '';
 		display: block;
 		position: absolute;

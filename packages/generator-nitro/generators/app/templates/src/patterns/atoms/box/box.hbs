@@ -1,3 +1,7 @@
 <div class="a-box{{#if modifier}} a-box--{{modifier}}{{/if}}">
-	{{{children}}}{{#unless children}}{{{content}}}{{/unless}}
+	{{#if children}}
+		{{{children}}}
+	{{else}}
+		{{{content}}}
+	{{/if}}
 </div>

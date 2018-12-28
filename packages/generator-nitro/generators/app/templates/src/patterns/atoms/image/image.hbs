@@ -5,5 +5,5 @@
 		srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 		data-srcset="{{#each srcset.renditions}}{{src}} {{width}}w{{#unless @last}}, {{/unless}}{{/each}}"
 		alt="{{alt}}">
-	{{pattern name='loader'}}
+	<div class="a-image__loader">{{pattern name='loader'}}</div>
 </div>

@@ -254,6 +254,8 @@ module.exports = class extends Generator {
 			'src/ui.js',
 			'src/proto.js',
 			'tests/backstop/backstop.config.js',
+			'docker-compose.yml',
+			'docker-compose-dev.yml',
 			'gulpfile.js',
 			'package.json',
 		];

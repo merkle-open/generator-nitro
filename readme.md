@@ -19,6 +19,9 @@ Besides the main functionality including a yeoman generator, this repo includes 
 * [`packages/project-nitro`](./packages/project-nitro) (example project with handlebars rendering engine)
 * `packages/project-nitro-twig` (example project with twig rendering engine)
 
+Here you can have a look at the [sample project](https://nitro-project-test.netlify.com/), 
+which contains the examples of the generator and was statified with the default configuration of the "nitro-exporter".
+
 ## Getting started
 
 Before using, you need of course [node](https://nodejs.org/) installed ([Version](.node-version)).  

@@ -62,6 +62,10 @@ set PORT=8000 && set PROXY=8001 && npm start
 set PORT=3001 && npm run prod
 ```
 
+### Usage with docker (experimental)
+
+For information on how to use Nitro with docker, please refer to [nitro-docker.md](./nitro-docker.md) .
+
 ## Configuring
 
 ### Config Package

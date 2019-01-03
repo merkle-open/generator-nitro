@@ -18,7 +18,7 @@
     "test": "lerna run test --parallel",
     "lint": "lerna run lint --parallel",
     "lint:md": "markdownlint ./readme.md ./.github",
-    "update-dependencies": "lerna exec -- npx npm-check-updates -u -x globby,gulp"
+    "update-dependencies": "lerna exec -- npx npm-check-updates -u -x globby,gulp,prettier"
   },
   "keywords": [
     "yeoman-generator",

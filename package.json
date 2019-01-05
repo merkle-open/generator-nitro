@@ -38,7 +38,7 @@
   "devDependencies": {
     "commitizen": "3.0.5",
     "cz-conventional-changelog": "2.1.0",
-    "lerna": "3.8.1",
+    "lerna": "3.8.5",
     "markdownlint-cli": "0.13.0",
     "rimraf": "2.6.3"
   }

@@ -112,6 +112,8 @@ module.exports = class extends Generator {
 					this.options.clientTpl = typeof config.clientTemplates === 'boolean' ? config.clientTemplates : this.options.clientTpl;
 					this.options.exampleCode = typeof config.exampleCode === 'boolean' ? config.exampleCode : this.options.exampleCode;
 					this.options.exporter = typeof config.exporter === 'boolean' ? config.exporter : this.options.exporter;
+
+					this.options.name = _.kebabCase(this.options.name);
 				}
 			});
 		} else {
@@ -163,6 +165,8 @@ module.exports = class extends Generator {
 				this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
 				this.options.exampleCode = answers.exampleCode !== undefined ? answers.exampleCode : this.options.exampleCode;
 				this.options.exporter = answers.exporter !== undefined ? answers.exporter : this.options.exporter;
+
+				this.options.name = _.kebabCase(this.options.name);
 
 				this.config.set('name', this.options.name);
 				this.config.set('templateEngine', this.options.templateEngine);

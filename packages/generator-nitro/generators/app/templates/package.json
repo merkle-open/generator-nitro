@@ -1,5 +1,5 @@
 {
-  "name": "project-nitro",
+  "name": "<%= name %>",
   "version": "0.0.0",
   "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro <%= version %>",
   "license": "UNLICENSED",

@@ -58,6 +58,12 @@ describe('nitro:app', () => {
 			]);
 		});
 
+		it('package.json contains project name', () => {
+			assert.fileContent([
+				['package.json', '"name": "temp-test",'],
+			]);
+		});
+
 		it('package.json contains @nitro dependencies', () => {
 			assert.fileContent([
 				['package.json', '@nitro/app'],

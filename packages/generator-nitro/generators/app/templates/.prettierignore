@@ -17,4 +17,5 @@
 # Nitro
 **/project/blueprints
 **/project/routes/data
+**/project/tmp
 **/.yo-rc.json

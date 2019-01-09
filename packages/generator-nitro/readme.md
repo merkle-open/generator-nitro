@@ -85,7 +85,10 @@ Note: Generators are to be run from the root directory of your project.
 
 ## Generated app
 
-See how to use the [generated app](../project-nitro/project/docs/nitro.md)
+Have a look at the [sample project](https://nitro-project-test.netlify.com/) 
+which contains the examples of a generated project and was statified with the default configuration of the "nitro-exporter".
+
+See how to use the [generated app](https://github.com/namics/generator-nitro/blob/master/packages/project-nitro/project/docs/nitro.md)
 
 ## Testing
 

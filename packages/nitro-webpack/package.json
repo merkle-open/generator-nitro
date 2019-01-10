@@ -9,6 +9,7 @@
   },
   "scripts": {
     "lint": "eslint ./webpack-config",
+    "postinstall": "npm rebuild node-sass",
     "prepublishOnly": "pkg-ok",
     "test": "npm run lint"
   },

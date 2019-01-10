@@ -24,7 +24,6 @@
     "lint:js": "eslint ./src",
     "lint:license": "license-checker --production --summary --exclude \"Apache-2.0, BSD, ISC, LGPL, MIT, MPL\" --failOn \"AGPL; EPL; GPL\"",
     "lint:ts": "tslint 'src/**/*.{ts,tsx}'",
-    "postinstall": "npm rebuild node-sass",
     "prettier": "prettier --write \"**/*.*(js|jsx|ts|tsx|json)\"",
     "visual-approve": "gulp visual-approve",
     "visual-reference": "npm run build && gulp visual-reference",

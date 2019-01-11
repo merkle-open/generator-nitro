@@ -63,7 +63,7 @@ const config = {
 					],
 				},
 			],
-			views: ['index', 'example-*'],
+			views: ['index', 'example-*', 'api/lottie/shipment.json', 'api/lottie/bouncing.json'],
 			zip: false,
 		},
 		{
@@ -120,7 +120,7 @@ const config = {
 					],
 				},
 			],
-			views: ['index', '404'],
+			views: true,
 			zip: true,
 		},
 	],

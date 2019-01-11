@@ -1,6 +1,6 @@
 # Develop Helpers
 
-They are included in proto entry point
+They are included in "proto" entry point
 
 * press `ctrl`|`alt` and `1` to show & hide a banner with current viewport size
 * press `ctrl`|`alt` and `2` to show & hide grid columns in your page

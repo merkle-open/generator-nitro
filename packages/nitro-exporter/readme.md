@@ -22,7 +22,7 @@ The exporter configuration can be found in your [config](../../config).
 
 The distribution folder for your static export. This is where all your static files will go.
 
-- example: `"dist"`
+- example: `'dist'`
 
 ### exporter.i18n (Array)
 
@@ -30,13 +30,13 @@ Contains a list of language keys. The views will be exported using the specified
 You have to specify all languages additionally for the `dump-views` task at [generator-nitro](https://github.com/namics/generator-nitro).
 The nitro-exporter will export all dumped views per default. You can filter out specific view exports by either setting `i18n` or `views` option.
 
-- example: `["de"]`
+- example: `['de']`
 
 ### exporter.publics (Boolean / Array)
 
 Controls which public files should be exported statically. `true` will export all files from your `public` directory.
 
-You can define an array of strings, like `["public/assets/css/app.css", "public/assets/js/app.js"]` to export only those files.
+You can define an array of strings, like `['public/assets/css/app.css', 'public/assets/js/app.js']` to export only those files.
 
 When defining strings you can use globbing patterns.
 
@@ -52,10 +52,10 @@ Renaming is used with native `gulp.src(...).pipe(gulp.dest(...))`.
 ```
 [
     {
-        "src": "dist/assets/**",
-        "base": "dist/assets",
-        "dest": "dist/"
-}
+        src: 'dist/assets/**',
+        base: 'dist/assets',
+        dest: 'dist/',
+    },
 ]
 ```
 
@@ -71,14 +71,14 @@ Defines string replacements. Takes an array of objects with `glob` and `replace`
 ```
 [
     {
-        "glob": ["dist/*.html", "dist/css/*.css"],
-        "replace": [
+        glob: ['dist/*.html', 'dist/css/*.css'],
+        replace: [
             {
-                "from": "/assets",
-                "to": ""
-            }
-        ]
-    }
+                from: '/assets',
+                to: '',
+            },
+        ],
+    },
 ]
 ```
 
@@ -86,7 +86,7 @@ Defines string replacements. Takes an array of objects with `glob` and `replace`
 
 Controls which views should be exported statically. `true` will export all views from your `views` directory.
 
-You can define an array of strings, like `["index", "404"]` to export only those views.
+You can define an array of strings, like `['index', '404']` to export only those views.
 
 When defining strings you can use globbing patterns.
 
@@ -171,24 +171,24 @@ You can define multiple exporter configuration objects, by setting the `exporter
 ### Example
 
 ```
-"exporter": [
+exporter: [
     {
-        "dest": "dist",
-        "i18n": [],
-        "publics": true,
-        "renames": [],
-        "replacements": [],
-        "views": true,
-        "zip": false,
+        dest: 'dist',
+        i18n: [],
+        publics: true,
+        renames: [],
+        replacements: [],
+        views: true,
+        zip: false,
     },
     {
-        "dest": "static",
-        "i18n": [],
-        "publics": true,
-        "renames": [],
-        "replacements": [],
-        "views": true,
-        "zip": false,
+        dest: 'static',
+        i18n: [],
+        publics: true,
+        renames: [],
+        replacements: [],
+        views: true,
+        zip: false,
     },
 ]
 ```

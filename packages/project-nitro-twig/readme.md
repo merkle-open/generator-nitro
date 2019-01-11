@@ -21,7 +21,7 @@ npm start
 
 ## Nitro
 
-For information on how to use Nitro, please refer to [nitro.md](./project/docs/nitro.md) .
+For information on how to use Nitro, please refer to [nitro.md](./project/docs/nitro.md).
 
 ## Possible Structure of this file
 

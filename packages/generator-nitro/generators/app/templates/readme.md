@@ -21,11 +21,11 @@ npm start
 
 # Usage with docker (experimental)
 
-For information on how to use Nitro with docker, please refer to [nitro-docker.md](./project/docs/nitro-docker.md) .
+For information on how to use Nitro with docker, please refer to [nitro-docker.md](./project/docs/nitro-docker.md).
 
 ## Nitro
 
-For information on how to use Nitro, please refer to [nitro.md](./project/docs/nitro.md) .
+For information on how to use Nitro, please refer to [nitro.md](./project/docs/nitro.md).
 
 ## Possible Structure of this file
 

@@ -26,9 +26,7 @@ The distribution folder for your static export. This is where all your static fi
 
 ### exporter.i18n (Array)
 
-Contains a list of language keys. The views will be exported using the specified language keys.
-You have to specify all languages additionally for the `dump-views` task at [generator-nitro](https://github.com/namics/generator-nitro).
-The nitro-exporter will export all dumped views per default. You can filter out specific view exports by either setting `i18n` or `views` option.
+Contains a list of language keys. The views will be exported using the specified language keys. (use `default` for default language )
 
 - example: `['de']`
 

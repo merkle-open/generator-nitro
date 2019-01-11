@@ -1,5 +1,7 @@
 'use strict';
 
+/* global process */
+
 /**
  * Usage:
  *  gulp dump-views
@@ -29,6 +31,10 @@ const viewFilter = (viewItem) => {
 	}
 	return true;
 };
+const additionalRoutes =
+	config.has('gulp.dumpViews.additionalRoutes') && Array.isArray(config.get('gulp.dumpViews.additionalRoutes'))
+		? config.get('gulp.dumpViews.additionalRoutes') : [];
+
 let isRunning = false;
 let server;
 
@@ -68,7 +74,10 @@ function dumpViews(port, gulp, plugins) {
 		.then(() => {
 			const views = getViews();
 			let dumpedViews = [];
-			const languages = (argv.locales === undefined) ? [] : argv.locales.split(',');
+			let languages = (argv.locales === undefined) ? [] : argv.locales.split(',');
+			if (process.env.NITRO_VIEW_LOCALES ) {
+				languages = process.env.NITRO_VIEW_LOCALES.split(',');
+			}
 
 			if (languages.length) {
 				languages.filter((lng) => lng !== 'default').forEach((lng) => {
@@ -81,13 +90,16 @@ function dumpViews(port, gulp, plugins) {
 				dumpedViews = views;
 			}
 
+			// add additional routes from config
+			dumpedViews = dumpedViews.concat(additionalRoutes);
+
 			return plugins.remoteSrc(dumpedViews, {
 				base: `http://localhost:${port}/`,
 				buffer: true,
 			})
 				.pipe(plugins.rename((path) => {
 					const lang = path.basename.match(/\?lang=([a-z]+)/);
-					path.extname = '.html';
+					path.extname = path.extname || '.html';
 					if (lang) {
 						path.basename = path.basename.replace(/\?lang=[a-z]+/, '');
 						path.basename += `-${lang[1]}`;

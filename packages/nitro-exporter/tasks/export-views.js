@@ -11,19 +11,21 @@ module.exports = function (gulp, config) {
 	utils.each(config.exporter, (configEntry) => {
 		processes.push(
 			new Promise((resolve) => {
+				const ext = '(html|json)';
 				const i18nFilter = configEntry.i18n.length ?
-					configEntry.i18n.map((lng) => path.join(nitroTmpDirectory, `*-${lng}.html`)) :
-					path.join(nitroTmpDirectory, '*.html');
+					configEntry.i18n.map((lng) => path.join(nitroTmpDirectory, `*-${lng}.${ext}`)) :
+					path.join(nitroTmpDirectory, '**', `*.${ext}`);
+
 				if (configEntry.views === true) {
-					gulp.src(path.join(nitroTmpDirectory, '*.html'))
+					gulp.src(path.join(nitroTmpDirectory, '**', `*.${ext}`))
 						.pipe(filter(i18nFilter))
 						.pipe(gulp.dest(configEntry.dest))
 						.on('end', () => {
 							resolve();
 						});
 				} else if (Array.isArray(configEntry.views) && configEntry.views.length > 0) {
-					gulp.src(path.join(nitroTmpDirectory, '*.html'))
-						.pipe(filter(configEntry.views.map((v) => path.join(nitroTmpDirectory, `${v}.html`))))
+					gulp.src(path.join(nitroTmpDirectory, '**', `*.${ext}`))
+						.pipe(filter(configEntry.views.map((v) => path.join(nitroTmpDirectory, '**', `${v}.${ext}`))))
 						.pipe(filter(i18nFilter))
 						.pipe(gulp.dest(configEntry.dest))
 						.on('end', () => {

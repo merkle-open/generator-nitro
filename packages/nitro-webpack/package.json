@@ -25,7 +25,7 @@
     "@babel/preset-env": "7.2.3",
     "@babel/plugin-proposal-decorators": "7.2.3",
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
-    "autoprefixer": "9.4.4",
+    "autoprefixer": "9.4.5",
     "babel-loader": "8.0.5",
     "cache-loader": "2.0.1",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
@@ -43,7 +43,7 @@
     "imagemin-gifsicle": "6.0.1",
     "imagemin-jpegtran": "6.0.0",
     "imagemin-optipng": "6.0.0",
-    "imagemin-pngquant": "6.0.1",
+    "imagemin-pngquant": "7.0.0",
     "imagemin-svgo": "7.0.0",
     "img-loader": "3.0.1",
     "mini-css-extract-plugin": "0.5.0",
@@ -60,8 +60,8 @@
     "typescript": "3.2.2",
     "uglifyjs-webpack-plugin": "2.1.1",
     "url-loader": "1.1.2",
-    "webpack": "4.28.3",
-    "webpackbar": "3.1.4",
+    "webpack": "4.28.4",
+    "webpackbar": "3.1.5",
     "webpack-bundle-analyzer": "3.0.3"
   },
   "devDependencies": {

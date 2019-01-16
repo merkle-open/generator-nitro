@@ -10,10 +10,6 @@ const config = {
 			// filter corrupt, incomplete or irrelevant views
 			// example:
 			// viewFilter: (url) => url !== 'incomplete',
-			additionalRoutes: [
-				'api/lottie/shipment.json',
-				'api/lottie/bouncing.json',
-			],
 		},
 		copyAssets: [
 			// copies all source files to dest folder

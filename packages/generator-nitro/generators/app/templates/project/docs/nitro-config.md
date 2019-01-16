@@ -173,15 +173,6 @@ Filters unwanted views (should return false for unwanted view urls). By default,
 
 e.g.: ```viewFilter: (url) => url !== 'incomplete'```
 
-#### `gulp.dumpViews.additionalRoutes` 
-
-Type: Array of Strings
-default: []
-
-The Task `dump-views` tries to save exactly these routes as well (file extension must be specified)
-
-e.g.: ```additionalRoutes:['api/service/countries.json']```
-
 ### `gulp.copyAssets`
 
 Type: Array of Objects

@@ -6,6 +6,10 @@ const exportClean = require('./tasks/export-clean.js');
 const exportViews = require('./tasks/export-views.js');
 const exportProcessing = require('./tasks/export-processing.js');
 
+function getAdditionalRoutes(additionalRoutesConfig) {
+	return additionalRoutesConfig && Array.isArray(additionalRoutesConfig) ? additionalRoutesConfig : [];
+}
+
 function getMergedConfigProps(config) {
 	const collectedConfig = {};
 
@@ -16,6 +20,10 @@ function getMergedConfigProps(config) {
 	collectedConfig.languages = !config.exporter.length ?
 		config.exporter.i18n :
 		config.exporter.reduce((acc, exporterConfig) => [...acc, ...exporterConfig.i18n], ['default']);
+
+	collectedConfig.additionalRoutes = !config.exporter.length ?
+		getAdditionalRoutes(config.exporter.additionalRoutes) :
+		config.exporter.reduce((acc, exporterConfig) => [...acc, ...getAdditionalRoutes(exporterConfig.additionalRoutes)], []);
 
 	return collectedConfig;
 }
@@ -29,9 +37,12 @@ module.exports = function (gulp, config) {
 	gulp.task('export-processing', () => exportProcessing(gulp, config));
 
 	if (mergedConfig.shouldExportViews) {
+		// set global env to use in other gulp tasks
 		if (mergedConfig.languages.length) {
-			// set global env to use in other gulp tasks
 			process.env.NITRO_VIEW_LOCALES = mergedConfig.languages.join(',');
+		}
+		if (mergedConfig.additionalRoutes.length) {
+			process.env.NITRO_ADDITIONAL_ROUTES = mergedConfig.additionalRoutes.join(',');
 		}
 
 		gulp.task('export', gulpSequence(

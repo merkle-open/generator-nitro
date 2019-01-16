@@ -31,9 +31,6 @@ const viewFilter = (viewItem) => {
 	}
 	return true;
 };
-const additionalRoutes =
-	config.has('gulp.dumpViews.additionalRoutes') && Array.isArray(config.get('gulp.dumpViews.additionalRoutes'))
-		? config.get('gulp.dumpViews.additionalRoutes') : [];
 
 let isRunning = false;
 let server;
@@ -75,10 +72,9 @@ function dumpViews(port, gulp, plugins) {
 			const views = getViews();
 			let dumpedViews = [];
 			let languages = (argv.locales === undefined) ? [] : argv.locales.split(',');
-			if (process.env.NITRO_VIEW_LOCALES ) {
+			if (process.env.NITRO_VIEW_LOCALES) {
 				languages = process.env.NITRO_VIEW_LOCALES.split(',');
 			}
-
 			if (languages.length) {
 				languages.filter((lng) => lng !== 'default').forEach((lng) => {
 					dumpedViews = dumpedViews.concat(views.map((v) => `${v}?lang=${lng}`));
@@ -90,9 +86,11 @@ function dumpViews(port, gulp, plugins) {
 				dumpedViews = views;
 			}
 
-			// add additional routes from config
+			// add additional routes from env
+			const additionalRoutes = (process.env.NITRO_ADDITIONAL_ROUTES) ? process.env.NITRO_ADDITIONAL_ROUTES.split(',') : [];
 			dumpedViews = dumpedViews.concat(additionalRoutes);
 
+			// get views
 			return plugins.remoteSrc(dumpedViews, {
 				base: `http://localhost:${port}/`,
 				buffer: true,

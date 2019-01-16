@@ -90,6 +90,12 @@ When defining strings you can use globbing patterns.
 
 - example: `true`
 
+### exporter.additionalRoutes (Array)
+
+Controls which additional routes should be exported.
+
+- example: `['api/service/countries.json', 'api/service/products.json']`
+
 ### exporter.zip
 
 Defines, if the export should be zipped.

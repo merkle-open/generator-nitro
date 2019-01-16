@@ -42,6 +42,30 @@ function getViews() {
 		.map((viewItem) => viewItem.url);
 }
 
+function getViewsToDump() {
+	const views = getViews();
+	let dumpedViews = [];
+	let languages = (argv.locales === undefined) ? [] : argv.locales.split(',');
+	if (process.env.NITRO_VIEW_LOCALES) {
+		languages = process.env.NITRO_VIEW_LOCALES.split(',');
+	}
+	if (languages.length) {
+		languages.forEach((lng) => {
+			dumpedViews = dumpedViews.concat(views.map((v) => {
+				return (lng !== 'default') ? `${v}?lang=${lng}` : v;
+			}));
+		});
+	} else {
+		dumpedViews = views;
+	}
+
+	// add additional routes from env
+	const additionalRoutes = (process.env.NITRO_ADDITIONAL_ROUTES) ? process.env.NITRO_ADDITIONAL_ROUTES.split(',') : [];
+	dumpedViews = dumpedViews.concat(additionalRoutes);
+
+	return dumpedViews;
+}
+
 function startTmpServer(port, gulp, plugins, cb) {
 	server = plugins.liveServer(serverPath, {
 		env: {
@@ -69,29 +93,8 @@ function stopTmpServer() {
 function dumpViews(port, gulp, plugins) {
 	return del(tmpDirectory)
 		.then(() => {
-			const views = getViews();
-			let dumpedViews = [];
-			let languages = (argv.locales === undefined) ? [] : argv.locales.split(',');
-			if (process.env.NITRO_VIEW_LOCALES) {
-				languages = process.env.NITRO_VIEW_LOCALES.split(',');
-			}
-			if (languages.length) {
-				languages.filter((lng) => lng !== 'default').forEach((lng) => {
-					dumpedViews = dumpedViews.concat(views.map((v) => `${v}?lang=${lng}`));
-				});
-				if (languages.includes('default')) {
-					Array.prototype.unshift.apply(dumpedViews, views);
-				}
-			} else {
-				dumpedViews = views;
-			}
-
-			// add additional routes from env
-			const additionalRoutes = (process.env.NITRO_ADDITIONAL_ROUTES) ? process.env.NITRO_ADDITIONAL_ROUTES.split(',') : [];
-			dumpedViews = dumpedViews.concat(additionalRoutes);
-
-			// get views
-			return plugins.remoteSrc(dumpedViews, {
+			const views = getViewsToDump();
+			return plugins.remoteSrc(views, {
 				base: `http://localhost:${port}/`,
 				buffer: true,
 			})

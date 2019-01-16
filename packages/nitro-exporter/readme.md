@@ -26,9 +26,12 @@ The distribution folder for your static export. This is where all your static fi
 
 ### exporter.i18n (Array)
 
-Contains a list of language keys. The views will be exported using the specified language keys. (use `default` for default language )
+Contains a list of language keys. The views will be exported using the specified language keys. (`?lang=<lang>`)
 
-- example: `['de']`
+* Using an empty array will export the default language
+* Use `default` for default language in an array with configured languages
+
+- example: `['de', 'default']`
 
 ### exporter.publics (Boolean / Array)
 
@@ -92,7 +95,7 @@ When defining strings you can use globbing patterns.
 
 ### exporter.additionalRoutes (Array)
 
-Controls which additional routes should be exported.
+Controls which additional routes should be exported. 
 
 - example: `['api/service/countries.json', 'api/service/products.json']`
 

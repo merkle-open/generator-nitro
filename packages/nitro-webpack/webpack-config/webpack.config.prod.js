@@ -37,6 +37,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	}
 
 	const webpackConfig = {
+		mode: 'production',
 		devtool: 'source-map',
 		context: appDirectory,
 		entry: {

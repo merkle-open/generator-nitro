@@ -16,6 +16,7 @@ const includePath = path.join(appDirectory, 'src');
 module.exports = (options = { rules: {}, features: {} }) => {
 
 	const webpackConfig = {
+		mode: 'development',
 		devtool: 'eval-source-map',
 		context: appDirectory,
 		entry: {

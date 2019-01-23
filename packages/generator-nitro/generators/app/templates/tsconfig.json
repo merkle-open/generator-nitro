@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"sourceMap": true,
+		"skipLibCheck": true,
+		"target": "es5",
+		"module": "esnext",
+		"jsx": "react",
+		"allowSyntheticDefaultImports": true,
+		"moduleResolution": "node",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"declaration": true,
+		"noImplicitAny": false,
+		"noImplicitReturns": true,
+		"strictNullChecks": true,
+		"removeComments": false,
+		"outDir": "dist",
+		"lib": ["es6", "es7", "dom"]
+	},
+	"include": ["src/**/*"],
+	"exclude": ["dist", "build", "public", "node_modules"]
+}

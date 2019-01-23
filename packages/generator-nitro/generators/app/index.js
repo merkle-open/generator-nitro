@@ -85,7 +85,7 @@ module.exports = class extends Generator {
 		));
 
 		// check whether there is already a nitro application in place and we only have to update the application
-		const json = this.fs.readJSON(this.destinationPath('.yo-rc.json'), { defaults: { 'new': true } });
+		const json = this.fs.readJSON(this.destinationPath('.yo-rc.json'), { 'new': true });
 
 		if (!json.new) {
 			// update existing application

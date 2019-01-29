@@ -5,23 +5,23 @@
 	"links": [
 		{
 			"uri": "index",
-			"text": "Example 1"
+			"text": "Link 1"
 		},
 		{
 			"uri": "index",
-			"text": "Example 2"
+			"text": "Link 2"
 		},
 		{
 			"uri": "index",
-			"text": "Example 3"
+			"text": "Link 3"
 		},
 		{
 			"uri": "index",
-			"text": "Example 4"
+			"text": "Link 4"
 		},
 		{
 			"uri": "index",
-			"text": "Example 5"
+			"text": "Link 5"
 		}
 	]
 }

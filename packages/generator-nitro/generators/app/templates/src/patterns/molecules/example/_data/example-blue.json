@@ -5,15 +5,15 @@
 	"links": [
 		{
 			"uri": "index",
-			"text": "Example One"
+			"text": "Link One"
 		},
 		{
 			"uri": "index",
-			"text": "Example Two"
+			"text": "Link Two"
 		},
 		{
 			"uri": "index",
-			"text": "Example Three"
+			"text": "Link Three"
 		}
 	]
 }

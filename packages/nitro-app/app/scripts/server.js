@@ -3,7 +3,7 @@
 const express = require('express');
 const app = express();
 const config = require('config');
-const router = require('./app/core/router');
+const router = require('../core/router');
 const compression = require('compression');
 const bodyParser = require('body-parser');
 
@@ -14,15 +14,15 @@ let engine;
 
 // webpack
 if (!isProduction) {
-	require('./app/core/webpack')(app);
+	require('../core/webpack')(app);
 }
 
 if (isTwig) {
-	engine = require('./app/templating/twig/engine');
+	engine = require('../templating/twig/engine');
 	engine.cache(false);
 } else {
-	engine = require('./app/templating/hbs/engine');
-	require('./app/templating/hbs/partials')(engine);
+	engine = require('../templating/hbs/engine');
+	require('../templating/hbs/partials')(engine);
 }
 
 // compress all requests
@@ -31,10 +31,10 @@ if (useCompression) {
 }
 
 // translations
-require('./app/core/i18n')(app);
+require('../core/i18n')(app);
 
 // Loads custom project routes
-require('./app/core/routeLoader')(app);
+require('../core/routeLoader')(app);
 
 app.use(router);
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -47,4 +47,4 @@ if (isTwig) {
 	app.engine(config.get('nitro.viewFileExtension'), engine.__express);
 }
 
-require('./app/core/listen')(app);
+require('../core/listen')(app);

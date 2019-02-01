@@ -9,7 +9,8 @@
     "node": ">=8 <11"
   },
   "bin": {
-    "nitro-app-validate-pattern-data": "./bin/validate-pattern-data.js"
+    "nitro-app-validate-pattern-data": "./bin/validate-pattern-data.js",
+    "nitro-app-serve": "./bin/serve.js"
   },
   "scripts": {
     "lint": "eslint .",
@@ -19,8 +20,7 @@
   },
   "files": [
     "app",
-    "bin",
-    "server.js"
+    "bin"
   ],
   "keywords": [
     "frontend",

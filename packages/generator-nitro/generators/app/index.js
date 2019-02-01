@@ -193,10 +193,6 @@ module.exports = class extends Generator {
 						dest: '.htmllintrc',
 					},
 					{
-						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/editorconfig/.editorconfig',
-						dest: '.editorconfig',
-					},
-					{
 						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/repo/gitignore/nitro.gitignore',
 						dest: '.gitignore',
 					},

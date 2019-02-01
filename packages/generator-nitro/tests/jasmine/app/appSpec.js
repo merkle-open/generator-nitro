@@ -154,7 +154,8 @@ describe('nitro:app', () => {
 		it('example icons are present', () => {
 			assert.file([
 				'src/shared/assets/img/icon/favicon.ico',
-				'src/shared/assets/img/icon/tile-icon.png',
+				'src/shared/assets/img/icon/favicon-16x16.png',
+				'src/shared/assets/img/icon/favicon-32x32.png',
 				'src/shared/assets/img/icon/apple-touch-icon.png',
 			]);
 		});
@@ -209,7 +210,8 @@ describe('nitro:app', () => {
 		it('example icons are not present', () => {
 			assert.noFile([
 				'src/shared/assets/img/icon/favicon.ico',
-				'src/shared/assets/img/icon/tile-icon.png',
+				'src/shared/assets/img/icon/favicon-16x16.png',
+				'src/shared/assets/img/icon/favicon-32x32.png',
 				'src/shared/assets/img/icon/apple-touch-icon.png',
 			]);
 		});

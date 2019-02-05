@@ -1,17 +1,30 @@
 {
+	"modifier": "",
 	"srcset": {
 		"renditions": [
 			{
-				"media": "580",
-				"x1": "/content/size/16x9-624x350.png"
+				"width": "480",
+				"src": "/content/size/16x9-480x270.png"
 			},
 			{
-				"media": "1200",
-				"x1": "/content/size/16x9-1296x728.png"
+				"width": "640",
+				"src": "/content/size/16x9-640x360.png"
+			},
+			{
+				"width": "960",
+				"src": "/content/size/16x9-960x540.png"
+			},
+			{
+				"width": "1280",
+				"src": "/content/size/16x9-1280x720.png"
+			},
+			{
+				"width": "1920",
+				"src": "/content/size/16x9-1920x1080.png"
 			}
 		],
 		"fallback": {
-			"x1": "/content/size/16x9-136x76.png"
+			"src": "/content/size/16x9-320x180.png"
 		}
 	},
 	"alt": "Alt-Attribute"

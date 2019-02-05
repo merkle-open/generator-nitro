@@ -5,7 +5,7 @@
 	"type": "object",
 	"properties": {
 		"modifier": {
-			"description": "A modifier",
+			"description": "A modifier - default is 16:9",
 			"enum": ["", "fit-parent", "1x1"]
 		},
 		"alt": {
@@ -29,12 +29,15 @@
 									"320",
 									"360",
 									"460",
+									"480",
 									"580",
 									"640",
 									"760",
 									"960",
 									"1200",
+									"1280",
 									"1496",
+									"1920",
 									"1960",
 									"2880",
 									"3920"

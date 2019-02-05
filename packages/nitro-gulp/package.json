@@ -52,9 +52,9 @@
     "yargs": "12.0.5"
   },
   "devDependencies": {
-    "@namics/eslint-config": "6.0.1",
+    "@namics/eslint-config": "6.1.0",
     "@nitro/app": "*",
-    "eslint": "5.12.1",
+    "eslint": "5.13.0",
     "eslint-plugin-import": "2.16.0",
     "pkg-ok": "2.3.1"
   },

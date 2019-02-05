@@ -6,7 +6,6 @@ module.exports = {
 	rules: {
 		'require-jsdoc': 'off',
 		'new-cap': [2, { capIsNew: false }],
-		'no-inline-comments': 'off',
 	},
 	parser: 'babel-eslint',
 };

@@ -140,7 +140,11 @@ module.exports = (options = { rules: {}, features: {} }) => {
 									require('iconfont-webpack-plugin')({
 										resolve: loader.resolve,
 									}),
-									require('autoprefixer'),
+									require('autoprefixer')({
+										// @see autopreficer options: https://github.com/postcss/autoprefixer#options
+										// flexbox: 'no-2009' will add prefixes only for final and IE versions of specification.
+										flexbox: 'no-2009',
+									}),
 								];
 							},
 							sourceMap: true,

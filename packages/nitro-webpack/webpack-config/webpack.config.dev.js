@@ -13,7 +13,6 @@ const TsConfigWebpackPlugin = require('ts-config-webpack-plugin');
 
 const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 const appDirectory = fs.realpathSync(process.cwd());
-const includePath = path.join(appDirectory, 'src');
 
 module.exports = (options = { rules: {}, features: {} }) => {
 
@@ -106,7 +105,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				{
 					enforce: 'pre',
 					test: /\.(js|jsx|mjs)$/,
-					include: includePath,
 					exclude: /node_modules/,
 					use: {
 						loader: require.resolve('eslint-loader'),
@@ -130,7 +128,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.module.rules.push(
 			{
 				test: /\.s?css$/,
-				include: includePath,
 				use: [
 					// css-hot-loader removes the flash on unstyled content (FOUC) from style-loader
 					// may be removed when MiniCssExtractPlugin supports HMR
@@ -207,7 +204,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.module.rules.push(
 			{
 				test: /\.hbs$/,
-				include: includePath,
 				exclude: [
 					/node_modules/,
 					path.resolve(appDirectory, 'src/views'),
@@ -239,7 +235,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.module.rules.push(
 			{
 				test: /\.(png|jpg|gif|svg)$/,
-				include: includePath,
 				use: require.resolve('file-loader'),
 			}
 		);

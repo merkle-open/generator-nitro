@@ -13,7 +13,6 @@ const TsConfigWebpackPlugin = require('ts-config-webpack-plugin');
 const WebpackBar = require('webpackbar');
 
 const appDirectory = fs.realpathSync(process.cwd());
-const includePath = path.join(appDirectory, 'src');
 
 const bannerData = {
 	date: new Date().toISOString().slice(0, 19),
@@ -121,8 +120,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	if (options.rules.scss) {
 		webpackConfig.module.rules.push(
 			{
-				test: /\.?scss$/,
-				include: includePath,
+				test: /\.s?css$/,
 				use: [
 					MiniCssExtractPlugin.loader,
 					{
@@ -181,7 +179,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.module.rules.push(
 			{
 				test: /\.hbs$/,
-				include: includePath,
 				exclude: [
 					/node_modules/,
 					path.resolve(appDirectory, 'src/views'),
@@ -215,7 +212,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			// image loader & minification
 			{
 				test: /\.(png|jpg|gif|svg|ico)$/,
-				include: includePath,
 				loader: require.resolve('img-loader'),
 				// Specify enforce: 'pre' to apply the loader before url-loader
 				enforce: 'pre',
@@ -249,7 +245,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			// inlines assets below a limit
 			{
 				test: /\.(png|jpg|gif|svg)$/,
-				include: includePath,
 				loader: require.resolve('url-loader'),
 				options: {
 					limit: 3 * 1028,

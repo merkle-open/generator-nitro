@@ -22,7 +22,7 @@ module.exports = function (gulp, config) {
 				const hasAdditionalRoutesArray = Array.isArray(configEntry.additionalRoutes) && configEntry.additionalRoutes.length > 0;
 				// views does not have file extensions
 				const viewPattern = hasViewArray
-					? `{${configEntry.views.join(',')}}`
+					? `{${configEntry.views.join(',')},fantasyNameQWedRayFiZtFlkXd}`
 					: '*';
 				// additional views
 				const additionalViews =hasAdditionalRoutesArray

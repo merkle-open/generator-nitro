@@ -63,7 +63,7 @@
     "@babel/polyfill": "7.2.5",
     "@gondel/core": "0.0.8",
     "@gondel/plugin-hot": "0.0.8",
-    "bootstrap": "4.2.1",
+    "bootstrap": "4.3.0",
     "flatpickr": "4.5.2",
     "handlebars": "4.1.0",
     "jquery": "3.3.1",

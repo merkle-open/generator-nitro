@@ -40,7 +40,7 @@
     "hbs": "4.0.1",
     "hbs-utils": "0.0.4",
     "htmllint": "0.7.3",
-    "i18next": "15.0.2",
+    "i18next": "15.0.4",
     "i18next-express-middleware": "1.7.1",
     "i18next-node-fs-backend": "2.1.1",
     "i18next-sprintf-postprocessor": "0.2.2",

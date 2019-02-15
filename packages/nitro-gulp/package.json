@@ -49,7 +49,7 @@
     "imagemin-pngquant": "7.0.0",
     "merge-stream": "1.0.1",
     "portfinder": "1.0.20",
-    "yargs": "13.1.0"
+    "yargs": "13.2.0"
   },
   "devDependencies": {
     "@namics/eslint-config": "6.1.0",

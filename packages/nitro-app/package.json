@@ -37,7 +37,7 @@
     "express": "4.16.4",
     "extend": "3.0.2",
     "globby": "7.1.1",
-    "hbs": "4.0.1",
+    "hbs": "4.0.2",
     "hbs-utils": "0.0.4",
     "htmllint": "0.7.3",
     "i18next": "15.0.4",
@@ -49,13 +49,13 @@
     "lodash": "4.17.11",
     "text-table": "0.2.0",
     "twig": "1.13.2",
-    "webpack": "4.29.4",
-    "webpack-dev-middleware": "3.5.2",
+    "webpack": "4.29.5",
+    "webpack-dev-middleware": "3.6.0",
     "webpack-hot-middleware": "2.24.3"
   },
   "devDependencies": {
     "@namics/eslint-config": "6.1.0",
-    "eslint": "5.14.0",
+    "eslint": "5.14.1",
     "eslint-plugin-import": "2.16.0",
     "pkg-ok": "2.3.1"
   },

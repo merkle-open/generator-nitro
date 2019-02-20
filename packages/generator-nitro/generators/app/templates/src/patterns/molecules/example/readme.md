@@ -1,7 +1,7 @@
 # Example
 
 This is an example. 
-It show a basic example of a pattern:
+It shows a basic example of a pattern:
 
 * with a [visual modifier](./css/modifier/example-blue.scss)
 * with a [functional decorator](./js/decorator/example-blue.js) (terrificJs)

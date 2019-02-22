@@ -179,52 +179,6 @@ module.exports = class extends Generator {
 		}
 	}
 
-	get configuring() {
-		return {
-			download() {
-				const done = this.async();
-				const filesToDownload = [
-					{
-						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/codequality/accessibility/.accessibilityrc',
-						dest: '.accessibilityrc',
-					},
-					{
-						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/codequality/htmllint/.htmllintrc',
-						dest: '.htmllintrc',
-					},
-					{
-						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/repo/gitignore/nitro.gitignore',
-						dest: '.gitignore',
-					},
-					{
-						src: 'https://raw.githubusercontent.com/namics/frontend-defaults/master/repo/gitattributes/.gitattributes',
-						dest: '.gitattributes',
-					},
-				];
-
-				this.log('Downloading frontend-defaults files');
-
-				const promises = filesToDownload.map(file => {
-					return new Promise((resolve, reject) => {
-						request
-							.get(file.src)
-							.on('error', (err) => {
-								reject(err);
-							})
-							.on('end', () => {
-								resolve(file.dest);
-							})
-							.pipe(fs.createWriteStream(this.destinationPath(file.dest)));
-					});
-				});
-
-				Promise.all(promises).then(() => {
-					done();
-				});
-			},
-		};
-	}
-
 	writing() {
 
 		this.log('Scaffolding your app');

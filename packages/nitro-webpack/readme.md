@@ -102,6 +102,27 @@ Enable some additional features
 
 `true` will add infos from git (branchname/last commit) in assets banner text
 
+## Extending Configuration
+
+### Code Splitting
+
+By default, all js imports from 'node_modules' are extracted to a 'vendors.js' to use in your view files.
+
+Dynamically imported js files will be extracted to `public/js/dynamic/`.
+You may use them in a promise chain.
+
+```
+import('package-name').then((pack) => {
+	// do something with 'pack'
+});
+
+import(/* webpackChunkName: "mychunk" */ 'package-name').then((pack) => {
+	// do something with 'pack'
+});
+```
+
+You may change the default configuration in [`webpackConfig.optimization.splitChunks`](https://webpack.js.org/configuration/optimization/#optimization-splitchunks)
+
 ## Changelog
 
 Recent changes can be viewed on Github on the [Releases Page](https://github.com/namics/generator-nitro/releases)

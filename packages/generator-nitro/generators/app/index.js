@@ -340,6 +340,11 @@ module.exports = class extends Generator {
 				return;
 			}
 
+			// rename CUTAWAY.gitignore to .gitignore
+			if (destinationPath.indexOf('CUTAWAY') !== -1) {
+				destinationPath = destinationPath.replace(/CUTAWAY/g, '');
+			}
+
 			this.fs.copy(sourcePath, destinationPath);
 		}, this);
 	}

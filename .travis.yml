@@ -3,5 +3,13 @@ sudo: false
 node_js:
   - '8'
   - '10'
+## Prevent from verbose install log caused by cypress installation
+env:
+  - CI=true
+## Cache NPM folder and cypress binary
+cache:
+  directories:
+    - ~/.npm
+    - ~/.cache
 install:
-- travis_retry npm install
+  - npm ci

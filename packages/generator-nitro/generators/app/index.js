@@ -251,12 +251,13 @@ module.exports = class extends Generator {
 		];
 		const examplePaths = [
 			// paths only for this.options.exampleCode===true
+			'project/routes/',
+			'public/content/',
 			'src/views/example/',
 			'src/patterns/',
 			'src/proto/',
 			'src/shared/',
-			'project/routes/',
-			'public/content/',
+			'tests/cypress/cypress/integration/examples/'
 		];
 		const exampleIncludeAnyway = [
 			// example file "parts" included for this.options.exampleCode===false

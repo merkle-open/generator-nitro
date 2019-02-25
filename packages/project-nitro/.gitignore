@@ -49,6 +49,8 @@ debug.log
 /public/reports
 /src/patterns/**/template/*.js
 /src/patterns/**/template/partial/*.js
+/tests/cypress/cypress/screenshots
+/tests/cypress/cypress/videos
 
 # allow
 !.gitkeep

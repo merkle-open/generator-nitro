@@ -9,6 +9,7 @@ It provides a proven but flexible structure to develop your frontend col fronten
 * Webpack Builder with HMR
 * Gulp Tasks for additional functionality
 * Linting, Source Maps, PostCSS & Browsersync
+* Setup for unit, e2e and visual regression testing (cypress, karma/jasmine, backstopjs)
 * Pattern generator
 * [Client side templates](./client-templates.md)
 * [Static Exports](./nitro-exporter.md)
@@ -62,7 +63,7 @@ set PORT=8000 && set PROXY=8001 && npm start
 set PORT=3001 && npm run prod
 ```
 
-### Usage with docker (experimental)
+### Usage with docker
 
 For information on how to use Nitro with docker, please refer to [nitro-docker.md](./nitro-docker.md).
 

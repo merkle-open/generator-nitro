@@ -1,11 +1,9 @@
 /// <reference types="cypress" />
 
-const port = process.env.PORT || 8888;
-
 // test 404 page
 context('404 Page Test', () => {
 	beforeEach(() => {
-		cy.visit(`http://localhost:${port}/404`);
+		cy.visit('/404');
 	});
 
 	describe('HTML Head', () => {

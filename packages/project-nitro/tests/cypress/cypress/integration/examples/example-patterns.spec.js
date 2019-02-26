@@ -1,11 +1,9 @@
 /// <reference types="cypress" />
 
-const port = process.env.PORT || 8888;
-
 // test example-patterns page
 context('Example Patterns Page Examples', () => {
 	beforeEach(() => {
-		cy.visit(`http://localhost:${port}/example-patterns`);
+		cy.visit('/example-patterns');
 	});
 
 	describe('Querying and Traversing', () => {

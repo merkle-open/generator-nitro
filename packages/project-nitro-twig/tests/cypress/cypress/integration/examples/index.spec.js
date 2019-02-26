@@ -1,11 +1,9 @@
 /// <reference types="cypress" />
 
-const port = process.env.PORT || 8888;
-
 // test index page with example content
 context('Index Page Examples', () => {
 	beforeEach(() => {
-		cy.visit(`http://localhost:${port}/index`);
+		cy.visit('/index');
 	});
 
 	describe('Querying first example', () => {
@@ -121,7 +119,7 @@ context('Index Page Examples', () => {
 				.click();
 
 			cy.location('pathname').should('include', 'example-patterns');
-			cy.url().should('eq', `http://localhost:${port}/example-patterns`);
+			cy.url().should('eq', `${Cypress.config().baseUrl}/example-patterns`);
 
 			cy.go('back');
 			cy.location('pathname').should('not.include', 'example-patterns');

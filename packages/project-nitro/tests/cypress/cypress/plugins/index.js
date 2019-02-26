@@ -14,4 +14,11 @@
 module.exports = (on, config) => {
 	// `on` is used to hook into various events Cypress emits
 	// `config` is the resolved Cypress config
+
+	const port = process.env.PORT || 8888;
+
+	// modify config values
+	config.baseUrl = `http://localhost:${port}`;
+
+	return config;
 };

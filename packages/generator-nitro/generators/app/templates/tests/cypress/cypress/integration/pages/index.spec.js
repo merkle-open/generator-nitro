@@ -1,11 +1,9 @@
 /// <reference types="cypress" />
 
-const port = process.env.PORT || 8888;
-
 // test empty index page
 context('Index Page Test', () => {
 	beforeEach(() => {
-		cy.visit(`http://localhost:${port}/index`);
+		cy.visit('/index');
 	});
 
 	describe('Location', () => {
@@ -14,15 +12,14 @@ context('Index Page Test', () => {
 		});
 
 		it('passes window.location tests', () => {
+
+			const baseUrl = Cypress.config().baseUrl;
+
 			cy.location().should((location) => {
 				expect(location.hash).to.be.empty;
-				expect(location.href).to.eq(`http://localhost:${port}/index`);
-				expect(location.host).to.eq(`localhost:${port}`);
-				expect(location.hostname).to.eq('localhost');
-				expect(location.origin).to.eq(`http://localhost:${port}`);
+				expect(location.href).to.eq(`${baseUrl}/index`);
+				expect(location.origin).to.eq(`${baseUrl}`);
 				expect(location.pathname).to.eq('/index');
-				expect(location.port).to.eq(String(port));
-				expect(location.protocol).to.eq('http:');
 				expect(location.search).to.be.empty;
 			});
 		});

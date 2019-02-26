@@ -12,6 +12,7 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 * Webpack Builder with HMR
 * Gulp Tasks for additional functionality
 * Linting, Source Maps, PostCSS & Browsersync
+* Setup for unit, e2e and visual regression testing (cypress, karma/jasmine, backstopjs)
 * Pattern generator
 * [Client side templates](./client-templates.md)
 * [Static Exports](./nitro-exporter.md)
@@ -64,6 +65,10 @@ This works a bit different on **Windows**. Use the following commands in prompt:
 set PORT=8000 && set PROXY=8001 && npm start
 set PORT=3001 && npm run prod
 ```
+
+### Usage with docker
+
+For information on how to use Nitro with docker, please refer to [nitro-docker.md](./nitro-docker.md).
 
 ## Configuring
 
@@ -479,4 +484,4 @@ Use or create new scripts in `package.json` to run with npm.
 
 ## Credits
 
-This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 4.0.11).
+This app was generated with yeoman and the [generator-nitro](https://www.npmjs.com/package/generator-nitro) package (version 4.4.1).

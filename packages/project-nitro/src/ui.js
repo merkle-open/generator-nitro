@@ -32,7 +32,7 @@ hot(module);
 // custom code
 console.log("I'm from the entry point ui"); // eslint-disable-line
 
-// bootstrap terrificjs
+// terrificjs
 $(() => {
 	const application = new T.Application();
 	application.registerModules();

@@ -9,6 +9,5 @@
 			"enum": ["check", "arrow", "nitro"]
 		}
 	},
-	"required": ["icon"],
-	"dependencies": {}
+	"required": ["icon"]
 }

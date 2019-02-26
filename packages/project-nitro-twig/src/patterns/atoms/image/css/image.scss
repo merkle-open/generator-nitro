@@ -1,22 +1,24 @@
 .a-image {
 	position: relative;
-	min-height: 100px;
+	height: 0;
+
+	// default ratio 16:9
+	padding-top: 56.25%;
 }
 
 .a-image__image {
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
 	opacity: 0;
-	max-width: 100%;
 	transition: opacity 0.3s linear;
+}
 
-	&[data-sizes="auto"] {
-		display: block;
-		width: 100%;
-	}
-
-	&.state-a-image--loaded {
-		opacity: 1;
-		+ .a-loader {
-			display: none;
-		}
+.state-a-image__image--loaded {
+	opacity: 1;
+	+ .a-image__loader {
+		display: none;
 	}
 }

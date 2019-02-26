@@ -101,15 +101,15 @@ const config = {
 
 #### `nitro.mode.livereload`
 
-Type: Boolean  
-Default: true
+* Type: Boolean  
+* Default: true
 
 Browser livereload on changes (develop mode only)
 
 #### `nitro.mode.offline`
 
-Type: Boolean  
-Default: false
+* Type: Boolean  
+* Default: false
 
 If set to true, browsersync will be loaded in offline mode.  
 This property is passed as `_nitro.offline` to handlebars views.
@@ -118,8 +118,8 @@ This property is passed as `_nitro.offline` to handlebars views.
 
 #### `nitro.watch.partials`
 
-Type: Boolean  
-Default: true
+* Type: Boolean  
+* Default: true
 
 If set to false, handlebars partials won't be watched and recompiled on change.
 
@@ -136,36 +136,40 @@ Type: Object
 
 ### `server.port`
 
-Type: Integer
-Default: 8080
+* Type: Integer
+* Default: 8080
 
 The express server runs on this port.  
 An environment variable PORT will overwrite this property.
 
 ### `server.proxy`
 
-Type: Integer
-Default: 8081
+* Type: Integer
+* Default: 8081
 
 The proxy server with livereload functionality runs on this port.  
 An environment variable PROXY will overwrite this property.
 
 ### `server.compression`
 
-Type: Boolean
-Default: true
+* Type: Boolean
+* Default: true
 
 If set to `true`, all requests through express will be compressed.
 
 ## Gulp
 
-### `gulp.dumpViews.viewFilter`
+### `gulp.dumpViews`
 
-Type: function
+Type: object
 
 Used in gulp task `dump-views`
 
-Filters unwanted views (should return false for unwanted view urls)
+#### `gulp.dumpViews.viewFilter` 
+
+Type: Function
+
+Filters unwanted views (should return false for unwanted view urls). By default, all views will be dumped.
 
 e.g.: ```viewFilter: (url) => url !== 'incomplete'```
 

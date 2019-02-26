@@ -1,6 +1,6 @@
 {
 	"defaultSeverity": "error",
-	"extends": ["@namics/tslint-config"],
+	"extends": ["@namics/tslint-config", "tslint-config-prettier"],
 	"jsRules": {},
 	"rules": {},
 	"rulesDirectory": []

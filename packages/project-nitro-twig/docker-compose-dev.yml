@@ -1,0 +1,13 @@
+# docker-compose.yaml
+version: "3"
+services:
+  server:
+    build: .
+    container_name: project-nitro-twig_server-dev
+    command: npm start
+    ports:
+    - 8081:8081
+    - 3001:3001
+    volumes:
+    - .:/app:rw
+    - /app/node_modules

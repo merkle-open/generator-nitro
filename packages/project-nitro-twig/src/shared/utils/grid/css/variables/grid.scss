@@ -1,17 +1,17 @@
+@import "../../../breakpoints/css/breakpoints";
+
 $grid-columns: 12;
 $grid-gutter-width: 20px;
 $grid-breakpoints: (
 	xs: 0,
-	sm: 576px,
-	md: 768px,
-	lg: 992px,
-	xl: 1200px
+	sm: $size-sm-min,
+	md: $size-md-min,
+	lg: $size-lg-min,
+	xl: $size-xl-min
 );
 $container-max-widths: (
-	sm: 540px,
-	md: 720px,
-	lg: 960px,
-	xl: 1140px
+	sm: $size-sm-max,
+	md: $size-md-max,
+	lg: $size-lg-max,
+	xl: $size-xl-max
 );
-
-@import "~bootstrap/scss/bootstrap-grid";

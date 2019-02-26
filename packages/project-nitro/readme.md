@@ -19,7 +19,7 @@ and start in development mode
 npm start
 ```
 
-## Usage with docker (experimental)
+### Usage with docker (experimental)
 
 For information on how to use Nitro with docker, please refer to [nitro-docker.md](./project/docs/nitro-docker.md).
 

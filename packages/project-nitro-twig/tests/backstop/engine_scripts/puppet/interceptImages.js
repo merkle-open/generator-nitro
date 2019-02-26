@@ -4,11 +4,11 @@
  * then stub the image with data from IMAGE_STUB_URL
  *
  * Use this in an onBefore script E.G.
-  ```
-  module.exports = async function(page, scenario) {
+ ```
+ module.exports = async function(page, scenario) {
     require('./interceptImages')(page, scenario);
   }
-  ```
+ ```
  *
  */
 

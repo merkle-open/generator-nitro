@@ -12,11 +12,11 @@
  * @return     {VOID}
  *
  * Use this in an onBefore script E.G.
-  ```
-  module.exports = async function(page, scenario) {
+ ```
+ module.exports = async function(page, scenario) {
     require('./removeCSP')(page, scenario);
   }
-  ```
+ ```
  *
  */
 

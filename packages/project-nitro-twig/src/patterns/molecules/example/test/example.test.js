@@ -5,6 +5,7 @@ import '../js/example';
 
 describe('Example module', () => {
 	let mod;
+
 	beforeEach(() => {
 		const application = new T.Application();
 		mod = new T.Module.Example(document.createElement('div'), application._sandbox);

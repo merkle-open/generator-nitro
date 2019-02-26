@@ -16,12 +16,14 @@ import './patterns/atoms/box';
 import './patterns/atoms/button';
 import './patterns/atoms/checkbox';
 import './patterns/atoms/cta';
+import './patterns/atoms/datepicker';
 import './patterns/atoms/gondel';
 import './patterns/atoms/heading';
 import './patterns/atoms/icon';
 import './patterns/atoms/image';
 import './patterns/atoms/list';
 import './patterns/atoms/loader';
+import './patterns/atoms/lottie';
 import './patterns/atoms/stage';
 import './patterns/molecules/example';
 
@@ -30,7 +32,7 @@ hot(module);
 // custom code
 console.log("I'm from the entry point ui"); // eslint-disable-line
 
-// bootstrap terrificjs
+// terrificjs
 $(() => {
 	const application = new T.Application();
 	application.registerModules();

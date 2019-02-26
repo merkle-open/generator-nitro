@@ -15,12 +15,7 @@
 		"icon": {
 			"description": "An icon atom",
 			"enum": ["nitro"]
-		},
-		"_class": {
-			"description": "An additional class for ui tests",
-			"type": "string"
 		}
 	},
-	"dependencies": {},
 	"required": ["text", "href", "icon"]
 }

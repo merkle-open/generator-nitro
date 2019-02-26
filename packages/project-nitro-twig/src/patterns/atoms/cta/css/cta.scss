@@ -2,9 +2,9 @@
 @import "../../../../shared/utils/breakpoints/css/breakpoints.scss";
 
 .a-cta {
-	display: inline-block;
+	display: block;
 	cursor: pointer;
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
 	outline: none;
 	text-align: center;
@@ -20,24 +20,25 @@
 	&:focus {
 		outline: none;
 	}
+}
 
-	/* stylelint-disable max-nesting-depth */
-	&:hover {
-		@media (min-width: $size-md-min) {
+@media (min-width: $size-md-min) {
+	.a-cta {
+		&:hover {
+			.a-cta__circle--size-s {
+				background-color: rgba($brand-color-2, 1);
+			}
 			.a-cta__circle--size-m {
-				background-color: rgba(99, 215, 225, 0.6);
+				background-color: rgba($brand-color-2, 0.6);
 			}
-
 			.a-cta__circle--size-l {
-				background-color: rgba(99, 215, 225, 0.75);
+				background-color: rgba($brand-color-2, 0.75);
 			}
-
 			.a-cta__text {
-				color: rgba(99, 215, 225, 1);
+				color: $brand-color-2;
 			}
 		}
 	}
-	/* stylelint-enable max-nesting-depth */
 }
 
 .a-cta__icon {
@@ -63,13 +64,13 @@
 .a-cta__circle--size-s {
 	width: 48px;
 	height: 48px;
-	background-color: rgba(99, 215, 225, 1);
+	background-color: rgba($color-gray-6, 1);
 }
 
 .a-cta__circle--size-m {
 	width: 64px;
 	height: 64px;
-	background-color: rgba(99, 215, 225, 0.45);
+	background-color: rgba($color-gray-6, 0.45);
 	opacity: 0;
 	animation: animation-a-cta--pulse-m 2.25s 0.25s linear infinite;
 }
@@ -77,7 +78,7 @@
 .a-cta__circle--size-l {
 	width: 80px;
 	height: 80px;
-	background-color: rgba(99, 215, 225, 0.3);
+	background-color: rgba($color-gray-6, 0.3);
 	opacity: 0;
 	animation: animation-a-cta--pulse-l 2.25s 0.25s linear infinite;
 }
@@ -89,9 +90,9 @@
 	display: block;
 
 	position: absolute;
-	bottom: -25px;
+	bottom: -1.3em;
 	width: 100%;
-	transition: color 0.2s ease-in;
+	transition: color 0.3s ease-in;
 }
 
 @keyframes animation-a-cta--pulse-m {

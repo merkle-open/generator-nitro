@@ -22,7 +22,7 @@
 		"checked": {
 			"type": "boolean"
 		},
-		"_state": {
+		"state": {
 			"enum": ["", "disabled"]
 		}
 	},

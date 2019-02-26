@@ -4,7 +4,7 @@
 	cursor: pointer;
 
 	font-size: 24px;
-	background-color: #ff4500;
+	background-color: $brand-color-2;
 	border: 0 solid $color-gray-5;
 	border-bottom-width: 5px;
 	padding: 10px 20px;
@@ -20,9 +20,14 @@
 		cursor: default;
 	}
 
-	&:hover {
+	&:hover,
+	&:focus {
 		transform: translate(0, -1px);
 		box-shadow: 0 2px 10px rgba(102, 102, 102, 0.5);
+	}
+	&:active {
+		transform: translate(0, 1px);
+		box-shadow: none;
 	}
 }
 

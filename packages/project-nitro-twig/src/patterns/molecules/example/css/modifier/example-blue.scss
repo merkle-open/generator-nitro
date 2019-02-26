@@ -1,14 +1,12 @@
 @import "../../../../../shared/utils/colors/css/colors.scss";
 
 .m-example--blue {
-	background: $blue;
+	background: $brand-color-1;
 	animation: blue-background-change 10s infinite;
 }
 
-/* stylelint-disable color-named  */
 @keyframes blue-background-change {
-	0%,100% { background-color: lightslategray; }
-	30% { background-color: lightblue; }
-	60% { background-color: cornflowerblue; }
+	0%,100% { background-color: desaturate($brand-color-1, 20%); }
+	30% { background-color: lighten($brand-color-1, 20%); }
+	60% { background-color: $brand-color-1; }
 }
-/* stylelint-enable color-named  */

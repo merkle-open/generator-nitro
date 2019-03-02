@@ -28,7 +28,7 @@
     "nitro"
   ],
   "dependencies": {
-    "ajv": "6.9.2",
+    "ajv": "6.10.0",
     "body-parser": "1.18.3",
     "chalk": "2.4.2",
     "compression": "1.7.3",
@@ -37,10 +37,10 @@
     "express": "4.16.4",
     "extend": "3.0.2",
     "globby": "7.1.1",
-    "hbs": "4.0.2",
+    "hbs": "4.0.3",
     "hbs-utils": "0.0.4",
     "htmllint": "0.7.3",
-    "i18next": "15.0.4",
+    "i18next": "15.0.5",
     "i18next-express-middleware": "1.7.1",
     "i18next-node-fs-backend": "2.1.1",
     "i18next-sprintf-postprocessor": "0.2.2",
@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@namics/eslint-config": "6.1.0",
-    "eslint": "5.14.1",
+    "eslint": "5.15.0",
     "eslint-plugin-import": "2.16.0",
     "pkg-ok": "2.3.1"
   },

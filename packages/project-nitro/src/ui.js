@@ -27,6 +27,14 @@ import './patterns/atoms/lottie';
 import './patterns/atoms/stage';
 import './patterns/molecules/example';
 
+import './patterns/test/a';
+import './patterns/test/b';
+import './patterns/test/Ex';
+import './patterns/test/ico';
+import './patterns/test/t';
+import './patterns/test/tbox';
+import './patterns/test/tbutton';
+
 hot(module);
 
 // custom code

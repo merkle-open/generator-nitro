@@ -15,7 +15,7 @@
 			{{component 'Ex' 'ex-blue'}}
 			{{pattern 'Ex' 'ex-blue' name='NavMain' data='ex'}}
 
-			<h1>Ex Tests</h1>
+			<h1>Ex Variants</h1>
 			{{pattern 'Ex' 'ex' data='ex-blue'}}
 			{{pattern name='Ex' template='ex2'}}
 			{{pattern name='Ex' data='ex-blue' template='ex'}}
@@ -49,23 +49,23 @@
 			{{/each}}
 
 			<h1>Data as attributes</h1>
-			{{pattern 'button'}}
-			{{pattern name='button' disabled=true text='special button'}}
-			{{pattern name='box'}}
-			{{pattern 'box' modifier='dark'}}
+			{{pattern 'tbutton'}}
+			{{pattern name='tbutton' disabled=true text='special button'}}
+			{{pattern name='tbox'}}
+			{{pattern name='tbox' modifier='dark'}}
 
 			<h1>Transclusion</h1>
-			{{#pattern 'button'}}My Text{{/pattern}}
-			{{#component name='box'}}Mein <strong>Markup</strong>{{/component}}
-			{{#pattern 'box'}}
-				This box is filled with Text<br />
-				{{#pattern 'button'}}Send{{/pattern}}
-				{{#pattern 'button' disabled=true}}Reset{{/pattern}}
+			{{#pattern name='tbutton'}}My Text{{/pattern}}
+			{{#component name='tbox'}}Mein <strong>Markup</strong>{{/component}}
+			{{#pattern name='tbox'}}
+				This tbox is filled with Text<br />
+				{{#pattern name='tbutton'}}Send{{/pattern}}
+				{{#pattern name='tbutton' disabled=true}}Reset{{/pattern}}
 			{{/pattern}}
 
 			<h1>Icons</h1>
-			{{#pattern 'box'}}
-				{{#pattern 'button'}}Send {{pattern name='ico' icon='arrow-right'}}{{/pattern}}
+			{{#pattern name='tbox'}}
+				{{#pattern name='tbutton'}}Send {{pattern name='ico' icon='arrow-right'}}{{/pattern}}
 				<p style="font-size: 5rem;">
 					{{pattern name='ico' icon='arrow-right'}}
 					{{pattern name='ico' icon='chevron-up'}}

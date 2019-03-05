@@ -21,7 +21,7 @@
 		"decorator": "",
 		"linkText": "Go to (subpattern): ",
 		"dynInsert": {
-			"you": "ernscht (subpattern)"
+			"you": "developer (subpattern)"
 		},
 		"dynChildren": {
 			"count": 1

@@ -1,31 +1,31 @@
-<div class="o-t{{#if modifier}} o-t--{{modifier}}{{/if}}" data-t-name="T"{{#if decorator}} data-t-decorator="{{decorator}}"{{/if}}>
-	<h2 class="o-t__sub-title">Translations{{#if infotext}} - {{infotext}}{{/if}}</h2>
-	<ul class="o-t__list">
-		<li class="o-t__item">{{t 'app.company.name' first}}</li>
-		<li class="o-t__item">{{t 'test.example.nested'}}</li>
-		<li class="o-t__item">{{t 'test.example.sprintf' 'alphabet' 'a' 'l' 'p'}}</li>
-		<li class="o-t__item"><em>{{t 'test.example.interpolation' dynInsert}}</em></li>
-		<li class="o-t__item">{{t 'test.example.interpolation1' word='alphabet' one='e' two='t'}}</li>
-		<li class="o-t__item">{{t 'test.example.interpolation2' word='alphabet' one='a' two=two}}</li>
-		<li class="o-t__item">{{t 'app.fallback'}}</li>
+<div class="t-t{{#if modifier}} t-t--{{modifier}}{{/if}}" data-t-name="T"{{#if decorator}} data-t-decorator="{{decorator}}"{{/if}}>
+	<h2 class="t-t__sub-title">Translations{{#if infotext}} - {{infotext}}{{/if}}</h2>
+	<ul class="t-t__list">
+		<li class="t-t__item">{{t 'app.company.name' first}}</li>
+		<li class="t-t__item">{{t 'test.example.nested'}}</li>
+		<li class="t-t__item">{{t 'test.example.sprintf' 'alphabet' 'a' 'l' 'p'}}</li>
+		<li class="t-t__item"><em>{{t 'test.example.interpolation' dynInsert}}</em></li>
+		<li class="t-t__item">{{t 'test.example.interpolation1' word='alphabet' one='e' two='t'}}</li>
+		<li class="t-t__item">{{t 'test.example.interpolation2' word='alphabet' one='a' two=two}}</li>
+		<li class="t-t__item">{{t 'app.fallback'}}</li>
 	</ul>
 
-	<h2 class="o-t__sub-title">linkText / test.text / pageTitle / ...</h2>
-	<ul class="o-t__list">
-		<li class="o-t__item">{{#if modifier}}{{test.text}} = {{else}}{{test.text}} = test.text (test){{/if}}</li>
-		<li class="o-t__item">{{#if modifier}}{{test.text}} = {{else}}{{test.text}} = test.text (test){{/if}}</li>
-		<li class="o-t__item">{{linkText}} = linkText (test{{#if modifier}} {{modifier}}{{/if}})</li>
+	<h2 class="t-t__sub-title">linkText / test.text / ...</h2>
+	<ul class="t-t__list">
+		<li class="t-t__item">{{#if modifier}}{{test.text}} = {{else}}{{test.text}} = test.text (t){{/if}}</li>
+		<li class="t-t__item">{{#if modifier}}{{test.text}} = {{else}}{{test.text}} = test.text (t){{/if}}</li>
+		<li class="t-t__item">{{linkText}} = linkText (t{{#if modifier}} {{modifier}}{{/if}})</li>
 	</ul>
 	{{!pattern 'btn'}}
-	<ul class="o-t__list">
-		<li>{{linkText}} = linkText (test{{#if modifier}} {{modifier}}{{/if}})</li>
-		<li>{{#if modifier}}{{test.text}} = {{else}}{{test.text}} = test.text (test){{/if}}</li>
+	<ul class="t-t__list">
+		<li>{{linkText}} = linkText (t{{#if modifier}} {{modifier}}{{/if}})</li>
+		<li>{{#if modifier}}{{test.text}} = {{else}}{{test.text}} = test.text (t){{/if}}</li>
 	</ul>
 
 	<hr />
 
-	<h2 class="o-t__sub-title">data</h2>
-	<ul class="o-t__list">
+	<h2 class="t-t__sub-title">data</h2>
+	<ul class="t-t__list">
 		<li>user.name: {{user.name}}</li>
 		<li>user.email: {{user.email}}</li>
 	</ul>

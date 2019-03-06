@@ -5,13 +5,14 @@ import { addKeyboardAction, getFromLocalStorage, setToLocalStorage } from './dev
 (function tota11yHelper() {
 	const style = document.createElement('style');
 	style.innerHTML = '.tota11y { display: none; }';
+	document.head.appendChild(style);
 	function toggleTota11y() {
 		if (style.parentElement) {
 			style.parentElement.removeChild(style);
 		} else {
 			document.head.appendChild(style);
 		}
-		setToLocalStorage('dev-helper-tota11y', Boolean(style.parentElement));
+		setToLocalStorage('dev-helper-tota11y', !Boolean(style.parentElement));
 	}
 
 	// 52 = keycode for 4

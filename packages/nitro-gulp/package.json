@@ -29,7 +29,7 @@
     "browser-sync": "2.26.3",
     "compression": "1.7.3",
     "config": "3.0.1",
-    "del": "3.0.0",
+    "del": "4.0.0",
     "get-port": "4.2.0",
     "globby": "7.1.1",
     "gulp": "3.9.1",
@@ -49,12 +49,12 @@
     "imagemin-pngquant": "7.0.0",
     "merge-stream": "1.0.1",
     "portfinder": "1.0.20",
-    "yargs": "13.2.1"
+    "yargs": "13.2.2"
   },
   "devDependencies": {
     "@namics/eslint-config": "6.1.0",
     "@nitro/app": "*",
-    "eslint": "5.15.0",
+    "eslint": "5.15.1",
     "eslint-plugin-import": "2.16.0",
     "pkg-ok": "2.3.1"
   },

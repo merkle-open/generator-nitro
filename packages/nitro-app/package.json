@@ -40,7 +40,7 @@
     "hbs": "4.0.3",
     "hbs-utils": "0.0.4",
     "htmllint": "0.7.3",
-    "i18next": "15.0.5",
+    "i18next": "15.0.6",
     "i18next-express-middleware": "1.7.1",
     "i18next-node-fs-backend": "2.1.1",
     "i18next-sprintf-postprocessor": "0.2.2",
@@ -50,12 +50,12 @@
     "text-table": "0.2.0",
     "twig": "1.13.2",
     "webpack": "4.29.6",
-    "webpack-dev-middleware": "3.6.0",
+    "webpack-dev-middleware": "3.6.1",
     "webpack-hot-middleware": "2.24.3"
   },
   "devDependencies": {
     "@namics/eslint-config": "6.1.0",
-    "eslint": "5.15.0",
+    "eslint": "5.15.1",
     "eslint-plugin-import": "2.16.0",
     "pkg-ok": "2.3.1"
   },

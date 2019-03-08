@@ -74,7 +74,7 @@
     "@gondel/core": "0.0.8",
     "@gondel/plugin-hot": "0.0.8",
     "bootstrap": "4.3.1",
-    "flatpickr": "4.5.6",
+    "flatpickr": "4.5.7",
     "handlebars": "4.1.0",
     "jquery": "3.3.1",
     "lazysizes": "4.1.6",

@@ -99,6 +99,7 @@ module.exports = class extends Generator {
 			]).then((answers) => {
 				this._update = answers.update;
 				this.options.skipInstall = true;
+				this.options.exampleCode = false;
 
 				if (!this._update) {
 					return;
@@ -110,7 +111,6 @@ module.exports = class extends Generator {
 					this.options.viewExt = config.viewExtension || config.templateEngine ? config.templateEngine : this.options.viewExt;
 					this.options.templateEngine = config.templateEngine || this.options.templateEngine;
 					this.options.clientTpl = typeof config.clientTemplates === 'boolean' ? config.clientTemplates : this.options.clientTpl;
-					this.options.exampleCode = typeof config.exampleCode === 'boolean' ? config.exampleCode : this.options.exampleCode;
 					this.options.exporter = typeof config.exporter === 'boolean' ? config.exporter : this.options.exporter;
 
 					this.options.name = _.kebabCase(this.options.name);

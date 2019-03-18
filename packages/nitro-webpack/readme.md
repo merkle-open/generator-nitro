@@ -20,6 +20,7 @@ const options = {
         },
         hbs: true,
         woff: true,
+        font: false,
         image: true,
     },
     features: {
@@ -88,6 +89,20 @@ Config:
 `true` or `{}` will activate woff font support (in CSS files)
 * `{ include: [] }` additionally adds include config to rule
 * `{ exclude: [] }` additionally adds exclude config to rule
+
+#### `options.rules.font`
+
+* Type: boolean || object
+* default: false
+
+Config:
+
+* `true` or `{}` will activate font support for eot, svg, ttf, woff & woff2 fonts (in CSS files)
+* `{ include: [] }` additionally adds include config to rule
+* `{ exclude: [] }` additionally adds exclude config to rule
+
+⚠ Please use this rule with care. You have to configure includes and exclude when you also use woff and/or image loader. 
+Otherwise svg or woff files are processed with multiple configurations.
 
 #### `options.rules.image`
 

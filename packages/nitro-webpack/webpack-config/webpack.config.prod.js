@@ -211,6 +211,23 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		);
 	}
 
+	// different font types (legacy - eg. used in older library css)
+	if (options.rules.font) {
+		const fontRule = {
+			test: /\.(eot|svg|ttf|woff|woff2)([?#]+[A-Za-z0-9-_]*)*$/,
+			use: {
+				loader: require.resolve('url-loader'),
+				options: {
+					limit: 2 * 1028,
+					name: 'media/font/[name]-[hash:7].[ext]',
+				}
+			}
+		};
+		webpackConfig.module.rules.push(
+			utils.getEnrichedConfig(fontRule, options.rules.font),
+		);
+	}
+
 	// images
 	if (options.rules.image) {
 		// image loader & minification

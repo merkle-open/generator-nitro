@@ -43,7 +43,9 @@ No loader rule is enabled by default. Activate following prepared rules you need
 * Type: boolean || object
 * default: false
 
-* `true` activates JavaScript support
+Config:
+
+* `true` or `{}` activates JavaScript support
 * `{ eslint: true }` additionally adds eslint live linting feature (only relevant for development build)
 
 #### `options.rules.ts`
@@ -51,36 +53,52 @@ No loader rule is enabled by default. Activate following prepared rules you need
 * Type: boolean
 * default: false
 
-`true` will activate TypeScript support
+Config:
+
+* `true` will activate TypeScript support
 
 #### `options.rules.scss`
 
 * Type: boolean || object
 * default: false
 
-* `true` will activate scss support
+Config:
+
+* `true` or `{}` will activate scss support
 * `{ stylelint: true }` additionally adds stylelint live linting feature (only relevant for development build)
 
 #### `options.rules.hbs`
 
-* Type: boolean
+* Type: boolean || object
 * default: false
 
-`true` will activate handlebars handlebars precompiled templates support
+Config:
+
+* `true` or `{}` will activate handlebars precompiled templates support
+* `{ include: [] }` additionally adds include config to rule
+* `{ exclude: [] }` additionally adds exclude config to rule
 
 #### `options.rules.woff`
 
-* Type: boolean
+* Type: boolean || object
 * default: false
 
-`true` will activate woff font support (in CSS files)
+Config:
+
+`true` or `{}` will activate woff font support (in CSS files)
+* `{ include: [] }` additionally adds include config to rule
+* `{ exclude: [] }` additionally adds exclude config to rule
 
 #### `options.rules.image`
 
-* Type: boolean
+* Type: boolean || object
 * default: false
 
-`true` will activate image support ()
+Config:
+
+* `true` will activate image support
+* `{ include: [] }` additionally adds include config to rule
+* `{ exclude: [] }` additionally adds exclude config to rule
 
 ### `options.features`
 

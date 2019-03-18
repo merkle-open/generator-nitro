@@ -5,11 +5,11 @@ const fs = require('fs');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const FontConfigWebpackPlugin = require('font-config-webpack-plugin');
 const JsConfigWebpackPlugin = require('js-config-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const TsConfigWebpackPlugin = require('ts-config-webpack-plugin');
+const utils = require('../lib/utils');
 
 const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 const appDirectory = fs.realpathSync(process.cwd());
@@ -93,7 +93,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		},
 	};
 
-	// JS
+	// js
 	if (options.rules.js) {
 		webpackConfig.plugins.push(
 			new JsConfigWebpackPlugin({ babelConfigFile: './babel.config.js' }),
@@ -123,7 +123,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.plugins.push(new TsConfigWebpackPlugin());
 	}
 
-	// CSS & SCSS
+	// css & scss
 	if (options.rules.scss) {
 		webpackConfig.module.rules.push(
 			{
@@ -201,45 +201,55 @@ module.exports = (options = { rules: {}, features: {} }) => {
 
 	// handlebars precompiled templates
 	if (options.rules.hbs) {
-		webpackConfig.module.rules.push(
-			{
-				test: /\.hbs$/,
-				exclude: [
-					/node_modules/,
-					path.resolve(appDirectory, 'src/views'),
-				],
-				use: {
-					loader: require.resolve('handlebars-loader'),
-					options: {
-						// helperDirs: [
-						// 	path.resolve(__dirname, '../../app/templating/hbs/helpers'),
-						// ],
-						// knownHelpers: [],
-						// runtime: '',
-						// partialDirs: ''
-					},
+		const hbsRule = {
+			test: /\.hbs$/,
+			use: {
+				loader: require.resolve('handlebars-loader'),
+				options: {
+					// helperDirs: [
+					// 	path.resolve(__dirname, '../../app/templating/hbs/helpers'),
+					// ],
+					// knownHelpers: [],
+					// runtime: '',
+					// partialDirs: ''
 				},
-			}
+			},
+		};
+		webpackConfig.module.rules.push(
+			utils.getEnrichedConfig(hbsRule, options.rules.hbs),
 		);
 	}
 
 	// woff fonts (for example, in CSS files)
 	if (options.rules.woff) {
-		webpackConfig.plugins.push(
-			new FontConfigWebpackPlugin({ name: 'media/fonts/[name]-[hash:7].[ext]' }),
-		);
-	}
-
-	// image loader
-	if (options.rules.image) {
-		webpackConfig.module.rules.push(
-			{
-				test: /\.(png|jpg|gif|svg)$/,
-				use: require.resolve('file-loader'),
+		const woffRule = {
+			test: /.(woff(2)?)(\?[a-z0-9]+)?$/,
+			use: {
+				loader: require.resolve('file-loader'),
+				options: {
+					name: 'media/fonts/[name]-[hash:7].[ext]',
+				},
 			}
+		};
+		webpackConfig.module.rules.push(
+			utils.getEnrichedConfig(woffRule, options.rules.woff),
 		);
 	}
 
+	// images
+	if (options.rules.image) {
+		const imageRule = {
+			test: /\.(png|jpg|gif|svg)$/,
+			use: {
+				loader: require.resolve('file-loader'),
+			},
+		};
+		webpackConfig.module.rules.push(
+			utils.getEnrichedConfig(imageRule, options.rules.image),
+		);
+	}
+
+	// feature bundle analyzer
 	if (options.features.bundleAnalyzer) {
 		webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 	}

@@ -18,22 +18,17 @@ context('Test Page Tests with query', () => {
 		});
 
 		it('listitem contains', () => {
-			cy.get('.t-t > :nth-child(2) > :nth-child(1)')
-				.contains('my "first" company');
+			cy.get('.t-t > :nth-child(2) > :nth-child(1)').contains('my "first" company');
 
-			cy.get('.t-t > :nth-child(2) > :nth-child(4)')
-				.contains('Hello winner & winner');
+			cy.get('.t-t > :nth-child(2) > :nth-child(4)').contains('Hello winner & winner');
 
-			cy.get('.t-t > :nth-child(4) > :nth-child(1)')
-				.contains('blubber = test.text (t)');
+			cy.get('.t-t > :nth-child(4) > :nth-child(1)').contains('blubber = test.text (t)');
 
-			cy.get('.t-t > :nth-child(4) > :nth-child(2)')
-				.contains('blubber = test.text (t)');
+			cy.get('.t-t > :nth-child(4) > :nth-child(2)').contains('blubber = test.text (t)');
 		});
 
 		it('content contains', () => {
-			cy.get('.col-md-8 > :nth-child(7)')
-				.contains('[Partial] new = pageTitle (view)');
+			cy.get('.col-md-8 > :nth-child(7)').contains('[Partial] new = pageTitle (view)');
 		});
 	});
 });
@@ -55,10 +50,7 @@ context('Test Page Tests with different view data', () => {
 		});
 
 		it('content contains', () => {
-			cy.get('.col-md-8 > :nth-child(7)')
-				.contains('[Partial] The "data" page = pageTitle (view)');
+			cy.get('.col-md-8 > :nth-child(7)').contains('[Partial] The "data" page = pageTitle (view)');
 		});
 	});
 });
-
-

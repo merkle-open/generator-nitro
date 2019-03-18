@@ -14,8 +14,7 @@ context('Test Page Data', () => {
 
 	describe('Content', () => {
 		it('text contains', () => {
-			cy.get('.col-md-8 > :nth-child(1)')
-				.contains('The "data" page = pageTitle (view)');
+			cy.get('.col-md-8 > :nth-child(1)').contains('The "data" page = pageTitle (view)');
 		});
 	});
 
@@ -26,7 +25,6 @@ context('Test Page Data', () => {
 			cy.get('p').should('have.length', 4);
 		});
 	});
-
 });
 
 context('Test Page Data with different layout', () => {
@@ -42,20 +40,17 @@ context('Test Page Data with different layout', () => {
 
 	describe('Content', () => {
 		it('text contains', () => {
-			cy.get('.col-md-8 > :nth-child(1)')
-				.contains('The "data" page = pageTitle (view)');
+			cy.get('.col-md-8 > :nth-child(1)').contains('The "data" page = pageTitle (view)');
 		});
 	});
 
 	describe('Layout contents', () => {
 		it('new elements exists', () => {
-			cy.get('h1')
-				.contains('alternative layout');
+			cy.get('h1').contains('alternative layout');
 
 			cy.get('p').should('have.length', 5);
 
-			cy.get('p:last')
-				.contains('The "data" page = pageTitle (view)');
+			cy.get('p:last').contains('The "data" page = pageTitle (view)');
 		});
 	});
 });

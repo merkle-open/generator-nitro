@@ -39,7 +39,6 @@ T.Module.Ex.Template = T.createDecorator({
 			/* eslint-disable no-console */
 			console.log(`Client Side Template Ex rendered [id:${$pattern.data('t-id')}]`);
 			/* eslint-enable no-console */
-
 		});
 
 		$ctx.on('click', '.js-t-ex__more', () => {

@@ -12,7 +12,6 @@ context('Index Page Test', () => {
 		});
 
 		it('passes window.location tests', () => {
-
 			const baseUrl = Cypress.config().baseUrl;
 
 			cy.location().should((location) => {

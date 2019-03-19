@@ -41,8 +41,9 @@ No loader rule is enabled by default. Activate following prepared rules you need
 
 #### `options.rules.js`
 
-* Type: boolean || object
+* type: boolean || object
 * default: false
+* file types: js, jsx, mjs
 
 Config:
 
@@ -51,8 +52,9 @@ Config:
 
 #### `options.rules.ts`
 
-* Type: boolean
+* type: boolean
 * default: false
+* file types: ts, tsx
 
 Config:
 
@@ -60,8 +62,9 @@ Config:
 
 #### `options.rules.scss`
 
-* Type: boolean || object
+* type: boolean || object
 * default: false
+* file types: scss, css
 
 Config:
 
@@ -70,8 +73,9 @@ Config:
 
 #### `options.rules.hbs`
 
-* Type: boolean || object
+* type: boolean || object
 * default: false
+* file types: hbs
 
 Config:
 
@@ -81,8 +85,9 @@ Config:
 
 #### `options.rules.woff`
 
-* Type: boolean || object
+* type: boolean || object
 * default: false
+* file types: woff, woff2
 
 Config:
 
@@ -92,8 +97,9 @@ Config:
 
 #### `options.rules.font`
 
-* Type: boolean || object
+* type: boolean || object
 * default: false
+* file types: eot, svg, ttf, woff, woff2
 
 Config:
 
@@ -106,8 +112,9 @@ Otherwise svg or woff files are processed with multiple configurations.
 
 #### `options.rules.image`
 
-* Type: boolean || object
+* type: boolean || object
 * default: false
+* file types: png, jpg, gif, svg
 
 Config:
 

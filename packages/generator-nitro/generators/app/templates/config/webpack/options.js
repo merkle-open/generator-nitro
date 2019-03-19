@@ -10,9 +10,6 @@ const options = {
 		},
 		hbs: <% if (options.clientTpl) { %>true<% } else { %>false<% } %>,
 		woff: true,
-		// ⚠ use font rule with care - processes also svg and woff files
-		// ⚠ use includes and excludes also in 'image' and 'woff' loader config
-		font: false,
 		image: true,
 	},
 	features: {

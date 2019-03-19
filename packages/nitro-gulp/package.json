@@ -22,12 +22,12 @@
     "gulp"
   ],
   "peerDependencies": {
-    "@nitro/app": ">= 4.2.0"
+    "@nitro/app": ">=4.2.0"
   },
   "dependencies": {
     "backstopjs": "3.8.8",
     "browser-sync": "2.26.3",
-    "compression": "1.7.3",
+    "compression": "1.7.4",
     "config": "3.0.1",
     "del": "4.0.0",
     "get-port": "4.2.0",
@@ -54,7 +54,7 @@
   "devDependencies": {
     "@namics/eslint-config": "6.1.0",
     "@nitro/app": "*",
-    "eslint": "5.15.1",
+    "eslint": "5.15.3",
     "eslint-plugin-import": "2.16.0",
     "pkg-ok": "2.3.1"
   },

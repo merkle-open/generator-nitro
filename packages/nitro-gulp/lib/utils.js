@@ -7,7 +7,7 @@ let browserSync;
 
 function getBrowserSyncInstance() {
 	const name = `Nitro${config.get('server.port')}`;
-	if (config.get('nitro.mode.livereload') && !browserSync) {
+	if (!browserSync) {
 		browserSync = require('browser-sync').create(name);
 	}
 	return browserSync;

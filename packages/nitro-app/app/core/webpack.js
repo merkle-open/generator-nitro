@@ -21,5 +21,7 @@ const wphm = webpackHotMiddleware(webpackCompiler, {
 
 module.exports = function (app) {
 	app.use(wpm);
-	app.use(wphm);
+	if (config.get('nitro.mode.livereload')) {
+		app.use(wphm);
+	}
 };

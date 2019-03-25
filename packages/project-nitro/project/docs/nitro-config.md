@@ -108,7 +108,7 @@ Browser livereload on changes (develop mode only)
 
 #### `nitro.mode.offline`
 
-* Type: Boolean  
+* Type: Boolean
 * Default: false
 
 If set to true, browsersync will be loaded in offline mode.  
@@ -144,11 +144,70 @@ An environment variable PORT will overwrite this property.
 
 ### `server.proxy`
 
+* Type: Object
+
+The proxy server config with livereload functionality. (Used in develop mode only)
+
+#### `server.proxy.port`
+
 * Type: Integer
 * Default: 8081
 
-The proxy server with livereload functionality runs on this port.  
 An environment variable PROXY will overwrite this property.
+
+#### `server.proxy.https`
+
+* Type: Object | false
+* Default: false
+
+Enabling the https mode requires an ssl certificate:
+
+* `server.proxy.https.cert` (path to the certificate file)
+* `server.proxy.https.key` (path to the certificate key)
+
+#### `server.proxy.host`
+
+* Type: String
+
+Defines a custom host for your external url (e.g. nitro.local)
+
+#### `server.proxy.open`
+
+* Type: Boolean | String
+
+Decide [which URL to open automatically in your browser](https://www.browsersync.io/docs/options#option-open) when proxy server starts.  
+Possible values: false, 'local', 'external'
+
+#### Example config for http proxy (default)
+
+```js
+server: {
+    port: 8080,
+    proxy: {
+        port: 8081,
+        https: false,
+    },
+}
+```
+
+#### Example config for https proxy
+
+Generate your own certificate e.g. with [mkcert](https://github.com/FiloSottile/mkcert)
+
+```js
+server: {
+    port: 8080,
+    proxy: {
+        port: 8081,
+        https: {
+            cert: './project/server/localhost.pem',
+            key: './project/server/localhost-key.pem',
+        },
+        host: 'nitro.dev',
+        open: 'external',
+    },
+}
+```
 
 ### `server.compression`
 
@@ -161,7 +220,7 @@ If set to `true`, all requests through express will be compressed.
 
 ### `gulp.dumpViews`
 
-Type: object
+Type: Object
 
 Used in gulp task `dump-views`
 

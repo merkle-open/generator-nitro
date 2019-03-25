@@ -48,7 +48,10 @@ const defaultConfig = {
 	},
 	server: {
 		port: 8080,
-		proxy: 8081,
+		proxy: {
+			port: 8081,
+			https: false,
+		},
 		production: !!(process.env.NODE_ENV && process.env.NODE_ENV.replace((/\s/g), '') === 'production'),
 		compression: true,
 	},

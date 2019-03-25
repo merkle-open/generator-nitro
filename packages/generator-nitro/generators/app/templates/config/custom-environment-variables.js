@@ -8,7 +8,9 @@
 const config = {
 	server: {
 		port: 'PORT',
-		proxy: 'PROXY',
+		proxy: {
+			port: 'PROXY',
+		},
 	},
 };
 

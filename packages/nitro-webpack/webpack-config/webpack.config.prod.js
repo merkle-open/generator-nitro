@@ -39,7 +39,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 
 	const webpackConfig = {
 		mode: 'production',
-		devtool: 'source-map',
+		devtool: 'hidden-source-map',
 		context: appDirectory,
 		entry: {
 			ui: './src/ui.js',
@@ -167,9 +167,11 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				chunkFilename: 'css/[name]-[id].min.css',
 			}),
 			new OptimizeCSSAssetsPlugin({
-				// cssProcessorOptions: {
-				// 	sourceMap: true,
-				// },
+				cssProcessorOptions: {
+					map: {
+						inline: false,
+					},
+				},
 			}),
 		);
 	}

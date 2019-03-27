@@ -1,6 +1,5 @@
 /* global module */
 <% if (options.exampleCode) { %>
-import '@babel/polyfill';
 import { hot } from '@gondel/plugin-hot';
 
 // hot module reloading

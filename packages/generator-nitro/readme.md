@@ -45,6 +45,16 @@ Updating a project to the newest nitro version is quite simple:
 npm run nitro:update
 ```
 
+... then
+* validate all local changes
+* run the 'clean' task to remove the package-lock and the 'node_modules' folder
+* run 'install'
+
+```
+npm run clean
+npm install
+```
+
 ### Project Generation
 
 On creating a new project, you will be guided through some configuration options:

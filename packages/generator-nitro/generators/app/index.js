@@ -222,7 +222,6 @@ module.exports = class extends Generator {
 			'public/',
 			'src/patterns/',
 			'src/proto/css/',
-			'src/proto/js/',
 			'src/shared/',
 			'src/views/',
 		];

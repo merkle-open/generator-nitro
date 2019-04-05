@@ -1,0 +1,60 @@
+@import "../../../../shared/utils/webfonts/css/webfonts.scss";
+@import '../../../../shared/utils/colors2/css/colors2';
+@import "../../../../shared/utils/breakpoints/css/breakpoints.scss";
+
+.a-quote {
+	box-sizing: border-box;
+	position: relative;
+	width: 100%;
+	margin: 0;
+	padding: 1.2rem 4rem;
+	background: $color-gray-9;
+	font-size: 20px;
+
+	@media (min-width: $size-md-min) {
+		padding: 2rem 4rem;
+		font-size: 28px;
+	}
+	@media (min-width: $size-lg-min) {
+		padding: 3rem 10rem;
+		font-size: 34px;
+	}
+}
+
+.a-quote__text {
+	margin: 0;
+	font-size: 1em;
+	font-family: $font-family-playfair, sans-serif;
+	&::before,
+	&::after {
+		position: absolute;
+		color: $color-white;
+		font-size: 4em;
+		text-shadow: -3px 0 $color-gray-9;
+	}
+	&::before {
+		top: -0.45em;
+		left: 1rem;
+		content: '“';
+		@media (min-width: $size-lg-min) {
+			left: 4rem;
+		}
+	}
+	&::after {
+		bottom: -0.8em;
+		right: 1rem;
+		content: '”';
+		@media (min-width: $size-lg-min) {
+			right: 4rem;
+		}
+	}
+}
+
+.a-quote__cite {
+	display: block;
+	margin-top: 0.2rem;
+	margin-right: -1rem;
+	text-align: right;
+	font-size: 0.8em;
+	font-family: $font-family-gaegu, sans-serif;
+}

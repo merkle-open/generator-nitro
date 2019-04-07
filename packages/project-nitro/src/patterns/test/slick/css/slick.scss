@@ -1,0 +1,29 @@
+@import "../../../../shared/utils/colors2/css/colors2.scss";
+@import "../../../../shared/utils/breakpoints/css/breakpoints.scss";
+
+$slick-font-path: "~slick-carousel/slick/fonts/";
+$slick-font-family: "slick";
+$slick-loader-path: "~slick-carousel/slick/";
+$slick-arrow-color: $brand-color-2;
+
+@import "~slick-carousel/slick/slick.scss";
+@import "~slick-carousel/slick/slick-theme.scss";
+
+.t-slick {
+	position: relative;
+	margin: 30px 0;
+
+	@media (max-width: $size-sm-max) {
+		/* stylelint-disable plugin/stylelint-bem-namics */
+		.slick-prev {
+			left: 10px;
+			z-index: 1;
+		}
+		.slick-next {
+			right: 10px;
+			z-index: 1;
+		}
+		/* stylelint-enable plugin/stylelint-bem-namics */
+	}
+
+}

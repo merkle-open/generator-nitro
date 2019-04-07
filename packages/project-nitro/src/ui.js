@@ -35,6 +35,7 @@ import './patterns/test/ico';
 import './patterns/test/t';
 import './patterns/test/tbox';
 import './patterns/test/tbutton';
+import './patterns/test/slick';
 
 hot(module);
 

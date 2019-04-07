@@ -9,11 +9,17 @@ const options = {
 			stylelint: config.get('code.validation.stylelint.live'),
 		},
 		hbs: true,
-		woff: true,
+		woff: {
+			exclude: [ /slick-carousel/ ],
+		},
 		// ⚠ use font rule with care - processes also svg and woff files
 		// ⚠ use includes and excludes also in 'image' and 'woff' loader config
-		font: false,
-		image: true,
+		font: {
+			include: [ /slick-carousel/ ],
+		},
+		image: {
+			exclude: [ /slick-carousel.*\.svg/ ],
+		},
 	},
 	features: {
 		bundleAnalyzer: false,

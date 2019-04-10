@@ -30,7 +30,6 @@
     "autoprefixer": "9.5.1",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "css-loader": "2.1.1",
-    "css-hot-loader": "1.4.4",
     "eslint": "5.16.0",
     "eslint-loader": "2.1.2",
     "eslint-plugin-import": "2.16.0",

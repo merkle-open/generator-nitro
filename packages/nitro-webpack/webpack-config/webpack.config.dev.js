@@ -129,11 +129,12 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			{
 				test: /\.s?css$/,
 				use: [
-					// css-hot-loader removes the flash on unstyled content (FOUC) from style-loader
-					// may be removed when MiniCssExtractPlugin supports HMR
-					// related: https://github.com/webpack-contrib/mini-css-extract-plugin/issues/34
-					require.resolve('css-hot-loader'),
-					MiniCssExtractPlugin.loader,
+					{
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+							hmr: true,
+						}
+					},
 					{
 						loader: require.resolve('css-loader'),
 						options: {
@@ -177,7 +178,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				filename: 'css/[name].css',
 			}),
 			// we need SourceMapDevToolPlugin to make sourcemaps work
-			// with MiniCSSExtractPlugin and css-hot-loader
+			// with MiniCSSExtractPlugin hmr mode
 			// related: https://github.com/webpack-contrib/mini-css-extract-plugin/issues/29
 			new webpack.SourceMapDevToolPlugin({
 				filename: '[file].map',

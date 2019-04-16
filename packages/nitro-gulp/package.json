@@ -55,7 +55,7 @@
     "@namics/eslint-config": "6.1.0",
     "@nitro/app": "*",
     "eslint": "5.16.0",
-    "eslint-plugin-import": "2.16.0",
+    "eslint-plugin-import": "2.17.1",
     "pkg-ok": "2.3.1"
   },
   "publishConfig": {

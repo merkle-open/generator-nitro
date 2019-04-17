@@ -24,7 +24,4 @@ requireAll(require.context('./patterns', true, /[\/\\]proto[\/\\](?:[a-z0-9\-]+)
 /* eslint-enable no-useless-escape */
 
 // require develop helpers
-require('./proto/utils/develop-helpers/key1Breakpoint');
-require('./proto/utils/develop-helpers/key2BootstrapGrid');
-require('./proto/utils/develop-helpers/key3BootstrapContainer');
-require('./proto/utils/develop-helpers/key4Tota11y');
+require('./proto/utils/develop-helpers');

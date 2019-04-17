@@ -6,7 +6,7 @@
 }
 
 @keyframes blue-background-change {
-	0%,100% { background-color: desaturate($brand-color-1, 20%); }
-	30% { background-color: lighten($brand-color-1, 20%); }
-	60% { background-color: $brand-color-1; }
+	0%,100% { background-color: darken(desaturate($brand-color-1, 30%), 10%); }
+	30% { background-color: darken($brand-color-1, 20%); }
+	60% { background-color: darken($brand-color-1, 10%); }
 }

@@ -4,7 +4,9 @@
 	cursor: pointer;
 
 	font-size: 24px;
-	background-color: $brand-color-2;
+	font-weight: bold;
+	text-shadow: 1px 0 $color-gray-1;
+	background-color: darken($brand-color-2, 10%);
 	border: 0 solid $color-gray-5;
 	border-bottom-width: 5px;
 	padding: 10px 20px;
@@ -13,7 +15,7 @@
 	margin: 1rem 0;
 	outline: none;
 	position: relative;
-	transition: all 0.3s ease;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
 
 	&[disabled] {
 		opacity: 0.4;

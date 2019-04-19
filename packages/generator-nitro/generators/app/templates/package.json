@@ -94,7 +94,7 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",
-    "commitizen": "3.0.7",
+    "commitizen": "3.1.1",
     "config": "3.1.0",
     "cross-env": "5.2.0",
     "cypress": "3.2.0",

@@ -33,7 +33,7 @@
 		text-shadow: -3px 0 $color-gray-9;
 	}
 	&::before {
-		top: -0.45em;
+		top: -0.39em;
 		left: 1rem;
 		content: '“';
 		@media (min-width: $size-lg-min) {
@@ -41,7 +41,7 @@
 		}
 	}
 	&::after {
-		bottom: -0.8em;
+		bottom: -0.75em;
 		right: 1rem;
 		content: '”';
 		@media (min-width: $size-lg-min) {

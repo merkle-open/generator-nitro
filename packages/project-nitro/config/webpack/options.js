@@ -10,15 +10,15 @@ const options = {
 		},
 		hbs: true,
 		woff: {
-			exclude: [ /slick-carousel/ ],
+			exclude: [/slick-carousel/],
 		},
 		// ⚠ use font rule with care - processes also svg and woff files
 		// ⚠ use includes and excludes also in 'image' and 'woff' loader config
 		font: {
-			include: [ /slick-carousel/ ],
+			include: [/slick-carousel/],
 		},
 		image: {
-			exclude: [ /slick-carousel.*\.svg/ ],
+			exclude: [/slick-carousel.*\.svg/],
 		},
 	},
 	features: {

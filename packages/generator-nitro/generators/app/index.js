@@ -188,6 +188,7 @@ module.exports = class extends Generator {
 		const tplFiles = [
 			// files to process with copyTpl
 			'config/default.js',
+			'config/default/exporter.js',
 			'config/webpack/options.js',
 			'project/docs/nitro.md',
 			'project/docs/client-templates.md',

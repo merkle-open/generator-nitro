@@ -64,7 +64,7 @@ const config = {
 				},
 			],
 			views: true,
-			additionalRoutes: ['api/lottie/shipment.json', 'api/lottie/bouncing.json'],
+			additionalRoutes: [<% if (options.exampleCode) { %>'api/lottie/shipment.json', 'api/lottie/bouncing.json'<% } %>],
 			zip: false,
 		},
 	],

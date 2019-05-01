@@ -22,7 +22,7 @@
     "cypress-test:open": "cypress open --project ./tests/cypress/",
     "lint": "npm-run-all lint:*",
     "donotlint:accessibility": "gulp lint-accessibility",
-    "lint:css": "stylelint src/**/*.*ss",
+    "lint:css": "stylelint src/**/*.*ss --allow-empty-input",
     "lint:data": "nitro-app-validate-pattern-data",
     "lint:html": "gulp lint-html",
     "lint:js": "eslint ./src --ext .js",

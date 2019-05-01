@@ -69,8 +69,8 @@
     "pattern",
     "modular"
   ],
-  "dependencies": {<% if (options.exampleCode) { %>
-    "@babel/polyfill": "7.4.3",
+  "dependencies": {
+    "@babel/polyfill": "7.4.3"<% if (options.exampleCode) { %>,
     "@gondel/core": "0.1.0",
     "@gondel/plugin-hot": "0.1.0",
     "bootstrap": "4.3.1",

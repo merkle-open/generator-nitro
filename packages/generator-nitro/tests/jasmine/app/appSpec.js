@@ -160,6 +160,16 @@ describe('nitro:app', () => {
 			]);
 		});
 
+		it('some proto files are present', () => {
+			assert.file([
+				'src/proto/readme.md',
+				'src/proto/css/prototype.scss',
+				'src/proto/js/prototype.js',
+				'src/proto/utils/develop-helpers/index.js',
+				'src/proto/utils/develop-helpers/js/key1Breakpoint.js',
+			]);
+		});
+
 		it('country project route is present', () => {
 			assert.file([
 				'project/routes/readme.md',
@@ -213,6 +223,21 @@ describe('nitro:app', () => {
 				'src/shared/assets/img/icon/favicon-16x16.png',
 				'src/shared/assets/img/icon/favicon-32x32.png',
 				'src/shared/assets/img/icon/apple-touch-icon.png',
+			]);
+		});
+
+		it('some proto files are still present', () => {
+			assert.file([
+				'src/proto/readme.md',
+				'src/proto/css/prototype.scss',
+				'src/proto/js/prototype.js',
+			]);
+		});
+
+		it('some proto files are not present', () => {
+			assert.noFile([
+				'src/proto/utils/develop-helpers/index.js',
+				'src/proto/utils/develop-helpers/js/key1Breakpoint.js',
 			]);
 		});
 

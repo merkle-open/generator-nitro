@@ -266,7 +266,7 @@ module.exports = class extends Generator {
 			'public/content/',
 			'src/views/example/',
 			'src/patterns/',
-			'src/proto/',
+			'src/proto/utils/',
 			'src/shared/',
 			'tests/cypress/cypress/integration/examples/'
 		];
@@ -274,8 +274,6 @@ module.exports = class extends Generator {
 			// example file "parts" included for this.options.exampleCode===false
 			'project/routes/readme.md',
 			'src/patterns/readme.md',
-			'src/proto/js/prototype.js',
-			'src/proto/readme.md',
 			'src/shared/readme.md',
 			'.gitkeep',
 		];

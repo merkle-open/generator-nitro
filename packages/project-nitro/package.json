@@ -70,7 +70,7 @@
     "modular"
   ],
   "dependencies": {
-    "@babel/polyfill": "7.4.3",
+    "@babel/polyfill": "7.4.4",
     "@gondel/core": "0.1.0",
     "@gondel/plugin-hot": "0.1.0",
     "bootstrap": "4.3.1",
@@ -89,7 +89,7 @@
   "devDependencies": {
     "@namics/eslint-config": "7.0.1",
     "@namics/prettier-config": "0.2.0",
-    "@namics/stylelint-config": "0.2.2",
+    "@namics/stylelint-config": "0.3.1",
     "@namics/ts-config": "0.2.0",
     "@nitro/app": "*",
     "@nitro/exporter": "*",

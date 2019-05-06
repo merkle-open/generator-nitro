@@ -48,7 +48,7 @@
     "jasmine-core": "3.4.0",
     "lodash": "4.17.11",
     "text-table": "0.2.0",
-    "twig": "1.13.2",
+    "twig": "1.13.3",
     "webpack": "4.30.0",
     "webpack-dev-middleware": "3.6.2",
     "webpack-hot-middleware": "2.24.4"

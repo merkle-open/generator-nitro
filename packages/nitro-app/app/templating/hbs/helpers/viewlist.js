@@ -1,6 +1,5 @@
 'use strict';
 
-const path = require('path');
 const hbs = require('hbs');
 const config = require('config');
 const view = require('../../../lib/view.js');
@@ -10,7 +9,7 @@ module.exports = function () {
 	const viewIncludes = context.hash.viewIncludes ? context.hash.viewIncludes : '';
 	const viewExcludes = context.hash.viewExcludes ? context.hash.viewExcludes : '';
 
-	const views = view.getViews(path.join(config.get('nitro.basePath'), config.get('nitro.viewDirectory')));
+	const views = view.getViews(config.get('nitro.basePath') + config.get('nitro.viewDirectory'));
 	const markup = ['<ul>'];
 
 	let filteredViews = views;

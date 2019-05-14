@@ -1,7 +1,7 @@
 # Backstop Visual Tests
 
 Regression testing with backstopjs.  
-For running these tests you need chrome headless installed.
+For running these tests you need docker installed.
 
 [More about backstopjs](https://www.npmjs.com/package/backstopjs)
 
@@ -10,8 +10,8 @@ For running these tests you need chrome headless installed.
 default configuration:
 
 * this directory is meant to be the place to setup your tests and to have a place for your reference screenshots.
-* test results are placed in a /project/tmp/reports/... folder 
-* the reports are generated inside public/reports/backstop/html
+* test results are placed in a /project/tmp/reports folder 
+* the reports are generated inside public/reports/backstop
 
 ## Scripts
 

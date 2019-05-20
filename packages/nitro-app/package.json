@@ -34,7 +34,7 @@
     "compression": "1.7.4",
     "config": "3.1.0",
     "dot-object": "1.7.1",
-    "express": "4.16.4",
+    "express": "4.17.0",
     "extend": "3.0.2",
     "globby": "7.1.1",
     "hbs": "4.0.4",
@@ -49,9 +49,9 @@
     "lodash": "4.17.11",
     "text-table": "0.2.0",
     "twig": "1.13.3",
-    "webpack": "4.31.0",
-    "webpack-dev-middleware": "3.6.2",
-    "webpack-hot-middleware": "2.24.4"
+    "webpack": "4.32.0",
+    "webpack-dev-middleware": "3.7.0",
+    "webpack-hot-middleware": "2.25.0"
   },
   "devDependencies": {
     "@namics/eslint-config": "7.0.1",

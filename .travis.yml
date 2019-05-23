@@ -3,6 +3,8 @@ sudo: false
 node_js:
   - '8'
   - '10'
+services:
+  - docker
 ## Prevent from verbose install log caused by cypress installation
 env:
   - CI=true

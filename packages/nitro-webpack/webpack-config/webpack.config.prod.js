@@ -23,6 +23,8 @@ let banner = `${bannerData.pkg.name}
 @version v${bannerData.pkg.version}
 @date ${bannerData.date}`;
 
+module.exports.appDirectory = appDirectory;
+
 module.exports = (options = { rules: {}, features: {} }) => {
 
 	if (options.features.gitInfo) {

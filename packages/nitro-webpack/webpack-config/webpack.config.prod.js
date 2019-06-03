@@ -44,8 +44,8 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		devtool: 'hidden-source-map',
 		context: appDirectory,
 		entry: {
-			ui: './src/ui.js',
-			proto: './src/proto.js',
+			ui: './src/ui',
+			proto: './src/proto',
 		},
 		output: {
 			path: path.resolve(appDirectory, 'public', 'assets'),
@@ -54,7 +54,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			publicPath: '/assets/',
 		},
 		resolve: {
-			extensions: ['.mjs', '.js'],
+			extensions: [],
 			symlinks: false,
 		},
 		module: {

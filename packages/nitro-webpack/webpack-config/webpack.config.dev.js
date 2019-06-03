@@ -25,11 +25,11 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		context: appDirectory,
 		entry: {
 			ui: [
-				'./src/ui.js',
+				'./src/ui',
 				hotMiddlewareScript,
 			],
 			proto: [
-				'./src/proto.js',
+				'./src/proto',
 				hotMiddlewareScript,
 			],
 		},

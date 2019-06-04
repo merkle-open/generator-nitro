@@ -1,10 +1,18 @@
 'use strict';
 
 /**
- * twig helper: {% viewlist %}
+ * Viewlist helper, can be used to display lists of views filtered by specific include / exclude terms
  *
- * Usage
+ * Usage:
+ *
+ * Without parameter, all views will be displayed
  * {% viewlist %}
+ *
+ * With parameter viewIncludes, all views containing at least one of the terms will be displayed
+ * {% viewlist { viewIncludes: "<term-1>;<term-2>" } %}
+ *
+ * With parameter viewExcludes, all views containing none of the terms will be displayed
+ * {% viewlist { viewExcludes: "<term-1>;<term-2>" } %}
  *
  */
 
@@ -12,7 +20,7 @@ const config = require('config');
 const view = require('../../../lib/view.js');
 const twigUtils = require('../utils');
 
-module.exports = function () {
+module.exports = function (Twig) {
 	return {
 		type: 'viewlist',
 		regex: /^viewlist\s*([\S\s]+?)?$/,

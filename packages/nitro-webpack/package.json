@@ -27,7 +27,7 @@
     "@babel/preset-react": "7.0.0",
     "@babel/plugin-proposal-decorators": "7.4.4",
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
-    "autoprefixer": "9.5.1",
+    "autoprefixer": "9.6.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "css-loader": "2.1.1",
     "eslint": "5.16.0",

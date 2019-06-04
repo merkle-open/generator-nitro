@@ -26,5 +26,5 @@ requireAll(require.context('./patterns', true, /[\/\\]proto[\/\\](?:[a-z0-9\-]+)
 
 /* eslint-enable no-useless-escape */
 <% if (options.exampleCode) { %>
-// require develop helpers
-require('./proto/utils/develop-helpers');<% } %>
+// eslint-disable-next-line
+import './proto/utils/develop-helpers';<% } %>

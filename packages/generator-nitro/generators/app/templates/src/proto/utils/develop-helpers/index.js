@@ -1,5 +1,5 @@
-require('./js/key1Breakpoint');
-require('./js/key2BootstrapGrid');
-require('./js/key3BootstrapContainer');
-require('./js/key4Tota11y');
-require('./css/key4Tota11y.scss');
+import './js/key1Breakpoint';
+import './js/key2BootstrapGrid';
+import './js/key3BootstrapContainer';
+import './js/key4Tota11y';
+import './css/key4Tota11y.scss';

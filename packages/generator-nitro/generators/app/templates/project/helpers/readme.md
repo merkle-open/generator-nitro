@@ -1,7 +1,7 @@
 # Custom <%= options.templateEngine %> helpers
 
-If your project needs any additional or custom helpers, place them in this folder. 
-Every file which has the .js extension will be included. 
+If your project needs any additional or custom helpers, place them in this folder.<% if (options.templateEngine === 'hbs') { %> Subdirectories are also allowed <% } %>  
+Every file which has the .js extension will be included.
 
 These helpers will be loaded into Nitro automatically.
 

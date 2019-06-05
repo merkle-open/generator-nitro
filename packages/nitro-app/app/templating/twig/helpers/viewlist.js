@@ -9,10 +9,10 @@
  * {% viewlist %}
  *
  * With parameter include, all views containing at least one of the terms will be displayed
- * {% viewlist { include: "<term-1>;<term-2>" } %}
+ * {% viewlist { include: "<term-1>,<term-2>" } %}
  *
  * With parameter exclude, all views containing none of the terms will be displayed
- * {% viewlist { exclude: "<term-1>;<term-2>" } %}
+ * {% viewlist { exclude: "<term-1>,<term-2>" } %}
  *
  */
 
@@ -49,14 +49,14 @@ module.exports = function (Twig) {
 				let filteredViews = views;
 
 				if (include !== '') {
-					const includeArray = include.split(';');
+					const includeArray = include.split(',');
 					filteredViews = views.filter((viewItem) => {
 						return includeArray.some((includeString) => {
 							return viewItem.url.indexOf(includeString) >= 0;
 						});
 					});
 				} else if (exclude !== '') {
-					const excludeArray = exclude.split(';');
+					const excludeArray = exclude.split(',');
 					filteredViews = views.filter((viewItem) => {
 						return excludeArray.every((excludeString) => {
 							return viewItem.url.indexOf(excludeString) === -1;

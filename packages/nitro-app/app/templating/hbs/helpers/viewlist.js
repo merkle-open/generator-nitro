@@ -6,11 +6,11 @@
  * Without parameter, all views will be displayed
  * {{viewlist}}
  *
- * With parameter viewIncludes, all views containing at least one of the terms will be displayed
- * {{viewlist viewIncludes="<term-1>;<term-2>"}}
+ * With parameter include, all views containing at least one of the terms will be displayed
+ * {{viewlist include="<term-1>;<term-2>"}}
  *
- * With parameter viewExcludes, all views containing none of the terms will be displayed
- * {{viewlist viewExcludes="<term-1>;<term-2>"}}
+ * With parameter exclude, all views containing none of the terms will be displayed
+ * {{viewlist exclude="<term-1>;<term-2>"}}
  *
  */
 
@@ -22,25 +22,25 @@ const view = require('../../../lib/view.js');
 
 module.exports = function () {
 	const context = arguments[arguments.length - 1];
-	const viewIncludes = context.hash.viewIncludes ? context.hash.viewIncludes : '';
-	const viewExcludes = context.hash.viewExcludes ? context.hash.viewExcludes : '';
+	const include = context.hash.include ? context.hash.include : '';
+	const exclude = context.hash.exclude ? context.hash.exclude : '';
 
 	const views = view.getViews(config.get('nitro.basePath') + config.get('nitro.viewDirectory'));
 	const markup = ['<ul>'];
 
 	let filteredViews = views;
 
-	if (viewIncludes !== '') {
-		const viewIncludesArray = viewIncludes.split(';');
+	if (include !== '') {
+		const includeArray = include.split(';');
 		filteredViews = views.filter((viewItem) => {
-			return viewIncludesArray.some((includeString) => {
+			return includeArray.some((includeString) => {
 				return viewItem.url.indexOf(includeString) >= 0;
 			});
 		});
-	} else if (viewExcludes !== '') {
-		const viewExcludesArray = viewExcludes.split(';');
+	} else if (exclude !== '') {
+		const excludeArray = exclude.split(';');
 		filteredViews = views.filter((viewItem) => {
-			return viewExcludesArray.every((excludeString) => {
+			return excludeArray.every((excludeString) => {
 				return viewItem.url.indexOf(excludeString) === -1;
 			});
 		});

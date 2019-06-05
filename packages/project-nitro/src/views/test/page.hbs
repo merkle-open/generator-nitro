@@ -7,7 +7,11 @@
 			{{pattern name='Ex' data='ex-template'}}
 			{{pattern name='t'}}
 			{{pattern name='b'}}
-			{{> test/bar}}
+			{{#eq 'test' 'test'}}
+				{{> test/bar}}
+			{{else}}
+				<div class="shouldnotberendered">This should not be rendered if eq helper works corret.</div>
+			{{/eq}}
 		</div>
 	</div>
 </div>

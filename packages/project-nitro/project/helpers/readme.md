@@ -1,6 +1,6 @@
 # Custom hbs helpers
 
-If your project needs any additional or custom helpers, place them in this folder. 
+If your project needs any additional or custom helpers, place them in this folder. Subdirectories are also allowed.  
 Every file which has the .js extension will be included. 
 
 These helpers will be loaded into Nitro automatically.

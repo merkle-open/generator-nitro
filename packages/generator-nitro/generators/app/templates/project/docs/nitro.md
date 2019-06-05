@@ -490,16 +490,10 @@ If you need more custom functionality in endpoints
 you can put your custom routes with their logic
 into the [`/project/routes` directory](../routes/).
 
-### Custom Handlebars helpers
+### Custom <%= options.templateEngine %> helpers
 
-Custom handlebars helpers will be automatically loaded if put into to `project/helpers` directory. An example could look like 
-this:
-
-```js
-module.exports = function(foo) {
-    // Helper Logic
-};
-```
+Custom <%= options.templateEngine %> helpers will be automatically loaded
+if put into to [`project/helpers`](../helpers/readme.md) directory.
 
 ### API Endpoints
 

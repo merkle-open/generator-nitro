@@ -14,9 +14,6 @@ const utils = require('../lib/utils');
 const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 const appDirectory = fs.realpathSync(process.cwd());
 
-module.exports.hotMiddlewareScript = hotMiddlewareScript;
-module.exports.appDirectory = appDirectory;
-
 module.exports = (options = { rules: {}, features: {} }) => {
 
 	const webpackConfig = {
@@ -277,5 +274,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 
 	return webpackConfig;
 };
+module.exports.hotMiddlewareScript = hotMiddlewareScript;
+module.exports.appDirectory = appDirectory;
 
 /* eslint-enable */

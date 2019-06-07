@@ -9,4 +9,7 @@ baseConfig.nitro.patterns = {
 	},
 };
 
+// change view path
+baseConfig.nitro.viewDirectory = 'project/views';
+
 module.exports = baseConfig;

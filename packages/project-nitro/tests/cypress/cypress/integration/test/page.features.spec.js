@@ -28,7 +28,15 @@ context('Test Page Tests (features)', () => {
 		});
 	});
 
-	describe('Helpers', () => {
+	describe('Viewlist Helper', () => {
+		it('helper shows correct number of pages', () => {
+			cy.get('.cy-viewlist > :nth-child(1) > ul > li').should('have.length', 6);
+			cy.get('.cy-viewlist > :nth-child(2) > ul > li').should('have.length', 3);
+			cy.get('.cy-viewlist > :nth-child(3) > ul > li').should('have.length', 2);
+		});
+	});
+
+	describe('Custom Helpers', () => {
 		it('eq helper in subfolder works', () => {
 			cy.get('.col-md-8 > :nth-child(7)').contains('[Partial] pageTitle (view) = pageTitle (view)');
 			cy.get('.shouldnotberendered').should('not.exist');

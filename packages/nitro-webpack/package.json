@@ -29,7 +29,7 @@
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
     "autoprefixer": "9.6.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
-    "css-loader": "2.1.1",
+    "css-loader": "3.0.0",
     "eslint": "5.16.0",
     "eslint-loader": "2.1.2",
     "eslint-plugin-import": "2.17.3",

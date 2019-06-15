@@ -38,7 +38,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			pathinfo: false,
 		},
 		resolve: {
-			extensions: [],
 			symlinks: false,
 		},
 		module: {

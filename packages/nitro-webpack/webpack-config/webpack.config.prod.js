@@ -52,7 +52,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			publicPath: '/assets/',
 		},
 		resolve: {
-			extensions: [],
 			symlinks: false,
 		},
 		module: {

@@ -148,15 +148,15 @@
     "src/**/*.{css,scss}": [
       "stylelint"
     ],
-    "src/**/*.json": [
+    "**/*.json": [
       "prettier --list-different --write",
       "npm run lint:data"
     ],
-    "src/**/*.{js,jsx}": [
+    "**/*.{js,jsx}": [
       "prettier --list-different --write",
       "eslint"
     ],
-    "src/**/*.{ts,tsx}": [
+    "**/*.{ts,tsx}": [
       "prettier --list-different --write",
       "eslint --config .eslintrc-typescript.js"
     ]

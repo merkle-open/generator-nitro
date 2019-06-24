@@ -1,7 +1,5 @@
 'use strict';
 
-/* global process */
-
 /**
  * Usage:
  *  gulp dump-views

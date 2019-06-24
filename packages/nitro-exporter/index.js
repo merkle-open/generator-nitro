@@ -1,7 +1,5 @@
 'use strict';
 
-/* global process */
-
 const exportClean = require('./tasks/export-clean.js');
 const exportViews = require('./tasks/export-views.js');
 const exportProcessing = require('./tasks/export-processing.js');

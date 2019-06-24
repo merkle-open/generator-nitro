@@ -14,7 +14,7 @@ The width is taken from rendered container dimension (different screen resolutio
 Use modifier to change image sizes:
 
 * `.a-image--1x1` (for images with ratio 1x1)
-* `.a-image--parent-fit` (image should fit the container completely, independent of image ratio)
+* `.a-image--fit-parent` (image should fit the container completely, independent of image ratio)
 
 ## Testing
 

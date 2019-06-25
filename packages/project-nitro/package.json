@@ -28,7 +28,7 @@
     "lint:js": "eslint ./src --ext .js",
     "lint:license": "license-checker --production --summary --exclude \"Apache-2.0, BSD, ISC, LGPL, MIT, MPL\" --failOn \"AGPL; EPL; GPL\"",
     "XXXlint:ts": "eslint ./src --ext .ts,.tsx --config .eslintrc-typescript.js",
-    "prettier": "prettier --write \"**/*.*(js|jsx|ts|tsx|json)\"",
+    "prettier": "prettier --write \"src/**/*.*(js|jsx|ts|tsx|json)\"",
     "test": "npm-run-all test:*",
     "test:lint": "npm run lint",
     "test:karma": "karma start ./tests/karma/karma.conf.js",
@@ -148,15 +148,15 @@
     "src/**/*.{css,scss}": [
       "stylelint"
     ],
-    "**/*.json": [
+    "src/**/*.json": [
       "prettier --list-different --write",
       "npm run lint:data"
     ],
-    "**/*.{js,jsx}": [
+    "src/**/*.{js,jsx}": [
       "prettier --list-different --write",
       "eslint"
     ],
-    "**/*.{ts,tsx}": [
+    "src/**/*.{ts,tsx}": [
       "prettier --list-different --write",
       "eslint --config .eslintrc-typescript.js"
     ]

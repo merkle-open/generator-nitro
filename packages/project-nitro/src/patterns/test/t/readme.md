@@ -1,3 +1,3 @@
 # T
 
-This is a t pattern. 
+This is a t pattern.

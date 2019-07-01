@@ -13,13 +13,13 @@ The width is taken from rendered container dimension (different screen resolutio
 
 Use modifier to change image sizes:
 
-* `.a-image--1x1` (for images with ratio 1x1)
-* `.a-image--fit-parent` (image should fit the container completely, independent of image ratio)
+-   `.a-image--1x1` (for images with ratio 1x1)
+-   `.a-image--fit-parent` (image should fit the container completely, independent of image ratio)
 
 ## Testing
 
 [Example page](http://localhost:8081/example-patterns)
- 
-* Initially a loader should be visible
-* Image should be loaded on entering the view
-* Taken image size depends on your screen resolution and viewport size
+
+-   Initially a loader should be visible
+-   Image should be loaded on entering the view
+-   Taken image size depends on your screen resolution and viewport size

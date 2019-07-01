@@ -2,7 +2,7 @@
 
 Simple button atom example
 
-You may use this pattern with transclusion, 
+You may use this pattern with transclusion,
 so either "text" or "children" are required [in schema.json](./schema.json)
 
 ## Testing

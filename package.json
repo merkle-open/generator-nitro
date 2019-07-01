@@ -19,7 +19,7 @@
     "lint": "lerna run lint --parallel",
     "lint:md": "markdownlint ./readme.md ./.github",
     "update-dependencies": "npm-run-all --parallel update-dependencies:*",
-    "update-dependencies:packages": "lerna exec -- npx npm-check-updates -u -x globby,gulp,prettier",
+    "update-dependencies:packages": "lerna exec -- npx npm-check-updates -u -x eslint,globby,gulp",
     "update-dependencies:root": "npx npm-check-updates -u"
   },
   "keywords": [

@@ -25,8 +25,8 @@
   ],
   "dependencies": {
     "array-unique": "0.3.2",
-    "del": "4.1.1",
-    "delete-empty": "2.0.0",
+    "del": "5.0.0",
+    "delete-empty": "3.0.0",
     "glob": "7.1.4",
     "gulp-filter": "6.0.0",
     "gulp-sequence": "1.0.0",

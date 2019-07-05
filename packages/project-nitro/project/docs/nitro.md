@@ -91,8 +91,6 @@ This config is shareable between different frontend tools. If not defined, the d
 
 Nitro uses [husky](https://github.com/typicode/husky) for githooks.
 
-The configuration is placed in the "husky" and the corresponding "lint-staged" node in `package.json`
-
 Githooks Configuration is placed in the "husky" and the corresponding "lint-staged" node in [package.json](../../package.json)
 
 ## Daily Work - Creating Patterns & Pages

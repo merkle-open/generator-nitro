@@ -1,7 +1,7 @@
 # Custom twig helpers
 
-If your project needs any additional or custom helpers, place them in this folder. 
-Every file which has the .js extension will be included. 
+If your project needs any additional or custom helpers, place them in this folder.
+Every file which has the .js extension will be included.
 
 These helpers will be loaded into Nitro automatically.
 
@@ -10,7 +10,7 @@ An example could look like this:
 ```js
 const twigUtils = require('../utils');
 
-module.exports = function (Twig) {
+module.exports = function(Twig) {
 	return {
 		type: 'helper-name',
 		regex: /^helper-name/,
@@ -28,20 +28,19 @@ module.exports = function (Twig) {
 				// return the markup
 				return {
 					chain: chain,
-					output: 'Output Markup'
+					output: 'Output Markup',
 				};
-
 			} catch (e) {
 				return {
 					chain: chain,
-					output: twigUtils.logAndRenderError(e)
+					output: twigUtils.logAndRenderError(e),
 				};
 			}
-		}
+		},
 	};
 };
 ```
 
-The helper name get's defined in the type property above. 
+The helper name get's defined in the type property above.
 The regex property needs to be extended to contain any possible arguments of the helper.
 For more complex example's please check out the core helpers.

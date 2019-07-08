@@ -8,20 +8,20 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 ## Features
 
-* Simple and proven project structure
-* Webpack Builder with HMR
-* Gulp Tasks for additional functionality
-* Linting, Source Maps, PostCSS & Browsersync
-* Setup for unit, e2e and visual regression testing (cypress, karma/jasmine, backstopjs)
-* Pattern generator<% if (options.clientTpl) { %>
-* [Client side templates](./client-templates.md)<% } %><% if (options.exporter) { %>
-* [Static Exports](./nitro-exporter.md)<% } %>
+-   Simple and proven project structure
+-   Webpack Builder with HMR
+-   Gulp Tasks for additional functionality
+-   Linting, Source Maps, PostCSS & Browsersync
+-   Setup for unit, e2e and visual regression testing (cypress, karma/jasmine, backstopjs)
+-   Pattern generator<% if (options.clientTpl) { %>
+-   [Client side templates](./client-templates.md)<% } %><% if (options.exporter) { %>
+-   [Static Exports](./nitro-exporter.md)<% } %>
 
 ## Preparation
 
 This application was created by the yeoman generator for nitro.  
 Before using, you need of course [node](https://nodejs.org/) installed.
-Nitro is tested with the current 
+Nitro is tested with the current
 ["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x and 10.x).
 
 Install the project dependencies in the project root:
@@ -74,9 +74,9 @@ For information on how to use Nitro with docker, please refer to [nitro-docker.m
 
 ### Config Package
 
-Nitro uses the flexible [config package](https://www.npmjs.com/package/config) for project configuration. 
+Nitro uses the flexible [config package](https://www.npmjs.com/package/config) for project configuration.
 This lets you to extend the default configuration for different deployment environments or local usage.  
-See details in [config readme](nitro-config.md)
+See details in [config readme](./nitro-config.md)
 
 ### Global Configuration
 
@@ -84,7 +84,7 @@ Some global configuration is placed in [`package.json`](../../package.json)
 
 #### Target Browsers
 
-For defining target browsers, [browserslist](https://github.com/ai/browserslist) is used.    
+For defining target browsers, [browserslist](https://github.com/ai/browserslist) is used.  
 This config is shareable between different frontend tools. If not defined, the default browsers from browserslist would be taken.
 
 #### Git Hooks
@@ -193,11 +193,11 @@ Simple default layout:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head></head>
-<body><% if (options.templateEngine === 'twig') { %>
-    <!-- Replace With Body --><% } else { %>
-    {{{body}}}<% } %>
-</body>
+	<head></head>
+	<body><% if (options.templateEngine === 'twig') { %>
+		<!-- Replace With Body --><% } else { %>
+		{{{body}}}<% } %>
+	</body>
 </html>
 ```
 
@@ -257,7 +257,7 @@ Maybe using your pattern templates with transclusion could be helpful in some ca
 ```html
 // example box template
 <div class="a-box">
-    {{{children}}}
+	{{{children}}}
 </div>
 ```
 
@@ -280,8 +280,8 @@ The pattern helper will find also pattern elements.
 
 ... looks for following paths
 
-- Pattern with name `example-sub`: `<type>/example-sub/example-sub.<%= options.viewExt %>`
-- Element with name `example-sub`: `<type>/*/elements/example-sub/example-sub.<%= options.viewExt %>`
+-   Pattern with name `example-sub`: `<type>/example-sub/example-sub.<%= options.viewExt %>`
+-   Element with name `example-sub`: `<type>/*/elements/example-sub/example-sub.<%= options.viewExt %>`
 
 ### Render partials
 
@@ -292,7 +292,7 @@ Render a partial (<%= options.viewExt %> snippet). Partials are placed in `src/v
 {{> head}}
 ```
 
-Partials are registered with [hbs-utils](https://www.npmjs.com/package/hbs-utils#partials), 
+Partials are registered with [hbs-utils](https://www.npmjs.com/package/hbs-utils#partials),
 so keep in mind that every space or hyphen in filenames is replaced with an underscore.
 (e.g. use `{{> file_name}}` to load `/src/views/_partials/file-name.<%= options.viewExt %>`)<% } %>
 
@@ -390,7 +390,7 @@ See [readme](./nitro-webpack.md) for configuration options.
 
 ### Other Assets
 
-Nitro also gives you some gulp tasks to use for additional assets you need in your build. 
+Nitro also gives you some gulp tasks to use for additional assets you need in your build.
 You may copy assets, minify images or generate an svg sprites.
 
 Configuration for gulp tasks is done in [config package](../../config/default/gulp.js) and [`gulpfile.js`](../../gulpfile.js)
@@ -406,8 +406,8 @@ Translations are stored in `/project/locales/[lang]/translation.json`.
 
 Express Middleware configuration:
 
-* Fallback language: `default`
-* Language switch with query parameter: `?lang=de`
+-   Fallback language: `default`
+-   Language switch with query parameter: `?lang=de`
 
 ### Translation <%= options.templateEngine %> helper
 
@@ -463,7 +463,7 @@ Link to resources relatively to the `project`-folder **with** a leading slash.
 
 Use all lowercase if possible.
 
-All files must be lowercase. It's allowed to use uppercase letters for pattern folders, keep care of case sensitive filesystems and use handlebars helpers with the *exact* folder name.
+All files must be lowercase. It's allowed to use uppercase letters for pattern folders, keep care of case sensitive filesystems and use handlebars helpers with the _exact_ folder name.
 
 ```<% if (options.templateEngine === 'twig') { %>
 {% pattern name='NavMain' %}<% } else { %>
@@ -514,8 +514,8 @@ Use or create new scripts in `package.json` to run with npm.
 
 ## Contributing
 
-* For bugs and features please use [GitHub Issues](https://github.com/namics/generator-nitro/issues)
-* Feel free to fork and send PRs to the current `develop` branch. That's a good way to discuss your ideas.
+-   For bugs and features please use [GitHub Issues](https://github.com/namics/generator-nitro/issues)
+-   Feel free to fork and send PRs to the current `develop` branch. That's a good way to discuss your ideas.
 
 ## Credits
 

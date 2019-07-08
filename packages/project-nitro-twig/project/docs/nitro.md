@@ -8,20 +8,20 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 ## Features
 
-* Simple and proven project structure
-* Webpack Builder with HMR
-* Gulp Tasks for additional functionality
-* Linting, Source Maps, PostCSS & Browsersync
-* Setup for unit, e2e and visual regression testing (cypress, karma/jasmine, backstopjs)
-* Pattern generator
-* [Client side templates](./client-templates.md)
-* [Static Exports](./nitro-exporter.md)
+-   Simple and proven project structure
+-   Webpack Builder with HMR
+-   Gulp Tasks for additional functionality
+-   Linting, Source Maps, PostCSS & Browsersync
+-   Setup for unit, e2e and visual regression testing (cypress, karma/jasmine, backstopjs)
+-   Pattern generator
+-   [Client side templates](./client-templates.md)
+-   [Static Exports](./nitro-exporter.md)
 
 ## Preparation
 
 This application was created by the yeoman generator for nitro.  
 Before using, you need of course [node](https://nodejs.org/) installed.
-Nitro is tested with the current 
+Nitro is tested with the current
 ["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x and 10.x).
 
 Install the project dependencies in the project root:
@@ -74,7 +74,7 @@ For information on how to use Nitro with docker, please refer to [nitro-docker.m
 
 ### Config Package
 
-Nitro uses the flexible [config package](https://www.npmjs.com/package/config) for project configuration. 
+Nitro uses the flexible [config package](https://www.npmjs.com/package/config) for project configuration.
 This lets you to extend the default configuration for different deployment environments or local usage.  
 See details in [config readme](nitro-config.md)
 
@@ -84,7 +84,7 @@ Some global configuration is placed in [`package.json`](../../package.json)
 
 #### Target Browsers
 
-For defining target browsers, [browserslist](https://github.com/ai/browserslist) is used.    
+For defining target browsers, [browserslist](https://github.com/ai/browserslist) is used.  
 This config is shareable between different frontend tools. If not defined, the default browsers from browserslist would be taken.
 
 #### Git Hooks
@@ -192,10 +192,10 @@ Simple default layout:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head></head>
-<body>
-    <!-- Replace With Body -->
-</body>
+	<head></head>
+	<body>
+		<!-- Replace With Body -->
+	</body>
 </html>
 ```
 
@@ -241,7 +241,6 @@ To be more flexible, you may also pass additional arguments to the pattern, whic
 {% pattern name='example' additionalData={ modifier='blue' } %}
 ```
 
-
 #### Render pattern elements
 
 The pattern helper will find also pattern elements.
@@ -252,8 +251,8 @@ The pattern helper will find also pattern elements.
 
 ... looks for following paths
 
-- Pattern with name `example-sub`: `<type>/example-sub/example-sub.twig`
-- Element with name `example-sub`: `<type>/*/elements/example-sub/example-sub.twig`
+-   Pattern with name `example-sub`: `<type>/example-sub/example-sub.twig`
+-   Element with name `example-sub`: `<type>/*/elements/example-sub/example-sub.twig`
 
 ### Render partials
 
@@ -264,36 +263,42 @@ Render a partial (twig snippet). Partials are placed in `src/views/_partials/` a
 
 ### Render placeholders
 
-Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `/src/views/_placeholders/` as `*.twig` files.  
+Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `/src/views/_placeholders/` as `*.twig` files.
 The following example renders the file `content/example.twig` from `/src/views/_placeholders/`.
 
 ```
+
 {% placeholder name='content' template='example' %}
+
 ```
 
 ### Passing data
 
 #### Data per page
 
-You may pass data to your templates (view, layout, partial, pattern) per view.  
+You may pass data to your templates (view, layout, partial, pattern) per view.
 Put a file with the same name as the view in the folder `/src/views/_data/` with the file extension `.json`. (Use the same folder structure as in `/src/views`)
 
 ```
+
 /src/views/index.twig
-/src/views/_data/index.json
+/src/views/\_data/index.json
 http://localhost:8080/index
 
 /src/views/content/variant.twig
-/src/views/_data/content/variant.json
+/src/views/\_data/content/variant.json
 http://localhost:8080/content-variant
+
 ```
 
 It's also possible to use a custom data file by requesting with a query param `?_data=...`:
 
 ```
+
 /src/views/index.twig
-/src/views/_data/index-test.json
+/src/views/\_data/index-test.json
 http://localhost:8080/index?_data=index-test
+
 ```
 
 ##### Use different layout
@@ -302,26 +307,30 @@ If you need a different layout for a page, do so in the corresponding view data 
 (View data files needs to be placed in same directory structure than views)
 
 ```
-    /src/views/_data/index.json
-    {
-        "_layout": "home"
-    }
 
-    /src/views/_layouts/home.twig
-    http://localhost:8080/index
+/src/views/_data/index.json
+{
+    "_layout": "home"
+}
+
+/src/views/_layouts/home.twig
+http://localhost:8080/index
+
 ```
 
 ...or you may change the layout temporarily by requesting a page with the query param `?_layout=...`
 
 ```
+
 /src/views/index.twig
-/src/views/_layouts/home.twig
+/src/views/\_layouts/home.twig
 http://localhost:8080/index?_layout=home
-```
+
+````
 
 ##### Side Note About Extending Data
 
-Don't overload the view data. It will be deep extended with other data from patterns, request parameters, ....  
+Don't overload the view data. It will be deep extended with other data from patterns, request parameters, ....
 It's not recommended to use view data for data variations of patterns.
 
 #### Dynamic view data
@@ -350,12 +359,12 @@ clientside handlebars, webfonts and images (with minification). It also includes
 
 You only have to enable the desired loaders and features. And of course, it is possible to extend the configuration to your needs.
 
-The configuration is placed in `/config/webpack`  
+The configuration is placed in `/config/webpack`
 See [readme](./nitro-webpack.md) for configuration options.
 
 ### Other Assets
 
-Nitro also gives you some gulp tasks to use for additional assets you need in your build. 
+Nitro also gives you some gulp tasks to use for additional assets you need in your build.
 You may copy assets, minify images or generate an svg sprites.
 
 Configuration for gulp tasks is done in [config package](../../config/default/gulp.js) and [`gulpfile.js`](../../gulpfile.js)
@@ -366,7 +375,7 @@ Place [code for development](../../src/proto/readme.md) in the corresponding dir
 
 ## Translations
 
-Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the helper described in the following section.  
+Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the helper described in the following section.
 Translations are stored in `/project/locales/[lang]/translation.json`.
 
 Express Middleware configuration:
@@ -383,15 +392,16 @@ or use `%s` placeholders for sprintf functionality.
 
 Some examples:
 
-```
+```js
+
 data = {
-   name: 'developer'
+    name: 'developer'
 }
 
 "test": {
     "example": {
         "string" : "gold",
-        "nested": "All that glitters is not $t(test.example.string).",
+        "nested": "All that glitters is not \$t(test.example.string).",
         "sprintf" : "The first three letters of %s are: %s, %s and %s",
         "interpolation" : "Hello {{name}}"
     }
@@ -401,7 +411,8 @@ data = {
 {% t 'test.example.nested' %}
 {% t 'test.example.sprintf' data=['alphabet', 'a', 'l', 'p'] %}
 {% t 'test.example.interpolation' data={ name:'developer' } %}
-```
+
+````
 
 ## Conventions
 
@@ -421,7 +432,7 @@ Link to resources relatively to the `project`-folder **with** a leading slash.
 
 Use all lowercase if possible.
 
-All files must be lowercase. It's allowed to use uppercase letters for pattern folders, keep care of case sensitive filesystems and use handlebars helpers with the *exact* folder name.
+All files must be lowercase. It's allowed to use uppercase letters for pattern folders, keep care of case sensitive filesystems and use handlebars helpers with the _exact_ folder name.
 
 ```
 {% pattern name='NavMain' %}
@@ -471,8 +482,8 @@ Use or create new scripts in `package.json` to run with npm.
 
 ## Contributing
 
-* For bugs and features please use [GitHub Issues](https://github.com/namics/generator-nitro/issues)
-* Feel free to fork and send PRs to the current `develop` branch. That's a good way to discuss your ideas.
+-   For bugs and features please use [GitHub Issues](https://github.com/namics/generator-nitro/issues)
+-   Feel free to fork and send PRs to the current `develop` branch. That's a good way to discuss your ideas.
 
 ## Credits
 

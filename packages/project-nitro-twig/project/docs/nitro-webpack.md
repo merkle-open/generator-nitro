@@ -36,49 +36,49 @@ module.exports = webpackConfig;
 
 ### Rules
 
-No loader rule is enabled by default. Activate following prepared rules you need in `options.rules` 
+No loader rule is enabled by default. Activate following prepared rules you need in `options.rules`
 
 #### `options.rules.js`
 
-* Type: boolean || object
-* default: false
+-   Type: boolean || object
+-   default: false
 
-* `true` activates JavaScript support
-* `{ eslint: true }` additionally adds eslint live linting feature (only relevant for development build)
+-   `true` activates JavaScript support
+-   `{ eslint: true }` additionally adds eslint live linting feature (only relevant for development build)
 
 #### `options.rules.ts`
 
-* Type: boolean
-* default: false
+-   Type: boolean
+-   default: false
 
 `true` will activate TypeScript support
 
 #### `options.rules.scss`
 
-* Type: boolean || object
-* default: false
+-   Type: boolean || object
+-   default: false
 
-* `true` will activate scss support
-* `{ stylelint: true }` additionally adds stylelint live linting feature (only relevant for development build)
+-   `true` will activate scss support
+-   `{ stylelint: true }` additionally adds stylelint live linting feature (only relevant for development build)
 
 #### `options.rules.hbs`
 
-* Type: boolean
-* default: false
+-   Type: boolean
+-   default: false
 
 `true` will activate handlebars handlebars precompiled templates support
 
 #### `options.rules.woff`
 
-* Type: boolean
-* default: false
+-   Type: boolean
+-   default: false
 
 `true` will activate woff font support (in CSS files)
 
 #### `options.rules.image`
 
-* Type: boolean
-* default: false
+-   Type: boolean
+-   default: false
 
 `true` will activate image support ()
 
@@ -88,15 +88,15 @@ Enable some additional features
 
 #### `options.features.bundleAnalyzer`
 
-* Type: boolean
-* default: false
+-   Type: boolean
+-   default: false
 
 `true` will add the bundleAnalyser plugin and opens a browser window with the stats
 
 #### `options.features.gitInfo`
 
-* Type: boolean
-* default: false
+-   Type: boolean
+-   default: false
 
 (only relevant for production build)
 

@@ -1,5 +1,5 @@
-@import "../../../../shared/utils/colors2/css/colors2.scss";
-@import "../../../../shared/utils/hidden/css/hidden.scss";
+@import '../../../../shared/utils/colors2/css/colors2.scss';
+@import '../../../../shared/utils/hidden/css/hidden.scss';
 
 $checkbox-border: 2px;
 $checkbox-size : 1.3em;
@@ -9,7 +9,7 @@ $checkbox-color: $color-gray-5;
 	color: inherit;
 	position: relative;
 
-	input[type="checkbox"] {
+	input[type='checkbox'] {
 		// Checkbox Replacement: Hide default
 		@include input-visually-hidden();
 

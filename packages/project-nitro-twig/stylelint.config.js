@@ -5,4 +5,9 @@ lintConfig.rules['plugin/stylelint-bem-namics'] = {
 	helperPrefixes: ['state'],
 };
 
+lintConfig.rules['property-case'] = 'lower';
+lintConfig.rules['selector-type-case'] = 'lower';
+lintConfig.rules['string-quotes'] = 'single';
+lintConfig.rules['unit-case'] = 'lower';
+
 module.exports = lintConfig;

@@ -2,7 +2,7 @@
 .a-image--fit-parent {
 	height: 100%;
 	> .a-image__image,
-	> .a-image__image[data-sizes="auto"] {
+	> .a-image__image[data-sizes='auto'] {
 		float: right; // aligned to the right
 		max-height: 100%;
 		max-width: 100%;

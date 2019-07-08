@@ -28,7 +28,7 @@
     "nitro"
   ],
   "dependencies": {
-    "ajv": "6.10.0",
+    "ajv": "6.10.1",
     "body-parser": "1.19.0",
     "chalk": "2.4.2",
     "compression": "1.7.4",
@@ -49,7 +49,7 @@
     "lodash": "4.17.11",
     "text-table": "0.2.0",
     "twig": "1.13.3",
-    "webpack": "4.35.2",
+    "webpack": "4.35.3",
     "webpack-dev-middleware": "3.7.0",
     "webpack-hot-middleware": "2.25.0"
   },

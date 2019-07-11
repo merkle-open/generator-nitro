@@ -46,7 +46,7 @@
     "i18next-sprintf-postprocessor": "0.2.2",
     "jasmine": "3.4.0",
     "jasmine-core": "3.4.0",
-    "lodash": "4.17.11",
+    "lodash": "4.17.14",
     "text-table": "0.2.0",
     "twig": "1.13.3",
     "webpack": "4.35.3",

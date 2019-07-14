@@ -89,7 +89,7 @@
   "devDependencies": {
     "@namics/eslint-config": "7.0.2",
     "@namics/prettier-config": "0.2.0",
-    "@namics/stylelint-config": "0.3.2",
+    "@namics/stylelint-config": "0.3.3",
     "@namics/ts-config": "0.3.0",
     "@nitro/app": "*",
     "@nitro/exporter": "*",
@@ -97,7 +97,7 @@
     "@nitro/webpack": "*",
     "backstopjs": "4.1.9",
     "commitizen": "3.1.1",
-    "config": "3.1.0",
+    "config": "3.2.0",
     "cross-env": "5.2.0",
     "cypress": "3.4.0",
     "cz-conventional-changelog": "2.1.0",
@@ -109,8 +109,8 @@
     "gulp-load-plugins": "2.0.0",
     "husky": "3.0.0",
     "jasmine-core": "3.4.0",
-    "karma": "4.1.0",
-    "karma-chrome-launcher": "2.2.0",
+    "karma": "4.2.0",
+    "karma-chrome-launcher": "3.0.0",
     "karma-jasmine": "2.0.1",
     "karma-phantomjs-launcher": "1.0.4",
     "karma-webpack": "4.0.2",
@@ -121,7 +121,7 @@
     "rimraf": "2.6.3",
     "stylelint": "10.1.0",
     "webpack": "4.35.3",
-    "webpack-cli": "3.3.5",
+    "webpack-cli": "3.3.6",
     "yo": "3.1.0"
   },
   "browserslist": [

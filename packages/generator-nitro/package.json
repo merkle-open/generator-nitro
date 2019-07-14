@@ -33,7 +33,7 @@
   ],
   "dependencies": {
     "chalk": "2.4.2",
-    "config": "3.1.0",
+    "config": "3.2.0",
     "git-config": "0.0.7",
     "glob": "7.1.4",
     "lodash": "4.17.14",

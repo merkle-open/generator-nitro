@@ -5,6 +5,8 @@
 </head>
 <body>
 	<h1>alternative layout</h1>
+	{{!-- get view variable --}}
+	{{#if _specialPage}}<p class="_specialPage">_specialPage variable was set</p>{{/if}}
 	{{{body}}}
 	{{> test/foot}}
 </body>

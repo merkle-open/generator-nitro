@@ -41,5 +41,11 @@ context('Test Page Tests (features)', () => {
 			cy.get('.col-md-8 > :nth-child(7)').contains('[Partial] pageTitle (view) = pageTitle (view)');
 			cy.get('.shouldnotberendered').should('not.exist');
 		});
+
+		it('setVariable helper works', () => {
+			cy.get('p._specialPage').should('not.exist');
+			cy.visit('/test-page?_layout=test');
+			cy.get('p._specialPage').contains('_specialPage variable was set');
+		});
 	});
 });

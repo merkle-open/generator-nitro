@@ -32,8 +32,8 @@
     "body-parser": "1.19.0",
     "chalk": "2.4.2",
     "compression": "1.7.4",
-    "config": "3.2.0",
-    "dot-object": "1.7.1",
+    "config": "3.2.1",
+    "dot-object": "1.8.1",
     "express": "4.17.1",
     "extend": "3.0.2",
     "globby": "7.1.1",
@@ -46,17 +46,17 @@
     "i18next-sprintf-postprocessor": "0.2.2",
     "jasmine": "3.4.0",
     "jasmine-core": "3.4.0",
-    "lodash": "4.17.14",
+    "lodash": "4.17.15",
     "text-table": "0.2.0",
     "twig": "1.13.3",
-    "webpack": "4.35.3",
+    "webpack": "4.36.1",
     "webpack-dev-middleware": "3.7.0",
     "webpack-hot-middleware": "2.25.0"
   },
   "devDependencies": {
     "@namics/eslint-config": "7.0.2",
     "eslint": "5.16.0",
-    "eslint-plugin-import": "2.18.0",
+    "eslint-plugin-import": "2.18.1",
     "pkg-ok": "2.3.1"
   },
   "publishConfig": {

@@ -3,29 +3,29 @@
 	"srcset": {
 		"renditions": [
 			{
-				"width": "480",
+				"media": "480w",
 				"src": "/content/size/16x9-480x270.png"
 			},
 			{
-				"width": "640",
+				"media": "640w",
 				"src": "/content/size/16x9-640x360.png"
 			},
 			{
-				"width": "960",
+				"media": "960w",
 				"src": "/content/size/16x9-960x540.png"
 			},
 			{
-				"width": "1280",
+				"media": "1280w",
 				"src": "/content/size/16x9-1280x720.png"
 			},
 			{
-				"width": "1920",
+				"media": "1920w",
 				"src": "/content/size/16x9-1920x1080.png"
 			}
-		],
-		"fallback": {
-			"src": "/content/size/16x9-320x180.png"
-		}
+		]
+	},
+	"customRenditions": {
+		"fallbackImage": "/content/size/16x9-320x180.png?fallback"
 	},
 	"alt": "Alt-Attribute"
 }

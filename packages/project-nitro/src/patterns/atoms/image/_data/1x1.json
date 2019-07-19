@@ -3,73 +3,73 @@
 	"srcset": {
 		"renditions": [
 			{
-				"width": "100",
+				"media": "100w",
 				"src": "/content/size/1x1-100.png?100"
 			},
 			{
-				"width": "180",
+				"media": "180w",
 				"src": "/content/size/1x1-180.png?180"
 			},
 			{
-				"width": "230",
+				"media": "230w",
 				"src": "/content/size/1x1-230.png?230"
 			},
 			{
-				"width": "290",
+				"media": "290w",
 				"src": "/content/size/1x1-290.png?290"
 			},
 			{
-				"width": "320",
+				"media": "320w",
 				"src": "/content/size/1x1-320.png?320"
 			},
 			{
-				"width": "360",
+				"media": "360w",
 				"src": "/content/size/1x1-360.png?360"
 			},
 			{
-				"width": "460",
+				"media": "460w",
 				"src": "/content/size/1x1-460.png?460"
 			},
 			{
-				"width": "580",
+				"media": "580w",
 				"src": "/content/size/1x1-580.png?580"
 			},
 			{
-				"width": "640",
+				"media": "640w",
 				"src": "/content/size/1x1-640.png?640"
 			},
 			{
-				"width": "760",
+				"media": "760w",
 				"src": "/content/size/1x1-760.png?760"
 			},
 			{
-				"width": "960",
+				"media": "960w",
 				"src": "/content/size/1x1-960.png?960"
 			},
 			{
-				"width": "1200",
+				"media": "1200w",
 				"src": "/content/size/1x1-1200.png?1200"
 			},
 			{
-				"width": "1496",
+				"media": "1496w",
 				"src": "/content/size/1x1-1496.png?1496"
 			},
 			{
-				"width": "1960",
+				"media": "1960w",
 				"src": "/content/size/1x1-1960.png?1960"
 			},
 			{
-				"width": "2880",
+				"media": "2880w",
 				"src": "/content/size/1x1-2880.png?2880"
 			},
 			{
-				"width": "3920",
+				"media": "3920w",
 				"src": "/content/size/1x1-3920.png?3920"
 			}
-		],
-		"fallback": {
-			"src": "/content/size/1x1-100.png?100"
-		}
+		]
+	},
+	"customRenditions": {
+		"fallbackImage": "/content/size/1x1-100.png?fallback"
 	},
 	"alt": "Alt-Attribute"
 }

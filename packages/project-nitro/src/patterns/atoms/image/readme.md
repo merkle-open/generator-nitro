@@ -22,4 +22,4 @@ Use modifier to change image sizes:
 
 -   Initially a loader should be visible
 -   Image should be loaded on entering the view
--   Taken image size depends on your screen resolution and viewport size
+-   Taken image size depends on your screen resolution and container size

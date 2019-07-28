@@ -48,7 +48,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		output: {
 			path: path.resolve(appDirectory, 'public', 'assets'),
 			filename: 'js/[name].min.js',
-			chunkFilename: 'js/[name]-[hash:7].min.js',
+			chunkFilename: 'js/[name]-[contenthash:7].min.js',
 			publicPath: '/assets/',
 		},
 		resolve: {

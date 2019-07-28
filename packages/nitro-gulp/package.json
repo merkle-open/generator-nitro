@@ -25,7 +25,7 @@
     "@nitro/app": ">=4.8.0"
   },
   "dependencies": {
-    "backstopjs": "4.1.9",
+    "backstopjs": "4.1.12",
     "browser-sync": "2.26.7",
     "compression": "1.7.4",
     "config": "3.2.2",

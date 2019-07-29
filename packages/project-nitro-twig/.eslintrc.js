@@ -4,8 +4,8 @@ module.exports = {
 		'@namics/eslint-config/configurations/es8-browser-disable-styles.js',
 	].map(require.resolve),
 	rules: {
-		'require-jsdoc': 'off',
 		'new-cap': [2, { capIsNew: false }],
+		'require-jsdoc': 'off',
 	},
 	parser: 'babel-eslint',
 };

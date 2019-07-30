@@ -41,7 +41,7 @@ context('Example Patterns Page Examples', () => {
 			cy.get('@calendar').should('not.be.visible');
 			cy.get('@datepicker')
 				.last()
-				.click();
+				.click({force:true});
 			cy.get('@calendar').should('be.visible');
 
 			cy.get('[aria-label="January 1, 2020"]').should('have.class', 'selected');

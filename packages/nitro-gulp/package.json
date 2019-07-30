@@ -52,7 +52,7 @@
     "yargs": "13.3.0"
   },
   "devDependencies": {
-    "@namics/eslint-config": "7.0.2",
+    "@namics/eslint-config": "7.0.3",
     "@nitro/app": "*",
     "eslint": "5.16.0",
     "eslint-plugin-import": "2.18.2",

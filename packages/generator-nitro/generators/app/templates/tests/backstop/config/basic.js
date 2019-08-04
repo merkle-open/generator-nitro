@@ -63,7 +63,6 @@ module.exports = {
 		postInteractionWait: 0,
 		selectors: [],
 		selectorExpansion: false,
-		expect: 2,
 		misMatchThreshold: 0.1,
 		requireSameDimensions: true,
 	},

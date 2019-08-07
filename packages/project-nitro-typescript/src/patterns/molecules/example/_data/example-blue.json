@@ -1,0 +1,19 @@
+{
+	"modifier": "blue",
+	"decorator": "Blue",
+	"title": "Example Module with Modifier & Decorator Blue",
+	"links": [
+		{
+			"uri": "index",
+			"text": "Link One"
+		},
+		{
+			"uri": "index",
+			"text": "Link Two"
+		},
+		{
+			"uri": "index",
+			"text": "Link Three"
+		}
+	]
+}

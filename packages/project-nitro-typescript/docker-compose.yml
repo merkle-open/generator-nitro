@@ -1,0 +1,9 @@
+# docker-compose.yaml for production (prototype)
+version: "3"
+services:
+  server:
+    build: .
+    container_name: project-nitro-typescript_server
+    command: npm run prod
+    ports:
+    - 8080:8080

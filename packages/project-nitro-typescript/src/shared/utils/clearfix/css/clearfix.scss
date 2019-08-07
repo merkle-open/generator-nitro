@@ -1,0 +1,8 @@
+@mixin clear-after() {
+	&:after {
+		clear: both;
+		content: '';
+		display: table;
+		width: 100%;
+	}
+}

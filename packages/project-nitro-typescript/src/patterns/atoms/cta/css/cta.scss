@@ -1,0 +1,152 @@
+@import '../../../../shared/utils/colors2/css/colors2.scss';
+@import '../../../../shared/utils/breakpoints/css/breakpoints.scss';
+
+.a-cta {
+	display: block;
+	cursor: pointer;
+	margin: 0 auto;
+	padding: 0;
+	outline: none;
+	text-align: center;
+	position: relative;
+	width: 80px;
+	height: 80px;
+	color: $color-white;
+
+	&:hover,
+	&:focus {
+		color: $color-white;
+	}
+	&:focus {
+		outline: none;
+	}
+}
+
+@media (min-width: $size-md-min) {
+	.a-cta {
+		&:hover {
+			.a-cta__circle--size-s {
+				background-color: rgba($brand-color-2, 1);
+			}
+			.a-cta__circle--size-m {
+				background-color: rgba($brand-color-2, 0.6);
+			}
+			.a-cta__circle--size-l {
+				background-color: rgba($brand-color-2, 0.75);
+			}
+			.a-cta__text {
+				color: $brand-color-2;
+			}
+		}
+	}
+}
+
+.a-cta__icon {
+	font-size: 28px;
+	line-height: 1;
+	position: absolute;
+	z-index: 1;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: $color-white;
+}
+
+.a-cta__circle {
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	transition: background-color 0.3s ease;
+}
+
+.a-cta__circle--size-s {
+	width: 48px;
+	height: 48px;
+	background-color: rgba($color-gray-6, 1);
+}
+
+.a-cta__circle--size-m {
+	width: 64px;
+	height: 64px;
+	background-color: rgba($color-gray-6, 0.45);
+	opacity: 0;
+	animation: animation-a-cta--pulse-m 2.25s 0.25s linear infinite;
+}
+
+.a-cta__circle--size-l {
+	width: 80px;
+	height: 80px;
+	background-color: rgba($color-gray-6, 0.3);
+	opacity: 0;
+	animation: animation-a-cta--pulse-l 2.25s 0.25s linear infinite;
+}
+
+.a-cta__text {
+	font-size: 1rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	display: block;
+
+	position: absolute;
+	bottom: -1.3em;
+	width: 100%;
+	transition: color 0.3s ease-in;
+}
+
+@keyframes animation-a-cta--pulse-m {
+	0% {
+		width: 32px;
+		height: 32px;
+		opacity: 0;
+	}
+	25% {
+		width: 48px;
+		height: 48px;
+		opacity: 0.5;
+	}
+	50% {
+		width: 64px;
+		height: 64px;
+		opacity: 1;
+	}
+	75% {
+		width: 68px;
+		height: 68px;
+		opacity: 0.5;
+	}
+	100% {
+		width: 72px;
+		height: 72px;
+		opacity: 0;
+	}
+}
+
+@keyframes animation-a-cta--pulse-l {
+	0% {
+		width: 48px;
+		height: 48px;
+		opacity: 0;
+	}
+	25% {
+		width: 64px;
+		height: 64px;
+		opacity: 0.5;
+	}
+	50% {
+		width: 80px;
+		height: 80px;
+		opacity: 1;
+	}
+	75% {
+		width: 88px;
+		height: 88px;
+		opacity: 0.5;
+	}
+	100% {
+		width: 96px;
+		height: 96px;
+		opacity: 0;
+	}
+}

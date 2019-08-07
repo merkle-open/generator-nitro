@@ -1,0 +1,69 @@
+@import '../../../../shared/utils/colors2/css/colors2.scss';
+@import '../../../../shared/utils/hidden/css/hidden.scss';
+
+$checkbox-border: 2px;
+$checkbox-size : 1.3em;
+$checkbox-color: $color-gray-5;
+
+.a-checkbox {
+	color: inherit;
+	position: relative;
+}
+
+.a-checkbox__input {
+	// Checkbox Replacement: Hide default
+	@include input-visually-hidden();
+
+	// Checkbox Replacement: Box
+	+ .a-checkbox__label::before {
+		content: '';
+		position: absolute;
+		top: 14%;
+		left: 0;
+		display: block;
+		width: $checkbox-size;
+		height: $checkbox-size;
+
+		border: $checkbox-border solid $checkbox-color;
+		border-radius: 4px;
+	};
+
+	// Checkbox Replacement - checked state: Check-Icon
+	&:checked + .a-checkbox__label::after {
+		font-icon: -0.4 + $checkbox-size url('../img/check.svg');
+		color: $color-gray-4;
+		position: absolute;
+		top: 32%;
+		left: 4px;
+	};
+
+	&:focus,
+	&:active {
+		+ .a-checkbox__label::before {
+			border-color: $color-orange;
+		}
+	}
+}
+
+.a-checkbox__label {
+	display: inline-block;
+	padding: 0.3em 1em 0.3em (1 + $checkbox-size) ;
+
+	cursor: pointer;
+	user-select: none;
+
+	color: inherit;
+	font-family: inherit;
+	font-weight: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	text-transform: none;
+}
+
+// states
+.state-a-checkbox--disabled {
+	opacity: 0.4;
+	.a-checkbox__label {
+		cursor: default;
+	}
+}

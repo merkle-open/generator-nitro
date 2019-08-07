@@ -1,0 +1,9 @@
+@import '../../colors/css/colors.scss';
+@import '../../colors2/css/colors2.scss';
+
+// brand color themes
+$brand-gradient-1: linear-gradient(0deg, $brand-color-1, mix($brand-color-1, #fff, 80%));
+$brand-gradient-2: linear-gradient(0deg, $brand-color-2, mix($brand-color-2, #fff, 80%));
+$brand-gradient-3: linear-gradient(0deg, $brand-color-3, mix($brand-color-3, #fff, 80%));
+$brand-gradient-4: linear-gradient(0deg, $brand-color-4, mix($brand-color-4, #fff, 80%));
+$brand-gradient-5: linear-gradient(0deg, $brand-color-5, mix($brand-color-5, #fff, 80%));

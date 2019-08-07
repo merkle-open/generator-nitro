@@ -1,0 +1,7 @@
+config/
+node_modules/
+project/
+public/
+src/patterns/**/test/*.test.js
+src/views/
+tests/

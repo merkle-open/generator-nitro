@@ -1,0 +1,17 @@
+@import '../../../breakpoints/css/breakpoints';
+
+$grid-columns: 12;
+$grid-gutter-width: 20px;
+$grid-breakpoints: (
+	xs: 0,
+	sm: $size-sm-min,
+	md: $size-md-min,
+	lg: $size-lg-min,
+	xl: $size-xl-min
+);
+$container-max-widths: (
+	sm: $size-sm-max,
+	md: $size-md-max,
+	lg: $size-lg-max,
+	xl: $size-xl-max
+);

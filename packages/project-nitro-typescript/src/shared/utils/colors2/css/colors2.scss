@@ -1,0 +1,28 @@
+@import '../../colors/css/colors.scss';
+
+// colors grey
+$color-gray:    #666;
+$color-gray-1:  #191919;
+$color-gray-2:  #333;
+$color-gray-3:  #434343;
+$color-gray-4:  $color-gray;
+$color-gray-5:  #7f7f7f;
+$color-gray-6:  #999;
+$color-gray-7:  #b2b2b2;
+$color-gray-8:  #ccc;
+$color-gray-9:  #e5e5e5;
+$color-gray-10: #f2f2f2;
+$color-white:   #fff;
+
+// colors
+$color-orange: #fa8a1a;
+$color-orange-clear: #efc389;
+$color-brown: #3e2f19;
+$color-brown-variant: #4f3f34;
+
+// colors
+$brand-color-2: $color-orange;
+$brand-color-3: $color-brown;
+$brand-color-4: $color-gray-3;
+$brand-color-5: $color-gray-8;
+$brand-color-6: $color-gray;

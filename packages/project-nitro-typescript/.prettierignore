@@ -1,0 +1,21 @@
+# Node
+**/node_modules
+**/package.json
+**/package-lock.json
+
+# Config
+**/bower.json
+**/lerna.json
+
+# Build
+**/build
+**/dist
+**/public
+**/coverage
+**/storybook-static
+
+# Nitro
+**/project/blueprints
+**/project/routes/data
+**/project/tmp
+**/.yo-rc.json

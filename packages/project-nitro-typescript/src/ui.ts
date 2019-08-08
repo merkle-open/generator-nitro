@@ -1,8 +1,6 @@
 /* global module */
 
 import '@babel/polyfill';
-import * as T from 'terrific';
-import $ from 'jquery';
 import { hot } from '@gondel/plugin-hot';
 
 import './shared/base/security/js/security';
@@ -32,10 +30,3 @@ hot(module);
 
 // custom code
 console.log("I'm from the entry point ui"); // eslint-disable-line
-
-// terrificjs
-$(() => {
-	const application = new T.Application();
-	application.registerModules();
-	application.start();
-});

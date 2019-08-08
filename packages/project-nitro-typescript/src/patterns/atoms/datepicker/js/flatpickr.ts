@@ -1,12 +1,12 @@
-'use strict';
-
 import flatpickr from 'flatpickr';
 import { German } from 'flatpickr/dist/l10n/de';
 import { French } from 'flatpickr/dist/l10n/fr';
 import { Serbian } from 'flatpickr/dist/l10n/sr';
 import { Russian } from 'flatpickr/dist/l10n/ru';
+// import { Options as FlatpickrOptions } from 'flatpickr/dist/types/options';
+// import { Instance as FlatpickrInstance } from 'flatpickr/dist/types/instance';
 
-const getLocale = (localeKey) => {
+const getLocale = (localeKey: string) => {
 	switch (localeKey.toLowerCase()) {
 		case 'de':
 			return German;
@@ -23,8 +23,8 @@ const getLocale = (localeKey) => {
 
 const initPicker = (element) => {
 	const localeKey = document.documentElement.lang || '';
-	const getData = (data) => element.dataset[data];
-	const options = {
+	const getData = (data: string): string | undefined => element.dataset[data];
+	const options: any = {
 		dateFormat: getData('dateFormat') || 'd.m.Y',
 		defaultDate: getData('defaultDate'),
 	};
@@ -40,8 +40,10 @@ const initPicker = (element) => {
 		options.altFormat = altFormat;
 
 		// improve accessibility
-		options.onReady = (a, b, fp) => {
-			fp.altInput.setAttribute('aria-hidden', 'true');
+		options.onReady = (a, b, fp: any) => {
+			if (fp.altInput) {
+				fp.altInput.setAttribute('aria-hidden', 'true');
+			}
 		};
 	}
 

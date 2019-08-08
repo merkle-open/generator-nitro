@@ -4,7 +4,7 @@ const options = {
 		js: {
 			eslint: config.get('code.validation.eslint.live'),
 		},
-		ts: false,
+		ts: true,
 		scss: {
 			stylelint: config.get('code.validation.stylelint.live'),
 		},

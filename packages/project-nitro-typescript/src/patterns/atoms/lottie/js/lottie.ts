@@ -1,23 +1,22 @@
-'use strict';
-
 import { Component, EventListener, GondelBaseComponent } from '@gondel/core';
 
 @Component('Lottie')
-class Lottie extends GondelBaseComponent {
-	start() {
+export class Lottie extends GondelBaseComponent {
+	private animation: any;
+	public start() {
 		this.initializeAnimation();
 	}
 
 	@EventListener('click')
-	_handleClick() {
+	private _handleClick(): void {
 		const action = this.animation.isPaused ? 'play' : 'pause';
 		this.animation[action]();
 	}
 
-	initializeAnimation() {
+	private initializeAnimation(): void {
 		const jsonPath = this._ctx.dataset.jsonPath;
 
-		import(/* webpackChunkName: "lottie" */ 'lottie-web/build/player/lottie_light.js').then((lottie) => {
+		import(/* webpackChunkName: "lottie" */ 'lottie-web/build/player/lottie_light.js').then((lottie: any) => {
 			this.animation = lottie.loadAnimation({
 				container: this._ctx,
 				renderer: 'svg',
@@ -28,5 +27,3 @@ class Lottie extends GondelBaseComponent {
 		});
 	}
 }
-
-export default Lottie;

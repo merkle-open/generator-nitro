@@ -1,11 +1,24 @@
+// @ts-check
+
 module.exports = {
 	extends: [
-		'@namics/eslint-config/configurations/es8-browser.js',
-		'@namics/eslint-config/configurations/es8-browser-disable-styles.js',
+		'@namics/eslint-config/configurations/typescript-browser.js',
+		'@namics/eslint-config/configurations/typescript-browser-disable-styles.js',
 	].map(require.resolve),
 	rules: {
+		'no-restricted-syntax': ['error', 'LabeledStatement', 'WithStatement'],
 		'new-cap': [2, { capIsNew: false }],
-		'require-jsdoc': 'off',
+		'@typescript-eslint/member-naming': false,
 	},
-	parser: 'babel-eslint',
+	parserOptions: {
+		project: './tsconfig.json',
+	},
+	settings: {
+		'import/resolver': {
+			node: {
+				paths: ['src'],
+				extensions: ['.js', '.jsx', '.ts', '.tsx'],
+			},
+		},
+	},
 };

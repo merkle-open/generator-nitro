@@ -2,6 +2,7 @@
 
 /**
  * Karma configuration
+ * deprectaed, use cypress instead
  */
 
 const polyfill = require.resolve('@babel/polyfill/dist/polyfill.min.js');

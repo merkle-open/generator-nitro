@@ -12,7 +12,7 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 -   Webpack Builder with HMR
 -   Gulp Tasks for additional functionality
 -   Linting, Source Maps, PostCSS & Browsersync
--   Setup for unit, e2e and visual regression testing (cypress, karma/jasmine, backstopjs)
+-   Setup for e2e and visual regression testing (cypress, backstopjs)
 -   Pattern generator<% if (options.clientTpl) { %>
 -   [Client side templates](./client-templates.md)<% } %><% if (options.exporter) { %>
 -   [Static Exports](./nitro-exporter.md)<% } %>

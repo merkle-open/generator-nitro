@@ -3,6 +3,5 @@
 This is an example.
 It shows a basic example of a pattern:
 
--   with a [visual modifier](./css/modifier/example-blue.scss)
--   with a [functional decorator](./js/decorator/example-blue.js) (terrificJs)
--   with an [example usage of clientside templates](./js/decorator/example-template.js) with handlebarsJS
+-   with a [visual modifier](./css/modifier/example-blue.scss)<% if (options.clientTpl) { %>
+-   with example usage of clientside templates with handlebarsJS<% } %>

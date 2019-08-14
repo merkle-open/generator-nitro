@@ -8,10 +8,6 @@
 			"description": "A pattern modifier",
 			"enum": ["", "blue"]
 		},
-		"decorator": {
-			"description": "A pattern decorator",
-			"enum": ["", "Blue"<% if (options.clientTpl) { %>, "Template"<% } %>]
-		},
 		"title": {
 			"description": "Title of the pattern",
 			"type": "string",

@@ -1,21 +1,14 @@
 'use strict';
 
-import * as T from 'terrific';
-import $ from 'jquery';
+import { Component, GondelBaseComponent } from '@gondel/core';
 
-/**
- * Test module implementation.
- *
- * @author Pre Name <pre.name@domain.com>
- */
-T.Module.T = T.createModule({
-	start(resolve) {
-		const $ctx = $(this._ctx);
-
+@Component('T')
+class T extends GondelBaseComponent {
+	start() {
 		/* eslint-disable no-console */
-		console.log(`T - start [id:${$ctx.data('t-id')}]`);
+		console.warn('T #start(): remove or implement component');
 		/* eslint-enable no-console */
+	}
+}
 
-		resolve();
-	},
-});
+export default T;

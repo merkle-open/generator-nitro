@@ -11,7 +11,7 @@ const patternConfig = require(path.join(__dirname, '../../../generators/app/temp
 
 describe('nitro:component', () => {
 	describe('when creating a component "Test" (organism)', () => {
-		describe('but no modifier and decorator is given', () => {
+		describe('but no modifier is given', () => {
 			beforeAll((done) => {
 				helpers.run(path.join(__dirname, '../../../generators/component'))
 					.inTmpDir((dir) => {
@@ -28,12 +28,6 @@ describe('nitro:component', () => {
 				]);
 			});
 
-			it('the decorator files are not created', () => {
-				assert.noFile([
-					'src/patterns/organisms/Test/js/decorator',
-				]);
-			});
-
 			it('the pattern files are created', () => {
 				assert.file([
 					'src/patterns/organisms/Test',
@@ -41,7 +35,6 @@ describe('nitro:component', () => {
 					'src/patterns/organisms/Test/_data/test.json',
 					'src/patterns/organisms/Test/css/test.scss',
 					'src/patterns/organisms/Test/js/test.js',
-					'src/patterns/organisms/Test/test/test.test.js',
 				]);
 			});
 		});

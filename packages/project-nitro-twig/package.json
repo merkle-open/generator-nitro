@@ -82,7 +82,6 @@
     "lottie-web": "5.5.7",
     "prevent-window-opener-attacks": "0.2.4",
     "svg4everybody": "2.1.9",
-    "terrific": "3.0.0",
     "tota11y": "0.1.6"
   },
   "devDependencies": {

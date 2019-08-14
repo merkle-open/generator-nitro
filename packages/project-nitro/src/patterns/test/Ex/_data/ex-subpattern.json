@@ -1,6 +1,5 @@
 {
 	"modifier": "blue",
-	"decorator": "Blue",
 	"title": "Ex Module with Skin Blue (data: ex-blue.json)",
 	"links": [
 		{
@@ -18,7 +17,6 @@
 	],
 	"subpattern": {
 		"modifier": "",
-		"decorator": "",
 		"linkText": "Go to (subpattern): ",
 		"dynInsert": {
 			"you": "developer (subpattern)"

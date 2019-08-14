@@ -195,8 +195,10 @@ module.exports = class extends Generator {
 			'project/helpers/readme.md',
 			'src/patterns/molecules/example/example.hbs',
 			'src/patterns/molecules/example/example.twig',
+			'src/patterns/molecules/example/readme.md',
 			'src/patterns/molecules/example/schema.json',
 			'src/patterns/molecules/example/index.js',
+			'src/patterns/molecules/example/js/example.js',
 			'src/proto/js/prototype.js',
 			'src/views/index.hbs',
 			'src/views/index.twig',
@@ -229,7 +231,6 @@ module.exports = class extends Generator {
 		const clientTplFiles = [
 			// files only for this.options.clientTpl===true
 			'src/patterns/molecules/example/_data/example-template.json',
-			'src/patterns/molecules/example/js/decorator/example-template.js',
 			'src/patterns/molecules/example/template/example.hbs',
 			'src/patterns/molecules/example/template/example.links.hbs',
 			'src/patterns/molecules/example/template/partial/example.link.hbs',

@@ -1,8 +1,6 @@
 /* global module */
 
 <% if (options.exampleCode) { %>import '@babel/polyfill';
-import * as T from 'terrific';
-import $ from 'jquery';
 import { hot } from '@gondel/plugin-hot';
 
 import './shared/base/security/js/security';
@@ -33,10 +31,3 @@ if (module.hot) { module.hot.accept() }<% } %>
 
 // custom code
 console.log("I'm from the entry point ui"); // eslint-disable-line
-<% if (options.exampleCode) { %>
-// terrificjs
-$(() => {
-	const application = new T.Application();
-	application.registerModules();
-	application.start();
-});<% } %>

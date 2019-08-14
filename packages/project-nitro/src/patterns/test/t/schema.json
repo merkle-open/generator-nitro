@@ -8,10 +8,6 @@
 			"description": "A pattern modifier",
 			"enum": ["", "red"]
 		},
-		"decorator": {
-			"description": "A pattern decorator",
-			"enum": ["", "red"]
-		},
 		"linkText": { "type": "string" },
 		"_nitro": {
 			"type": "object",

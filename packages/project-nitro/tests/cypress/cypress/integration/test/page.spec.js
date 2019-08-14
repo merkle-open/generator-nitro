@@ -20,7 +20,7 @@ context('Test Page Tests', () => {
 			cy.get('.t-ex--blue > .t-ex__headline').contains('Ex Module with Skin Blue (data: ex-blue.json)');
 		});
 		it('headline 3 contains text', () => {
-			cy.get('[data-t-decorator="Template"] > .t-ex__headline').contains('Ex Module with Decorator Template');
+			cy.get(':nth-child(4) > .t-ex__headline').contains('Ex Module with buttons');
 		});
 		it('has correct number of listitem entries', () => {
 			cy.get('.t-a > li').should('have.length', 13);

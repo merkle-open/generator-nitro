@@ -1,15 +1,14 @@
 'use strict';
 
-import * as T from 'terrific';
+import { Component, GondelBaseComponent } from '@gondel/core';
 
-/**
- * b module implementation.
- *
- * @author Pre Name <pre.name@domain.com>
- */
+@Component('B')
+class B extends GondelBaseComponent {
+	start() {
+		/* eslint-disable no-console */
+		console.warn('B #start(): remove or implement component');
+		/* eslint-enable no-console */
+	}
+}
 
-T.Module.B = T.createModule({
-	start(resolve) {
-		resolve();
-	},
-});
+export default B;

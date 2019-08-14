@@ -15,6 +15,7 @@ import templateExampleLinks from '../template/example.links.hbs';
 enum Selectors {
 	Add = '.js-m-example__add',
 	More = '.js-m-example__more',
+	List = '.js-m-example__list',
 }
 
 @Component('Example')
@@ -81,6 +82,6 @@ export class Example extends GondelBaseComponent {
 		const links = templateExampleLinks(tplData);
 		const $links = $(links);
 
-		$ctx.find('.js-m-example__list').append($links);
+		$ctx.find(Selectors.List).append($links);
 	}
 }

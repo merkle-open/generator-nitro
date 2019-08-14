@@ -1,6 +1,5 @@
 {
 	"modifier": "red",
-	"decorator": "red",
 	"linkText": "linkText (t red)",
 	"_nitro": {
 		"pageTitle": "pageTitle (t red)"

@@ -103,8 +103,8 @@ describe('nitro:pattern', () => {
 			assert.fileContent([['src/patterns/molecules/NavMain/css/modifier/navmain-specialcase.scss', /\.m-nav-main--special-case \{/]]);
 		});
 
-		it('the pattern js class is T.Module.NavMain', () => {
-			assert.fileContent([['src/patterns/molecules/NavMain/js/navmain.js', /T\.Module\.NavMain =/]]);
+		it('the pattern js class is NavMain', () => {
+			assert.fileContent([['src/patterns/molecules/NavMain/js/navmain.js', /export default NavMain/]]);
 		});
 	});
 
@@ -139,8 +139,8 @@ describe('nitro:pattern', () => {
 			assert.fileContent([['src/patterns/molecules/nav-main/css/modifier/nav-main-special-case.scss', /\.m-nav-main--special-case \{/]]);
 		});
 
-		it('the pattern js class is T.Module.NavMain', () => {
-			assert.fileContent([['src/patterns/molecules/nav-main/js/nav-main.js', /T\.Module\.NavMain =/]]);
+		it('the pattern js class is NavMain', () => {
+			assert.fileContent([['src/patterns/molecules/nav-main/js/nav-main.js', /export default NavMain/]]);
 		});
 	});
 
@@ -175,8 +175,8 @@ describe('nitro:pattern', () => {
 			assert.fileContent([['src/patterns/molecules/NavMain/css/modifier/navmain-lightblue.scss', /\.m-nav-main--light-blue \{/]]);
 		});
 
-		it('the pattern js class is T.Module.NavMain', () => {
-			assert.fileContent([['src/patterns/molecules/NavMain/js/navmain.js', /T\.Module\.NavMain =/]]);
+		it('the pattern js class is NavMain', () => {
+			assert.fileContent([['src/patterns/molecules/NavMain/js/navmain.js', /export default NavMain/]]);
 		});
 	});
 });

@@ -1,9 +1,7 @@
 const config = require('config');
 const options = {
 	rules: {
-		js: {
-			eslint: config.get('code.validation.eslint.live'),
-		},
+		js: false,
 		ts: true,
 		scss: {
 			stylelint: config.get('code.validation.stylelint.live'),

@@ -30,7 +30,7 @@
     "prettier": "prettier --write \"src/**/*.*(js|jsx|ts|tsx|json|md)\"",
     "test": "npm-run-all test:*",
     "test:lint": "npm run lint",
-    "test:cypress": "npm run build && cross-env PORT=8890 npm-run-all --parallel --race test:cypress:*",
+    "donottest:cypress": "npm run build && cross-env PORT=8890 npm-run-all --parallel --race test:cypress:*",
     "test:cypress:serve": "npm run prod:serve",
     "test:cypress:test": "cypress run --project ./tests/cypress/",
     "visual-approve": "backstop approve --config=tests/backstop/backstop.config.js --docker",

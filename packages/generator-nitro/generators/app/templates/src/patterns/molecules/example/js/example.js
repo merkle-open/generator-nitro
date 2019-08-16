@@ -1,15 +1,15 @@
 'use strict';
 
-import { Component, EventListener, GondelBaseComponent, startComponents } from '@gondel/core';
-import $ from 'jquery';<% if (options.clientTpl) { %>
+import { Component, EventListener, GondelBaseComponent, startComponents } from '@gondel/core';<% if (options.clientTpl) { %>
+import $ from 'jquery';
 const templateExample = require('../template/example.hbs');
-const templateExampleLinks = require('../template/example.links.hbs');<% } %>
+const templateExampleLinks = require('../template/example.links.hbs');
 
 const Selectors = {
 	Add: '.js-m-example__add',
 	More: '.js-m-example__more',
 	List: '.js-m-example__list',
-};
+};<% } %>
 
 @Component('Example')
 class Example extends GondelBaseComponent {

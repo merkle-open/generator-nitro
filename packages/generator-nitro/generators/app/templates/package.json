@@ -32,7 +32,7 @@
     "prettier": "prettier --write \"src/**/*.*(js|jsx|ts|tsx|json|md)\"",
     "test": "npm-run-all test:*",
     "test:lint": "npm run lint",
-    "test:karma": "karma start ./tests/karma/karma.conf.js",
+    "XXXtest:karma": "karma start ./tests/karma/karma.conf.js",
     "test:cypress": "npm run build && cross-env PORT=8888 npm-run-all --parallel --race test:cypress:*",
     "test:cypress:serve": "npm run prod:serve",
     "test:cypress:test": "cypress run --project ./tests/cypress/",

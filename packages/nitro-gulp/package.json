@@ -34,7 +34,7 @@
     "globby": "7.1.1",
     "gulp": "3.9.1",
     "gulp-accessibility": "3.1.1",
-    "gulp-imagemin": "6.0.0",
+    "gulp-imagemin": "6.1.0",
     "gulp-htmllint": "0.0.16",
     "gulp-live-server": "0.0.31",
     "gulp-load-plugins": "2.0.1",
@@ -48,8 +48,8 @@
     "gulp-watch": "5.0.1",
     "imagemin-pngquant": "8.0.0",
     "merge-stream": "2.0.0",
-    "portfinder": "1.0.21",
-    "yargs": "13.3.0"
+    "portfinder": "1.0.23",
+    "yargs": "14.0.0"
   },
   "devDependencies": {
     "@namics/eslint-config": "7.0.3",

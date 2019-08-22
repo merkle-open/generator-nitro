@@ -87,7 +87,7 @@
   "devDependencies": {
     "@namics/eslint-config": "7.0.3",
     "@namics/prettier-config": "0.2.0",
-    "@namics/stylelint-config": "0.3.5",
+    "@namics/stylelint-config": "0.3.6",
     "@namics/ts-config": "0.3.0",
     "@nitro/app": "*",
     "@nitro/exporter": "*",

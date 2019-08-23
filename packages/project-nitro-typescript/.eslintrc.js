@@ -8,7 +8,6 @@ module.exports = {
 	rules: {
 		'no-restricted-syntax': ['error', 'LabeledStatement', 'WithStatement'],
 		'new-cap': [2, { capIsNew: false }],
-		'@typescript-eslint/member-naming': false,
 	},
 	parserOptions: {
 		project: './tsconfig.json',

@@ -30,7 +30,7 @@
     "autoprefixer": "9.6.1",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "css-loader": "3.2.0",
-    "eslint": "5.16.0",
+    "eslint": "6.2.1",
     "eslint-loader": "2.2.1",
     "eslint-plugin-import": "2.18.2",
     "file-loader": "4.2.0",
@@ -62,7 +62,7 @@
     "webpack-bundle-analyzer": "3.4.1"
   },
   "devDependencies": {
-    "@namics/eslint-config": "7.0.3",
+    "@namics/eslint-config": "8.0.0",
     "pkg-ok": "2.3.1"
   },
   "publishConfig": {

@@ -54,8 +54,8 @@
     "webpack-hot-middleware": "2.25.0"
   },
   "devDependencies": {
-    "@namics/eslint-config": "7.0.3",
-    "eslint": "5.16.0",
+    "@namics/eslint-config": "8.0.0",
+    "eslint": "6.2.1",
     "eslint-plugin-import": "2.18.2",
     "pkg-ok": "2.3.1"
   },

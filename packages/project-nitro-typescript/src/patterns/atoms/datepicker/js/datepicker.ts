@@ -7,10 +7,10 @@ enum Selectors {
 @Component('Datepicker')
 export class Datepicker extends GondelBaseComponent {
 	public start() {
-		this.initializeFlatpickr();
+		this._initializeFlatpickr();
 	}
 
-	private initializeFlatpickr() {
+	private _initializeFlatpickr() {
 		import(/* webpackChunkName: "flatpickr" */ './flatpickr').then((flatpickr) => {
 			flatpickr.default(this._ctx.querySelector(Selectors.Input));
 		});

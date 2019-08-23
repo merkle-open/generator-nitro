@@ -17,7 +17,7 @@
     "commit": "git-cz",
     "nitro:pattern": "yo nitro:pattern",
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
-    "update-dependencies": "npm-check-updates -u -x eslint,gulp",
+    "update-dependencies": "npm-check-updates -u -x gulp",
     "\n# LINT/TEST ------- ": "",
     "cypress-test": "npm run build && cross-env PORT=8892 npm-run-all --parallel --race test:cypress:serve cypress-test:open",
     "cypress-test:open": "cypress open --project ./tests/cypress/",
@@ -85,7 +85,7 @@
     "tota11y": "0.1.6"
   },
   "devDependencies": {
-    "@namics/eslint-config": "7.0.3",
+    "@namics/eslint-config": "8.0.0",
     "@namics/prettier-config": "0.2.0",
     "@namics/stylelint-config": "0.3.6",
     "@namics/ts-config": "0.3.0",
@@ -103,7 +103,7 @@
     "cross-env": "5.2.0",
     "cypress": "3.4.1",
     "cz-conventional-changelog": "3.0.2",
-    "eslint": "5.16.0",
+    "eslint": "6.2.1",
     "eslint-plugin-import": "2.18.2",
     "extend": "3.0.2",
     "generator-nitro": "*",

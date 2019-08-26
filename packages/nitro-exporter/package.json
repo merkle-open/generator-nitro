@@ -25,7 +25,7 @@
   ],
   "dependencies": {
     "array-unique": "0.3.2",
-    "del": "5.0.0",
+    "del": "5.1.0",
     "delete-empty": "3.0.0",
     "glob": "7.1.4",
     "gulp-filter": "6.0.0",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@namics/eslint-config": "8.0.0",
-    "eslint": "6.2.1",
+    "eslint": "6.2.2",
     "eslint-plugin-import": "2.18.2",
     "pkg-ok": "2.3.1"
   },

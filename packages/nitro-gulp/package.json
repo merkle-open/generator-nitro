@@ -29,7 +29,7 @@
     "browser-sync": "2.26.7",
     "compression": "1.7.4",
     "config": "3.2.2",
-    "del": "5.0.0",
+    "del": "5.1.0",
     "get-port": "5.0.0",
     "globby": "7.1.1",
     "gulp": "3.9.1",
@@ -54,7 +54,7 @@
   "devDependencies": {
     "@namics/eslint-config": "8.0.0",
     "@nitro/app": "*",
-    "eslint": "6.2.1",
+    "eslint": "6.2.2",
     "eslint-plugin-import": "2.18.2",
     "pkg-ok": "2.3.1"
   },

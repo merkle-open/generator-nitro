@@ -11,8 +11,8 @@ const options = {
 		image: true,
 	},
 	features: {
+		banner: true,
 		bundleAnalyzer: false,
-		gitInfo: false,
 	},
 };
 

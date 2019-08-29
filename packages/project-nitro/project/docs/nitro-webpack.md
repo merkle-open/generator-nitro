@@ -23,7 +23,7 @@ const options = {
         image: true,
     },
     features: {
-        gitInfo: false,
+        banner: true,
         bundleAnalyzer: false,
     },
 };
@@ -86,21 +86,21 @@ No loader rule is enabled by default. Activate following prepared rules you need
 
 Enable some additional features
 
+#### `options.features.banner`
+
+-   Type: boolean
+-   default: true
+
+(only relevant for production build)
+
+`true` will add a text banner with infos from package.json to the bundled js & css
+
 #### `options.features.bundleAnalyzer`
 
 -   Type: boolean
 -   default: false
 
 `true` will add the bundleAnalyser plugin and opens a browser window with the stats
-
-#### `options.features.gitInfo`
-
--   Type: boolean
--   default: false
-
-(only relevant for production build)
-
-`true` will add infos from git (branchname/last commit) in assets banner text
 
 ## Extending Configuration
 

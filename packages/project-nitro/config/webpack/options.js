@@ -22,8 +22,8 @@ const options = {
 		},
 	},
 	features: {
+		banner: true,
 		bundleAnalyzer: false,
-		gitInfo: false,
 	},
 };
 

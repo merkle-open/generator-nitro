@@ -13,5 +13,6 @@ gulp.task('watch-assets', ['assets'], getTask('watch-assets'));
 gulp.task('watch-serve', getTask('watch-serve'));
 gulp.task('develop', ['watch-assets', 'watch-serve']);
 gulp.task('dump-views', getTask('dump-views'));
+// lint-accessibility is deprecated
 gulp.task('lint-accessibility', ['dump-views'], getTask('lint-accessibility'));
 gulp.task('lint-html', ['dump-views'], getTask('lint-html'));

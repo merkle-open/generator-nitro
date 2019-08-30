@@ -1,5 +1,7 @@
 'use strict';
 
+// deprecated
+
 const del = require('del');
 const fs = require('fs');
 const config = require('config');

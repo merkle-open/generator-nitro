@@ -25,7 +25,7 @@
     "@nitro/app": ">=4.11.0"
   },
   "dependencies": {
-    "backstopjs": "4.1.12",
+    "backstopjs": "4.3.2",
     "browser-sync": "2.26.7",
     "compression": "1.7.4",
     "config": "3.2.2",
@@ -54,7 +54,7 @@
   "devDependencies": {
     "@namics/eslint-config": "8.0.0",
     "@nitro/app": "*",
-    "eslint": "6.2.2",
+    "eslint": "6.3.0",
     "eslint-plugin-import": "2.18.2",
     "pkg-ok": "2.3.1"
   },

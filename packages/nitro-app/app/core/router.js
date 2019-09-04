@@ -26,9 +26,10 @@ router.use('/', express.static(`${config.get('nitro.basePath')}/public/`));
  * views
  * @returns _nitro object
  */
-function getNitroViewData(pageTitle) {
+function getNitroViewData(pageTitle, req) {
 	return {
 		_nitro: {
+			pageUrl: `${req.protocol}://${req.get('host')}${req.originalUrl}`,
 			pageTitle,
 			production: isProduction,
 			offline: isOffline,
@@ -102,7 +103,7 @@ function collectViewData(viewPath, defaultData, req) {
 
 function getView(req, res, next) {
 	const tpl = req.params.view ? req.params.view.toLowerCase() : 'index';
-	const data = getNitroViewData(tpl);
+	const data = getNitroViewData(tpl, req);
 	const viewPathes = view.getViewCombinations(tpl);
 	let rendered = false;
 
@@ -132,7 +133,7 @@ router.get('/:view/*', getView);
  * everything else gets a 404
  */
 router.use((req, res) => {
-	const data = getNitroViewData('404 - Not Found');
+	const data = getNitroViewData('404 - Not Found', req);
 	extend(true, data, res.locals);
 
 	const viewData = collectViewData(view404, data, req);

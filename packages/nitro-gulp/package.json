@@ -48,7 +48,7 @@
     "gulp-watch": "5.0.1",
     "imagemin-pngquant": "8.0.0",
     "merge-stream": "2.0.0",
-    "portfinder": "1.0.23",
+    "portfinder": "1.0.24",
     "yargs": "14.0.0"
   },
   "devDependencies": {

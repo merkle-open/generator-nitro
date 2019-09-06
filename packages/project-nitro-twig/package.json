@@ -1,7 +1,7 @@
 {
   "name": "project-nitro-twig",
   "version": "0.0.0",
-  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 4.11.0",
+  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 4.12.0",
   "license": "UNLICENSED",
   "private": true,
   "author": "The Nitro Team",

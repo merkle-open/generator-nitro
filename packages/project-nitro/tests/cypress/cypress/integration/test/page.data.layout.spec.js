@@ -13,13 +13,10 @@ context('Test Page Data', () => {
 	});
 
 	describe('Content', () => {
-		it('text contains', () => {
+		it('text contains _nitro.pageTitle', () => {
 			cy.get('.col-md-8 > :nth-child(1)').contains('The "data" page = pageTitle (view)');
 		});
-	});
-
-	describe('Content', () => {
-		it('text contains', () => {
+		it('text contains _nitro.pageUrl', () => {
 			cy.get('.col-md-8 > :nth-child(2)').contains(`${Cypress.config().baseUrl}/test-data = pageUrl (view)`);
 		});
 	});
@@ -45,8 +42,11 @@ context('Test Page Data with different layout', () => {
 	});
 
 	describe('Content', () => {
-		it('text contains', () => {
+		it('text contains _nitro.pageTitle', () => {
 			cy.get('.col-md-8 > :nth-child(1)').contains('The "data" page = pageTitle (view)');
+		});
+		it('text contains _nitro.pageUrl', () => {
+			cy.get('.col-md-8 > :nth-child(2)').contains(`${Cypress.config().baseUrl}/test-data?_layout=test = pageUrl (view)`);
 		});
 	});
 

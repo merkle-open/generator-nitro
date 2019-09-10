@@ -22,10 +22,10 @@
     "nitro"
   ],
   "dependencies": {
-    "@babel/core": "7.5.5",
-    "@babel/preset-env": "7.5.5",
+    "@babel/core": "7.6.0",
+    "@babel/preset-env": "7.6.0",
     "@babel/preset-react": "7.0.0",
-    "@babel/plugin-proposal-decorators": "7.4.4",
+    "@babel/plugin-proposal-decorators": "7.6.0",
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
     "autoprefixer": "9.6.1",
     "case-sensitive-paths-webpack-plugin": "2.2.0",

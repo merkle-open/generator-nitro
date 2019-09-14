@@ -1,7 +1,6 @@
 /* global module */
 
-<% if (options.exampleCode) { %>import '@babel/polyfill';
-import { hot } from '@gondel/plugin-hot';
+<% if (options.exampleCode) { %>import { hot } from '@gondel/plugin-hot';
 
 import './shared/base/security/js/security';
 import './shared/base/reset/css/reset.scss';

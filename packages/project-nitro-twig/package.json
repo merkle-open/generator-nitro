@@ -73,10 +73,10 @@
     "modular"
   ],
   "dependencies": {
-    "@babel/polyfill": "7.6.0",
     "@gondel/core": "0.1.0",
     "@gondel/plugin-hot": "0.1.0",
     "bootstrap": "4.3.1",
+    "core-js": "3.2.1",
     "flatpickr": "4.6.2",
     "handlebars": "4.2.0",
     "jquery": "3.4.1",
@@ -84,6 +84,7 @@
     "lodash": "4.17.15",
     "lottie-web": "5.5.8",
     "prevent-window-opener-attacks": "0.2.4",
+    "regenerator-runtime": "0.13.3",
     "svg4everybody": "2.1.9",
     "tota11y": "0.1.6"
   },

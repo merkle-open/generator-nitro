@@ -2,7 +2,7 @@ import lazySizes from 'lazysizes';
 import 'lazysizes/plugins/respimg/ls.respimg';
 import 'lazysizes/plugins/object-fit/ls.object-fit';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
-import __assign from 'core-js/modules/_object-assign.js';
+import __assign from 'core-js/features/object/assign';
 
 Object.assign = Object.assign || __assign;
 

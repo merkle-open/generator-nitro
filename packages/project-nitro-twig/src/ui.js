@@ -1,6 +1,5 @@
 /* global module */
 
-import '@babel/polyfill';
 import { hot } from '@gondel/plugin-hot';
 
 import './shared/base/security/js/security';

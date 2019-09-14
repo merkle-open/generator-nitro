@@ -1,15 +1,15 @@
 /* global module */
 
-import '@babel/polyfill';
+import 'promise-polyfill/src/polyfill';
 import { hot } from '@gondel/plugin-hot';
 
 import './shared/base/security/js/security';
 import './shared/base/reset/css/reset.scss';
 import './shared/utils/grid/css/grid.scss';
 import './shared/base/document/css/document.scss';
+
 import './shared/base/webfonts/css/webfont-gaegu.scss';
 import './shared/base/webfonts/css/webfont-playfair-display.scss';
-
 import './patterns/atoms/box';
 import './patterns/atoms/button';
 import './patterns/atoms/checkbox';

@@ -52,7 +52,7 @@
     "resolve-url-loader": "3.1.0",
     "sass-loader": "8.0.0",
     "style-loader": "1.0.0",
-    "stylelint": "10.1.0",
+    "stylelint": "11.0.0",
     "stylelint-webpack-plugin": "0.10.5",
     "ts-config-webpack-plugin": "1.4.0",
     "typescript": "3.6.3",
@@ -62,7 +62,7 @@
     "webpack-bundle-analyzer": "3.5.0"
   },
   "devDependencies": {
-    "@namics/eslint-config": "8.0.0",
+    "@namics/eslint-config": "8.0.1",
     "pkg-ok": "2.3.1"
   },
   "publishConfig": {

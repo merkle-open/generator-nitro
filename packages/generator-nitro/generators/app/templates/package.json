@@ -82,17 +82,17 @@
     "jquery": "3.4.1",
     "lazysizes": "5.1.1",
     "lodash": "4.17.15",
-    "lottie-web": "5.5.8",
+    "lottie-web": "5.5.9",
     "prevent-window-opener-attacks": "0.2.4",<% } %>
     "regenerator-runtime": "0.13.3",<% if (options.exampleCode) { %>
     "svg4everybody": "2.1.9",
     "tota11y": "0.1.6"<% } %>
   },
   "devDependencies": {
-    "@namics/eslint-config": "8.0.0",
+    "@namics/eslint-config": "8.0.1",
     "@namics/prettier-config": "0.3.0",
-    "@namics/stylelint-config": "0.3.7",
-    "@namics/ts-config": "0.3.1",
+    "@namics/stylelint-config": "0.3.8",
+    "@namics/ts-config": "0.3.2",
     "@nitro/app": "<%= version %>",
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
@@ -100,7 +100,7 @@
     "backstopjs": "4.3.2",
     "commitizen": "4.0.3",
     "config": "3.2.2",
-    "cross-env": "5.2.1",
+    "cross-env": "6.0.0",
     "cypress": "3.4.1",
     "cz-conventional-changelog": "3.0.2",
     "eslint": "6.4.0",
@@ -117,9 +117,9 @@
     "npm-check-updates": "3.1.23",
     "prettier": "1.18.2",
     "rimraf": "3.0.0",
-    "stylelint": "10.1.0",
+    "stylelint": "11.0.0",
     "webpack": "4.40.2",
-    "webpack-cli": "3.3.8",
+    "webpack-cli": "3.3.9",
     "yo": "3.1.0"
   },
   "browserslist": [

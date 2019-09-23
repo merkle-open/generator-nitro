@@ -59,7 +59,7 @@
     "url-loader": "2.1.0",
     "webpack": "4.40.2",
     "webpackbar": "4.0.0",
-    "webpack-bundle-analyzer": "3.5.0"
+    "webpack-bundle-analyzer": "3.5.1"
   },
   "devDependencies": {
     "@namics/eslint-config": "8.0.1",

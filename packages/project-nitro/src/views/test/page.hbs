@@ -19,17 +19,21 @@
 	</div>
 
 	<div class="row cy-viewlist">
-		<div class="col-md-3 offset-md-2">
+		<div class="col-md-2 offset-md-2">
 			viewlist full:
 			{{viewlist}}
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-2">
 			viewlist with excludes ('test'):
 			{{viewlist exclude='test'}}
 		</div>
 		<div class="col-md-2">
 			viewlist with includes ('example,404')
 			{{viewlist include='example,404'}}
+		</div>
+		<div class="col-md-2">
+			viewlist with includes ('example,404') and exclude ('data')
+			{{viewlist include='test' exclude='data'}}
 		</div>
 	</div>
 </div>

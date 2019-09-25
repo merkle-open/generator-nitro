@@ -12,6 +12,9 @@
  * With parameter exclude, all views containing none of the terms will be displayed
  * {{viewlist exclude="<term-1>,<term-2>"}}
  *
+ * With parameter include and exclude combined, all views containing at least one of the terms but not one of the excluded ones will be displayed
+ * {{viewlist include="<term>" exclude="term-x"}}
+ *
  */
 
 'use strict';
@@ -32,14 +35,16 @@ module.exports = function () {
 
 	if (include !== '') {
 		const includeArray = include.split(',');
-		filteredViews = views.filter((viewItem) => {
+		filteredViews = filteredViews.filter((viewItem) => {
 			return includeArray.some((includeString) => {
 				return viewItem.url.indexOf(includeString) >= 0;
 			});
 		});
-	} else if (exclude !== '') {
+	}
+
+	if (exclude !== '') {
 		const excludeArray = exclude.split(',');
-		filteredViews = views.filter((viewItem) => {
+		filteredViews = filteredViews.filter((viewItem) => {
 			return excludeArray.every((excludeString) => {
 				return viewItem.url.indexOf(excludeString) === -1;
 			});

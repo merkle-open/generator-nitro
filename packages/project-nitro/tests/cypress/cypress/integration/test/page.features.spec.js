@@ -33,6 +33,7 @@ context('Test Page Tests (features)', () => {
 			cy.get('.cy-viewlist > :nth-child(1) > ul > li').should('have.length', 6);
 			cy.get('.cy-viewlist > :nth-child(2) > ul > li').should('have.length', 3);
 			cy.get('.cy-viewlist > :nth-child(3) > ul > li').should('have.length', 2);
+			cy.get('.cy-viewlist > :nth-child(4) > ul > li').should('have.length', 2);
 		});
 	});
 

@@ -16,6 +16,7 @@ Besides the main functionality including a yeoman generator, this repo includes 
 * `packages/nitro-exporter` (nitro exporter package) [![npm version](https://badge.fury.io/js/%40nitro%2Fexporter.svg)](https://badge.fury.io/js/%40nitro%2Fexporter)
 * `packages/nitro-gulp` (nitro gulp task runner) [![npm version](https://badge.fury.io/js/%40nitro%2Fgulp.svg)](https://badge.fury.io/js/%40nitro%2Fgulp)
 * `packages/nitro-webpack` (nitro webpack config) [![npm version](https://badge.fury.io/js/%40nitro%2Fwebpack.svg)](https://badge.fury.io/js/%40nitro%2Fwebpack)
+* `packages/project-new` (folder to test the generator)
 * [`packages/project-nitro`](./packages/project-nitro) (example project with handlebars rendering engine)
 * `packages/project-nitro-twig` (example project with twig rendering engine)
 * `packages/project-nitro-typescript` (example project with typescript)

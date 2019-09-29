@@ -1,0 +1,20 @@
+{
+  "name": "project",
+  "version": "0.0.0",
+  "description": "Test the yeoman generator for nitro before publishing",
+  "license": "UNLICENSED",
+  "private": true,
+  "author": "The Nitro Team",
+  "engines": {
+    "node": ">=8.9 <11",
+    "npm": ">=5.2 <7"
+  },
+  "scripts": {
+    "start": "npm run nitro:generate",
+    "nitro:generate": "yo nitro"
+  },
+  "devDependencies": {
+    "generator-nitro": "*",
+    "yo": "3.1.0"
+  }
+}

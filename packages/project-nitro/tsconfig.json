@@ -1,5 +1,0 @@
-{
-	"extends": "@namics/ts-config",
-	"include": ["src/**/*"],
-	"exclude": ["dist", "build", "public", "node_modules"]
-}

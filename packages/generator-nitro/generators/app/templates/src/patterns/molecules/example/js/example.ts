@@ -1,24 +1,26 @@
-'use strict';
-
 import { Component, EventListener, GondelBaseComponent, startComponents } from '@gondel/core';<% if (options.clientTpl) { %>
 import $ from 'jquery';
-const templateExample = require('../template/example.hbs');
-const templateExampleLinks = require('../template/example.links.hbs');
+/* eslint-disable @typescript-eslint/ban-ts-ignore */
+// @ts-ignore
+import templateExample from '../template/example.hbs';
+// @ts-ignore
+import templateExampleLinks from '../template/example.links.hbs';
+/* eslint-enable @typescript-eslint/ban-ts-ignore */
 
 /**
  * Example module implementation.
  * @author Pre Name <pre.name@domain.com>
  */
 
-const Selectors = {
-	Add: '.js-m-example__add',
-	More: '.js-m-example__more',
-	List: '.js-m-example__list',
-};<% } %>
+enum Selectors {
+	Add = '.js-m-example__add',
+	More = '.js-m-example__more',
+	List = '.js-m-example__list',
+}<% } %>
 
 @Component('Example')
-class Example extends GondelBaseComponent {
-	start() {
+export class Example extends GondelBaseComponent {
+	public start() {
 		/* eslint-disable no-console */
 		console.warn('Example #start(): remove or implement component');
 		console.log(
@@ -30,14 +32,14 @@ class Example extends GondelBaseComponent {
 		/* eslint-enable no-console */
 	}
 
-	sync() {
+	public sync() {
 		/* eslint-disable no-console */
 		console.warn('Example #sync(): remove or implement component');
 		/* eslint-enable no-console */
 	}<% if (options.clientTpl) { %>
 
 	@EventListener('click', Selectors.Add)
-	_handleAdd(e) {
+	private _handleAdd(e: MouseEvent) {
 		e.preventDefault();
 
 		const $ctx = $(this._ctx);
@@ -67,7 +69,7 @@ class Example extends GondelBaseComponent {
 	}
 
 	@EventListener('click', Selectors.More)
-	_handleMore(e) {
+	private _handleMore(e: MouseEvent) {
 		e.preventDefault();
 
 		const $ctx = $(this._ctx);
@@ -89,5 +91,3 @@ class Example extends GondelBaseComponent {
 		$ctx.find(Selectors.List).append($links);
 	}<% } %>
 }
-
-export default Example;

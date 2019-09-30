@@ -29,6 +29,7 @@ const defaultConfig = {
 	nitro: {
 		viewFileExtension: '<%= options.viewExt %>',
 		templateEngine: '<%= options.templateEngine %>',
+		compiler: '<%= options.compiler %>',
 		patterns: require('./default/patterns'),
 		mode: {
 			livereload: true,

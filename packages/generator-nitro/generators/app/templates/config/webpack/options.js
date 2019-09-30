@@ -1,10 +1,12 @@
 const config = require('config');
 const options = {
 	rules: {
+		<% if (options.compiler === 'ts') { %>js: false,
+		ts: true,<% } else { %>
 		js: {
 			eslint: config.get('code.validation.eslint.live'),
 		},
-		ts: false,
+		ts: false,<% } %>
 		scss: {
 			stylelint: config.get('code.validation.stylelint.live'),
 		},

@@ -23,6 +23,7 @@ module.exports = class extends Generator {
 			name: this.options.name,
 			viewExt: this.options.viewExt,
 			templateEngine: this.options.templateEngine,
+			compiler: this.options.compiler,
 			clientTpl: this.options.clientTpl,
 			exampleCode: this.options.exampleCode,
 			exporter: this.options.exporter,
@@ -40,6 +41,13 @@ module.exports = class extends Generator {
 			desc: `your desired template engine [${this._templateEngineOptions.join('|')}]`,
 			type: String,
 			defaults: this._passedInOptions.templateEngine || this._templateEngineOptions[0],
+		});
+
+		this._compilerOptions = ['ts', 'js'];
+		this.option('compiler', {
+			desc: `your desired javascript compiler [${this._compilerOptions.join('|')}]`,
+			type: String,
+			defaults: this._passedInOptions.compiler || this._compilerOptions[0],
 		});
 
 		this._viewExtOptions = ['hbs', 'twig'];
@@ -109,6 +117,7 @@ module.exports = class extends Generator {
 					this.options.name = config.name || this.options.name;
 					this.options.viewExt = config.viewExtension || config.templateEngine ? config.templateEngine : this.options.viewExt;
 					this.options.templateEngine = config.templateEngine || this.options.templateEngine;
+					this.options.compiler = config.compiler || this.options.compiler;
 					this.options.clientTpl = typeof config.clientTemplates === 'boolean' ? config.clientTemplates : this.options.clientTpl;
 					this.options.exampleCode = typeof config.exampleCode === 'boolean' ? config.exampleCode : this.options.exampleCode;
 					this.options.exporter = typeof config.exporter === 'boolean' ? config.exporter : this.options.exporter;
@@ -133,6 +142,15 @@ module.exports = class extends Generator {
 					default: this.options.templateEngine,
 					store: true,
 					when: () => !this._skipQuestions && !this._passedInOptions.templateEngine,
+				},
+				{
+					name: 'compiler',
+					type: 'list',
+					message: 'What\'s your desired javascript compiler?',
+					choices: this._compilerOptions,
+					default: this.options.compiler,
+					store: true,
+					when: () => !this._skipQuestions && !this._passedInOptions.compiler,
 				},
 				{
 					name: 'clientTpl',
@@ -161,6 +179,7 @@ module.exports = class extends Generator {
 			]).then((answers) => {
 				this.options.name = answers.name || this.options.name;
 				this.options.templateEngine = answers.templateEngine || this.options.templateEngine;
+				this.options.compiler = answers.compiler || this.options.compiler;
 				this.options.viewExt = this.options.templateEngine;
 				this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
 				this.options.exampleCode = answers.exampleCode !== undefined ? answers.exampleCode : this.options.exampleCode;
@@ -170,6 +189,7 @@ module.exports = class extends Generator {
 
 				this.config.set('name', this.options.name);
 				this.config.set('templateEngine', this.options.templateEngine);
+				this.config.set('compiler', this.options.compiler);
 				this.config.set('clientTemplates', this.options.clientTpl);
 				this.config.set('exampleCode', this.options.exampleCode);
 				this.config.set('exporter', this.options.exporter);
@@ -198,15 +218,21 @@ module.exports = class extends Generator {
 			'src/patterns/molecules/example/readme.md',
 			'src/patterns/molecules/example/schema.json',
 			'src/patterns/molecules/example/index.js',
+			'src/patterns/molecules/example/index.ts',
 			'src/patterns/molecules/example/js/example.js',
+			'src/patterns/molecules/example/js/example.ts',
 			'src/proto/js/prototype.js',
+			'src/proto/js/prototype.ts',
 			'src/views/index.hbs',
 			'src/views/index.twig',
 			'src/views/_partials/head.hbs',
 			'src/views/_partials/head.twig',
 			'src/ui.js',
+			'src/ui.ts',
 			'src/proto.js',
+			'src/proto.ts',
 			'tests/backstop/backstop.config.js',
+			'.eslintrc.js',
 			'docker-compose.yml',
 			'docker-compose-dev.yml',
 			'gulpfile.js',
@@ -343,6 +369,27 @@ module.exports = class extends Generator {
 					const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this._viewExtOptions[0]}`;
 					destinationPath = destinationPath.replace(path.extname(destinationPath), targetExt);
 				}
+			}
+
+			// check if it's a src file
+			if (_.indexOf('src/', fileWithoutExt) !== -1) {
+				// check if it's a ts / js file
+				if (ext === 'ts' || ext === 'js') {
+					if (ext !== this.options.compiler) {
+						// return ts / js files with ext not matching the current compiler
+						return;
+					}
+				}
+			}
+
+			if (_.indexOf('babel.config.js', file) !== -1 && this.options.compiler === 'ts') {
+				// return since we don't need the babel.config.js for typescript
+				return;
+			}
+
+			if (_.indexOf('tsconfig.json', file) !== -1 && this.options.compiler === 'js') {
+				// return since we don't need the tsconfig.json for javascript
+				return;
 			}
 
 			if (_.indexOf(tplFiles, file) !== -1) {

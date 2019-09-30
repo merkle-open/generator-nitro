@@ -376,7 +376,7 @@ module.exports = class extends Generator {
 				// check if it's a ts / js file
 				if (ext === 'ts' || ext === 'js') {
 					if (ext !== this.options.compiler) {
-						// return ts / js files with ext not matching the current compiler
+						// return for ts / js files with ext not matching the current compiler
 						return;
 					}
 				}

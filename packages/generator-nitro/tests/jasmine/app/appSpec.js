@@ -76,6 +76,52 @@ describe('nitro:app', () => {
 		});
 	});
 
+	describe('when using compiler language typescript', () => {
+		beforeAll((done) => {
+			helpers.run(path.join(__dirname, '../../../generators/app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ compiler: 'ts' })
+				.on('end', done);
+		});
+
+		it('javascript files have the .ts file extension', () => {
+			assert.file([
+				'src/proto.ts',
+				'src/ui.ts',
+				'src/proto/js/prototype.ts',
+				'project/blueprints/pattern/js/$pattern$.ts',
+			]);
+		});
+
+		it('config contains the correct view file extension', () => {
+			assert.fileContent('config/default.js', /compiler: 'ts'/);
+		});
+	});
+
+	describe('when using compiler language javascript', () => {
+		beforeAll((done) => {
+			helpers.run(path.join(__dirname, '../../../generators/app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ compiler: 'js' })
+				.on('end', done);
+		});
+
+		it('javascript files have the .js file extension', () => {
+			assert.file([
+				'src/proto.js',
+				'src/ui.js',
+				'src/proto/js/prototype.js',
+				'project/blueprints/pattern/js/$pattern$.js',
+			]);
+		});
+
+		it('config contains the correct view file extension', () => {
+			assert.fileContent('config/default.js', /compiler: 'ts'/);
+		});
+	});
+
 	describe('when including client templates', () => {
 		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))

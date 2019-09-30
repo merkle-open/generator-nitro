@@ -118,7 +118,7 @@ describe('nitro:app', () => {
 		});
 
 		it('config contains the correct view file extension', () => {
-			assert.fileContent('config/default.js', /compiler: 'ts'/);
+			assert.fileContent('config/default.js', /compiler: 'js'/);
 		});
 	});
 

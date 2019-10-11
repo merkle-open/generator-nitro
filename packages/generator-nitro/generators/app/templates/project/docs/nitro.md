@@ -301,9 +301,12 @@ so keep in mind that every space or hyphen in filenames is replaced with an unde
 Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `/src/views/_placeholders/` as `*.<%= options.viewExt %>` files.  
 The following example renders the file `content/example.<%= options.viewExt %>` from `/src/views/_placeholders/`.
 
-```<% if (options.templateEngine === 'twig') { %>
-{% placeholder name='content' template='example' %}<% } else { %>
-{{placeholder name='content' template='example'}}<% } %>
+```
+<% if (options.templateEngine === 'twig') { %>
+{% placeholder name='content' template='example' %}
+<% } else { %>
+{{placeholder name='content' template='example'}}
+<% } %>
 ```
 
 ### Render page lists

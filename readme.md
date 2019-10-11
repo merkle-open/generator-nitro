@@ -21,10 +21,17 @@ Besides the main functionality including a yeoman generator, this repo includes 
 * `packages/project-nitro-twig` (example project with twig rendering engine)
 * `packages/project-nitro-typescript` (example project with typescript)
 
+## Getting started
+
 Have a look at the [sample project](https://nitro-project-test.netlify.com/) 
 which contains the examples of a generated project and was statified with the default configuration of the "nitro-exporter".
 
-## Getting started
+### Create or update a project
+
+Have a look at the [Usages Section](./packages/generator-nitro#usage) of the package `generator-nitro` on how to create 
+or update a project
+
+### Contribute
 
 Before using, you need of course [node](https://nodejs.org/) installed ([Version](.node-version)).  
 Nitro and the Nitro generator are tested with the current 
@@ -42,6 +49,8 @@ npm install
 cd packages/project-nitro
 npm start
 ```
+
+Read [this readme](./docs/contribute.md) For further information about contributing.
 
 ## Changelog
 

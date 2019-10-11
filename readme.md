@@ -31,7 +31,7 @@ which contains the examples of a generated project and was statified with the de
 Have a look at the [Usages Section](./packages/generator-nitro#usage) of the package `generator-nitro` on how to create 
 or update a project
 
-### Contribute
+### Contribute
 
 Before using, you need of course [node](https://nodejs.org/) installed ([Version](.node-version)).  
 Nitro and the Nitro generator are tested with the current 

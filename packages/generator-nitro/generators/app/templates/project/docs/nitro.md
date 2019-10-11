@@ -306,6 +306,43 @@ The following example renders the file `content/example.<%= options.viewExt %>` 
 {{placeholder name='content' template='example'}}<% } %>
 ```
 
+### Render page lists
+
+To render all pages in the `src/views` folder, just call the hbs helper <% if (options.templateEngine === 'twig') { %>`{% viewlist %}`<% } else { %>`{{viewlist}}`<% } %>. The helper renders an `<ul>` list 
+containing links to the respective pages.
+
+#### Filter generated list
+
+With parameter include, all views containing at least one of the terms in their path will be displayed
+
+```
+<% if (options.templateEngine === 'twig') { %>
+{% viewlist { include: "<term-1>,<term-2>" } %}
+<% } else { %>
+{{viewlist include="<term-1>,<term-2>"}}
+<% } %>
+```
+
+With parameter exclude, all views containing none of the terms will be displayed
+
+```
+<% if (options.templateEngine === 'twig') { %>
+{% viewlist { exclude: "<term-1>,<term-2>" } %}
+<% } else { %>
+{{viewlist exclude="<term-1>,<term-2>"}}
+<% } %>
+```
+
+With parameter include and exclude combined, all views containing at least one of the terms but none of the excluded ones will be displayed
+
+```
+<% if (options.templateEngine === 'twig') { %>
+{% viewlist { include: "<term-1>", exclude: "<term-2>" } %}
+<% } else { %>
+{{viewlist include="<term-1>" exclude="<term-2>"}}
+<% } %>
+```
+
 ### Passing data
 
 #### Data per page

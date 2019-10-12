@@ -30,12 +30,12 @@ which contains the examples of a generated project and was statified with the de
 
 ### Using published packages
 
-Have a look at the [usage section](./packages/generator-nitro/readme.md#usage) of the package `generator-nitro` on how to create 
+Have a look at the [usage section of the package 'generator-nitro'](./packages/generator-nitro/readme.md#usage) on how to create 
 or update a project.
 
 ### Working with this repo
 
-Read [contributing documentation](./docs/contribute.md) for further information.
+Have a look at the [usage documentation](./docs/working-with-this-repo.md) to see how to work with this repository.
 
 ## Changelog
 

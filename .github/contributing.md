@@ -43,3 +43,5 @@ Some things that will increase the chance that your pull request is accepted:
 * Start hacking ;-)
 
 You can keep your repo up to date by running `git pull --rebase upstream master`.
+
+In the [usage documentation](../docs/working-with-this-repo.md) you might find more hints and tips for working with this repo.

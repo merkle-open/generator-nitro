@@ -28,13 +28,13 @@
     "backstopjs": "4.3.2",
     "browser-sync": "2.26.7",
     "compression": "1.7.4",
-    "config": "3.2.2",
+    "config": "3.2.3",
     "del": "5.1.0",
     "get-port": "5.0.0",
     "globby": "7.1.1",
     "gulp": "3.9.1",
     "gulp-accessibility": "3.1.1",
-    "gulp-imagemin": "6.1.0",
+    "gulp-imagemin": "6.1.1",
     "gulp-htmllint": "0.0.16",
     "gulp-live-server": "0.0.31",
     "gulp-load-plugins": "2.0.1",
@@ -49,12 +49,12 @@
     "imagemin-pngquant": "8.0.0",
     "merge-stream": "2.0.0",
     "portfinder": "1.0.24",
-    "yargs": "14.0.0"
+    "yargs": "14.2.0"
   },
   "devDependencies": {
     "@namics/eslint-config": "8.0.1",
     "@nitro/app": "*",
-    "eslint": "6.5.0",
+    "eslint": "6.5.1",
     "eslint-plugin-import": "2.18.2",
     "pkg-ok": "2.3.1"
   },

@@ -23,34 +23,19 @@ Besides the main functionality including a yeoman generator, this repo includes 
 
 ## Getting started
 
+### Sample project
+
 Have a look at the [sample project](https://nitro-project-test.netlify.com/) 
-which contains the examples of a generated project and was statified with the default configuration of the "nitro-exporter".
+which contains the examples of a generated project and was statified with the default configuration of the 'nitro-exporter'.
 
-### Create or update a project
+### Using published packages
 
-Have a look at the [Usages Section](./packages/generator-nitro#usage) of the package `generator-nitro` on how to create 
-or update a project
+Have a look at the [usage section](./packages/generator-nitro/readme.md#usage) of the package `generator-nitro` on how to create 
+or update a project.
 
-### Contribute
+### Working with this repo
 
-Before using, you need of course [node](https://nodejs.org/) installed ([Version](.node-version)).  
-Nitro and the Nitro generator are tested with the current 
-["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x and 10.x).
-
-1.  Install base project:
-
-```
-npm install
-```
-
-2.  Start example project:
-
-```
-cd packages/project-nitro
-npm start
-```
-
-Read [this readme](./docs/contribute.md) For further information about contributing.
+Read [contributing documentation](./docs/contribute.md) for further information.
 
 ## Changelog
 

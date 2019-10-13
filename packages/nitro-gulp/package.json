@@ -22,7 +22,7 @@
     "gulp"
   ],
   "peerDependencies": {
-    "@nitro/app": ">=4.13.0"
+    "@nitro/app": ">=4.13.4"
   },
   "dependencies": {
     "backstopjs": "4.3.2",

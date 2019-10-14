@@ -301,12 +301,9 @@ so keep in mind that every space or hyphen in filenames is replaced with an unde
 Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `/src/views/_placeholders/` as `*.<%= options.viewExt %>` files.  
 The following example renders the file `content/example.<%= options.viewExt %>` from `/src/views/_placeholders/`.
 
-```
-<% if (options.templateEngine === 'twig') { %>
-{% placeholder name='content' template='example' %}
-<% } else { %>
-{{placeholder name='content' template='example'}}
-<% } %>
+```<% if (options.templateEngine === 'twig') { %>
+{% placeholder name='content' template='example' %}<% } else { %>
+{{placeholder name='content' template='example'}}<% } %>
 ```
 
 ### Render page lists
@@ -318,32 +315,23 @@ containing links to the respective pages.
 
 With parameter include, all views containing at least one of the terms in their path will be displayed
 
-```
-<% if (options.templateEngine === 'twig') { %>
-{% viewlist { include: "<term-1>,<term-2>" } %}
-<% } else { %>
-{{viewlist include="<term-1>,<term-2>"}}
-<% } %>
+```<% if (options.templateEngine === 'twig') { %>
+{% viewlist { include: "<term-1>,<term-2>" } %}<% } else { %>
+{{viewlist include="<term-1>,<term-2>"}}<% } %>
 ```
 
 With parameter exclude, all views containing none of the terms will be displayed
 
-```
-<% if (options.templateEngine === 'twig') { %>
-{% viewlist { exclude: "<term-1>,<term-2>" } %}
-<% } else { %>
-{{viewlist exclude="<term-1>,<term-2>"}}
-<% } %>
+```<% if (options.templateEngine === 'twig') { %>
+{% viewlist { exclude: "<term-1>,<term-2>" } %}<% } else { %>
+{{viewlist exclude="<term-1>,<term-2>"}}<% } %>
 ```
 
 With parameter include and exclude combined, all views containing at least one of the terms but none of the excluded ones will be displayed
 
-```
-<% if (options.templateEngine === 'twig') { %>
-{% viewlist { include: "<term-1>", exclude: "<term-2>" } %}
-<% } else { %>
-{{viewlist include="<term-1>" exclude="<term-2>"}}
-<% } %>
+```<% if (options.templateEngine === 'twig') { %>
+{% viewlist { include: "<term-1>", exclude: "<term-2>" } %}<% } else { %>
+{{viewlist include="<term-1>" exclude="<term-2>"}}<% } %>
 ```
 
 ### Passing data
@@ -377,20 +365,20 @@ If you need a different layout for a page, do so in the corresponding view data 
 (View data files needs to be placed in same directory structure than views)
 
 ```
-    /src/views/_data/index.json
-    {
-        "_layout": "home"
-    }
+# /src/views/_data/index.json
+{
+    "_layout": "home"
+}
 
-    /src/views/_layouts/home.<%= options.viewExt %>
-    http://localhost:8080/index
+# /src/views/_layouts/home.<%= options.viewExt %>
+http://localhost:8080/index
 ```
 
 ...or you may change the layout temporarily by requesting a page with the query param `?_layout=...`
 
 ```
-/src/views/index.<%= options.viewExt %>
-/src/views/_layouts/home.<%= options.viewExt %>
+# /src/views/index.<%= options.viewExt %>
+# /src/views/_layouts/home.<%= options.viewExt %>
 http://localhost:8080/index?_layout=home
 ```
 

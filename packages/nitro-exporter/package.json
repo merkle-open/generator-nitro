@@ -1,6 +1,6 @@
 {
   "name": "@nitro/exporter",
-  "version": "4.13.4",
+  "version": "4.13.5",
   "description": "An exporting package for nitro. Generate static packages with ease.",
   "license": "MIT",
   "repository": "namics/generator-nitro",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@namics/eslint-config": "8.0.1",
-    "eslint": "6.5.0",
+    "eslint": "6.5.1",
     "eslint-plugin-import": "2.18.2",
     "pkg-ok": "2.3.1"
   },

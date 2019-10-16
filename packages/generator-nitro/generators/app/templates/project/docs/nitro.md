@@ -306,6 +306,34 @@ The following example renders the file `content/example.<%= options.viewExt %>` 
 {{placeholder name='content' template='example'}}<% } %>
 ```
 
+### Render page lists
+
+To render all pages in the `src/views` folder, just call the hbs helper <% if (options.templateEngine === 'twig') { %>`{% viewlist %}`<% } else { %>`{{viewlist}}`<% } %>. The helper renders an `<ul>` list 
+containing links to the respective pages.
+
+#### Filter generated list
+
+With parameter include, all views containing at least one of the terms in their path will be displayed
+
+```<% if (options.templateEngine === 'twig') { %>
+{% viewlist { include: "<term-1>,<term-2>" } %}<% } else { %>
+{{viewlist include="<term-1>,<term-2>"}}<% } %>
+```
+
+With parameter exclude, all views containing none of the terms will be displayed
+
+```<% if (options.templateEngine === 'twig') { %>
+{% viewlist { exclude: "<term-1>,<term-2>" } %}<% } else { %>
+{{viewlist exclude="<term-1>,<term-2>"}}<% } %>
+```
+
+With parameter include and exclude combined, all views containing at least one of the terms but none of the excluded ones will be displayed
+
+```<% if (options.templateEngine === 'twig') { %>
+{% viewlist { include: "<term-1>", exclude: "<term-2>" } %}<% } else { %>
+{{viewlist include="<term-1>" exclude="<term-2>"}}<% } %>
+```
+
 ### Passing data
 
 #### Data per page
@@ -337,20 +365,20 @@ If you need a different layout for a page, do so in the corresponding view data 
 (View data files needs to be placed in same directory structure than views)
 
 ```
-    /src/views/_data/index.json
-    {
-        "_layout": "home"
-    }
+# /src/views/_data/index.json
+{
+    "_layout": "home"
+}
 
-    /src/views/_layouts/home.<%= options.viewExt %>
-    http://localhost:8080/index
+# /src/views/_layouts/home.<%= options.viewExt %>
+http://localhost:8080/index
 ```
 
 ...or you may change the layout temporarily by requesting a page with the query param `?_layout=...`
 
 ```
-/src/views/index.<%= options.viewExt %>
-/src/views/_layouts/home.<%= options.viewExt %>
+# /src/views/index.<%= options.viewExt %>
+# /src/views/_layouts/home.<%= options.viewExt %>
 http://localhost:8080/index?_layout=home
 ```
 

@@ -12,8 +12,8 @@
  * With parameter exclude, all views containing none of the terms will be displayed
  * {{viewlist exclude="<term-1>,<term-2>"}}
  *
- * With parameter include and exclude combined, all views containing at least one of the terms but not one of the excluded ones will be displayed
- * {{viewlist include="<term>" exclude="term-x"}}
+ * With parameter include and exclude combined, all views containing at least one of the terms but none of the excluded ones will be displayed
+ * {{viewlist include="<term-1>" exclude="term-2"}}
  *
  */
 

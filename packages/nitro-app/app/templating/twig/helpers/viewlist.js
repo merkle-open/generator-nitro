@@ -14,6 +14,10 @@
  * With parameter exclude, all views containing none of the terms will be displayed
  * {% viewlist { exclude: "<term-1>,<term-2>" } %}
  *
+ * With parameter include and exclude combined, all views containing at least one of the terms but none of the excluded ones will be displayed
+ *
+ * {% viewlist { include: "<term-1>", exclude: "<term-2>" } %}
+ *
  */
 
 const config = require('config');
@@ -55,7 +59,9 @@ module.exports = function (Twig) {
 							return viewItem.url.indexOf(includeString) >= 0;
 						});
 					});
-				} else if (exclude !== '') {
+				}
+
+				if (exclude !== '') {
 					const excludeArray = exclude.split(',');
 					filteredViews = views.filter((viewItem) => {
 						return excludeArray.every((excludeString) => {

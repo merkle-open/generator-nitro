@@ -91,6 +91,10 @@ describe('nitro:app', () => {
 				'src/ui.ts',
 				'src/proto/js/prototype.ts',
 				'project/blueprints/pattern/js/$pattern$.ts',
+				'tsconfig.json',
+			]);
+			assert.noFile([
+				'babel.config.js',
 			]);
 		});
 
@@ -114,6 +118,10 @@ describe('nitro:app', () => {
 				'src/ui.js',
 				'src/proto/js/prototype.js',
 				'project/blueprints/pattern/js/$pattern$.js',
+				'babel.config.js',
+			]);
+			assert.noFile([
+				'tsconfig.json',
 			]);
 		});
 

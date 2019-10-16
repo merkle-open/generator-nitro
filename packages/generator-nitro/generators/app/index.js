@@ -47,7 +47,7 @@ module.exports = class extends Generator {
 		this.option('compiler', {
 			desc: `your desired javascript compiler [${this._compilerOptions.join('|')}]`,
 			type: String,
-			defaults: this._passedInOptions.compiler || this._compilerOptions[0],
+			defaults: this._passedInOptions.compiler || this._compilerOptions[1],
 		});
 
 		this._viewExtOptions = ['hbs', 'twig'];
@@ -263,6 +263,14 @@ module.exports = class extends Generator {
 			'project/docs/client-templates.md',
 			'project/blueprints/pattern/template/$pattern$.hbs',
 		];
+		const compilerTsFiles = [
+			// files only for this.options.compiler==='ts'
+			'tsconfig.json',
+		];
+		const compilerJsFiles = [
+			// files only for this.options.compiler==='js'
+			'babel.config.js',
+		];
 		const viewFiles = [
 			// all view files exists in different templateEngine variants
 			'src/views/404',
@@ -372,7 +380,7 @@ module.exports = class extends Generator {
 			}
 
 			// check if it's a src file
-			if (_.indexOf('src/', fileWithoutExt) !== -1) {
+			if (fileWithoutExt.indexOf('src/') !== -1) {
 				// check if it's a ts / js file
 				if (ext === 'ts' || ext === 'js') {
 					if (ext !== this.options.compiler) {
@@ -382,13 +390,14 @@ module.exports = class extends Generator {
 				}
 			}
 
-			if (_.indexOf('babel.config.js', file) !== -1 && this.options.compiler === 'ts') {
-				// return since we don't need the babel.config.js for typescript
+
+			if (_.indexOf(compilerJsFiles, file) !== -1 && this.options.compiler === 'ts') {
+				// return files only used with compiler option js
 				return;
 			}
 
-			if (_.indexOf('tsconfig.json', file) !== -1 && this.options.compiler === 'js') {
-				// return since we don't need the tsconfig.json for javascript
+			if (_.indexOf(compilerTsFiles, file) !== -1 && this.options.compiler === 'js') {
+				// return files only used with compiler option ts
 				return;
 			}
 

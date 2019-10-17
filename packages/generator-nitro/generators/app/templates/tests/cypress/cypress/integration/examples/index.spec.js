@@ -35,7 +35,7 @@ context('Index Page Examples', () => {
 
 	describe('Querying more examples', () => {
 		it('cy.get() - query DOM element', () => {
-			cy.get('.m-example:eq(1)').should('contain', 'Example Module with Modifier & Decorator Blue');
+			cy.get('.m-example:eq(1)').should('contain', 'Example Module with Modifier Blue');
 		});
 
 		it('cy.contains() - query DOM elements with matching content', () => {

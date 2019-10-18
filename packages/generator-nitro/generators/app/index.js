@@ -379,12 +379,12 @@ module.exports = class extends Generator {
 				}
 			}
 
-			// check if it's a src file
-			if (fileWithoutExt.indexOf('src/') !== -1) {
+			// check if it's a src file or a blueprints file
+			if (fileWithoutExt.indexOf('src/') !== -1 || fileWithoutExt.indexOf('project/blueprints/') !== -1) {
 				// check if it's a ts / js file
 				if (ext === 'ts' || ext === 'js') {
+					// return for ts / js files with ext not matching the current jsCompiler
 					if (ext !== this.options.jsCompiler) {
-						// return for ts / js files with ext not matching the current jsCompiler
 						return;
 					}
 				}

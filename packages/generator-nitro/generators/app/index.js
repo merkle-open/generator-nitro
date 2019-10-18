@@ -23,7 +23,7 @@ module.exports = class extends Generator {
 			name: this.options.name,
 			viewExt: this.options.viewExt,
 			templateEngine: this.options.templateEngine,
-			compiler: this.options.compiler,
+			jsCompiler: this.options.jsCompiler,
 			clientTpl: this.options.clientTpl,
 			exampleCode: this.options.exampleCode,
 			exporter: this.options.exporter,
@@ -43,11 +43,11 @@ module.exports = class extends Generator {
 			defaults: this._passedInOptions.templateEngine || this._templateEngineOptions[0],
 		});
 
-		this._compilerOptions = ['ts', 'js'];
-		this.option('compiler', {
-			desc: `your desired javascript compiler [${this._compilerOptions.join('|')}]`,
+		this._jsCompilerOptions = ['ts', 'js'];
+		this.option('jsCompiler', {
+			desc: `your desired javascript js compiler [${this._jsCompilerOptions.join('|')}]`,
 			type: String,
-			defaults: this._passedInOptions.compiler || this._compilerOptions[1],
+			defaults: this._passedInOptions.jsCompiler || this._jsCompilerOptions[1],
 		});
 
 		this._viewExtOptions = ['hbs', 'twig'];
@@ -117,7 +117,7 @@ module.exports = class extends Generator {
 					this.options.name = config.name || this.options.name;
 					this.options.viewExt = config.viewExtension || config.templateEngine ? config.templateEngine : this.options.viewExt;
 					this.options.templateEngine = config.templateEngine || this.options.templateEngine;
-					this.options.compiler = config.compiler || this.options.compiler;
+					this.options.jsCompiler = config.jsCompiler || this.options.jsCompiler;
 					this.options.clientTpl = typeof config.clientTemplates === 'boolean' ? config.clientTemplates : this.options.clientTpl;
 					this.options.exampleCode = typeof config.exampleCode === 'boolean' ? config.exampleCode : this.options.exampleCode;
 					this.options.exporter = typeof config.exporter === 'boolean' ? config.exporter : this.options.exporter;
@@ -144,13 +144,13 @@ module.exports = class extends Generator {
 					when: () => !this._skipQuestions && !this._passedInOptions.templateEngine,
 				},
 				{
-					name: 'compiler',
+					name: 'jsCompiler',
 					type: 'list',
-					message: 'What\'s your desired javascript compiler?',
-					choices: this._compilerOptions,
-					default: this.options.compiler,
+					message: 'What\'s your desired javascript js compiler?',
+					choices: this._jsCompilerOptions,
+					default: this.options.jsCompiler,
 					store: true,
-					when: () => !this._skipQuestions && !this._passedInOptions.compiler,
+					when: () => !this._skipQuestions && !this._passedInOptions.jsCompiler,
 				},
 				{
 					name: 'clientTpl',
@@ -179,7 +179,7 @@ module.exports = class extends Generator {
 			]).then((answers) => {
 				this.options.name = answers.name || this.options.name;
 				this.options.templateEngine = answers.templateEngine || this.options.templateEngine;
-				this.options.compiler = answers.compiler || this.options.compiler;
+				this.options.jsCompiler = answers.jsCompiler || this.options.jsCompiler;
 				this.options.viewExt = this.options.templateEngine;
 				this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
 				this.options.exampleCode = answers.exampleCode !== undefined ? answers.exampleCode : this.options.exampleCode;
@@ -189,7 +189,7 @@ module.exports = class extends Generator {
 
 				this.config.set('name', this.options.name);
 				this.config.set('templateEngine', this.options.templateEngine);
-				this.config.set('compiler', this.options.compiler);
+				this.config.set('jsCompiler', this.options.jsCompiler);
 				this.config.set('clientTemplates', this.options.clientTpl);
 				this.config.set('exampleCode', this.options.exampleCode);
 				this.config.set('exporter', this.options.exporter);
@@ -263,12 +263,12 @@ module.exports = class extends Generator {
 			'project/docs/client-templates.md',
 			'project/blueprints/pattern/template/$pattern$.hbs',
 		];
-		const compilerTsFiles = [
-			// files only for this.options.compiler==='ts'
+		const jsCompilerTsFiles = [
+			// files only for this.options.jsCompiler==='ts'
 			'tsconfig.json',
 		];
-		const compilerJsFiles = [
-			// files only for this.options.compiler==='js'
+		const jsCompilerJsFiles = [
+			// files only for this.options.jsCompiler==='js'
 			'babel.config.js',
 		];
 		const viewFiles = [
@@ -383,21 +383,20 @@ module.exports = class extends Generator {
 			if (fileWithoutExt.indexOf('src/') !== -1) {
 				// check if it's a ts / js file
 				if (ext === 'ts' || ext === 'js') {
-					if (ext !== this.options.compiler) {
-						// return for ts / js files with ext not matching the current compiler
+					if (ext !== this.options.jsCompiler) {
+						// return for ts / js files with ext not matching the current jsCompiler
 						return;
 					}
 				}
 			}
 
-
-			if (_.indexOf(compilerJsFiles, file) !== -1 && this.options.compiler === 'ts') {
-				// return files only used with compiler option js
+			if (_.indexOf(jsCompilerJsFiles, file) !== -1 && this.options.jsCompiler === 'ts') {
+				// return files only used with jsCompiler option js
 				return;
 			}
 
-			if (_.indexOf(compilerTsFiles, file) !== -1 && this.options.compiler === 'js') {
-				// return files only used with compiler option ts
+			if (_.indexOf(jsCompilerTsFiles, file) !== -1 && this.options.jsCompiler === 'js') {
+				// return files only used with jsCompiler option ts
 				return;
 			}
 

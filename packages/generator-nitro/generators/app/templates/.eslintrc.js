@@ -1,4 +1,4 @@
-<% if (options.compiler === 'ts') { %>// @ts-check
+<% if (options.jsCompiler === 'ts') { %>// @ts-check
 
 module.exports = {
 	extends: [

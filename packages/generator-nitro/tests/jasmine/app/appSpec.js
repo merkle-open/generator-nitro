@@ -76,12 +76,12 @@ describe('nitro:app', () => {
 		});
 	});
 
-	describe('when using compiler language typescript', () => {
+	describe('when using js compiler typescript', () => {
 		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ compiler: 'ts' })
+				.withPrompts({ jsCompiler: 'ts' })
 				.on('end', done);
 		});
 
@@ -99,16 +99,16 @@ describe('nitro:app', () => {
 		});
 
 		it('config contains the correct view file extension', () => {
-			assert.fileContent('config/default.js', /compiler: 'ts'/);
+			assert.fileContent('config/default.js', /jsCompiler: 'ts'/);
 		});
 	});
 
-	describe('when using compiler language javascript', () => {
+	describe('when using js compiler javascript', () => {
 		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ compiler: 'js' })
+				.withPrompts({ jsCompiler: 'js' })
 				.on('end', done);
 		});
 
@@ -126,7 +126,7 @@ describe('nitro:app', () => {
 		});
 
 		it('config contains the correct view file extension', () => {
-			assert.fileContent('config/default.js', /compiler: 'js'/);
+			assert.fileContent('config/default.js', /jsCompiler: 'js'/);
 		});
 	});
 

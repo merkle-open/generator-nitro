@@ -83,6 +83,22 @@ describe('nitro:app', () => {
 			assert.fileContent('config/default.js', /viewFileExtension: 'hbs'/);
 		});
 
+		// jsCompiler (js)
+		it('javascript files have the .js file extension', () => {
+			assert.file([
+				'src/ui.js',
+				'src/proto.js',
+				'src/proto/js/prototype.js',
+				'project/blueprints/pattern/js/$pattern$.js',
+			]);
+			assert.noFile([
+				'src/ui.ts',
+				'src/proto.ts',
+				'src/proto/js/prototype.ts',
+				'project/blueprints/pattern/js/$pattern$.ts',
+			]);
+		});
+
 		// clientTemplates (false)
 		it('pattern blueprint does not contain template file', () => {
 			assert.noFile('project/blueprints/pattern/template/$pattern$.hbs');

@@ -61,6 +61,7 @@ On creating a new project, you will be guided through some configuration options
 
 * Desired Name `--name=` (default: current directory name)
 * Desired template engine `--templateEngine=` (`hbs` or `twig`; default: `hbs`)
+* Desired js compiler `--jsCompiler=` (`js` or `ts`; default: `js`)
 * Using client side templates `--clientTpl` (default: false)
 * Including example code `--exampleCode` (default: false)
 * Installing nitro-exporter" `--exporter` (default: false)
@@ -68,7 +69,7 @@ On creating a new project, you will be guided through some configuration options
 It's possible to pass in these options through the command line:
 
 ```
-npx -p yo -p generator-nitro@latest -- yo nitro --name=myproject --templateEngine=hbs --clientTpl --exampleCode --exporter
+npx -p yo -p generator-nitro@latest -- yo nitro --name=myproject --templateEngine=hbs --jsCompiler=ts --clientTpl --exampleCode --exporter
 ```
 
 You may bypass the questions with `--skip-questions`. This will use the defaults for not specified options
@@ -84,7 +85,7 @@ It is best to overwrite all local files and check the differences after.
 
 Updating to a new major version needs some more work. Please check the [release notes](https://github.com/namics/generator-nitro/releases)
 
-## Generators
+### Generators
 
 Available generators:
 

@@ -48,11 +48,11 @@
     "gulp-watch": "5.0.1",
     "imagemin-pngquant": "8.0.0",
     "merge-stream": "2.0.0",
-    "portfinder": "1.0.24",
+    "portfinder": "1.0.25",
     "yargs": "14.2.0"
   },
   "devDependencies": {
-    "@namics/eslint-config": "8.0.1",
+    "@namics/eslint-config": "8.0.2",
     "@nitro/app": "*",
     "eslint": "6.5.1",
     "eslint-plugin-import": "2.18.2",

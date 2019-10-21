@@ -2,6 +2,7 @@
   "generator-nitro": {
     "name": "project-nitro-twig",
     "templateEngine": "twig",
+    "jsCompiler": "js",
     "clientTemplates": true,
     "exampleCode": true,
     "exporter": true

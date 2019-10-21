@@ -27,7 +27,7 @@
     "lint": "npm-run-all lint:*",
     "lint:css": "stylelint src/**/*.*ss --allow-empty-input",
     "lint:data": "nitro-app-validate-pattern-data",
-    "lint:html": "gulp lint-html", <% if (options.jsCompiler === 'js') { %>
+    "lint:html": "gulp lint-html",<% if (options.jsCompiler === 'js') { %>
     "lint:js": "eslint ./src --ext .js",<% } %>
     "lint:license": "license-checker --production --summary --exclude \"Apache-2.0, BSD, ISC, LGPL, MIT, MPL\" --failOn \"AGPL; EPL; GPL\"",<% if (options.jsCompiler === 'ts') { %>
     "lint:ts": "eslint ./src --ext .ts,.tsx",<% } %>

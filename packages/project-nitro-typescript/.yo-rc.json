@@ -2,12 +2,14 @@
   "generator-nitro": {
     "promptValues": {
       "templateEngine": "hbs",
+      "jsCompiler": "ts",
       "clientTpl": true,
       "exampleCode": true,
       "exporter": true
     },
     "name": "project-nitro-typescript",
     "templateEngine": "hbs",
+    "jsCompiler": "ts",
     "clientTemplates": true,
     "exampleCode": true,
     "exporter": true

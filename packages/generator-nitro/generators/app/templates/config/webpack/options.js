@@ -2,8 +2,7 @@ const config = require('config');
 const options = {
 	rules: {
 		<% if (options.jsCompiler === 'ts') { %>js: false,
-		ts: true,<% } else { %>
-		js: {
+		ts: true,<% } else { %>js: {
 			eslint: config.get('code.validation.eslint.live'),
 		},
 		ts: false,<% } %>

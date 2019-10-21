@@ -30,5 +30,4 @@ module.exports = {
 		'require-jsdoc': 'off',
 	},
 	parser: 'babel-eslint',
-};
-<% } %>
+};<% } %>

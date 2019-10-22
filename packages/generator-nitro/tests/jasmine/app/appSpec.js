@@ -97,10 +97,6 @@ describe('nitro:app', () => {
 				'babel.config.js',
 			]);
 		});
-
-		it('config contains the correct view file extension', () => {
-			assert.fileContent('config/default.js', /jsCompiler: 'ts'/);
-		});
 	});
 
 	describe('when using js compiler javascript', () => {
@@ -123,10 +119,6 @@ describe('nitro:app', () => {
 			assert.noFile([
 				'tsconfig.json',
 			]);
-		});
-
-		it('config contains the correct view file extension', () => {
-			assert.fileContent('config/default.js', /jsCompiler: 'js'/);
 		});
 	});
 

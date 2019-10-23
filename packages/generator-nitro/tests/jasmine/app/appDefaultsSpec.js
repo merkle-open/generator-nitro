@@ -7,6 +7,7 @@ const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const os = require('os');
+const defaultPrompts = require('./utils/appDefaultPrompts');
 
 describe('nitro:app', () => {
 
@@ -17,6 +18,7 @@ describe('nitro:app', () => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test')) // Clear the directory and set it as the CWD
 				.withOptions({ 'skip-install': true, 'skip-questions': true }) // Mock options passed in
+				.withPrompts(defaultPrompts)
 				.on('end', done);
 		});
 

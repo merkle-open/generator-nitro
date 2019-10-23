@@ -7,6 +7,7 @@ const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const os = require('os');
+const defaultPrompts = require('./utils/appDefaultPrompts');
 
 describe('nitro:app', () => {
 
@@ -33,7 +34,7 @@ describe('nitro:app', () => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ templateEngine: 'hbs' })
+				.withPrompts({ ...defaultPrompts, ...{ templateEngine: 'hbs' } })
 				.on('end', done);
 		});
 
@@ -57,7 +58,7 @@ describe('nitro:app', () => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ templateEngine: 'twig' })
+				.withPrompts({ ...defaultPrompts, ...{ templateEngine: 'twig' } })
 				.on('end', done);
 		});
 
@@ -81,7 +82,7 @@ describe('nitro:app', () => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ jsCompiler: 'ts' })
+				.withPrompts({ ...defaultPrompts, ...{ jsCompiler: 'ts' } })
 				.on('end', done);
 		});
 
@@ -104,7 +105,7 @@ describe('nitro:app', () => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ jsCompiler: 'js' })
+				.withPrompts({ ...defaultPrompts, ...{ jsCompiler: 'js' } })
 				.on('end', done);
 		});
 
@@ -127,7 +128,7 @@ describe('nitro:app', () => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ clientTpl: true })
+				.withPrompts({ ...defaultPrompts, ...{ clientTpl: true } })
 				.on('end', done);
 		});
 
@@ -146,7 +147,7 @@ describe('nitro:app', () => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ clientTpl: false })
+				.withPrompts({ ...defaultPrompts, ...{ clientTpl: false }})
 				.on('end', done);
 		});
 
@@ -165,7 +166,7 @@ describe('nitro:app', () => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ exampleCode: true })
+				.withPrompts({ ...defaultPrompts, ...{ exampleCode: true } })
 				.on('end', done);
 		});
 
@@ -231,7 +232,7 @@ describe('nitro:app', () => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ exampleCode: false })
+				.withPrompts({ ...defaultPrompts, ...{ exampleCode: false } })
 				.on('end', done);
 		});
 
@@ -307,7 +308,7 @@ describe('nitro:app', () => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ exporter: true })
+				.withPrompts({ ...defaultPrompts, ...{ exporter: true } })
 				.on('end', done);
 		});
 
@@ -323,7 +324,7 @@ describe('nitro:app', () => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ exporter: false })
+				.withPrompts({ ...defaultPrompts, ...{ exporter: false } })
 				.on('end', done);
 		});
 

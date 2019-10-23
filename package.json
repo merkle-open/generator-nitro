@@ -40,9 +40,9 @@
   "devDependencies": {
     "commitizen": "4.0.3",
     "cz-conventional-changelog": "3.0.2",
-    "lerna": "3.18.1",
+    "lerna": "3.18.3",
     "markdownlint-cli": "0.19.0",
-    "npm-check-updates": "3.1.24",
+    "npm-check-updates": "3.1.25",
     "npm-run-all": "4.1.5",
     "rimraf": "3.0.0"
   }

@@ -27,7 +27,7 @@
     "array-unique": "0.3.2",
     "del": "5.1.0",
     "delete-empty": "3.0.0",
-    "glob": "7.1.4",
+    "glob": "7.1.5",
     "gulp-filter": "6.0.0",
     "gulp-sequence": "1.0.0",
     "gulp-vinyl-zip": "2.1.2"

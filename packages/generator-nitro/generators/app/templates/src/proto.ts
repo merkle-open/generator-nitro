@@ -11,7 +11,6 @@ hot(module);
 // hot module reloading
 if (module.hot) { module.hot.accept() }
 <% } %>
-
 /* eslint-disable no-useless-escape */
 /* eslint-disable @typescript-eslint/no-require-imports */
 

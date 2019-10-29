@@ -8,41 +8,37 @@ const utils = require('../lib/utils');
 module.exports = (gulp, plugins) => {
 	return () => {
 
+		const streams = [];
 		const svgSpritesConfigs = config.has('gulp.svgSprites') ? config.get('gulp.svgSprites') : {};
-		let stream = utils.getEmptyStream();
 
 		utils.each(svgSpritesConfigs, (svgSpritesConfig) => {
-			let spriteStream;
-
 			if (svgSpritesConfig && svgSpritesConfig.src && svgSpritesConfig.dest) {
-				spriteStream = gulp
-					.src(svgSpritesConfig.src)
-					.pipe(plugins.svgmin((file) => {
-						const prefix = path.basename(file.relative, path.extname(file.relative));
-						return {
-							plugins: [
-								{
-									removeDoctype: true,
-								}, {
-									removeViewBox: false
-								}, {
-									cleanupIDs: {
-										prefix: `${prefix}-`,
-										minify: true,
+				streams.push(
+					gulp
+						.src(svgSpritesConfig.src)
+						.pipe(plugins.svgmin((file) => {
+							const prefix = path.basename(file.relative, path.extname(file.relative));
+							return {
+								plugins: [
+									{
+										removeDoctype: true,
+									}, {
+										removeViewBox: false
+									}, {
+										cleanupIDs: {
+											prefix: `${prefix}-`,
+											minify: true,
+										},
 									},
-								},
-							],
-						};
-					}))
-					.pipe(plugins.svgstore({inlineSvg: true}))
-					.pipe(gulp.dest(svgSpritesConfig.dest));
-			} else {
-				spriteStream = utils.getEmptyStream();
+								],
+							};
+						}))
+						.pipe(plugins.svgstore({inlineSvg: true}))
+						.pipe(gulp.dest(svgSpritesConfig.dest))
+				);
 			}
-
-			stream = merge(stream, spriteStream);
 		});
 
-		return stream;
+		return streams.length ? merge(...streams) : Promise.resolve('resolved');
 	};
 };

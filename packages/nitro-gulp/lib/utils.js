@@ -14,15 +14,13 @@ function getBrowserSyncInstance() {
 }
 
 function getTask(task) {
-	return require(`../tasks/${task}`)(gulp, plugins);
+	const gulpFunction = require(`../tasks/${task}`)(gulp, plugins);
+	gulpFunction.displayName = task;
+	return gulpFunction;
 }
 
 function getProjectPath() {
 	return config.get('nitro.basePath');
-}
-
-function getEmptyStream() {
-	return gulp.src([]);
 }
 
 function each(cfgs, fn) {
@@ -39,6 +37,5 @@ module.exports = {
 	getBrowserSyncInstance,
 	getTask,
 	getProjectPath,
-	getEmptyStream,
 	each,
 };

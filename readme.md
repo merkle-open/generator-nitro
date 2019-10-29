@@ -23,15 +23,16 @@ Besides the main functionality including a yeoman generator, this repo includes 
 
 ## Getting started
 
+### Generate or update a project
+
+Have a look at the [usage section of the package 'generator-nitro'](./packages/generator-nitro/readme.md#usage) on how to create 
+or update a project.
+
 ### Sample project
 
 Have a look at the [sample project](https://nitro-project-test.netlify.com/) 
 which contains the examples of a generated project and was statified with the default configuration of the 'nitro-exporter'.
 
-### Using published packages
-
-Have a look at the [usage section of the package 'generator-nitro'](./packages/generator-nitro/readme.md#usage) on how to create 
-or update a project.
 
 ### Working with this repo
 

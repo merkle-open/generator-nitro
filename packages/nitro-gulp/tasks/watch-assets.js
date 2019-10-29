@@ -6,7 +6,7 @@ const utils = require('../lib/utils');
 /* eslint-disable complexity */
 module.exports = (gulp) => {
 
-	const delay = config.get('nitro.watch.throttle.base');
+	const delay = config.get('nitro.watch.delay');
 	const projectPath = utils.getProjectPath();
 
 	return () => {

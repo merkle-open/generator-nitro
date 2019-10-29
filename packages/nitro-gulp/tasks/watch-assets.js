@@ -4,30 +4,20 @@ const config = require('config');
 const utils = require('../lib/utils');
 
 /* eslint-disable complexity */
-module.exports = (gulp, plugins) => {
+module.exports = (gulp) => {
 
-	const throttleBase = config.get('nitro.watch.throttle.base');
-	const lastRun = {};
+	const delay = config.get('nitro.watch.throttle.base');
 	const projectPath = utils.getProjectPath();
-
-	const processChange = (type, func, throttle) => {
-		type = type || 'other';
-		func = func || function () {};
-		throttle = throttle || throttleBase;
-
-		// call function only once in defined time
-		lastRun[type] = lastRun[type] || 0;
-		if (new Date() - lastRun[type] > throttle) {
-			func();
-		}
-		lastRun[type] = new Date();
-	};
 
 	return () => {
 		const browserSync = utils.getBrowserSyncInstance();
+		const reloadBrowser = (done) => {
+			browserSync.reload('*.html');
+			done();
+		};
 		const options = {
-			base: projectPath,
-			read: false,
+			delay,
+			cwd: projectPath,
 		};
 		const copyAssetsSrc = config.has('gulp.copyAssets') ?
 			config.get('gulp.copyAssets').map(o => o.src).filter(Boolean) : [];
@@ -37,36 +27,26 @@ module.exports = (gulp, plugins) => {
 			config.get('gulp.svgSprites').map(o => o.src).filter(Boolean) : [];
 
 		if (config.get('nitro.mode.livereload')) {
-			plugins.watch([
+			gulp.watch([
 				`src/views/**/*.${config.get('nitro.viewFileExtension')}`,
 				`${config.get('nitro.viewDataDirectory')}/**/*.json`,
 				`src/patterns/**/*.${config.get('nitro.viewFileExtension')}`,
 				'!src/patterns/**/template/**/*.hbs',
 				'src/patterns/**/schema.json',
 				'src/patterns/**/_data/*.json',
-			], options, () => {
-				processChange('data', () => {
-					browserSync.reload('*.html');
-				});
-			});
+			], options, reloadBrowser);
 		}
 
 		if (copyAssetsSrc.length) {
-			plugins.watch(copyAssetsSrc, options, () => {
-				gulp.start('copy-assets');
-			});
+			gulp.watch(copyAssetsSrc, options, gulp.series('copy-assets'));
 		}
 
 		if (minifyImagesSrc.length) {
-			plugins.watch(minifyImagesSrc, options, () => {
-				gulp.start('minify-images');
-			});
+			gulp.watch(minifyImagesSrc, options, gulp.series('minify-images'));
 		}
 
 		if (svgSpritesSrc.length) {
-			plugins.watch(svgSpritesSrc, options, () => {
-				gulp.start('svg-sprites');
-			});
+			gulp.watch(svgSpritesSrc, options, gulp.series('svg-sprites'));
 		}
 	};
 };

@@ -1,5 +1,4 @@
 const filter = require('gulp-filter');
-const path = require('path');
 const utils = require('../lib/utils.js');
 
 module.exports = function (gulp, config) {
@@ -25,17 +24,17 @@ module.exports = function (gulp, config) {
 					? `{${configEntry.views.join(',')},fantasyNameQWedRayFiZtFlkXd}`
 					: '*';
 				// additional views
-				const additionalViews =hasAdditionalRoutesArray
-					? configEntry.additionalRoutes.map((view) => path.join(nitroTmpDirectory, view))
+				const additionalViews = hasAdditionalRoutesArray
+					? configEntry.additionalRoutes.map((view) => `${nitroTmpDirectory}/${view}`)
 					: [];
 
 				// merge dumped views with additional views
 				const viewFilter = [
-					...langStrings.map((lang) => path.join(nitroTmpDirectory, `${viewPattern}${lang}.html`)),
+					...langStrings.map((lang) => `${nitroTmpDirectory}/${viewPattern}${lang}.html`),
 					...additionalViews,
 				];
 
-				gulp.src(path.join(nitroTmpDirectory, '**', `*.*`))
+				gulp.src(`${nitroTmpDirectory}/**/*.*`)
 					.pipe(filter(viewFilter))
 					.pipe(gulp.dest(configEntry.dest))
 					.on('end', () => {

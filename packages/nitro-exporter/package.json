@@ -23,17 +23,20 @@
     "nitro",
     "exporter"
   ],
+  "peerDependencies": {
+    "@nitro/app": ">=4.14.1"
+  },
   "dependencies": {
     "array-unique": "0.3.2",
     "del": "5.1.0",
     "delete-empty": "3.0.0",
     "glob": "7.1.5",
     "gulp-filter": "6.0.0",
-    "gulp-sequence": "1.0.0",
     "gulp-vinyl-zip": "2.1.2"
   },
   "devDependencies": {
     "@namics/eslint-config": "8.0.2",
+    "@nitro/app": "*",
     "eslint": "6.6.0",
     "eslint-plugin-import": "2.18.2",
     "pkg-ok": "2.3.1"

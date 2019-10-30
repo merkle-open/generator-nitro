@@ -25,7 +25,6 @@
     "@nitro/app": ">=4.14.1"
   },
   "dependencies": {
-    "backstopjs": "4.3.2",
     "browser-sync": "2.26.7",
     "compression": "1.7.4",
     "config": "3.2.4",
@@ -33,7 +32,6 @@
     "get-port": "5.0.0",
     "globby": "7.1.1",
     "gulp": "4.0.2",
-    "gulp-accessibility": "3.1.1",
     "gulp-imagemin": "6.1.1",
     "gulp-htmllint": "0.0.16",
     "gulp-live-server": "0.0.31",
@@ -46,7 +44,6 @@
     "gulp-svgstore": "7.0.1",
     "imagemin-pngquant": "8.0.0",
     "merge-stream": "2.0.0",
-    "portfinder": "1.0.25",
     "yargs": "14.2.0"
   },
   "devDependencies": {

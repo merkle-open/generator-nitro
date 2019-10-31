@@ -5,7 +5,7 @@
 
 const appDefaultPrompts = {
 	templateEngine: 'hbs',
-	jsCompiler: 'js',
+	jsCompiler: 'ts',
 	clientTpl: false,
 	exampleCode: false,
 	exporter: false,

@@ -36,8 +36,8 @@ describe('nitro:app', () => {
 				'src/proto',
 				'src/shared',
 				'src/views',
-				'src/proto.js',
-				'src/ui.js',
+				'src/proto.ts',
+				'src/ui.ts',
 			]);
 		});
 
@@ -85,19 +85,19 @@ describe('nitro:app', () => {
 			assert.fileContent('config/default.js', /viewFileExtension: 'hbs'/);
 		});
 
-		// jsCompiler (js)
-		it('javascript files have the .js file extension', () => {
+		// jsCompiler (ts)
+		it('javascript files have the .ts file extension', () => {
 			assert.file([
-				'src/ui.js',
-				'src/proto.js',
-				'src/proto/js/prototype.js',
-				'project/blueprints/pattern/js/$pattern$.js',
-			]);
-			assert.noFile([
 				'src/ui.ts',
 				'src/proto.ts',
 				'src/proto/js/prototype.ts',
 				'project/blueprints/pattern/js/$pattern$.ts',
+			]);
+			assert.noFile([
+				'src/ui.js',
+				'src/proto.js',
+				'src/proto/js/prototype.js',
+				'project/blueprints/pattern/js/$pattern$.js',
 			]);
 		});
 

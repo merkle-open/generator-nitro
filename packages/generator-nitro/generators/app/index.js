@@ -47,7 +47,7 @@ module.exports = class extends Generator {
 		this.option('jsCompiler', {
 			desc: `your desired javascript js compiler [${this._jsCompilerOptions.join('|')}]`,
 			type: String,
-			defaults: this._passedInOptions.jsCompiler || this._jsCompilerOptions[1],
+			defaults: this._passedInOptions.jsCompiler || this._jsCompilerOptions[0],
 		});
 
 		this._viewExtOptions = ['hbs', 'twig'];
@@ -390,12 +390,12 @@ module.exports = class extends Generator {
 				}
 			}
 
-			if (_.indexOf(jsCompilerJsFiles, file) !== -1 && this.options.jsCompiler === 'ts') {
+			if (_.indexOf(jsCompilerJsFiles, file) !== -1 && this.options.jsCompiler === this._jsCompilerOptions[0]) {
 				// return files only used with jsCompiler option js
 				return;
 			}
 
-			if (_.indexOf(jsCompilerTsFiles, file) !== -1 && this.options.jsCompiler === 'js') {
+			if (_.indexOf(jsCompilerTsFiles, file) !== -1 && this.options.jsCompiler === this._jsCompilerOptions[1]) {
 				// return files only used with jsCompiler option ts
 				return;
 			}

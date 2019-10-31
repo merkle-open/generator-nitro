@@ -61,7 +61,7 @@ On creating a new project, you will be guided through some configuration options
 
 * Desired Name `--name=` (default: current directory name)
 * Desired template engine `--templateEngine=` (`hbs` or `twig`; default: `hbs`)
-* Desired js compiler `--jsCompiler=` (`js` or `ts`; default: `js`)
+* Desired js compiler `--jsCompiler=` (`ts` or `js`; default: `ts`)
 * Using client side templates `--clientTpl` (default: false)
 * Including example code `--exampleCode` (default: false)
 * Installing nitro-exporter" `--exporter` (default: false)

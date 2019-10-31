@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=8 <11"
+    "node": ">=10 <13"
   },
   "scripts": {
     "lint": "eslint ./webpack-config",

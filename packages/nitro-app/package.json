@@ -33,7 +33,7 @@
     "chalk": "2.4.2",
     "compression": "1.7.4",
     "config": "3.2.4",
-    "dot-object": "1.9.0",
+    "dot-object": "2.1.2",
     "express": "4.17.1",
     "extend": "3.0.2",
     "globby": "7.1.1",

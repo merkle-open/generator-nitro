@@ -75,7 +75,7 @@
     "@gondel/core": "0.1.0",
     "@gondel/plugin-hot": "0.1.0",
     "bootstrap": "4.3.1",
-    "core-js": "3.3.5",
+    "core-js": "3.3.6",
     "flatpickr": "4.6.3",
     "handlebars": "4.5.1",
     "jquery": "3.4.1",
@@ -104,7 +104,7 @@
     "commitizen": "4.0.3",
     "config": "3.2.4",
     "cross-env": "6.0.3",
-    "cypress": "3.5.0",
+    "cypress": "3.6.0",
     "cz-conventional-changelog": "3.0.2",
     "eslint": "6.6.0",
     "eslint-plugin-import": "2.18.2",
@@ -123,7 +123,7 @@
     "stylelint": "11.1.1",
     "typescript": "3.6.4",
     "webpack": "4.41.2",
-    "webpack-cli": "3.3.9",
+    "webpack-cli": "3.3.10",
     "yo": "3.1.0"
   },
   "browserslist": [

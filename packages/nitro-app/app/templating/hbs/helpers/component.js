@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * Deprecated: handlebars helper: {{component PatternName Data Variation}}
+ * handlebars helper: {{component PatternName Data Variation}}
  *
- * use {{pattern PatternName Data Variation}} instead
+ * same implementation as {{pattern PatternName Data Variation}}
  *
  */
 

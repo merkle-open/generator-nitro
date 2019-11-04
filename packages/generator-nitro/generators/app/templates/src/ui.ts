@@ -2,6 +2,10 @@
 
 <% if (options.exampleCode) { %>import { hot } from '@gondel/plugin-hot';
 
+import 'core-js/features/array/includes';
+import 'core-js/features/string/starts-with';
+import 'core-js/features/promise/index';
+
 import './shared/base/security/js/security';
 import './shared/base/reset/css/reset.scss';
 import './shared/utils/grid/css/grid.scss';

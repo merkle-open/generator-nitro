@@ -1,4 +1,4 @@
-body:after {
+body::after {
 	content: 'prototype with dummy content';
 	display: block;
 	width: auto;

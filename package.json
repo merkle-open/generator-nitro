@@ -5,7 +5,7 @@
   "repository": "namics/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=8 <11",
+    "node": ">=10 <13",
     "npm": ">=5.2 <7"
   },
   "scripts": {
@@ -19,7 +19,7 @@
     "lint": "lerna run lint --parallel",
     "lint:md": "markdownlint ./readme.md ./.github",
     "update-dependencies": "npm-run-all --parallel update-dependencies:*",
-    "update-dependencies:packages": "lerna exec -- npm-check-updates -u -x globby,gulp",
+    "update-dependencies:packages": "lerna exec -- npm-check-updates -u -x globby",
     "update-dependencies:root": "npm-check-updates -u"
   },
   "keywords": [

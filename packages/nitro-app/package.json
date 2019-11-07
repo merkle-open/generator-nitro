@@ -1,12 +1,12 @@
 {
   "name": "@nitro/app",
-  "version": "4.14.3",
+  "version": "5.0.0-beta",
   "description": "Nitro server",
   "license": "MIT",
   "repository": "namics/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=8 <11"
+    "node": ">=10 <13"
   },
   "bin": {
     "nitro-app-validate-pattern-data": "./bin/validate-pattern-data.js",

@@ -1,6 +1,6 @@
 # Nitro Config
 
-Starting with version 2, nitro uses [config](https://www.npmjs.com/package/config) for project configuration.
+Nitro uses [config](https://www.npmjs.com/package/config) for project configuration.
 
 This lets you extend the nitro default parameters for different environments (local, development, production, ...).  
 The configuration is placed in the [`/config`](../../config) directory. Read more about [configuration files](https://github.com/lorenwest/node-config/wiki/Configuration-Files)
@@ -123,14 +123,12 @@ This property is passed as `_nitro.offline` to handlebars views.
 
 If set to false, handlebars partials won't be watched and recompiled on change.
 
-#### `nitro.watch.throttle`
+#### `nitro.watch.delay`
 
-Type: Object
-
--   `nitro.watch.throttle.base` - default: 1000  
-    The next code change of each type (CSS, JavaScript) is processed no earlier than <throtte.base> ms after the last run.
--   `nitro.watch.throttle.cache` - default: 3000  
-    The CSS cache invalidation (on changing css dependencies) is only initiated <throttle.cache> ms after the last run.
+-   Type: Integer
+-   Default: 1000
+  
+The millisecond 'delay' between a file change and task execution.
 
 ## Server
 

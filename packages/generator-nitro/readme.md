@@ -18,7 +18,7 @@ Nitro is simple, fast and flexible. It works on macOS, Windows and Linux. Use th
 
 Before using, you need of course [node](https://nodejs.org/) installed.  
 Nitro and the Nitro generator are tested with the current 
-["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 8.x and 10.x).
+["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 10.x and 12.x).
 
 ### Create a new project
 
@@ -61,7 +61,7 @@ On creating a new project, you will be guided through some configuration options
 
 * Desired Name `--name=` (default: current directory name)
 * Desired template engine `--templateEngine=` (`hbs` or `twig`; default: `hbs`)
-* Desired js compiler `--jsCompiler=` (`js` or `ts`; default: `js`)
+* Desired js compiler `--jsCompiler=` (`ts` or `js`; default: `ts`)
 * Using client side templates `--clientTpl` (default: false)
 * Including example code `--exampleCode` (default: false)
 * Installing nitro-exporter" `--exporter` (default: false)

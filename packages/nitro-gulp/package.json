@@ -1,11 +1,11 @@
 {
   "name": "@nitro/gulp",
-  "version": "4.14.3",
+  "version": "5.0.0-beta",
   "description": "Nitro gulp",
   "license": "MIT",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=8 <11"
+    "node": ">=10 <13"
   },
   "scripts": {
     "lint": "eslint ./lib ./tasks",
@@ -22,18 +22,16 @@
     "gulp"
   ],
   "peerDependencies": {
-    "@nitro/app": ">=4.14.3"
+    "@nitro/app": ">=5.0.0-beta"
   },
   "dependencies": {
-    "backstopjs": "4.3.2",
     "browser-sync": "2.26.7",
     "compression": "1.7.4",
     "config": "3.2.4",
     "del": "5.1.0",
     "get-port": "5.0.0",
     "globby": "7.1.1",
-    "gulp": "3.9.1",
-    "gulp-accessibility": "3.1.1",
+    "gulp": "4.0.2",
     "gulp-imagemin": "6.1.1",
     "gulp-htmllint": "0.0.16",
     "gulp-live-server": "0.0.31",
@@ -42,13 +40,10 @@
     "gulp-plumber": "1.2.1",
     "gulp-remote-src": "0.4.4",
     "gulp-rename": "1.4.0",
-    "gulp-sequence": "1.0.0",
     "gulp-svgmin": "2.2.0",
     "gulp-svgstore": "7.0.1",
-    "gulp-watch": "5.0.1",
     "imagemin-pngquant": "8.0.0",
     "merge-stream": "2.0.0",
-    "portfinder": "1.0.25",
     "yargs": "14.2.0"
   },
   "devDependencies": {

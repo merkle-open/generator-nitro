@@ -1,6 +1,6 @@
 'use strict';
 
-// deprecated: will be removed in version 4 -> use `pattern` instead
+// same implementation as `pattern`
 
 const pattern = require('../pattern');
 

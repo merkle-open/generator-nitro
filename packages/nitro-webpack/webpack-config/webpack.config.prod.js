@@ -25,19 +25,6 @@ let banner = `${bannerData.pkg.name}
 
 module.exports = (options = { rules: {}, features: {} }) => {
 
-	// gitInfo (deprecated)
-	if (options.features.gitInfo) {
-		const GitRevisionPlugin = require('git-revision-webpack-plugin');
-		const gitRevisionPlugin = new GitRevisionPlugin({ branch: true });
-		bannerData.git = {
-			branch: gitRevisionPlugin.branch(),
-			version: gitRevisionPlugin.version(),
-		};
-
-		banner += `
-@source ${bannerData.git.branch}|${bannerData.git.version}`;
-	}
-
 	const webpackConfig = {
 		mode: 'production',
 		devtool: 'hidden-source-map',

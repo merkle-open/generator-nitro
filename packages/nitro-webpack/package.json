@@ -1,11 +1,11 @@
 {
   "name": "@nitro/webpack",
-  "version": "4.14.3",
+  "version": "5.0.0-beta",
   "description": "nitro webpack",
   "license": "MIT",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=8 <11"
+    "node": ">=10 <13"
   },
   "scripts": {
     "lint": "eslint ./webpack-config",
@@ -34,7 +34,6 @@
     "eslint-loader": "3.0.2",
     "eslint-plugin-import": "2.18.2",
     "file-loader": "4.2.0",
-    "git-revision-webpack-plugin": "3.0.4",
     "handlebars-loader": "1.7.1",
     "iconfont-webpack-plugin": "4.2.1",
     "imagemin": "7.0.0",

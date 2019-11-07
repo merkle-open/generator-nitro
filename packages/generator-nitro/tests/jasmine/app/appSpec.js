@@ -174,8 +174,11 @@ describe('nitro:app', () => {
 			assert.file([
 				'src/patterns/molecules/example/readme.md',
 				'src/patterns/molecules/example/schema.json',
-				'src/patterns/molecules/example/js/example.js',
+				'src/patterns/molecules/example/js/example.ts',
 				'src/patterns/molecules/example/_data/example.json',
+			]);
+			assert.noFile([
+				'src/patterns/molecules/example/js/example.js',
 			]);
 		});
 
@@ -211,9 +214,9 @@ describe('nitro:app', () => {
 			assert.file([
 				'src/proto/readme.md',
 				'src/proto/css/prototype.scss',
-				'src/proto/js/prototype.js',
-				'src/proto/utils/develop-helpers/index.js',
-				'src/proto/utils/develop-helpers/js/key1Breakpoint.js',
+				'src/proto/js/prototype.ts',
+				'src/proto/utils/develop-helpers/index.ts',
+				'src/proto/utils/develop-helpers/js/key1Breakpoint.ts',
 			]);
 		});
 
@@ -240,6 +243,7 @@ describe('nitro:app', () => {
 			assert.noFile([
 				'src/patterns/molecules/example/readme.md',
 				'src/patterns/molecules/example/schema.json',
+				'src/patterns/molecules/example/js/example.ts',
 				'src/patterns/molecules/example/js/example.js',
 				'src/patterns/molecules/example/_data/example.json',
 			]);
@@ -277,13 +281,15 @@ describe('nitro:app', () => {
 			assert.file([
 				'src/proto/readme.md',
 				'src/proto/css/prototype.scss',
-				'src/proto/js/prototype.js',
+				'src/proto/js/prototype.ts',
 			]);
 		});
 
 		it('some proto files are not present', () => {
 			assert.noFile([
+				'src/proto/utils/develop-helpers/index.ts',
 				'src/proto/utils/develop-helpers/index.js',
+				'src/proto/utils/develop-helpers/js/key1Breakpoint.ts',
 				'src/proto/utils/develop-helpers/js/key1Breakpoint.js',
 			]);
 		});

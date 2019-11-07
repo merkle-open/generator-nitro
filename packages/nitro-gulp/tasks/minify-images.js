@@ -9,38 +9,35 @@ module.exports = (gulp, plugins) => {
 	return () => {
 
 		const minifyImagesConfigs = config.has('gulp.minifyImages') ? config.get('gulp.minifyImages') : {};
-		let stream = utils.getEmptyStream();
+		const streams = [];
 
 		utils.each(minifyImagesConfigs, (minifyImagesConfig) => {
-			let minifyStream;
 			if (minifyImagesConfig && minifyImagesConfig.src && minifyImagesConfig.dest) {
-				minifyStream = gulp
-					.src(minifyImagesConfig.src)
-					.pipe(plugins.newer(minifyImagesConfig.dest))
-					.pipe(
-						plugins.imagemin([
-							plugins.imagemin.gifsicle({ interlaced: true }),
-							plugins.imagemin.jpegtran({ progressive: true }),
-							plugins.imagemin.optipng({ optimizationLevel: 7 }),
-							plugins.imagemin.svgo({
-								plugins: [
-									{ collapseGroups: false },
-									{ cleanupIDs: false },
-									{ removeUnknownsAndDefaults: false },
-									{ removeViewBox: false },
-								],
-							}),
-							pngquant(),
-						])
-					)
-					.pipe(gulp.dest(minifyImagesConfig.dest));
-			} else {
-				minifyStream = utils.getEmptyStream();
+				streams.push(
+					gulp
+						.src(minifyImagesConfig.src)
+						.pipe(plugins.newer(minifyImagesConfig.dest))
+						.pipe(
+							plugins.imagemin([
+								plugins.imagemin.gifsicle({ interlaced: true }),
+								plugins.imagemin.jpegtran({ progressive: true }),
+								plugins.imagemin.optipng({ optimizationLevel: 7 }),
+								plugins.imagemin.svgo({
+									plugins: [
+										{ collapseGroups: false },
+										{ cleanupIDs: false },
+										{ removeUnknownsAndDefaults: false },
+										{ removeViewBox: false },
+									],
+								}),
+								pngquant(),
+							])
+						)
+						.pipe(gulp.dest(minifyImagesConfig.dest))
+				);
 			}
-
-			stream = merge(stream, minifyStream);
 		});
 
-		return stream;
+		return streams.length ? merge(...streams) : Promise.resolve('resolved');
 	};
 };

@@ -23,10 +23,7 @@ const defaultConfig = {
 		},
 		watch: {
 			partials: true,
-			throttle: {
-				base: 1000,
-				cache: 3000,
-			},
+			delay: 1000,
 		},
 		// patterns: {},
 	},

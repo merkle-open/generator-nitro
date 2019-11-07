@@ -6,7 +6,7 @@
   "private": true,
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=8.9 <11",
+    "node": ">=10 <13",
     "npm": ">=5.2 <7"
   },
   "scripts": {
@@ -17,7 +17,7 @@
     "commit": "git-cz",
     "nitro:pattern": "yo nitro:pattern",
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
-    "update-dependencies": "npm-check-updates -u -x gulp",
+    "update-dependencies": "npm-check-updates -u",
     "\n# LINT/TEST ------- ": "",
     "cypress-test": "npm run build && cross-env PORT=8888 npm-run-all --parallel --race test:cypress:serve cypress-test:open",
     "cypress-test:open": "cypress open --project ./tests/cypress/",
@@ -76,7 +76,7 @@
     "@gondel/core": "0.1.0",
     "@gondel/plugin-hot": "0.1.0",
     "bootstrap": "4.3.1",<% } %>
-    "core-js": "3.4.0",<% if (options.exampleCode) { %>
+    "core-js": "3.3.6",<% if (options.exampleCode) { %>
     "flatpickr": "4.6.3",
     "handlebars": "4.5.1",
     "jquery": "3.4.1",
@@ -92,7 +92,7 @@
   "devDependencies": {
     "@namics/eslint-config": "8.0.2",
     "@namics/prettier-config": "0.4.1",
-    "@namics/stylelint-config": "0.3.9",
+    "@namics/stylelint-config": "0.4.1",
     "@namics/ts-config": "0.4.2",
     "@nitro/app": "<%= version %>",
     "@nitro/exporter": "<%= version %>",
@@ -112,7 +112,7 @@
     "eslint-plugin-import": "2.18.2",
     "extend": "3.0.2",
     "generator-nitro": "<%= version %>",
-    "gulp": "3.9.1",
+    "gulp": "4.0.2",
     "gulp-load-plugins": "2.0.1",
     "husky": "3.0.9",
     "license-checker": "25.0.1",

@@ -26,7 +26,7 @@ $checkbox-color: $color-gray-5;
 
 		border: $checkbox-border solid $checkbox-color;
 		border-radius: 4px;
-	};
+	}
 
 	// Checkbox Replacement - checked state: Check-Icon
 	&:checked + .a-checkbox__label::after {
@@ -35,7 +35,7 @@ $checkbox-color: $color-gray-5;
 		position: absolute;
 		top: 32%;
 		left: 4px;
-	};
+	}
 
 	&:focus,
 	&:active {

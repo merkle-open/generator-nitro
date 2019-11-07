@@ -27,7 +27,6 @@ function getMergedConfigProps(config) {
 }
 
 module.exports = function (gulp, config) {
-	const gulpSequence = require('gulp-sequence').use(gulp);
 	const mergedConfig = getMergedConfigProps(config);
 
 	gulp.task('export-clean', exportClean(config));
@@ -43,14 +42,14 @@ module.exports = function (gulp, config) {
 			process.env.NITRO_ADDITIONAL_ROUTES = mergedConfig.additionalRoutes.join(',');
 		}
 
-		gulp.task('export', gulpSequence(
+		gulp.task('export', gulp.series(
 			'export-clean',
 			'dump-views',
 			'export-views',
 			'export-processing',
 		));
 	} else {
-		gulp.task('export', gulpSequence(
+		gulp.task('export', gulp.series(
 			'export-clean',
 			'export-processing'
 		));

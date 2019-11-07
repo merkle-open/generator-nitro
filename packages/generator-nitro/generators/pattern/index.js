@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * this generator is used as subgenerator nitro:pattern (and nitro:component -> deprecated)
+ * this generator is used as subgenerator nitro:pattern (and nitro:component)
  */
 
 /* eslint-disable no-inline-comments, max-len, complexity, global-require, require-jsdoc */

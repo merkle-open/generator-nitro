@@ -7,11 +7,23 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('config');
 const webpackConfig = require(process.env.WEBPACK_CONFIG ? path.join(config.get('nitro.basePath'), process.env.WEBPACK_CONFIG ) : path.normalize(path.join(config.get('nitro.basePath'), 'config', 'webpack', 'webpack.config.dev')));
 webpackConfig.mode = config.get('server.production') ? 'production' : 'development';
+const watchOptions = webpackConfig.watchOptions || {
+	ignored: [
+		'**/*.hbs',
+		'!**/template/**/*.hbs',
+		'**/*.json',
+		'**/*.md',
+		'**/*.png',
+		'**/*.svg',
+		'**/node_modules/**',
+	],
+};
 const webpackCompiler = webpack(webpackConfig);
 const wpm = webpackMiddleware(webpackCompiler, {
 	logLevel: 'warn',
 	publicPath: webpackConfig.output.publicPath,
 	stats: 'minimal',
+	watchOptions,
 });
 const wphm = webpackHotMiddleware(webpackCompiler, {
 	log: console.log,

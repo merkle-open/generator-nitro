@@ -48,7 +48,15 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			new webpack.HotModuleReplacementPlugin(),
 		],
 		watchOptions: {
-			ignored: /node_modules/,
+			ignored: [
+				'**/*.hbs',
+				'!**/template/**/*.hbs',
+				'**/*.json',
+				'**/*.md',
+				'**/*.png',
+				'**/*.svg',
+				'**/node_modules/**',
+			],
 		},
 		optimization: {
 			noEmitOnErrors: true,

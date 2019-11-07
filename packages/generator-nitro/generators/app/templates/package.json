@@ -48,6 +48,7 @@
     "build:webpack": "webpack --mode production --config config/webpack/webpack.config.prod.js",<% if (options.exporter) { %>
     "export": "npm run build && gulp export",<% } %>
     "\n# RUN ------- ": "",
+    "dashboard": "dash4",
     "dev": "npm-run-all --parallel --race dev:*",
     "dev:serve": "cross-env NODE_ENV=development nitro-app-serve",
     "dev:watch": "gulp develop",
@@ -91,6 +92,10 @@
     "tota11y": "0.1.6"<% } %>
   },
   "devDependencies": {
+    "@dash4/plugin-actions": "0.6.0",
+    "@dash4/plugin-npm-scripts": "0.6.0",
+    "@dash4/plugin-readme": "0.6.0",
+    "@dash4/server": "0.6.0",
     "@namics/eslint-config": "8.0.2",
     "@namics/prettier-config": "0.4.1",
     "@namics/stylelint-config": "0.4.1",

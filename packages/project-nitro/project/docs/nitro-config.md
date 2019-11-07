@@ -1,6 +1,6 @@
 # Nitro Config
 
-Starting with version 2, nitro uses [config](https://www.npmjs.com/package/config) for project configuration.
+Nitro uses [config](https://www.npmjs.com/package/config) for project configuration.
 
 This lets you extend the nitro default parameters for different environments (local, development, production, ...).  
 The configuration is placed in the [`/config`](../../config) directory. Read more about [configuration files](https://github.com/lorenwest/node-config/wiki/Configuration-Files)

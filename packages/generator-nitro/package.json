@@ -32,7 +32,7 @@
     "modular"
   ],
   "dependencies": {
-    "chalk": "2.4.2",
+    "chalk": "3.0.0",
     "config": "3.2.4",
     "git-config": "0.0.7",
     "glob": "7.1.6",

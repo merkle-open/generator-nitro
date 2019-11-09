@@ -5,6 +5,4 @@ lintConfig.rules['plugin/stylelint-bem-namics'] = {
 	helperPrefixes: ['state'],
 };
 
-// lintConfig.rules['scss/selector-nest-combinators'] = false;
-
 module.exports = lintConfig;

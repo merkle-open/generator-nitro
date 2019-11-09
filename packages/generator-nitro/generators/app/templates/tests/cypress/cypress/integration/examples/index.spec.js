@@ -46,21 +46,23 @@ context('Index Page Examples', () => {
 			cy.get('.m-example:eq(1)')
 				.contains('Link One')
 				.should('have.class', 'm-example__link');
+		});
 
+
+	});<% if (options.clientTpl) { %>
+
+	describe('Client Templates', () => {
+		it('query contents', () => {
 			cy.get('.m-example:eq(2)')
 				.contains('ul', 'Link Three')
 				.should('have.class', 'js-m-example__list');
-		});
 
-		it('.within() - query DOM elements within a specific element', () => {
 			cy.get('.m-example:eq(2)').within(() => {
 				cy.get('button:first').contains('more links');
 				cy.get('button:eq(1)').contains('add pattern');
 			});
 		});
-	});
 
-	describe('Client Templating Actions', () => {
 		it('.click() on more button', () => {
 			cy.get('.m-example:eq(2)')
 				.find('button:first')
@@ -110,7 +112,7 @@ context('Index Page Examples', () => {
 				.find('li')
 				.should('have.length', 4);
 		});
-	});
+	});<% } %>
 
 	describe('Navigation', () => {
 		it('click on "more examples" and go back', () => {

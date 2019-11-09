@@ -1,4 +1,4 @@
-import { Component, EventListener, GondelBaseComponent, startComponents } from '@gondel/core';<% if (options.clientTpl) { %>
+import { Component, GondelBaseComponent<% if (options.clientTpl) { %>, EventListener, startComponents<% } %> } from '@gondel/core';<% if (options.clientTpl) { %>
 import $ from 'jquery';
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
 // @ts-ignore

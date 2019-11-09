@@ -231,7 +231,7 @@ module.exports = class extends Generator {
 			'src/ui.ts',
 			'src/proto.js',
 			'src/proto.ts',
-			'tests/backstop/backstop.config.js',
+			'tests/cypress/cypress/integration/examples/index.spec.js',
 			'.eslintrc.js',
 			'docker-compose.yml',
 			'docker-compose-dev.yml',

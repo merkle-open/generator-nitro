@@ -24,7 +24,8 @@
     "exporter"
   ],
   "peerDependencies": {
-    "@nitro/app": ">=5.0.0-beta"
+    "@nitro/app": ">=5.0.0-beta",
+    "@nitro/gulp": ">=5.0.0-beta"
   },
   "dependencies": {
     "array-unique": "0.3.2",

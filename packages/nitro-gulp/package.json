@@ -22,7 +22,8 @@
     "gulp"
   ],
   "peerDependencies": {
-    "@nitro/app": ">=5.0.0-beta"
+    "@nitro/app": ">=5.0.0-beta",
+    "gulp": ">=4.0.0"
   },
   "dependencies": {
     "browser-sync": "2.26.7",

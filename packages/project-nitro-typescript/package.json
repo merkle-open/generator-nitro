@@ -27,9 +27,9 @@
     "lint": "npm-run-all lint:*",
     "lint:css": "stylelint src/**/*.*ss --allow-empty-input",
     "lint:data": "nitro-app-validate-pattern-data",
-    "lint:html": "gulp lint-html",
+    "donotlint:html": "gulp lint-html",
+    "lint:js": "eslint ./src --ext .ts,.tsx",
     "lint:license": "license-checker --production --summary --exclude \"Apache-2.0, BSD, ISC, LGPL, MIT, MPL\" --failOn \"AGPL; EPL; GPL\"",
-    "lint:ts": "eslint ./src --ext .ts,.tsx --config .eslintrc.js",
     "prettier": "prettier --write \"src/**/*.*(js|jsx|ts|tsx|json|md)\"",
     "test": "npm-run-all test:*",
     "test:lint": "npm run lint",
@@ -111,7 +111,6 @@
     "extend": "3.0.2",
     "generator-nitro": "*",
     "gulp": "4.0.2",
-    "gulp-load-plugins": "2.0.1",
     "husky": "3.0.9",
     "license-checker": "25.0.1",
     "lighthouse": "5.6.0",
@@ -153,7 +152,7 @@
     ],
     "src/**/*.{ts,tsx}": [
       "prettier --write",
-      "eslint --config .eslintrc.js",
+      "eslint",
       "git add"
     ],
     "src/**/*.md": [

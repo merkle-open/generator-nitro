@@ -86,7 +86,6 @@
     "lodash": "4.17.15",
     "lottie-web": "5.5.9",
     "prevent-window-opener-attacks": "0.2.4",
-    "promise-polyfill": "8.1.3",
     "svg4everybody": "2.1.9",
     "tota11y": "0.1.6"
   },

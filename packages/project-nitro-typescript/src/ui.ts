@@ -1,7 +1,8 @@
 /* global module */
 
-import 'promise-polyfill/src/polyfill';
 import { hot } from '@gondel/plugin-hot';
+
+import 'core-js/features/promise/index';
 
 import './shared/base/security/js/security';
 import './shared/base/reset/css/reset.scss';

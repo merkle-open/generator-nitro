@@ -1,5 +1,8 @@
 import { Component, GondelBaseComponent<% if (options.clientTpl) { %>, EventListener, startComponents<% } %> } from '@gondel/core';<% if (options.clientTpl) { %>
 import $ from 'jquery';
+import 'core-js/features/array/includes';
+import 'core-js/features/string/starts-with';
+
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
 // @ts-ignore
 import templateExample from '../template/example.hbs';

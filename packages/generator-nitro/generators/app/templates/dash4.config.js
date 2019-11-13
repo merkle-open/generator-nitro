@@ -4,6 +4,7 @@
  *  https://github.com/smollweide/dash4
  *
  */
+const { PluginTerminal } = require('@dash4/plugin-terminal');
 const { PluginReadme } = require('@dash4/plugin-readme');
 const { PluginNpmScripts } = require('@dash4/plugin-npm-scripts');
 const { PluginActions } = require('@dash4/plugin-actions');
@@ -19,13 +20,26 @@ async function getConfig() {
 						new PluginReadme({ file: 'readme.md' }),
 					],
 					[
-						new PluginNpmScripts({
-							scripts: [
-								{ title: 'Start Development Mode', cmd: 'npm run dev' },
-								{ title: 'Start Production Mode', cmd: 'npm run prod' },
-								{ title: 'Start Cypress Mode', cmd: 'npm run cypress-test' },
-							],
+						new PluginTerminal({
+							title: 'Development Mode',
+							cmd: 'npm run dev',
+							dark: true,
+							autostart: false,
 						}),
+						new PluginTerminal({
+							title: 'Production Mode',
+							cmd: 'npm run prod',
+							dark: true,
+							autostart: false,
+						}),
+						new PluginTerminal({
+							title: 'Cypress Mode',
+							cmd: 'npm run cypress-test',
+							dark: true,
+							autostart: false,
+						}),
+					],
+					[
 						new PluginNpmScripts({
 							scripts: [
 								{ title: 'Run Linting', cmd: 'npm run lint' },

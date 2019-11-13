@@ -19,6 +19,10 @@ and start in development mode
 npm start
 ```
 
+### Use Dashboard
+
+Or use the dashboard to get an overview of the important npm scripts and documentations.
+
 ### Usage with docker (experimental)
 
 For information on how to use Nitro with docker, please refer to [nitro-docker.md](./project/docs/nitro-docker.md).

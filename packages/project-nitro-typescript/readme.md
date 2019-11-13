@@ -23,6 +23,10 @@ npm start
 
 For information on how to use Nitro with docker, please refer to [nitro-docker.md](./project/docs/nitro-docker.md).
 
+### Use Dashboard
+
+Or use the dashboard to get an overview of the important npm scripts and documentations.
+
 ## Nitro
 
 For information on how to use Nitro, please refer to [nitro.md](./project/docs/nitro.md).

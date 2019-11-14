@@ -33,7 +33,8 @@ yeoman generator in the package 'packages/generator-nitro'.
 1. Develop your new feature in the respective sample project
 2. After it works there, enhance the yeoman generator
 3. Add a test in the folder 'packages/generator-nitro/tests'
-4. Test your yeoman generator change by creating a new project
+4. Run `npm install` in the root of the repo to link to the yeoman generator with your newest changes
+5. Test your yeoman generator change by creating a new project
     1. cd to the 'project-new' package
     2. Run `npm start` and use the yeoman config you adjusted / enhanced
     3. The generator runs with your local recent changes

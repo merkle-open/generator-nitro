@@ -92,11 +92,11 @@
     "svg4everybody": "2.1.9"<% } %>
   },
   "devDependencies": {
-    "@dash4/plugin-actions": "0.6.0",
-    "@dash4/plugin-npm-scripts": "0.6.0",
-    "@dash4/plugin-readme": "0.6.0",
-    "@dash4/plugin-terminal": "0.6.0",
-    "@dash4/server": "0.6.0",
+    "@dash4/plugin-actions": "0.7.0",
+    "@dash4/plugin-npm-scripts": "0.7.0",
+    "@dash4/plugin-readme": "0.7.0",
+    "@dash4/plugin-terminal": "0.7.0",
+    "@dash4/server": "0.7.0",
     "@namics/eslint-config": "8.0.2",
     "@namics/prettier-config": "0.4.1",
     "@namics/stylelint-config": "0.4.1",

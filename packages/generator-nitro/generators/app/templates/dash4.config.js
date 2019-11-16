@@ -27,14 +27,14 @@ async function getConfig() {
 							autostart: false,
 						}),
 						new PluginTerminal({
-							title: 'Production Mode',
-							cmd: 'npm run prod',
+							title: 'Cypress Mode',
+							cmd: 'npm run cypress-test',
 							dark: true,
 							autostart: false,
 						}),
 						new PluginTerminal({
-							title: 'Cypress Mode',
-							cmd: 'npm run cypress-test',
+							title: 'Production Mode',
+							cmd: 'npm run prod',
 							dark: true,
 							autostart: false,
 						}),

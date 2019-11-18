@@ -11,9 +11,9 @@
   },
   "scripts": {
     "\n# PROJECT ------- ": "",
-    "clean": "npx npm-run-all clean:*",
+    "clean": "npx --ignore-existing --quiet npm-run-all clean:*",
     "clean:lock": "rimraf package-lock.json",
-    "clean:modules": "npx rimraf node_modules",
+    "clean:modules": "npx --ignore-existing --quiet rimraf node_modules",
     "commit": "git-cz",
     "nitro:pattern": "yo nitro:pattern",
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",

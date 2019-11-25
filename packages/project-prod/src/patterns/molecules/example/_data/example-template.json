@@ -1,0 +1,19 @@
+{
+	"modifier": "",
+	"title": "Example Module with Template functionality",
+	"links": [
+		{
+			"uri": "index",
+			"text": "Link One"
+		},
+		{
+			"uri": "index",
+			"text": "Link Two"
+		},
+		{
+			"uri": "index",
+			"text": "Link Three"
+		}
+	],
+	"buttons": true
+}

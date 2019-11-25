@@ -20,6 +20,7 @@ Besides the main functionality including a yeoman generator, this repo includes 
 * [`packages/project-nitro`](./packages/project-nitro) (example project with handlebars rendering engine)
 * `packages/project-nitro-twig` (example project with twig rendering engine)
 * `packages/project-nitro-typescript` (example project with typescript)
+* `packages/project-prod` (example for minimum version for production use)
 
 ## Getting started
 
@@ -32,7 +33,6 @@ or update a project.
 
 Have a look at the [sample project](https://nitro-project-test.netlify.com/) 
 which contains the examples of a generated project and was statified with the default configuration of the 'nitro-exporter'.
-
 
 ### Working with this repo
 

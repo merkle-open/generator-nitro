@@ -1,0 +1,7 @@
+<button class="a-button" {{#if disabled}} disabled{{/if}}>
+	{{#if children}}
+		{{{children}}}
+	{{else}}
+		{{{text}}}{{#if disabled}} !{{/if}}
+	{{/if}}
+</button>

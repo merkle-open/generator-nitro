@@ -25,7 +25,7 @@
     "@nitro/app": ">=4.14.3"
   },
   "dependencies": {
-    "backstopjs": "4.3.2",
+    "backstopjs": "4.3.4",
     "browser-sync": "2.26.7",
     "compression": "1.7.4",
     "config": "3.2.4",
@@ -34,7 +34,7 @@
     "globby": "7.1.1",
     "gulp": "3.9.1",
     "gulp-accessibility": "3.1.1",
-    "gulp-imagemin": "6.1.1",
+    "gulp-imagemin": "6.2.0",
     "gulp-htmllint": "0.0.16",
     "gulp-live-server": "0.0.31",
     "gulp-load-plugins": "2.0.1",
@@ -49,12 +49,12 @@
     "imagemin-pngquant": "8.0.0",
     "merge-stream": "2.0.0",
     "portfinder": "1.0.25",
-    "yargs": "14.2.0"
+    "yargs": "15.0.2"
   },
   "devDependencies": {
-    "@namics/eslint-config": "8.0.2",
+    "@namics/eslint-config": "8.0.3",
     "@nitro/app": "*",
-    "eslint": "6.6.0",
+    "eslint": "6.7.1",
     "eslint-plugin-import": "2.18.2",
     "pkg-ok": "2.3.1"
   },

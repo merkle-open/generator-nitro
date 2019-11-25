@@ -6,7 +6,7 @@ import 'core-js/features/promise/index';
 
 import './shared/base/security/js/security';
 import './shared/base/reset/css/reset.scss';
-import './shared/utils/grid/css/grid.scss';
+import './shared/base/grid/css/grid.scss';
 import './shared/base/document/css/document.scss';
 import './shared/base/webfonts/css/webfont-gaegu.scss';
 import './shared/base/webfonts/css/webfont-playfair-display.scss';

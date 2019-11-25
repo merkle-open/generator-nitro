@@ -1,6 +1,6 @@
 {
   "name": "@nitro/gulp",
-  "version": "4.14.3",
+  "version": "4.14.4",
   "description": "Nitro gulp",
   "license": "MIT",
   "author": "The Nitro Team",
@@ -22,7 +22,7 @@
     "gulp"
   ],
   "peerDependencies": {
-    "@nitro/app": ">=4.14.3"
+    "@nitro/app": ">=4.14.4"
   },
   "dependencies": {
     "backstopjs": "4.3.4",

@@ -5,7 +5,8 @@
   "license": "MIT",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=10 <13"
+    "node": ">=10.15.0 <13",
+    "npm": ">=6.4.1 <7"
   },
   "scripts": {
     "lint": "eslint ./lib ./tasks",

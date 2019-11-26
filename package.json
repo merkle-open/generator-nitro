@@ -5,8 +5,8 @@
   "repository": "namics/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=10 <13",
-    "npm": ">=5.2 <7"
+    "node": ">=10.15.0 <13",
+    "npm": ">=6.4.1 <7"
   },
   "scripts": {
     "clean": "npx --ignore-existing --quiet npm-run-all clean:*",

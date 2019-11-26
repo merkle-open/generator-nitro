@@ -6,8 +6,8 @@
   "private": true,
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=10.16.0 <13",
-    "npm": ">=6.9.0 <7"
+    "node": ">=10.15.0 <13",
+    "npm": ">=6.4.1 <7"
   },
   "scripts": {
     "start": "npm run nitro:generate",

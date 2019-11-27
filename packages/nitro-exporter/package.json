@@ -34,7 +34,7 @@
     "delete-empty": "3.0.0",
     "glob": "7.1.6",
     "gulp-filter": "6.0.0",
-    "gulp-vinyl-zip": "2.1.3"
+    "gulp-vinyl-zip": "2.2.0"
   },
   "devDependencies": {
     "@namics/eslint-config": "8.0.3",

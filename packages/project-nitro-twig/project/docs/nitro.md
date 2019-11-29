@@ -448,7 +448,7 @@ Link to resources relatively to the `project`-folder **with** a leading slash.
 ```html
 <link rel="stylesheet" href="/assets/css/ui.css" type="text/css" />
 <link rel="shortcut icon" href="/assets/img/icon/favicon.ico" type="image/x-icon" />
-<script src="/assets/js/ui.js"></script>
+<script defer src="/assets/js/ui.js"></script>
 <a href="/content">Contentpage</a>
 ```
 

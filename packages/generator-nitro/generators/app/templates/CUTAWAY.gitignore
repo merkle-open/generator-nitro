@@ -28,13 +28,14 @@ yarn-error.log
 lerna-debug.log
 
 # Build
+/dist
+/export
 /node
 /target
 
 # Project
 /config/local*
 debug.log
-/dist
 /project/tmp
 /public/assets
 /public/proto

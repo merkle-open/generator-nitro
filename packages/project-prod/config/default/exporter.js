@@ -8,7 +8,7 @@
 const config = {
 	exporter: [
 		{
-			dest: 'dist',
+			dest: 'export',
 			i18n: [],
 			publics: ['public/*', 'public/assets/**/*', 'public/content/**/*'],
 			renames: [

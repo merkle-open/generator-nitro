@@ -99,7 +99,7 @@
     "@dash4/server": "0.7.0",
     "@namics/eslint-config": "8.0.3",
     "@namics/prettier-config": "0.4.2",
-    "@namics/stylelint-config": "0.5.0",
+    "@namics/stylelint-config": "0.5.1",
     "@namics/ts-config": "0.4.3",
     "@nitro/app": "*",
     "@nitro/exporter": "*",

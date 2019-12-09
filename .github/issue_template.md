@@ -26,6 +26,7 @@ The issue refers to the:
 * example nitro project (project-nitro)
 * example nitro project with twig engine (project-nitro-twig)
 * example nitro project with typescript jsCompiler (project-nitro-typescript)
+* example nitro project using "light" server for production preview (project-prod)
 
 <!-- Please delete the rest of the template if it's not a bug report -->
 

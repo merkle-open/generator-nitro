@@ -89,8 +89,9 @@ Updating to a new major version needs some more work. Please check the [release 
 
 Available generators:
 
-* `yo nitro` (aka `yo nitro:app`)
-* `yo nitro:pattern [name]`
+* `yo nitro` (aka `yo nitro:app` / generate or update a project)
+* `yo nitro:pattern [name]` (create or update a pattern)
+* `yo nitro:server` (create an executable light version of the project)
 
 Note: Generators are to be run from the root directory of your project.
 

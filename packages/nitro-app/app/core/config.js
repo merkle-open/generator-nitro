@@ -51,6 +51,18 @@ const defaultConfig = {
 		},
 		production: !!(process.env.NODE_ENV && process.env.NODE_ENV.replace((/\s/g), '') === 'production'),
 		compression: true,
+		projectPaths: [
+			'config',
+			'project/helpers',
+			'project/locales',
+			'project/routes',
+			'project/server',
+			'project/viewData',
+			'public',
+			'src/views',
+			'src/patterns/',
+			'.node-version',
+		],
 	},
 	gulp: {
 		dumpViews: {

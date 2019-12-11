@@ -18,8 +18,9 @@
   },
   "files": [
     "generators/app",
+    "generators/component",
     "generators/pattern",
-    "generators/component"
+    "generators/server"
   ],
   "keywords": [
     "yeoman-generator",

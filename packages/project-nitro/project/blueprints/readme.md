@@ -2,6 +2,10 @@
 
 Nitro provides the following replacement patterns for your blueprints.
 
+## Pattern Generator
+
+`yo nitro:pattern` uses directories configured in 'config.nitro.patterns.<type>.template'
+
 **In Content**:
 
 ```
@@ -32,3 +36,13 @@ $pattern$               // Pattern filename, eg. mainnavigation
 $modifier$              // Modifier filename part eg. highlight
 $decorator$             // Decorator filename part, eg. highlight
 ```
+
+## Server Generator
+
+`yo nitro:server` uses 'server/package.json' if present
+
+<%= nitroAppVersion %>     // Version of devDependency '@nitro/app' from project package.json
+<%= nodeVersion %>         // 'engines/node' from project package.json
+<%= npmVersion %>          // 'engines/npm' from project package.json
+<%= projectName %>         // 'name' from project package.json
+<%= projectVersion %>      // 'version' from project package.json

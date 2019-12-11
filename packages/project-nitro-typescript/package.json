@@ -16,6 +16,7 @@
     "clean:modules": "npx --ignore-existing --quiet rimraf node_modules",
     "commit": "git-cz",
     "nitro:pattern": "yo nitro:pattern",
+    "nitro:server": "npm run build && yo nitro:server --folder=dist",
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
     "update-dependencies": "npm-check-updates -u",
     "\n# LINT/TEST ------- ": "",

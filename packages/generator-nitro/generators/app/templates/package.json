@@ -110,7 +110,7 @@
     "@types/jquery": "3.3.31",<% } %>
     "@types/svg4everybody": "2.1.1",
     "@types/webpack-env": "1.14.0",<% } %>
-    "backstopjs": "4.3.4",
+    "backstopjs": "4.4.2",
     "check-node-version": "4.0.2",
     "commitizen": "4.0.3",
     "config": "3.2.4",

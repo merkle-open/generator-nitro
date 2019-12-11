@@ -107,7 +107,7 @@
     "@nitro/exporter": "*",
     "@nitro/gulp": "*",
     "@nitro/webpack": "*",
-    "backstopjs": "4.3.4",
+    "backstopjs": "4.4.2",
     "check-node-version": "4.0.2",
     "commitizen": "4.0.3",
     "config": "3.2.4",

@@ -19,7 +19,7 @@
     "lint": "lerna run lint --parallel",
     "lint:md": "markdownlint ./readme.md ./.github",
     "update-dependencies": "npm-run-all --parallel update-dependencies:*",
-    "update-dependencies:packages": "lerna exec -- npm-check-updates -u -x globby",
+    "update-dependencies:packages": "lerna exec -- npm-check-updates -u -x globby,twig",
     "update-dependencies:root": "npm-check-updates -u"
   },
   "keywords": [
@@ -41,7 +41,7 @@
     "commitizen": "4.0.3",
     "cz-conventional-changelog": "3.0.2",
     "lerna": "3.19.0",
-    "markdownlint-cli": "0.19.0",
+    "markdownlint-cli": "0.20.0",
     "npm-check-updates": "4.0.1",
     "npm-run-all": "4.1.5",
     "rimraf": "3.0.0"

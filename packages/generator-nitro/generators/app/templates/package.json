@@ -85,8 +85,7 @@
     "flatpickr": "4.6.3",
     "handlebars": "4.5.3",
     "jquery": "3.4.1",
-    "lazysizes": "5.1.2",
-    "lodash": "4.17.15",
+    "lazysizes": "5.2.0",
     "lottie-web": "5.5.10",
     "prevent-window-opener-attacks": "0.2.4"<% } %><% if (options.jsCompiler === 'js') { %>,
     "regenerator-runtime": "0.13.3"<% } %><% if (options.exampleCode) { %>,
@@ -98,7 +97,7 @@
     "@dash4/plugin-readme": "0.7.0",
     "@dash4/plugin-terminal": "0.7.0",
     "@dash4/server": "0.7.0",
-    "@namics/eslint-config": "8.0.3",
+    "@namics/eslint-config": "8.0.4",
     "@namics/prettier-config": "0.4.2",
     "@namics/stylelint-config": "0.5.1",
     "@namics/ts-config": "0.4.3",
@@ -133,7 +132,7 @@
     "rimraf": "3.0.0",
     "stylelint": "12.0.0",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "3.7.3",<% } %>
-    "webpack": "4.41.2",
+    "webpack": "4.41.3",
     "webpack-cli": "3.3.10",
     "yo": "3.1.1"
   },

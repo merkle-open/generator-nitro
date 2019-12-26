@@ -81,7 +81,7 @@
     "@gondel/plugin-hot": "1.0.0",
     "@khanacademy/tota11y": "0.2.0",
     "bootstrap": "4.4.1",
-    "core-js": "3.6.0",
+    "core-js": "3.6.1",
     "flatpickr": "4.6.3",
     "handlebars": "4.5.3",
     "jquery": "3.4.1",
@@ -127,7 +127,7 @@
     "opener": "1.5.1",
     "prettier": "1.19.1",
     "rimraf": "3.0.0",
-    "stylelint": "12.0.0",
+    "stylelint": "12.0.1",
     "webpack": "4.41.4",
     "webpack-cli": "3.3.10",
     "yo": "3.1.1"

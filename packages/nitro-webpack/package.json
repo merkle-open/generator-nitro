@@ -57,7 +57,7 @@
     "ts-config-webpack-plugin": "1.4.0",
     "typescript": "3.7.4",
     "url-loader": "3.0.0",
-    "webpack": "4.41.4",
+    "webpack": "4.41.5",
     "webpackbar": "4.0.0",
     "webpack-bundle-analyzer": "3.6.0"
   },

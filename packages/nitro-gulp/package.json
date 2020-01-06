@@ -37,7 +37,7 @@
     "gulp-imagemin": "6.2.0",
     "gulp-htmllint": "0.0.16",
     "gulp-live-server": "0.0.31",
-    "gulp-load-plugins": "2.0.1",
+    "gulp-load-plugins": "2.0.2",
     "gulp-newer": "1.4.0",
     "gulp-plumber": "1.2.1",
     "gulp-remote-src": "0.4.4",
@@ -46,10 +46,10 @@
     "gulp-svgstore": "7.0.1",
     "imagemin-pngquant": "8.0.0",
     "merge-stream": "2.0.0",
-    "yargs": "15.0.2"
+    "yargs": "15.1.0"
   },
   "devDependencies": {
-    "@namics/eslint-config": "8.0.4",
+    "@namics/eslint-config": "8.0.5",
     "@nitro/app": "*",
     "eslint": "6.8.0",
     "eslint-plugin-import": "2.19.1",

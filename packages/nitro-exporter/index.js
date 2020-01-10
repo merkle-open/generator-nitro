@@ -17,11 +17,15 @@ function getMergedConfigProps(config) {
 
 	collectedConfig.languages = !config.exporter.length ?
 		config.exporter.i18n :
-		config.exporter.reduce((acc, exporterConfig) => [...acc, ...exporterConfig.i18n], ['default']);
+		config.exporter
+			.reduce((acc, exporterConfig) => [...acc, ...exporterConfig.i18n], ['default'])
+			.filter((v, i, a) => a.indexOf(v) === i);
 
 	collectedConfig.additionalRoutes = !config.exporter.length ?
 		getAdditionalRoutes(config.exporter.additionalRoutes) :
-		config.exporter.reduce((acc, exporterConfig) => [...acc, ...getAdditionalRoutes(exporterConfig.additionalRoutes)], []);
+		config.exporter
+			.reduce((acc, exporterConfig) => [...acc, ...getAdditionalRoutes(exporterConfig.additionalRoutes)], [])
+			.filter((v, i, a) => a.indexOf(v) === i);
 
 	return collectedConfig;
 }

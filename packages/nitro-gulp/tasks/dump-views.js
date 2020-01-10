@@ -97,10 +97,10 @@ function dumpViews(port, gulp, plugins) {
 				buffer: true,
 			})
 				.pipe(plugins.rename((path) => {
-					const lang = path.basename.match(/\?lang=([a-z]+)/);
+					const lang = path.basename.match(/\?lang=(.+)$/);
 					path.extname = path.extname || '.html';
 					if (lang) {
-						path.basename = path.basename.replace(/\?lang=[a-z]+/, '');
+						path.basename = path.basename.replace(/\?lang=.+$/, '');
 						path.basename += `-${lang[1]}`;
 					}
 				}))

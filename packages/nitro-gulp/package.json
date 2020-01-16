@@ -29,9 +29,9 @@
   "dependencies": {
     "browser-sync": "2.26.7",
     "compression": "1.7.4",
-    "config": "3.2.4",
+    "config": "3.2.5",
     "del": "5.1.0",
-    "get-port": "5.1.0",
+    "get-port": "5.1.1",
     "globby": "7.1.1",
     "gulp": "4.0.2",
     "gulp-imagemin": "6.2.0",
@@ -52,7 +52,7 @@
     "@namics/eslint-config": "8.0.5",
     "@nitro/app": "*",
     "eslint": "6.8.0",
-    "eslint-plugin-import": "2.19.1",
+    "eslint-plugin-import": "2.20.0",
     "pkg-ok": "2.3.1"
   },
   "publishConfig": {

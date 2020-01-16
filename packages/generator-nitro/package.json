@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "chalk": "3.0.0",
-    "config": "3.2.4",
+    "config": "3.2.5",
     "git-config": "0.0.7",
     "glob": "7.1.6",
     "lodash": "4.17.15",
@@ -46,7 +46,7 @@
     "@namics/eslint-config": "8.0.5",
     "ejs": "3.0.1",
     "eslint": "6.8.0",
-    "eslint-plugin-import": "2.19.1",
+    "eslint-plugin-import": "2.20.0",
     "fs-extra": "8.1.0",
     "jasmine": "3.5.0",
     "pkg-ok": "2.3.1",

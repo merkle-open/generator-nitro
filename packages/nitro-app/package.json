@@ -33,12 +33,12 @@
     "body-parser": "1.19.0",
     "chalk": "3.0.0",
     "compression": "1.7.4",
-    "config": "3.2.4",
+    "config": "3.2.5",
     "dot-object": "2.1.2",
     "express": "4.17.1",
     "extend": "3.0.2",
     "globby": "7.1.1",
-    "hbs": "4.0.6",
+    "hbs": "4.1.0",
     "hbs-utils": "0.0.4",
     "htmllint": "0.8.0",
     "i18next": "19.0.3",
@@ -57,7 +57,7 @@
   "devDependencies": {
     "@namics/eslint-config": "8.0.5",
     "eslint": "6.8.0",
-    "eslint-plugin-import": "2.19.1",
+    "eslint-plugin-import": "2.20.0",
     "pkg-ok": "2.3.1"
   },
   "publishConfig": {

@@ -227,7 +227,8 @@ module.exports = (options = { rules: {}, features: {} }) => {
 						require('imagemin-gifsicle')({
 							interlaced: false
 						}),
-						require('imagemin-jpegtran')({
+						require('imagemin-mozjpeg')({
+							quality: 75,
 							progressive: true
 						}),
 						require('imagemin-optipng')({

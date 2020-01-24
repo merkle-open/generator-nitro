@@ -34,7 +34,7 @@
     "get-port": "5.1.1",
     "globby": "7.1.1",
     "gulp": "4.0.2",
-    "gulp-imagemin": "7.0.0",
+    "gulp-imagemin": "7.1.0",
     "gulp-htmllint": "0.0.16",
     "gulp-live-server": "0.0.31",
     "gulp-load-plugins": "2.0.2",

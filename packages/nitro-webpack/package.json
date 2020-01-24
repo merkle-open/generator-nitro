@@ -38,7 +38,7 @@
     "handlebars-loader": "1.7.1",
     "iconfont-webpack-plugin": "4.2.1",
     "imagemin": "7.0.1",
-    "imagemin-gifsicle": "6.0.1",
+    "imagemin-gifsicle": "7.0.0",
     "imagemin-mozjpeg": "8.0.0",
     "imagemin-optipng": "7.1.0",
     "imagemin-pngquant": "8.0.0",

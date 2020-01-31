@@ -1,4 +1,8 @@
-body {
+@import '../../../../shared/utils/colors/css/colors.scss';
+
+html {
 	font-family: Arial, sans-serif;
 	line-height: 1.2;
+	color: $color-base-font;
+	background-color: $color-base-background;
 }

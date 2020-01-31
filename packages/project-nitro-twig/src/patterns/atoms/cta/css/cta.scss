@@ -26,16 +26,16 @@
 	.a-cta {
 		&:hover {
 			.a-cta__circle--size-s {
-				background-color: rgba($brand-color-2, 1);
+				background-color: rgba($color-brand-1, 1);
 			}
 			.a-cta__circle--size-m {
-				background-color: rgba($brand-color-2, 0.6);
+				background-color: rgba($color-brand-1, 0.6);
 			}
 			.a-cta__circle--size-l {
-				background-color: rgba($brand-color-2, 0.75);
+				background-color: rgba($color-brand-1, 0.75);
 			}
 			.a-cta__text {
-				color: $brand-color-2;
+				color: $color-brand-1;
 			}
 		}
 	}

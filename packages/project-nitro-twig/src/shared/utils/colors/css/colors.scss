@@ -1,5 +1,12 @@
 // colors
 @import './variables/colors.scss';
 
+$color-base-font: $foreground;
+$color-base-background: $background;
+$color-area-background: $area;
+
 // brand colors
-$brand-color-1: $blue;
+$color-brand-font: $white;
+$color-brand-1: $blue;
+$color-brand-2: $purple;
+$color-brand-3: $yellow;

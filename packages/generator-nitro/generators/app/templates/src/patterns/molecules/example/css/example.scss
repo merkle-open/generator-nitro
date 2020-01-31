@@ -1,18 +1,18 @@
 @import '../../../../shared/utils/colors/css/colors.scss';
 
 .m-example {
-	padding: 22px 25px;
 	margin: 1em 0;
-	background: darken($gray, 15%);
-	border-radius: 1em;
+	padding: 1.8em 2.2em;
+	background-color: $color-area-background;
+	border-radius: 0.5em;
 }
 .m-example__headline {
 	font-size: 1.6em;
-	color: $white;
 }
 .m-example__link {
-	color: $white;
+	color: inherit;
 }
 .m-example__button {
+	padding: 0.5rem 1rem;
 	margin: 0.5rem 0.5rem 0.5rem 0;
 }

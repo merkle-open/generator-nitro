@@ -1,12 +1,13 @@
 @import '../../../../../shared/utils/colors/css/colors.scss';
 
 .m-example--blue {
-	background: $brand-color-1;
+	color: $color-brand-font;
+	background-color: $color-brand-1;
 	animation: blue-background-change 10s infinite;
 }
 
 @keyframes blue-background-change {
-	0%,100% { background-color: darken(desaturate($brand-color-1, 30%), 10%); }
-	30% { background-color: darken($brand-color-1, 20%); }
-	60% { background-color: darken($brand-color-1, 10%); }
+	0%,100% { background-color: darken(desaturate($color-brand-1, 30%), 10%); }
+	30% { background-color: darken($color-brand-1, 20%); }
+	60% { background-color: darken($color-brand-1, 10%); }
 }

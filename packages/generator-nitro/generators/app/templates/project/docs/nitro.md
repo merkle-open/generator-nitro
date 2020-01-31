@@ -404,6 +404,8 @@ You may overwrite data from views & patterns in request parameters.
 
 ## Assets
 
+For final use, all assets are copied from the 'src' to the 'public' folder.
+
 ### Webpack
 
 The main assets will be bundled with an easy to use webpack config.
@@ -413,19 +415,29 @@ clientside handlebars, webfonts and images (with minification). It also includes
 
 You only have to enable the desired loaders and features. And of course, it is possible to extend the configuration to your needs.
 
-The configuration is placed in `/config/webpack`  
+The configuration is placed in '/config/webpack'  
 See [readme](./nitro-webpack.md) for configuration options.
 
 ### Other Assets
 
 Nitro also gives you some gulp tasks to use for additional assets you need in your build.
-You may copy assets, minify images or generate an svg sprites.
+You may copy assets, minify images or generate svg sprites.
 
-Configuration for gulp tasks is done in [config package](../../config/default/gulp.js) and [`gulpfile.js`](../../gulpfile.js)
+Configuration for gulp tasks is done in [config package](../../config/default/gulp.js) and ['gulpfile.js'](../../gulpfile.js)
 
 ### Prototype Assets
 
-Place [code for development](../../src/proto/readme.md) in the corresponding directories.
+Place [code for development](../../src/proto/readme.md) in the corresponding directories.<% if (options.templateEngine !== 'twig') { %>
+
+### Asset helper
+
+The asset helper makes it possible to easily link your public assets in your markup.
+It can be used to change asset pathes depending on the environment.
+
+```
+<link href="{{asset name='/css/ui.min.css'}}" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="{{asset name='/img/icon/apple-touch-icon.png'}}">
+```<% } %>
 
 ## Translations
 
@@ -481,11 +493,16 @@ To stay consistent you should favour the use of relative paths with a leading sl
 Link to resources relatively to the `project`-folder **with** a leading slash.
 
 ```html
-<link rel="stylesheet" href="/assets/css/ui.css" type="text/css" />
+<link rel="stylesheet" href="/assets/css/ui.min.css" type="text/css" />
 <link rel="shortcut icon" href="/assets/img/icon/favicon.ico" type="image/x-icon" />
-<script defer src="/assets/js/ui.js"></script>
+<script defer src="/assets/js/ui.min.js"></script>
 <a href="/content">Contentpage</a>
+```<% if (options.templateEngine !== 'twig') { %>
+
+...or use the 'asset' .hbs helper for public assets 
 ```
+<link rel="stylesheet" href="{{asset name='/css/ui.min.css'}}" type="text/css" />
+```<% } %>
 
 ### Upper & lower case letters
 

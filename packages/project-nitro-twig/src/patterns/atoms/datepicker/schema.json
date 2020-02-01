@@ -4,6 +4,9 @@
 	"description": "A date atom",
 	"type": "object",
 	"properties": {
+		"label": {
+			"type": "string"
+		},
 		"inputPlaceholder": {
 			"type": "string"
 		},
@@ -16,5 +19,6 @@
 		"defaultDate": {
 			"type": "string"
 		}
-	}
+	},
+	"required": ["label"]
 }

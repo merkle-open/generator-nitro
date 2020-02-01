@@ -38,6 +38,11 @@ const initPicker = (element) => {
 	if (altFormat) {
 		options.altInput = true;
 		options.altFormat = altFormat;
+
+		// improve accessibility
+		options.onReady = (a, b, fp) => {
+			fp.altInput.setAttribute('aria-hidden', 'true');
+		};
 	}
 
 	flatpickr(element, options);

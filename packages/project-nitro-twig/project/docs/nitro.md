@@ -12,7 +12,7 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 -   Webpack Builder with HMR
 -   Gulp Tasks for additional functionality
 -   Linting, Source Maps, PostCSS & Browsersync
--   Setup for unit, e2e and visual regression testing (cypress, backstopjs) & lighthouse
+-   Setup for e2e and visual regression testing (cypress, backstopjs) & lighthouse
 -   Pattern generator
 -   [Client side templates](./client-templates.md)
 -   [Static Exports](./nitro-exporter.md)
@@ -76,7 +76,7 @@ For information on how to use Nitro with docker, please refer to [nitro-docker.m
 
 Nitro uses the flexible [config package](https://www.npmjs.com/package/config) for project configuration.
 This lets you to extend the default configuration for different deployment environments or local usage.  
-See details in [config readme](nitro-config.md)
+See details in [config readme](./nitro-config.md)
 
 ### Global Configuration
 
@@ -260,11 +260,10 @@ Render a partial (twig snippet). Partials are placed in `src/views/_partials/` a
 
 ```
 {% partial 'head' %}
-```
 
 ### Render placeholders
 
-Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `/src/views/_placeholders/` as `*.twig` files.
+Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `/src/views/_placeholders/` as `*.twig` files.  
 The following example renders the file `content/example.twig` from `/src/views/_placeholders/`.
 
 ```
@@ -273,7 +272,7 @@ The following example renders the file `content/example.twig` from `/src/views/_
 
 ### Render page lists
 
-To render all pages in the `src/views` folder, just call the hbs helper <% if (options.templateEngine === 'twig') { %>`{% viewlist %}`<% } else { %>`{{viewlist}}`<% } %>. The helper renders an `<ul>` list 
+To render all pages in the `src/views` folder, just call the hbs helper `{% viewlist %}`. The helper renders an `<ul>` list 
 containing links to the respective pages.
 
 #### Filter generated list
@@ -300,29 +299,25 @@ With parameter include and exclude combined, all views containing at least one o
 
 #### Data per page
 
-You may pass data to your templates (view, layout, partial, pattern) per view.
+You may pass data to your templates (view, layout, partial, pattern) per view.  
 Put a file with the same name as the view in the folder `/src/views/_data/` with the file extension `.json`. (Use the same folder structure as in `/src/views`)
 
 ```
-
 /src/views/index.twig
-/src/views/\_data/index.json
+/src/views/_data/index.json
 http://localhost:8080/index
 
 /src/views/content/variant.twig
-/src/views/\_data/content/variant.json
+/src/views/_data/content/variant.json
 http://localhost:8080/content-variant
-
 ```
 
 It's also possible to use a custom data file by requesting with a query param `?_data=...`:
 
 ```
-
 /src/views/index.twig
-/src/views/\_data/index-test.json
+/src/views/_data/index-test.json
 http://localhost:8080/index?_data=index-test
-
 ```
 
 ##### Use different layout
@@ -331,30 +326,26 @@ If you need a different layout for a page, do so in the corresponding view data 
 (View data files needs to be placed in same directory structure than views)
 
 ```
-
-/src/views/_data/index.json
+# /src/views/_data/index.json
 {
     "_layout": "home"
 }
 
-/src/views/_layouts/home.twig
+# /src/views/_layouts/home.twig
 http://localhost:8080/index
-
 ```
 
 ...or you may change the layout temporarily by requesting a page with the query param `?_layout=...`
 
 ```
-
-/src/views/index.twig
-/src/views/\_layouts/home.twig
+# /src/views/index.twig
+# /src/views/_layouts/home.twig
 http://localhost:8080/index?_layout=home
-
-````
+```
 
 ##### Side Note About Extending Data
 
-Don't overload the view data. It will be deep extended with other data from patterns, request parameters, ....
+Don't overload the view data. It will be deep extended with other data from patterns, request parameters, ....  
 It's not recommended to use view data for data variations of patterns.
 
 #### Dynamic view data
@@ -383,7 +374,7 @@ clientside handlebars, webfonts and images (with minification). It also includes
 
 You only have to enable the desired loaders and features. And of course, it is possible to extend the configuration to your needs.
 
-The configuration is placed in `/config/webpack`
+The configuration is placed in `/config/webpack`  
 See [readme](./nitro-webpack.md) for configuration options.
 
 ### Other Assets
@@ -399,13 +390,13 @@ Place [code for development](../../src/proto/readme.md) in the corresponding dir
 
 ## Translations
 
-Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the helper described in the following section.
+Nitro uses [i18next](https://www.npmjs.com/package/i18next) as Translation Library and gives you the helper described in the following section.  
 Translations are stored in `/project/locales/[lang]/translation.json`.
 
 Express Middleware configuration:
 
-* Fallback language: `default`
-* Language switch with query parameter: `?lang=de`
+-   Fallback language: `default`
+-   Language switch with query parameter: `?lang=de`
 
 ### Translation twig helper
 
@@ -416,16 +407,15 @@ or use `%s` placeholders for sprintf functionality.
 
 Some examples:
 
-```js
-
+```
 data = {
-    name: 'developer'
+   name: 'developer'
 }
 
 "test": {
     "example": {
         "string" : "gold",
-        "nested": "All that glitters is not \$t(test.example.string).",
+        "nested": "All that glitters is not $t(test.example.string).",
         "sprintf" : "The first three letters of %s are: %s, %s and %s",
         "interpolation" : "Hello {{name}}"
     }
@@ -435,8 +425,7 @@ data = {
 {% t 'test.example.nested' %}
 {% t 'test.example.sprintf' data=['alphabet', 'a', 'l', 'p'] %}
 {% t 'test.example.interpolation' data={ name:'developer' } %}
-
-````
+```
 
 ## Conventions
 

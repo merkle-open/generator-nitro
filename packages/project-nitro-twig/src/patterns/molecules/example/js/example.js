@@ -5,6 +5,11 @@ import $ from 'jquery';
 const templateExample = require('../template/example.hbs');
 const templateExampleLinks = require('../template/example.links.hbs');
 
+/**
+ * Example module implementation.
+ * @author Pre Name <pre.name@domain.com>
+ */
+
 const Selectors = {
 	Add: '.js-m-example__add',
 	More: '.js-m-example__more',

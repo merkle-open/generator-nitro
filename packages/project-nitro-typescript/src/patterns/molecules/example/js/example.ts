@@ -1,4 +1,4 @@
-import { Component, EventListener, GondelBaseComponent, startComponents } from '@gondel/core';
+import { Component, GondelBaseComponent, EventListener, startComponents } from '@gondel/core';
 import $ from 'jquery';
 import 'core-js/features/array/includes';
 import 'core-js/features/string/starts-with';

@@ -11,12 +11,16 @@ Configurable and easy to use webpack 4 config for nitro projects.
 ```
 const options = {
     rules: {
-        ts: true,
+        js: {
+            eslint: false,
+        },
+        ts: false,
         scss: {
             stylelint: false,
         },
         hbs: true,
         woff: true,
+        font: false,
         image: true,
     },
     features: {
@@ -39,45 +43,84 @@ No loader rule is enabled by default. Activate following prepared rules you need
 
 -   Type: boolean || object
 -   default: false
+-   file types: js, jsx, mjs
 
--   `true` activates JavaScript support
+Config:
+
+-   `true` or `{}` activates JavaScript support
 -   `{ eslint: true }` additionally adds eslint live linting feature (only relevant for development build)
 
 #### `options.rules.ts`
 
 -   Type: boolean
 -   default: false
+-   file types: ts, tsx
 
-`true` will activate TypeScript support
+Config:
+
+-   `true` will activate TypeScript support
 
 #### `options.rules.scss`
 
 -   Type: boolean || object
 -   default: false
+-   file types: scss, css
 
--   `true` will activate scss support
+Config:
+
+-   `true` or `{}` will activate scss support
 -   `{ stylelint: true }` additionally adds stylelint live linting feature (only relevant for development build)
 
 #### `options.rules.hbs`
 
--   Type: boolean
+-   Type: boolean || object
 -   default: false
+-   file types: hbs
 
-`true` will activate handlebars handlebars precompiled templates support
+Config:
+
+-   `true` or `{}` will activate handlebars handlebars precompiled templates support
+-   `{ include: [] }` additionally adds include config to rule
+-   `{ exclude: [] }` additionally adds exclude config to rule
 
 #### `options.rules.woff`
 
--   Type: boolean
+-   Type: boolean || object
 -   default: false
+-   file types: woff, woff2
 
-`true` will activate woff font support (in CSS files)
+Config:
+
+-   `true` or `{}` will activate woff font support (in CSS files)
+-   `{ include: [] }` additionally adds include config to rule
+-   `{ exclude: [] }` additionally adds exclude config to rule
+
+#### `options.rules.font`
+
+-   type: boolean || object
+-   default: false
+-   file types: eot, svg, ttf, woff, woff2
+
+Config:
+
+* `true` or `{}` will activate font support for eot, svg, ttf, woff & woff2 fonts (in CSS files)
+* `{ include: [] }` additionally adds include config to rule
+* `{ exclude: [] }` additionally adds exclude config to rule
+
+⚠ Please use this rule with care. You have to configure includes and exclude when you also use woff and/or image loader. 
+Otherwise svg or woff files are processed with multiple configurations.
 
 #### `options.rules.image`
 
--   Type: boolean
+-   Type: boolean || object
 -   default: false
+-   file types: png, jpg, gif, svg
 
-`true` will activate image support ()
+Config:
+
+-   `true` will activate image support
+-   `{ include: [] }` additionally adds include config to rule
+-   `{ exclude: [] }` additionally adds exclude config to rule
 
 ### `options.features`
 
@@ -108,7 +151,7 @@ By default, all js imports from 'node_modules' are extracted to a 'vendors.js' t
 Dynamically imported js files will be extracted to `public/js/dynamic/`.
 You may use them in a promise chain.
 
-```
+```js
 import('package-name').then((pack) => {
 	// do something with 'pack'
 });

@@ -7,8 +7,6 @@ import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 /**
  * configuration for lazysizes
- *
- * @author ernscht <ernscht@gmail.com>
  */
 
 const stateClasses = {

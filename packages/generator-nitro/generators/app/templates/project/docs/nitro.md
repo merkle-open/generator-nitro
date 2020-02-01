@@ -248,8 +248,8 @@ To be more flexible, you may also pass additional arguments to the pattern, whic
 ```<% if (options.templateEngine === 'twig') { %>
 {% pattern name='example' additionalData={ modifier='blue' } %}<% } else { %>
 {{pattern name='example' modifier='blue'}}<% } %>
-```
-<% if (options.templateEngine !== 'twig') { %>
+```<% if (options.templateEngine !== 'twig') { %>
+
 #### Render patterns with children
 
 Maybe using your pattern templates with transclusion could be helpful in some cases.

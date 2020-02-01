@@ -11,7 +11,7 @@ hot(module);
 /* eslint-disable no-useless-escape */
 /* eslint-disable @typescript-eslint/no-require-imports */
 
-async function requireAll(requireContext) {
+function requireAll(requireContext) {
 	return requireContext.keys().map(requireContext);
 }
 
@@ -23,6 +23,7 @@ requireAll(require.context('./patterns', true, /[\/\\]proto[\/\\](?:[a-z0-9\-]+)
 requireAll(require.context('./proto/css', true, /^.*(s?css)$/));
 requireAll(require.context('./patterns', true, /[\/\\]proto[\/\\](?:[a-z0-9\-]+).(s?css)$/));
 
+/* eslint-enable no-useless-escape */
 // require develop helpers
 require('./proto/utils/develop-helpers');
 

@@ -12,7 +12,7 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 -   Webpack Builder with HMR
 -   Gulp Tasks for additional functionality
 -   Linting, Source Maps, PostCSS & Browsersync
--   Setup for unit, e2e and visual regression testing (cypress, backstopjs) & lighthouse
+-   Setup for e2e and visual regression testing (cypress, backstopjs) & lighthouse
 -   Pattern generator
 -   [Client side templates](./client-templates.md)
 -   [Static Exports](./nitro-exporter.md)
@@ -264,7 +264,7 @@ Render a partial (twig snippet). Partials are placed in `src/views/_partials/` a
 
 ### Render placeholders
 
-Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `/src/views/_placeholders/` as `*.twig` files.
+Using a placeholder is another way to output some markup. Placeholders are placed in a folder inside `/src/views/_placeholders/` as `*.twig` files.  
 The following example renders the file `content/example.twig` from `/src/views/_placeholders/`.
 
 ```
@@ -327,20 +327,20 @@ If you need a different layout for a page, do so in the corresponding view data 
 (View data files needs to be placed in same directory structure than views)
 
 ```
-    /src/views/_data/index.json
-    {
-        "_layout": "home"
-    }
+# /src/views/_data/index.json
+{
+    "_layout": "home"
+}
 
-    /src/views/_layouts/home.twig
-    http://localhost:8080/index
+# /src/views/_layouts/home.twig
+http://localhost:8080/index
 ```
 
 ...or you may change the layout temporarily by requesting a page with the query param `?_layout=...`
 
 ```
-/src/views/index.twig
-/src/views/_layouts/home.twig
+# /src/views/index.twig
+# /src/views/_layouts/home.twig
 http://localhost:8080/index?_layout=home
 ```
 

@@ -4,12 +4,12 @@
 <meta name="description" content="">
 <meta name="robots" content="noindex, nofollow">
 
-<link rel="icon" href="/assets/img/icon/favicon.ico">
-<link rel="apple-touch-icon" href="/assets/img/icon/apple-touch-icon.png">
+<link rel="icon" href="{{asset name='/img/icon/favicon.ico'}}">
+<link rel="apple-touch-icon" href="{{asset name='/img/icon/apple-touch-icon.png'}}">
 <meta name="application-name" content="Nitro">
 <meta name="msapplication-TileColor" content="#5133ab">
-<meta name="msapplication-TileImage" content="/assets/img/icon/tile-icon.png">
+<meta name="msapplication-TileImage" content="{{asset name='/img/icon/tile-icon.png'}}">
 
 <title>{{#if _nitro.production}}PRODUCTION: {{/if}}{{_nitro.pageTitle}}</title>
-<link href="/assets/css/ui{{#if _nitro.production}}.min{{/if}}.css" rel="stylesheet">
-<link href="/assets/css/proto{{#if _nitro.production}}.min{{/if}}.css" rel="stylesheet">
+<link href="{{asset name='/css/ui.min.css'}}" rel="stylesheet">
+<link href="{{asset name='/css/proto.min.css'}}" rel="stylesheet">

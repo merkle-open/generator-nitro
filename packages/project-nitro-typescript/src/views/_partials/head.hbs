@@ -3,14 +3,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Nitro - {{_nitro.pageTitle}}">
 <meta name="robots" content="noindex, nofollow">
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/icon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/icon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/icon/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="{{asset name='/img/icon/apple-touch-icon.png'}}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{asset name='/img/icon/favicon-32x32.png'}}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{asset name='/img/icon/favicon-16x16.png'}}">
 <meta name="msapplication-config" content="none">
 <meta name="application-name" content="Nitro Example Page">
 <title>{{_nitro.pageTitle}}</title>
-<link href="/assets/css/ui{{#if _nitro.production}}.min{{/if}}.css" rel="stylesheet">
-<link href="/assets/css/proto{{#if _nitro.production}}.min{{/if}}.css" rel="stylesheet">
-<script defer src="/assets/js/vendors{{#if _nitro.production}}.min{{/if}}.js"></script>
-<script defer src="/assets/js/ui{{#if _nitro.production}}.min{{/if}}.js"></script>
-<script defer src="/assets/js/proto{{#if _nitro.production}}.min{{/if}}.js"></script>
+<link href="{{asset name='/css/ui.min.css'}}" rel="stylesheet">
+<link href="{{asset name='/css/proto.min.css'}}" rel="stylesheet">
+<script defer src="{{asset name='/js/vendors.min.js'}}"></script>
+<script defer src="{{asset name='/js/ui.min.js'}}"></script>
+<script defer src="{{asset name='/js/proto.min.js'}}"></script>

@@ -112,7 +112,7 @@
     "commitizen": "4.0.3",
     "config": "3.2.5",
     "cross-env": "7.0.0",
-    "cypress": "3.8.3",
+    "cypress": "4.0.1",
     "cz-conventional-changelog": "3.1.0",
     "eslint": "6.8.0",
     "eslint-plugin-import": "2.20.1",
@@ -127,8 +127,8 @@
     "npm-check-updates": "4.0.1",
     "opener": "1.5.1",
     "prettier": "1.19.1",
-    "rimraf": "3.0.1",
-    "stylelint": "13.0.0",<% if (options.jsCompiler === 'ts') { %>
+    "rimraf": "3.0.2",
+    "stylelint": "13.1.0",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "3.7.5",<% } %>
     "webpack": "4.41.5",
     "webpack-cli": "3.3.10",

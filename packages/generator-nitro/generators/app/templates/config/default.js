@@ -2,7 +2,7 @@
 
 /**
  * Main Project Config
- * https://www.npmjs.com/package/config
+ * see '/project/docs/nitro-config.md'
  */
 
 const extend = require('extend');

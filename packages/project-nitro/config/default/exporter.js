@@ -2,7 +2,6 @@
 
 /**
  * Nitro Exporter Config
- * https://github.com/namics/nitro-exporter
  */
 
 const config = {

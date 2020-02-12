@@ -5,7 +5,7 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const request = require('request');
+const got = require('got');
 const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
@@ -446,8 +446,8 @@ module.exports = class extends Generator {
 						this.fs.copy(this.destinationPath(file.src), this.destinationPath(file.dest));
 					} else {
 						// get readme from github master branch
-						request
-							.get(file.srcWeb)
+						got
+							.stream(file.srcWeb)
 							.pipe(fs.createWriteStream(this.destinationPath(file.dest)));
 					}
 				}

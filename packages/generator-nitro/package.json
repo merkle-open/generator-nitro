@@ -37,7 +37,7 @@
     "config": "3.2.5",
     "git-config": "0.0.7",
     "glob": "7.1.6",
-    "got": "10.5.5",
+    "got": "10.5.7",
     "lodash": "4.17.15",
     "yeoman-generator": "4.5.0",
     "yosay": "2.0.2"

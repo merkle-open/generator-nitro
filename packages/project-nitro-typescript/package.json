@@ -75,7 +75,7 @@
     "modular"
   ],
   "dependencies": {
-    "@gondel/core": "1.1.0",
+    "@gondel/core": "1.2.0",
     "@gondel/plugin-hot": "1.1.0",
     "@khanacademy/tota11y": "0.2.0",
     "bootstrap": "4.4.1",

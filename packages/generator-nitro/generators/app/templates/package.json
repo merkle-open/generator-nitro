@@ -104,10 +104,10 @@
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "4.3.1",<% if (options.exampleCode ) { %>
-    "@types/jquery": "3.3.32",<% } %>
+    "@types/jquery": "3.3.33",<% } %>
     "@types/svg4everybody": "2.1.1",
     "@types/webpack-env": "1.15.1",<% } %>
-    "backstopjs": "4.4.2",
+    "backstopjs": "4.5.0",
     "check-node-version": "4.0.2",
     "commitizen": "4.0.3",
     "config": "3.2.6",

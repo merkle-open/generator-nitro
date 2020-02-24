@@ -63,7 +63,6 @@
     "docker:start": "npm run docker:dev:start",
     "docker:dev:start": "docker-compose -f docker-compose-dev.yml up",
     "docker:dev:console": "docker exec -it project-nitro-twig_server-dev bash",
-    "docker:dev:watch": "docker-volume-watcher -e \"*.git*\" \"*build*\" \"*dist*\"",
     "docker:prod": "docker-compose up"
   },
   "keywords": [

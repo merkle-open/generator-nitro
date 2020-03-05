@@ -236,7 +236,7 @@ module.exports = class extends Generator {
 			'docker-compose.yml',
 			'docker-compose-dev.yml',
 			'gulpfile.js',
-			'package.json',
+			'CUTAWAYpackage.json',
 		];
 		const ignores = [
 			// files to ignore
@@ -400,14 +400,14 @@ module.exports = class extends Generator {
 				return;
 			}
 
+			// remove CUTAWAY in template names (CUTAWAY.gitignore to .gitignore)
+			if (destinationPath.indexOf('CUTAWAY') !== -1) {
+				destinationPath = destinationPath.replace(/CUTAWAY/g, '');
+			}
+
 			if (_.indexOf(tplFiles, file) !== -1) {
 				this.fs.copyTpl(sourcePath, destinationPath, templateData);
 				return;
-			}
-
-			// rename CUTAWAY.gitignore to .gitignore
-			if (destinationPath.indexOf('CUTAWAY') !== -1) {
-				destinationPath = destinationPath.replace(/CUTAWAY/g, '');
 			}
 
 			this.fs.copy(sourcePath, destinationPath);

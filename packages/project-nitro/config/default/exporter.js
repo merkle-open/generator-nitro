@@ -12,14 +12,14 @@ const config = {
 			publics: ['public/*', 'public/assets/**/*', 'public/content/**/*'],
 			renames: [
 				{
-					src: 'dist/assets/**',
-					base: 'dist/assets',
-					dest: 'dist/',
+					src: 'export/assets/**',
+					base: 'export/assets',
+					dest: 'export/',
 				},
 			],
 			replacements: [
 				{
-					glob: ['dist/*.html'],
+					glob: ['export/*.html'],
 					replace: [
 						{
 							from: '/assets/',
@@ -36,7 +36,7 @@ const config = {
 					],
 				},
 				{
-					glob: ['dist/css/*.css'],
+					glob: ['export/css/*.css'],
 					replace: [
 						{
 							from: '/assets/',
@@ -49,7 +49,7 @@ const config = {
 					],
 				},
 				{
-					glob: ['dist/js/*.js'],
+					glob: ['export/js/*.js'],
 					replace: [
 						{
 							from: '/assets/',

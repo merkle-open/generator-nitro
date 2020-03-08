@@ -20,9 +20,9 @@ The exporter configuration can be found in your [config](../../config).
 
 ### exporter.dest (String)
 
-The distribution folder for your static export. This is where all your static files will go.
+The export folder for your static export. This is where all your static files will go.
 
--   example: `'dist'`
+-   example: `'export'`
 
 ### exporter.i18n (Array)
 
@@ -53,9 +53,9 @@ Renaming is used with native `gulp.src(...).pipe(gulp.dest(...))`.
 ```
 [
     {
-        src: 'dist/assets/**',
-        base: 'dist/assets',
-        dest: 'dist/',
+        src: 'export/assets/**',
+        base: 'export/assets',
+        dest: 'export/',
     },
 ]
 ```
@@ -72,7 +72,7 @@ Defines string replacements. Takes an array of objects with `glob` and `replace`
 ```
 [
     {
-        glob: ['dist/*.html', 'dist/css/*.css'],
+        glob: ['export/*.html', 'export/css/*.css'],
         replace: [
             {
                 from: '/assets',
@@ -110,19 +110,19 @@ Defines, if the export should be zipped.
 ```
 "exporter": [
     {
-        "dest": "dist",
+        "dest": "export",
         "i18n": [],
         "publics": true,
         "renames": [
             {
-                "src": "dist/assets/**",
-                "base": "dist/assets",
-                "dest": "dist/"
+                "src": "export/assets/**",
+                "base": "export/assets",
+                "dest": "export/"
             }
         ],
         "replacements": [
             {
-                glob: ['dist/*.html'],
+                glob: ['export/*.html'],
                 replace: [
                     {
                         from: '/assets/',
@@ -139,7 +139,7 @@ Defines, if the export should be zipped.
                 ],
             },
             {
-                glob: ['dist/css/*.css'],
+                glob: ['export/css/*.css'],
                 replace: [
                     {
                         from: '/assets/',
@@ -152,7 +152,7 @@ Defines, if the export should be zipped.
                 ],
             },
             {
-                "glob": ["dist/js/*.js"],
+                "glob": ["export/js/*.js"],
                 "replace": [
                     {
                         from: '/assets/',
@@ -180,7 +180,7 @@ You can define multiple exporter configuration objects, by setting the `exporter
 ```
 exporter: [
     {
-        dest: 'dist',
+        dest: 'export',
         i18n: [],
         publics: true,
         renames: [],

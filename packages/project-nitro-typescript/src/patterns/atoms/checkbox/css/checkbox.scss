@@ -12,7 +12,7 @@ $checkbox-color: $color-gray-5;
 
 .a-checkbox__input {
 	// Checkbox Replacement: Hide default
-	@include input-visually-hidden();
+	@include visually-hidden();
 
 	// Checkbox Replacement: Box
 	+ .a-checkbox__label::before {

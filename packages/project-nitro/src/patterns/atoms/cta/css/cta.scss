@@ -1,43 +1,36 @@
 @import '../../../../shared/utils/colors2/css/colors2.scss';
-@import '../../../../shared/utils/breakpoints/css/breakpoints.scss';
 
 .a-cta {
 	display: block;
 	cursor: pointer;
 	margin: 0 auto;
 	padding: 0;
-	outline: none;
 	text-align: center;
 	position: relative;
 	width: 80px;
 	height: 80px;
-	color: $color-white;
+
+	color: $color-gray-4;
 
 	&:hover,
 	&:focus {
-		color: $color-white;
+		color: $color-brand-1;
+
+		.a-cta__circle--size-s {
+			background-color: rgba($color-brand-1, 1);
+		}
+		.a-cta__circle--size-m {
+			background-color: rgba($color-brand-1, 0.6);
+		}
+		.a-cta__circle--size-l {
+			background-color: rgba($color-brand-1, 0.75);
+		}
+		.a-cta__text {
+			color: $color-brand-1;
+		}
 	}
 	&:focus {
 		outline: none;
-	}
-}
-
-@media (min-width: $size-md-min) {
-	.a-cta {
-		&:hover {
-			.a-cta__circle--size-s {
-				background-color: rgba($color-brand-1, 1);
-			}
-			.a-cta__circle--size-m {
-				background-color: rgba($color-brand-1, 0.6);
-			}
-			.a-cta__circle--size-l {
-				background-color: rgba($color-brand-1, 0.75);
-			}
-			.a-cta__text {
-				color: $color-brand-1;
-			}
-		}
 	}
 }
 
@@ -57,14 +50,12 @@
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
-	transition: background-color 0.3s ease;
-}
-
-.a-cta__circle--size-s {
 	width: 48px;
 	height: 48px;
 	background-color: rgba($color-gray-6, 1);
+
+	transform: translate(-50%, -50%);
+	transition: background-color 0.3s ease;
 }
 
 .a-cta__circle--size-m {
@@ -92,7 +83,8 @@
 	position: absolute;
 	bottom: -1.3em;
 	width: 100%;
-	transition: color 0.3s ease-in;
+
+	transition: color 0.3s ease-in, opacity 0.3s ease-in;
 }
 
 @keyframes animation-a-cta--pulse-m {

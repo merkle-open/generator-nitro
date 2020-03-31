@@ -1,3 +1,3 @@
 # mixins
 
--   input-visually-hidden
+-   visually-hidden

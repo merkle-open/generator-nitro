@@ -1,5 +1,5 @@
-@mixin input-visually-hidden() {
-	// Visually hidden (hides original native input)
+@mixin visually-hidden() {
+	// Hide only visually, but have it available for screen readers
 	border: 0;
 	clip: rect(0 0 0 0);
 	height: 1px;
@@ -12,6 +12,8 @@
 	/* stylelint-disable plugin/stylelint-bem-namics */
 	&.focusable:active,
 	&.focusable:focus {
+		// allows focusable elements to be still focusable
+		// when navigated to via the keyboard
 		clip: auto;
 		height: auto;
 		margin: 0;

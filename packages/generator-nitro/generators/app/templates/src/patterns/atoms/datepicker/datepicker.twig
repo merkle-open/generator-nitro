@@ -1,4 +1,5 @@
-<div class="a-datepicker" data-g-name="Datepicker">
+<label class="a-datepicker" data-g-name="Datepicker">
+	<span class="a-datepicker__label">{{label}}</span>
 	<input type="text" class="a-datepicker__input js-a-datepicker__input"
 		aria-label="{{label}}"
 		{% if inputPlaceholder %}placeholder="{{inputPlaceholder}}"{% endif %}
@@ -6,4 +7,4 @@
 		{% if altFormat %}data-alt-format="{{altFormat}}"{% endif %}
 		{% if defaultDate %}data-default-date="{{defaultDate}}"{% endif %}
 	>
-</div>
+</label>

@@ -31,7 +31,7 @@
   "dependencies": {
     "ajv": "6.12.0",
     "body-parser": "1.19.0",
-    "chalk": "3.0.0",
+    "chalk": "4.0.0",
     "compression": "1.7.4",
     "cookie-session": "1.4.0",
     "config": "3.3.1",
@@ -39,7 +39,7 @@
     "express": "4.17.1",
     "extend": "3.0.2",
     "globby": "11.0.0",
-    "hbs": "4.1.0",
+    "hbs": "4.1.1",
     "hbs-utils": "0.0.4",
     "htmllint": "0.8.0",
     "i18next": "19.3.4",

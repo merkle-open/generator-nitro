@@ -1,4 +1,6 @@
-const config = require('config');
+const config = require('config');<% if (options.themes) { %>
+const validThemes = config.has('themes') && Array.isArray(config.get('themes')) ? config.get('themes') : false;
+const theme = process.env.THEME ? process.env.THEME : validThemes.find((theme) => theme.isDefault).id;<% } %>
 const options = {
 	rules: {
 		<% if (options.jsCompiler === 'ts') { %>js: false,
@@ -15,7 +17,12 @@ const options = {
 	},
 	features: {
 		banner: true,
-		bundleAnalyzer: false,
+		bundleAnalyzer: false,<% if (options.themes) { %>
+		theme: theme,
+		dynamicAlias: {
+			search: '/theme/light',
+			replace: `/theme/${theme}`,
+		},<% } %>
 	},
 };
 

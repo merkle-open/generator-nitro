@@ -26,6 +26,8 @@ const options = {
     features: {
         banner: true,
         bundleAnalyzer: false,
+        theme: false,
+        dynamicAlias: false,
     },
 };
 const webpackConfig = require('@nitro/webpack/webpack-config/webpack.config.dev')(options);
@@ -141,6 +143,20 @@ Enable some additional features
 -   default: false
 
 `true` will add the bundleAnalyser plugin and opens a browser window with the stats
+
+#### `options.features.theme`
+
+-   Type: string || false
+-   default: false
+
+ToDo: Description
+
+#### `options.features.dynamicAlias`
+
+-   Type: object || false
+-   default: false
+
+ToDo: Description
 
 ## Extending Configuration
 

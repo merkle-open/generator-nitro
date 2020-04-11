@@ -135,6 +135,8 @@ const defaultConfig = {
 			},
 		},
 	},
+	exporter: false,
+	themes: false,
 };
 const warnings = [];
 

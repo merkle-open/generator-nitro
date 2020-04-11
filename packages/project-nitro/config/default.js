@@ -63,6 +63,7 @@ const defaultConfig = {
 		},
 	},
 	exporter: require('./default/exporter'),
+	themes: require('./default/themes'),
 };
 
 const config = extend(true, {}, baseConfig, defaultConfig);

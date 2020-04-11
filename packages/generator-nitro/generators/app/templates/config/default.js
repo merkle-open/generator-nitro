@@ -62,7 +62,8 @@ const defaultConfig = {
 			},
 		},
 	},<% if (options.exporter) { %>
-	exporter: require('./default/exporter'),<% } %>
+	exporter: require('./default/exporter'),<% } %><% if (options.themes) { %>
+	themes: require('./default/themes'),<% } %>
 };
 
 const config = extend(true, {}, baseConfig, defaultConfig);

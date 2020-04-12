@@ -1,0 +1,11 @@
+// base colors
+$white:  #dcdfe4;
+$black: #282c34;
+$blue: #61afef;
+$purple: #c678dd;
+$yellow: #e5c07b;
+
+// colors for patterns
+$background: $black;
+$foreground: $white;
+$area: lighten($background, 8%);

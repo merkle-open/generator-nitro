@@ -22,18 +22,30 @@ const config = {
 			// copies and minifies all source images to dest folder
 			{
 				src: 'src/shared/assets/img/**/*',
-				dest: 'public/assets/img',
+				dest: 'public/assets/light/img',
+			},
+			{
+				src: 'src/shared/assets/img/**/*',
+				dest: 'public/assets/dark/img',
 			},
 		],
 		svgSprites: [
 			// generates icon sprite with the name of the last folder in src
 			{
 				src: 'src/patterns/atoms/icon/img/icons/*.svg',
-				dest: 'public/assets/svg',
+				dest: 'public/assets/light/svg',
+			},
+			{
+				src: 'src/patterns/atoms/icon/img/icons/*.svg',
+				dest: 'public/assets/dark/svg',
 			},
 			{
 				src: 'src/patterns/test/ico/img/icos/*.svg',
-				dest: 'public/assets/svg',
+				dest: 'public/assets/light/svg',
+			},
+			{
+				src: 'src/patterns/test/ico/img/icos/*.svg',
+				dest: 'public/assets/light/svg',
 			},
 		],
 	},

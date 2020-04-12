@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 offset-md-2"><% if (options.exampleCode) { %>
-			<h1>{{pattern name='icon' icon='nitro'}}&nbsp;Nitro example page</h1>
+			<h1>{{pattern name='icon' icon='nitro'}}&nbsp;Nitro example page<% if (options.themes) { %> [{{theme.name}}]<% } %></h1>
 			{{pattern name='example'}}
 			{{pattern name='example' data='example-blue'}}<% if (options.clientTpl) { %>
 			{{pattern name='example' data='example-template'}}<% } %>
@@ -11,4 +11,17 @@
 			<h1>Index</h1><% } %>
 		</div>
 	</div>
-</div>
+</div><% if (options.themes) { %>
+
+{{#if _nitro.production}}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
+				<div class="proto-themelist">
+					<h2>Available Skins:</h2>
+					{{themelist current=theme.id}}
+				</div>
+			</div>
+		</div>
+	</div>
+{{/if}}<% } %>

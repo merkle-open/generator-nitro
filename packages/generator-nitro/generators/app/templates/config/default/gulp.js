@@ -19,18 +19,34 @@ const config = {
 			},
 		],
 		minifyImages: [
-			// copies and minifies all source images to dest folder
+			// copies and minifies all source images to dest folder<% if (options.themes) { %>
+			{
+				src: 'src/shared/assets/img/**/*',
+				dest: 'public/assets/light/img',
+			},
+			{
+				src: 'src/shared/assets/img/**/*',
+				dest: 'public/assets/dark/img',
+			},<% } else { %>
 			{
 				src: 'src/shared/assets/img/**/*',
 				dest: 'public/assets/img',
-			},
+			},<% } %>
 		],
 		svgSprites: [
-			// generates icon sprite with the name of the last folder in src
+			// generates icon sprite with the name of the last folder in src<% if (options.themes) { %>
+			{
+				src: 'src/patterns/atoms/icon/img/icons/*.svg',
+				dest: 'public/assets/light/svg',
+			},
+			{
+				src: 'src/patterns/atoms/icon/img/icons/*.svg',
+				dest: 'public/assets/dark/svg',
+			},<% } else { %>
 			{
 				src: 'src/patterns/atoms/icon/img/icons/*.svg',
 				dest: 'public/assets/svg',
-			},
+			},<% } %>
 		],
 	},
 };

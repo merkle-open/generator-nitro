@@ -21,8 +21,14 @@ async function getConfig() {
 					],
 					[
 						new PluginTerminal({
-							title: 'Development Mode',
-							cmd: 'npm run dev',
+							title: 'Development Mode (Light)',
+							cmd: 'npm start',
+							dark: true,
+							autostart: false,
+						}),
+						new PluginTerminal({
+							title: 'Development Mode (Dark)',
+							cmd: 'npm run start:dark',
 							dark: true,
 							autostart: false,
 						}),

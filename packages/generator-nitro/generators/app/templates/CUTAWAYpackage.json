@@ -78,10 +78,10 @@
     "@gondel/plugin-hot": "1.2.3",
     "@khanacademy/tota11y": "0.2.0",
     "bootstrap": "4.4.1",<% } %>
-    "core-js": "3.6.4"<% if (options.exampleCode) { %>,
+    "core-js": "3.6.5"<% if (options.exampleCode) { %>,
     "flatpickr": "4.6.3",
     "handlebars": "4.7.6",
-    "jquery": "3.4.1",
+    "jquery": "3.5.0",
     "lazysizes": "5.2.0",
     "lottie-web": "5.6.8",
     "prevent-window-opener-attacks": "0.2.4"<% } %><% if (options.jsCompiler === 'js') { %>,
@@ -89,11 +89,11 @@
     "svg4everybody": "2.1.9"<% } %>
   },
   "devDependencies": {
-    "@dash4/plugin-actions": "0.8.1",
-    "@dash4/plugin-npm-scripts": "0.8.1",
-    "@dash4/plugin-readme": "0.8.1",
-    "@dash4/plugin-terminal": "0.8.1",
-    "@dash4/server": "0.8.1",
+    "@dash4/plugin-actions": "0.8.2",
+    "@dash4/plugin-npm-scripts": "0.8.2",
+    "@dash4/plugin-readme": "0.8.2",
+    "@dash4/plugin-terminal": "0.8.2",
+    "@dash4/server": "0.8.2",
     "@namics/eslint-config": "8.0.7",
     "@namics/prettier-config": "1.0.1",
     "@namics/stylelint-config": "1.0.1",
@@ -106,19 +106,19 @@
     "@types/jquery": "3.3.34",<% } %>
     "@types/svg4everybody": "2.1.1",
     "@types/webpack-env": "1.15.1",<% } %>
-    "backstopjs": "4.5.0",
+    "backstopjs": "4.5.1",
     "check-node-version": "4.0.3",
     "commitizen": "4.0.4",
     "config": "3.3.1",
     "cross-env": "7.0.2",
-    "cypress": "4.3.0",
+    "cypress": "4.4.0",
     "cz-conventional-changelog": "3.1.0",
     "eslint": "6.8.0",
     "eslint-plugin-import": "2.20.2",
     "extend": "3.0.2",
     "generator-nitro": "<%= version %>",
     "gulp": "4.0.2",
-    "husky": "4.2.3",
+    "husky": "4.2.5",
     "license-checker": "25.0.1",
     "lighthouse": "6.0.0-beta.0",
     "lint-staged": "10.1.3",
@@ -127,7 +127,7 @@
     "opener": "1.5.1",
     "prettier": "1.19.1",
     "rimraf": "3.0.2",
-    "stylelint": "13.3.1",<% if (options.jsCompiler === 'ts') { %>
+    "stylelint": "13.3.2",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "3.8.3",<% } %>
     "webpack": "4.42.1",
     "webpack-cli": "3.3.11",

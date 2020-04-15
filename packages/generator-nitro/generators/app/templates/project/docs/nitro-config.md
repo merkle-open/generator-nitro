@@ -6,7 +6,7 @@ This lets you extend the nitro default parameters for different environments (lo
 The configuration is placed in the [`/config`](../../config) directory. Read more about [configuration files](https://github.com/lorenwest/node-config/wiki/Configuration-Files)
 
 For your own functionality you can add new nodes as you like. It is certainly useful not to use
-the main nodes from nitro: `code`, `nitro`,`server`, `gulp`, `feature` & `exporter`.
+the main nodes from nitro: `code`, `nitro`,`server`, `gulp`, `feature`, `exporter` & `themes`.
 
 ## Code
 

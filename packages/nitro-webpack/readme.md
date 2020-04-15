@@ -149,14 +149,27 @@ Enable some additional features
 -   Type: string || false
 -   default: false
 
-ToDo: Description
+A string will activate theming support: 
+
+-   webpack uses `./src/ui.${theme}` as entrypoint (instead of `./src/ui`)
+-   a subfolder within assets is used for the output path and publicPath (`/assets/${theme}/`)
+
+It makes sense to use a dynamic value e.g. an environment variable, as shown in the example configuration.
 
 #### `options.features.dynamicAlias`
 
 -   Type: object || false
 -   default: false
 
-ToDo: Description
+A proper configured dynamicAlias feature will activate the DynamicAliasResolverPlugin 
+which can change import paths in source files dynamically on compile time as desired.
+
+Properties:
+
+-   `options.features.dynamicAlias.search` (string || RegExp)
+    search term to be replaced (e.g. '/theme/light')
+-   `options.features.dynamicAlias.replace` (string)
+    string as replacement (e.g. `/theme/${theme}`)
 
 ## Extending Configuration
 

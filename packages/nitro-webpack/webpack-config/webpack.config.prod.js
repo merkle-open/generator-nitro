@@ -288,6 +288,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	if (options.features.bundleAnalyzer) {
 		webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 	}
+
 	// feature dynamic alias
 	if (options.features.dynamicAlias && options.features.dynamicAlias.search && options.features.dynamicAlias.replace) {
 		webpackConfig.resolve.plugins = [

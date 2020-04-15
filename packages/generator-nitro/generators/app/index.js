@@ -284,6 +284,7 @@ module.exports = class extends Generator {
 		const themesFiles = [
 			// files only for this.options.themes===true
 			'config/default/themes.js',
+			'project/docs/nitro-themes.md',
 			'project/routes/_themes.js',
 			'src/patterns/molecules/theme/dark.scss',
 			'src/patterns/molecules/theme/light.scss',

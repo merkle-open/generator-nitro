@@ -24,6 +24,7 @@ module.exports = class extends Generator {
 			viewExt: this.options.viewExt,
 			templateEngine: this.options.templateEngine,
 			jsCompiler: this.options.jsCompiler,
+			themes: this.options.themes,
 			clientTpl: this.options.clientTpl,
 			exampleCode: this.options.exampleCode,
 			exporter: this.options.exporter,
@@ -55,6 +56,12 @@ module.exports = class extends Generator {
 			desc: `your desired view file extension [${this._viewExtOptions.join('|')}]`,
 			type: String,
 			defaults: this._passedInOptions.viewExt || this._viewExtOptions[0],
+		});
+
+		this.option('themes', {
+			desc: 'do you need theme support',
+			type: Boolean,
+			defaults: this._passedInOptions.themes || false,
 		});
 
 		this.option('clientTpl', {
@@ -118,6 +125,7 @@ module.exports = class extends Generator {
 					this.options.viewExt = config.viewExtension || config.templateEngine ? config.templateEngine : this.options.viewExt;
 					this.options.templateEngine = config.templateEngine || this.options.templateEngine;
 					this.options.jsCompiler = config.jsCompiler || this.options.jsCompiler;
+					this.options.themes = typeof config.themes === 'boolean' ? config.themes : this.options.themes;
 					this.options.clientTpl = typeof config.clientTemplates === 'boolean' ? config.clientTemplates : this.options.clientTpl;
 					this.options.exampleCode = typeof config.exampleCode === 'boolean' ? config.exampleCode : this.options.exampleCode;
 					this.options.exporter = typeof config.exporter === 'boolean' ? config.exporter : this.options.exporter;
@@ -153,6 +161,14 @@ module.exports = class extends Generator {
 					when: () => !this._skipQuestions && !this._passedInOptions.jsCompiler,
 				},
 				{
+					name: 'themes',
+					type: 'confirm',
+					message: 'Would you like to include theming support?',
+					default: this.options.themes,
+					store: true,
+					when: (answers) => !this._skipQuestions && typeof this._passedInOptions.themes !== 'boolean' && answers.templateEngine !== 'twig',
+				},
+				{
 					name: 'clientTpl',
 					type: 'confirm',
 					message: 'Would you like to include client side templates?',
@@ -181,15 +197,22 @@ module.exports = class extends Generator {
 				this.options.templateEngine = answers.templateEngine || this.options.templateEngine;
 				this.options.jsCompiler = answers.jsCompiler || this.options.jsCompiler;
 				this.options.viewExt = this.options.templateEngine;
+				this.options.themes = answers.themes !== undefined ? answers.themes : this.options.themes;
 				this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
 				this.options.exampleCode = answers.exampleCode !== undefined ? answers.exampleCode : this.options.exampleCode;
 				this.options.exporter = answers.exporter !== undefined ? answers.exporter : this.options.exporter;
 
 				this.options.name = _.kebabCase(this.options.name);
 
+				if (this.options.themes && this.options.templateEngine === 'twig') {
+					this.log('Sorry, theming only works with handlebars engine - so we set theming feature to false');
+					this.options.themes = false;
+				}
+
 				this.config.set('name', this.options.name);
 				this.config.set('templateEngine', this.options.templateEngine);
 				this.config.set('jsCompiler', this.options.jsCompiler);
+				this.config.set('themes', this.options.themes);
 				this.config.set('clientTemplates', this.options.clientTpl);
 				this.config.set('exampleCode', this.options.exampleCode);
 				this.config.set('exporter', this.options.exporter);
@@ -209,6 +232,7 @@ module.exports = class extends Generator {
 			// files to process with copyTpl
 			'config/default.js',
 			'config/default/exporter.js',
+			'config/default/gulp.js',
 			'config/webpack/options.js',
 			'project/docs/nitro.md',
 			'project/docs/client-templates.md',
@@ -219,10 +243,12 @@ module.exports = class extends Generator {
 			'src/patterns/molecules/example/schema.json',
 			'src/patterns/molecules/example/index.js',
 			'src/patterns/molecules/example/index.ts',
+			'src/patterns/molecules/example/css/example.scss',
 			'src/patterns/molecules/example/js/example.js',
 			'src/patterns/molecules/example/js/example.ts',
 			'src/proto/js/prototype.js',
 			'src/proto/js/prototype.ts',
+			'src/shared/utils/colors/css/colors.scss',
 			'src/views/index.hbs',
 			'src/views/index.twig',
 			'src/views/_partials/head.hbs',
@@ -233,6 +259,7 @@ module.exports = class extends Generator {
 			'src/proto.ts',
 			'tests/cypress/cypress/integration/examples/index.spec.js',
 			'.eslintrc.js',
+			'dash4.config.js',
 			'docker-compose.yml',
 			'docker-compose-dev.yml',
 			'gulpfile.js',
@@ -253,6 +280,20 @@ module.exports = class extends Generator {
 			'src/proto/css/',
 			'src/shared/',
 			'src/views/',
+		];
+		const themesFiles = [
+			// files only for this.options.themes===true
+			'config/default/themes.js',
+			'project/routes/_themes.js',
+			'src/patterns/molecules/theme/dark.scss',
+			'src/patterns/molecules/theme/light.scss',
+			'src/shared/utils/colors/css/theme/dark.scss',
+			'src/shared/utils/colors/css/theme/light.scss',
+			'src/proto/css/themelist/themelist.scss',
+			'src/ui.dark.js',
+			'src/ui.dark.ts',
+			'src/ui.light.js',
+			'src/ui.light.ts',
 		];
 		const clientTplFiles = [
 			// files only for this.options.clientTpl===true
@@ -333,6 +374,13 @@ module.exports = class extends Generator {
 			// exclude update ignores
 			if (this._update) {
 				if (ignoresOnUpdate.some((v) => file.indexOf(v) >= 0)	) {
+					return;
+				}
+			}
+
+			// Themes only Files
+			if (!this.options.themes) {
+				if (_.indexOf(themesFiles, file) !== -1) {
 					return;
 				}
 			}

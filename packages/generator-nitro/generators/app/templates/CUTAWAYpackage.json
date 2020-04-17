@@ -103,7 +103,7 @@
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "4.3.2",<% if (options.exampleCode ) { %>
-    "@types/jquery": "3.3.34",<% } %>
+    "@types/jquery": "3.3.35",<% } %>
     "@types/svg4everybody": "2.1.1",
     "@types/webpack-env": "1.15.1",<% } %>
     "backstopjs": "4.5.1",

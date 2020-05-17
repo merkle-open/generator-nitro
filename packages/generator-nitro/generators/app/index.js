@@ -274,7 +274,10 @@ module.exports = class extends Generator {
 			// files and directories to ignore on updating projects
 			'config/local.js',
 			'project/blueprints/',
-			'project/routes/',
+			'project/routes/data/',
+			'project/routes/helpers/',
+			'project/routes/countries.js',
+			'project/routes/lottie.js',
 			'public/',
 			'src/patterns/',
 			'src/proto/css/',
@@ -286,8 +289,8 @@ module.exports = class extends Generator {
 			'config/default/themes.js',
 			'project/docs/nitro-themes.md',
 			'project/routes/_themes.js',
-			'src/patterns/molecules/theme/dark.scss',
-			'src/patterns/molecules/theme/light.scss',
+			'src/patterns/molecules/example/css/theme/dark.scss',
+			'src/patterns/molecules/example/css/theme/light.scss',
 			'src/shared/utils/colors/css/theme/dark.scss',
 			'src/shared/utils/colors/css/theme/light.scss',
 			'src/proto/css/themelist/themelist.scss',
@@ -349,6 +352,7 @@ module.exports = class extends Generator {
 		];
 		const exampleIncludeAnyway = [
 			// example file "parts" included for this.options.exampleCode===false
+			'project/routes/_themes.js',
 			'project/routes/readme.md',
 			'src/patterns/readme.md',
 			'src/shared/readme.md',

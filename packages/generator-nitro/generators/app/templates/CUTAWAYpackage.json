@@ -102,7 +102,7 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",<% if (options.jsCompiler === 'ts') { %>
-    "@types/bootstrap": "4.3.2",<% if (options.exampleCode ) { %>
+    "@types/bootstrap": "4.3.3",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.3.38",<% } %>
     "@types/svg4everybody": "2.1.1",
     "@types/webpack-env": "1.15.2",<% } %>
@@ -121,13 +121,13 @@
     "husky": "4.2.5",
     "license-checker": "25.0.1",
     "lighthouse": "6.0.0-beta.0",
-    "lint-staged": "10.2.2",
+    "lint-staged": "10.2.4",
     "npm-run-all": "4.1.5",
-    "npm-check-updates": "5.0.0",
+    "npm-check-updates": "6.0.1",
     "opener": "1.5.1",
     "prettier": "1.19.1",
     "rimraf": "3.0.2",
-    "stylelint": "13.3.3",<% if (options.jsCompiler === 'ts') { %>
+    "stylelint": "13.4.1",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "3.9.2",<% } %>
     "webpack": "4.43.0",
     "webpack-cli": "3.3.11",

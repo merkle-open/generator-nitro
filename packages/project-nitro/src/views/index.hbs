@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 offset-md-2">
-			<h1>{{pattern name='icon' icon='nitro'}}&nbsp;Nitro example page</h1>
+			<h1>{{pattern name='icon' icon='nitro'}}&nbsp;Nitro example page [{{theme.name}}]</h1>
 			{{pattern name='example'}}
 			{{pattern name='example' data='example-blue'}}
 			{{pattern name='example' data='example-template'}}
@@ -11,3 +11,16 @@
 		</div>
 	</div>
 </div>
+
+{{#if _nitro.production}}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
+				<div class="proto-themelist">
+					<h2>Available Themes:</h2>
+					{{themelist current=theme.id}}
+				</div>
+			</div>
+		</div>
+	</div>
+{{/if}}

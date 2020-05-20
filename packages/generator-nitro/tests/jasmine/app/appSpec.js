@@ -123,6 +123,63 @@ describe('nitro:app', () => {
 		});
 	});
 
+	describe('when including themes feature', () => {
+		beforeAll((done) => {
+			helpers.run(path.join(__dirname, '../../../generators/app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ ...defaultPrompts, ...{ themes: true } })
+				.on('end', done);
+		});
+
+		it('theme files are generated', () => {
+			assert.file([
+				'config/default/themes.js',
+				'project/docs/nitro-themes.md',
+				'project/routes/_themes.js',
+				'src/ui.dark.ts',
+				'src/ui.light.ts',
+			]);
+		});
+
+		it('themes feature is configured', () => {
+			assert.fileContent([
+				['config/webpack/options.js', /search: '\/theme\/light',/],
+				// ['config/default.js', /themes: require('\.\/default\/themes'),/],
+			]);
+		});
+
+	});
+
+	describe('when not including themes feature', () => {
+		beforeAll((done) => {
+			helpers.run(path.join(__dirname, '../../../generators/app'))
+				.inDir(path.join(os.tmpdir(), './temp-test'))
+				.withOptions({ 'skip-install': true })
+				.withPrompts({ ...defaultPrompts, ...{ themes: false } })
+				.on('end', done);
+		});
+
+		it('theme files are not generated', () => {
+			assert.noFile([
+				'config/default/themes.js',
+				'project/docs/nitro-themes.md',
+				'project/routes/_themes.js',
+				'src/patterns/molecules/example/css/theme/dark.scss',
+				'src/ui.dark.ts',
+				'src/ui.light.ts',
+			]);
+		});
+
+		it('themes feature is disabled', () => {
+			assert.noFileContent([
+				['config/webpack/options.js', /search: '\/theme\/light',/],
+				// ['config/default.js', /themes: require('\.\/default\/themes'),/],
+			]);
+		});
+
+	});
+
 	describe('when including client templates', () => {
 		beforeAll((done) => {
 			helpers.run(path.join(__dirname, '../../../generators/app'))

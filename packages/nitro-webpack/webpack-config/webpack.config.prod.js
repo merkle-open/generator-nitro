@@ -10,6 +10,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TsConfigWebpackPlugin = require('ts-config-webpack-plugin');
 const WebpackBar = require('webpackbar');
+const DynamicAliasResolverPlugin = require('../plugins/dynamicAliasResolver');
 const utils = require('../lib/utils');
 
 const appDirectory = fs.realpathSync(process.cwd());
@@ -89,6 +90,12 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			warnings: false,
 		},
 	};
+	const theme = options.features.theme ? options.features.theme : false;
+	if (theme) {
+		webpackConfig.entry.ui = `./src/ui.${theme}`;
+		webpackConfig.output.path = path.resolve(webpackConfig.output.path, theme);
+		webpackConfig.output.publicPath = `${webpackConfig.output.publicPath}${theme}/`;
+	}
 
 	// js
 	if (options.rules.js) {
@@ -280,6 +287,13 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	// feature bundle analyzer
 	if (options.features.bundleAnalyzer) {
 		webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+	}
+
+	// feature dynamic alias
+	if (options.features.dynamicAlias && options.features.dynamicAlias.search && options.features.dynamicAlias.replace) {
+		webpackConfig.resolve.plugins = [
+			new DynamicAliasResolverPlugin(options.features.dynamicAlias),
+		];
 	}
 
 	return webpackConfig;

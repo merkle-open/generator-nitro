@@ -45,8 +45,11 @@
     "\n# BUILD/RELEASE ------- ": "",
     "build": "npm-run-all build:*",
     "build:clean": "rimraf public/assets",
-    "build:assets": "gulp assets",
-    "build:webpack": "webpack --mode production --config config/webpack/webpack.config.prod.js",<% if (options.exporter) { %>
+    "build:assets": "gulp assets",<% if (options.themes) { %>
+    "build:webpack": "npm-run-all build:webpack:*",
+    "build:webpack:light": "cross-env THEME=light webpack --mode production --config config/webpack/webpack.config.prod.js",
+    "build:webpack:dark": "cross-env THEME=dark webpack --mode production --config config/webpack/webpack.config.prod.js",<% } else { %>
+    "build:webpack": "webpack --mode production --config config/webpack/webpack.config.prod.js",<% } %><% if (options.exporter) { %>
     "export": "npm run build && gulp export",<% } %>
     "\n# RUN ------- ": "",
     "dashboard": "opener http://localhost:4444 && dash4",
@@ -56,8 +59,11 @@
     "prod": "npm-run-all prod:*",
     "prod:check": "npm run check-node-version",
     "prod:build": "npm run build",
-    "prod:serve": "cross-env NODE_ENV=production nitro-app-serve",
-    "start": "npm run dev",
+    "prod:serve": "cross-env NODE_ENV=production nitro-app-serve",<% if (options.themes) { %>
+    "start": "npm run start:light",
+    "start:light": "cross-env THEME=light PORT=8081 PROXY=8082 npm run dev",
+    "start:dark": "cross-env THEME=dark PORT=8083 PROXY=8084 npm run dev",<% } else { %>
+    "start": "npm run dev",<% } %>
     "\n# DOCKER ------- ": "",
     "docker:update": "docker-compose build",
     "docker:start": "npm run docker:dev:start",

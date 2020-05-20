@@ -7,8 +7,11 @@
  *
  * {{asset name='/css/ui.min.css'}}
  * (will load public/assets/css/ui.css on development environment)
+ * (or public/assets/<theme>/css/ui.css if you use the theme feature)
  *
  * {{asset name='/img/icon/favicon-32x32.png'}}
+ * (will load public/assets/img/icon/favicon-32x32.png)
+ * (or public/assets/<theme>/css/ui.img/icon/favicon-32x32.png if you use the theme feature)
  */
 
 const hbs = require('hbs');
@@ -23,6 +26,8 @@ module.exports = function(context) {
 		name = name.replace(/\.min\./, '.');
 	}
 
-	const assetPath = path.join('/assets/', name).replace(/\\/g, '/');
+	const theme = contextDataRoot.theme ? `/${contextDataRoot.theme.id}` : '' ;
+
+	const assetPath = path.join('/assets/', theme, name).replace(/\\/g, '/');
 	return new hbs.SafeString(assetPath);
 };

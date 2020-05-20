@@ -101,6 +101,15 @@ describe('nitro:app', () => {
 			]);
 		});
 
+		// themes (false)
+		it('theme feature is not included', () => {
+			assert.noFile([
+				'config/default/themes.js',
+				'project/routes/_themes.js',
+				'src/ui.dark.ts',
+			]);
+		});
+
 		// clientTemplates (false)
 		it('pattern blueprint does not contain template file', () => {
 			assert.noFile('project/blueprints/pattern/template/$pattern$.hbs');

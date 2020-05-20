@@ -62,6 +62,7 @@ On creating a new project, you will be guided through some configuration options
 * Desired Name `--name=` (default: current directory name)
 * Desired template engine `--templateEngine=` (`hbs` or `twig`; default: `hbs`)
 * Desired js compiler `--jsCompiler=` (`ts` or `js`; default: `ts`)
+* Using theming feature `--themes` (default: false)
 * Using client side templates `--clientTpl` (default: false)
 * Including example code `--exampleCode` (default: false)
 * Installing nitro-exporter" `--exporter` (default: false)
@@ -69,7 +70,7 @@ On creating a new project, you will be guided through some configuration options
 It's possible to pass in these options through the command line:
 
 ```
-npx -p yo -p generator-nitro@latest -- yo nitro --name=myproject --templateEngine=hbs --jsCompiler=ts --clientTpl --exampleCode --exporter
+npx -p yo -p generator-nitro@latest -- yo nitro --name=myproject --templateEngine=hbs --jsCompiler=ts --themes --clientTpl --exampleCode --exporter
 ```
 
 You may bypass the questions with `--skip-questions`. This will use the defaults for not specified options
@@ -102,14 +103,6 @@ which contains the examples of a generated project and was statified with the de
 
 See how to use the [generated app](https://github.com/namics/generator-nitro/blob/master/packages/project-nitro/project/docs/nitro.md)
 
-## Testing
-
-Running `npm test` will run the lint task and the `jasmine` unit tests.
-
-```
-npm test
-```
-
 ## Contribute
 
 We are more than happy to accept external contributions to the project in the form of feedback, bug reports and pull requests :)
@@ -118,4 +111,4 @@ See the [contributing docs](../../.github/contributing.md)
 
 ## Changelog
 
-Recent changes can be viewed on Github on the [Releases Page](https://github.com/namics/generator-nitro/releases)
+Recent changes can be viewed on GitHub on the [Releases Page](https://github.com/namics/generator-nitro/releases)

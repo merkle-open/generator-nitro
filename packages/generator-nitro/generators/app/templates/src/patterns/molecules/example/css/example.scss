@@ -1,10 +1,11 @@
-@import '../../../../shared/utils/colors/css/colors.scss';
+@import '../../../../shared/utils/colors/css/colors.scss';<% if (options.themes) { %>
+@import './theme/light.scss';<% } %>
 
 .m-example {
 	margin: 1em 0;
-	padding: 1.8em 2.2em;
+	padding: <% if (options.themes) { %>$example-padding<% } else { %>1.8em 2.2em<% } %>;
 	background-color: $color-area-background;
-	border-radius: 0.5em;
+	border-radius: <% if (options.themes) { %>$example-border-radius<% } else { %>0.5em<% } %>;
 }
 .m-example__headline {
 	font-size: 1.6em;

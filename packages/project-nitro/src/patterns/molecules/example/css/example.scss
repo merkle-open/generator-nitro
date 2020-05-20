@@ -1,10 +1,11 @@
 @import '../../../../shared/utils/colors/css/colors.scss';
+@import './theme/light.scss';
 
 .m-example {
 	margin: 1em 0;
-	padding: 1.8em 2.2em;
+	padding: $example-padding;
 	background-color: $color-area-background;
-	border-radius: 0.5em;
+	border-radius: $example-border-radius;
 }
 .m-example__headline {
 	font-size: 1.6em;

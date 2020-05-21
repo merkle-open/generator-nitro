@@ -53,14 +53,14 @@
     "resolve-url-loader": "3.1.1",
     "sass-loader": "8.0.2",
     "style-loader": "1.2.1",
-    "stylelint": "13.4.1",
+    "stylelint": "13.5.0",
     "stylelint-webpack-plugin": "2.0.0",
     "ts-config-webpack-plugin": "2.0.0",
-    "typescript": "3.9.2",
+    "typescript": "3.9.3",
     "url-loader": "4.1.0",
     "webpack": "4.43.0",
     "webpackbar": "4.0.0",
-    "webpack-bundle-analyzer": "3.7.0"
+    "webpack-bundle-analyzer": "3.8.0"
   },
   "devDependencies": {
     "@namics/eslint-config": "8.0.7",

@@ -238,8 +238,8 @@ Copies all source files to dest folder
 
 Object Properties:
 
--   `gulp.copyAssets.src` Sting (default: '')
--   `gulp.copyAssets.dest` Sting (default: '')
+-   `gulp.copyAssets.src` String (default: '')
+-   `gulp.copyAssets.dest` String (default: '')
 
 ### `gulp.minifyImages`
 
@@ -249,8 +249,8 @@ Copies and minifies all source images to dest folder
 
 Object Properties:
 
--   `gulp.minifyImages.src` Sting (default: ''; example: 'src/shared/assets/img/\*\*/\*')
--   `gulp.minifyImages.dest` Sting (default: ''; example: 'public/assets/img')
+-   `gulp.minifyImages.src` String (default: ''; example: 'src/shared/assets/img/\*\*/\*')
+-   `gulp.minifyImages.dest` String (default: ''; example: 'public/assets/img')
 
 ### `gulp.svgSprites`
 

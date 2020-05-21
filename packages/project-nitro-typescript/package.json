@@ -150,7 +150,7 @@
   },
   "lint-staged": {
     "src/**/*.{css,scss}": [
-      "stylelint"
+      "stylelint --allow-empty-input"
     ],
     "src/**/*.json": [
       "prettier --write",

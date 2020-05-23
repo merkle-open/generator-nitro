@@ -74,7 +74,7 @@ async function getConfig() {
 							actions: [
 								{
 									type: 'link',
-									href: 'https://nitro-project-test.netlify.com/',
+									href: 'https://nitro-project-test.netlify.app/',
 									title: 'Proto Server',
 								},
 							],

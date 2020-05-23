@@ -31,7 +31,7 @@ or update a project.
 
 ### Sample project
 
-Have a look at the [sample project](https://nitro-project-test.netlify.com/) 
+Have a look at the [sample project](https://nitro-project-test.netlify.app/) 
 which contains the examples of a generated project and was statified with the default configuration of the 'nitro-exporter'.
 
 ### Working with this repo

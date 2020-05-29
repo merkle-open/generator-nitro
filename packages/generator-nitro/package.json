@@ -1,6 +1,6 @@
 {
   "name": "generator-nitro",
-  "version": "5.3.1",
+  "version": "5.3.2",
   "description": "Yeoman generator for the nitro frontend framework",
   "license": "MIT",
   "repository": "namics/generator-nitro",

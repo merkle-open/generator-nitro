@@ -12,4 +12,4 @@
 
 <title>{{#if _nitro.production}}PRODUCTION: {{/if}}{{_nitro.pageTitle}}</title>
 <link href="{{asset name='/css/ui.min.css'}}" rel="stylesheet">
-<link href="{{asset name='/css/proto.min.css'}}" rel="stylesheet">
+{{#unless _nitro.test}}<link href="{{asset name='/css/proto.min.css'}}" rel="stylesheet">{{/unless}}

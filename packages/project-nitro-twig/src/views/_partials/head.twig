@@ -11,7 +11,7 @@
 <title>{{ _nitro.pageTitle }}</title>
 <meta name="format-detection" content="telephone=no">
 <link href="/assets/css/ui{% if _nitro.production %}.min{% endif %}.css" rel="stylesheet">
-<link href="/assets/css/proto{% if _nitro.production %}.min{% endif %}.css" rel="stylesheet">
+{% if not _nitro.test %}<link href="/assets/css/proto{% if _nitro.production %}.min{% endif %}.css" rel="stylesheet">{% endif %}
 <script defer src="/assets/js/vendors{% if _nitro.production %}.min{% endif %}.js"></script>
 <script defer src="/assets/js/ui{% if _nitro.production %}.min{% endif %}.js"></script>
-<script defer src="/assets/js/proto{% if _nitro.production %}.min{% endif %}.js"></script>
+{% if not _nitro.test %}<script defer src="/assets/js/proto{% if _nitro.production %}.min{% endif %}.js"></script>{% endif %}

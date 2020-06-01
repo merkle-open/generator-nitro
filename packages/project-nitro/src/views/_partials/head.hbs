@@ -11,7 +11,7 @@
 <title>{{_nitro.pageTitle}}</title>
 <meta name="format-detection" content="telephone=no">
 <link href="{{asset name='/css/ui.min.css'}}" rel="stylesheet">
-<link href="{{asset name='/css/proto.min.css'}}" rel="stylesheet">
+{{#unless _nitro.test}}<link href="{{asset name='/css/proto.min.css'}}" rel="stylesheet">{{/unless}}
 <script defer src="{{asset name='/js/vendors.min.js'}}"></script>
 <script defer src="{{asset name='/js/ui.min.js'}}"></script>
-<script defer src="{{asset name='/js/proto.min.js'}}"></script>
+{{#unless _nitro.test}}<script defer src="{{asset name='/js/proto.min.js'}}"></script>{{/unless}}

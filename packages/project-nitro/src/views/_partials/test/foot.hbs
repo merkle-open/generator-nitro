@@ -1,5 +1,5 @@
 <script src="{{asset name='/js/vendors.min.js'}}"></script>
 <script src="{{asset name='/js/ui.min.js'}}"></script>
-<script src="{{asset name='/js/proto.min.js'}}"></script>
+{{#unless _nitro.test}}<script src="{{asset name='/js/proto.min.js'}}"></script>{{/unless}}
 
 <p>{{_nitro.pageTitle}} = pageTitle (view)</p>

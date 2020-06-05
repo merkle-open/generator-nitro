@@ -387,6 +387,16 @@ You may overwrite data from views & patterns in request parameters.
 
 `?_nitro.pageTitle=Testpage` will overwrite the data for the hbs expression `{{_nitro.pageTitle}}`
 
+### Using Nitro Data in Views
+
+By default Nitro provides some data to be used in your views:
+
+-   `{{ _nitro.pageUrl }}` (String) outputs full url including protocol and host
+-   `{{ _nitro.pageTitle }}` (String) outputs string generated from the view name by default
+-   `{{#if _nitro.production}}{{/if}}` (Boolean) is true when environment variable `NODE_ENV` is set to `production`
+-   `{{#if _nitro.test}}{{/if}}` (Boolean) is true when environment variable `NITRO_MODE` ist set to `test`
+-   `{{#if _nitro.offline}}{{/if}}` (Boolean) is true when config param 'nitro.mode.offline' is true
+
 ## Assets
 
 For final use, all assets are copied from the 'src' to the 'public' folder.

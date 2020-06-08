@@ -3,6 +3,7 @@
     "promptValues": {
       "templateEngine": "hbs",
       "jsCompiler": "ts",
+	  "themes": false,
       "clientTpl": true,
       "exampleCode": true,
       "exporter": true
@@ -10,6 +11,7 @@
     "name": "project-nitro-typescript",
     "templateEngine": "hbs",
     "jsCompiler": "ts",
+	"themes": false,
     "clientTemplates": true,
     "exampleCode": true,
     "exporter": true

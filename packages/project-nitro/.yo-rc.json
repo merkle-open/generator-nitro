@@ -3,6 +3,7 @@
     "name": "project-nitro",
     "templateEngine": "hbs",
     "jsCompiler": "js",
+	"themes": true,
     "clientTemplates": true,
     "exampleCode": true,
     "exporter": true

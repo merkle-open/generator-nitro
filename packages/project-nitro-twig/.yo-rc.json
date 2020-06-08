@@ -3,6 +3,7 @@
     "name": "project-nitro-twig",
     "templateEngine": "twig",
     "jsCompiler": "js",
+	"themes": false,
     "clientTemplates": true,
     "exampleCode": true,
     "exporter": true

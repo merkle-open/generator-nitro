@@ -33,13 +33,15 @@ const keys = (function(): { [key: string]: any } {
 	return _keys;
 })();
 
-export function addKeyboardAction(key: number | string, method: Function): void {
+export function addKeyboardAction(key: number | string, method: () => void): void {
 	keys[key] = method;
 }
 
-export function getFromLocalStorage(key: number | string): object | void {
+export function getFromLocalStorage<TObj = unknown>(key: number | string): TObj | void {
 	try {
-		return (window as any).JSON.parse(localStorage.getItem(`${key}`));
+		const item = localStorage.getItem(`${key}`);
+		if (!item) return;
+		return window.JSON.parse(item);
 	} catch (e) {}
 }
 

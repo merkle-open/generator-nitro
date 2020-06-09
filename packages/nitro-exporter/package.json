@@ -37,7 +37,7 @@
     "gulp-vinyl-zip": "2.2.1"
   },
   "devDependencies": {
-    "@namics/eslint-config": "8.0.7",
+    "@namics/eslint-config": "9.0.1",
     "@nitro/app": "*",
     "eslint": "7.2.0",
     "eslint-plugin-import": "2.21.1",

@@ -3,12 +3,12 @@ import $ from 'jquery';
 import 'core-js/features/array/includes';
 import 'core-js/features/string/starts-with';
 
-/* eslint-disable @typescript-eslint/ban-ts-ignore */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 import templateExample from '../template/example.hbs';
 // @ts-ignore
 import templateExampleLinks from '../template/example.links.hbs';
-/* eslint-enable @typescript-eslint/ban-ts-ignore */
+/* eslint-enable @typescript-eslint/ban-ts-comment */
 
 /**
  * Example module implementation.

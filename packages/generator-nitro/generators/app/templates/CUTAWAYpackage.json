@@ -41,7 +41,7 @@
     "test:cypress:serve": "npm run prod:serve",
     "test:cypress:test": "cypress run --project ./tests/cypress/",
     "visual-approve": "backstop approve --config=tests/backstop/backstop.config.js --docker",
-    "visual-test": "npm run build && cross-env PORT=8889 NITRO_MODE=test npm-run-all --parallel --race visual-test:*",
+    "visual-test": "npm run build && cross-env PORT=8889 npm-run-all --parallel --race visual-test:*",
     "visual-test:serve": "npm run prod:serve",
     "visual-test:test": "backstop test --config=tests/backstop/backstop.config.js --docker",
     "\n# BUILD/RELEASE ------- ": "",

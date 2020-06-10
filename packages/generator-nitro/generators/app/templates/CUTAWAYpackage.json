@@ -19,6 +19,8 @@
     "nitro:server": "npm run build && yo nitro:server --folder=dist",
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
     "update-dependencies": "npm-check-updates -u -x prettier",
+    "\n# MISC ------- ": "",
+    "postinstall": "env-linter --hooksInstalled --saveExact --dependenciesExactVersion",
     "\n# LINT/TEST ------- ": "",
     "check-node-version": "check-node-version --print --package",
     "cypress-test": "npm run build && cross-env PORT=8888 NITRO_MODE=test npm-run-all --parallel --race test:cypress:serve cypress-test:open",
@@ -100,6 +102,7 @@
     "@dash4/plugin-readme": "0.8.5",
     "@dash4/plugin-terminal": "0.8.5",
     "@dash4/server": "0.8.5",
+    "@namics/env-linter": "0.2.1",
     "@namics/eslint-config": "9.0.1",
     "@namics/prettier-config": "1.1.0",
     "@namics/stylelint-config": "1.0.2",
@@ -169,6 +172,9 @@
     ],
     "src/**/*.md": [
       "prettier --write"
+    ],
+    "package.json": [
+      "env-linter --saveExact --dependenciesExactVersion"
     ]
   }
 }

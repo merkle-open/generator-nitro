@@ -34,6 +34,7 @@ lerna-debug.log
 /target
 
 # Project
+.yo-repository
 /config/local*
 debug.log
 /project/tmp

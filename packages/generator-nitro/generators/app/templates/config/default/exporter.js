@@ -8,7 +8,7 @@ const config = {
 	exporter: [
 		{
 			dest: 'export',
-			i18n: [],
+			i18n: [<% if (options.themes) { %>'default', 'dark'<% } %>],
 			publics: ['public/*', 'public/assets/**/*', 'public/content/**/*'],
 			renames: [
 				{
@@ -36,10 +36,10 @@ const config = {
 					],
 				},
 				{
-					glob: ['export/css/*.css'],
+					glob: ['export/<% if (options.themes) { %>*/<% } %>css/*.css'],
 					replace: [
 						{
-							from: '/assets/',
+							from: '/assets/<% if (options.themes) { %>(light|dark)/<% } %>',
 							to: '../',
 						},
 						{
@@ -49,7 +49,7 @@ const config = {
 					],
 				},
 				{
-					glob: ['export/js/*.js'],
+					glob: ['export/<% if (options.themes) { %>*/<% } %>js/*.js'],
 					replace: [
 						{
 							from: '/assets/',
@@ -60,7 +60,56 @@ const config = {
 							to: 'api',
 						},
 					],
+				},<% if (options.themes) { %>
+				{
+					glob: ['export/*-dark.html'],
+					replace: [
+						{
+							from: ' href="([a-z0-9-]+).html"',
+							to: ' href="$1-dark.html"',
+						},
+						{
+							from: 'light/',
+							to: 'dark/',
+						},
+					],
 				},
+				{
+					glob: ['export/index-dark.html'],
+					replace: [
+						{
+							from: '<ul><li><span>Light.*</li></ul>',
+							to: '<ul><li><a href="index.html">Light Theme</a></li><li><span>Dark Theme (current)</span></li></ul>',
+						},
+					],
+				},
+				{
+					glob: ['export/index.html'],
+					replace: [
+						{
+							from: '/theme/dark',
+							to: 'index-dark.html',
+						},
+					],
+				},
+				{
+					glob: ['export/light/js/ui.min.js'],
+					replace: [
+						{
+							from: 'uri:"index"',
+							to: 'uri:"index.html"',
+						},
+					],
+				},
+				{
+					glob: ['export/dark/js/ui.min.js'],
+					replace: [
+						{
+							from: 'uri:"index"',
+							to: 'uri:"index-dark.html"',
+						},
+					],
+				},<% } %>
 			],
 			views: true,
 			additionalRoutes: [<% if (options.exampleCode) { %>'api/lottie/shipment.json', 'api/lottie/bouncing.json'<% } %>],

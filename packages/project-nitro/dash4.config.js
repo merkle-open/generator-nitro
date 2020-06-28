@@ -85,6 +85,7 @@ async function getConfig() {
 					[
 						new PluginReadme({ file: 'project/docs/nitro-config.md' }),
 						new PluginReadme({ file: 'project/docs/nitro-webpack.md' }),
+						new PluginReadme({ file: 'project/docs/nitro-themes.md' }),
 						new PluginReadme({ file: 'project/docs/nitro-exporter.md' }),
 					],
 				],

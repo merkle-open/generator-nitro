@@ -146,6 +146,9 @@ module.exports = (options = { rules: {}, features: {} }) => {
 					},
 					{
 						loader: require.resolve('sass-loader'),
+						options: {
+							implementation: require('node-sass'),
+						},
 					},
 				],
 			},

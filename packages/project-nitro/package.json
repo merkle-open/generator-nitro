@@ -20,7 +20,7 @@
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
     "update-dependencies": "npm-check-updates -u -x prettier",
     "\n# MISC ------- ": "",
-    "postinstall": "env-linter --saveExact",
+    "postinstall": "env-linter --saveExact --dependenciesExactVersion",
     "\n# LINT/TEST ------- ": "",
     "check-node-version": "check-node-version --print --package",
     "cypress-test": "npm run build && cross-env PORT=8888 NITRO_MODE=test npm-run-all --parallel --race test:cypress:serve cypress-test:open",

@@ -137,7 +137,7 @@
     "prettier": "1.19.1",
     "rimraf": "3.0.2",
     "stylelint": "13.6.1",<% if (options.jsCompiler === 'ts') { %>
-    "typescript": "3.9.6",<% } %>
+    "typescript": "3.9.7",<% } %>
     "watchpack": "1.6.1",
     "webpack-cli": "3.3.12",
     "yo": "3.1.1"

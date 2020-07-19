@@ -35,7 +35,7 @@
     "globby": "11.0.1",
     "gulp": "4.0.2",
     "gulp-imagemin": "7.1.0",
-    "gulp-htmllint": "0.0.16",
+    "gulp-htmllint": "0.0.18",
     "gulp-live-server": "0.0.31",
     "gulp-load-plugins": "2.0.3",
     "gulp-newer": "1.4.0",
@@ -51,7 +51,7 @@
   "devDependencies": {
     "@namics/eslint-config": "9.0.1",
     "@nitro/app": "*",
-    "eslint": "7.4.0",
+    "eslint": "7.5.0",
     "eslint-plugin-import": "2.22.0",
     "pkg-ok": "2.3.1"
   },

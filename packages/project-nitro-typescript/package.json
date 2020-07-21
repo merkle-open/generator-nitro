@@ -85,7 +85,7 @@
     "handlebars": "4.7.6",
     "jquery": "3.5.1",
     "lazysizes": "5.2.2",
-    "lottie-web": "5.7.0",
+    "lottie-web": "5.7.1",
     "prevent-window-opener-attacks": "0.2.5",
     "svg4everybody": "2.1.9"
   },

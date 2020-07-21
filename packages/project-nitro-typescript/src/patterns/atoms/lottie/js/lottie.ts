@@ -3,14 +3,15 @@ import { Component, EventListener, GondelBaseComponent } from '@gondel/core';
 @Component('Lottie')
 export class Lottie extends GondelBaseComponent {
 	private _animation: any;
-	public start() {
-		this._initializeAnimation();
-	}
 
 	@EventListener('click')
 	private _handleClick(): void {
 		const action = this._animation.isPaused ? 'play' : 'pause';
 		this._animation[action]();
+	}
+
+	public start() {
+		this._initializeAnimation();
 	}
 
 	private _initializeAnimation(): void {

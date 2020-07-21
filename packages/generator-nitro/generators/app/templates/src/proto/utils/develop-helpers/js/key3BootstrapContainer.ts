@@ -1,6 +1,6 @@
 import { addKeyboardAction, getFromLocalStorage, setToLocalStorage } from './developHelpers';
 
-(function() {
+(function () {
 	// config
 	const bootstrapStyles = [
 		'.container {' +

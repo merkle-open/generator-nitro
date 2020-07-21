@@ -1,6 +1,6 @@
 /* eslint-disable max-len, no-inline-comments, no-empty, require-jsdoc */
 
-const keys = (function(): { [key: string]: any } {
+const keys = (function (): { [key: string]: any } {
 	const controlKeys = {
 		17: false, // ctrl
 		18: false, // alt

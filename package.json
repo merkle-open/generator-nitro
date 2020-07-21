@@ -19,7 +19,7 @@
     "lint": "lerna run lint --parallel",
     "lint:md": "markdownlint ./readme.md ./.github",
     "update-dependencies": "npm-run-all --parallel update-dependencies:*",
-    "update-dependencies:packages": "lerna exec -- npm-check-updates -u -x twig,prettier,watchpack",
+    "update-dependencies:packages": "lerna exec -- npm-check-updates -u -x twig,watchpack",
     "update-dependencies:root": "npm-check-updates -u"
   },
   "keywords": [

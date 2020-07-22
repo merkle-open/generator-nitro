@@ -93,7 +93,7 @@
     "lazysizes": "5.2.2",
     "lottie-web": "5.7.0",
     "prevent-window-opener-attacks": "0.2.5"<% } %><% if (options.jsCompiler === 'js') { %>,
-    "regenerator-runtime": "0.13.3"<% } %><% if (options.exampleCode) { %>,
+    "regenerator-runtime": "0.13.6"<% } %><% if (options.exampleCode) { %>,
     "svg4everybody": "2.1.9"<% } %>
   },
   "devDependencies": {
@@ -105,7 +105,7 @@
     "@namics/env-linter": "0.3.2",
     "@namics/eslint-config": "9.0.1",
     "@namics/prettier-config": "1.1.0",
-    "@namics/stylelint-config": "1.0.2",
+    "@namics/stylelint-config": "1.0.3",
     "@namics/ts-config": "1.0.1",
     "@nitro/app": "<%= version %>",
     "@nitro/exporter": "<%= version %>",
@@ -120,7 +120,7 @@
     "commitizen": "4.1.2",
     "config": "3.3.1",
     "cross-env": "7.0.2",
-    "cypress": "4.10.0",
+    "cypress": "4.11.0",
     "cz-conventional-changelog": "3.2.0",
     "eslint": "7.5.0",
     "eslint-plugin-import": "2.22.0",

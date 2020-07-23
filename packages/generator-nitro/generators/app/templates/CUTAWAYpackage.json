@@ -93,7 +93,7 @@
     "lazysizes": "5.2.2",
     "lottie-web": "5.7.0",
     "prevent-window-opener-attacks": "0.2.5"<% } %><% if (options.jsCompiler === 'js') { %>,
-    "regenerator-runtime": "0.13.6"<% } %><% if (options.exampleCode) { %>,
+    "regenerator-runtime": "0.13.7"<% } %><% if (options.exampleCode) { %>,
     "svg4everybody": "2.1.9"<% } %>
   },
   "devDependencies": {

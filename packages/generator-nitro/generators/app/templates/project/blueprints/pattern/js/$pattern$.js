@@ -1,8 +1,7 @@
 'use strict';
 
 import { Component, EventListener, GondelBaseComponent } from '@gondel/core';
-import $ from 'jquery';
-import Example from "../../../../src/patterns/molecules/example/js/example";
+// import $ from 'jquery';
 
 /**
  * <%= pattern.name %> module implementation.

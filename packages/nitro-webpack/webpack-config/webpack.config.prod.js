@@ -63,7 +63,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 					},
 					// extract js node_modules to vendors file
 					vendors: {
-						test: /[\\/]node_modules[\\/].*\.(js|jsx|mjs|ts|tsx)/,
+						test: /[\\/]node_modules[\\/].*\.(js|jsx|mjs|ts|tsx)$/,
 						// use fix filename for usage in view
 						filename: 'js/vendors.min.js',
 						// Exclude proto dependencies going into vendors

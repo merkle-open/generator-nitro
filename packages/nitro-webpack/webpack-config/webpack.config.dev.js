@@ -154,7 +154,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 						loader: require.resolve('css-loader'),
 						options: {
 							importLoaders: 2,
-							sourceMap: true,
 						}
 					},
 					{

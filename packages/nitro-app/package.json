@@ -51,13 +51,13 @@
     "lodash": "4.17.19",
     "text-table": "0.2.0",
     "twig": "1.13.3",
-    "webpack": "4.44.0",
+    "webpack": "4.44.1",
     "webpack-dev-middleware": "3.7.2",
     "webpack-hot-middleware": "2.25.0"
   },
   "devDependencies": {
     "@namics/eslint-config": "9.0.1",
-    "eslint": "7.5.0",
+    "eslint": "7.6.0",
     "eslint-plugin-import": "2.22.0",
     "pkg-ok": "2.3.1"
   },

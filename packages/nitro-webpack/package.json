@@ -63,7 +63,7 @@
     "typescript": "3.9.7",
     "url-loader": "4.1.0",
     "watchpack": "1.6.1",
-    "webpack": "4.44.1",
+    "webpack": "4.43.0",
     "webpackbar": "4.0.0",
     "webpack-bundle-analyzer": "3.8.0"
   },

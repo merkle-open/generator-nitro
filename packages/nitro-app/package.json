@@ -29,7 +29,7 @@
     "nitro"
   ],
   "dependencies": {
-    "ajv": "6.12.3",
+    "ajv": "6.12.4",
     "body-parser": "1.19.0",
     "chalk": "4.1.0",
     "compression": "1.7.4",
@@ -42,7 +42,7 @@
     "hbs": "4.1.1",
     "hbs-utils": "0.0.4",
     "htmllint": "0.8.0",
-    "i18next": "19.6.3",
+    "i18next": "19.7.0",
     "i18next-express-middleware": "2.0.0",
     "i18next-node-fs-backend": "2.1.3",
     "i18next-sprintf-postprocessor": "0.2.2",

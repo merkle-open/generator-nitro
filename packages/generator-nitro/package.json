@@ -43,7 +43,7 @@
     "yosay": "2.0.2"
   },
   "devDependencies": {
-    "@namics/eslint-config": "9.0.1",
+    "@namics/eslint-config": "9.0.2",
     "ejs": "3.1.5",
     "eslint": "7.7.0",
     "eslint-plugin-import": "2.22.0",

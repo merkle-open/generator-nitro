@@ -91,7 +91,7 @@
     "handlebars": "4.7.6",
     "jquery": "3.5.1",
     "lazysizes": "5.2.2",
-    "lottie-web": "5.7.2",
+    "lottie-web": "5.7.3",
     "prevent-window-opener-attacks": "0.2.5"<% } %><% if (options.jsCompiler === 'js') { %>,
     "regenerator-runtime": "0.13.7"<% } %><% if (options.exampleCode) { %>,
     "svg4everybody": "2.1.9"<% } %>
@@ -103,7 +103,7 @@
     "@dash4/plugin-terminal": "0.9.0",
     "@dash4/server": "0.9.0",
     "@namics/env-linter": "0.3.2",
-    "@namics/eslint-config": "9.0.1",
+    "@namics/eslint-config": "9.0.2",
     "@namics/prettier-config": "1.1.0",
     "@namics/stylelint-config": "1.0.3",
     "@namics/ts-config": "1.0.1",
@@ -117,11 +117,11 @@
     "@types/webpack-env": "1.15.2",<% } %>
     "backstopjs": "5.0.4",
     "check-node-version": "4.0.3",
-    "commitizen": "4.1.5",
+    "commitizen": "4.2.1",
     "config": "3.3.1",
     "cross-env": "7.0.2",
     "cypress": "5.0.0",
-    "cz-conventional-changelog": "3.2.0",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "7.7.0",
     "eslint-plugin-import": "2.22.0",
     "extend": "3.0.2",
@@ -129,15 +129,15 @@
     "gulp": "4.0.2",
     "husky": "4.2.5",
     "license-checker": "25.0.1",
-    "lighthouse": "6.2.0",
-    "lint-staged": "10.2.11",
+    "lighthouse": "6.3.0",
+    "lint-staged": "10.2.13",
     "npm-run-all": "4.1.5",
-    "npm-check-updates": "7.1.1",
+    "npm-check-updates": "8.0.1",
     "opener": "1.5.1",
-    "prettier": "2.0.5",
+    "prettier": "2.1.1",
     "rimraf": "3.0.2",
     "stylelint": "13.6.1",<% if (options.jsCompiler === 'ts') { %>
-    "typescript": "3.9.7",<% } %>
+    "typescript": "4.0.2",<% } %>
     "watchpack": "1.6.1",
     "webpack-cli": "3.3.12",
     "yo": "3.1.1"

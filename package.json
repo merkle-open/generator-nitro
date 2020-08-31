@@ -11,7 +11,7 @@
   "scripts": {
     "clean": "npx --ignore-existing --quiet npm-run-all clean:*",
     "clean:lerna": "lerna clean --yes",
-    "clean:lock": "rimraf **/package-lock.json",
+    "clean:lock": "npx --ignore-existing --quiet rimraf **/package-lock.json",
     "clean:modules": "npx --ignore-existing --quiet rimraf node_modules",
     "commit": "git-cz",
     "postinstall": "lerna bootstrap --no-ci --hoist",

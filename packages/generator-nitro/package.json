@@ -39,13 +39,13 @@
     "glob": "7.1.6",
     "got": "11.5.2",
     "lodash": "4.17.20",
-    "yeoman-generator": "4.11.0",
+    "yeoman-generator": "4.12.0",
     "yosay": "2.0.2"
   },
   "devDependencies": {
     "@namics/eslint-config": "9.0.2",
     "ejs": "3.1.5",
-    "eslint": "7.7.0",
+    "eslint": "7.8.1",
     "eslint-plugin-import": "2.22.0",
     "fs-extra": "9.0.1",
     "jasmine": "3.6.1",

@@ -159,20 +159,23 @@ module.exports = (options = { rules: {}, features: {} }) => {
 					{
 						loader: require.resolve('postcss-loader'),
 						options: {
-							plugins: (loader) => [
-								require('autoprefixer')({
-									// @see autoprefixer options: https://github.com/postcss/autoprefixer#options
-									// flexbox: 'no-2009' will add prefixes only for final and IE versions of specification.
-									flexbox: 'no-2009',
-									// grid: 'autoplace': enable autoprefixer grid translations and include autoplacement support.
-									// not enabled - use `/* autoprefixer grid: autoplace */` in your css file
-								}),
-								require('iconfont-webpack-plugin')({
-									resolve: loader.resolve,
-								}),
-							],
-							sourceMap: true,
-						}
+							postcssOptions: (loader) => {
+								return {
+									plugins: [
+										require('iconfont-webpack-plugin')({
+											resolve: loader.resolve,
+										}),
+										require('autoprefixer')({
+											// @see autoprefixer options: https://github.com/postcss/autoprefixer#options
+											// flexbox: 'no-2009' will add prefixes only for final and IE versions of specification.
+											flexbox: 'no-2009',
+											// grid: 'autoplace': enable autoprefixer grid translations and include autoplacement support.
+											// not enabled - use `/* autoprefixer grid: autoplace */` in your css file
+										}),
+									],
+								};
+							},
+						},
 					},
 					{
 						loader: require.resolve('resolve-url-loader'),

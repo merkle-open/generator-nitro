@@ -8,7 +8,7 @@
 module.exports = {
 	extends: 'lighthouse:default',
 	settings: {
-		// https://github.com/GoogleChrome/lighthouse/blob/v6.0.0-beta.0/lighthouse-core/config/default-config.js
+		// https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md
 		onlyCategories: [
 			'performance',
 			'accessibility',
@@ -17,13 +17,17 @@ module.exports = {
 		],
 		skipAudits: [
 			// performance
-			'time-to-first-byte',
+			'redirects',
+			'server-response-time',
+			'uses-http2',
+			'uses-long-cache-ttl',
 			// best-practices
 			'appcache-manifest',
 			'is-on-https',
-			'uses-http2',
 			// seo
+			'http-status-code',
 			'is-crawlable',
+			'robots-txt',
 		],
 	},
 };

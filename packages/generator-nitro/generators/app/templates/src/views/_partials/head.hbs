@@ -5,8 +5,12 @@
 <link rel="apple-touch-icon" sizes="180x180" href="{{asset name='/img/icon/apple-touch-icon.png'}}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{asset name='/img/icon/favicon-32x32.png'}}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{asset name='/img/icon/favicon-16x16.png'}}">
-<meta name="msapplication-config" content="none">
-<meta name="application-name" content="Nitro Example Page"><% } %>
+<link rel="manifest" href="{{asset name='/img/icon/site.webmanifest'}}">
+<link rel="mask-icon" href="{{asset name='/img/icon/safari-pinned-tab.svg'}}" color="#2b5797">
+<link rel="shortcut icon" href="{{asset name='/img/icon/favicon.ico'}}">
+<meta name="msapplication-TileColor" content="#2b5797">
+<meta name="msapplication-config" content="{{asset name='/img/icon/browserconfig.xml'}}">
+<meta name="theme-color" content="#ffffff"><% } %>
 <title>{{_nitro.pageTitle}}</title>
 <meta name="format-detection" content="telephone=no">
 <link href="{{asset name='/css/ui.min.css'}}" rel="stylesheet">

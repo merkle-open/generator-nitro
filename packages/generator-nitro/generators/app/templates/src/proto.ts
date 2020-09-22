@@ -24,10 +24,9 @@ requireAll(require.context('./patterns', true, /[\/\\]proto[\/\\](?:[a-z0-9\-]+)
 
 // require all scss files from 'proto/css' and 'patterns/*/proto'
 requireAll(require.context('./proto/css', true, /^.*(s?css)$/));
-requireAll(require.context('./patterns', true, /[\/\\]proto[\/\\](?:[a-z0-9\-]+).(s?css)$/));
+requireAll(require.context('./patterns', true, /[\/\\]proto[\/\\](?:[a-z0-9\-]+).(s?css)$/));<% if (options.exampleCode) { %>
 
-/* eslint-enable no-useless-escape */
-<% if (options.exampleCode) { %>// require develop helpers
+// require develop helpers
 require('./proto/utils/develop-helpers');<% } %>
 
 /* eslint-enable @typescript-eslint/no-require-imports */

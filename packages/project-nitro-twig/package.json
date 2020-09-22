@@ -20,7 +20,7 @@
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
     "update-dependencies": "npm-check-updates -u",
     "\n# MISC ------- ": "",
-    "postinstall": "env-linter --hooksInstalled --saveExact",
+    "postinstall": "env-linter --hooksInstalled --saveExact --lts",
     "\n# LINT/TEST ------- ": "",
     "check-node-version": "check-node-version --print --package",
     "cypress-test": "npm run build && cross-env PORT=8890 NITRO_MODE=test npm-run-all --parallel --race test:cypress:serve cypress-test:open",
@@ -76,8 +76,8 @@
     "modular"
   ],
   "dependencies": {
-    "@gondel/core": "1.2.0",
-    "@gondel/plugin-hot": "1.2.3",
+    "@gondel/core": "1.2.4",
+    "@gondel/plugin-hot": "1.2.4",
     "@khanacademy/tota11y": "0.2.0",
     "bootstrap": "4.5.2",
     "core-js": "3.6.5",
@@ -96,7 +96,7 @@
     "@dash4/plugin-readme": "0.9.0",
     "@dash4/plugin-terminal": "0.9.0",
     "@dash4/server": "0.9.0",
-    "@namics/env-linter": "0.3.2",
+    "@namics/env-linter": "0.4.0",
     "@namics/eslint-config": "9.0.2",
     "@namics/prettier-config": "1.1.0",
     "@namics/stylelint-config": "1.0.3",
@@ -163,7 +163,7 @@
       "prettier --write"
     ],
     "package.json": [
-      "env-linter --saveExact --dependenciesExactVersion"
+      "env-linter --saveExact --dependenciesExactVersion --lts"
     ]
   }
 }

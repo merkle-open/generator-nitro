@@ -20,7 +20,7 @@
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
     "update-dependencies": "npm-check-updates -u",
     "\n# MISC ------- ": "",
-    "postinstall": "env-linter --hooksInstalled --saveExact --dependenciesExactVersion",
+    "postinstall": "env-linter --hooksInstalled --saveExact --dependenciesExactVersion --lts",
     "\n# LINT/TEST ------- ": "",
     "check-node-version": "check-node-version --print --package",
     "cypress-test": "npm run build && cross-env PORT=8888 NITRO_MODE=test npm-run-all --parallel --race test:cypress:serve cypress-test:open",
@@ -82,8 +82,8 @@
     "modular"
   ],
   "dependencies": {<% if (options.exampleCode) { %>
-    "@gondel/core": "1.2.0",
-    "@gondel/plugin-hot": "1.2.3",
+    "@gondel/core": "1.2.4",
+    "@gondel/plugin-hot": "1.2.4",
     "@khanacademy/tota11y": "0.2.0",
     "bootstrap": "4.5.2",<% } %>
     "core-js": "3.6.5"<% if (options.exampleCode) { %>,
@@ -102,7 +102,7 @@
     "@dash4/plugin-readme": "0.9.0",
     "@dash4/plugin-terminal": "0.9.0",
     "@dash4/server": "0.9.0",
-    "@namics/env-linter": "0.3.2",
+    "@namics/env-linter": "0.4.0",
     "@namics/eslint-config": "9.0.2",
     "@namics/prettier-config": "1.1.0",
     "@namics/stylelint-config": "1.0.3",
@@ -114,7 +114,7 @@
     "@types/bootstrap": "4.5.0",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.5.1",<% } %>
     "@types/svg4everybody": "2.1.1",
-    "@types/webpack-env": "1.15.2",<% } %>
+    "@types/webpack-env": "1.15.3",<% } %>
     "backstopjs": "5.0.6",
     "check-node-version": "4.0.3",
     "commitizen": "4.2.1",
@@ -137,7 +137,7 @@
     "prettier": "2.1.2",
     "rimraf": "3.0.2",
     "stylelint": "13.7.1",<% if (options.jsCompiler === 'ts') { %>
-    "typescript": "4.0.2",<% } %>
+    "typescript": "4.0.3",<% } %>
     "watchpack": "1.6.1",
     "webpack-cli": "3.3.12",
     "yo": "3.1.1"
@@ -174,7 +174,7 @@
       "prettier --write"
     ],
     "package.json": [
-      "env-linter --saveExact --dependenciesExactVersion"
+      "env-linter --saveExact --dependenciesExactVersion --lts"
     ]
   }
 }

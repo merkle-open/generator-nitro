@@ -159,7 +159,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.plugins.push(
 			new MiniCssExtractPlugin({
 				filename: 'css/[name].min.css',
-				chunkFilename: 'css/[name]-[id].min.css',
+				chunkFilename: 'css/[name]-[contenthash:7].min.css',
 			}),
 			new OptimizeCSSAssetsPlugin({
 				cssProcessorOptions: {

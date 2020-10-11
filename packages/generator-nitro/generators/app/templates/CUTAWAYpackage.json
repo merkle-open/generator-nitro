@@ -111,7 +111,7 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",<% if (options.jsCompiler === 'ts') { %>
-    "@types/bootstrap": "4.5.0",<% if (options.exampleCode ) { %>
+    "@types/bootstrap": "4.5.1",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.5.2",<% } %>
     "@types/svg4everybody": "2.1.1",
     "@types/webpack-env": "1.15.3",<% } %>
@@ -122,7 +122,7 @@
     "cross-env": "7.0.2",
     "cypress": "5.3.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "7.10.0",
+    "eslint": "7.11.0",
     "eslint-plugin-import": "2.22.1",
     "extend": "3.0.2",
     "generator-nitro": "<%= version %>",
@@ -139,7 +139,7 @@
     "stylelint": "13.7.2",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "4.0.3",<% } %>
     "watchpack": "1.6.1",
-    "webpack-cli": "3.3.12",
+    "webpack-cli": "4.0.0",
     "yo": "3.1.1"
   },
   "browserslist": [

@@ -37,7 +37,7 @@
     "gulp-imagemin": "7.1.0",
     "gulp-htmllint": "0.0.19",
     "gulp-live-server": "0.0.31",
-    "gulp-load-plugins": "2.0.4",
+    "gulp-load-plugins": "2.0.5",
     "gulp-newer": "1.4.0",
     "gulp-plumber": "1.2.1",
     "gulp-remote-src": "0.4.4",
@@ -51,7 +51,7 @@
   "devDependencies": {
     "@namics/eslint-config": "9.0.2",
     "@nitro/app": "*",
-    "eslint": "7.10.0",
+    "eslint": "7.11.0",
     "eslint-plugin-import": "2.22.1",
     "pkg-ok": "2.3.1"
   },

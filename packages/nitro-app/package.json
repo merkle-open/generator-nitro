@@ -29,7 +29,7 @@
     "nitro"
   ],
   "dependencies": {
-    "ajv": "6.12.5",
+    "ajv": "6.12.6",
     "body-parser": "1.19.0",
     "chalk": "4.1.0",
     "compression": "1.7.4",
@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@namics/eslint-config": "9.0.2",
-    "eslint": "7.10.0",
+    "eslint": "7.11.0",
     "eslint-plugin-import": "2.22.1",
     "pkg-ok": "2.3.1"
   },

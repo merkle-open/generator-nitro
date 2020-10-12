@@ -105,14 +105,14 @@
     "@namics/env-linter": "0.4.0",
     "@namics/eslint-config": "9.0.2",
     "@namics/prettier-config": "1.1.0",
-    "@namics/stylelint-config": "1.0.3",
+    "@namics/stylelint-config": "1.0.4",
     "@namics/ts-config": "1.0.1",
     "@nitro/app": "<%= version %>",
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "4.5.1",<% if (options.exampleCode ) { %>
-    "@types/jquery": "3.5.2",<% } %>
+    "@types/jquery": "3.5.3",<% } %>
     "@types/svg4everybody": "2.1.1",
     "@types/webpack-env": "1.15.3",<% } %>
     "backstopjs": "5.0.6",
@@ -138,7 +138,6 @@
     "rimraf": "3.0.2",
     "stylelint": "13.7.2",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "4.0.3",<% } %>
-    "watchpack": "1.6.1",
     "webpack-cli": "4.0.0",
     "yo": "3.1.1"
   },

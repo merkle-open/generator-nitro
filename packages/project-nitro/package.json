@@ -104,7 +104,7 @@
     "@namics/env-linter": "0.4.0",
     "@namics/eslint-config": "9.0.2",
     "@namics/prettier-config": "1.1.0",
-    "@namics/stylelint-config": "1.0.3",
+    "@namics/stylelint-config": "1.0.4",
     "@namics/ts-config": "1.0.1",
     "@nitro/app": "*",
     "@nitro/exporter": "*",
@@ -132,7 +132,6 @@
     "prettier": "2.1.2",
     "rimraf": "3.0.2",
     "stylelint": "13.7.2",
-    "watchpack": "1.6.1",
     "webpack-cli": "4.0.0",
     "yo": "3.1.1"
   },

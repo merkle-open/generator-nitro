@@ -138,6 +138,7 @@
     "rimraf": "3.0.2",
     "stylelint": "13.7.2",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "4.0.3",<% } %>
+    "watchpack": "1.6.1",
     "webpack-cli": "4.0.0",
     "yo": "3.1.1"
   },

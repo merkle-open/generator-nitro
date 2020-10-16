@@ -24,7 +24,7 @@ module.exports = (gulp) => {
 		const minifyImagesSrc = config.has('gulp.minifyImages') ?
 			config.get('gulp.minifyImages').map(o => o.src).filter(Boolean) : [];
 		const svgSpritesSrc = config.has('gulp.svgSprites') ?
-			config.get('gulp.svgSprites').map(o => o.src).filter(Boolean) : [];
+			config.get('gulp.svgSprites').flatMap(o => o.src).filter(Boolean) : [];
 
 		if (config.get('nitro.mode.livereload')) {
 			gulp.watch([

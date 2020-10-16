@@ -256,12 +256,12 @@ Object Properties:
 
 Type: Array of Objects
 
-Generates icon sprite with the name of the last folder in src
+Generates icon sprite with the name of the last folder in src. If src is an array, it uses the last folder from the first entry.
 
 Properties:
 
--   `gulp.svgSprites.src` Sting (default: ''; example: 'src/patterns/atoms/icon/img/icons/\*.svg')
--   `gulp.svgSprites.dest` Sting (default: ''; example: 'public/assets/svg')
+-   `gulp.svgSprites.src` String || String[] (default: ''; example: 'src/patterns/atoms/icon/img/icons/\*.svg')
+-   `gulp.svgSprites.dest` String (default: ''; example: 'public/assets/svg')
 
 ## Feature
 

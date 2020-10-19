@@ -1,98 +1,103 @@
 @import '../../breakpoints/css/breakpoints';
 
-$typography-default-family: 'minion';
-$typography-default-size: 'm';
+$typography-default-family: 'sans';
+$typography-default-size: 'sans-m';
 $typography-default-style: null;
 
 $typography-normal-ascender: 0.225rem;
 
-$typography-definition-mobile: (
-	sans: (
-		s: (
+$typography-size-definition: (
+	sans-s: (
+		mobile: (
 			'font-size': 17px,
 			'line-height': 24px,
 			'letter-spacing': 0.3px
 		),
-		m: (
+		desktop: (
+			'font-size': 21px,
+			'line-height': 32px,
+			'letter-spacing': 0.75px
+		)
+	),
+	sans-m: (
+		mobile: (
 			'font-size': 18px,
 			'line-height': 24px,
 			'letter-spacing': 0.3px
 		),
-		l: (
+		desktop: (
 			'font-size': 22px,
-			'line-height': 28px,
-			'letter-spacing': 0.3px
-		),
-		xl: (
-			'font-size': 22px,
-			'line-height': 28px,
-			'letter-spacing': 0.3px
-		),
-		xxl: (
-			'font-size': 26px,
 			'line-height': 32px,
-			'letter-spacing': 0.3px
-		),
-		xxxl: (
-			'font-size': 32px,
-			'line-height': 40px,
 			'letter-spacing': 0.5px
 		)
 	),
-	serif: (
-		s: (
-			'font-size': 14px,
-			'line-height': 20px,
-			'letter-spacing': 0.3px
-		),
-		m: (
-			'font-size': 16px,
-			'line-height': 24px,
-			'letter-spacing': 0.3px
-		),
-	)
-);
-
-$typography-definition-desktop: (
-	sans: (
-		s: (
-			'font-size': 21px,
-			'line-height': 32px,
-			'letter-spacing': 0.75px
-		),
-		m: (
+	sans-l: (
+		mobile: (
 			'font-size': 22px,
-			'line-height': 32px,
-			'letter-spacing': 0.5px
+			'line-height': 28px,
+			'letter-spacing': 0.3px
 		),
-		l: (
+		desktop: (
 			'font-size': 26px,
 			'line-height': 32px,
 			'letter-spacing': 0.5px
+		)
+	),
+	sans-xl: (
+		mobile: (
+			'font-size': 22px,
+			'line-height': 28px,
+			'letter-spacing': 0.3px
 		),
-		xl: (
+		desktop: (
 			'font-size': 26px,
 			'line-height': 36px,
 			'letter-spacing': 0.5px
+		)
+	),
+	sans-xxl: (
+		mobile: (
+			'font-size': 26px,
+			'line-height': 32px,
+			'letter-spacing': 0.3px
 		),
-		xxl: (
+		desktop: (
 			'font-size': 34px,
 			'line-height': 44px,
 			'letter-spacing': 0.5px
+		)
+	),
+	sans-xxxl: (
+		mobile: (
+			'font-size': 32px,
+			'line-height': 40px,
+			'letter-spacing': 0.5px
 		),
-		xxxl: (
+		desktop: (
 			'font-size': 50px,
 			'line-height': 64px,
 			'letter-spacing': 1px
 		)
 	),
-	serif: (
-		s: (
+	serif-s: (
+		mobile: (
 			'font-size': 14px,
 			'line-height': 20px,
 			'letter-spacing': 0.3px
 		),
-		m: (
+		desktop: (
+			'font-size': 14px,
+			'line-height': 20px,
+			'letter-spacing': 0.3px
+		)
+	),
+	serif-m: (
+		mobile: (
+			'font-size': 16px,
+			'line-height': 24px,
+			'letter-spacing': 0.3px
+		),
+		desktop: (
 			'font-size': 16px,
 			'line-height': 24px,
 			'letter-spacing': 0.3px
@@ -100,34 +105,15 @@ $typography-definition-desktop: (
 	)
 );
 
+$typography-definition-mobile: ();
+
+$typography-definition-desktop: ();
+
 /*
 	Functions to get the definition
 */
 
-@function typography-get-definition($breakpoint) {
-	@if ($breakpoint == 'mobile') {
-		@return $typography-definition-mobile;
-	}
-	@if ($breakpoint == 'desktop') {
-		@return $typography-definition-desktop;
-	}
-	@warn 'Unknown typography breakpoint '#{$breakpoint}'.';
-}
-
-@function typography-get-font-definition($breakpoint, $size, $family) {
-	$typography-breakpoint: typography-get-definition($breakpoint);
-	$typography-family: map-get($typography-breakpoint, $family);
-	@if ($typography-family == null) {
-		@warn 'Unknown typography definition for breakpoint '#{$breakpoint}' and family '#{$family}'.';
-	}
-	$typography-font-definition: map-get($typography-family, $size);
-	@if ($typography-font-definition == null) {
-		@warn 'Unknown typography definition for breakpoint '#{$breakpoint}', family '#{$family}' and size #{$size}.';
-	}
-	@return $typography-font-definition;
-}
-
-@mixin getDefinition($font-definition, $style, $family) {
+@mixin generate-font-styles($font-definition, $family, $style) {
 	font-size: map-get($font-definition, 'font-size');
 	line-height: map-get($font-definition, 'line-height');
 	letter-spacing: map-get($font-definition, 'letter-spacing');
@@ -145,34 +131,45 @@ $typography-definition-desktop: (
 		}
 	}
 	@if($family == 'serif') {
-		font-family: Arial, sans-serif;
+		font-family: 'Times New Roman', serif;
 
-		@if ($style == 'serif') {
-			font-family: Arial, sans-serif;
+		@if ($style == 'bold') {
+			font-family: 'Times New Roman', serif;
+			font-weight: bold;
 		}
-		@if ($style == 'semi-bold') {
-			font-family: Arial, sans-serif;
+		@if ($style == 'italic') {
+			font-family: 'Times New Roman', serif;
+			font-style: italic;
 		}
 	}
+}
+
+// Return the font definition for the given viewport and font-name
+@function get-font-definition($fontSize, $viewport) {
+	@if (not(map-has-key($typography-size-definition, $fontSize))) {
+		@error 'Typography font name `#{$fontSize}` does not exist.';
+	} @else if (not(map-has-key(map-get($typography-size-definition, $fontSize), $viewport))) {
+		@error 'Typography viewport size `#{$viewport}` does not exist for font `#{$fontSize}`.';
+	}
+
+	$font-definition: map-get(map-get($typography-size-definition, $fontSize), $viewport);
+
+	@return $font-definition;
 }
 
 /*
 	mixin to use in the code
 
 	Params:
-		- $size: gets the typo definition according to the size (e.g. s, m, l)
-		- $style: defines the style of the font. Accepted Values are 'bold', 'italic', 'semi-bold'. Default is null
-		- $family: defines the family of the language. Currently is minion default.
-		- $margin-bottom: adds a calculated margin at the bottom.
+		- $size: gets the typo definition according to the size (e.g. sans-s, sans-m, sans-l)
+		- $style: defines the style of the font. Accepted Values are 'bold', 'italic'. Default is null
+		- $family: defines the family of the language. Currently is sans default.
 */
 
-@mixin typography($size: $typography-default-size, $style: $typography-default-style, $family: $typography-default-family, $margin-bottom: 0) {
-
-	$font-definition: typography-get-font-definition('mobile', $size, $family);
-	@include getDefinition($font-definition, $style, $family);
+@mixin typography($size: $typography-default-size, $style: $typography-default-style, $family: $typography-default-family, ) {
+	@include generate-font-styles(get-font-definition($size, 'mobile'), $style, $family);
 
 	@media screen and (min-width: $size-md-min) {
-		$font-definition: typography-get-font-definition('desktop', $size, $family);
-		@include getDefinition($font-definition, $style, $family);
+		@include generate-font-styles(get-font-definition($size, 'desktop'), $style, $family);
 	}
 }

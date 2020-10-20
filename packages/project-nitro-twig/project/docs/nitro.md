@@ -205,9 +205,9 @@ Different layouts are placed in `/src/views/_layouts/`. Link them to your view [
 
 ### Render patterns
 
-Pages are meant to be compositions of your patterns. Use the pattern's name as the first parameter. Be aware, the
-pattern name is case-sensitive and should be unique.
+Pages are meant to be compositions of your patterns. Use the pattern's name as the first parameter. 
 
+Be aware, the pattern name is case-sensitive and should be unique as the first found pattern is taken for rendering.
 Nitro uses [twig](https://www.npmjs.com/package/twig) as the view engine and provides custom helpers.
 
 Render the example pattern (file: `example.twig`, data-file: `example.json`):

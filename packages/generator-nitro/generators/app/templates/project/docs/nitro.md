@@ -207,10 +207,11 @@ Different layouts are placed in `/src/views/_layouts/`. Link them to your view [
 
 ### Render patterns
 
-Pages are meant to be compositions of your patterns. Use the pattern's name as the first parameter. Be aware, the
-pattern name is case-sensitive and should be unique.
+Pages are meant to be compositions of your patterns. Use the pattern's name as the first parameter. 
 <% if (options.templateEngine === 'twig') { %>
+Be aware, the pattern name is case-sensitive and should be unique as the first found pattern is taken for rendering.
 Nitro uses [twig](https://www.npmjs.com/package/twig) as the view engine and provides custom helpers.<% } else { %>
+Be aware, the pattern name is case-sensitive and should be unique (at least per pattern type, see more on that below).
 Nitro uses [handlebars](https://www.npmjs.com/package/hbs) as the view engine and provides custom helpers.<% } %>
 
 Render the example pattern (file: `example.<%= options.viewExt %>`, data-file: `example.json`):
@@ -243,6 +244,15 @@ There also is a possibility to pass data to subpatterns by providing a data obje
 {{pattern name='example' data='example-variant' template='example-2'}}<% } %>
 ```
 
+<% if (options.templateEngine === 'hbs') { %>By using the `type` parameter, you can restrict the search for a pattern to a specific pattern type (atoms / molecules / ect).
+This is useful, when you e.g. have a cms pattern called `accordion`, which then calls an organism also called `accordion`:
+
+```
+{{pattern name='example' type='organism'}}
+```
+
+If no `type` parameter is provided, the pattern helper searches within all pattern types and returns the first pattern found
+<% } %>
 To be more flexible, you may also pass additional arguments to the pattern, which overrides the defaults from the data-file.
 
 ```<% if (options.templateEngine === 'twig') { %>

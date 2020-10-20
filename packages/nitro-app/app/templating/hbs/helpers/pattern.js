@@ -28,13 +28,30 @@ const hbsUtils = require('../utils');
 const lint = require('../../../lib/lint');
 const htmllintOptions = lint.getHtmllintOptions(true);
 
-const patternBasePaths = Object.keys(config.get('nitro.patterns')).map((key) => {
-	const configKey = `nitro.patterns.${key}.path`;
-	return config.has(configKey) ? config.get(configKey) : false;
-});
+function getPatternBasePaths(type) {
+	let patternTypeKeys;
 
-function getPattern(folder, templateFile, dataFile) {
+	if (type) {
+		patternTypeKeys = Object.keys(config.get('nitro.patterns')).filter((key) => {
+			return config.get('nitro.patterns')[key].path.indexOf(type) >= 0;
+		})
 
+		if (patternTypeKeys.length === 0) {
+			throw new Error(`Pattern type \`${type}\` not found in pattern config.`);
+		}
+	} else {
+		patternTypeKeys = Object.keys(config.get('nitro.patterns'));
+	}
+
+	return patternTypeKeys.map((key) => {
+		const configKey = `nitro.patterns.${key}.path`;
+		return config.has(configKey) ? config.get(configKey) : false;
+	});
+}
+
+function getPattern(folder, templateFile, dataFile, type) {
+
+	const patternBasePaths = getPatternBasePaths(type);
 	let pattern = null;
 
 	// search base pattern
@@ -112,6 +129,7 @@ module.exports = function () {
 		const name = typeof arguments[0] === 'string' ? arguments[0] : context.hash.name;
 		const folder = name.replace(/[^A-Za-z0-9-]/g, '');
 		const templateFile = context.hash && context.hash.template ? context.hash.template : folder.toLowerCase();
+		const type = context.hash && context.hash.type ? context.hash.type : '';
 
 		let dataFile = folder.toLowerCase();                                                   // default data file
 		let passedData = null;                                                                 // passed data to pattern helper
@@ -150,7 +168,7 @@ module.exports = function () {
 			}
 		}
 
-		const pattern = getPattern(folder, templateFile, dataFile);
+		const pattern = getPattern(folder, templateFile, dataFile, type);
 		if (pattern) {
 			try {
 				if (contextDataRoot._locals) {
@@ -204,7 +222,7 @@ module.exports = function () {
 			}
 		}
 
-		throw new Error(`Pattern \`${name}\` with template file \`${templateFile}.${config.get('nitro.viewFileExtension')}\` not found in folder \`${folder}\`.`);
+		throw new Error(`Pattern \`${name}\`${type ? ` within pattern type \`${type}\`` : ''} with template file \`${templateFile}.${config.get('nitro.viewFileExtension')}\` not found in folder \`${folder}\`.`);
 
 	} catch (e) {
 		return hbsUtils.logAndRenderError(e);

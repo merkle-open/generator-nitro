@@ -4,8 +4,18 @@ const baseConfig = require('../app/core/config');
 baseConfig.nitro.patterns = {
 	atom: {
 		template: 'project/blueprints/pattern',
-		path: 'project/fixtures',
+		path: 'project/fixtures/atoms',
 		patternPrefix: 'a',
+	},
+	molecule: {
+		template: 'project/blueprints/pattern',
+		path: 'project/fixtures/molecules',
+		patternPrefix: 'm',
+	},
+	organism: {
+		template: 'project/blueprints/pattern',
+		path: 'project/fixtures/organisms',
+		patternPrefix: 'mo',
 	},
 };
 

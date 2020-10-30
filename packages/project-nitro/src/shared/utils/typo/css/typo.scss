@@ -1,13 +1,40 @@
 @import '../../breakpoints/css/breakpoints';
 
-$typography-default-family: 'sans';
-$typography-default-size: 'sans-m';
-$typography-default-style: null;
-
-$typography-normal-ascender: 0.225rem;
+$typography-family-sans: Arial, sans-serif;
+$typography-family-serif: 'Times New Roman', serif;
 
 $typography-size-definition: (
+	default: (
+		base: (
+			'font-size': 1.6rem,
+			'line-height': 1,
+			'font-family': $typography-family-sans,
+			'font-weight': 400,
+			'font-style': normal,
+		),
+	),
+	font-family: (
+		title: (
+			'font-family': $typography-family-sans,
+		),
+		text: (
+			'font-family': $typography-family-sans,
+		),
+	),
+	font-weight: (
+		bold: (
+			'font-weight': 700,
+		),
+	),
+	font-style: (
+		italic: (
+			'font-style': italic,
+		),
+	),
 	sans-s: (
+		all: (
+			'font-family': $typography-family-sans,
+		),
 		mobile: (
 			'font-size': 17px,
 			'line-height': 24px,
@@ -20,6 +47,9 @@ $typography-size-definition: (
 		)
 	),
 	sans-m: (
+		all: (
+			'font-family': $typography-family-sans,
+		),
 		mobile: (
 			'font-size': 18px,
 			'line-height': 24px,
@@ -32,6 +62,9 @@ $typography-size-definition: (
 		)
 	),
 	sans-l: (
+		all: (
+			'font-family': $typography-family-sans,
+		),
 		mobile: (
 			'font-size': 22px,
 			'line-height': 28px,
@@ -44,6 +77,9 @@ $typography-size-definition: (
 		)
 	),
 	sans-xl: (
+		all: (
+			'font-family': $typography-family-sans,
+		),
 		mobile: (
 			'font-size': 22px,
 			'line-height': 28px,
@@ -56,6 +92,9 @@ $typography-size-definition: (
 		)
 	),
 	sans-xxl: (
+		all: (
+			'font-family': $typography-family-sans,
+		),
 		mobile: (
 			'font-size': 26px,
 			'line-height': 32px,
@@ -68,6 +107,9 @@ $typography-size-definition: (
 		)
 	),
 	sans-xxxl: (
+		all: (
+			'font-family': $typography-family-sans,
+		),
 		mobile: (
 			'font-size': 32px,
 			'line-height': 40px,
@@ -80,6 +122,9 @@ $typography-size-definition: (
 		)
 	),
 	serif-s: (
+		all: (
+			'font-family': $typography-family-serif,
+		),
 		mobile: (
 			'font-size': 14px,
 			'line-height': 20px,
@@ -92,6 +137,9 @@ $typography-size-definition: (
 		)
 	),
 	serif-m: (
+		all: (
+			'font-family': $typography-family-serif,
+		),
 		mobile: (
 			'font-size': 16px,
 			'line-height': 24px,
@@ -105,71 +153,57 @@ $typography-size-definition: (
 	)
 );
 
-$typography-definition-mobile: ();
+// Output generation for font-size definition
+@mixin _generate-font-size($font-size-definition) {
+	font-size: map-get($font-size-definition, 'font-size');
+	line-height: map-get($font-size-definition, 'line-height');
 
-$typography-definition-desktop: ();
-
-/*
-	Functions to get the definition
-*/
-
-@mixin generate-font-styles($font-definition, $family, $style) {
-	font-size: map-get($font-definition, 'font-size');
-	line-height: map-get($font-definition, 'line-height');
-	letter-spacing: map-get($font-definition, 'letter-spacing');
-
-	@if($family == 'sans') {
-		font-family: Arial, sans-serif;
-
-		@if ($style == 'bold') {
-			font-family: Arial, sans-serif;
-			font-weight: bold;
-		}
-		@if ($style == 'italic') {
-			font-family: Arial, sans-serif;
-			font-style: italic;
-		}
+	@if (map-has-key($font-size-definition, 'font-family')) {
+		font-family: map-get($font-size-definition, 'font-family');
 	}
-	@if($family == 'serif') {
-		font-family: 'Times New Roman', serif;
-
-		@if ($style == 'bold') {
-			font-family: 'Times New Roman', serif;
-			font-weight: bold;
-		}
-		@if ($style == 'italic') {
-			font-family: 'Times New Roman', serif;
-			font-style: italic;
-		}
+	@if (map-has-key($font-size-definition, 'font-weight')) {
+		font-weight: map-get($font-size-definition, 'font-weight');
+	}
+	@if (map-has-key($font-size-definition, 'font-style')) {
+		font-style: map-get($font-size-definition, 'font-style');
+	}
+	@if (map-has-key($font-size-definition, 'letter-spacing')) {
+		letter-spacing: map-get($font-size-definition, 'letter-spacing');
+	}
+	@if (map-has-key($font-size-definition, 'text-transform')) {
+		text-transform: map-get($font-size-definition, 'text-transform');
 	}
 }
 
 // Return the font definition for the given viewport and font-name
-@function get-font-definition($fontSize, $viewport) {
-	@if (not(map-has-key($typography-size-definition, $fontSize))) {
-		@error 'Typography font name `#{$fontSize}` does not exist.';
-	} @else if (not(map-has-key(map-get($typography-size-definition, $fontSize), $viewport))) {
-		@error 'Typography viewport size `#{$viewport}` does not exist for font `#{$fontSize}`.';
+@function get-font-definition($font-bundle, $viewport) {
+	@if (not(map-has-key($typography-size-definition, $font-bundle))) {
+		@error 'Typography font name `#{$font-bundle}` does not exist.';
+	} @else if (not(map-has-key(map-get($typography-size-definition, $font-bundle), $viewport))) {
+		@error 'Typography viewport size `#{$viewport}` does not exist for font `#{$font-bundle}`.';
 	}
 
-	$font-definition: map-get(map-get($typography-size-definition, $fontSize), $viewport);
+	$all-font-definition: ();
+	@if (map-has-key(map-get($typography-size-definition, $font-bundle), 'all')) {
+		$all-font-definition: map-get(map-get($typography-size-definition, $font-bundle), 'all');
+	}
+	$font-definition: map-merge($all-font-definition, map-get(map-get($typography-size-definition, $font-bundle), $viewport));
 
 	@return $font-definition;
 }
 
-/*
-	mixin to use in the code
+// Returns a (responsive) typography for the given font name
+// Usage:
+// span { @include typography('body') }
+// span { @include typography('body', 'md') }
+@mixin typography($font-bundle, $viewport: 'all') {
+	@if ($viewport == 'all') {
+		@include _generate-font-size(get-font-definition($font-bundle: $font-bundle, $viewport: 'mobile'));
 
-	Params:
-		- $size: gets the typo definition according to the size (e.g. sans-s, sans-m, sans-l)
-		- $style: defines the style of the font. Accepted Values are 'bold', 'italic'. Default is null
-		- $family: defines the family of the language. Currently is sans default.
-*/
-
-@mixin typography($size: $typography-default-size, $style: $typography-default-style, $family: $typography-default-family, ) {
-	@include generate-font-styles(get-font-definition($size, 'mobile'), $style, $family);
-
-	@media screen and (min-width: $size-md-min) {
-		@include generate-font-styles(get-font-definition($size, 'desktop'), $style, $family);
+		@media screen and (min-width: $size-md-min) {
+			@include _generate-font-size(get-font-definition($font-bundle: $font-bundle, $viewport: 'desktop'));
+		}
+	} @else {
+		@include _generate-font-size(get-font-definition($font-bundle: $font-bundle, $viewport: $viewport));
 	}
 }

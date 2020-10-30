@@ -39,7 +39,7 @@
     "eslint": "7.12.1",
     "eslint-loader": "4.0.2",
     "eslint-plugin-import": "2.22.1",
-    "file-loader": "6.1.1",
+    "file-loader": "6.2.0",
     "handlebars-loader": "1.7.1",
     "iconfont-webpack-plugin": "5.0.0",
     "imagemin": "7.0.1",

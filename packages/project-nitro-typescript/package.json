@@ -105,7 +105,7 @@
     "@nitro/gulp": "*",
     "@nitro/webpack": "*",
     "@types/bootstrap": "4.5.1",
-    "@types/jquery": "3.5.3",
+    "@types/jquery": "3.5.4",
     "@types/svg4everybody": "2.1.1",
     "@types/webpack-env": "1.15.3",
     "backstopjs": "5.0.6",

@@ -3,6 +3,9 @@
 $typography-family-sans: Arial, sans-serif;
 $typography-family-serif: 'Times New Roman', serif;
 
+$typography-weight-bold: 700;
+$typography-style-italic: italic;
+
 $typography-definitions: (
 	default: (
 		base: (
@@ -11,24 +14,6 @@ $typography-definitions: (
 			'font-family': $typography-family-sans,
 			'font-weight': 400,
 			'font-style': normal,
-		),
-	),
-	font-family: (
-		title: (
-			'font-family': $typography-family-sans,
-		),
-		text: (
-			'font-family': $typography-family-sans,
-		),
-	),
-	font-weight: (
-		bold: (
-			'font-weight': 700,
-		),
-	),
-	font-style: (
-		italic: (
-			'font-style': italic,
 		),
 	),
 	body: (
@@ -64,6 +49,7 @@ $typography-definitions: (
 	h1: (
 		all: (
 			'font-family': $typography-family-serif,
+			'font-font-weight': $typography-weight-bold,
 		),
 		mobile: (
 			'font-size': 32px,
@@ -79,6 +65,7 @@ $typography-definitions: (
 	h2: (
 		all: (
 			'font-family': $typography-family-serif,
+			'font-style': $typography-style-italic,
 		),
 		mobile: (
 			'font-size': 24px,
@@ -152,7 +139,7 @@ $typography-definitions: (
 	@if ($viewport == 'all') {
 		@include _generate-font-size(get-font-definition($font-bundle: $font-bundle, $viewport: 'mobile'));
 
-		@media screen and (min-width: $size-md-min) {
+		@media (min-width: $size-md-min) {
 			@include _generate-font-size(get-font-definition($font-bundle: $font-bundle, $viewport: 'desktop'));
 		}
 	} @else {

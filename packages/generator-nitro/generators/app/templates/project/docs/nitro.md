@@ -251,7 +251,8 @@ This is useful, when you e.g. have a cms pattern called `accordion`, which then 
 {{pattern name='example' type='organism'}}
 ```
 
-If no `type` parameter is provided, the pattern helper searches within all pattern types and returns the first pattern found
+If no `type` parameter is provided and multiple pattern with the same name and different pattern types exist, 
+the pattern helper searches within all pattern types and returns the first pattern found (in alphabetical order).
 <% } %>
 To be more flexible, you may also pass additional arguments to the pattern, which overrides the defaults from the data-file.
 
@@ -293,6 +294,11 @@ The pattern helper will find also pattern elements.
 -   Pattern with name `example-sub`: `<type>/example-sub/example-sub.<%= options.viewExt %>`
 -   Element with name `example-sub`: `<type>/*/elements/example-sub/example-sub.<%= options.viewExt %>`
 
+<% if (options.templateEngine === 'hbs') { %>Please note:
+The parameter `type` is also available for rendering pattern elements the same as for normal patterns. Therefore, the same
+rules and restrictions regarding unique names apply. Additionally, for pattern elements, their name should also be unique
+within a certain pattern type as otherwise, the pattern helper would just return the first found match.
+<% } %>
 ### Render partials
 
 Render a partial (<%= options.viewExt %> snippet). Partials are placed in `src/views/_partials/` as `*.<%= options.viewExt %>` files (e.g. `head.<%= options.viewExt %>`).

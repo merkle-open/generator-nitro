@@ -3,7 +3,7 @@
 $typography-family-sans: Arial, sans-serif;
 $typography-family-serif: 'Times New Roman', serif;
 
-$typography-size-definition: (
+$typography-definitions: (
 	default: (
 		base: (
 			'font-size': 1.6rem,
@@ -31,126 +31,81 @@ $typography-size-definition: (
 			'font-style': italic,
 		),
 	),
-	sans-s: (
+	body: (
 		all: (
 			'font-family': $typography-family-sans,
 		),
 		mobile: (
-			'font-size': 17px,
+			'font-size': 16px,
 			'line-height': 24px,
 			'letter-spacing': 0.3px
 		),
 		desktop: (
-			'font-size': 21px,
+			'font-size': 24px,
 			'line-height': 32px,
 			'letter-spacing': 0.75px
 		)
 	),
-	sans-m: (
+	body-small: (
 		all: (
 			'font-family': $typography-family-sans,
 		),
 		mobile: (
-			'font-size': 18px,
+			'font-size': 12px,
 			'line-height': 24px,
 			'letter-spacing': 0.3px
 		),
 		desktop: (
-			'font-size': 22px,
+			'font-size': 18px,
 			'line-height': 32px,
-			'letter-spacing': 0.5px
+			'letter-spacing': 0.75px
 		)
 	),
-	sans-l: (
+	h1: (
 		all: (
-			'font-family': $typography-family-sans,
-		),
-		mobile: (
-			'font-size': 22px,
-			'line-height': 28px,
-			'letter-spacing': 0.3px
-		),
-		desktop: (
-			'font-size': 26px,
-			'line-height': 32px,
-			'letter-spacing': 0.5px
-		)
-	),
-	sans-xl: (
-		all: (
-			'font-family': $typography-family-sans,
-		),
-		mobile: (
-			'font-size': 22px,
-			'line-height': 28px,
-			'letter-spacing': 0.3px
-		),
-		desktop: (
-			'font-size': 26px,
-			'line-height': 36px,
-			'letter-spacing': 0.5px
-		)
-	),
-	sans-xxl: (
-		all: (
-			'font-family': $typography-family-sans,
-		),
-		mobile: (
-			'font-size': 26px,
-			'line-height': 32px,
-			'letter-spacing': 0.3px
-		),
-		desktop: (
-			'font-size': 34px,
-			'line-height': 44px,
-			'letter-spacing': 0.5px
-		)
-	),
-	sans-xxxl: (
-		all: (
-			'font-family': $typography-family-sans,
+			'font-family': $typography-family-serif,
 		),
 		mobile: (
 			'font-size': 32px,
-			'line-height': 40px,
-			'letter-spacing': 0.5px
+			'line-height': 44px,
+			'letter-spacing': 0.3px
 		),
 		desktop: (
-			'font-size': 50px,
-			'line-height': 64px,
-			'letter-spacing': 1px
+			'font-size': 44px,
+			'line-height': 56px,
+			'letter-spacing': 0.3px
 		)
 	),
-	serif-s: (
+	h2: (
 		all: (
 			'font-family': $typography-family-serif,
 		),
 		mobile: (
-			'font-size': 14px,
-			'line-height': 20px,
+			'font-size': 24px,
+			'line-height': 32px,
 			'letter-spacing': 0.3px
 		),
 		desktop: (
-			'font-size': 14px,
-			'line-height': 20px,
+			'font-size': 32px,
+			'line-height': 44px,
 			'letter-spacing': 0.3px
 		)
 	),
-	serif-m: (
+	button: (
 		all: (
 			'font-family': $typography-family-serif,
 		),
 		mobile: (
-			'font-size': 16px,
-			'line-height': 24px,
+			'font-size': 18px,
+			'line-height': 18px,
 			'letter-spacing': 0.3px
 		),
 		desktop: (
-			'font-size': 16px,
-			'line-height': 24px,
+			'font-size': 20px,
+			'line-height': 20px,
 			'letter-spacing': 0.3px
 		)
-	)
+	),
 );
 
 // Output generation for font-size definition
@@ -177,25 +132,22 @@ $typography-size-definition: (
 
 // Return the font definition for the given viewport and font-name
 @function get-font-definition($font-bundle, $viewport) {
-	@if (not(map-has-key($typography-size-definition, $font-bundle))) {
+	@if (not(map-has-key($typography-definitions, $font-bundle))) {
 		@error 'Typography font name `#{$font-bundle}` does not exist.';
-	} @else if (not(map-has-key(map-get($typography-size-definition, $font-bundle), $viewport))) {
+	} @else if (not(map-has-key(map-get($typography-definitions, $font-bundle), $viewport))) {
 		@error 'Typography viewport size `#{$viewport}` does not exist for font `#{$font-bundle}`.';
 	}
 
 	$all-font-definition: ();
-	@if (map-has-key(map-get($typography-size-definition, $font-bundle), 'all')) {
-		$all-font-definition: map-get(map-get($typography-size-definition, $font-bundle), 'all');
+	@if (map-has-key(map-get($typography-definitions, $font-bundle), 'all')) {
+		$all-font-definition: map-get(map-get($typography-definitions, $font-bundle), 'all');
 	}
-	$font-definition: map-merge($all-font-definition, map-get(map-get($typography-size-definition, $font-bundle), $viewport));
+	$font-definition: map-merge($all-font-definition, map-get(map-get($typography-definitions, $font-bundle), $viewport));
 
 	@return $font-definition;
 }
 
-// Returns a (responsive) typography for the given font name
-// Usage:
-// span { @include typography('body') }
-// span { @include typography('body', 'md') }
+// Render a set of typography styles for one or all defined viewports
 @mixin typography($font-bundle, $viewport: 'all') {
 	@if ($viewport == 'all') {
 		@include _generate-font-size(get-font-definition($font-bundle: $font-bundle, $viewport: 'mobile'));

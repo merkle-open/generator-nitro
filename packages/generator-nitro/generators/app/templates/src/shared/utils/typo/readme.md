@@ -1,8 +1,10 @@
 # Typo
 
-> Typography util
+> Typography util which returns a set of typography styles for one or all defined viewports 
 
 ## Usage
+
+Please note: depending on the number of viewports, the output bundle size might get a bit large!
 
 ### typography mixin
 
@@ -11,8 +13,8 @@ Writes desired typography definition.
 ```
 @import 'src/shared/utils/typo/css/typo';
 
-span { @include typography('sans-s') }
-span { @include typography('serif-m') }
+span { @include typography('body') }
+span { @include typography('h1') }
 ```
 
 Or use a second parameter !== 'all' to only import the definition for specific viewport:
@@ -20,7 +22,7 @@ Or use a second parameter !== 'all' to only import the definition for specific v
 ```
 @import 'src/shared/utils/typo/css/typo';
 
-span { @include typography('sans-s', 'md') }
+span { @include typography('h2', 'md') }
 ```
 
 Or use the font-family / font-weight / font-style properties to just get single properties:
@@ -35,7 +37,7 @@ span { @include typography('font-style', 'italic') }
 
 ### get-font-definition function
 
-Returns a font definiton map from a specific viewport
+Returns a font definition map from a specific viewport
 
 ```
 @import 'src/shared/utils/typo/css/typo';

@@ -25,14 +25,14 @@ Or use a second parameter !== 'all' to only import the definition for specific v
 span { @include typography('h2', 'md') }
 ```
 
-Or use the font-family / font-weight / font-style properties to just get single properties:
+Or use the font-family / font-weight / font-style variables to use the globally defined font properties:
 
 ```
 @import 'src/shared/utils/typo/css/typo';
 
-span { @include typography('font-family', 'text') }
-span { @include typography('font-weight', 'bold') }
-span { @include typography('font-style', 'italic') }
+span { font-family: $typography-family-sans; }
+span { font-weight: $typography-weight-bold; }
+span { font-style: $typography-style-italic; }
 ```
 
 ### get-font-definition function

@@ -1,6 +1,6 @@
 [![npm version](https://badge.fury.io/js/%40nitro%2Fgulp.svg)](https://badge.fury.io/js/%40nitro%2Fgulp)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](http://opensource.org/licenses/MIT)
-[![Build Status](https://travis-ci.org/namics/generator-nitro.svg?branch=master)](https://travis-ci.org/namics/generator-nitro)
+[![Build Status](https://github.com/namics/generator-nitro/workflows/ci/badge.svg)](https://github.com/namics/generator-nitro/actions)
 
 # Nitro Gulp
 

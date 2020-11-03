@@ -32,6 +32,7 @@ function getPatternBasePaths(type) {
 	let patternTypeKeys;
 
 	if (type) {
+		// if a type is given, only return pattern types which match the given type, should just be one type
 		patternTypeKeys = Object.keys(config.get('nitro.patterns')).filter((key) => {
 			return config.get('nitro.patterns')[key].path.indexOf(type) >= 0;
 		})
@@ -100,9 +101,7 @@ function getPattern(folder, templateFile, dataFile, type) {
 		});
 
 		globby.sync(elementGlobs).forEach((templatePath) => {
-			if (pattern) {
-				throw new Error(`You have multiple elements defined with the name \`${folder}\``);
-			} else {
+			if (!pattern) {
 				pattern = {
 					templateFilePath: templatePath,
 					jsonFilePath: path.join(

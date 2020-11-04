@@ -10,31 +10,28 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 offset-md-2">
-			<h1>Ex</h1>
+			<h1>Pattern 'Ex'</h1>
 			{{pattern 'Ex'}}
 			{{component 'Ex' 'ex-blue'}}
 			{{pattern 'Ex' 'ex-blue' name='NavMain' data='ex'}}
 
-			<h1>Ex Variants</h1>
+			<h1>'Ex' Variants</h1>
 			{{pattern 'Ex' 'ex' data='ex-blue'}}
 			{{pattern name='Ex' template='ex2'}}
 			{{pattern name='Ex' data='ex-blue' template='ex'}}
+			{{pattern name='Ex' data='ex' template='ex' type="test"}}
 			{{pattern name='Ex' data='ex-blue' template='ex2'}}
 			{{pattern name='Ex' data='ex' template='ex2'}}
 
-			<h1>NavMain ...</h1>
-			{{pattern 'NavMain'}}
-			{{pattern 'NavMain' 'navmain-dec'}}
-			{{pattern 'NavMain' data='navmain-dec' template='navmain2'}}
-			{{pattern 'nav-mains'}}
-			{{pattern 'nav-mains' template='nav-mains2'}}
-			{{pattern 'Nav Mai'}}
+			<h1>Element</h1>
+			{{pattern name='subelement'}}
 
-			<h1>Fehlerfälle</h1>
+			<h1>Failures</h1>
 			{{pattern 'Ex' 'ex-blue' name='Ex' data='ex' template='XXX'}}
 			{{pattern 'Ex' template='other-ex'}}
-			{{pattern 'subelement'}}
-			{{pattern name='btn' data='btn-error'}}
+			{{pattern name='Ex' type="atom"}}
+			{{pattern name='Ex' data='not-available'}}
+			{{pattern name='btn'}}
 
 			<h1>Placeholder</h1>
 			{{placeholder 'content' 'xample'}}

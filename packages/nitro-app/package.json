@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@namics/eslint-config": "9.0.2",
-    "eslint": "7.12.1",
+    "eslint": "7.13.0",
     "eslint-plugin-import": "2.22.1",
     "pkg-ok": "2.3.1"
   },

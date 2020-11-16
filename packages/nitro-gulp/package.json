@@ -46,7 +46,7 @@
     "gulp-svgstore": "7.0.1",
     "imagemin-pngquant": "9.0.1",
     "merge-stream": "2.0.0",
-    "yargs": "16.1.0"
+    "yargs": "16.1.1"
   },
   "devDependencies": {
     "@namics/eslint-config": "9.0.2",

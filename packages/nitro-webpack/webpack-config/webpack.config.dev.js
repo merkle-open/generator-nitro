@@ -146,9 +146,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				use: [
 					{
 						loader: MiniCssExtractPlugin.loader,
-						options: {
-							hmr: true,
-						}
 					},
 					{
 						loader: require.resolve('css-loader'),

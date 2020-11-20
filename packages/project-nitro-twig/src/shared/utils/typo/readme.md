@@ -1,6 +1,6 @@
 # Typo
 
-> Typography util which returns a set of typography styles for one or all defined viewports 
+> Typography util which returns a set of typography styles for one or all defined viewports
 
 ## Usage
 

@@ -1,6 +1,6 @@
 {
   "name": "@nitro/app",
-  "version": "5.7.2",
+  "version": "5.7.3",
   "description": "Nitro server",
   "license": "MIT",
   "repository": "namics/generator-nitro",

@@ -34,7 +34,7 @@
     "chalk": "4.1.0",
     "compression": "1.7.4",
     "cookie-session": "1.4.0",
-    "config": "3.3.2",
+    "config": "3.3.3",
     "dot-object": "2.1.4",
     "express": "4.17.1",
     "extend": "3.0.2",

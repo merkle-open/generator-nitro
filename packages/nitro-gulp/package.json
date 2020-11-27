@@ -29,7 +29,7 @@
   "dependencies": {
     "browser-sync": "2.26.13",
     "compression": "1.7.4",
-    "config": "3.3.2",
+    "config": "3.3.3",
     "del": "6.0.0",
     "get-port": "5.1.1",
     "globby": "11.0.1",
@@ -37,7 +37,7 @@
     "gulp-imagemin": "7.1.0",
     "gulp-htmllint": "0.0.19",
     "gulp-live-server": "0.0.31",
-    "gulp-load-plugins": "2.0.5",
+    "gulp-load-plugins": "2.0.6",
     "gulp-newer": "1.4.0",
     "gulp-plumber": "1.2.1",
     "gulp-remote-src": "0.4.4",

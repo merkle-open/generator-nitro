@@ -33,7 +33,7 @@
     "@babel/plugin-proposal-decorators": "7.12.1",
     "@babel/plugin-proposal-class-properties": "7.12.1",
     "@babel/plugin-syntax-dynamic-import": "7.8.3",
-    "autoprefixer": "10.0.3",
+    "autoprefixer": "10.0.4",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
     "css-loader": "5.0.1",
     "eslint": "7.14.0",
@@ -65,7 +65,7 @@
     "watchpack": "1.6.1",
     "webpack": "4.43.0",
     "webpackbar": "4.0.0",
-    "webpack-bundle-analyzer": "4.1.0"
+    "webpack-bundle-analyzer": "4.2.0"
   },
   "devDependencies": {
     "@namics/eslint-config": "9.0.4",

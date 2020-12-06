@@ -39,7 +39,7 @@
   "devDependencies": {
     "@namics/eslint-config": "9.0.5",
     "@nitro/app": "*",
-    "eslint": "7.14.0",
+    "eslint": "7.15.0",
     "eslint-plugin-import": "2.22.1",
     "pkg-ok": "2.3.1"
   },

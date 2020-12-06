@@ -46,12 +46,12 @@
     "gulp-svgstore": "7.0.1",
     "imagemin-pngquant": "9.0.1",
     "merge-stream": "2.0.0",
-    "yargs": "16.1.1"
+    "yargs": "16.2.0"
   },
   "devDependencies": {
     "@namics/eslint-config": "9.0.5",
     "@nitro/app": "*",
-    "eslint": "7.14.0",
+    "eslint": "7.15.0",
     "eslint-plugin-import": "2.22.1",
     "pkg-ok": "2.3.1"
   },

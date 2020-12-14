@@ -8,8 +8,8 @@ These helpers will be loaded into Nitro automatically.
 An example could look like this:
 
 ```js
-module.exports = function(foo) {
-    // Helper Logic
+module.exports = function (foo) {
+  // Helper Logic
 };
 ```
 

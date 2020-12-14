@@ -26,9 +26,7 @@ context('Index Page Test', () => {
 
 	describe('HTML Head', () => {
 		it('charset meta tag is UTF-8', () => {
-			cy.document()
-				.should('have.property', 'charset')
-				.and('eq', 'UTF-8');
+			cy.document().should('have.property', 'charset').and('eq', 'UTF-8');
 		});
 
 		it('title includes index page', () => {
@@ -38,9 +36,7 @@ context('Index Page Test', () => {
 
 	describe('Root DOM node', () => {
 		it('has lang attribute', () => {
-			cy.root()
-				.should('match', 'html')
-				.and('have.attr', 'lang', 'en');
+			cy.root().should('match', 'html').and('have.attr', 'lang', 'en');
 		});
 	});
 });

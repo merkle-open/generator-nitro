@@ -8,14 +8,14 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 ## Features
 
--   Simple and proven project structure
--   Webpack Builder with HMR
--   Gulp Tasks for additional functionality
--   Linting, Source Maps, PostCSS & Browsersync
--   Setup for unit, e2e and visual regression testing (cypress, backstopjs) & lighthouse
--   Pattern generator
--   [Client side templates](./client-templates.md)
--   [Static Exports](./nitro-exporter.md)
+- Simple and proven project structure
+- Webpack Builder with HMR
+- Gulp Tasks for additional functionality
+- Linting, Source Maps, PostCSS & Browsersync
+- Setup for unit, e2e and visual regression testing (cypress, backstopjs) & lighthouse
+- Pattern generator
+- [Client side templates](./client-templates.md)
+- [Static Exports](./nitro-exporter.md)
 
 ## Preparation
 
@@ -192,10 +192,10 @@ Simple default layout:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-	<head></head>
-	<body>
-		{{{body}}}
-	</body>
+  <head></head>
+  <body>
+    {{{body}}}
+  </body>
 </html>
 ```
 
@@ -242,7 +242,7 @@ This is useful, when you e.g. have a cms pattern called `accordion`, which then 
 {{pattern name='example' type='organism'}}
 ```
 
-If no `type` parameter is provided and multiple pattern with the same name and different pattern types exist, 
+If no `type` parameter is provided and multiple pattern with the same name and different pattern types exist,
 the pattern helper searches within all pattern types and returns the first pattern found (in alphabetical order).
 
 To be more flexible, you may also pass additional arguments to the pattern, which overrides the defaults from the data-file.
@@ -257,9 +257,7 @@ Maybe using your pattern templates with transclusion could be helpful in some ca
 
 ```html
 // example box template
-<div class="a-box">
-	{{{children}}}
-</div>
+<div class="a-box">{{{children}}}</div>
 ```
 
 Call it as block like this:
@@ -280,8 +278,8 @@ The pattern helper will find also pattern elements.
 
 ... looks for following paths
 
--   Pattern with name `example-sub`: `<type>/example-sub/example-sub.hbs`
--   Element with name `example-sub`: `<type>/*/elements/example-sub/example-sub.hbs`
+- Pattern with name `example-sub`: `<type>/example-sub/example-sub.hbs`
+- Element with name `example-sub`: `<type>/*/elements/example-sub/example-sub.hbs`
 
 Please note:
 The parameter `type` is also available for rendering pattern elements the same as for normal patterns. Therefore, the same
@@ -311,7 +309,7 @@ The following example renders the file `content/example.hbs` from `/src/views/_p
 
 ### Render page lists
 
-To render all pages in the `src/views` folder, just call the hbs helper `{{viewlist}}`. The helper renders an `<ul>` list 
+To render all pages in the `src/views` folder, just call the hbs helper `{{viewlist}}`. The helper renders an `<ul>` list
 containing links to the respective pages.
 
 #### Filter generated list
@@ -406,11 +404,11 @@ You may overwrite data from views & patterns in request parameters.
 
 By default Nitro provides some data to be used in your views:
 
--   `{{ _nitro.pageUrl }}` (String) outputs full url including protocol and host
--   `{{ _nitro.pageTitle }}` (String) outputs string generated from the view name by default
--   `{{#if _nitro.production}}{{/if}}` (Boolean) is true when environment variable `NODE_ENV` is set to `production`
--   `{{#if _nitro.test}}{{/if}}` (Boolean) is true when environment variable `NITRO_MODE` ist set to `test`
--   `{{#if _nitro.offline}}{{/if}}` (Boolean) is true when config param 'nitro.mode.offline' is true
+- `{{ _nitro.pageUrl }}` (String) outputs full url including protocol and host
+- `{{ _nitro.pageTitle }}` (String) outputs string generated from the view name by default
+- `{{#if _nitro.production}}{{/if}}` (Boolean) is true when environment variable `NODE_ENV` is set to `production`
+- `{{#if _nitro.test}}{{/if}}` (Boolean) is true when environment variable `NITRO_MODE` ist set to `test`
+- `{{#if _nitro.offline}}{{/if}}` (Boolean) is true when config param 'nitro.mode.offline' is true
 
 ## Assets
 
@@ -456,8 +454,8 @@ Translations are stored in `/project/locales/[lang]/translation.json`.
 
 Express Middleware configuration:
 
--   Fallback language: `default`
--   Language switch with query parameter: `?lang=de`
+- Fallback language: `default`
+- Language switch with query parameter: `?lang=de`
 
 ### Translation hbs helper
 
@@ -497,13 +495,22 @@ To stay consistent you should favour the use of relative paths with a leading sl
 Link to resources relatively to the `project`-folder **with** a leading slash.
 
 ```html
-<link rel="stylesheet" href="/assets/css/ui.min.css" type="text/css" />
-<link rel="shortcut icon" href="/assets/img/icon/favicon.ico" type="image/x-icon" />
+<link
+  rel="stylesheet"
+  href="/assets/css/ui.min.css"
+  type="text/css"
+/>
+<link
+  rel="shortcut icon"
+  href="/assets/img/icon/favicon.ico"
+  type="image/x-icon"
+/>
 <script defer src="/assets/js/ui.min.js"></script>
 <a href="/content">Contentpage</a>
 ```
 
-...or use the 'asset' .hbs helper for public assets 
+...or use the 'asset' .hbs helper for public assets
+
 ```
 <link rel="stylesheet" href="{{asset name='/css/ui.min.css'}}" type="text/css" />
 ```
@@ -562,8 +569,8 @@ Use or create new scripts in `package.json` to run with npm.
 
 ## Contributing
 
--   For bugs and features please use [GitHub Issues](https://github.com/namics/generator-nitro/issues)
--   Feel free to fork and send PRs to the current `develop` branch. That's a good way to discuss your ideas.
+- For bugs and features please use [GitHub Issues](https://github.com/namics/generator-nitro/issues)
+- Feel free to fork and send PRs to the current `develop` branch. That's a good way to discuss your ideas.
 
 ## Credits
 

@@ -23,7 +23,6 @@ enum Selectors {
 
 @Component('Example')
 export class Example extends GondelBaseComponent {<% if (options.clientTpl) { %>
-
 	@EventListener('click', Selectors.Add)
 	private _handleAdd(e: MouseEvent) {
 		e.preventDefault();
@@ -76,7 +75,6 @@ export class Example extends GondelBaseComponent {<% if (options.clientTpl) { %>
 
 		$ctx.find(Selectors.List).append($links);
 	}<% } %>
-
 	public start() {
 		/* eslint-disable no-console */
 		console.warn('Example #start(): remove or implement component');

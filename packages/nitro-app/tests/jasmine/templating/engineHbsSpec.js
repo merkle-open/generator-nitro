@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Nitro\'s Handlebars helper loader', () => {
+describe("Nitro's Handlebars helper loader", () => {
 	it('has registered the pattern helper', () => {
 		const hbs = require('../../../app/templating/hbs/engine');
 		expect(typeof hbs.handlebars.helpers.pattern).toBe('function');

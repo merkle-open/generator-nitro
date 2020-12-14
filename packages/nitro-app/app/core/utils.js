@@ -5,12 +5,16 @@ const path = require('path');
 const config = require('config');
 
 function getLayoutName(layoutPath) {
-	const layoutPathWithoutViewPath = config.get('nitro.viewLayoutsDirectory').replace(`${config.get('nitro.viewDirectory')}/`, '');
+	const layoutPathWithoutViewPath = config
+		.get('nitro.viewLayoutsDirectory')
+		.replace(`${config.get('nitro.viewDirectory')}/`, '');
 	return layoutPath.replace(`${layoutPathWithoutViewPath}/`, '');
 }
 
 function getLayoutPath(layoutName) {
-	return `${config.get('nitro.viewLayoutsDirectory').replace(`${config.get('nitro.viewDirectory')}/`, '')}/${layoutName}`;
+	return `${config
+		.get('nitro.viewLayoutsDirectory')
+		.replace(`${config.get('nitro.viewDirectory')}/`, '')}/${layoutName}`;
 }
 
 function layoutExists(layoutName) {

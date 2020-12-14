@@ -23,7 +23,7 @@
 const fetch = require('node-fetch');
 const https = require('https');
 const agent = new https.Agent({
-	rejectUnauthorized: false
+	rejectUnauthorized: false,
 });
 
 module.exports = async function (page, scenario) {
@@ -33,14 +33,14 @@ module.exports = async function (page, scenario) {
 		// FIND TARGET URL REQUEST
 		if (requestUrl === targetUrl) {
 			const cookiesList = await page.cookies(requestUrl);
-			const cookies = cookiesList.map(cookie => `${cookie.name}=${cookie.value}`).join('; ');
-			const headers = Object.assign(request.headers(), {cookie: cookies});
+			const cookies = cookiesList.map((cookie) => `${cookie.name}=${cookie.value}`).join('; ');
+			const headers = Object.assign(request.headers(), { cookie: cookies });
 			const options = {
 				headers: headers,
 				body: request.postData(),
 				method: request.method(),
 				follow: 20,
-				agent
+				agent,
 			};
 
 			const result = await fetch(requestUrl, options);
@@ -51,7 +51,7 @@ module.exports = async function (page, scenario) {
 			await request.respond({
 				body: buffer,
 				headers: cleanedHeaders,
-				status: result.status
+				status: result.status,
 			});
 		} else {
 			request.continue();
@@ -59,7 +59,7 @@ module.exports = async function (page, scenario) {
 	};
 
 	await page.setRequestInterception(true);
-	page.on('request', req => {
+	page.on('request', (req) => {
 		intercept(req, scenario.url);
 	});
 };

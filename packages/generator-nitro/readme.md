@@ -1,5 +1,5 @@
 [![NPM version](https://badge.fury.io/js/generator-nitro.svg)](https://npmjs.org/package/generator-nitro)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](http://opensource.org/licenses/MIT) 
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](http://opensource.org/licenses/MIT)
 [![Build Status](https://github.com/namics/generator-nitro/workflows/ci/badge.svg?branch=master)](https://github.com/namics/generator-nitro/actions)
 [![Dependency Status](https://david-dm.org/namics/generator-nitro.svg?theme=shields.io)](https://david-dm.org/namics/generator-nitro)
 
@@ -17,12 +17,12 @@ Nitro is simple, fast and flexible. It works on macOS, Windows and Linux. Use th
 ## Usage
 
 Before using, you need of course [node](https://nodejs.org/) installed.  
-Nitro and the Nitro generator are tested with the current 
+Nitro and the Nitro generator are tested with the current
 ["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 10.x and 12.x).
 
 ### Create a new project
 
-This creates a new project in the current directory 
+This creates a new project in the current directory
 using [npx](https://www.npmjs.com/package/npx) (npm >= 5.2):
 
 First, uninstall a previously installed global package "generator-nitro"
@@ -46,9 +46,10 @@ npm run nitro:update
 ```
 
 ... then
-* validate all local changes
-* run the 'clean' task to remove the package-lock and the 'node_modules' folder
-* run 'install'
+
+- validate all local changes
+- run the 'clean' task to remove the package-lock and the 'node_modules' folder
+- run 'install'
 
 ```
 npm run clean
@@ -59,13 +60,13 @@ npm install
 
 On creating a new project, you will be guided through some configuration options:
 
-* Desired Name `--name=` (default: current directory name)
-* Desired template engine `--templateEngine=` (`hbs` or `twig`; default: `hbs`)
-* Desired js compiler `--jsCompiler=` (`ts` or `js`; default: `ts`)
-* Using theming feature `--themes` (default: false)
-* Using client side templates `--clientTpl` (default: false)
-* Including example code `--exampleCode` (default: false)
-* Installing nitro-exporter" `--exporter` (default: false)
+- Desired Name `--name=` (default: current directory name)
+- Desired template engine `--templateEngine=` (`hbs` or `twig`; default: `hbs`)
+- Desired js compiler `--jsCompiler=` (`ts` or `js`; default: `ts`)
+- Using theming feature `--themes` (default: false)
+- Using client side templates `--clientTpl` (default: false)
+- Including example code `--exampleCode` (default: false)
+- Installing nitro-exporter" `--exporter` (default: false)
 
 It's possible to pass in these options through the command line:
 
@@ -81,7 +82,7 @@ npx -p yo -p generator-nitro@latest -- yo nitro --name=myproject --clientTpl --e
 
 ### Project Update
 
-If you start the generator in an existing project, you will be asked to update the project. 
+If you start the generator in an existing project, you will be asked to update the project.
 It is best to overwrite all local files and check the differences after.
 
 Updating to a new major version needs some more work. Please check the [release notes](https://github.com/namics/generator-nitro/releases)
@@ -90,15 +91,15 @@ Updating to a new major version needs some more work. Please check the [release 
 
 Available generators:
 
-* `yo nitro` (aka `yo nitro:app` / generate or update a project)
-* `yo nitro:pattern [name]` (create or update a pattern)
-* `yo nitro:server` (create an executable light version of the project)
+- `yo nitro` (aka `yo nitro:app` / generate or update a project)
+- `yo nitro:pattern [name]` (create or update a pattern)
+- `yo nitro:server` (create an executable light version of the project)
 
 Note: Generators are to be run from the root directory of your project.
 
 ## Generated app
 
-Have a look at the [sample project](https://nitro-project-test.netlify.app/) 
+Have a look at the [sample project](https://nitro-project-test.netlify.app/)
 which contains the examples of a generated project and was statified with the default configuration of the "nitro-exporter".
 
 See how to use the [generated app](https://github.com/namics/generator-nitro/blob/master/packages/project-nitro/project/docs/nitro.md)
@@ -107,7 +108,7 @@ See how to use the [generated app](https://github.com/namics/generator-nitro/blo
 
 We are more than happy to accept external contributions to the project in the form of feedback, bug reports and pull requests :)
 
-See the [contributing docs](../../.github/contributing.md)  
+See the [contributing docs](../../.github/contributing.md)
 
 ## Changelog
 

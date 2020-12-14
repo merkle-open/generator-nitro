@@ -79,7 +79,8 @@ const config = {
 					replace: [
 						{
 							from: '<ul><li><span>Light.*</li></ul>',
-							to: '<ul><li><a href="index.html">Light Theme</a></li><li><span>Dark Theme (current)</span></li></ul>',
+							to:
+								'<ul><li><a href="index.html">Light Theme</a></li><li><span>Dark Theme (current)</span></li></ul>',
 						},
 					],
 				},

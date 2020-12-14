@@ -5,9 +5,7 @@
 const pkg = require('../../package.json');
 
 describe('Genearator', () => {
-
 	describe('Generator package configuration', () => {
-
 		it('contains the name `generator-nitro`', () => {
 			expect(pkg.name).toEqual('generator-nitro');
 		});
@@ -15,7 +13,5 @@ describe('Genearator', () => {
 		it('includes MIT license', () => {
 			expect(pkg.license).toEqual('MIT');
 		});
-
 	});
-
 });

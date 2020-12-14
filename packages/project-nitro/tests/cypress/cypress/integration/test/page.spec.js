@@ -32,13 +32,8 @@ context('Test Page Tests', () => {
 			cy.get('.js-t-ex__more').as('more');
 			cy.get('.js-t-ex__add').as('add');
 
-			cy.get('@more')
-				.click()
-				.click();
-			cy.get('@more')
-				.closest('.t-ex')
-				.find('li')
-				.should('have.length', 7);
+			cy.get('@more').click().click();
+			cy.get('@more').closest('.t-ex').find('li').should('have.length', 7);
 
 			cy.get('@add').click();
 			cy.get('.t-ex').should('have.length', 4);

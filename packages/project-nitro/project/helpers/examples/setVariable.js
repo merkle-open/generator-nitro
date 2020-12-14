@@ -17,6 +17,6 @@
  *
  */
 
-module.exports = function setVariable(name, value, options){
+module.exports = function setVariable(name, value, options) {
 	options.data.root[name] = value;
 };

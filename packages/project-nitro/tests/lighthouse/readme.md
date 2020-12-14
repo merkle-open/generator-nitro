@@ -6,13 +6,13 @@ Quality Testing. Outputs Scores for one page.
 
 ## Configuration
 
--    The scope of the tests for the score evaluation can [be easily adjusted](./lighthouse.config.js).
--    As default we use a slightly customized [default config](https://github.com/GoogleChrome/lighthouse/blob/master/lighthouse-core/config/default-config.js) (tests on server infrastructure and PWA were disabled)
--    The page to test is defined in the npm script `lighthouse-test:run`
--    The report is generated inside '/public/reports/lighthouse'
+- The scope of the tests for the score evaluation can [be easily adjusted](./lighthouse.config.js).
+- As default we use a slightly customized [default config](https://github.com/GoogleChrome/lighthouse/blob/master/lighthouse-core/config/default-config.js) (tests on server infrastructure and PWA were disabled)
+- The page to test is defined in the npm script `lighthouse-test:run`
+- The report is generated inside '/public/reports/lighthouse'
 
 ## Scripts
 
 Use following npm script for your test workflow:
 
--   `npm run lighthouse-test` to run test suite (should open a browser window with the test results)
+- `npm run lighthouse-test` to run test suite (should open a browser window with the test results)

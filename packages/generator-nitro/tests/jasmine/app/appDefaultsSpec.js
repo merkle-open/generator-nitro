@@ -10,12 +10,12 @@ const os = require('os');
 const defaultPrompts = require('./utils/appDefaultPrompts');
 
 describe('nitro:app', () => {
-
 	jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
 
 	describe('when using default options', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
+			helpers
+				.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test')) // Clear the directory and set it as the CWD
 				.withOptions({ 'skip-install': true, 'skip-questions': true }) // Mock options passed in
 				.withPrompts(defaultPrompts)
@@ -56,9 +56,7 @@ describe('nitro:app', () => {
 		});
 
 		it('package.json contains project name', () => {
-			assert.fileContent([
-				['package.json', '"name": "temp-test",'],
-			]);
+			assert.fileContent([['package.json', '"name": "temp-test",']]);
 		});
 
 		it('package.json contains @nitro dependencies', () => {
@@ -103,11 +101,7 @@ describe('nitro:app', () => {
 
 		// themes (false)
 		it('theme feature is not included', () => {
-			assert.noFile([
-				'config/default/themes.js',
-				'project/routes/_themes.js',
-				'src/ui.dark.ts',
-			]);
+			assert.noFile(['config/default/themes.js', 'project/routes/_themes.js', 'src/ui.dark.ts']);
 		});
 
 		// clientTemplates (false)
@@ -166,17 +160,12 @@ describe('nitro:app', () => {
 		});
 
 		it('but project route readme.md is present', () => {
-			assert.file([
-				'project/routes/readme.md',
-			]);
+			assert.file(['project/routes/readme.md']);
 		});
 
 		// not including exporter
 		it('config does not contain default exporter properties', () => {
-			assert.noFileContent([
-				['config/default.js', /exporter:/],
-			]);
+			assert.noFileContent([['config/default.js', /exporter:/]]);
 		});
-
 	});
 });

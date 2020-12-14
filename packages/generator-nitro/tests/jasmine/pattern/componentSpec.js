@@ -13,9 +13,13 @@ describe('nitro:component', () => {
 	describe('when creating a component "Test" (organism)', () => {
 		describe('but no modifier is given', () => {
 			beforeAll((done) => {
-				helpers.run(path.join(__dirname, '../../../generators/component'))
+				helpers
+					.run(path.join(__dirname, '../../../generators/component'))
 					.inTmpDir((dir) => {
-						fs.copySync(path.join(__dirname, '../../../generators/app/templates/project/blueprints'), path.join(dir, 'project/blueprints'));
+						fs.copySync(
+							path.join(__dirname, '../../../generators/app/templates/project/blueprints'),
+							path.join(dir, 'project/blueprints')
+						);
 						fs.writeJsonSync(path.join(dir, 'config.json'), { nitro: { patterns: patternConfig } });
 					})
 					.withPrompts({ name: 'Test', type: 'organism' })
@@ -23,9 +27,7 @@ describe('nitro:component', () => {
 			});
 
 			it('the modifier files are not created', () => {
-				assert.noFile([
-					'src/patterns/organisms/Test/css/modifier',
-				]);
+				assert.noFile(['src/patterns/organisms/Test/css/modifier']);
 			});
 
 			it('the pattern files are created', () => {

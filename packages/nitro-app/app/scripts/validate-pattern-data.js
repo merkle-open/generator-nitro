@@ -33,17 +33,21 @@ const wildcard = '*';
 const patternBasePaths = Object.keys(config.get('nitro.patterns')).map((key) => {
 	return config.get(`nitro.patterns.${key}.path`);
 });
-const patternGlobs = patternBasePaths.map((patternBasePath) => {
-	return `${patternBasePath}/${wildcard}`;
-}).concat(
-	patternBasePaths.map((patternBasePath) => {
-		return `${patternBasePath}/${wildcard}/elements/${wildcard}`;
+const patternGlobs = patternBasePaths
+	.map((patternBasePath) => {
+		return `${patternBasePath}/${wildcard}`;
 	})
-);
+	.concat(
+		patternBasePaths.map((patternBasePath) => {
+			return `${patternBasePath}/${wildcard}/elements/${wildcard}`;
+		})
+	);
 const logMissingSchemaAsError = config.has('code.validation.jsonSchema.logMissingSchemaAsError')
-	? config.get('code.validation.jsonSchema.logMissingSchemaAsError') : false;
+	? config.get('code.validation.jsonSchema.logMissingSchemaAsError')
+	: false;
 const logMissingSchemaAsWarning = config.has('code.validation.jsonSchema.logMissingSchemaAsWarning')
-	? config.get('code.validation.jsonSchema.logMissingSchemaAsWarning') : true;
+	? config.get('code.validation.jsonSchema.logMissingSchemaAsWarning')
+	: true;
 
 let errorCouter = 0;
 let patternCouter = 0;

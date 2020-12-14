@@ -32,7 +32,9 @@ function theme(req, res, next) {
 	// enrich locals with theme data on all pages
 	if (isPage) {
 		const theme =
-			getValidatedThemeId(process.env.THEME) || (req.session && req.session.theme && getValidatedThemeId(req.session.theme)) || validThemes.find((theme) => theme.isDefault).id;
+			getValidatedThemeId(process.env.THEME) ||
+			(req.session && req.session.theme && getValidatedThemeId(req.session.theme)) ||
+			validThemes.find((theme) => theme.isDefault).id;
 		const themeData = validThemes.find((t) => t.id === theme);
 
 		extend(true, res.locals, { theme: themeData });

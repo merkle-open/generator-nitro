@@ -10,12 +10,12 @@ const os = require('os');
 const defaultPrompts = require('./utils/appDefaultPrompts');
 
 describe('nitro:app', () => {
-
 	jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
 
 	describe('when using custom name', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
+			helpers
+				.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ name: 'my Project' })
@@ -23,15 +23,14 @@ describe('nitro:app', () => {
 		});
 
 		it('package.json contains project name', () => {
-			assert.fileContent([
-				['package.json', '"name": "my-project",'],
-			]);
+			assert.fileContent([['package.json', '"name": "my-project",']]);
 		});
 	});
 
 	describe('when using template engine hbs', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
+			helpers
+				.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ ...defaultPrompts, ...{ templateEngine: 'hbs' } })
@@ -55,7 +54,8 @@ describe('nitro:app', () => {
 
 	describe('when using template engine twig', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
+			helpers
+				.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ ...defaultPrompts, ...{ templateEngine: 'twig' } })
@@ -79,7 +79,8 @@ describe('nitro:app', () => {
 
 	describe('when using js compiler typescript', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
+			helpers
+				.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ ...defaultPrompts, ...{ jsCompiler: 'ts' } })
@@ -94,15 +95,14 @@ describe('nitro:app', () => {
 				'project/blueprints/pattern/js/$pattern$.ts',
 				'tsconfig.json',
 			]);
-			assert.noFile([
-				'babel.config.js',
-			]);
+			assert.noFile(['babel.config.js']);
 		});
 	});
 
 	describe('when using js compiler javascript', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
+			helpers
+				.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ ...defaultPrompts, ...{ jsCompiler: 'js' } })
@@ -117,15 +117,14 @@ describe('nitro:app', () => {
 				'project/blueprints/pattern/js/$pattern$.js',
 				'babel.config.js',
 			]);
-			assert.noFile([
-				'tsconfig.json',
-			]);
+			assert.noFile(['tsconfig.json']);
 		});
 	});
 
 	describe('when including themes feature', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
+			helpers
+				.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ ...defaultPrompts, ...{ themes: true } })
@@ -148,12 +147,12 @@ describe('nitro:app', () => {
 				// ['config/default.js', /themes: require('\.\/default\/themes'),/],
 			]);
 		});
-
 	});
 
 	describe('when not including themes feature', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
+			helpers
+				.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ ...defaultPrompts, ...{ themes: false } })
@@ -177,12 +176,12 @@ describe('nitro:app', () => {
 				// ['config/default.js', /themes: require('\.\/default\/themes'),/],
 			]);
 		});
-
 	});
 
 	describe('when including client templates', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
+			helpers
+				.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ ...defaultPrompts, ...{ clientTpl: true } })
@@ -196,15 +195,15 @@ describe('nitro:app', () => {
 		it('webpack config enables hbs loader', () => {
 			assert.fileContent('config/webpack/options.js', /hbs: true,/);
 		});
-
 	});
 
 	describe('when not including client templates', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
+			helpers
+				.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ ...defaultPrompts, ...{ clientTpl: false }})
+				.withPrompts({ ...defaultPrompts, ...{ clientTpl: false } })
 				.on('end', done);
 		});
 
@@ -215,12 +214,12 @@ describe('nitro:app', () => {
 		it('webpack config disables hbs loader', () => {
 			assert.fileContent('config/webpack/options.js', /hbs: false,/);
 		});
-
 	});
 
 	describe('when including example files', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
+			helpers
+				.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ ...defaultPrompts, ...{ exampleCode: true } })
@@ -234,9 +233,7 @@ describe('nitro:app', () => {
 				'src/patterns/molecules/example/js/example.ts',
 				'src/patterns/molecules/example/_data/example.json',
 			]);
-			assert.noFile([
-				'src/patterns/molecules/example/js/example.js',
-			]);
+			assert.noFile(['src/patterns/molecules/example/js/example.js']);
 		});
 
 		it('icon pattern is present', () => {
@@ -289,7 +286,8 @@ describe('nitro:app', () => {
 
 	describe('when not including example files', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
+			helpers
+				.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ ...defaultPrompts, ...{ exampleCode: false } })
@@ -335,11 +333,7 @@ describe('nitro:app', () => {
 		});
 
 		it('some proto files are still present', () => {
-			assert.file([
-				'src/proto/readme.md',
-				'src/proto/css/prototype.scss',
-				'src/proto/js/prototype.ts',
-			]);
+			assert.file(['src/proto/readme.md', 'src/proto/css/prototype.scss', 'src/proto/js/prototype.ts']);
 		});
 
 		it('some proto files are not present', () => {
@@ -360,15 +354,14 @@ describe('nitro:app', () => {
 		});
 
 		it('but project route readme.md is present', () => {
-			assert.file([
-				'project/routes/readme.md',
-			]);
+			assert.file(['project/routes/readme.md']);
 		});
 	});
 
 	describe('when including static exporter', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
+			helpers
+				.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ ...defaultPrompts, ...{ exporter: true } })
@@ -376,15 +369,14 @@ describe('nitro:app', () => {
 		});
 
 		it('config contains default exporter properties', () => {
-			assert.fileContent([
-				['config/default.js', /exporter:/],
-			]);
+			assert.fileContent([['config/default.js', /exporter:/]]);
 		});
 	});
 
 	describe('when not including static exporter', () => {
 		beforeAll((done) => {
-			helpers.run(path.join(__dirname, '../../../generators/app'))
+			helpers
+				.run(path.join(__dirname, '../../../generators/app'))
 				.inDir(path.join(os.tmpdir(), './temp-test'))
 				.withOptions({ 'skip-install': true })
 				.withPrompts({ ...defaultPrompts, ...{ exporter: false } })
@@ -392,9 +384,7 @@ describe('nitro:app', () => {
 		});
 
 		it('config does not contain default exporter properties', () => {
-			assert.noFileContent([
-				['config/default.js', /exporter:/],
-			]);
+			assert.noFileContent([['config/default.js', /exporter:/]]);
 		});
 	});
 });

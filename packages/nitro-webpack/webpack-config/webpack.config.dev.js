@@ -16,20 +16,13 @@ const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&t
 const appDirectory = fs.realpathSync(process.cwd());
 
 module.exports = (options = { rules: {}, features: {} }) => {
-
 	const webpackConfig = {
 		mode: 'development',
 		devtool: 'eval-source-map',
 		context: appDirectory,
 		entry: {
-			ui: [
-				'./src/ui',
-				hotMiddlewareScript,
-			],
-			proto: [
-				'./src/proto',
-				hotMiddlewareScript,
-			],
+			ui: ['./src/ui', hotMiddlewareScript],
+			proto: ['./src/proto', hotMiddlewareScript],
 		},
 		output: {
 			path: path.resolve(appDirectory, 'public', 'assets'),
@@ -44,10 +37,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		module: {
 			rules: [],
 		},
-		plugins: [
-			new CaseSensitivePathsPlugin({ debug: false }),
-			new webpack.HotModuleReplacementPlugin(),
-		],
+		plugins: [new CaseSensitivePathsPlugin({ debug: false }), new webpack.HotModuleReplacementPlugin()],
 		watchOptions: {
 			ignored: [
 				'**/*.hbs',
@@ -77,7 +67,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 						// use fix filename for usage in view
 						filename: 'js/vendors.js',
 						// Exclude proto dependencies going into vendors
-						chunks: chunk => chunk.name !== 'proto',
+						chunks: (chunk) => chunk.name !== 'proto',
 						priority: -10,
 						enforce: true,
 					},
@@ -110,26 +100,22 @@ module.exports = (options = { rules: {}, features: {} }) => {
 
 	// js
 	if (options.rules.js) {
-		webpackConfig.plugins.push(
-			new JsConfigWebpackPlugin({ babelConfigFile: './babel.config.js' }),
-		);
+		webpackConfig.plugins.push(new JsConfigWebpackPlugin({ babelConfigFile: './babel.config.js' }));
 
 		// eslint live validation
 		if (options.rules.js.eslint) {
-			webpackConfig.module.rules.push(
-				{
-					enforce: 'pre',
-					test: /\.(js|jsx|mjs)$/,
-					exclude: /node_modules/,
-					use: {
-						loader: require.resolve('eslint-loader'),
-						options: {
-							eslintPath: require.resolve('eslint'),
-							cache: true,
-						},
+			webpackConfig.module.rules.push({
+				enforce: 'pre',
+				test: /\.(js|jsx|mjs)$/,
+				exclude: /node_modules/,
+				use: {
+					loader: require.resolve('eslint-loader'),
+					options: {
+						eslintPath: require.resolve('eslint'),
+						cache: true,
 					},
 				},
-			);
+			});
 		}
 	}
 
@@ -140,52 +126,50 @@ module.exports = (options = { rules: {}, features: {} }) => {
 
 	// css & scss
 	if (options.rules.scss) {
-		webpackConfig.module.rules.push(
-			{
-				test: /\.s?css$/,
-				use: [
-					{
-						loader: MiniCssExtractPlugin.loader,
+		webpackConfig.module.rules.push({
+			test: /\.s?css$/,
+			use: [
+				{
+					loader: MiniCssExtractPlugin.loader,
+				},
+				{
+					loader: require.resolve('css-loader'),
+					options: {
+						importLoaders: 2,
 					},
-					{
-						loader: require.resolve('css-loader'),
-						options: {
-							importLoaders: 2,
-						}
-					},
-					{
-						loader: require.resolve('postcss-loader'),
-						options: {
-							postcssOptions: (loader) => {
-								return {
-									plugins: [
-										require('iconfont-webpack-plugin')({
-											resolve: loader.resolve,
-										}),
-										require('autoprefixer')({
-											// @see autoprefixer options: https://github.com/postcss/autoprefixer#options
-											// flexbox: 'no-2009' will add prefixes only for final and IE versions of specification.
-											flexbox: 'no-2009',
-											// grid: 'autoplace': enable autoprefixer grid translations and include autoplacement support.
-											// not enabled - use `/* autoprefixer grid: autoplace */` in your css file
-										}),
-									],
-								};
-							},
+				},
+				{
+					loader: require.resolve('postcss-loader'),
+					options: {
+						postcssOptions: (loader) => {
+							return {
+								plugins: [
+									require('iconfont-webpack-plugin')({
+										resolve: loader.resolve,
+									}),
+									require('autoprefixer')({
+										// @see autoprefixer options: https://github.com/postcss/autoprefixer#options
+										// flexbox: 'no-2009' will add prefixes only for final and IE versions of specification.
+										flexbox: 'no-2009',
+										// grid: 'autoplace': enable autoprefixer grid translations and include autoplacement support.
+										// not enabled - use `/* autoprefixer grid: autoplace */` in your css file
+									}),
+								],
+							};
 						},
 					},
-					{
-						loader: require.resolve('resolve-url-loader'),
+				},
+				{
+					loader: require.resolve('resolve-url-loader'),
+				},
+				{
+					loader: require.resolve('sass-loader'),
+					options: {
+						implementation: require('node-sass'),
 					},
-					{
-						loader: require.resolve('sass-loader'),
-						options: {
-							implementation: require('node-sass'),
-						},
-					},
-				],
-			},
-		);
+				},
+			],
+		});
 
 		webpackConfig.plugins.push(
 			new MiniCssExtractPlugin({
@@ -196,7 +180,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			// related: https://github.com/webpack-contrib/mini-css-extract-plugin/issues/29
 			new webpack.SourceMapDevToolPlugin({
 				filename: '[file].map',
-			}),
+			})
 		);
 
 		// stylelint live validation
@@ -230,9 +214,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				},
 			},
 		};
-		webpackConfig.module.rules.push(
-			utils.getEnrichedConfig(hbsRule, options.rules.hbs),
-		);
+		webpackConfig.module.rules.push(utils.getEnrichedConfig(hbsRule, options.rules.hbs));
 	}
 
 	// woff fonts (for example, in CSS files)
@@ -244,11 +226,9 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				options: {
 					name: 'media/fonts/[name]-[hash:7].[ext]',
 				},
-			}
+			},
 		};
-		webpackConfig.module.rules.push(
-			utils.getEnrichedConfig(woffRule, options.rules.woff),
-		);
+		webpackConfig.module.rules.push(utils.getEnrichedConfig(woffRule, options.rules.woff));
 	}
 
 	// different font types (legacy - eg. used in older library css)
@@ -260,12 +240,10 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				options: {
 					limit: 2 * 1028,
 					name: 'media/font/[name]-[hash:7].[ext]',
-				}
-			}
+				},
+			},
 		};
-		webpackConfig.module.rules.push(
-			utils.getEnrichedConfig(fontRule, options.rules.font),
-		);
+		webpackConfig.module.rules.push(utils.getEnrichedConfig(fontRule, options.rules.font));
 	}
 
 	// images
@@ -276,9 +254,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				loader: require.resolve('file-loader'),
 			},
 		};
-		webpackConfig.module.rules.push(
-			utils.getEnrichedConfig(imageRule, options.rules.image),
-		);
+		webpackConfig.module.rules.push(utils.getEnrichedConfig(imageRule, options.rules.image));
 	}
 
 	// feature bundle analyzer
@@ -287,10 +263,12 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	}
 
 	// feature dynamic alias
-	if (options.features.dynamicAlias && options.features.dynamicAlias.search && options.features.dynamicAlias.replace) {
-		webpackConfig.resolve.plugins = [
-			new DynamicAliasResolverPlugin(options.features.dynamicAlias),
-		];
+	if (
+		options.features.dynamicAlias &&
+		options.features.dynamicAlias.search &&
+		options.features.dynamicAlias.replace
+	) {
+		webpackConfig.resolve.plugins = [new DynamicAliasResolverPlugin(options.features.dynamicAlias)];
 	}
 
 	return webpackConfig;

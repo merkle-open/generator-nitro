@@ -13,8 +13,7 @@ const hbs = require('hbs');
 const config = require('config');
 const themes = config.has('themes') && Array.isArray(config.get('themes')) ? config.get('themes') : false;
 
-module.exports = function() {
-
+module.exports = function () {
 	const context = arguments[arguments.length - 1];
 	const defaultTheme = themes ? themes.find((theme) => theme.isDefault).id : false;
 	const themeId = context.hash.current ? context.hash.current : process.env.THEME || defaultTheme;

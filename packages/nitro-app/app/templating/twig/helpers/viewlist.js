@@ -30,20 +30,24 @@ module.exports = function (Twig) {
 		regex: /^viewlist\s*([\S\s]+?)?$/,
 		next: [],
 		open: true,
-		compile (token) {
-			const data = (typeof token.match[1] !== 'undefined') ? token.match[1] : '';
+		compile(token) {
+			const data = typeof token.match[1] !== 'undefined' ? token.match[1] : '';
 
-			token.variantStack = Twig.expression.compile.apply(this, [{
-				type: Twig.expression.type.expression,
-				value: data.trim()
-			}]).stack;
+			token.variantStack = Twig.expression.compile.apply(this, [
+				{
+					type: Twig.expression.type.expression,
+					value: data.trim(),
+				},
+			]).stack;
 
 			delete token.match;
 			return token;
 		},
-		parse (token, context, chain) {
+		parse(token, context, chain) {
 			try {
-				const data = Twig.expression.parse.apply(this, [token.variantStack, context]) ? Twig.expression.parse.apply(this, [token.variantStack, context]) : {};
+				const data = Twig.expression.parse.apply(this, [token.variantStack, context])
+					? Twig.expression.parse.apply(this, [token.variantStack, context])
+					: {};
 				const include = data.include ? data.include : '';
 				const exclude = data.exclude ? data.exclude : '';
 
@@ -81,15 +85,14 @@ module.exports = function (Twig) {
 				// return the markup
 				return {
 					chain,
-					output: markup.join('')
+					output: markup.join(''),
 				};
-
 			} catch (e) {
 				return {
 					chain,
-					output: twigUtils.logAndRenderError(e)
+					output: twigUtils.logAndRenderError(e),
 				};
 			}
-		}
+		},
 	};
 };

@@ -43,44 +43,53 @@ function getViews() {
 function getViewsToDump() {
 	const views = getViews();
 	let dumpedViews = [];
-	let languages = (argv.locales === undefined) ? [] : argv.locales.split(',');
+	let languages = argv.locales === undefined ? [] : argv.locales.split(',');
 	if (process.env.NITRO_VIEW_LOCALES) {
 		languages = process.env.NITRO_VIEW_LOCALES.split(',');
 	}
 	if (languages.length) {
 		languages.forEach((lng) => {
-			dumpedViews = dumpedViews.concat(views.map((v) => {
-				return (lng !== 'default') ? `${v}?lang=${lng}` : v;
-			}));
+			dumpedViews = dumpedViews.concat(
+				views.map((v) => {
+					return lng !== 'default' ? `${v}?lang=${lng}` : v;
+				})
+			);
 		});
 	} else {
 		dumpedViews = views;
 	}
 
 	// add additional routes from env
-	const additionalRoutes = (process.env.NITRO_ADDITIONAL_ROUTES) ? process.env.NITRO_ADDITIONAL_ROUTES.split(',') : [];
+	const additionalRoutes = process.env.NITRO_ADDITIONAL_ROUTES ? process.env.NITRO_ADDITIONAL_ROUTES.split(',') : [];
 	dumpedViews = dumpedViews.concat(additionalRoutes);
 
 	return dumpedViews;
 }
 
 function startTmpServer(port, gulp, plugins, cb) {
-	server = plugins.liveServer(serverPath, {
-		env: {
-			PORT: port,
-			NODE_ENV: 'production',
+	server = plugins.liveServer(
+		serverPath,
+		{
+			env: {
+				PORT: port,
+				NODE_ENV: 'production',
+			},
 		},
-	}, false);
+		false
+	);
 
-	return server.start()
-		.then(() => {}, () => {}, () => {
+	return server.start().then(
+		() => {},
+		() => {},
+		() => {
 			if (!isRunning) {
 				isRunning = true;
 				if (typeof cb === 'function') {
 					cb();
 				}
 			}
-		});
+		}
+	);
 }
 
 function stopTmpServer() {
@@ -89,36 +98,37 @@ function stopTmpServer() {
 }
 
 function dumpViews(port, gulp, plugins) {
-	return del(tmpDirectory)
-		.then(() => {
-			const views = getViewsToDump();
-			return plugins.remoteSrc(views, {
+	return del(tmpDirectory).then(() => {
+		const views = getViewsToDump();
+		return plugins
+			.remoteSrc(views, {
 				base: `http://localhost:${port}/`,
 				buffer: true,
 			})
-				.pipe(plugins.rename((path) => {
+			.pipe(
+				plugins.rename((path) => {
 					const lang = path.basename.match(/\?lang=(.+)$/);
 					path.extname = path.extname || '.html';
 					if (lang) {
 						path.basename = path.basename.replace(/\?lang=.+$/, '');
 						path.basename += `-${lang[1]}`;
 					}
-				}))
-				.pipe(gulp.dest(tmpDirectory))
-				.on('end', () => {
-					stopTmpServer();
-				});
-		});
+				})
+			)
+			.pipe(gulp.dest(tmpDirectory))
+			.on('end', () => {
+				stopTmpServer();
+			});
+	});
 }
 
 module.exports = (gulp, plugins) => {
 	return () => {
-		return getPort()
-			.then((port) => {
-				const cb = () => {
-					return dumpViews(port, gulp, plugins);
-				};
-				return startTmpServer(port, gulp, plugins, cb);
-			});
+		return getPort().then((port) => {
+			const cb = () => {
+				return dumpViews(port, gulp, plugins);
+			};
+			return startTmpServer(port, gulp, plugins, cb);
+		});
 	};
 };

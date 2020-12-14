@@ -1,7 +1,7 @@
 # slick
 
--   https://github.com/kenwheeler/slick/
--   requires special webpack config for assets/iconfont
+- https://github.com/kenwheeler/slick/
+- requires special webpack config for assets/iconfont
 
 ## Testing
 

@@ -7,7 +7,6 @@ const utils = require('../lib/utils');
 
 module.exports = (gulp, plugins) => {
 	return () => {
-
 		const minifyImagesConfigs = config.has('gulp.minifyImages') ? config.get('gulp.minifyImages') : {};
 		const streams = [];
 

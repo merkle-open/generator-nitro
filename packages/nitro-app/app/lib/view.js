@@ -12,11 +12,7 @@ const viewExcludes = {
 		path.basename(config.get('nitro.placeholdersDirectory')),
 		'.svn',
 	],
-	files: [
-		'.DS_Store',
-		'Thumbs.db',
-		'Desktop.ini',
-	],
+	files: ['.DS_Store', 'Thumbs.db', 'Desktop.ini'],
 };
 
 const replaceAt = function replaceAt(string, index, character) {
@@ -46,13 +42,25 @@ function getViews(dir) {
 			// do nothing
 		} else if (stat && stat.isDirectory() && viewExcludes.directories.indexOf(file) === -1) {
 			results = results.concat(getViews(filePath));
-		} else if (stat && stat.isFile() && path.extname(file) === `.${config.get('nitro.viewFileExtension')}` && viewExcludes.files.indexOf(file) === -1) {
-			const relativePath = path.relative(config.get('nitro.basePath') + config.get('nitro.viewDirectory'), filePath);
+		} else if (
+			stat &&
+			stat.isFile() &&
+			path.extname(file) === `.${config.get('nitro.viewFileExtension')}` &&
+			viewExcludes.files.indexOf(file) === -1
+		) {
+			const relativePath = path.relative(
+				config.get('nitro.basePath') + config.get('nitro.viewDirectory'),
+				filePath
+			);
 			const ext = path.extname(filePath);
 			const extReg = new RegExp(`${ext}$`);
-			const name = relativePath.replace(extReg, '').replace(/\//g, ' ').replace(/\\/g, ' ').replace(/\b\w/g, (w) => {
-				return w.toUpperCase();
-			});
+			const name = relativePath
+				.replace(extReg, '')
+				.replace(/\//g, ' ')
+				.replace(/\\/g, ' ')
+				.replace(/\b\w/g, (w) => {
+					return w.toUpperCase();
+				});
 			const url = relativePath.replace(extReg, '').replace(/\//g, '-').replace(/\\/g, '-');
 
 			results.push({ name, url });
@@ -82,7 +90,7 @@ function getViewCombinations(action) {
 	const len = positions.length;
 	const combinations = [];
 
-	for (i = 1; i < (1 << len); i++) {
+	for (i = 1; i < 1 << len; i++) {
 		const c = [];
 		for (j = 0; j < len; j++) {
 			if (i & (1 << j)) {

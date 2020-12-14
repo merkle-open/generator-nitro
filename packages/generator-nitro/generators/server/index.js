@@ -10,7 +10,6 @@ const glob = require('glob');
 const _ = require('lodash');
 
 module.exports = class extends Generator {
-
 	constructor(args, opts) {
 		// Calling the super constructor
 		super(args, opts);
@@ -40,7 +39,6 @@ module.exports = class extends Generator {
 	prompting() {}
 
 	writing() {
-
 		this.log('Scaffolding your light server');
 
 		// eslint-disable-next-line global-require
@@ -57,8 +55,14 @@ module.exports = class extends Generator {
 		const tplData = {
 			projectName: this._pkgProject.name || 'nitro-project',
 			projectVersion: this._pkgProject.version || '1.0.0',
-			nodeVersion: this._pkgProject.engines && this._pkgProject.engines.node ? this._pkgProject.engines.node : this._pkgGenerator.engines.node,
-			npmVersion: this._pkgProject.engines && this._pkgProject.engines.npm ? this._pkgProject.engines.npm : this._pkgGenerator.engines.npm,
+			nodeVersion:
+				this._pkgProject.engines && this._pkgProject.engines.node
+					? this._pkgProject.engines.node
+					: this._pkgGenerator.engines.node,
+			npmVersion:
+				this._pkgProject.engines && this._pkgProject.engines.npm
+					? this._pkgProject.engines.npm
+					: this._pkgGenerator.engines.npm,
 			nitroAppVersion: this._pkgProject.devDependencies['@nitro/app'] || this._pkgGenerator.version,
 		};
 
@@ -83,8 +87,6 @@ module.exports = class extends Generator {
 	}
 
 	end() {
-		this.log(yosay(
-			`All done - your light server is ready`
-		));
+		this.log(yosay(`All done - your light server is ready`));
 	}
 };

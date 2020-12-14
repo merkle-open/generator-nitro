@@ -35,12 +35,11 @@ function getNitroViewData(pageTitle, req) {
 			production: isProduction,
 			test: isTest,
 			offline: isOffline,
-		}
-	}
+		},
+	};
 }
 
 function collectViewData(viewPath, defaultData, req) {
-
 	const data = {};
 	const tplPath = path.join(
 		config.get('nitro.basePath'),
@@ -62,11 +61,9 @@ function collectViewData(viewPath, defaultData, req) {
 		'/',
 		`${viewPath}.json`
 	);
-	const customDataPath = req.query._data ? path.join(
-		config.get('nitro.basePath'),
-		config.get('nitro.viewDataDirectory'),
-		`/${req.query._data}.json`
-	) : false;
+	const customDataPath = req.query._data
+		? path.join(config.get('nitro.basePath'), config.get('nitro.viewDataDirectory'), `/${req.query._data}.json`)
+		: false;
 
 	if (customDataPath && fs.existsSync(customDataPath)) {
 		extend(true, data, JSON.parse(fs.readFileSync(customDataPath, 'utf8')));

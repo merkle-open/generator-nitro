@@ -11,10 +11,11 @@ module.exports = (gulp, plugins) => {
 
 		utils.each(copyAssetsConfigs, (copyAssetsConfig) => {
 			if (copyAssetsConfig && copyAssetsConfig.src && copyAssetsConfig.dest) {
-				streams.push(gulp
-					.src(copyAssetsConfig.src)
-					.pipe(plugins.newer(copyAssetsConfig.dest))
-					.pipe(gulp.dest(copyAssetsConfig.dest))
+				streams.push(
+					gulp
+						.src(copyAssetsConfig.src)
+						.pipe(plugins.newer(copyAssetsConfig.dest))
+						.pipe(gulp.dest(copyAssetsConfig.dest))
 				);
 			}
 		});

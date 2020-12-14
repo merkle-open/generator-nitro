@@ -43,86 +43,86 @@ No loader rule is enabled by default. Activate following prepared rules you need
 
 #### `options.rules.js`
 
--   Type: boolean || object
--   default: false
--   file types: js, jsx, mjs
+- Type: boolean || object
+- default: false
+- file types: js, jsx, mjs
 
 Config:
 
--   `true` or `{}` activates JavaScript support
--   `{ eslint: true }` additionally adds eslint live linting feature (only relevant for development build)
+- `true` or `{}` activates JavaScript support
+- `{ eslint: true }` additionally adds eslint live linting feature (only relevant for development build)
 
 #### `options.rules.ts`
 
--   Type: boolean
--   default: false
--   file types: ts, tsx
+- Type: boolean
+- default: false
+- file types: ts, tsx
 
 Config:
 
--   `true` will activate TypeScript support
+- `true` will activate TypeScript support
 
 #### `options.rules.scss`
 
--   Type: boolean || object
--   default: false
--   file types: scss, css
+- Type: boolean || object
+- default: false
+- file types: scss, css
 
 Config:
 
--   `true` or `{}` will activate scss support
--   `{ stylelint: true }` additionally adds stylelint live linting feature (only relevant for development build)
+- `true` or `{}` will activate scss support
+- `{ stylelint: true }` additionally adds stylelint live linting feature (only relevant for development build)
 
 #### `options.rules.hbs`
 
--   Type: boolean || object
--   default: false
--   file types: hbs
+- Type: boolean || object
+- default: false
+- file types: hbs
 
 Config:
 
--   `true` or `{}` will activate handlebars handlebars precompiled templates support
--   `{ include: [] }` additionally adds include config to rule
--   `{ exclude: [] }` additionally adds exclude config to rule
+- `true` or `{}` will activate handlebars handlebars precompiled templates support
+- `{ include: [] }` additionally adds include config to rule
+- `{ exclude: [] }` additionally adds exclude config to rule
 
 #### `options.rules.woff`
 
--   Type: boolean || object
--   default: false
--   file types: woff, woff2
+- Type: boolean || object
+- default: false
+- file types: woff, woff2
 
 Config:
 
--   `true` or `{}` will activate woff font support (in CSS files)
--   `{ include: [] }` additionally adds include config to rule
--   `{ exclude: [] }` additionally adds exclude config to rule
+- `true` or `{}` will activate woff font support (in CSS files)
+- `{ include: [] }` additionally adds include config to rule
+- `{ exclude: [] }` additionally adds exclude config to rule
 
 #### `options.rules.font`
 
--   type: boolean || object
--   default: false
--   file types: eot, svg, ttf, woff, woff2
+- type: boolean || object
+- default: false
+- file types: eot, svg, ttf, woff, woff2
 
 Config:
 
-* `true` or `{}` will activate font support for eot, svg, ttf, woff & woff2 fonts (in CSS files)
-* `{ include: [] }` additionally adds include config to rule
-* `{ exclude: [] }` additionally adds exclude config to rule
+- `true` or `{}` will activate font support for eot, svg, ttf, woff & woff2 fonts (in CSS files)
+- `{ include: [] }` additionally adds include config to rule
+- `{ exclude: [] }` additionally adds exclude config to rule
 
-⚠ Please use this rule with care. You have to configure includes and exclude when you also use woff and/or image loader. 
+⚠ Please use this rule with care. You have to configure includes and exclude when you also use woff and/or image loader.
 Otherwise svg or woff files are processed with multiple configurations.
 
 #### `options.rules.image`
 
--   Type: boolean || object
--   default: false
--   file types: png, jpg, gif, svg
+- Type: boolean || object
+- default: false
+- file types: png, jpg, gif, svg
 
 Config:
 
--   `true` will activate image support
--   `{ include: [] }` additionally adds include config to rule
--   `{ exclude: [] }` additionally adds exclude config to rule
+- `true` will activate image support
+- `{ include: [] }` additionally adds include config to rule
+- `{ exclude: [] }` additionally adds exclude config to rule
 
 ### `options.features`
 
@@ -130,8 +130,8 @@ Enable some additional features
 
 #### `options.features.banner`
 
--   Type: boolean
--   default: true
+- Type: boolean
+- default: true
 
 (only relevant for production build)
 
@@ -139,37 +139,37 @@ Enable some additional features
 
 #### `options.features.bundleAnalyzer`
 
--   Type: boolean
--   default: false
+- Type: boolean
+- default: false
 
 `true` will add the bundleAnalyser plugin and opens a browser window with the stats
 
 #### `options.features.theme`
 
--   Type: string || false
--   default: false
+- Type: string || false
+- default: false
 
-A string will activate theming support: 
+A string will activate theming support:
 
--   webpack uses `./src/ui.${theme}` as entrypoint (instead of `./src/ui`)
--   a subfolder within assets is used for the output path and publicPath (`/assets/${theme}/`)
+- webpack uses `./src/ui.${theme}` as entrypoint (instead of `./src/ui`)
+- a subfolder within assets is used for the output path and publicPath (`/assets/${theme}/`)
 
 It makes sense to use a dynamic value e.g. an environment variable, as shown in the example configuration.
 
 #### `options.features.dynamicAlias`
 
--   Type: object || false
--   default: false
+- Type: object || false
+- default: false
 
-A proper configured dynamicAlias feature will activate the DynamicAliasResolverPlugin 
+A proper configured dynamicAlias feature will activate the DynamicAliasResolverPlugin
 which can change import paths in source files dynamically on compile time as desired.
 
 Properties:
 
--   `options.features.dynamicAlias.search` (string || RegExp)
-    search term to be replaced (e.g. '/theme/light')
--   `options.features.dynamicAlias.replace` (string)
-    string as replacement (e.g. `/theme/${theme}`)
+- `options.features.dynamicAlias.search` (string || RegExp)
+  search term to be replaced (e.g. '/theme/light')
+- `options.features.dynamicAlias.replace` (string)
+  string as replacement (e.g. `/theme/${theme}`)
 
 ## Extending Configuration
 
@@ -182,11 +182,13 @@ You may use them in a promise chain.
 
 ```js
 import('package-name').then((pack) => {
-	// do something with 'pack'
+  // do something with 'pack'
 });
 
-import(/* webpackChunkName: "mychunk" */ 'package-name').then((pack) => {
-	// do something with 'pack'
+import(
+  /* webpackChunkName: "mychunk" */ 'package-name'
+).then((pack) => {
+  // do something with 'pack'
 });
 ```
 

@@ -2,13 +2,13 @@
 
 const Twig = require('../../../app/templating/twig/engine');
 
-describe('Nitro\'s Twig helper loader', () => {
+describe("Nitro's Twig helper loader", () => {
 	it('has registered the pattern helper', () => {
-		const template = Twig.twig({ data: '{% pattern name=\'nonexistent\' data=\'nonexistent\' %}' });
+		const template = Twig.twig({ data: "{% pattern name='nonexistent' data='nonexistent' %}" });
 
 		// since we cannot find out, if the twig tag used in the template exist,
 		// we test for throwing an (internal) twig exception during rendering of the template
-		const render = function() {
+		const render = function () {
 			try {
 				template.render({});
 			} catch (e) {
@@ -20,11 +20,11 @@ describe('Nitro\'s Twig helper loader', () => {
 	});
 
 	it('has registered the placeholder helper', () => {
-		const template = Twig.twig({ data: '{% placeholder name=\'nonexistent\' template=\'default\' %}' });
+		const template = Twig.twig({ data: "{% placeholder name='nonexistent' template='default' %}" });
 
 		// since we cannot find out, if the twig tag used in the template exist,
 		// we test for throwing an (internal) twig exception during rendering of the template
-		const render = function() {
+		const render = function () {
 			try {
 				template.render({});
 			} catch (e) {
@@ -40,7 +40,7 @@ describe('Nitro\'s Twig helper loader', () => {
 
 		// since we cannot find out, if the twig tag used in the template exist,
 		// we test for throwing an (internal) twig exception during rendering of the template
-		const render = function() {
+		const render = function () {
 			try {
 				template.render({});
 			} catch (e) {
@@ -52,11 +52,11 @@ describe('Nitro\'s Twig helper loader', () => {
 	});
 
 	it('has registered the t helper', () => {
-		const template = Twig.twig({ data: '{% t \'message.code\' data={ param=\'value\'} %}' });
+		const template = Twig.twig({ data: "{% t 'message.code' data={ param='value'} %}" });
 
 		// since we cannot find out, if the twig tag used in the template exist,
 		// we test for throwing an (internal) twig exception during rendering of the template
-		const render = function() {
+		const render = function () {
 			try {
 				template.render({});
 			} catch (e) {

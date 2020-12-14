@@ -97,11 +97,11 @@ function search(req, res, next) {
 		filter: filters,
 	};
 
-	setTimeout(function() {
+	setTimeout(function () {
 		return res.json(response);
 	}, utils.getRandomInt(250, 2000));
 }
 
-module.exports = function(app) {
+module.exports = function (app) {
 	app.route('/api/jobs/search').get(search);
 };

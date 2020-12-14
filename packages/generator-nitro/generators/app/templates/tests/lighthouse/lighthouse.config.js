@@ -9,12 +9,7 @@ module.exports = {
 	extends: 'lighthouse:default',
 	settings: {
 		// https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md
-		onlyCategories: [
-			'performance',
-			'accessibility',
-			'best-practices',
-			'seo'
-		],
+		onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
 		skipAudits: [
 			// performance
 			'redirects',

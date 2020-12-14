@@ -12,7 +12,6 @@ const glob = require('glob');
 const _ = require('lodash');
 
 module.exports = class extends Generator {
-
 	constructor(args, opts) {
 		// Calling the super constructor
 		super(args, opts);
@@ -94,13 +93,10 @@ module.exports = class extends Generator {
 	initializing() {}
 
 	prompting() {
-
-		this.log(yosay(
-			`Welcome to the awe-inspiring ${chalk.cyan('Nitro')} generator!`
-		));
+		this.log(yosay(`Welcome to the awe-inspiring ${chalk.cyan('Nitro')} generator!`));
 
 		// check whether there is already a nitro application in place and we only have to update the application
-		const json = this.fs.readJSON(this.destinationPath('.yo-rc.json'), { 'new': true });
+		const json = this.fs.readJSON(this.destinationPath('.yo-rc.json'), { new: true });
 
 		if (!json.new) {
 			// update existing application
@@ -108,7 +104,9 @@ module.exports = class extends Generator {
 				{
 					name: 'update',
 					type: 'confirm',
-					message: `There is already a ${chalk.cyan('Nitro')} application in place! Should I serve you an update?`,
+					message: `There is already a ${chalk.cyan(
+						'Nitro'
+					)} application in place! Should I serve you an update?`,
 					default: true,
 				},
 			]).then((answers) => {
@@ -122,13 +120,17 @@ module.exports = class extends Generator {
 				const config = this.config.getAll();
 				if (config) {
 					this.options.name = config.name || this.options.name;
-					this.options.viewExt = config.viewExtension || config.templateEngine ? config.templateEngine : this.options.viewExt;
+					this.options.viewExt =
+						config.viewExtension || config.templateEngine ? config.templateEngine : this.options.viewExt;
 					this.options.templateEngine = config.templateEngine || this.options.templateEngine;
 					this.options.jsCompiler = config.jsCompiler || this.options.jsCompiler;
 					this.options.themes = typeof config.themes === 'boolean' ? config.themes : this.options.themes;
-					this.options.clientTpl = typeof config.clientTemplates === 'boolean' ? config.clientTemplates : this.options.clientTpl;
-					this.options.exampleCode = typeof config.exampleCode === 'boolean' ? config.exampleCode : this.options.exampleCode;
-					this.options.exporter = typeof config.exporter === 'boolean' ? config.exporter : this.options.exporter;
+					this.options.clientTpl =
+						typeof config.clientTemplates === 'boolean' ? config.clientTemplates : this.options.clientTpl;
+					this.options.exampleCode =
+						typeof config.exampleCode === 'boolean' ? config.exampleCode : this.options.exampleCode;
+					this.options.exporter =
+						typeof config.exporter === 'boolean' ? config.exporter : this.options.exporter;
 
 					this.options.name = _.kebabCase(this.options.name);
 				}
@@ -138,14 +140,14 @@ module.exports = class extends Generator {
 			return this.prompt([
 				{
 					name: 'name',
-					message: 'What\'s the name of your app?',
+					message: "What's the name of your app?",
 					default: this.options.name,
 					when: () => !this._skipQuestions && !this._passedInOptions.name,
 				},
 				{
 					name: 'templateEngine',
 					type: 'list',
-					message: 'What\'s your desired template engine?',
+					message: "What's your desired template engine?",
 					choices: this._templateEngineOptions,
 					default: this.options.templateEngine,
 					store: true,
@@ -154,7 +156,7 @@ module.exports = class extends Generator {
 				{
 					name: 'jsCompiler',
 					type: 'list',
-					message: 'What\'s your desired javascript js compiler?',
+					message: "What's your desired javascript js compiler?",
 					choices: this._jsCompilerOptions,
 					default: this.options.jsCompiler,
 					store: true,
@@ -166,7 +168,10 @@ module.exports = class extends Generator {
 					message: 'Would you like to include theming support?',
 					default: this.options.themes,
 					store: true,
-					when: (answers) => !this._skipQuestions && typeof this._passedInOptions.themes !== 'boolean' && answers.templateEngine !== 'twig',
+					when: (answers) =>
+						!this._skipQuestions &&
+						typeof this._passedInOptions.themes !== 'boolean' &&
+						answers.templateEngine !== 'twig',
 				},
 				{
 					name: 'clientTpl',
@@ -199,7 +204,8 @@ module.exports = class extends Generator {
 				this.options.viewExt = this.options.templateEngine;
 				this.options.themes = answers.themes !== undefined ? answers.themes : this.options.themes;
 				this.options.clientTpl = answers.clientTpl !== undefined ? answers.clientTpl : this.options.clientTpl;
-				this.options.exampleCode = answers.exampleCode !== undefined ? answers.exampleCode : this.options.exampleCode;
+				this.options.exampleCode =
+					answers.exampleCode !== undefined ? answers.exampleCode : this.options.exampleCode;
 				this.options.exporter = answers.exporter !== undefined ? answers.exporter : this.options.exporter;
 
 				this.options.name = _.kebabCase(this.options.name);
@@ -223,7 +229,6 @@ module.exports = class extends Generator {
 	}
 
 	writing() {
-
 		this.log('Scaffolding your app');
 
 		const files = glob.sync('**/*', { cwd: this.sourceRoot(), nodir: true, dot: true });
@@ -348,7 +353,7 @@ module.exports = class extends Generator {
 			'src/patterns/',
 			'src/proto/utils/',
 			'src/shared/',
-			'tests/cypress/cypress/integration/examples/'
+			'tests/cypress/cypress/integration/examples/',
 		];
 		const exampleIncludeAnyway = [
 			// example file "parts" included for this.options.exampleCode===false
@@ -370,7 +375,6 @@ module.exports = class extends Generator {
 		};
 
 		files.forEach((file) => {
-
 			// exclude ignores
 			if (_.indexOf(ignores, file) !== -1) {
 				return;
@@ -378,7 +382,7 @@ module.exports = class extends Generator {
 
 			// exclude update ignores
 			if (this._update) {
-				if (ignoresOnUpdate.some((v) => file.indexOf(v) >= 0)	) {
+				if (ignoresOnUpdate.some((v) => file.indexOf(v) >= 0)) {
 					return;
 				}
 			}
@@ -401,7 +405,9 @@ module.exports = class extends Generator {
 			if (!this.options.exampleCode) {
 				if (
 					examplePaths.some((v) => file.indexOf(v) >= 0) &&
-					exampleIncludeAnyway.every((v) => { return file.indexOf(v) === -1; })
+					exampleIncludeAnyway.every((v) => {
+						return file.indexOf(v) === -1;
+					})
 				) {
 					return;
 				}
@@ -415,7 +421,7 @@ module.exports = class extends Generator {
 			}
 
 			const ext = path.extname(file).substring(1);
-			const fileWithoutExt = file.substring(0, (file.length - ext.length - 1));
+			const fileWithoutExt = file.substring(0, file.length - ext.length - 1);
 			const sourcePath = this.templatePath(file);
 			let destinationPath = this.destinationPath(file);
 
@@ -481,13 +487,15 @@ module.exports = class extends Generator {
 			{
 				do: this.options.exporter,
 				src: 'node_modules/@nitro/exporter/readme.md',
-				srcWeb: 'https://raw.githubusercontent.com/namics/generator-nitro/master/packages/nitro-exporter/readme.md',
+				srcWeb:
+					'https://raw.githubusercontent.com/namics/generator-nitro/master/packages/nitro-exporter/readme.md',
 				dest: 'project/docs/nitro-exporter.md',
 			},
 			{
 				do: true,
 				src: 'node_modules/@nitro/webpack/readme.md',
-				srcWeb: 'https://raw.githubusercontent.com/namics/generator-nitro/master/packages/nitro-webpack/readme.md',
+				srcWeb:
+					'https://raw.githubusercontent.com/namics/generator-nitro/master/packages/nitro-webpack/readme.md',
 				dest: 'project/docs/nitro-webpack.md',
 			},
 		];
@@ -499,9 +507,7 @@ module.exports = class extends Generator {
 						this.fs.copy(this.destinationPath(file.src), this.destinationPath(file.dest));
 					} else {
 						// get readme from github master branch
-						got
-							.stream(file.srcWeb)
-							.pipe(fs.createWriteStream(this.destinationPath(file.dest)));
+						got.stream(file.srcWeb).pipe(fs.createWriteStream(this.destinationPath(file.dest)));
 					}
 				}
 			});
@@ -510,13 +516,9 @@ module.exports = class extends Generator {
 		}
 
 		if (this._update) {
-			this.log(yosay(
-				`All done – Check local changes and then\nrun \`npm install\` to update your project.`
-			));
+			this.log(yosay(`All done – Check local changes and then\nrun \`npm install\` to update your project.`));
 		} else {
-			this.log(yosay(
-				`All done –\nrun \`npm start\` to start ${chalk.cyan('Nitro')} in development mode.`
-			));
+			this.log(yosay(`All done –\nrun \`npm start\` to start ${chalk.cyan('Nitro')} in development mode.`));
 		}
 	}
 };

@@ -8,21 +8,19 @@ The following code is an example of such a data api route:
 
 ```js
 function getData(req, res, next) {
-	return res.json({
-		data: 'empty',
-	});
+  return res.json({
+    data: 'empty',
+  });
 }
 
 function postData(req, res, next) {
-	return res.json({
-		data: req.body,
-	});
+  return res.json({
+    data: req.body,
+  });
 }
 
 module.exports = (app) => {
-	app.route('/api/data')
-		.get(getData)
-		.post(postData);
+  app.route('/api/data').get(getData).post(postData);
 };
 ```
 

@@ -7,7 +7,7 @@ function logAndRenderError(error) {
 		data: '<p class="nitro-msg nitro-msg--error">{{ message }}</p>',
 	});
 
-	return template.render({ message: error.message});
+	return template.render({ message: error.message });
 }
 
 module.exports = {

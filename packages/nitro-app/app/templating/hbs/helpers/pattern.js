@@ -35,7 +35,7 @@ function getPatternBasePaths(type) {
 		// if a type is given, only return pattern types which match the given type, should just be one type
 		patternTypeKeys = Object.keys(config.get('nitro.patterns')).filter((key) => {
 			return config.get('nitro.patterns')[key].path.indexOf(type) >= 0;
-		})
+		});
 
 		if (patternTypeKeys.length === 0) {
 			throw new Error(`Pattern type \`${type}\` not found in pattern config.`);
@@ -51,7 +51,6 @@ function getPatternBasePaths(type) {
 }
 
 function getPattern(folder, templateFile, dataFile, type) {
-
 	const patternBasePaths = getPatternBasePaths(type);
 	let pattern = null;
 
@@ -95,7 +94,6 @@ function getPattern(folder, templateFile, dataFile, type) {
 
 	// maybe its an element...
 	if (!pattern) {
-
 		const elementGlobs = patternBasePaths.map((patternBasePath) => {
 			return `${patternBasePath}/*/elements/${folder}/${templateFile}.${config.get('nitro.viewFileExtension')}`;
 		});
@@ -104,15 +102,8 @@ function getPattern(folder, templateFile, dataFile, type) {
 			if (!pattern) {
 				pattern = {
 					templateFilePath: templatePath,
-					jsonFilePath: path.join(
-						path.dirname(templatePath),
-						'/_data/',
-						`${dataFile}.json`
-					),
-					schemaFilePath: path.join(
-						path.dirname(templatePath),
-						'schema.json'
-					),
+					jsonFilePath: path.join(path.dirname(templatePath), '/_data/', `${dataFile}.json`),
+					schemaFilePath: path.join(path.dirname(templatePath), 'schema.json'),
 				};
 			}
 		});
@@ -124,15 +115,15 @@ function getPattern(folder, templateFile, dataFile, type) {
 module.exports = function () {
 	try {
 		const context = arguments[arguments.length - 1];
-		const contextDataRoot = context.data && context.data.root ? context.data.root : {};    // default pattern data from controller & view
+		const contextDataRoot = context.data && context.data.root ? context.data.root : {}; // default pattern data from controller & view
 		const name = typeof arguments[0] === 'string' ? arguments[0] : context.hash.name;
 		const folder = name.replace(/[^A-Za-z0-9-]/g, '');
 		const templateFile = context.hash && context.hash.template ? context.hash.template : folder.toLowerCase();
 		const type = context.hash && context.hash.type ? context.hash.type : '';
 
-		let dataFile = folder.toLowerCase();                                                   // default data file
-		let passedData = null;                                                                 // passed data to pattern helper
-		const patternData = {};                                                                // collected pattern data
+		let dataFile = folder.toLowerCase(); // default data file
+		let passedData = null; // passed data to pattern helper
+		const patternData = {}; // collected pattern data
 
 		if (arguments.length >= 3) {
 			switch (typeof arguments[1]) {
@@ -205,9 +196,10 @@ module.exports = function () {
 					}
 				}
 
-				const html = hbs.handlebars.compile(
-					fs.readFileSync(pattern.templateFilePath, 'utf8')
-				)(patternData, context);
+				const html = hbs.handlebars.compile(fs.readFileSync(pattern.templateFilePath, 'utf8'))(
+					patternData,
+					context
+				);
 
 				// lint html snippet
 				if (!config.get('server.production') && config.get('code.validation.htmllint.live')) {
@@ -215,14 +207,18 @@ module.exports = function () {
 				}
 
 				return new hbs.handlebars.SafeString(html);
-
 			} catch (e) {
 				throw new Error(`Parse Error in Pattern ${name}: ${e.message}`);
 			}
 		}
 
-		throw new Error(`Pattern \`${name}\`${type ? ` within pattern type \`${type}\`` : ''} with template file \`${templateFile}.${config.get('nitro.viewFileExtension')}\` not found in folder \`${folder}\`.`);
-
+		throw new Error(
+			`Pattern \`${name}\`${
+				type ? ` within pattern type \`${type}\`` : ''
+			} with template file \`${templateFile}.${config.get(
+				'nitro.viewFileExtension'
+			)}\` not found in folder \`${folder}\`.`
+		);
 	} catch (e) {
 		return hbsUtils.logAndRenderError(e);
 	}

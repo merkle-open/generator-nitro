@@ -12,4 +12,4 @@ modifier `a-list-mix` for different icons per line
 
 [Example page](http://localhost:8081/example-patterns)
 
--   icon quality
+- icon quality

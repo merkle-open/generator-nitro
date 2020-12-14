@@ -19,17 +19,18 @@ module.exports = function (Twig) {
 		regex: /^partial\s+('\S*')$/,
 		next: [],
 		open: true,
-		compile (token) {
-
-			token.name = Twig.expression.compile.apply(this, [{
-				type: Twig.expression.type.expression,
-				value: token.match[1].trim()
-			}]).stack;
+		compile(token) {
+			token.name = Twig.expression.compile.apply(this, [
+				{
+					type: Twig.expression.type.expression,
+					value: token.match[1].trim(),
+				},
+			]).stack;
 
 			delete token.match;
 			return token;
 		},
-		parse (token, context, chain) {
+		parse(token, context, chain) {
 			try {
 				const partial = Twig.expression.parse.apply(this, [token.name, context]);
 				const innerContext = Twig.ChildContext(context);
@@ -52,27 +53,25 @@ module.exports = function (Twig) {
 						base: '',
 						async: false,
 						options: this.options,
-						id: templateFilePath
+						id: templateFilePath,
 					});
 				} else {
 					return {
 						chain,
-						output: twigUtils.logAndRenderError(
-							new Error(`Partial ${templateFilePath} not found.`)
-						)
+						output: twigUtils.logAndRenderError(new Error(`Partial ${templateFilePath} not found.`)),
 					};
 				}
 
 				return {
 					chain,
-					output: template.render(innerContext)
+					output: template.render(innerContext),
 				};
 			} catch (e) {
 				return {
 					chain,
-					output: twigUtils.logAndRenderError(e)
+					output: twigUtils.logAndRenderError(e),
 				};
 			}
-		}
+		},
 	};
 };

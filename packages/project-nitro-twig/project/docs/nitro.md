@@ -8,14 +8,14 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 ## Features
 
--   Simple and proven project structure
--   Webpack Builder with HMR
--   Gulp Tasks for additional functionality
--   Linting, Source Maps, PostCSS & Browsersync
--   Setup for e2e and visual regression testing (cypress, backstopjs) & lighthouse
--   Pattern generator
--   [Client side templates](./client-templates.md)
--   [Static Exports](./nitro-exporter.md)
+- Simple and proven project structure
+- Webpack Builder with HMR
+- Gulp Tasks for additional functionality
+- Linting, Source Maps, PostCSS & Browsersync
+- Setup for e2e and visual regression testing (cypress, backstopjs) & lighthouse
+- Pattern generator
+- [Client side templates](./client-templates.md)
+- [Static Exports](./nitro-exporter.md)
 
 ## Preparation
 
@@ -192,10 +192,10 @@ Simple default layout:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-	<head></head>
-	<body>
-		<!-- Replace With Body -->
-	</body>
+  <head></head>
+  <body>
+    <!-- Replace With Body -->
+  </body>
 </html>
 ```
 
@@ -205,7 +205,7 @@ Different layouts are placed in `/src/views/_layouts/`. Link them to your view [
 
 ### Render patterns
 
-Pages are meant to be compositions of your patterns. Use the pattern's name as the first parameter. 
+Pages are meant to be compositions of your patterns. Use the pattern's name as the first parameter.
 
 Be aware, the pattern name is case-sensitive and should be unique as the first found pattern is taken for rendering.
 Nitro uses [twig](https://www.npmjs.com/package/twig) as the view engine and provides custom helpers.
@@ -251,8 +251,8 @@ The pattern helper will find also pattern elements.
 
 ... looks for following paths
 
--   Pattern with name `example-sub`: `<type>/example-sub/example-sub.twig`
--   Element with name `example-sub`: `<type>/*/elements/example-sub/example-sub.twig`
+- Pattern with name `example-sub`: `<type>/example-sub/example-sub.twig`
+- Element with name `example-sub`: `<type>/*/elements/example-sub/example-sub.twig`
 
 ### Render partials
 
@@ -273,7 +273,7 @@ The following example renders the file `content/example.twig` from `/src/views/_
 
 ### Render page lists
 
-To render all pages in the `src/views` folder, just call the hbs helper `{% viewlist %}`. The helper renders an `<ul>` list 
+To render all pages in the `src/views` folder, just call the hbs helper `{% viewlist %}`. The helper renders an `<ul>` list
 containing links to the respective pages.
 
 #### Filter generated list
@@ -368,11 +368,11 @@ You may overwrite data from views & patterns in request parameters.
 
 By default Nitro provides some data to be used in your views:
 
--   `{{ _nitro.pageUrl }}` (String) outputs full url including protocol and host
--   `{{ _nitro.pageTitle }}` (String) outputs string generated from the view name by default
--   `{% if _nitro.production %}{% endif %}` (Boolean) is true when environment variable `NODE_ENV` is set to `production`
--   `{% if _nitro.test %}{% endif %}` (Boolean) is true when environment variable `NITRO_MODE` ist set to `test`
--   `{% if _nitro.offline %}{% endif %}` (Boolean) is true when config param 'nitro.mode.offline' is true
+- `{{ _nitro.pageUrl }}` (String) outputs full url including protocol and host
+- `{{ _nitro.pageTitle }}` (String) outputs string generated from the view name by default
+- `{% if _nitro.production %}{% endif %}` (Boolean) is true when environment variable `NODE_ENV` is set to `production`
+- `{% if _nitro.test %}{% endif %}` (Boolean) is true when environment variable `NITRO_MODE` ist set to `test`
+- `{% if _nitro.offline %}{% endif %}` (Boolean) is true when config param 'nitro.mode.offline' is true
 
 ## Assets
 
@@ -408,8 +408,8 @@ Translations are stored in `/project/locales/[lang]/translation.json`.
 
 Express Middleware configuration:
 
--   Fallback language: `default`
--   Language switch with query parameter: `?lang=de`
+- Fallback language: `default`
+- Language switch with query parameter: `?lang=de`
 
 ### Translation twig helper
 
@@ -448,8 +448,16 @@ To stay consistent you should favour the use of relative paths with a leading sl
 Link to resources relatively to the `project`-folder **with** a leading slash.
 
 ```html
-<link rel="stylesheet" href="/assets/css/ui.min.css" type="text/css" />
-<link rel="shortcut icon" href="/assets/img/icon/favicon.ico" type="image/x-icon" />
+<link
+  rel="stylesheet"
+  href="/assets/css/ui.min.css"
+  type="text/css"
+/>
+<link
+  rel="shortcut icon"
+  href="/assets/img/icon/favicon.ico"
+  type="image/x-icon"
+/>
 <script defer src="/assets/js/ui.min.js"></script>
 <a href="/content">Contentpage</a>
 ```
@@ -508,8 +516,8 @@ Use or create new scripts in `package.json` to run with npm.
 
 ## Contributing
 
--   For bugs and features please use [GitHub Issues](https://github.com/namics/generator-nitro/issues)
--   Feel free to fork and send PRs to the current `develop` branch. That's a good way to discuss your ideas.
+- For bugs and features please use [GitHub Issues](https://github.com/namics/generator-nitro/issues)
+- Feel free to fork and send PRs to the current `develop` branch. That's a good way to discuss your ideas.
 
 ## Credits
 

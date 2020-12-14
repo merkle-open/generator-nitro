@@ -12,17 +12,16 @@ module.exports = function (gulp, config) {
 			new Promise((resolve) => {
 				// get array of desired view-name language parts
 				const langStrings = configEntry.i18n.length
-					?  configEntry.i18n.map((lang) => {
-							return (lang !== 'default') ? `-${lang}`: '';
-						})
+					? configEntry.i18n.map((lang) => {
+							return lang !== 'default' ? `-${lang}` : '';
+					  })
 					: [''];
 				// array of views are configured?
 				const hasViewArray = Array.isArray(configEntry.views) && configEntry.views.length > 0;
-				const hasAdditionalRoutesArray = Array.isArray(configEntry.additionalRoutes) && configEntry.additionalRoutes.length > 0;
+				const hasAdditionalRoutesArray =
+					Array.isArray(configEntry.additionalRoutes) && configEntry.additionalRoutes.length > 0;
 				// views does not have file extensions
-				const viewPattern = hasViewArray
-					? `{${configEntry.views.join(',')},fantasyNameQWedRayFiZtFlkXd}`
-					: '*';
+				const viewPattern = hasViewArray ? `{${configEntry.views.join(',')},fantasyNameQWedRayFiZtFlkXd}` : '*';
 				// additional views
 				const additionalViews = hasAdditionalRoutesArray
 					? configEntry.additionalRoutes.map((view) => `${nitroTmpDirectory}/${view}`)

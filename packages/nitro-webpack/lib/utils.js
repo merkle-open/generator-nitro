@@ -2,7 +2,9 @@
 
 // add optional include or exclude configs to rule
 function getEnrichedConfig(rule, config) {
-	if (!config) { return rule; }
+	if (!config) {
+		return rule;
+	}
 
 	if (config.include) {
 		rule.include = config.include;

@@ -26,7 +26,7 @@ module.exports = async function (page, scenario) {
 			await request.respond({
 				body: IMAGE_DATA_BUFFER,
 				headers: HEADERS_STUB,
-				status: 200
+				status: 200,
 			});
 		} else {
 			request.continue();

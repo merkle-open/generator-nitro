@@ -11,6 +11,6 @@ Run:
 
 ```shell
 npm start
-# or 
+# or
 npm run nitro:generate
 ```

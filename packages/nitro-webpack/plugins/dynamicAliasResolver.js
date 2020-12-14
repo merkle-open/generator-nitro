@@ -2,13 +2,12 @@
 // https://stackoverflow.com/questions/54320025/tap-into-webpack-resolve-loader-to-add-fallback
 
 class DynamicAliasResolver {
-	constructor ({search, replace/*, fallback*/}) {
+	constructor({ search, replace /*, fallback*/ }) {
 		this.search = search;
 		this.replace = replace;
 		// this.fallback = fallback;
-		this.filterFunction = this.search instanceof RegExp
-			? (value) => search.test(value)
-			: (value) => value.indexOf(search) !== -1;
+		this.filterFunction =
+			this.search instanceof RegExp ? (value) => search.test(value) : (value) => value.indexOf(search) !== -1;
 	}
 	apply(resolver) {
 		// current & next hook

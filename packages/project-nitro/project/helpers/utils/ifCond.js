@@ -18,7 +18,7 @@
  *
  */
 
-module.exports = function(a, operator, b, options) {
+module.exports = function (a, operator, b, options) {
 	if (arguments.length < 4) {
 		throw new Error('handlebars Helper {{#ifCond}} expects 3 arguments');
 	}

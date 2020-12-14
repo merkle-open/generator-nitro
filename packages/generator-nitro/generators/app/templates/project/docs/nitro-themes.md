@@ -1,6 +1,6 @@
 # Nitro Themes
 
-Nitro offers extensive configuration possibilities and features for the development 
+Nitro offers extensive configuration possibilities and features for the development
 of different themes/skins (or whatever you would name them).
 
 ## Usage
@@ -9,7 +9,7 @@ of different themes/skins (or whatever you would name them).
 
 #### Development mode
 
-In development mode, each theme is started separately. 
+In development mode, each theme is started separately.
 It should be possible to run them in parallel (as long as you configure the start scripts with different ports)
 
 ```
@@ -29,26 +29,26 @@ npm run prod
 
 To change the theme for the session, use special routes:
 
--   `/theme/<theme-id>` (sets session to <theme-id> and redirects to the '/index' page)
--   `/theme/<theme-id>?ref=/example-patterns` (sets session and redirects to '/example-patterns')
+- `/theme/<theme-id>` (sets session to <theme-id> and redirects to the '/index' page)
+- `/theme/<theme-id>?ref=/example-patterns` (sets session and redirects to '/example-patterns')
 
 ## Requirements
 
--   Themes configuration
--   Webpack configuration
--   npm scripts
--   Gulp config
--   Theme routes
+- Themes configuration
+- Webpack configuration
+- npm scripts
+- Gulp config
+- Theme routes
 
 ### Themes Configuration
 
 The basic themes configuration can be found in your [config](../../config).
 
-The 'themes' node contains an array of theme objects. A theme object contains following properties 
+The 'themes' node contains an array of theme objects. A theme object contains following properties
 
--   `id` String (required)
--   `name` String (required)
--   `isDefault` (required in one of the themes)
+- `id` String (required)
+- `name` String (required)
+- `isDefault` (required in one of the themes)
 
 ...
 
@@ -75,7 +75,7 @@ They will be available in your views.
 
 ### Webpack Configuration
 
-Configure 'options.features.theme' and `options.features.dynamicAlias` in your 
+Configure 'options.features.theme' and `options.features.dynamicAlias` in your
 [webpack configuration](./nitro-webpack.md) to enable themes functionality.
 
 And add an entry file per theme in the src folder ('ui.<theme-id>.js|ts')
@@ -131,7 +131,7 @@ Import the code you need for a specific theme.
 ### Webpack path resolving
 
 Theming is especially useful for loading different styles per theme.
-Always import the soure file with the code for the default theme. 
+Always import the soure file with the code for the default theme.
 The Dynamic Alias Resolver plugin will exchange the configured path (e.g. `/theme/light`)
 with the path to the correct theme when compiling.
 
@@ -167,11 +167,11 @@ The pattern.scss uses the themed colors and a themed pattern import with variabl
 
 Available helpers from Nitro:
 
--   The **'asset'** helper respects the theme build structure. Link your assets as normal:
+- The **'asset'** helper respects the theme build structure. Link your assets as normal:
 
 `{{asset name='/css/ui.min.css'}}` will load 'public/assets/\<theme>\/css/ui.css' in development mode and
 'public/assets/\<theme\>/css/ui.min.css' in production mode.
 
--   Use the **'themelist'** helper to display a list of themes based on the config theme array:
+- Use the **'themelist'** helper to display a list of themes based on the config theme array:
 
 `{{themelist current=theme.id}}`

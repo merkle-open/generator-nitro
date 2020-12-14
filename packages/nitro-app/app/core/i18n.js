@@ -18,14 +18,12 @@ const cloneDeep = require('lodash/cloneDeep');
 // The middleware changes options, so we have to deep clone the locked objects
 const usei18next = !!config.has('feature.i18next') && config.get('feature.i18next');
 const options = config.has('feature.i18next.options') ? cloneDeep(config.get('feature.i18next.options')) : {};
-const middlewareOptions = config.has('feature.i18next.middlewareOptions') ? cloneDeep(config.get('feature.i18next.middlewareOptions')) : {};
+const middlewareOptions = config.has('feature.i18next.middlewareOptions')
+	? cloneDeep(config.get('feature.i18next.middlewareOptions'))
+	: {};
 
 if (usei18next) {
-	i18next
-		.use(i18nextMiddleware.LanguageDetector)
-		.use(FilesystemBackend)
-		.use(sprintf)
-		.init(options);
+	i18next.use(i18nextMiddleware.LanguageDetector).use(FilesystemBackend).use(sprintf).init(options);
 }
 
 module.exports = function (app) {

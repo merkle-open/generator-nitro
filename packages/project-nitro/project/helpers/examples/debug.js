@@ -1,4 +1,4 @@
-module.exports = function(optionalValue) {
+module.exports = function (optionalValue) {
 	console.log('Current Context');
 	console.log('====================');
 	console.log(this);

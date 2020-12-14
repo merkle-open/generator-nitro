@@ -10,7 +10,6 @@ const lint = require('../../../lib/lint');
 const htmllintOptions = lint.getHtmllintOptions(true);
 
 module.exports = function () {
-
 	try {
 		const context = arguments[arguments.length - 1];
 		const contextDataRoot = context.data && context.data.root ? context.data.root : {};
@@ -46,12 +45,11 @@ module.exports = function () {
 			config.get('nitro.basePath'),
 			config.get('nitro.placeholdersDirectory'),
 			name,
-			templateFile);
+			templateFile
+		);
 
 		if (fs.existsSync(templatePath)) {
-			const html = hbs.handlebars.compile(
-				fs.readFileSync(templatePath, 'utf8')
-			)(placeholderData, context);
+			const html = hbs.handlebars.compile(fs.readFileSync(templatePath, 'utf8'))(placeholderData, context);
 
 			// lint html snippet
 			if (!config.get('server.production') && config.get('code.validation.htmllint.live')) {
@@ -61,7 +59,6 @@ module.exports = function () {
 		}
 
 		throw new Error(`Placeholder ${templatePath} not found.`);
-
 	} catch (e) {
 		return hbsUtils.logAndRenderError(e);
 	}

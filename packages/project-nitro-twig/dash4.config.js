@@ -16,9 +16,7 @@ async function getConfig() {
 			{
 				title: 'START',
 				rows: [
-					[
-						new PluginReadme({ file: 'readme.md' }),
-					],
+					[new PluginReadme({ file: 'readme.md' })],
 					[
 						new PluginTerminal({
 							title: 'Development Mode',
@@ -73,9 +71,7 @@ async function getConfig() {
 			{
 				title: 'READMES',
 				rows: [
-					[
-						new PluginReadme({ file: 'project/docs/nitro.md' }),
-					],
+					[new PluginReadme({ file: 'project/docs/nitro.md' })],
 					[
 						new PluginReadme({ file: 'project/docs/nitro-config.md' }),
 						new PluginReadme({ file: 'project/docs/nitro-webpack.md' }),

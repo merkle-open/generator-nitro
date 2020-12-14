@@ -3,7 +3,7 @@ function getUser(req, res, next) {
 	next();
 }
 
-exports = module.exports = function(app) {
+exports = module.exports = function (app) {
 	app.route('*') // all routes
 		.get(getUser);
 };

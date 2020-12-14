@@ -7,7 +7,7 @@ Always run `npm install` in the root of this repository to ensure proper depende
 ## Quick start
 
 Before using, you need of course [node](https://nodejs.org/) installed ([Version](.node-version)).  
-Nitro and the Nitro generator are tested with the current 
+Nitro and the Nitro generator are tested with the current
 ["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 10.x and 12.x).
 
 1.  Install base project:
@@ -35,7 +35,7 @@ yeoman generator in the package 'packages/generator-nitro'.
 3. Add a test in the folder 'packages/generator-nitro/tests'
 4. Run `npm install` in the root of the repo to link to the yeoman generator with your newest changes
 5. Test your yeoman generator change by creating a new project
-    1. cd to the 'project-new' package
-    2. Run `npm start` and use the yeoman config you adjusted / enhanced
-    3. The generator runs with your local recent changes
-    4. Compare the output with your change in the sample project
+   1. cd to the 'project-new' package
+   2. Run `npm start` and use the yeoman config you adjusted / enhanced
+   3. The generator runs with your local recent changes
+   4. Compare the output with your change in the sample project

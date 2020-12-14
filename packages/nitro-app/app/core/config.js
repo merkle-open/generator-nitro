@@ -20,7 +20,7 @@ const defaultConfig = {
 		mode: {
 			livereload: true,
 			offline: false,
-			test: !!(process.env.NITRO_MODE && process.env.NITRO_MODE.replace((/\s/g), '') === 'test'),
+			test: !!(process.env.NITRO_MODE && process.env.NITRO_MODE.replace(/\s/g, '') === 'test'),
 		},
 		watch: {
 			partials: true,
@@ -50,7 +50,7 @@ const defaultConfig = {
 			port: 8081,
 			https: false,
 		},
-		production: !!(process.env.NODE_ENV && process.env.NODE_ENV.replace((/\s/g), '') === 'production'),
+		production: !!(process.env.NODE_ENV && process.env.NODE_ENV.replace(/\s/g, '') === 'production'),
 		compression: true,
 		projectPaths: [
 			'config',
@@ -84,7 +84,7 @@ const defaultConfig = {
 			{
 				src: '',
 				dest: '',
-			}
+			},
 		],
 		minifyImages: [
 			/*
@@ -121,7 +121,7 @@ const defaultConfig = {
 				// whitelist: ['en', 'de', 'default'],
 				fallbackLng: 'default',
 				backend: {
-					'loadPath': 'project/locales/{{lng}}/{{ns}}.json',
+					loadPath: 'project/locales/{{lng}}/{{ns}}.json',
 				},
 				detection: {
 					// order and from where user language should be detected

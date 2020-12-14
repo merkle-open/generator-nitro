@@ -27,7 +27,6 @@ const patternBasePaths = Object.keys(config.get('nitro.patterns')).map((key) => 
 });
 
 function getPattern(folder, templateFile, dataFile) {
-
 	let pattern = null;
 
 	// search base pattern
@@ -70,7 +69,6 @@ function getPattern(folder, templateFile, dataFile) {
 
 	// maybe its an element...
 	if (!pattern) {
-
 		const elementGlobs = patternBasePaths.map((patternBasePath) => {
 			return `${patternBasePath}/*/elements/${folder}/${templateFile}.${config.get('nitro.viewFileExtension')}`;
 		});
@@ -81,15 +79,8 @@ function getPattern(folder, templateFile, dataFile) {
 			} else {
 				pattern = {
 					templateFilePath: templatePath,
-					jsonFilePath: path.join(
-						path.dirname(templatePath),
-						'/_data/',
-						`${dataFile}.json`
-					),
-					schemaFilePath: path.join(
-						path.dirname(templatePath),
-						'schema.json'
-					),
+					jsonFilePath: path.join(path.dirname(templatePath), '/_data/', `${dataFile}.json`),
+					schemaFilePath: path.join(path.dirname(templatePath), 'schema.json'),
 				};
 			}
 		});
@@ -104,21 +95,22 @@ module.exports = function (Twig) {
 		regex: /^component\s+(\w+='\S*')\s*(\w+='\S*')?\s*(\w+='\S*')?\s*([\S\s]+?)?$/,
 		next: [],
 		open: true,
-		compile (token) {
+		compile(token) {
 			token.match.forEach((paramKeyValue, index) => {
 				// our params are available in indexes 1-4
 				if (index > 0 && index < 5) {
-
 					// if the param in question is defined, we split the key=value pair and compile a twig expression
 					if (paramKeyValue !== undefined) {
 						const keyValueArray = paramKeyValue.split('=');
 						const key = keyValueArray[0];
 						const value = keyValueArray[1];
 
-						token[key] = Twig.expression.compile.apply(this, [{
-							type: Twig.expression.type.expression,
-							value: value.trim()
-						}]).stack;
+						token[key] = Twig.expression.compile.apply(this, [
+							{
+								type: Twig.expression.type.expression,
+								value: value.trim(),
+							},
+						]).stack;
 					}
 				}
 			});
@@ -127,15 +119,15 @@ module.exports = function (Twig) {
 
 			return token;
 		},
-		parse (token, context, chain) {
+		parse(token, context, chain) {
 			try {
 				const name = Twig.expression.parse.apply(this, [token.name, context]);
 				const folder = name.replace(/[^A-Za-z0-9-]/g, '');
 
-				const patternData = {};                                                // collected pattern data
-				let dataFile = folder.toLowerCase();                                   // default data file
-				let passedData = undefined;                                            // passed data to pattern helper
-				let passedDataParsed = undefined;                                      // passed data after parsing it
+				const patternData = {}; // collected pattern data
+				let dataFile = folder.toLowerCase(); // default data file
+				let passedData = undefined; // passed data to pattern helper
+				let passedDataParsed = undefined; // passed data after parsing it
 				let template;
 
 				// check if data attribute was provided in pattern helper
@@ -198,7 +190,7 @@ module.exports = function (Twig) {
 					// Add additional attributes e.g. {% pattern name='button' additionalData={ disabled: true } %}
 					if (additionalData !== null) {
 						// extend or override patternData with additional data
-						Object.keys(additionalData).forEach(key => {
+						Object.keys(additionalData).forEach((key) => {
 							patternData[key] = additionalData[key];
 						});
 					}
@@ -211,9 +203,7 @@ module.exports = function (Twig) {
 							if (!valid) {
 								return {
 									chain,
-									output: twigUtils.logAndRenderError(
-										new Error(`JSON Schema: ${ajv.errorsText()}`)
-									)
+									output: twigUtils.logAndRenderError(new Error(`JSON Schema: ${ajv.errorsText()}`)),
 								};
 							}
 						}
@@ -238,7 +228,7 @@ module.exports = function (Twig) {
 								chain,
 								output: twigUtils.logAndRenderError(
 									new Error(`Parse Error in Pattern ${name}: ${e.message}`)
-								)
+								),
 							};
 						}
 					}
@@ -253,24 +243,26 @@ module.exports = function (Twig) {
 					// return the rendered template
 					return {
 						chain,
-						output: html
+						output: html,
 					};
-
 				}
 
 				return {
 					chain,
 					output: twigUtils.logAndRenderError(
-						new Error(`Pattern \`${name}\` with template file \`${templateFile}.${config.get('nitro.viewFileExtension')}\` not found in folder \`${folder}\`.`)
-					)
+						new Error(
+							`Pattern \`${name}\` with template file \`${templateFile}.${config.get(
+								'nitro.viewFileExtension'
+							)}\` not found in folder \`${folder}\`.`
+						)
+					),
 				};
-
 			} catch (e) {
 				return {
 					chain,
-					output: twigUtils.logAndRenderError(e)
+					output: twigUtils.logAndRenderError(e),
 				};
 			}
-		}
+		},
 	};
 };

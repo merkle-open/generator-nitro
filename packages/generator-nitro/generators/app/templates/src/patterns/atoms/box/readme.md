@@ -6,8 +6,8 @@ This is a box example pattern.
 
 It can be used as a pattern with a content string:
 
--   from data.json
--   or {{pattern content='content <strong>string</string>'}}
+- from data.json
+- or {{pattern content='content <strong>string</string>'}}
 
 ... or use with transclusion to pass any content:
 
@@ -25,4 +25,4 @@ modifier `a-box--dark` for dark background
 
 [Example page](http://localhost:8081/example-patterns)
 
--   Visual test
+- Visual test

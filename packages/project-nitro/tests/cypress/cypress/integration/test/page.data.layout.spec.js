@@ -46,7 +46,9 @@ context('Test Page Data with different layout', () => {
 			cy.get('.col-md-8 > :nth-child(1)').contains('The "data" page = pageTitle (view)');
 		});
 		it('text contains _nitro.pageUrl', () => {
-			cy.get('.col-md-8 > :nth-child(2)').contains(`${Cypress.config().baseUrl}/test-data?_layout=test = pageUrl (view)`);
+			cy.get('.col-md-8 > :nth-child(2)').contains(
+				`${Cypress.config().baseUrl}/test-data?_layout=test = pageUrl (view)`
+			);
 		});
 	});
 

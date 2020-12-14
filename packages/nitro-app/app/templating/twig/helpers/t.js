@@ -25,27 +25,30 @@ module.exports = function (Twig) {
 		regex: /^t\s+(\S*)\s*([\S\s]+?)?$/,
 		next: [],
 		open: true,
-		compile (token) {
-
-			token.key = Twig.expression.compile.apply(this, [{
-				type: Twig.expression.type.expression,
-				value: token.match[1].trim()
-			}]).stack;
+		compile(token) {
+			token.key = Twig.expression.compile.apply(this, [
+				{
+					type: Twig.expression.type.expression,
+					value: token.match[1].trim(),
+				},
+			]).stack;
 
 			if (token.match[2] !== undefined) {
 				const keyValueArray = token.match[2].split('=');
 
 				console.log(keyValueArray[1].trim());
-				token.data = Twig.expression.compile.apply(this, [{
-					type: Twig.expression.type.expression,
-					value: keyValueArray[1].trim()
-				}]).stack;
+				token.data = Twig.expression.compile.apply(this, [
+					{
+						type: Twig.expression.type.expression,
+						value: keyValueArray[1].trim(),
+					},
+				]).stack;
 			}
 
 			delete token.match;
 			return token;
 		},
-		parse (token, context, chain) {
+		parse(token, context, chain) {
 			try {
 				const key = Twig.expression.parse.apply(this, [token.key, context]);
 				let params = undefined;
@@ -70,15 +73,14 @@ module.exports = function (Twig) {
 
 				return {
 					chain,
-					output: result
+					output: result,
 				};
-
 			} catch (e) {
 				return {
 					chain,
-					output: twigUtils.logAndRenderError(e)
+					output: twigUtils.logAndRenderError(e),
 				};
 			}
-		}
+		},
 	};
 };

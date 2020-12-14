@@ -17,7 +17,7 @@
 const hbs = require('hbs');
 const path = require('path');
 
-module.exports = function(context) {
+module.exports = function (context) {
 	const contextDataRoot = context.data && context.data.root ? context.data.root : {};
 	let name = context.hash.name;
 
@@ -26,7 +26,7 @@ module.exports = function(context) {
 		name = name.replace(/\.min\./, '.');
 	}
 
-	const theme = contextDataRoot.theme ? `/${contextDataRoot.theme.id}` : '' ;
+	const theme = contextDataRoot.theme ? `/${contextDataRoot.theme.id}` : '';
 
 	const assetPath = path.join('/assets/', theme, name).replace(/\\/g, '/');
 	return new hbs.SafeString(assetPath);

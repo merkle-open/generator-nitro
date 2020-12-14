@@ -10,34 +10,34 @@ An example could look like this:
 ```js
 const twigUtils = require('../utils');
 
-module.exports = function(Twig) {
-	return {
-		type: 'helper-name',
-		regex: /^helper-name/,
-		next: [],
-		open: true,
-		compile: function(token) {
-			// do any parameter logic here
-			delete token.match;
-			return token;
-		},
-		parse: function(token, context, chain) {
-			try {
-				// do any template / render logic here
+module.exports = function (Twig) {
+  return {
+    type: 'helper-name',
+    regex: /^helper-name/,
+    next: [],
+    open: true,
+    compile: function (token) {
+      // do any parameter logic here
+      delete token.match;
+      return token;
+    },
+    parse: function (token, context, chain) {
+      try {
+        // do any template / render logic here
 
-				// return the markup
-				return {
-					chain: chain,
-					output: 'Output Markup',
-				};
-			} catch (e) {
-				return {
-					chain: chain,
-					output: twigUtils.logAndRenderError(e),
-				};
-			}
-		},
-	};
+        // return the markup
+        return {
+          chain: chain,
+          output: 'Output Markup',
+        };
+      } catch (e) {
+        return {
+          chain: chain,
+          output: twigUtils.logAndRenderError(e),
+        };
+      }
+    },
+  };
 };
 ```
 

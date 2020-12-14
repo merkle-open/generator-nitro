@@ -32,17 +32,14 @@ Object.keys(files).forEach((key) => {
 
 	// expose helper as custom tag
 	/* eslint-disable-next-line */
-	Twig.extend(function(Twig) {
+	Twig.extend(function (Twig) {
 		Twig.exports.extendTag(helperTagFactory(Twig));
 	});
 });
 
 // eslint-disable-next-line
 Twig.renderWithLayout = (viewPath, options, fn) => {
-	const layoutPath = path.join(
-		options.settings.views,
-		`${options.layout}.${options.settings['view engine']}`
-	);
+	const layoutPath = path.join(options.settings.views, `${options.layout}.${options.settings['view engine']}`);
 
 	function layoutRendered(error, layout) {
 		function bodyRendered(err, body) {

@@ -16,7 +16,6 @@ const glob = require('glob');
 const _ = require('lodash');
 
 module.exports = class extends Generator {
-
 	constructor(args, opts) {
 		// Calling the super constructor
 		// eslint-disable-next-line prefer-rest-params
@@ -87,10 +86,7 @@ module.exports = class extends Generator {
 	}
 
 	prompting() {
-
-		this.log(yosay(
-			`Let me help you to create your ${this._pattern.name}…`
-		));
+		this.log(yosay(`Let me help you to create your ${this._pattern.name}…`));
 
 		return this.prompt([
 			{
@@ -113,7 +109,7 @@ module.exports = class extends Generator {
 			{
 				name: 'type',
 				type: 'list',
-				message: 'And what\'s your desired type?',
+				message: "And what's your desired type?",
 				choices: this.types,
 				default: _.indexOf(this.types, this.options.type) || 0,
 			},
@@ -133,7 +129,7 @@ module.exports = class extends Generator {
 				message: 'Would you like to create a JS decorator? Type your desired name or leave empty.',
 				default: this.options.decorator || '',
 				validate: (value) => {
-					if (_.isString(value) && (/^[0-9]/).test(value)) {
+					if (_.isString(value) && /^[0-9]/.test(value)) {
 						return `${this._pattern.Name} decorator must not start with a Number`;
 					}
 					if (/(component|pattern|modifier|decorator)/i.test(value)) {
@@ -151,7 +147,6 @@ module.exports = class extends Generator {
 	}
 
 	writing() {
-
 		const hasModifier = !_.isEmpty(this.options.modifier);
 		const hasDecorator = !_.isEmpty(this.options.decorator);
 		let msg = `Creating ${chalk.cyan(this.name)} ${this.options.type}`;
@@ -238,10 +233,10 @@ module.exports = class extends Generator {
 
 			// filename replacements
 			const fileReplacements = {
-				'$pattern$': replacements.pattern.file,
-				'$component$': replacements.pattern.file,
-				'$modifier$': replacements.modifier.file,
-				'$decorator$': replacements.decorator.file,
+				$pattern$: replacements.pattern.file,
+				$component$: replacements.pattern.file,
+				$modifier$: replacements.modifier.file,
+				$decorator$: replacements.decorator.file,
 			};
 
 			let filename = file;
@@ -252,7 +247,8 @@ module.exports = class extends Generator {
 			this.fs.copyTpl(
 				this.destinationPath(`${pattern.template}/${file}`),
 				this.destinationPath(`${pattern.path}/${folder}/${filename}`),
-				replacements);
+				replacements
+			);
 		}, this);
 	}
 };

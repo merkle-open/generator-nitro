@@ -11,21 +11,21 @@ function getAdditionalRoutes(additionalRoutesConfig) {
 function getMergedConfigProps(config) {
 	const collectedConfig = {};
 
-	collectedConfig.shouldExportViews = !config.exporter.length ?
-		config.exporter.views :
-		config.exporter.some((exporterConfig) => exporterConfig.views !== false);
+	collectedConfig.shouldExportViews = !config.exporter.length
+		? config.exporter.views
+		: config.exporter.some((exporterConfig) => exporterConfig.views !== false);
 
-	collectedConfig.languages = !config.exporter.length ?
-		config.exporter.i18n :
-		config.exporter
-			.reduce((acc, exporterConfig) => [...acc, ...exporterConfig.i18n], ['default'])
-			.filter((v, i, a) => a.indexOf(v) === i);
+	collectedConfig.languages = !config.exporter.length
+		? config.exporter.i18n
+		: config.exporter
+				.reduce((acc, exporterConfig) => [...acc, ...exporterConfig.i18n], ['default'])
+				.filter((v, i, a) => a.indexOf(v) === i);
 
-	collectedConfig.additionalRoutes = !config.exporter.length ?
-		getAdditionalRoutes(config.exporter.additionalRoutes) :
-		config.exporter
-			.reduce((acc, exporterConfig) => [...acc, ...getAdditionalRoutes(exporterConfig.additionalRoutes)], [])
-			.filter((v, i, a) => a.indexOf(v) === i);
+	collectedConfig.additionalRoutes = !config.exporter.length
+		? getAdditionalRoutes(config.exporter.additionalRoutes)
+		: config.exporter
+				.reduce((acc, exporterConfig) => [...acc, ...getAdditionalRoutes(exporterConfig.additionalRoutes)], [])
+				.filter((v, i, a) => a.indexOf(v) === i);
 
 	return collectedConfig;
 }
@@ -46,16 +46,8 @@ module.exports = function (gulp, config) {
 			process.env.NITRO_ADDITIONAL_ROUTES = mergedConfig.additionalRoutes.join(',');
 		}
 
-		gulp.task('export', gulp.series(
-			'export-clean',
-			'dump-views',
-			'export-views',
-			'export-processing',
-		));
+		gulp.task('export', gulp.series('export-clean', 'dump-views', 'export-views', 'export-processing'));
 	} else {
-		gulp.task('export', gulp.series(
-			'export-clean',
-			'export-processing'
-		));
+		gulp.task('export', gulp.series('export-clean', 'export-processing'));
 	}
 };

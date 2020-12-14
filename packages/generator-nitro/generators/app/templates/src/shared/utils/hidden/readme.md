@@ -1,3 +1,3 @@
 # mixins
 
--   visually-hidden
+- visually-hidden

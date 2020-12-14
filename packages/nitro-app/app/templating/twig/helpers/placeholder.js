@@ -22,22 +22,22 @@ module.exports = function (Twig) {
 		regex: /^placeholder\s+(\w+='\S*')\s*(\w+='\S*')?\s*([\S\s]+?)?$/,
 		next: [],
 		open: true,
-		compile (token) {
-
+		compile(token) {
 			token.match.forEach((paramKeyValue, index) => {
 				// our params are available in indexes 1-3
 				if (index > 0 && index < 4) {
-
 					// if the param in question is defined, we split the key=value pair and compile a twig expression
 					if (paramKeyValue !== undefined) {
 						const keyValueArray = paramKeyValue.split('=');
 						const key = keyValueArray[0];
 						const value = keyValueArray[1];
 
-						token[key] = Twig.expression.compile.apply(this, [{
-							type: Twig.expression.type.expression,
-							value: value.trim()
-						}]).stack;
+						token[key] = Twig.expression.compile.apply(this, [
+							{
+								type: Twig.expression.type.expression,
+								value: value.trim(),
+							},
+						]).stack;
 					}
 				}
 			});
@@ -46,7 +46,7 @@ module.exports = function (Twig) {
 
 			return token;
 		},
-		parse (token, context, chain) {
+		parse(token, context, chain) {
 			try {
 				let name = '';
 				let templateFile = '';
@@ -61,9 +61,7 @@ module.exports = function (Twig) {
 				} else {
 					return {
 						chain,
-						output: twigUtils.logAndRenderError(
-							new Error('Placeholder name parameter not set')
-						)
+						output: twigUtils.logAndRenderError(new Error('Placeholder name parameter not set')),
 					};
 				}
 
@@ -74,9 +72,7 @@ module.exports = function (Twig) {
 				} else {
 					return {
 						chain,
-						output: twigUtils.logAndRenderError(
-							new Error('Placeholder template parameter not set')
-						)
+						output: twigUtils.logAndRenderError(new Error('Placeholder template parameter not set')),
 					};
 				}
 
@@ -99,7 +95,7 @@ module.exports = function (Twig) {
 				// Add additional attributes e.g. {% placeholder name="TeaserArea" additionalData={ teaserItems: [...] } %}
 				if (additionalData !== null) {
 					// extend or override placeholderData with additional data
-					Object.keys(additionalData).forEach(key => {
+					Object.keys(additionalData).forEach((key) => {
 						placeholderData[key] = additionalData[key];
 					});
 				}
@@ -110,7 +106,8 @@ module.exports = function (Twig) {
 					config.get('nitro.basePath'),
 					config.get('nitro.placeholdersDirectory'),
 					name,
-					templateFile);
+					templateFile
+				);
 
 				// TODO CHECK WHAT THIS IF SHOULD DO
 				if (name instanceof Twig.Template) {
@@ -126,21 +123,18 @@ module.exports = function (Twig) {
 							options: this.options,
 							id: templateFilePath,
 						});
-
 					} catch (e) {
 						return {
 							chain,
 							output: twigUtils.logAndRenderError(
 								new Error(`Parse Error for Placeholder ${name}: ${e.message}`)
-							)
+							),
 						};
 					}
 				} else {
 					return {
 						chain,
-						output: twigUtils.logAndRenderError(
-							new Error(`Placeholder ${templateFilePath} not found.`)
-						)
+						output: twigUtils.logAndRenderError(new Error(`Placeholder ${templateFilePath} not found.`)),
 					};
 				}
 
@@ -154,15 +148,14 @@ module.exports = function (Twig) {
 				// return the rendered template
 				return {
 					chain,
-					output: html
+					output: html,
 				};
-
 			} catch (e) {
 				return {
 					chain,
-					output: twigUtils.logAndRenderError(e)
+					output: twigUtils.logAndRenderError(e),
 				};
 			}
-		}
+		},
 	};
 };

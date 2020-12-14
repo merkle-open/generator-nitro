@@ -6,8 +6,8 @@ services:
     container_name: project-nitro_server-dev
     command: npm start
     ports:
-    - 8081:8081
-    - 3001:3001
+      - 8081:8081
+      - 3001:3001
     volumes:
-    - .:/app:rw
-    - /app/node_modules
+      - .:/app:rw
+      - /app/node_modules

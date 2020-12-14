@@ -7,7 +7,6 @@ const utils = require('../lib/utils');
 
 module.exports = (gulp, plugins) => {
 	return () => {
-
 		const streams = [];
 		const svgSpritesConfigs = config.has('gulp.svgSprites') ? config.get('gulp.svgSprites') : {};
 
@@ -16,24 +15,28 @@ module.exports = (gulp, plugins) => {
 				streams.push(
 					gulp
 						.src(svgSpritesConfig.src)
-						.pipe(plugins.svgmin((file) => {
-							const prefix = path.basename(file.relative, path.extname(file.relative));
-							return {
-								plugins: [
-									{
-										removeDoctype: true,
-									}, {
-										removeViewBox: false
-									}, {
-										cleanupIDs: {
-											prefix: `${prefix}-`,
-											minify: true,
+						.pipe(
+							plugins.svgmin((file) => {
+								const prefix = path.basename(file.relative, path.extname(file.relative));
+								return {
+									plugins: [
+										{
+											removeDoctype: true,
 										},
-									},
-								],
-							};
-						}))
-						.pipe(plugins.svgstore({inlineSvg: true}))
+										{
+											removeViewBox: false,
+										},
+										{
+											cleanupIDs: {
+												prefix: `${prefix}-`,
+												minify: true,
+											},
+										},
+									],
+								};
+							})
+						)
+						.pipe(plugins.svgstore({ inlineSvg: true }))
 						.pipe(gulp.dest(svgSpritesConfig.dest))
 				);
 			}

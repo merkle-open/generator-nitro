@@ -9,12 +9,15 @@ The following code is an example of such a view data route:
 
 ```js
 function getUser(req, res, next) {
-	res.locals.user = { name: 'my name', email: 'me@test.com' };
-	next();
+  res.locals.user = {
+    name: 'my name',
+    email: 'me@test.com',
+  };
+  next();
 }
 
 module.exports = (app) => {
-	app.route('/').get(getUser);
+  app.route('/').get(getUser);
 };
 ```
 

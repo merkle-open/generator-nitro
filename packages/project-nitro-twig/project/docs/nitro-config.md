@@ -16,7 +16,7 @@ the main nodes from nitro: `code`, `nitro`,`server`, `gulp`, `feature`, `exporte
 
 Type: Object
 
--   `code.validation.eslint.live` - default: false
+- `code.validation.eslint.live` - default: false
 
 Enable/disable JavaScript linting on change.
 
@@ -24,7 +24,7 @@ Enable/disable JavaScript linting on change.
 
 Type: Object
 
--   `code.validation.htmllint.live` - default: true
+- `code.validation.htmllint.live` - default: true
 
 Enable/disable HTML linting on change.
 
@@ -32,16 +32,16 @@ Enable/disable HTML linting on change.
 
 Type: Object
 
--   `code.validation.jsonSchema.live` - default: true  
-    Enable/disable JSON-Schema validation on change.
--   `code.validation.jsonSchema.logMissingSchemaAsError` - default: false
--   `code.validation.jsonSchema.logMissingSchemaAsWarning` - default: true
+- `code.validation.jsonSchema.live` - default: true  
+  Enable/disable JSON-Schema validation on change.
+- `code.validation.jsonSchema.logMissingSchemaAsError` - default: false
+- `code.validation.jsonSchema.logMissingSchemaAsWarning` - default: true
 
 #### `code.validation.stylelint`
 
 Type: Object
 
--   `code.validation.stylelint.live` - default: false
+- `code.validation.stylelint.live` - default: false
 
 Enable/disable CSS linting on change.
 
@@ -51,10 +51,10 @@ The node `nitro` contains following properties
 
 ### Simple Properties
 
--   `nitro.viewFileExtension`: String (default: 'hbs') - possible values: 'hbs' or 'twig'
-    Extension of all view files (pattern & views)
--   `nitro.templateEngine`: String (default: 'hbs') - possible values: 'hbs' or 'twig'
-    Currently used serverside rendering engine
+- `nitro.viewFileExtension`: String (default: 'hbs') - possible values: 'hbs' or 'twig'
+  Extension of all view files (pattern & views)
+- `nitro.templateEngine`: String (default: 'hbs') - possible values: 'hbs' or 'twig'
+  Currently used serverside rendering engine
 
 ### Patterns
 
@@ -64,36 +64,36 @@ Type: Object
 
 Configuration of pattern types. These types are used for:
 
--   handlebars pattern helper (`{{pattern name='pattern'}}`) to evaluate the pathes
--   pattern generator `npm run nitro:pattern`
+- handlebars pattern helper (`{{pattern name='pattern'}}`) to evaluate the pathes
+- pattern generator `npm run nitro:pattern`
 
 A type contains following properties:
 
--   `template` defines the path where the pattern generator looks for the files to copy
--   `path` defines the place where the patterns of this type are placed
--   `patternPrefix` defines the class prefix
+- `template` defines the path where the pattern generator looks for the files to copy
+- `path` defines the place where the patterns of this type are placed
+- `patternPrefix` defines the class prefix
 
 ```js
 const config = {
-	nitro: {
-		patterns: {
-			atom: {
-				template: 'project/blueprints/pattern',
-				path: 'src/patterns/atoms',
-				patternPrefix: 'a',
-			},
-			molecule: {
-				template: 'project/blueprints/pattern',
-				path: 'src/patterns/molecules',
-				patternPrefix: 'm',
-			},
-			organism: {
-				template: 'project/blueprints/pattern',
-				path: 'src/patterns/organisms',
-				patternPrefix: 'o',
-			},
-		},
-	},
+  nitro: {
+    patterns: {
+      atom: {
+        template: 'project/blueprints/pattern',
+        path: 'src/patterns/atoms',
+        patternPrefix: 'a',
+      },
+      molecule: {
+        template: 'project/blueprints/pattern',
+        path: 'src/patterns/molecules',
+        patternPrefix: 'm',
+      },
+      organism: {
+        template: 'project/blueprints/pattern',
+        path: 'src/patterns/organisms',
+        patternPrefix: 'o',
+      },
+    },
+  },
 };
 ```
 
@@ -101,15 +101,15 @@ const config = {
 
 #### `nitro.mode.livereload`
 
--   Type: Boolean
--   Default: true
+- Type: Boolean
+- Default: true
 
 Browser livereload on changes (develop mode only)
 
 #### `nitro.mode.offline`
 
--   Type: Boolean
--   Default: false
+- Type: Boolean
+- Default: false
 
 If set to true, browsersync will be loaded in offline mode.  
 This property is passed as `_nitro.offline` to handlebars views.
@@ -118,60 +118,60 @@ This property is passed as `_nitro.offline` to handlebars views.
 
 #### `nitro.watch.partials`
 
--   Type: Boolean
--   Default: true
+- Type: Boolean
+- Default: true
 
 If set to false, handlebars partials won't be watched and recompiled on change.
 
 #### `nitro.watch.delay`
 
--   Type: Integer
--   Default: 1000
-  
+- Type: Integer
+- Default: 1000
+
 The millisecond 'delay' between a file change and task execution.
 
 ## Server
 
 ### `server.port`
 
--   Type: Integer
--   Default: 8080
+- Type: Integer
+- Default: 8080
 
 The express server runs on this port.  
 An environment variable PORT will overwrite this property.
 
 ### `server.proxy`
 
--   Type: Object
+- Type: Object
 
 The proxy server config with livereload functionality. (Used in develop mode only)
 
 #### `server.proxy.port`
 
--   Type: Integer
--   Default: 8081
+- Type: Integer
+- Default: 8081
 
 An environment variable PROXY will overwrite this property.
 
 #### `server.proxy.https`
 
--   Type: Object | false
--   Default: false
+- Type: Object | false
+- Default: false
 
 Enabling the https mode requires an ssl certificate:
 
--   `server.proxy.https.cert` (path to the certificate file)
--   `server.proxy.https.key` (path to the certificate key)
+- `server.proxy.https.cert` (path to the certificate file)
+- `server.proxy.https.key` (path to the certificate key)
 
 #### `server.proxy.host`
 
--   Type: String
+- Type: String
 
 Defines a custom host for your external url (e.g. nitro.local)
 
 #### `server.proxy.open`
 
--   Type: Boolean | String
+- Type: Boolean | String
 
 Decide [which URL to open automatically in your browser](https://www.browsersync.io/docs/options#option-open) when proxy server starts.  
 Possible values: false, 'local', 'external'
@@ -209,8 +209,8 @@ server: {
 
 ### `server.compression`
 
--   Type: Boolean
--   Default: true
+- Type: Boolean
+- Default: true
 
 If set to `true`, all requests through express will be compressed.
 
@@ -238,8 +238,8 @@ Copies all source files to dest folder
 
 Object Properties:
 
--   `gulp.copyAssets.src` String (default: '')
--   `gulp.copyAssets.dest` String (default: '')
+- `gulp.copyAssets.src` String (default: '')
+- `gulp.copyAssets.dest` String (default: '')
 
 ### `gulp.minifyImages`
 
@@ -249,8 +249,8 @@ Copies and minifies all source images to dest folder
 
 Object Properties:
 
--   `gulp.minifyImages.src` String (default: ''; example: 'src/shared/assets/img/\*\*/\*')
--   `gulp.minifyImages.dest` String (default: ''; example: 'public/assets/img')
+- `gulp.minifyImages.src` String (default: ''; example: 'src/shared/assets/img/\*\*/\*')
+- `gulp.minifyImages.dest` String (default: ''; example: 'public/assets/img')
 
 ### `gulp.svgSprites`
 
@@ -260,8 +260,8 @@ Generates icon sprite with the name of the last folder in src. If src is an arra
 
 Properties:
 
--   `gulp.svgSprites.src` String || String[] (default: ''; example: 'src/patterns/atoms/icon/img/icons/\*.svg')
--   `gulp.svgSprites.dest` String (default: ''; example: 'public/assets/svg')
+- `gulp.svgSprites.src` String || String[] (default: ''; example: 'src/patterns/atoms/icon/img/icons/\*.svg')
+- `gulp.svgSprites.dest` String (default: ''; example: 'public/assets/svg')
 
 ## Feature
 
@@ -269,12 +269,12 @@ Properties:
 
 The node `feature.i18next` contains:
 
--   two configuration objects for i18next express middleware (default)
--   or the boolean `false` to disable the feature completely.
+- two configuration objects for i18next express middleware (default)
+- or the boolean `false` to disable the feature completely.
 
 If you want to change the defaults in `feature.i18next.options` (configuration options)
 and `feature.i18next.optionsMiddleware` (mainly for express routes to ignore),
 check following documentations:
 
--   [i18next express middleware](https://github.com/i18next/i18next-express-middleware)
--   [configuration options](https://www.i18next.com/overview/configuration-options)
+- [i18next express middleware](https://github.com/i18next/i18next-express-middleware)
+- [configuration options](https://www.i18next.com/overview/configuration-options)

@@ -34,7 +34,7 @@
     "donotlint:html": "gulp lint-html",
     "lint:js": "eslint ./src --ext .ts,.tsx",
     "lint:license": "license-checker --production --summary --exclude \"Apache-2.0, BSD, ISC, LGPL, MIT, MPL\" --failOn \"AGPL; EPL; GPL\"",
-    "prettier": "prettier --write \"src/**/*.*(js|jsx|ts|tsx|json|md|mdx|graphql|gql|yml|yaml)\"",
+    "prettier": "prettier --write \"**/*.*(js|jsx|ts|tsx|json|md|mdx|graphql|gql|yml|yaml)\"",
     "test": "npm-run-all test:*",
     "test:lint": "npm run lint",
     "donottest:cypress": "npm run build && cross-env PORT=8892 NITRO_MODE=test npm-run-all --parallel --race test:cypress:*",

@@ -6,18 +6,13 @@ context('Test Countries API', () => {
 
 	describe('Headers', () => {
 		it('has application/json headers', () => {
-			cy.request(apiUrl)
-				.its('headers')
-				.its('content-type')
-				.should('include', 'application/json');
+			cy.request(apiUrl).its('headers').its('content-type').should('include', 'application/json');
 		});
 	});
 
 	describe('Empty Content', () => {
 		it('loads zero items', () => {
-			cy.request('GET', apiUrl)
-				.its('body')
-				.should('have.length', 0);
+			cy.request('GET', apiUrl).its('body').should('have.length', 0);
 
 			cy.request('GET', apiUrl).then((response) => {
 				expect(response.status).to.eq(200);
@@ -66,18 +61,13 @@ context('Test Jobs API', () => {
 
 	describe('Headers', () => {
 		it('has application/json headers', () => {
-			cy.request(apiUrl)
-				.its('headers')
-				.its('content-type')
-				.should('include', 'application/json');
+			cy.request(apiUrl).its('headers').its('content-type').should('include', 'application/json');
 		});
 	});
 
 	describe('Default Content', () => {
 		it('loads job items', () => {
-			cy.request('GET', apiUrl)
-				.its('body')
-				.should('have.property', 'success');
+			cy.request('GET', apiUrl).its('body').should('have.property', 'success');
 
 			cy.request('GET', apiUrl).then((response) => {
 				expect(response.status).to.eq(200);

@@ -22,16 +22,16 @@ The exporter configuration can be found in your [config](../../config).
 
 The distribution folder for your static export. This is where all your static files will go.
 
--   example: `'dist'`
+example: `'dist'`
 
 ### exporter.i18n (Array)
 
 Contains a list of language keys. The views will be exported using the specified language keys. (`?lang=<lang>`)
 
--   Using an empty array will export the default language
--   Use `default` for default language in an array with configured languages
+- Using an empty array will export the default language
+- Use `default` for default language in an array with configured languages
 
-*   example: `['de', 'default']`
+example: `['de', 'default']`
 
 ### exporter.publics (Boolean / Array)
 
@@ -41,14 +41,14 @@ You can define an array of strings, like `['public/assets/css/app.css', 'public/
 
 When defining strings you can use globbing patterns.
 
--   example: `['public/*', 'public/assets/**/*', 'public/content/**/*']`
+example: `['public/*', 'public/assets/**/*', 'public/content/**/*']`
 
 ### exporter.renames (Array)
 
 Defines file renames. Takes an array of objects with `src`, `base` and `dest`.
 Renaming is used with native `gulp.src(...).pipe(gulp.dest(...))`.
 
--   example:
+example:
 
 ```
 [
@@ -67,7 +67,7 @@ Defines string replacements. Takes an array of objects with `glob` and `replace`
 
 **Please note: renames are executed before replacements!**
 
--   example:
+example:
 
 ```
 [
@@ -91,19 +91,19 @@ You can define an array of strings, like `['index', '404']` to export only those
 
 When defining strings you can use globbing patterns.
 
--   example: `true`
+example: `true`
 
 ### exporter.additionalRoutes (Array)
 
 Controls which additional routes should be exported.
 
--   example: `['api/service/countries.json', 'api/service/products.json']`
+example: `['api/service/countries.json', 'api/service/products.json']`
 
 ### exporter.zip
 
 Defines, if the export should be zipped.
 
--   example: `false`
+example: `false`
 
 ## Example Exporter Config
 

@@ -1,0 +1,15 @@
+// infos: https://stackoverflow.com/questions/28150929/why-website-printed-with-chrome-is-using-mobile-layout
+
+@page {
+	size: 330mm 427mm;
+}
+
+@media print {
+	/* stylelint-disable plugin/stylelint-bem-namics */
+	.container {
+		// make content bigger than the default in some browsers
+		// (a percentage value won't work in safari)
+		width: 1080px;
+	}
+	/* stylelint-enable plugin/stylelint-bem-namics */
+}

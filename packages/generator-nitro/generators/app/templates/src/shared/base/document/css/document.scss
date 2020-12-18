@@ -5,4 +5,7 @@ html {
 	line-height: 1.2;
 	color: $color-base-font;
 	background-color: $color-base-background;
+	@media print {
+		background-color: transparent;
+	}
 }

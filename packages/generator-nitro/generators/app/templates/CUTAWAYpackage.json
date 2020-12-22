@@ -87,7 +87,7 @@
     "@khanacademy/tota11y": "0.2.0",
     "bootstrap": "4.5.3",<% } %>
     "core-js": "3.8.1"<% if (options.exampleCode) { %>,
-    "flatpickr": "4.6.7",
+    "flatpickr": "4.6.8",
     "handlebars": "4.7.6",
     "jquery": "3.5.1",
     "lazysizes": "5.2.2",
@@ -120,7 +120,7 @@
     "commitizen": "4.2.2",
     "config": "3.3.3",
     "cross-env": "7.0.3",
-    "cypress": "6.1.0",
+    "cypress": "6.2.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "7.16.0",
     "eslint-plugin-import": "2.22.1",

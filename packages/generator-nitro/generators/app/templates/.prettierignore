@@ -19,3 +19,6 @@
 **/project/routes/data
 **/project/tmp
 **/.yo-rc.json
+
+# Project
+**/export

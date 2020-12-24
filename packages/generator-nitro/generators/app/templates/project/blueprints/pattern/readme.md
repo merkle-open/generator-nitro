@@ -2,8 +2,8 @@
 
 _Short summary and links to specification, jira, design, prototype, ..._
 
--   [spez](https://wiki/)
--   [proto](https://proto/)
+- [spez](https://wiki/)
+- [proto](https://proto/)
 
 ## API
 

@@ -109,7 +109,7 @@ If necessary configure the [gulp tasks](../../config/default/gulp.js) (copyAsset
 
 ### Theme routes
 
-The nitro generator created a '_themes' route in [project/routes](../../project/routes/_themes.js).
+The nitro generator created a `_themes` route in [project/routes](../../project/routes/_themes.js).
 
 This route does two things:
 

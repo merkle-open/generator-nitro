@@ -159,18 +159,21 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{css,scss}": [
+    "**/*.{css,scss}": [
       "stylelint --allow-empty-input"
     ],
-    "src/**/*.json": [
+    "**/*.json": [
       "prettier --write",
       "npm run lint:data"
     ],
-    "src/**/*.{<% if (options.jsCompiler === 'js') { %>js,jsx<% } %><% if (options.jsCompiler === 'ts') { %>ts,tsx<% } %>}": [
+    "**/*.{<% if (options.jsCompiler === 'js') { %>js,jsx<% } %><% if (options.jsCompiler === 'ts') { %>ts,tsx<% } %>}": [
       "prettier --write",
       "eslint"
     ],
-    "src/**/*.md": [
+    "**/*.md": [
+      "prettier --write"
+    ],
+    "**/*.yml": [
       "prettier --write"
     ],
     "package.json": [

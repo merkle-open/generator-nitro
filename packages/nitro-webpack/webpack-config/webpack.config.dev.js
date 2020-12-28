@@ -89,6 +89,9 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			performance: true,
 			warnings: true,
 		},
+		infrastructureLogging: {
+			level: 'warn'
+		}
 	};
 	const theme = options.features.theme ? options.features.theme : false;
 

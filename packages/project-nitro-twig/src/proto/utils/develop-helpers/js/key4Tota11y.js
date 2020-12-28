@@ -1,7 +1,7 @@
 import '@khanacademy/tota11y/dist/tota11y';
 import { addKeyboardAction, getFromLocalStorage, setToLocalStorage } from './developHelpers';
 
-// toggle tota11y helper on CTRL+3 / ALT+3
+// toggle tota11y helper on CTRL+4 / ALT+4
 (function tota11yHelper() {
 	const style = document.createElement('style');
 	style.innerHTML = '.tota11y { display: none; }';

@@ -1,4 +1,4 @@
 /* eslint-disable no-console */
-console.log('You are using nitro version 5.8.0');
+console.log('You are using nitro version 5.8.1');
 console.log('Check for updates on https://npmjs.com/package/generator-nitro');
 /* eslint-enable no-console */

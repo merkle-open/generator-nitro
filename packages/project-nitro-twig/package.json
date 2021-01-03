@@ -84,7 +84,7 @@
     "flatpickr": "4.6.9",
     "handlebars": "4.7.6",
     "jquery": "3.5.1",
-    "lazysizes": "5.2.2",
+    "lazysizes": "5.3.0",
     "lottie-web": "5.7.5",
     "prevent-window-opener-attacks": "0.2.5",
     "regenerator-runtime": "0.13.7",
@@ -112,7 +112,7 @@
     "cross-env": "7.0.3",
     "cypress": "6.2.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "7.16.0",
+    "eslint": "7.17.0",
     "eslint-plugin-import": "2.22.1",
     "extend": "3.0.2",
     "generator-nitro": "*",
@@ -128,7 +128,7 @@
     "rimraf": "3.0.2",
     "stylelint": "13.8.0",
     "watchpack": "1.6.1",
-    "webpack-cli": "4.3.0",
+    "webpack-cli": "4.3.1",
     "yo": "3.1.1"
   },
   "browserslist": [

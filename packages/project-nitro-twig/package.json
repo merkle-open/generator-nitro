@@ -148,14 +148,14 @@
     }
   },
   "lint-staged": {
-    "**/*.{css,scss}": [
+    "src/**/*.{css,scss}": [
       "stylelint --allow-empty-input"
     ],
     "**/*.json": [
       "prettier --write",
       "npm run lint:data"
     ],
-    "**/*.{js,jsx}": [
+    "src/**/*.{js,jsx}": [
       "prettier --write",
       "eslint"
     ],

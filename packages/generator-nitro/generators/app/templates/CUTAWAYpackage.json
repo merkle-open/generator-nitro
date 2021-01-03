@@ -159,14 +159,14 @@
     }
   },
   "lint-staged": {
-    "**/*.{css,scss}": [
+    "src/**/*.{css,scss}": [
       "stylelint --allow-empty-input"
     ],
     "**/*.json": [
       "prettier --write",
       "npm run lint:data"
     ],
-    "**/*.{<% if (options.jsCompiler === 'js') { %>js,jsx<% } %><% if (options.jsCompiler === 'ts') { %>ts,tsx<% } %>}": [
+    "src/**/*.{<% if (options.jsCompiler === 'js') { %>js,jsx<% } %><% if (options.jsCompiler === 'ts') { %>ts,tsx<% } %>}": [
       "prettier --write",
       "eslint"
     ],

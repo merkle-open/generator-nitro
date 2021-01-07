@@ -99,7 +99,8 @@ Githooks Configuration is placed in the "husky" and the corresponding "lint-stag
 
 Patterns are created in the `src/patterns` folder. A pattern is an encapsulated block of markup
 with corresponding styles, scripts and data. The pattern data can be described in `schema.json`
-with [JSON schema](http://json-schema.org) format (draft-04). Nitro uses [ajv](http://epoberezkin.github.io/ajv/) for validation.
+with [JSON schema](http://json-schema.org) (currently draft-04, but soon open for newer versions).
+Nitro uses [ajv](https://github.com/ajv-validator/ajv/tree/v6) for validation.
 
 For a better overview it is useful to define different types of patterns in [config](nitro-config.md).
 

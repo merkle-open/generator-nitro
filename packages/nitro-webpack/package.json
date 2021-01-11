@@ -9,7 +9,7 @@
     "npm": ">=6.4.1 <7"
   },
   "scripts": {
-    "lint": "eslint ./webpack-config",
+    "lint": "eslint .",
     "postinstall": "npm rebuild node-sass",
     "prepublishOnly": "pkg-ok",
     "test": "npm run lint"

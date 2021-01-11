@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
@@ -278,5 +276,3 @@ module.exports = (options = { rules: {}, features: {} }) => {
 };
 module.exports.hotMiddlewareScript = hotMiddlewareScript;
 module.exports.appDirectory = appDirectory;
-
-/* eslint-enable */

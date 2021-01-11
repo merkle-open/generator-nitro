@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
@@ -20,7 +18,7 @@ const bannerData = {
 	pkg: require(`${appDirectory}/package.json`),
 };
 
-let banner = `${bannerData.pkg.name}
+const banner = `${bannerData.pkg.name}
 @version v${bannerData.pkg.version}
 @date ${bannerData.date}`;
 
@@ -287,5 +285,3 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	return webpackConfig;
 };
 module.exports.appDirectory = appDirectory;
-
-/* eslint-enable */

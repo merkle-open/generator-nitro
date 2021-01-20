@@ -38,7 +38,7 @@
     }
   },
   "devDependencies": {
-    "commitizen": "4.2.2",
+    "commitizen": "4.2.3",
     "cz-conventional-changelog": "3.3.0",
     "lerna": "3.22.1",
     "markdownlint-cli": "0.26.0",

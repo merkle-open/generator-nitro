@@ -54,7 +54,7 @@
     "node-sass": "5.0.0",
     "optimize-css-assets-webpack-plugin": "5.0.4",
     "postcss": "8.2.4",
-    "postcss-loader": "4.1.0",
+    "postcss-loader": "4.2.0",
     "resolve-url-loader": "3.1.2",
     "sass-loader": "10.1.1",
     "stylelint": "13.9.0",
@@ -65,7 +65,7 @@
     "watchpack": "1.6.1",
     "webpack": "4.43.0",
     "webpackbar": "4.0.0",
-    "webpack-bundle-analyzer": "4.3.0"
+    "webpack-bundle-analyzer": "4.4.0"
   },
   "devDependencies": {
     "@namics/eslint-config": "9.0.5",

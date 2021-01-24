@@ -132,6 +132,9 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			use: [
 				{
 					loader: MiniCssExtractPlugin.loader,
+					options: {
+						publicPath: '../',
+					},
 				},
 				{
 					loader: require.resolve('css-loader'),

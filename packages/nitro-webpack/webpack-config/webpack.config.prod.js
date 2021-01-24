@@ -106,7 +106,12 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.module.rules.push({
 			test: /\.s?css$/,
 			use: [
-				MiniCssExtractPlugin.loader,
+				{
+					loader: MiniCssExtractPlugin.loader,
+					options: {
+						publicPath: '../',
+					},
+				},
 				{
 					loader: require.resolve('css-loader'),
 					options: {

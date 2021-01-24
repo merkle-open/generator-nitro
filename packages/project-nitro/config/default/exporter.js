@@ -39,10 +39,6 @@ const config = {
 					glob: ['export/*/css/*.css'],
 					replace: [
 						{
-							from: '/assets/(light|dark)/',
-							to: '../',
-						},
-						{
 							from: '/content/',
 							to: '../content/',
 						},
@@ -134,10 +130,6 @@ const config = {
 							to: 'content/',
 						},
 						{
-							from: 'example-patterns',
-							to: '404',
-						},
-						{
 							from: ' href="/?([a-z0-9-]+)"',
 							to: ' href="$1.html"',
 						},
@@ -146,10 +138,6 @@ const config = {
 				{
 					glob: ['target/assets/css/*.css'],
 					replace: [
-						{
-							from: '/assets/',
-							to: '../',
-						},
 						{
 							from: '/content/',
 							to: '../content/',

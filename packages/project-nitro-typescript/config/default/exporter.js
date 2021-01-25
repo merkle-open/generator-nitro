@@ -39,10 +39,6 @@ const config = {
 					glob: ['export/css/*.css'],
 					replace: [
 						{
-							from: '/assets/',
-							to: '../',
-						},
-						{
 							from: '/content/',
 							to: '../content/',
 						},

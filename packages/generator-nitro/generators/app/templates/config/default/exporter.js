@@ -39,6 +39,10 @@ const config = {
 					glob: ['export/<% if (options.themes) { %>*/<% } %>css/*.css'],
 					replace: [
 						{
+							from: '/assets/<% if (options.themes) { %>(light|dark)/<% } %>',
+							to: '../',
+						},
+						{
 							from: '/content/',
 							to: '../content/',
 						},

@@ -103,10 +103,16 @@ module.exports = (options = { rules: {}, features: {} }) => {
 
 	// css & scss
 	if (options.rules.scss) {
+		const scssMiniCSSExtractOptions = {
+			...(options.rules.scss.publicPath && { publicPath: options.rules.scss.publicPath })
+		};
 		webpackConfig.module.rules.push({
 			test: /\.s?css$/,
 			use: [
-				MiniCssExtractPlugin.loader,
+				{
+					loader: MiniCssExtractPlugin.loader,
+					options: scssMiniCSSExtractOptions,
+				},
 				{
 					loader: require.resolve('css-loader'),
 					options: {

@@ -72,6 +72,7 @@ Config:
 
 - `true` or `{}` will activate scss support
 - `{ stylelint: true }` additionally adds stylelint live linting feature (only relevant for development build)
+- `{ publicPath: '../' }` provide a separate public path for stylesheets. By default, webpack uses the value from 'output.publicPath'. (only relevant for production build)
 
 #### `options.rules.hbs`
 

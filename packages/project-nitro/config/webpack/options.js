@@ -9,6 +9,7 @@ const options = {
 		ts: false,
 		scss: {
 			stylelint: config.get('code.validation.stylelint.live'),
+			publicPath: '../',
 		},
 		hbs: true,
 		woff: {

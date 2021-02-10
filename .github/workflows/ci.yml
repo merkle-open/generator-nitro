@@ -27,14 +27,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Use latest NPM on ubuntu/macos
-        if: matrix.platform == 'ubuntu-latest' || matrix.platform == 'macos-latest'
-        run: sudo npm i -g npm
-
-      - name: Use latest NPM on windows
-        if: matrix.platform == 'windows-latest'
-        run: npm i -g npm
-
       - name: Install dependencies
         run: npm ci
 

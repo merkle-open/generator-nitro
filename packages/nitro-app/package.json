@@ -15,7 +15,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "prepublishOnly": "pkg-ok",
+    "prepublishOnly": "npx pkg-ok@2.3.1",
     "pretest": "npm run lint",
     "test": "jasmine --config=./tests/jasmine/support/jasmine.json"
   },
@@ -58,8 +58,7 @@
   "devDependencies": {
     "@namics/eslint-config": "9.0.5",
     "eslint": "7.20.0",
-    "eslint-plugin-import": "2.22.1",
-    "pkg-ok": "2.3.1"
+    "eslint-plugin-import": "2.22.1"
   },
   "publishConfig": {
     "access": "public"

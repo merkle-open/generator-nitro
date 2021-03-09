@@ -27,7 +27,7 @@
   "dependencies": {
     "@nitro/app": "<%= nitroAppVersion %>",
     "check-node-version": "4.1.0",
-    "config": "3.3.4",
+    "config": "3.3.6",
     "cross-env": "7.0.3",
     "extend": "3.0.2",
     "npm-run-all": "4.1.5",

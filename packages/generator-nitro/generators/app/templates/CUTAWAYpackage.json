@@ -118,7 +118,7 @@
     "backstopjs": "5.1.0",
     "check-node-version": "4.1.0",
     "commitizen": "4.2.3",
-    "config": "3.3.4",
+    "config": "3.3.6",
     "cross-env": "7.0.3",
     "cypress": "6.6.0",
     "cz-conventional-changelog": "3.3.0",
@@ -131,12 +131,12 @@
     "license-checker": "25.0.1",
     "lighthouse": "7.2.0",
     "lint-staged": "10.5.4",
-    "npm-check-updates": "11.1.10",
+    "npm-check-updates": "11.2.0",
     "npm-run-all": "4.1.5",
     "opener": "1.5.2",
     "prettier": "2.2.1",
     "rimraf": "3.0.2",
-    "stylelint": "13.11.0",<% if (options.jsCompiler === 'ts') { %>
+    "stylelint": "13.12.0",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "4.2.3",<% } %>
     "watchpack": "1.6.1",
     "webpack-cli": "4.5.0",

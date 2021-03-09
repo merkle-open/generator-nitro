@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "chalk": "4.1.0",
-    "config": "3.3.4",
+    "config": "3.3.6",
     "git-config": "0.0.7",
     "glob": "7.1.6",
     "got": "11.8.2",

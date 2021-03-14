@@ -45,7 +45,7 @@
   "devDependencies": {
     "@namics/eslint-config": "9.0.5",
     "ejs": "3.1.6",
-    "eslint": "7.21.0",
+    "eslint": "7.22.0",
     "eslint-plugin-import": "2.22.1",
     "fs-extra": "9.1.0",
     "jasmine": "3.6.4",

@@ -218,6 +218,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	// images
 	if (options.rules.image) {
 		// image loader & minification
+		const { extendDefaultPlugins } = require('svgo');
 		const imageMinificationRule = {
 			test: /\.(png|jpg|gif|svg|ico)$/,
 			// Specify enforce: 'pre' to apply the loader before url-loader
@@ -241,12 +242,12 @@ module.exports = (options = { rules: {}, features: {} }) => {
 							// speed: 2
 						}),
 						require('imagemin-svgo')({
-							plugins: [
-								{ collapseGroups: false },
-								{ cleanupIDs: false },
-								{ removeUnknownsAndDefaults: false },
-								{ removeViewBox: false },
-							],
+							plugins: extendDefaultPlugins([
+								{
+									name: 'removeViewBox',
+									active: false,
+								},
+							]),
 						}),
 					],
 				},

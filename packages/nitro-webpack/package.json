@@ -27,7 +27,7 @@
     "watchpack": "1.6.1"
   },
   "dependencies": {
-    "@babel/core": "7.13.13",
+    "@babel/core": "7.13.14",
     "@babel/preset-env": "7.13.12",
     "@babel/preset-react": "7.13.13",
     "@babel/plugin-proposal-decorators": "7.13.5",
@@ -53,7 +53,7 @@
     "mini-css-extract-plugin": "1.4.0",
     "node-sass": "5.0.0",
     "optimize-css-assets-webpack-plugin": "5.0.4",
-    "postcss": "8.2.8",
+    "postcss": "8.2.9",
     "postcss-loader": "4.2.0",
     "resolve-url-loader": "3.1.2",
     "sass-loader": "10.1.1",

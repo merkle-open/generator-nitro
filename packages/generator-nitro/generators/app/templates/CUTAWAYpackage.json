@@ -86,11 +86,11 @@
     "@gondel/plugin-hot": "1.2.6",
     "@khanacademy/tota11y": "0.2.0",
     "bootstrap": "4.6.0",<% } %>
-    "core-js": "3.9.1"<% if (options.exampleCode) { %>,
+    "core-js": "3.10.0"<% if (options.exampleCode) { %>,
     "flatpickr": "4.6.9",
     "handlebars": "4.7.7",
     "jquery": "3.6.0",
-    "lazysizes": "5.3.1",
+    "lazysizes": "5.3.2",
     "lottie-web": "5.7.7",
     "prevent-window-opener-attacks": "0.2.5"<% } %><% if (options.jsCompiler === 'js') { %>,
     "regenerator-runtime": "0.13.7"<% } %><% if (options.exampleCode) { %>,

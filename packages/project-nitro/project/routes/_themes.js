@@ -22,6 +22,7 @@ function theme(req, res, next) {
 	// console.log('Enhancing view data with theme data');
 
 	const isPage =
+		!req.path.match(/^\/favicon.ico/) &&
 		!req.path.match(/^\/api\//) &&
 		!req.path.match(/^\/assets\//) &&
 		!req.path.match(/^\/content\//) &&

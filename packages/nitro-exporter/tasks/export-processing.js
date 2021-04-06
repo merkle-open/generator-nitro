@@ -31,7 +31,7 @@ module.exports = function (gulp, config) {
 					return Promise.resolve();
 				};
 				const getCleanupPromise = function () {
-					return deleteEmpty(configEntry.dest + path.sep);
+					return deleteEmpty(path.resolve(configEntry.dest));
 				};
 				let getZipPromise = function () {
 					return Promise.resolve();

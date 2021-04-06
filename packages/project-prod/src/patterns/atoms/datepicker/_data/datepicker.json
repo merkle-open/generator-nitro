@@ -1,4 +1,5 @@
 {
+	"$schema": "../schema.json",
 	"label": "Any Date",
 	"inputPlaceholder": "Select Date ...",
 	"dateFormat": "d.m.Y",

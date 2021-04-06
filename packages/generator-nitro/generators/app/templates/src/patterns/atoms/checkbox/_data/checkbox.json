@@ -1,4 +1,5 @@
 {
+	"$schema": "../schema.json",
 	"tag": "div",
 	"label": "договорен",
 	"inputId": "check0",

@@ -1,3 +1,4 @@
 {
+	"$schema": "../schema.json",
 	"jsonPath": "/api/lottie/loading.json"
 }

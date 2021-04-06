@@ -1,3 +1,4 @@
 {
+	"$schema": "../schema.json",
 	"icon": "nitro"
 }

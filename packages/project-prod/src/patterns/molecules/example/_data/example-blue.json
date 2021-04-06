@@ -1,4 +1,5 @@
 {
+	"$schema": "../schema.json",
 	"modifier": "blue",
 	"title": "Example Module with Modifier Blue",
 	"links": [

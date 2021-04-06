@@ -1,4 +1,5 @@
 {
+	"$schema": "../schema.json",
 	"modifier": "",
 	"content": "Box Content"
 }

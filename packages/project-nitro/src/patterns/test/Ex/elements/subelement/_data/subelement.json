@@ -1,3 +1,4 @@
 {
+	"$schema": "../schema.json",
 	"content": "The <strong>content</strong> of the subelement"
 }

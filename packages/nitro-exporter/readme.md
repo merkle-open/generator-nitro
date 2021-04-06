@@ -99,6 +99,12 @@ Controls which additional routes should be exported.
 
 example: `['api/service/countries.json', 'api/service/products.json']`
 
+### exporter.minifyHtml
+
+Defines, if the exported html pages should be minified.
+
+example: `false`
+
 ### exporter.zip
 
 Defines, if the export should be zipped.
@@ -166,6 +172,7 @@ example: `false`
             },
         ],
         "views": true,
+        "minifyHtml": false,
         "zip": false,
     }
 ]
@@ -186,6 +193,7 @@ exporter: [
         renames: [],
         replacements: [],
         views: true,
+        minifyHtml: false,
         zip: false,
     },
     {
@@ -195,6 +203,7 @@ exporter: [
         renames: [],
         replacements: [],
         views: true,
+        minifyHtml: true,
         zip: false,
     },
 ]

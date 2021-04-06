@@ -110,6 +110,7 @@ const config = {
 			],
 			views: true,
 			additionalRoutes: ['api/lottie/shipment.json', 'api/lottie/bouncing.json'],
+			minifyHtml: true,
 			zip: false,
 		},
 		{
@@ -164,6 +165,7 @@ const config = {
 			],
 			views: true,
 			additionalRoutes: [],
+			minifyHtml: false,
 			zip: true,
 		},
 	],

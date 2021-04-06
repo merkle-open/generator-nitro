@@ -4,6 +4,7 @@ const del = require('del');
 const fs = require('fs');
 const path = require('path');
 const gulpZip = require('gulp-vinyl-zip').zip;
+const htmlmin = require('gulp-html-minifier-terser');
 const glob = require('glob');
 const unique = require('array-unique');
 const deleteEmpty = require('delete-empty');
@@ -32,6 +33,9 @@ module.exports = function (gulp, config) {
 				};
 				const getCleanupPromise = function () {
 					return deleteEmpty(path.resolve(configEntry.dest));
+				};
+				let getMinifyPromise = () => {
+					return Promise.resolve();
 				};
 				let getZipPromise = function () {
 					return Promise.resolve();
@@ -133,6 +137,24 @@ module.exports = function (gulp, config) {
 					};
 				}
 
+				if (configEntry.minifyHtml) {
+					getMinifyPromise = function () {
+						return new Promise((resolve) =>
+							gulp
+								.src(`${configEntry.dest}/**/*.html`)
+								.pipe(htmlmin({
+									collapseWhitespace: true,
+									minifyCSS: true,
+									minifyJS: true,
+								}))
+								.pipe(gulp.dest(configEntry.dest))
+								.on('end', () => {
+									resolve();
+								})
+						);
+					};
+				}
+
 				if (configEntry.zip) {
 					getZipPromise = function () {
 						return new Promise((resolve) => {
@@ -158,6 +180,7 @@ module.exports = function (gulp, config) {
 					.then(getRenamesPromise)
 					.then(getReplacementsPromise)
 					.then(getCleanupPromise)
+					.then(getMinifyPromise)
 					.then(getZipPromise)
 					.then(() => {
 						resolveConfigEntry();

@@ -114,6 +114,7 @@ const config = {
 			],
 			views: true,
 			additionalRoutes: [<% if (options.exampleCode) { %>'api/lottie/shipment.json', 'api/lottie/bouncing.json'<% } %>],
+			minifyHtml: true,
 			zip: false,
 		},
 	],

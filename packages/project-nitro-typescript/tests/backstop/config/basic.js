@@ -6,8 +6,8 @@ const host = `${hostName}:${port}`;
 const viewports = [
 	{
 		label: 'phone',
-		width: 320,
-		height: 568,
+		width: 360,
+		height: 640,
 	},
 	{
 		label: 'tablet',
@@ -16,8 +16,8 @@ const viewports = [
 	},
 	{
 		label: 'desktop',
-		width: 1280,
-		height: 1024,
+		width: 1920,
+		height: 1080,
 	},
 ];
 

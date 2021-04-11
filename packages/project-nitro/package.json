@@ -117,7 +117,7 @@
     "cross-env": "7.0.3",
     "cypress": "7.0.1",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "7.23.0",
+    "eslint": "7.24.0",
     "eslint-plugin-import": "2.22.1",
     "extend": "3.0.2",
     "generator-nitro": "*",

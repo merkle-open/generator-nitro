@@ -115,7 +115,7 @@
     "commitizen": "4.2.3",
     "config": "3.3.6",
     "cross-env": "7.0.3",
-    "cypress": "7.0.1",
+    "cypress": "7.1.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "7.24.0",
     "eslint-plugin-import": "2.22.1",

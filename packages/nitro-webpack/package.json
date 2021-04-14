@@ -66,7 +66,7 @@
     "watchpack": "1.6.1",
     "webpack": "4.43.0",
     "webpackbar": "4.0.0",
-    "webpack-bundle-analyzer": "4.4.0"
+    "webpack-bundle-analyzer": "4.4.1"
   },
   "devDependencies": {
     "@namics/eslint-config": "9.0.5"

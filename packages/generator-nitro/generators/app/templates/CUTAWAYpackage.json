@@ -86,7 +86,7 @@
     "@gondel/plugin-hot": "1.2.6",
     "@khanacademy/tota11y": "0.2.0",
     "bootstrap": "4.6.0",<% } %>
-    "core-js": "3.10.1"<% if (options.exampleCode) { %>,
+    "core-js": "3.10.2"<% if (options.exampleCode) { %>,
     "flatpickr": "4.6.9",
     "handlebars": "4.7.7",
     "jquery": "3.6.0",

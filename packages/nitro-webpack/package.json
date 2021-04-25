@@ -37,7 +37,7 @@
     "case-sensitive-paths-webpack-plugin": "2.4.0",
     "css-loader": "5.2.4",
     "eslint": "7.25.0",
-    "eslint-loader": "4.0.2",
+    "eslint-webpack-plugin": "2.5.4",
     "eslint-plugin-import": "2.22.1",
     "file-loader": "6.2.0",
     "handlebars-loader": "1.7.1",

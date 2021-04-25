@@ -3,6 +3,7 @@ const fs = require('fs');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const JsConfigWebpackPlugin = require('js-config-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
@@ -105,18 +106,10 @@ module.exports = (options = { rules: {}, features: {} }) => {
 
 		// eslint live validation
 		if (options.rules.js.eslint) {
-			webpackConfig.module.rules.push({
-				enforce: 'pre',
-				test: /\.(js|jsx|mjs)$/,
-				exclude: /node_modules/,
-				use: {
-					loader: require.resolve('eslint-loader'),
-					options: {
-						eslintPath: require.resolve('eslint'),
-						cache: true,
-					},
-				},
-			});
+			const esLintPluginOptions = {
+				lintDirtyModulesOnly: true,
+			};
+			webpackConfig.plugins.push(new ESLintPlugin(esLintPluginOptions));
 		}
 	}
 

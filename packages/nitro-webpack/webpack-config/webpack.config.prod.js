@@ -106,6 +106,9 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		const scssMiniCSSExtractOptions = {
 			...(options.rules.scss.publicPath && { publicPath: options.rules.scss.publicPath })
 		};
+		const scssLoaderOptions = {
+			...(options.rules.scss.implementation && { implementation: options.rules.scss.implementation })
+		};
 		webpackConfig.module.rules.push({
 			test: /\.s?css$/,
 			use: [
@@ -145,9 +148,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				},
 				{
 					loader: require.resolve('sass-loader'),
-					options: {
-						implementation: require('node-sass'),
-					},
+					options: scssLoaderOptions,
 				},
 			],
 		});

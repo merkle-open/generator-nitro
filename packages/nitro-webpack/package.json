@@ -10,7 +10,6 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "postinstall": "npm rebuild node-sass",
     "prepublishOnly": "npx pkg-ok@2.3.1",
     "test": "npm run lint"
   },
@@ -51,11 +50,11 @@
     "img-loader": "3.0.2",
     "js-config-webpack-plugin": "2.0.2",
     "mini-css-extract-plugin": "1.5.0",
-    "node-sass": "5.0.0",
     "optimize-css-assets-webpack-plugin": "5.0.4",
     "postcss": "8.2.12",
     "postcss-loader": "4.2.0",
     "resolve-url-loader": "3.1.2",
+    "sass": "1.32.11",
     "sass-loader": "10.1.1",
     "stylelint": "13.13.0",
     "stylelint-webpack-plugin": "2.1.1",

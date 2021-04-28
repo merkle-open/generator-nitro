@@ -120,6 +120,9 @@ module.exports = (options = { rules: {}, features: {} }) => {
 
 	// css & scss
 	if (options.rules.scss) {
+		const scssLoaderOptions = {
+			...(options.rules.scss.implementation && { implementation: options.rules.scss.implementation })
+		};
 		webpackConfig.module.rules.push({
 			test: /\.s?css$/,
 			use: [
@@ -158,9 +161,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				},
 				{
 					loader: require.resolve('sass-loader'),
-					options: {
-						implementation: require('node-sass'),
-					},
+					options: scssLoaderOptions,
 				},
 			],
 		});

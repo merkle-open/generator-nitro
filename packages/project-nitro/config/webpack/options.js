@@ -10,6 +10,7 @@ const options = {
 		scss: {
 			stylelint: config.get('code.validation.stylelint.live'),
 			publicPath: '../',
+			implementation: require('node-sass'),
 		},
 		hbs: true,
 		woff: {

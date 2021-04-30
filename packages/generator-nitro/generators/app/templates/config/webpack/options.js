@@ -9,7 +9,8 @@ const options = {
 		},
 		ts: false,<% } %>
 		scss: {
-			stylelint: config.get('code.validation.stylelint.live'),
+			stylelint: config.get('code.validation.stylelint.live'),<% if (options.themes) { %>
+			implementation: require('node-sass'),<% } %>
 		},
 		hbs: <% if (options.clientTpl) { %>true<% } else { %>false<% } %>,
 		woff: true,

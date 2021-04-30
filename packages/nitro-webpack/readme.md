@@ -73,7 +73,7 @@ Config:
 - `true` or `{}` will activate scss support
 - `{ stylelint: true }` additionally adds stylelint live linting feature (only relevant for development build)
 - `{ publicPath: '../' }` provide a separate public path for stylesheets. By default, webpack uses the value from 'output.publicPath'. (only relevant for production build)
-- `{ implementation: require('node-sass') }` gives the possibility to use 'node-sass' as sass implementation for some rare cases. (you have to add 'node-sass' as a dev-dependency in your project)
+- `{ implementation: require('node-sass') }` gives the possibility to use 'node-sass' as sass implementation. (you have to add 'node-sass' as a dev-dependency in your project)
 
 #### `options.rules.hbs`
 

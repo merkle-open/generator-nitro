@@ -51,7 +51,7 @@
     "lodash": "4.17.21",
     "text-table": "0.2.0",
     "twig": "1.13.3",
-    "webpack": "4.43.0",
+    "webpack": "4.46.0",
     "webpack-dev-middleware": "4.1.0",
     "webpack-hot-middleware": "2.25.0"
   },

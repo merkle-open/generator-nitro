@@ -18,7 +18,7 @@
     "nitro:pattern": "yo nitro:pattern",
     "nitro:server": "npm run build && rimraf dist/ && yo nitro:server --folder=dist",
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
-    "update-dependencies": "npm-check-updates -u -x watchpack,husky",
+    "update-dependencies": "npm-check-updates -u -x husky",
     "\n# MISC ------- ": "",
     "postinstall": "<% if (options.themes) { %>npm rebuild node-sass && <% } %>env-linter --hooksInstalled --saveExact --dependenciesExactVersion --lts",
     "\n# LINT/TEST ------- ": "",
@@ -139,7 +139,6 @@
     "rimraf": "3.0.2",
     "stylelint": "13.13.1",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "4.2.4",<% } %>
-    "watchpack": "1.6.1",
     "webpack-cli": "4.6.0",
     "yo": "3.1.1"
   },

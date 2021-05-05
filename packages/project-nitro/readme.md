@@ -33,4 +33,4 @@ For information on how to use Nitro, please refer to [nitro.md](./project/docs/n
 
 ## Possible Structure of this file
 
-If you have writer's block – a possible structure for your project readme could look like [readme.md](https://github.com/namics/frontend-defaults/blob/master/doc/README.md).
+If you have writer's block – a possible structure for your project readme could look like [readme.md](https://github.com/merkle-open/frontend-defaults/blob/master/doc/README.md).

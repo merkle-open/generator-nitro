@@ -1,6 +1,6 @@
 [![NPM version](https://badge.fury.io/js/generator-nitro.svg)](https://npmjs.org/package/generator-nitro)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](http://opensource.org/licenses/MIT)
-[![Build Status](https://github.com/namics/generator-nitro/workflows/ci/badge.svg?branch=master)](https://github.com/namics/generator-nitro/actions)
+[![Build Status](https://github.com/merkle-open/generator-nitro/workflows/ci/badge.svg?branch=master)](https://github.com/merkle-open/generator-nitro/actions)
 
 # Yeoman Nitro Generator
 
@@ -85,7 +85,7 @@ npx -p yo -p generator-nitro@latest -- yo nitro --name=myproject --clientTpl --e
 If you start the generator in an existing project, you will be asked to update the project.
 It is best to overwrite all local files and check the differences after.
 
-Updating to a new major version needs some more work. Please check the [release notes](https://github.com/namics/generator-nitro/releases)
+Updating to a new major version needs some more work. Please check the [release notes](https://github.com/merkle-open/generator-nitro/releases)
 
 ### Generators
 
@@ -102,7 +102,7 @@ Note: Generators are to be run from the root directory of your project.
 Have a look at the [sample project](https://nitro-project-test.netlify.app/)
 which contains the examples of a generated project and was statified with the default configuration of the "nitro-exporter".
 
-See how to use the [generated app](https://github.com/namics/generator-nitro/blob/master/packages/project-nitro/project/docs/nitro.md)
+See how to use the [generated app](https://github.com/merkle-open/generator-nitro/blob/master/packages/project-nitro/project/docs/nitro.md)
 
 ## Contribute
 
@@ -112,4 +112,4 @@ See the [contributing docs](../../.github/contributing.md)
 
 ## Changelog
 
-Recent changes can be viewed on GitHub on the [Releases Page](https://github.com/namics/generator-nitro/releases)
+Recent changes can be viewed on GitHub on the [Releases Page](https://github.com/merkle-open/generator-nitro/releases)

@@ -3,7 +3,7 @@
   "version": "5.10.2",
   "description": "Nitro server",
   "license": "MIT",
-  "repository": "namics/generator-nitro",
+  "repository": "merkle-open/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
     "node": ">=10.15.0 <15",

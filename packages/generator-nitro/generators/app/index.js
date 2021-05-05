@@ -488,14 +488,14 @@ module.exports = class extends Generator {
 				do: this.options.exporter,
 				src: 'node_modules/@nitro/exporter/readme.md',
 				srcWeb:
-					'https://raw.githubusercontent.com/namics/generator-nitro/master/packages/nitro-exporter/readme.md',
+					'https://raw.githubusercontent.com/merkle-open/generator-nitro/master/packages/nitro-exporter/readme.md',
 				dest: 'project/docs/nitro-exporter.md',
 			},
 			{
 				do: true,
 				src: 'node_modules/@nitro/webpack/readme.md',
 				srcWeb:
-					'https://raw.githubusercontent.com/namics/generator-nitro/master/packages/nitro-webpack/readme.md',
+					'https://raw.githubusercontent.com/merkle-open/generator-nitro/master/packages/nitro-webpack/readme.md',
 				dest: 'project/docs/nitro-webpack.md',
 			},
 		];

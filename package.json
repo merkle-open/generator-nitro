@@ -2,7 +2,7 @@
   "name": "nitro",
   "private": true,
   "description": "Nitro monorepo",
-  "repository": "namics/generator-nitro",
+  "repository": "merkle-open/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
     "node": ">=10.15.0 <15",

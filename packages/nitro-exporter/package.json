@@ -3,7 +3,7 @@
   "version": "5.10.2",
   "description": "An exporting package for nitro. Generate static packages with ease.",
   "license": "MIT",
-  "repository": "namics/generator-nitro",
+  "repository": "merkle-open/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
     "node": ">=10.15.0 <15",

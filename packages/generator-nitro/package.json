@@ -36,7 +36,7 @@
     "chalk": "4.1.1",
     "config": "3.3.6",
     "git-config": "0.0.7",
-    "glob": "7.1.6",
+    "glob": "7.1.7",
     "got": "11.8.2",
     "lodash": "4.17.21",
     "yeoman-generator": "4.13.0",

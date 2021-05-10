@@ -30,10 +30,10 @@
 						"description": "The link text",
 						"type": "string"
 					}
-				}
-			},
-			"required": ["uri", "text"],
-			"additionalProperties": false
+				},
+				"required": ["uri", "text"],
+				"additionalProperties": false
+			}
 		},
 		"buttons": {
 			"description": "a boolean",

@@ -30,10 +30,10 @@
 						"description": "The link text",
 						"type": "string"
 					}
-				}
-			},
-			"required": ["uri", "text"],
-			"additionalProperties": false
+				},
+				"required": ["uri", "text"],
+				"additionalProperties": false
+			}
 		}<% if (options.clientTpl) { %>,
 		"buttons": {
 			"description": "a boolean: true will show bottom buttons for client rendering functionality",

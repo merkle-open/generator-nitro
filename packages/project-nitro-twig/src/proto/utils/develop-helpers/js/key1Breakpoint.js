@@ -6,7 +6,8 @@ const breakpointMarkup = [
 	'<span class="d-none d-sm-block d-md-none">Small devices (sm)</span>',
 	'<span class="d-none d-md-block d-lg-none">Medium devices (md)</span>',
 	'<span class="d-none d-lg-block d-xl-none">Large devices (lg)</span>',
-	'<span class="d-none d-xl-block">Extra large devices (xl)</span>',
+	'<span class="d-none d-xl-block d-xxl-none">Extra large devices (xl)</span>',
+	'<span class="d-none d-xxl-block">Extra Extra large devices (xxl)</span>',
 ].join('');
 
 // toggle breakpoint helper on CTRL+1 | ALT+1

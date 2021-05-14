@@ -1,3 +1,15 @@
 /* stylelint-disable */
 @import './yui/reset.css';
 /* stylelint-enable */
+
+*,
+::after,
+::before {
+	box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion:no-preference) {
+	:root {
+		scroll-behavior: smooth;
+	}
+}

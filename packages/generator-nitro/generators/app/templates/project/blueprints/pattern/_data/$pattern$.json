@@ -1,4 +1,4 @@
 {
-	"$schema": "../schema.json",<% if (modifier.name) { %>
+	"$schema": "../schema.json"<% if (modifier.name) { %>,
 	"modifier": ""<% } %>
 }

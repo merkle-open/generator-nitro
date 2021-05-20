@@ -8,7 +8,7 @@
 			"description": "A pattern modifier",
 			"enum": ["", "<%= modifier.css %>"]
 		}<% } %>
-	},
-	"required": [<% if (modifier.name) { %>"modifier"<% } %>],
+	},<% if (modifier.name) { %>
+	"required": ["modifier"],<% } %>
 	"dependencies": {}
 }

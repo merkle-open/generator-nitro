@@ -37,7 +37,7 @@
     "gulp-imagemin": "7.1.0",
     "gulp-htmllint": "0.0.19",
     "gulp-live-server": "0.0.31",
-    "gulp-load-plugins": "2.0.6",
+    "gulp-load-plugins": "2.0.7",
     "gulp-newer": "1.4.0",
     "gulp-plumber": "1.2.1",
     "gulp-remote-src": "0.4.4",

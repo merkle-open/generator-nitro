@@ -46,7 +46,7 @@
     "@namics/eslint-config": "9.0.6",
     "ejs": "3.1.6",
     "eslint": "7.27.0",
-    "eslint-plugin-import": "2.23.3",
+    "eslint-plugin-import": "2.23.4",
     "fs-extra": "9.1.0",
     "jasmine": "3.7.0",
     "yeoman-assert": "3.1.1",

@@ -111,7 +111,7 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",<% if (options.jsCompiler === 'ts') { %>
-    "@types/bootstrap": "5.0.15",<% if (options.exampleCode ) { %>
+    "@types/bootstrap": "5.0.16",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.5.5",<% } %>
     "@types/svg4everybody": "2.1.1",
     "@types/webpack-env": "1.16.0",<% } %>

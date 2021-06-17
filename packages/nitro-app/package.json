@@ -38,7 +38,7 @@
     "dot-object": "2.1.4",
     "express": "4.17.1",
     "extend": "3.0.2",
-    "globby": "11.0.3",
+    "globby": "11.0.4",
     "hbs": "4.1.2",
     "hbs-utils": "0.0.4",
     "htmllint": "0.8.0",

@@ -39,11 +39,6 @@
     "handlebars-loader": "1.7.1",
     "iconfont-webpack-plugin": "5.0.1",
     "imagemin": "7.0.1",
-    "imagemin-gifsicle": "7.0.0",
-    "imagemin-mozjpeg": "9.0.0",
-    "imagemin-optipng": "8.0.0",
-    "imagemin-pngquant": "9.0.2",
-    "imagemin-svgo": "9.0.0",
     "img-loader": "3.0.2",
     "js-config-webpack-plugin": "2.0.3",
     "mini-css-extract-plugin": "1.6.2",
@@ -62,6 +57,13 @@
     "webpack": "4.46.0",
     "webpackbar": "4.0.0",
     "webpack-bundle-analyzer": "4.4.2"
+  },
+  "optionalDependencies": {
+    "imagemin-gifsicle": "7.0.0",
+    "imagemin-mozjpeg": "9.0.0",
+    "imagemin-optipng": "8.0.0",
+    "imagemin-pngquant": "9.0.2",
+    "imagemin-svgo": "9.0.0"
   },
   "devDependencies": {
     "@namics/eslint-config": "9.0.6"

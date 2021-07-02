@@ -35,7 +35,7 @@
     "glob": "7.1.7",
     "gulp-filter": "6.0.0",
     "gulp-html-minifier-terser": "6.0.1",
-    "gulp-vinyl-zip": "2.2.1"
+    "gulp-vinyl-zip": "2.5.0"
   },
   "devDependencies": {
     "@namics/eslint-config": "9.0.6",

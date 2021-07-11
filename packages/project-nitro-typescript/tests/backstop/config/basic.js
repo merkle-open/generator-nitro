@@ -47,11 +47,13 @@ module.exports = {
 		asyncCompareLimit: 50,
 		debug: false,
 		debugWindow: false,
-		dockerCommandTemplate:
-			'docker run --rm -it --mount type=bind,source="{cwd}",target=/src backstopjs/backstopjs:{version} {backstopCommand} {args}',
+		// dockerCommandTemplate:
+		// 	'docker run --rm -it --mount type=bind,source="{cwd}",target=/src backstopjs/backstopjs:{version} {backstopCommand} {args}',
 	},
 	baseScenario: {
+		label: 'scenario x',
 		// cookiePath: 'tests/backstop/engine_scripts/cookies.json',
+		url: '',
 		referenceUrl: '',
 		readyEvent: '',
 		readySelector: '',

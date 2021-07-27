@@ -1,4 +1,4 @@
-// infos & outline from:
+// developed for @nitro/webpack with infos & outline from:
 // https://stackoverflow.com/questions/54320025/tap-into-webpack-resolve-loader-to-add-fallback
 
 class DynamicAliasResolver {

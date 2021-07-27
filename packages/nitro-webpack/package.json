@@ -23,8 +23,8 @@
     "nitro"
   ],
   "dependencies": {
-    "@babel/core": "7.14.6",
-    "@babel/preset-env": "7.14.7",
+    "@babel/core": "7.14.8",
+    "@babel/preset-env": "7.14.8",
     "@babel/preset-react": "7.14.5",
     "@babel/plugin-proposal-decorators": "7.14.5",
     "@babel/plugin-proposal-class-properties": "7.14.5",
@@ -32,7 +32,7 @@
     "autoprefixer": "10.3.1",
     "case-sensitive-paths-webpack-plugin": "2.4.0",
     "css-loader": "5.2.7",
-    "eslint": "7.30.0",
+    "eslint": "7.31.0",
     "eslint-webpack-plugin": "2.5.4",
     "eslint-plugin-import": "2.23.4",
     "file-loader": "6.2.0",
@@ -43,10 +43,10 @@
     "js-config-webpack-plugin": "2.0.3",
     "mini-css-extract-plugin": "1.6.2",
     "optimize-css-assets-webpack-plugin": "5.0.8",
-    "postcss": "8.3.5",
+    "postcss": "8.3.6",
     "postcss-loader": "4.2.0",
     "resolve-url-loader": "4.0.0",
-    "sass": "1.35.2",
+    "sass": "1.36.0",
     "sass-loader": "10.1.1",
     "stylelint": "13.13.1",
     "stylelint-webpack-plugin": "2.2.2",
@@ -66,7 +66,7 @@
     "imagemin-svgo": "9.0.0"
   },
   "devDependencies": {
-    "@namics/eslint-config": "9.0.6"
+    "@namics/eslint-config": "9.1.1"
   },
   "publishConfig": {
     "access": "public"

@@ -86,7 +86,7 @@
     "@gondel/plugin-hot": "1.2.7",
     "@khanacademy/tota11y": "0.2.0",
     "bootstrap": "5.0.2",<% } %>
-    "core-js": "3.15.2"<% if (options.exampleCode) { %>,
+    "core-js": "3.16.0"<% if (options.exampleCode) { %>,
     "flatpickr": "4.6.9",
     "handlebars": "4.7.7",
     "jquery": "3.6.0",
@@ -115,14 +115,14 @@
     "@types/jquery": "3.5.6",<% } %>
     "@types/svg4everybody": "2.1.2",
     "@types/webpack-env": "1.16.2",<% } %>
-    "backstopjs": "5.3.5",
+    "backstopjs": "5.3.7",
     "check-node-version": "4.1.0",
     "commitizen": "4.2.4",
     "config": "3.3.6",
     "cross-env": "7.0.3",
     "cypress": "7.7.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "7.31.0",
+    "eslint": "7.32.0",
     "eslint-plugin-import": "2.23.4",
     "extend": "3.0.2",
     "generator-nitro": "<%= version %>",

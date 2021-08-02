@@ -33,7 +33,7 @@
     "modular"
   ],
   "dependencies": {
-    "chalk": "4.1.1",
+    "chalk": "4.1.2",
     "config": "3.3.6",
     "git-config": "0.0.7",
     "glob": "7.1.7",
@@ -45,7 +45,7 @@
   "devDependencies": {
     "@namics/eslint-config": "9.1.1",
     "ejs": "3.1.6",
-    "eslint": "7.31.0",
+    "eslint": "7.32.0",
     "eslint-plugin-import": "2.23.4",
     "fs-extra": "9.1.0",
     "jasmine": "3.8.0",

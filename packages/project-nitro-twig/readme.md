@@ -19,7 +19,7 @@ and start in development mode
 npm start
 ```
 
-### Use Dashboard
+### Use Dashboard (deprecated)
 
 Or use the dashboard to get an overview of the important npm scripts and documentations.
 

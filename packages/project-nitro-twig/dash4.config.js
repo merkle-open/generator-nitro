@@ -1,6 +1,6 @@
 /**
  *
- * 	DASH4 configuration
+ * 	DASH4 configuration (deprecated)
  *  https://github.com/smollweide/dash4
  *
  */

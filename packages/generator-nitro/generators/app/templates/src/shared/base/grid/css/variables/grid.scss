@@ -12,9 +12,9 @@ $grid-breakpoints: (
 );
 
 $container-max-widths: (
-	sm: $size-xs-max,
-	md: $size-sm-max,
-	lg: $size-md-max,
+	sm: $size-sm-max,
+	md: $size-md-max,
+	lg: $size-lg-max,
 	xl: $size-xl-max,
 	xxl: $size-xl-max + 1
 );

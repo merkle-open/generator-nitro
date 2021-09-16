@@ -1,6 +1,6 @@
 {
   "name": "@nitro/exporter",
-  "version": "5.10.13",
+  "version": "5.10.14",
   "description": "An exporting package for nitro. Generate static packages with ease.",
   "license": "MIT",
   "repository": "merkle-open/generator-nitro",
@@ -25,8 +25,8 @@
     "exporter"
   ],
   "peerDependencies": {
-    "@nitro/app": ">=5.10.13",
-    "@nitro/gulp": ">=5.10.13"
+    "@nitro/app": ">=5.10.14",
+    "@nitro/gulp": ">=5.10.14"
   },
   "dependencies": {
     "array-unique": "0.3.2",

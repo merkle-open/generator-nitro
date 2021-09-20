@@ -46,7 +46,7 @@
     "postcss": "8.3.6",
     "postcss-loader": "4.2.0",
     "resolve-url-loader": "4.0.0",
-    "sass": "1.41.0",
+    "sass": "1.41.1",
     "sass-loader": "10.1.1",
     "stylelint": "13.13.1",
     "stylelint-webpack-plugin": "2.2.2",

@@ -113,7 +113,7 @@
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "0.5.1",
     "eslint": "7.32.0",
-    "eslint-plugin-import": "2.25.1",
+    "eslint-plugin-import": "2.25.2",
     "extend": "3.0.2",
     "generator-nitro": "*",
     "gulp": "4.0.2",

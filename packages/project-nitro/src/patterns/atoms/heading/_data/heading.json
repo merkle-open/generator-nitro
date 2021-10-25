@@ -1,6 +1,6 @@
 {
 	"$schema": "../schema.json",
 	"titleTag": "h3",
-	"title": "Are you ready?",
+	"titleText": "Are you ready?",
 	"subTitle": "You can never have too much ..."
 }

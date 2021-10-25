@@ -1,3 +1,7 @@
 {
-	"$schema": "../schema.json"
+	"$schema": "../schema.json",
+	"heading": {
+		"titleTag": "h2",
+		"titleText": "Countdown ..."
+	}
 }

@@ -3,5 +3,10 @@
 	"title": "stage",
 	"description": "A stage atom",
 	"type": "object",
-	"properties": {}
+	"properties": {
+		"heading": {
+			"description": "a heading pattern",
+			"type": "object"
+		}
+	}
 }

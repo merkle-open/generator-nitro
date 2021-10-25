@@ -8,12 +8,12 @@
 			"description": "Heading level",
 			"enum": ["h1", "h2", "h3"]
 		},
-		"title": {
+		"titleText": {
 			"type": "string"
 		},
 		"subTitle": {
 			"type": "string"
 		}
 	},
-	"required": ["title"]
+	"required": ["titleTag", "titleText"]
 }

@@ -53,8 +53,8 @@
 			}
 		},
 		"customRenditions": {
-			"type": "object",
 			"description": "Custom renditions to render e.g. a fallback or preview image",
+			"type": "object",
 			"properties": {
 				"fallbackImage": {
 					"type": "string",

@@ -2,7 +2,7 @@
 
 /**
  * Init Translation Library i18next
- * Documentation: https://www.npmjs.com/package/i18next-express-middleware
+ * Documentation: https://github.com/i18next/i18next-http-middleware
  *
  * Configuration in config package ('./config.js').
  *
@@ -11,7 +11,7 @@
 const i18next = require('i18next');
 const FilesystemBackend = require('i18next-node-fs-backend');
 const sprintf = require('i18next-sprintf-postprocessor');
-const i18nextMiddleware = require('i18next-express-middleware');
+const i18nextMiddleware = require('i18next-http-middleware');
 const config = require('config');
 const cloneDeep = require('lodash/cloneDeep');
 

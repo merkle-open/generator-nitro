@@ -118,7 +118,7 @@ const defaultConfig = {
 			 */
 			options: {
 				// defaultNS: 'translation',
-				// whitelist: ['en', 'de', 'default'],
+				// supportedLngs: ['en', 'de', 'default'],
 				fallbackLng: 'default',
 				backend: {
 					loadPath: 'project/locales/{{lng}}/{{ns}}.json',
@@ -129,7 +129,8 @@ const defaultConfig = {
 					// keys or params to lookup language from
 					lookupQuerystring: 'lang',
 				},
-				debug: false,
+				// compatibilityJSON: 'v3',
+				debug: false
 			},
 			middlewareOptions: {
 				ignoreRoutes: ['api/', 'assets/', 'dist/', 'proto/'],

@@ -5,8 +5,8 @@
   "repository": "merkle-open/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=10.15.0 <15",
-    "npm": ">=6.4.1 <7"
+    "node": ">=12.13.0 <17",
+    "npm": ">=6.12.0 <9"
   },
   "scripts": {
     "clean": "npx --ignore-existing --quiet npm-run-all clean:*",

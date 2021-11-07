@@ -9,10 +9,10 @@
     "npm": ">=6.12.0 <9"
   },
   "scripts": {
-    "clean": "npx --ignore-existing --quiet npm-run-all clean:*",
+    "clean": "npx -y npm-run-all --npm-path npm clean:*",
     "clean:lerna": "lerna clean --yes",
-    "clean:lock": "npx --ignore-existing --quiet rimraf **/package-lock.json",
-    "clean:modules": "npx --ignore-existing --quiet rimraf node_modules",
+    "clean:lock": "npx -y rimraf **/package-lock.json",
+    "clean:modules": "npx -y rimraf node_modules",
     "commit": "git-cz",
     "postinstall": "lerna bootstrap --no-ci --hoist",
     "test": "lerna run test --parallel",

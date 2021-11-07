@@ -12,7 +12,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "prepublishOnly": "npx pkg-ok@2.3.1",
+    "prepublishOnly": "npx -y pkg-ok@2.3.1",
     "test": "npm run lint"
   },
   "files": [

@@ -473,14 +473,7 @@ module.exports = class extends Generator {
 		}, this);
 	}
 
-	install() {
-		this.installDependencies({
-			npm: true,
-			bower: false,
-			yarn: false,
-			skipInstall: this.options.skipInstall,
-		});
-	}
+	install() {}
 
 	end() {
 		const filesToCopy = [

@@ -18,7 +18,7 @@
     "nitro:pattern": "yo nitro:pattern",
     "nitro:server": "npm run build && rimraf dist/ && yo nitro:server --folder=dist",
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
-    "update-dependencies": "npm-check-updates -u -x husky",
+    "update-dependencies": "npm-check-updates -u",
     "\n# MISC ------- ": "",
     "postinstall": "env-linter --hooksInstalled --saveExact --lts",
     "\n# LINT/TEST ------- ": "",
@@ -117,7 +117,7 @@
     "extend": "3.0.2",
     "generator-nitro": "*",
     "gulp": "4.0.2",
-    "husky": "4.3.8",
+    "husky": "7.0.4",
     "license-checker": "25.0.1",
     "lighthouse": "8.6.0",
     "lint-staged": "11.2.6",
@@ -139,11 +139,6 @@
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {

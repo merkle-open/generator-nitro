@@ -8,6 +8,7 @@ const yosay = require('yosay');
 const got = require('got');
 const path = require('path');
 const fs = require('fs');
+const childProcess = require('child_process');
 const glob = require('glob');
 const _ = require('lodash');
 
@@ -471,6 +472,20 @@ module.exports = class extends Generator {
 
 			this.fs.copy(sourcePath, destinationPath);
 		}, this);
+	}
+
+	upgradeProject() {
+		if (this._update) {
+			const pkgProject = JSON.parse(fs.readFileSync(this.destinationPath('package.json'), 'utf8'));
+
+			// uninstall outdated githooks in older projects
+			const huskyVersion = pkgProject.devDependencies ? pkgProject.devDependencies.husky : undefined;
+			if (huskyVersion && huskyVersion.startsWith('4.')) {
+				// eslint-disable-next-line no-unused-vars
+				const result = childProcess.execSync('npm uninstall husky').toString();
+				this.log('Outdated husky githooks successfully removed.');
+			}
+		}
 	}
 
 	install() {}

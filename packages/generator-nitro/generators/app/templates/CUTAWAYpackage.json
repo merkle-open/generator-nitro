@@ -18,9 +18,9 @@
     "nitro:pattern": "yo nitro:pattern",
     "nitro:server": "npm run build && rimraf dist/ && yo nitro:server --folder=dist",
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
-    "update-dependencies": "npm-check-updates -u -x husky",
+    "update-dependencies": "npm-check-updates -u",
     "\n# MISC ------- ": "",
-    "postinstall": "<% if (options.themes) { %>npm rebuild node-sass && <% } %>env-linter --hooksInstalled --saveExact --dependenciesExactVersion --lts",
+    "postinstall": "cd ./ && husky install &&<% if (options.themes) { %> npm rebuild node-sass && <% } %>env-linter --hooksInstalled --saveExact --dependenciesExactVersion --lts",
     "\n# LINT/TEST ------- ": "",
     "check-node-version": "check-node-version --print --package",
     "cypress-test": "npm run build && cross-env PORT=8888 NITRO_MODE=test npm-run-all --parallel --race test:cypress:serve cypress-test:open",
@@ -127,7 +127,7 @@
     "extend": "3.0.2",
     "generator-nitro": "<%= version %>",
     "gulp": "4.0.2",
-    "husky": "4.3.8",
+    "husky": "7.0.4",
     "license-checker": "25.0.1",
     "lighthouse": "8.6.0",
     "lint-staged": "11.2.6",<% if (options.themes) { %>
@@ -151,11 +151,6 @@
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {

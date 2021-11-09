@@ -26,9 +26,8 @@ const chalk = require('chalk');
 const fs = require('fs');
 const globby = require('globby');
 const Ajv = require('ajv');
+const ajv = new Ajv({ allErrors: true });
 const config = require('config');
-const ajv = new Ajv({ schemaId: 'auto', allErrors: true });
-ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
 const wildcard = '*';
 const patternBasePaths = Object.keys(config.get('nitro.patterns')).map((key) => {
 	return config.get(`nitro.patterns.${key}.path`);
@@ -52,6 +51,21 @@ const logMissingSchemaAsWarning = config.has('code.validation.jsonSchema.logMiss
 let errorCouter = 0;
 let patternCouter = 0;
 
+// collect all schemas
+globby.sync(patternGlobs, { onlyFiles: false }).forEach((patternPath) => {
+	const schemaFilePath = `${patternPath}/schema.json`;
+
+	if (fs.existsSync(schemaFilePath)) {
+		// console.log(`Add ${schemaFilePath}`);
+		const schema = JSON.parse(fs.readFileSync(schemaFilePath, 'utf8'));
+		if (schema.$id) {
+			// ajv.addSchema(schema);
+			ajv.addMetaSchema(schema);
+		}
+	}
+});
+
+// validate pattern data
 globby.sync(patternGlobs, { onlyFiles: false }).forEach((patternPath) => {
 	const schemaFilePath = `${patternPath}/schema.json`;
 	patternCouter += 1;
@@ -72,7 +86,9 @@ globby.sync(patternGlobs, { onlyFiles: false }).forEach((patternPath) => {
 		const patternData = JSON.parse(fs.readFileSync(patternDataFilePath, 'utf8'));
 		const schema = JSON.parse(fs.readFileSync(schemaFilePath, 'utf8'));
 
-		const valid = ajv.validate(schema, patternData);
+		// console.log(`validate ${schemaFilePath} with ${patternDataFilePath}`);
+		const schemaToUse = schema.$id || schema;
+		const valid = ajv.validate(schemaToUse, patternData);
 		if (!valid) {
 			errorCouter += 1;
 			console.log(`${chalk.red('Error')} (${patternDataFilePath}): ${ajv.errorsText()}`);
@@ -83,5 +99,6 @@ globby.sync(patternGlobs, { onlyFiles: false }).forEach((patternPath) => {
 if (errorCouter <= 0) {
 	console.log(`${chalk.green('Success:')} all data from each of the ${patternCouter} patterns are valid!\n`);
 } else {
-	process.abort();
+	console.log(`${chalk.red('Error:')} we detected ${errorCouter} errors in your data.\n`);
+	process.exitCode = 1;
 }

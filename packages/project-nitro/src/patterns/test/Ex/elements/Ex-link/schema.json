@@ -1,12 +1,14 @@
 {
-	"$schema": "http://json-schema.org/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "/test/Ex/Ex-link",
 	"title": "Ex-link",
 	"description": "An Ex-link element",
 	"type": "object",
 	"properties": {
 		"uri": {
 			"description": "the target uri",
-			"type": "string"
+			"type": "string",
+			"pattern": "^[a-z]*$"
 		},
 		"text": {
 			"description": "The link text",

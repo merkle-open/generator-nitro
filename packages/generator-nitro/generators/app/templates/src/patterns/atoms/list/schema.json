@@ -1,5 +1,6 @@
 {
-	"$schema": "http://json-schema.org/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "/atom/list",
 	"title": "list",
 	"description": "A list atom",
 	"type": "object",

@@ -95,6 +95,7 @@
     "svg4everybody": "2.1.9"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "7.16.3",
     "@dash4/plugin-actions": "0.9.3",
     "@dash4/plugin-npm-scripts": "0.9.3",
     "@dash4/plugin-readme": "0.9.3",

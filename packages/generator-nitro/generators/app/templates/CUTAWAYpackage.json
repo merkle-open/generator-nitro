@@ -95,7 +95,8 @@
     "regenerator-runtime": "0.13.9"<% } %><% if (options.exampleCode) { %>,
     "svg4everybody": "2.1.9"<% } %>
   },
-  "devDependencies": {
+  "devDependencies": {<% if (options.jsCompiler === 'js') { %>
+    "@babel/eslint-parser": "7.16.3",<% } %>
     "@namics/eslint-config": "9.1.1",
     "@namics/prettier-config": "2.0.1",
     "@namics/stylelint-config": "1.1.2",

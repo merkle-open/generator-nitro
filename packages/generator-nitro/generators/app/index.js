@@ -265,7 +265,6 @@ module.exports = class extends Generator {
 			'src/proto.ts',
 			'tests/cypress/cypress/integration/examples/index.spec.js',
 			'.eslintrc.js',
-			'dash4.config.js',
 			'docker-compose.yml',
 			'docker-compose-dev.yml',
 			'gulpfile.js',

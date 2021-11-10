@@ -19,7 +19,7 @@
     "lint": "lerna run lint --parallel",
     "lint:md": "markdownlint ./readme.md ./.github",
     "update-dependencies": "npm-run-all --parallel update-dependencies:*",
-    "update-dependencies:packages": "lerna exec -- npm-check-updates -u -x twig,yeoman-test,yo,ajv,webpack,postcss-loader,sass-loader,husky,imagemin",
+    "update-dependencies:packages": "lerna exec -- npm-check-updates -u -x twig,webpack,css-loader,postcss-loader,sass-loader,eslint-webpack-plugin,mini-css-extract-plugin,stylelint-webpack-plugin,globby,get-port,imagemin,img-loader,gulp-imagemin,imagemin-svgo",
     "update-dependencies:root": "npm-check-updates -u"
   },
   "keywords": [
@@ -42,7 +42,7 @@
     "cz-conventional-changelog": "3.3.0",
     "lerna": "4.0.0",
     "markdownlint-cli": "0.29.0",
-    "npm-check-updates": "11.8.5",
+    "npm-check-updates": "12.0.2",
     "npm-run-all": "4.1.5",
     "rimraf": "3.0.2"
   }

@@ -184,7 +184,9 @@ module.exports = function () {
 					patternData.children = context.fn(this);
 				}
 
+
 				// Validate with JSON schema
+				/* eslint-disable max-depth */
 				if (!config.get('server.production') && config.get('code.validation.jsonSchema.live')) {
 					if (fs.existsSync(pattern.schemaFilePath)) {
 						const schema = JSON.parse(fs.readFileSync(pattern.schemaFilePath, 'utf8'));
@@ -200,6 +202,7 @@ module.exports = function () {
 						}
 					}
 				}
+				/* eslint-enable max-depth */
 
 				const html = hbs.handlebars.compile(fs.readFileSync(pattern.templateFilePath, 'utf8'))(
 					patternData,

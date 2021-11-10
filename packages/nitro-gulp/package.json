@@ -54,7 +54,7 @@
     "@namics/eslint-config": "9.1.1",
     "@nitro/app": "*",
     "eslint": "7.32.0",
-    "eslint-plugin-import": "2.25.2"
+    "eslint-plugin-import": "2.25.3"
   },
   "publishConfig": {
     "access": "public"

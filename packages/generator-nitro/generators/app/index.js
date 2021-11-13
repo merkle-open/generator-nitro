@@ -91,7 +91,7 @@ module.exports = class extends Generator {
 		this._skipQuestions = this.options.skipQuestions;
 	}
 
-	initializing() {}
+	// initializing() {}
 
 	prompting() {
 		this.log(yosay(`Welcome to the awe-inspiring ${chalk.cyan('Nitro')} generator!`));
@@ -226,6 +226,24 @@ module.exports = class extends Generator {
 
 				this.config.save();
 			});
+		}
+	}
+
+	// configuring() {}
+
+	// default() {}
+
+	upgradeProject() {
+		if (this._update) {
+			const pkgProject = JSON.parse(fs.readFileSync(this.destinationPath('package.json'), 'utf8'));
+
+			// uninstall outdated githooks in older projects
+			const huskyVersion = pkgProject.devDependencies ? pkgProject.devDependencies.husky : undefined;
+			if (huskyVersion && huskyVersion.startsWith('4.')) {
+				// eslint-disable-next-line no-unused-vars
+				const result = childProcess.execSync('npm uninstall husky').toString();
+				this.log('Outdated husky githooks successfully removed.');
+			}
 		}
 	}
 
@@ -473,21 +491,9 @@ module.exports = class extends Generator {
 		}, this);
 	}
 
-	upgradeProject() {
-		if (this._update) {
-			const pkgProject = JSON.parse(fs.readFileSync(this.destinationPath('package.json'), 'utf8'));
+	// conflicts() {}
 
-			// uninstall outdated githooks in older projects
-			const huskyVersion = pkgProject.devDependencies ? pkgProject.devDependencies.husky : undefined;
-			if (huskyVersion && huskyVersion.startsWith('4.')) {
-				// eslint-disable-next-line no-unused-vars
-				const result = childProcess.execSync('npm uninstall husky').toString();
-				this.log('Outdated husky githooks successfully removed.');
-			}
-		}
-	}
-
-	install() {}
+	// install() {}
 
 	end() {
 		const filesToCopy = [

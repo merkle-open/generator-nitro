@@ -9,7 +9,7 @@
  * Use with handlebars translation helper t: `../templating/hbs/helpers/t.js`
  */
 const i18next = require('i18next');
-const FilesystemBackend = require('i18next-node-fs-backend');
+const FilesystemBackend = require('i18next-fs-backend');
 const sprintf = require('i18next-sprintf-postprocessor');
 const i18nextMiddleware = require('i18next-http-middleware');
 const config = require('config');

@@ -22,6 +22,8 @@ and at the moment also with the LTS maintenance versions (release 12.x and 14.x)
 
 ### Create a new project
 
+Make sure you are in an existing git repo, or create one with `git init`.
+
 This creates a new project in the current directory
 using [npx](https://www.npmjs.com/package/npx) (npm >= 5.2):
 

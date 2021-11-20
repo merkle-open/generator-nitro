@@ -17,10 +17,12 @@ Nitro is simple, fast and flexible. It works on macOS, Windows and Linux. Use th
 
 Before using, you need of course [node](https://nodejs.org/) installed.  
 Nitro and the Nitro generator are always tested with the current
-["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 14.x)
-and at the moment also with the LTS maintenance versions (release 10.x and 12.x).
+["Active LTS" version of node.js](https://github.com/nodejs/Release#release-schedule) (release 16.x)
+and at the moment also with the LTS maintenance versions (release 12.x and 14.x).
 
 ### Create a new project
+
+Make sure you are in an existing git repo, or create one with `git init`.
 
 This creates a new project in the current directory
 using [npx](https://www.npmjs.com/package/npx) (npm >= 5.2):

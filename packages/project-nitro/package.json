@@ -6,19 +6,19 @@
   "private": true,
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=10.15.0 <15",
-    "npm": ">=6.4.1 <7"
+    "node": ">=12.13.0 <17",
+    "npm": ">=6.12.0 <9"
   },
   "scripts": {
     "\n# PROJECT ------- ": "",
-    "clean": "npx --ignore-existing --quiet npm-run-all clean:*",
+    "clean": "npx -y npm-run-all --npm-path npm clean:*",
     "clean:lock": "rimraf package-lock.json",
-    "clean:modules": "npx --ignore-existing --quiet rimraf node_modules",
+    "clean:modules": "npx -y rimraf node_modules",
     "commit": "git-cz",
     "nitro:pattern": "yo nitro:pattern",
     "nitro:server": "npm run build && rimraf dist/ && yo nitro:server --folder=dist",
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
-    "update-dependencies": "npm-check-updates -u -x husky",
+    "update-dependencies": "npm-check-updates -u",
     "\n# MISC ------- ": "",
     "postinstall": "npm rebuild node-sass && env-linter --hooksInstalled --saveExact --lts",
     "\n# LINT/TEST ------- ": "",
@@ -53,7 +53,6 @@
     "build:webpack:dark": "cross-env THEME=dark webpack --mode production --config config/webpack/webpack.config.prod.js",
     "export": "npm run build && gulp export",
     "\n# RUN ------- ": "",
-    "dashboard": "opener http://localhost:4444 && dash4",
     "dev": "npm-run-all check-node-version --parallel --race dev:*",
     "dev:serve": "cross-env NODE_ENV=development nitro-app-serve",
     "dev:watch": "gulp develop",
@@ -89,18 +88,14 @@
     "handlebars": "4.7.7",
     "jquery": "3.6.0",
     "lazysizes": "5.3.2",
-    "lottie-web": "5.7.14",
+    "lottie-web": "5.8.1",
     "prevent-window-opener-attacks": "0.3.0",
     "regenerator-runtime": "0.13.9",
     "slick-carousel": "1.8.1",
     "svg4everybody": "2.1.9"
   },
   "devDependencies": {
-    "@dash4/plugin-actions": "0.9.3",
-    "@dash4/plugin-npm-scripts": "0.9.3",
-    "@dash4/plugin-readme": "0.9.3",
-    "@dash4/plugin-terminal": "0.9.3",
-    "@dash4/server": "0.9.3",
+    "@babel/eslint-parser": "7.16.3",
     "@namics/eslint-config": "9.1.1",
     "@namics/prettier-config": "2.0.1",
     "@namics/stylelint-config": "1.1.2",
@@ -109,32 +104,32 @@
     "@nitro/exporter": "*",
     "@nitro/gulp": "*",
     "@nitro/webpack": "*",
-    "backstopjs": "5.4.4",
+    "backstopjs": "6.0.1",
     "check-node-version": "4.2.1",
     "commitizen": "4.2.4",
     "config": "3.3.6",
     "cross-env": "7.0.3",
-    "cypress": "8.7.0",
+    "cypress": "9.0.0",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "0.5.1",
     "eslint": "7.32.0",
-    "eslint-plugin-import": "2.25.2",
+    "eslint-plugin-import": "2.25.3",
     "extend": "3.0.2",
     "generator-nitro": "*",
     "gulp": "4.0.2",
-    "husky": "4.3.8",
+    "husky": "7.0.4",
     "license-checker": "25.0.1",
     "lighthouse": "8.6.0",
-    "lint-staged": "10.5.4",
-    "node-sass": "5.0.0",
-    "npm-check-updates": "11.8.5",
+    "lint-staged": "12.0.3",
+    "node-sass": "6.0.1",
+    "npm-check-updates": "12.0.2",
     "npm-run-all": "4.1.5",
     "opener": "1.5.2",
     "prettier": "2.4.1",
     "rimraf": "3.0.2",
     "stylelint": "13.13.1",
     "webpack-cli": "4.9.1",
-    "yo": "3.1.1"
+    "yo": "4.3.0"
   },
   "browserslist": [
     "> 0.2%",
@@ -145,11 +140,6 @@
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {

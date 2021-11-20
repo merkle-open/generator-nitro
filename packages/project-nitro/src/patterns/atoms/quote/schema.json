@@ -1,5 +1,6 @@
 {
-	"$schema": "http://json-schema.org/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "/atom/quote",
 	"title": "quote",
 	"description": "A quote atom",
 	"type": "object",

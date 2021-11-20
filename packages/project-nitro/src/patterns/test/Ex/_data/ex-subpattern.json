@@ -18,7 +18,6 @@
 	],
 	"subpattern": {
 		"modifier": "",
-		"linkText": "Go to (subpattern): ",
 		"dynInsert": {
 			"you": "developer (subpattern)"
 		},
@@ -30,7 +29,6 @@
 		"two": "b",
 		"three": "c",
 		"four": "d",
-
 		"content": "content string (subpattern)",
 		"linkText": "linkText (subpattern)",
 		"test": {

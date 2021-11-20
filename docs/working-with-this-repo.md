@@ -8,8 +8,8 @@ Always run `npm install` in the root of this repository to ensure proper depende
 
 Before using, you need of course [node](https://nodejs.org/) installed ([Version](.node-version)).  
 Nitro and the Nitro generator are always tested with the current
-["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 14.x)
-and at the moment also with the LTS maintenance versions (release 10.x and 12.x).
+["Active LTS" version of node.js](https://github.com/nodejs/Release#release-schedule) (release 16.x)
+and at the moment also with the LTS maintenance versions (release 12.x and 14.x).
 
 1.  Install base project:
 

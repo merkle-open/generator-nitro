@@ -1,5 +1,6 @@
 {
-	"$schema": "http://json-schema.org/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "/test/Ex/subelement",
 	"title": "subelement",
 	"description": "A subelement element",
 	"type": "object",

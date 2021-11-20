@@ -30,5 +30,5 @@ module.exports = {
 		'new-cap': [2, { capIsNew: false }],
 		'require-jsdoc': 'off',
 	},
-	parser: 'babel-eslint',
+	parser: '@babel/eslint-parser',
 };<% } %>

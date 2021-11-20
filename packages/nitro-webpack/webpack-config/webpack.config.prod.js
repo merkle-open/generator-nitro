@@ -220,7 +220,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	if (options.rules.image) {
 		// image loader & minification
 		const imageMinificationRule = {
-			test: /\.(png|jpg|gif|svg|ico)$/,
+			test: /\.(png|jpg|gif|svg)$/,
 			// Specify enforce: 'pre' to apply the loader before url-loader
 			enforce: 'pre',
 			use: {

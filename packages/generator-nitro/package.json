@@ -6,13 +6,13 @@
   "repository": "merkle-open/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=10.15.0 <15",
-    "npm": ">=6.4.1 <7"
+    "node": ">=12.13.0 <17",
+    "npm": ">=6.12.0 <9"
   },
   "main": "generators/app/index.js",
   "scripts": {
     "lint": "eslint .",
-    "prepublishOnly": "npx pkg-ok@2.3.1",
+    "prepublishOnly": "npx -y pkg-ok@2.3.1",
     "pretest": "npm run lint",
     "test": "jasmine --config=tests/jasmine/support/jasmine.json"
   },
@@ -37,19 +37,19 @@
     "config": "3.3.6",
     "git-config": "0.0.7",
     "glob": "7.2.0",
-    "got": "11.8.2",
+    "got": "11.8.3",
     "lodash": "4.17.21",
-    "yeoman-generator": "4.13.0",
+    "yeoman-generator": "5.4.2",
     "yosay": "2.0.2"
   },
   "devDependencies": {
     "@namics/eslint-config": "9.1.1",
     "ejs": "3.1.6",
     "eslint": "7.32.0",
-    "eslint-plugin-import": "2.25.2",
-    "fs-extra": "9.1.0",
+    "eslint-plugin-import": "2.25.3",
+    "fs-extra": "10.0.0",
     "jasmine": "3.10.0",
     "yeoman-assert": "3.1.1",
-    "yeoman-test": "2.4.1"
+    "yeoman-test": "6.2.0"
   }
 }

@@ -1,5 +1,6 @@
 {
-	"$schema": "http://json-schema.org/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "/atom/button",
 	"title": "button",
 	"description": "A button atom",
 	"type": "object",

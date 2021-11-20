@@ -1,5 +1,6 @@
 {
-	"$schema": "http://json-schema.org/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "/test/Ex",
 	"title": "Ex",
 	"description": "An Ex organism",
 	"type": "object",
@@ -19,25 +20,15 @@
 			"type": "array",
 			"minItems": 1,
 			"items": {
-				"type": "object",
-				"properties": {
-					"uri": {
-						"description": "the target uri",
-						"type": "string",
-						"pattern": "^[a-z]*$"
-					},
-					"text": {
-						"description": "The link text",
-						"type": "string"
-					}
-				},
-				"required": ["uri", "text"],
-				"additionalProperties": false
+				"$ref": "/test/Ex/Ex-link"
 			}
 		},
 		"buttons": {
 			"description": "a boolean",
 			"type": "boolean"
+		},
+		"subpattern": {
+			"$ref": "/test/t"
 		}
 	},
 	"required": ["title", "links"]

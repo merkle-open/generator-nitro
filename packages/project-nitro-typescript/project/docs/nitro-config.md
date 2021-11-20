@@ -276,5 +276,5 @@ If you want to change the defaults in `feature.i18next.options` (configuration o
 and `feature.i18next.optionsMiddleware` (mainly for express routes to ignore),
 check following documentations:
 
-- [i18next express middleware](https://github.com/i18next/i18next-express-middleware)
+- [i18next middleware](https://github.com/i18next/i18next-http-middleware)
 - [configuration options](https://www.i18next.com/overview/configuration-options)

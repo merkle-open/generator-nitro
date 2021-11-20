@@ -5,12 +5,12 @@
   "license": "MIT",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=10.15.0 <15",
-    "npm": ">=6.4.1 <7"
+    "node": ">=12.13.0 <17",
+    "npm": ">=6.12.0 <9"
   },
   "scripts": {
     "lint": "eslint .",
-    "prepublishOnly": "npx pkg-ok@2.3.1",
+    "prepublishOnly": "npx -y pkg-ok@2.3.1",
     "test": "npm run lint"
   },
   "files": [
@@ -42,10 +42,10 @@
     "gulp-plumber": "1.2.1",
     "gulp-remote-src": "0.4.4",
     "gulp-rename": "2.0.0",
-    "gulp-svgmin": "3.0.0",
+    "gulp-svgmin": "4.1.0",
     "gulp-svgstore": "8.0.0",
     "merge-stream": "2.0.0",
-    "yargs": "16.2.0"
+    "yargs": "17.2.1"
   },
   "optionalDependencies": {
     "imagemin-pngquant": "9.0.2"
@@ -54,7 +54,7 @@
     "@namics/eslint-config": "9.1.1",
     "@nitro/app": "*",
     "eslint": "7.32.0",
-    "eslint-plugin-import": "2.25.2"
+    "eslint-plugin-import": "2.25.3"
   },
   "publishConfig": {
     "access": "public"

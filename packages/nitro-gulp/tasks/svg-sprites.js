@@ -20,14 +20,14 @@ module.exports = (gulp, plugins) => {
 								const prefix = path.basename(file.relative, path.extname(file.relative));
 								return {
 									plugins: [
+										'removeDoctype',
 										{
-											removeDoctype: true,
+											name: 'removeViewBox',
+											active: false,
 										},
 										{
-											removeViewBox: false,
-										},
-										{
-											cleanupIDs: {
+											name: 'cleanupIDs',
+											parmas: {
 												prefix: `${prefix}-`,
 												minify: true,
 											},

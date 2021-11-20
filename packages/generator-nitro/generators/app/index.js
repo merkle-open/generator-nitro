@@ -8,6 +8,7 @@ const yosay = require('yosay');
 const got = require('got');
 const path = require('path');
 const fs = require('fs');
+const childProcess = require('child_process');
 const glob = require('glob');
 const _ = require('lodash');
 
@@ -90,7 +91,7 @@ module.exports = class extends Generator {
 		this._skipQuestions = this.options.skipQuestions;
 	}
 
-	initializing() {}
+	// initializing() {}
 
 	prompting() {
 		this.log(yosay(`Welcome to the awe-inspiring ${chalk.cyan('Nitro')} generator!`));
@@ -228,6 +229,24 @@ module.exports = class extends Generator {
 		}
 	}
 
+	// configuring() {}
+
+	// default() {}
+
+	upgradeProject() {
+		if (this._update) {
+			const pkgProject = JSON.parse(fs.readFileSync(this.destinationPath('package.json'), 'utf8'));
+
+			// uninstall outdated githooks in older projects
+			const huskyVersion = pkgProject.devDependencies ? pkgProject.devDependencies.husky : undefined;
+			if (huskyVersion && huskyVersion.startsWith('4.')) {
+				// eslint-disable-next-line no-unused-vars
+				const result = childProcess.execSync('npm uninstall husky').toString();
+				this.log('Outdated husky githooks successfully removed.');
+			}
+		}
+	}
+
 	writing() {
 		this.log('Scaffolding your app');
 
@@ -264,7 +283,6 @@ module.exports = class extends Generator {
 			'src/proto.ts',
 			'tests/cypress/cypress/integration/examples/index.spec.js',
 			'.eslintrc.js',
-			'dash4.config.js',
 			'docker-compose.yml',
 			'docker-compose-dev.yml',
 			'gulpfile.js',
@@ -473,14 +491,9 @@ module.exports = class extends Generator {
 		}, this);
 	}
 
-	install() {
-		this.installDependencies({
-			npm: true,
-			bower: false,
-			yarn: false,
-			skipInstall: this.options.skipInstall,
-		});
-	}
+	// conflicts() {}
+
+	// install() {}
 
 	end() {
 		const filesToCopy = [

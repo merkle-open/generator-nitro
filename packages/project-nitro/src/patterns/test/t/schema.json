@@ -1,5 +1,6 @@
 {
-	"$schema": "http://json-schema.org/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "/test/t",
 	"title": "t",
 	"description": "A t organism",
 	"type": "object",

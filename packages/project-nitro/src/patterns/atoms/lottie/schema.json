@@ -1,5 +1,6 @@
 {
-	"$schema": "http://json-schema.org/schema#",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "/atom/lottie",
 	"title": "lottie",
 	"description": "A lottie atom",
 	"type": "object",

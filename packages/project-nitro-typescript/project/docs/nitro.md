@@ -22,8 +22,8 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 This application was created by the yeoman generator for nitro.  
 Before using, you need of course [node](https://nodejs.org/) installed.
 Nitro is always tested with the current
-["Active LTS" versions of node.js](https://github.com/nodejs/Release#release-schedule) (release 14.x)
-and at the moment also with the LTS maintenance versions (release 10.x and 12.x).
+["Active LTS" version of node.js](https://github.com/nodejs/Release#release-schedule) (release 16.x)
+and at the moment also with the LTS maintenance versions (release 12.x and 14.x).
 
 Install the project dependencies in the project root:
 
@@ -92,7 +92,7 @@ This config is shareable between different frontend tools. If not defined, the d
 
 Nitro uses [husky](https://github.com/typicode/husky) for githooks.
 
-Githooks Configuration is placed in the "husky" and the corresponding "lint-staged" node in [package.json](../../package.json)
+Githooks tasks are placed in the folder '.husky' and the corresponding "lint-staged" configuration in [package.json](../../package.json)
 
 ## Daily Work - Creating Patterns & Pages
 
@@ -100,8 +100,8 @@ Githooks Configuration is placed in the "husky" and the corresponding "lint-stag
 
 Patterns are created in the `src/patterns` folder. A pattern is an encapsulated block of markup
 with corresponding styles, scripts and data. The pattern data can be described in `schema.json`
-with [JSON schema](http://json-schema.org) (currently draft-04, but soon open for newer versions).
-Nitro uses [ajv](https://github.com/ajv-validator/ajv/tree/v6) for validation.
+with [JSON schema](http://json-schema.org) (currently draft-07).
+Nitro uses [ajv](https://github.com/ajv-validator/ajv/) for validation.
 
 For a better overview it is useful to define different types of patterns in [config](nitro-config.md).
 

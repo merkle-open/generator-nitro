@@ -13,8 +13,7 @@ const path = require('path');
 const extend = require('extend');
 const globby = require('globby');
 const Ajv = require('ajv');
-const ajv = new Ajv({ schemaId: 'auto', allErrors: true });
-ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
+const ajv = new Ajv({ allErrors: true });
 const config = require('config');
 const twigUtils = require('../utils');
 const lint = require('../../../lib/lint');
@@ -199,6 +198,12 @@ module.exports = function (Twig) {
 					if (!config.get('server.production') && config.get('code.validation.jsonSchema.live')) {
 						if (fs.existsSync(pattern.schemaFilePath)) {
 							const schema = JSON.parse(fs.readFileSync(pattern.schemaFilePath, 'utf8'));
+							if (schema.$id) {
+								// remove if already known to avoid collision
+								if (ajv.getSchema(schema.$id)) {
+									ajv.removeSchema(schema);
+								}
+							}
 							const valid = ajv.validate(schema, patternData);
 							if (!valid) {
 								return {

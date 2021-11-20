@@ -6,13 +6,13 @@
   "repository": "merkle-open/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=10.15.0 <15",
-    "npm": ">=6.4.1 <7"
+    "node": ">=12.13.0 <17",
+    "npm": ">=6.12.0 <9"
   },
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "prepublishOnly": "npx pkg-ok@2.3.1",
+    "prepublishOnly": "npx -y pkg-ok@2.3.1",
     "test": "npm run lint"
   },
   "files": [
@@ -33,7 +33,7 @@
     "del": "6.0.0",
     "delete-empty": "3.0.0",
     "glob": "7.2.0",
-    "gulp-filter": "6.0.0",
+    "gulp-filter": "7.0.0",
     "gulp-html-minifier-terser": "6.0.1",
     "gulp-vinyl-zip": "2.5.0"
   },
@@ -41,7 +41,7 @@
     "@namics/eslint-config": "9.1.1",
     "@nitro/app": "*",
     "eslint": "7.32.0",
-    "eslint-plugin-import": "2.25.2"
+    "eslint-plugin-import": "2.25.3"
   },
   "publishConfig": {
     "access": "public"

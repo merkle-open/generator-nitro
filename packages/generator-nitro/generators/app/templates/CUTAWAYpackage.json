@@ -109,7 +109,7 @@
     "@types/jquery": "3.5.8",<% } %>
     "@types/svg4everybody": "2.1.2",
     "@types/webpack-env": "1.16.3",<% } %>
-    "backstopjs": "5.4.4",
+    "backstopjs": "6.0.1",
     "check-node-version": "4.2.1",
     "commitizen": "4.2.4",
     "config": "3.3.6",
@@ -125,7 +125,7 @@
     "husky": "7.0.4",
     "license-checker": "25.0.1",
     "lighthouse": "8.6.0",
-    "lint-staged": "12.0.2",<% if (options.themes) { %>
+    "lint-staged": "12.0.3",<% if (options.themes) { %>
     "node-sass": "6.0.1",<% } %>
     "npm-check-updates": "12.0.0",
     "npm-run-all": "4.1.5",

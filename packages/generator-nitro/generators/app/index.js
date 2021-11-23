@@ -98,20 +98,24 @@ module.exports = class extends Generator {
 
 	initializing() {
 		// find git root
-		const dest = this.destinationPath();
-		const gitRoot = findGitRoot(dest).replace('.git', '');
-		let gitPath = false;
+		try {
+			const dest = this.destinationPath();
+			const gitRoot = findGitRoot(dest).replace('.git', '');
+			let gitPath = false;
 
-		if (gitRoot) {
-			const relative = path.relative(dest, gitRoot);
-			if (relative) {
-				gitPath = `${relative.replace(/\\/g, '/')}/`;
-			} else {
-				gitPath = './';
+			if (gitRoot) {
+				const relative = path.relative(dest, gitRoot);
+				if (relative) {
+					gitPath = `${relative.replace(/\\/g, '/')}/`;
+				} else {
+					gitPath = './';
+				}
 			}
-		}
 
-		this._git.root = gitPath;
+			this._git.root = gitPath;
+		} catch (e) {
+			this.log(chalk.red(e.message));
+		}
 	}
 
 	prompting() {

@@ -9,6 +9,7 @@ const got = require('got');
 const path = require('path');
 const fs = require('fs');
 const childProcess = require('child_process');
+const findGitRoot = require('find-git-root')
 const glob = require('glob');
 const _ = require('lodash');
 
@@ -29,6 +30,10 @@ module.exports = class extends Generator {
 			exampleCode: this.options.exampleCode,
 			exporter: this.options.exporter,
 		};
+
+		this._git = {
+			root: false,
+		}
 
 		this.option('name', {
 			desc: 'the name of your app',
@@ -91,7 +96,23 @@ module.exports = class extends Generator {
 		this._skipQuestions = this.options.skipQuestions;
 	}
 
-	// initializing() {}
+	initializing() {
+		// find git root
+		const dest = this.destinationPath();
+		const gitRoot = findGitRoot(dest).replace('.git', '');
+		let gitPath = false;
+
+		if (gitRoot) {
+			const relative = path.relative(dest, gitRoot);
+			if (relative) {
+				gitPath = `${relative.replace(/\\/g, '/')}/`;
+			} else {
+				gitPath = './';
+			}
+		}
+
+		this._git.root = gitPath;
+	}
 
 	prompting() {
 		this.log(yosay(`Welcome to the awe-inspiring ${chalk.cyan('Nitro')} generator!`));
@@ -390,6 +411,9 @@ module.exports = class extends Generator {
 			name: this.options.name,
 			version: this._pkg.version,
 			options: this.options,
+			git: {
+				root: this._git.root,
+			}
 		};
 
 		files.forEach((file) => {

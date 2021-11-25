@@ -220,16 +220,13 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	if (options.rules.image) {
 		// image loader & minification
 		const imageMinificationRule = {
-			test: /\.(png|jpg|gif|svg)$/,
+			test: /\.(png|jpg|svg)$/,
 			// Specify enforce: 'pre' to apply the loader before url-loader
 			enforce: 'pre',
 			use: {
 				loader: require.resolve('img-loader'),
 				options: {
 					plugins: [
-						require('imagemin-gifsicle')({
-							interlaced: false,
-						}),
 						require('imagemin-mozjpeg')({
 							quality: 75,
 							progressive: true,

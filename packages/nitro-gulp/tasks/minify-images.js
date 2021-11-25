@@ -18,7 +18,6 @@ module.exports = (gulp, plugins) => {
 						.pipe(plugins.newer(minifyImagesConfig.dest))
 						.pipe(
 							plugins.imagemin([
-								plugins.imagemin.gifsicle({ interlaced: true }),
 								plugins.imagemin.mozjpeg({ quality: 75, progressive: true }),
 								plugins.imagemin.optipng({ optimizationLevel: 7 }),
 								plugins.imagemin.svgo({

@@ -124,7 +124,7 @@
     "gulp": "4.0.2",
     "husky": "7.0.4",
     "license-checker": "25.0.1",
-    "lighthouse": "9.0.0",
+    "lighthouse": "9.1.0",
     "lint-staged": "12.1.2",<% if (options.themes) { %>
     "node-sass": "6.0.1",<% } %>
     "npm-check-updates": "12.0.2",

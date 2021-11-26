@@ -19,12 +19,9 @@ module.exports = (gulp, plugins) => {
 							plugins.svgmin((file) => {
 								const prefix = path.basename(file.relative, path.extname(file.relative));
 								return {
+									multipass: true,
 									plugins: [
-										'removeDoctype',
-										{
-											name: 'removeViewBox',
-											active: false,
-										},
+										{ removeViewBox: false },
 										{
 											name: 'cleanupIDs',
 											parmas: {

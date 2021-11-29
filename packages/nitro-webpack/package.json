@@ -43,7 +43,7 @@
     "js-config-webpack-plugin": "2.0.3",
     "mini-css-extract-plugin": "1.6.2",
     "optimize-css-assets-webpack-plugin": "6.0.1",
-    "postcss": "8.4.1",
+    "postcss": "8.4.4",
     "postcss-loader": "4.3.0",
     "resolve-url-loader": "4.0.0",
     "sass": "1.43.5",

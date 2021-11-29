@@ -2,5 +2,5 @@
 . "$(dirname "$0")/_/husky.sh"
 
 # if husky config is not in git root
-# cd ./
+cd ./packages/project-nitro-typescript || return
 npx lint-staged

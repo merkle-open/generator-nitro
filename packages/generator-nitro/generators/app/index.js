@@ -33,6 +33,7 @@ module.exports = class extends Generator {
 
 		this._git = {
 			root: false,
+			projet: false,
 		}
 
 		this.option('name', {
@@ -102,17 +103,21 @@ module.exports = class extends Generator {
 			const dest = this.destinationPath();
 			const gitRoot = findGitRoot(dest).replace('.git', '');
 			let gitPath = false;
+			let projectPath = false;
 
 			if (gitRoot) {
-				const relative = path.relative(dest, gitRoot);
-				if (relative) {
-					gitPath = `${relative.replace(/\\/g, '/')}/`;
+				const relativeGitRoot = path.relative(dest, gitRoot);
+				const relativeProjectRoot = path.relative(gitRoot, dest);
+				if (relativeGitRoot) {
+					gitPath = `${relativeGitRoot.replace(/\\/g, '/')}/`;
+					projectPath = `./${relativeProjectRoot.replace(/\\/g, '/')}`;
 				} else {
 					gitPath = './';
 				}
 			}
 
 			this._git.root = gitPath;
+			this._git.project = projectPath;
 		} catch (e) {
 			this.log(chalk.red(e.message));
 		}
@@ -279,6 +284,7 @@ module.exports = class extends Generator {
 
 		const tplFiles = [
 			// files to process with copyTpl
+			'.husky/pre-commit',
 			'config/default.js',
 			'config/default/exporter.js',
 			'config/default/gulp.js',
@@ -417,6 +423,7 @@ module.exports = class extends Generator {
 			options: this.options,
 			git: {
 				root: this._git.root,
+				project: this._git.project,
 			}
 		};
 

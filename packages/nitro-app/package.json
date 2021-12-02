@@ -42,7 +42,7 @@
     "hbs": "4.2.0",
     "hbs-utils": "0.0.4",
     "htmllint": "0.8.0",
-    "i18next": "21.5.3",
+    "i18next": "21.5.4",
     "i18next-http-middleware": "3.1.4",
     "i18next-fs-backend": "1.1.4",
     "i18next-sprintf-postprocessor": "0.2.2",

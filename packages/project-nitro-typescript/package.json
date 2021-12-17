@@ -37,6 +37,7 @@
     "prettier": "prettier --write \"**/*.*(js|jsx|ts|tsx|json|md|mdx|graphql|gql|yml|yaml)\"",
     "test": "npm-run-all test:*",
     "test:lint": "npm run lint",
+    "test:build": "npm run build:webpack",
     "donottest:cypress": "npm run build && cross-env PORT=8892 NITRO_MODE=test npm-run-all --parallel --race test:cypress:*",
     "test:cypress:serve": "npm run prod:serve",
     "test:cypress:test": "cypress run --project ./tests/cypress/",

@@ -42,12 +42,12 @@
     "hbs": "4.2.0",
     "hbs-utils": "0.0.4",
     "htmllint": "0.8.0",
-    "i18next": "21.6.4",
+    "i18next": "21.6.5",
     "i18next-http-middleware": "3.1.5",
     "i18next-fs-backend": "1.1.4",
     "i18next-sprintf-postprocessor": "0.2.2",
-    "jasmine": "3.10.0",
-    "jasmine-core": "3.10.1",
+    "jasmine": "3.99.0",
+    "jasmine-core": "3.99.0",
     "lodash": "4.17.21",
     "text-table": "0.2.0",
     "twig": "1.13.3",
@@ -58,7 +58,7 @@
   "devDependencies": {
     "@namics/eslint-config": "9.1.1",
     "eslint": "7.32.0",
-    "eslint-plugin-import": "2.25.3"
+    "eslint-plugin-import": "2.25.4"
   },
   "publishConfig": {
     "access": "public"

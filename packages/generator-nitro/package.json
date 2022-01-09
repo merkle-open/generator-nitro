@@ -40,16 +40,16 @@
     "glob": "7.2.0",
     "got": "11.8.3",
     "lodash": "4.17.21",
-    "yeoman-generator": "5.4.2",
+    "yeoman-generator": "5.5.2",
     "yosay": "2.0.2"
   },
   "devDependencies": {
     "@namics/eslint-config": "9.1.1",
     "ejs": "3.1.6",
     "eslint": "7.32.0",
-    "eslint-plugin-import": "2.25.3",
+    "eslint-plugin-import": "2.25.4",
     "fs-extra": "10.0.0",
-    "jasmine": "3.10.0",
+    "jasmine": "3.99.0",
     "yeoman-assert": "3.1.1",
     "yeoman-test": "6.2.0"
   }

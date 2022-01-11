@@ -1,6 +1,6 @@
 {
   "name": "@nitro/app",
-  "version": "6.0.5",
+  "version": "6.0.6",
   "description": "Nitro server",
   "license": "MIT",
   "repository": "merkle-open/generator-nitro",

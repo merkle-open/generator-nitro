@@ -106,7 +106,7 @@
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "5.1.8",<% if (options.exampleCode ) { %>
-    "@types/jquery": "3.5.11",<% } %>
+    "@types/jquery": "3.5.12",<% } %>
     "@types/svg4everybody": "2.1.2",
     "@types/webpack-env": "1.16.3",<% } %>
     "backstopjs": "6.0.4",
@@ -114,7 +114,7 @@
     "commitizen": "4.2.4",
     "config": "3.3.6",
     "cross-env": "7.0.3",
-    "cypress": "9.2.0",
+    "cypress": "9.2.1",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "0.5.1",
     "eslint": "7.32.0",

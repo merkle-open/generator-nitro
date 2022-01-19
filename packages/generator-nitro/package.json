@@ -34,13 +34,13 @@
   ],
   "dependencies": {
     "chalk": "4.1.2",
-    "config": "3.3.6",
+    "config": "3.3.7",
     "find-git-root": "1.0.4",
     "git-config": "0.0.7",
     "glob": "7.2.0",
     "got": "11.8.3",
     "lodash": "4.17.21",
-    "yeoman-generator": "5.5.2",
+    "yeoman-generator": "5.6.0",
     "yosay": "2.0.2"
   },
   "devDependencies": {

@@ -29,12 +29,12 @@
     "nitro"
   ],
   "dependencies": {
-    "ajv": "8.8.2",
+    "ajv": "8.9.0",
     "body-parser": "1.19.1",
     "chalk": "4.1.2",
     "compression": "1.7.4",
     "cookie-session": "2.0.0",
-    "config": "3.3.6",
+    "config": "3.3.7",
     "dot-object": "2.1.4",
     "express": "4.17.2",
     "extend": "3.0.2",
@@ -42,7 +42,7 @@
     "hbs": "4.2.0",
     "hbs-utils": "0.0.4",
     "htmllint": "0.8.0",
-    "i18next": "21.6.5",
+    "i18next": "21.6.6",
     "i18next-http-middleware": "3.1.5",
     "i18next-fs-backend": "1.1.4",
     "i18next-sprintf-postprocessor": "0.2.2",

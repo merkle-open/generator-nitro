@@ -105,7 +105,7 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",<% if (options.jsCompiler === 'ts') { %>
-    "@types/bootstrap": "5.1.8",<% if (options.exampleCode ) { %>
+    "@types/bootstrap": "5.1.9",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.5.13",<% } %>
     "@types/svg4everybody": "2.1.2",
     "@types/webpack-env": "1.16.3",<% } %>
@@ -125,16 +125,16 @@
     "husky": "7.0.4",
     "license-checker": "25.0.1",
     "lighthouse": "9.2.0",
-    "lint-staged": "12.1.7",<% if (options.themes) { %>
+    "lint-staged": "12.3.2",<% if (options.themes) { %>
     "node-sass": "6.0.1",<% } %>
-    "npm-check-updates": "12.1.0",
+    "npm-check-updates": "12.2.1",
     "npm-run-all": "4.1.5",
     "opener": "1.5.2",
     "prettier": "2.5.1",
     "rimraf": "3.0.2",
     "stylelint": "13.13.1",<% if (options.jsCompiler === 'ts') { %>
-    "typescript": "4.5.4",<% } %>
-    "webpack-cli": "4.9.1",
+    "typescript": "4.5.5",<% } %>
+    "webpack-cli": "4.9.2",
     "yo": "4.3.0"
   },
   "browserslist": [

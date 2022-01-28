@@ -20,7 +20,7 @@
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
     "update-dependencies": "npm-check-updates -u",
     "\n# MISC ------- ": "",
-    "postinstall": "<% if (git.root) { %>cd <%= git.root %> && husky install <% if (git.project) { %><%= git.project %>/.husky <% } %>&& <% } %><% if (options.themes) { %>npm rebuild node-sass && <% } %>env-linter<% if (git.root) { %> --hooksInstalled<% } %> --saveExact --dependenciesExactVersion --lts",
+    "postinstall": "<% if (git.root) { %>cd <%= git.root %> && husky install <% if (git.project) { %><%= git.project %>/.husky && cd <%= git.project %> <% } %>&& <% } %><% if (options.themes) { %>npm rebuild node-sass && <% } %>env-linter<% if (git.root) { %> --hooksInstalled<% } %> --saveExact --dependenciesExactVersion --lts",
     "\n# LINT/TEST ------- ": "",
     "check-node-version": "check-node-version --print --package",
     "cypress-test": "npm run build && cross-env PORT=8888 NITRO_MODE=test npm-run-all --parallel --race test:cypress:serve cypress-test:open",

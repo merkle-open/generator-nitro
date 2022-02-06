@@ -95,7 +95,7 @@
     "svg4everybody": "2.1.9"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.16.5",
+    "@babel/eslint-parser": "7.17.0",
     "@namics/eslint-config": "9.1.1",
     "@namics/prettier-config": "2.0.1",
     "@namics/stylelint-config": "1.1.2",

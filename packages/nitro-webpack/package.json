@@ -23,7 +23,7 @@
     "nitro"
   ],
   "dependencies": {
-    "@babel/core": "7.17.4",
+    "@babel/core": "7.17.5",
     "@babel/preset-env": "7.16.11",
     "@babel/preset-react": "7.16.7",
     "@babel/plugin-proposal-decorators": "7.17.2",
@@ -46,7 +46,7 @@
     "postcss": "8.4.6",
     "postcss-loader": "4.3.0",
     "resolve-url-loader": "5.0.0",
-    "sass": "1.49.7",
+    "sass": "1.49.8",
     "sass-loader": "10.2.1",
     "stylelint": "13.13.1",
     "stylelint-webpack-plugin": "2.2.2",

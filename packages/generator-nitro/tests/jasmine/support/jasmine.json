@@ -1,6 +1,9 @@
 {
 	"spec_dir": "tests/jasmine",
 	"spec_files": ["**/*[sS]pec.js"],
-	"stopSpecOnExpectationFailure": false,
-	"random": false
+	"jsLoader": "require",
+	"env": {
+		"random": false,
+		"stopSpecOnExpectationFailure": false
+	}
 }

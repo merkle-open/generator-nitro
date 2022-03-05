@@ -90,7 +90,7 @@
     "handlebars": "4.7.7",
     "jquery": "3.6.0",
     "lazysizes": "5.3.2",
-    "lottie-web": "5.8.1",
+    "lottie-web": "5.9.1",
     "prevent-window-opener-attacks": "0.3.0"<% } %><% if (options.jsCompiler === 'js') { %>,
     "regenerator-runtime": "0.13.9"<% } %><% if (options.exampleCode) { %>,
     "svg4everybody": "2.1.9"<% } %>
@@ -114,7 +114,7 @@
     "commitizen": "4.2.4",
     "config": "3.3.7",
     "cross-env": "7.0.3",
-    "cypress": "9.5.0",
+    "cypress": "9.5.1",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "0.5.1",
     "eslint": "7.32.0",
@@ -125,15 +125,15 @@
     "husky": "7.0.4",
     "license-checker": "25.0.1",
     "lighthouse": "9.4.0",
-    "lint-staged": "12.3.4",<% if (options.themes) { %>
+    "lint-staged": "12.3.5",<% if (options.themes) { %>
     "node-sass": "6.0.1",<% } %>
-    "npm-check-updates": "12.4.0",
+    "npm-check-updates": "12.5.2",
     "npm-run-all": "4.1.5",
     "opener": "1.5.2",
     "prettier": "2.5.1",
     "rimraf": "3.0.2",
     "stylelint": "13.13.1",<% if (options.jsCompiler === 'ts') { %>
-    "typescript": "4.5.5",<% } %>
+    "typescript": "4.6.2",<% } %>
     "webpack-cli": "4.9.2",
     "yo": "4.3.0"
   },

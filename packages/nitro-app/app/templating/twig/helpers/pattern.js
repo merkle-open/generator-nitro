@@ -17,7 +17,6 @@ const ajv = new Ajv({ allErrors: true });
 const config = require('config');
 const twigUtils = require('../utils');
 const lint = require('../../../lib/lint');
-const htmllintOptions = lint.getHtmllintOptions(true);
 
 const patternBasePaths = Object.keys(config.get('nitro.patterns')).map((key) => {
 	const configKey = `nitro.patterns.${key}.path`;
@@ -242,7 +241,7 @@ module.exports = function (Twig) {
 
 					// lint html snippet
 					if (!config.get('server.production') && config.get('code.validation.htmllint.live')) {
-						lint.lintSnippet(pattern.templateFilePath, html, htmllintOptions);
+						lint.lintSnippet(pattern.templateFilePath, html);
 					}
 
 					// return the rendered template

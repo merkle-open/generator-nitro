@@ -34,7 +34,7 @@
     "get-port": "5.1.1",
     "globby": "11.0.4",
     "gulp": "4.0.2",
-    "gulp-htmllint": "0.0.19",
+    "gulp-html-validate": "0.2.0",
     "gulp-imagemin": "7.1.0",
     "gulp-live-server": "0.0.31",
     "gulp-load-plugins": "2.0.7",
@@ -44,6 +44,7 @@
     "gulp-rename": "2.0.0",
     "gulp-svgmin": "4.1.0",
     "gulp-svgstore": "9.0.0",
+    "html-validate": "6.7.1",
     "merge-stream": "2.0.0",
     "yargs": "17.4.1"
   },

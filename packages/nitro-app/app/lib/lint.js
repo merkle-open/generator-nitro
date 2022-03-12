@@ -1,55 +1,31 @@
 'use strict';
 
-const fs = require('fs');
 const config = require('config');
-const htmllint = require('htmllint');
-const textTable = require('text-table');
+const { HtmlValidate, formatterFactory } = require('html-validate');
 
-function getHtmllintOptions(isSnippet) {
-	const configPath = '.htmllintrc';
-	let htmllintOptions = {};
-	if (fs.existsSync(configPath)) {
-		htmllintOptions = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-	}
-	if (isSnippet) {
-		htmllintOptions['doctype-first'] = false;
-	}
+const htmlvalidate = new HtmlValidate();
+const format = formatterFactory('stylish');
 
-	return htmllintOptions;
-}
-
-function htmllintReporter(filepath, issues) {
-	if (issues.length > 0) {
-		const filePath = filepath.toString().replace(config.get('nitro.basePath'), '');
-		const tableData = [];
-
-		issues.forEach((issue) => {
-			issue.msg = issue.msg || htmllint.messages.renderIssue(issue);
-			issue.cell = `${`    ${issue.line}`.slice(-4)}:${issue.column}`;
-			tableData.push([issue.cell, issue.msg, issue.rule]);
-		});
-
-		const table = textTable(tableData);
-
-		// output
-		console.log(`\n[htmllint] ${filePath}`);
-		console.log(table);
-		console.log('\n');
-
-		process.exitCode = 1;
+function _getHtmlvalidateConfig() {
+	try {
+		return require(`${config.get('nitro.basePath')}.htmlvalidate.js`);
+	} catch (e) {
+		return {};
 	}
 }
 
-function lintSnippet(templatePath, markup, options) {
-	const htmllintOptions = options || getHtmllintOptions(true);
-
-	return htmllint(markup, htmllintOptions).then((issues) => {
-		htmllintReporter(templatePath, issues);
-	});
+function lintSnippet(templatePath, markup) {
+	const report = htmlvalidate.validateString(markup, _getHtmlvalidateConfig());
+	const filePath = templatePath.replace(config.get('nitro.basePath'), '');
+	if (!report.valid) {
+		console.log(`\nMarkup error in: ${filePath}`);
+		console.log(format(report.results));
+	} else if (report.warningCount) {
+		console.log(`\nMarkup warning in: ${filePath}`);
+		console.log(format(report.results));
+	}
 }
 
 module.exports = {
-	getHtmllintOptions,
 	lintSnippet,
-	htmllintReporter,
 };

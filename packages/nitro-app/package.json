@@ -29,7 +29,7 @@
     "nitro"
   ],
   "dependencies": {
-    "ajv": "8.10.0",
+    "ajv": "8.11.0",
     "body-parser": "1.19.2",
     "chalk": "4.1.2",
     "compression": "1.7.4",

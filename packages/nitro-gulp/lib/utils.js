@@ -23,6 +23,17 @@ function getProjectPath() {
 	return config.get('nitro.basePath');
 }
 
+// load optional package
+function getOptionalPackage(x) {
+	let mod;
+	try {
+		mod = require(x);
+	} catch (error) {
+		mod = null;
+	}
+	return mod;
+}
+
 function each(cfgs, fn) {
 	if (cfgs.length) {
 		cfgs.forEach((cfg) => {
@@ -37,5 +48,6 @@ module.exports = {
 	getBrowserSyncInstance,
 	getTask,
 	getProjectPath,
+	getOptionalPackage,
 	each,
 };

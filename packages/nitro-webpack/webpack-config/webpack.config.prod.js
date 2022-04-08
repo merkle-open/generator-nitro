@@ -218,6 +218,17 @@ module.exports = (options = { rules: {}, features: {} }) => {
 
 	// images
 	if (options.rules.image) {
+
+		const imageminMozjpeg = utils.getOptionalPackage('imagemin-mozjpeg');
+		const imageminOptipng = utils.getOptionalPackage('imagemin-optipng');
+		const imageminPngquant = utils.getOptionalPackage('imagemin-pngquant');
+		const imageminSvgo = utils.getOptionalPackage('imagemin-svgo');
+
+		// console.log('imagemin-mozjpeg: ', imageminMozjpeg ? 'installed' : 'NOT');
+		// console.log('imagemin-optipng: ', imageminOptipng ? 'installed' : 'NOT');
+		// console.log('imagemin-pngquant: ', imageminPngquant ? 'installed' : 'NOT');
+		// console.log('imagemin-svgo: ', imageminSvgo ? 'installed' : 'NOT');
+
 		// image loader & minification
 		const imageMinificationRule = {
 			test: /\.(png|jpg|svg)$/,
@@ -226,34 +237,50 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			use: {
 				loader: require.resolve('img-loader'),
 				options: {
-					plugins: [
-						require('imagemin-mozjpeg')({
-							quality: 75,
-							progressive: true,
-						}),
-						require('imagemin-optipng')({
-							optimizationLevel: 7,
-						}),
-						require('imagemin-pngquant')({
-							// floyd: 0.5,
-							// speed: 2
-						}),
-						require('imagemin-svgo')({
-							plugins: [
-								{
-									name: 'preset-default',
-									params: {
-										overrides: {
-											removeViewBox: false,
-										},
-									},
-								},
-							],
-						}),
-					],
+					plugins: [],
 				},
 			},
 		};
+
+		if (imageminMozjpeg) {
+			imageMinificationRule.use.options.plugins.push(
+				imageminMozjpeg({
+					quality: 75,
+					progressive: true,
+				})
+			);
+		}
+		if (imageminOptipng) {
+			imageMinificationRule.use.options.plugins.push(
+				imageminOptipng({
+					optimizationLevel: 7,
+				})
+			);
+		}
+		if (imageminPngquant) {
+			imageMinificationRule.use.options.plugins.push(
+				imageminPngquant({
+					// floyd: 0.5,
+					// speed: 2
+				})
+			);
+		}
+		if (imageminSvgo) {
+			imageMinificationRule.use.options.plugins.push(
+				imageminSvgo({
+					plugins: [
+						{
+							name: 'preset-default',
+							params: {
+								overrides: {
+									removeViewBox: false,
+								},
+							},
+						},
+					],
+				})
+			);
+		}
 
 		// url loader for images (for example, in CSS files)
 		// inlines assets below a limit

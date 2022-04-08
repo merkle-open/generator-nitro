@@ -15,6 +15,18 @@ function getEnrichedConfig(rule, config) {
 	return rule;
 }
 
+// load optional package
+function getOptionalPackage(x) {
+	let mod;
+	try {
+		mod = require(x);
+	} catch (error) {
+		mod = null;
+	}
+	return mod;
+}
+
 module.exports = {
 	getEnrichedConfig,
+	getOptionalPackage,
 };

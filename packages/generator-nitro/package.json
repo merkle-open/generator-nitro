@@ -37,7 +37,7 @@
     "config": "3.3.7",
     "find-git-root": "1.0.4",
     "git-config": "0.0.7",
-    "glob": "7.2.0",
+    "glob": "8.0.1",
     "got": "11.8.3",
     "lodash": "4.17.21",
     "yeoman-generator": "5.6.1",
@@ -48,8 +48,8 @@
     "ejs": "3.1.6",
     "eslint": "7.32.0",
     "eslint-plugin-import": "2.26.0",
-    "fs-extra": "10.0.1",
-    "jasmine": "4.0.2",
+    "fs-extra": "10.1.0",
+    "jasmine": "4.1.0",
     "yeoman-assert": "3.1.1",
     "yeoman-test": "6.3.0"
   }

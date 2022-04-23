@@ -25,7 +25,6 @@ const ajv = new Ajv({ allErrors: true });
 const config = require('config');
 const hbsUtils = require('../utils');
 const lint = require('../../../lib/lint');
-const htmllintOptions = lint.getHtmllintOptions(true);
 
 function getPatternBasePaths(type) {
 	let patternTypeKeys;
@@ -211,7 +210,7 @@ module.exports = function () {
 
 				// lint html snippet
 				if (!config.get('server.production') && config.get('code.validation.htmllint.live')) {
-					lint.lintSnippet(pattern.templateFilePath, html, htmllintOptions);
+					lint.lintSnippet(pattern.templateFilePath, html);
 				}
 
 				return new hbs.handlebars.SafeString(html);

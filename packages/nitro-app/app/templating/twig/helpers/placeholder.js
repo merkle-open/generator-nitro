@@ -14,7 +14,6 @@ const extend = require('extend');
 const config = require('config');
 const twigUtils = require('../utils');
 const lint = require('../../../lib/lint');
-const htmllintOptions = lint.getHtmllintOptions(true);
 
 module.exports = function (Twig) {
 	return {
@@ -142,7 +141,7 @@ module.exports = function (Twig) {
 
 				// lint html snippet
 				if (!config.get('server.production') && config.get('code.validation.htmllint.live')) {
-					lint.lintSnippet(templateFilePath, html, htmllintOptions);
+					lint.lintSnippet(templateFilePath, html);
 				}
 
 				// return the rendered template

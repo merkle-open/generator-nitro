@@ -7,7 +7,6 @@ const extend = require('extend');
 const config = require('config');
 const hbsUtils = require('../utils');
 const lint = require('../../../lib/lint');
-const htmllintOptions = lint.getHtmllintOptions(true);
 
 module.exports = function () {
 	try {
@@ -53,7 +52,7 @@ module.exports = function () {
 
 			// lint html snippet
 			if (!config.get('server.production') && config.get('code.validation.htmllint.live')) {
-				lint.lintSnippet(templatePath, html, htmllintOptions);
+				lint.lintSnippet(templatePath, html);
 			}
 			return new hbs.handlebars.SafeString(html);
 		}

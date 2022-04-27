@@ -114,7 +114,7 @@
     "commitizen": "4.2.4",
     "config": "3.3.7",
     "cross-env": "7.0.3",
-    "cypress": "9.5.4",
+    "cypress": "9.6.0",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "0.5.1",
     "eslint": "7.32.0",
@@ -125,7 +125,7 @@
     "husky": "7.0.4",
     "license-checker": "25.0.1",
     "lighthouse": "9.5.0",
-    "lint-staged": "12.4.0",<% if (options.themes) { %>
+    "lint-staged": "12.4.1",<% if (options.themes) { %>
     "node-sass": "6.0.1",<% } %>
     "npm-check-updates": "12.5.9",
     "npm-run-all": "4.1.5",

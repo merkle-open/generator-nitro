@@ -84,12 +84,12 @@
     "@gondel/core": "1.2.7",
     "@gondel/plugin-hot": "1.2.7",
     "bootstrap": "5.1.3",<% } %>
-    "core-js": "3.22.2"<% if (options.exampleCode) { %>,
+    "core-js": "3.22.3"<% if (options.exampleCode) { %>,
     "flatpickr": "4.6.13",
     "handlebars": "4.7.7",
     "jquery": "3.6.0",
     "lazysizes": "5.3.2",
-    "lottie-web": "5.9.3",
+    "lottie-web": "5.9.4",
     "prevent-window-opener-attacks": "0.3.0"<% } %><% if (options.jsCompiler === 'js') { %>,
     "regenerator-runtime": "0.13.9"<% } %><% if (options.exampleCode) { %>,
     "svg4everybody": "2.1.9"<% } %>
@@ -127,12 +127,12 @@
     "lighthouse": "9.5.0",
     "lint-staged": "12.4.1",<% if (options.themes) { %>
     "node-sass": "6.0.1",<% } %>
-    "npm-check-updates": "12.5.9",
+    "npm-check-updates": "12.5.11",
     "npm-run-all": "4.1.5",
     "prettier": "2.6.2",
     "rimraf": "3.0.2",
     "stylelint": "13.13.1",<% if (options.jsCompiler === 'ts') { %>
-    "typescript": "4.6.3",<% } %>
+    "typescript": "4.6.4",<% } %>
     "webpack-cli": "4.9.2",
     "yo": "4.3.0"
   },

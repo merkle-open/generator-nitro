@@ -84,7 +84,7 @@
     "@gondel/core": "1.2.7",
     "@gondel/plugin-hot": "1.2.7",
     "bootstrap": "5.1.3",<% } %>
-    "core-js": "3.22.3"<% if (options.exampleCode) { %>,
+    "core-js": "3.22.4"<% if (options.exampleCode) { %>,
     "flatpickr": "4.6.13",
     "handlebars": "4.7.7",
     "jquery": "3.6.0",

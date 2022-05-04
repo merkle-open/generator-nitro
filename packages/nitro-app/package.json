@@ -41,7 +41,7 @@
     "globby": "11.0.4",
     "hbs": "4.2.0",
     "hbs-utils": "0.0.4",
-    "html-validate": "6.9.1",
+    "html-validate": "6.10.0",
     "i18next": "21.6.16",
     "i18next-http-middleware": "3.2.0",
     "i18next-fs-backend": "1.1.4",

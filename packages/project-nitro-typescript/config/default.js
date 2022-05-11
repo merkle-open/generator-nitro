@@ -14,7 +14,8 @@ const defaultConfig = {
 				live: false,
 			},
 			htmllint: {
-				live: true,
+				// enabling this live validation slows down rendering
+				live: false,
 			},
 			jsonSchema: {
 				live: true,

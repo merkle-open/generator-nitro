@@ -37,7 +37,7 @@
     "config": "3.3.7",
     "find-git-root": "1.0.4",
     "git-config": "0.0.7",
-    "glob": "8.0.1",
+    "glob": "8.0.3",
     "got": "11.8.3",
     "lodash": "4.17.21",
     "yeoman-generator": "5.6.1",
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@namics/eslint-config": "9.1.1",
-    "ejs": "3.1.7",
+    "ejs": "3.1.8",
     "eslint": "7.32.0",
     "eslint-plugin-import": "2.26.0",
     "fs-extra": "10.1.0",

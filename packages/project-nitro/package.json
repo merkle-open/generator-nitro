@@ -119,7 +119,7 @@
     "gulp": "4.0.2",
     "husky": "7.0.4",
     "license-checker": "25.0.1",
-    "lighthouse": "9.5.0",
+    "lighthouse": "9.6.1",
     "lint-staged": "12.4.1",
     "node-sass": "6.0.1",
     "npm-check-updates": "12.5.11",

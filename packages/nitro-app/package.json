@@ -42,7 +42,7 @@
     "hbs": "4.2.0",
     "hbs-utils": "0.0.4",
     "html-validate": "6.11.1",
-    "i18next": "21.8.0",
+    "i18next": "21.8.3",
     "i18next-http-middleware": "3.2.0",
     "i18next-fs-backend": "1.1.4",
     "i18next-sprintf-postprocessor": "0.2.2",
@@ -51,7 +51,7 @@
     "lodash": "4.17.21",
     "twig": "1.13.3",
     "webpack": "4.46.0",
-    "webpack-dev-middleware": "5.3.1",
+    "webpack-dev-middleware": "5.3.3",
     "webpack-hot-middleware": "2.25.1"
   },
   "devDependencies": {

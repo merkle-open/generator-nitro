@@ -5,8 +5,8 @@
   "license": "MIT",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=12.13.0 <17",
-    "npm": ">=6.12.0 <9"
+    "node": ">=14.15.0 <17",
+    "npm": ">=6.14.8 <9"
   },
   "scripts": {
     "lint": "eslint .",
@@ -44,7 +44,7 @@
     "gulp-rename": "2.0.0",
     "gulp-svgmin": "4.1.0",
     "gulp-svgstore": "9.0.0",
-    "html-validate": "6.11.1",
+    "html-validate": "7.1.0",
     "merge-stream": "2.0.0",
     "yargs": "17.5.1"
   },

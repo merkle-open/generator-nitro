@@ -5,8 +5,8 @@
   "repository": "merkle-open/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=12.17.0 <17",
-    "npm": ">=6.14.4 <9"
+    "node": ">=14.15.0 <17",
+    "npm": ">=6.14.8 <9"
   },
   "scripts": {
     "clean": "npx -y npm-run-all --npm-path npm clean:*",
@@ -19,7 +19,7 @@
     "lint": "lerna run lint --parallel",
     "lint:md": "markdownlint ./readme.md ./.github",
     "update-dependencies": "npm-run-all --parallel update-dependencies:*",
-    "update-dependencies:packages": "lerna exec -- npm-check-updates -u -x twig,webpack,css-loader,postcss-loader,sass-loader,node-sass,eslint-webpack-plugin,mini-css-extract-plugin,stylelint-webpack-plugin,chalk,globby,get-port,got,imagemin,img-loader,gulp-imagemin,imagemin-svgo,imagemin-mozjpeg,husky,html-validate,npm-check-updates",
+    "update-dependencies:packages": "lerna exec -- npm-check-updates -u -x twig,webpack,css-loader,postcss-loader,sass-loader,node-sass,eslint-webpack-plugin,mini-css-extract-plugin,stylelint-webpack-plugin,chalk,globby,get-port,got,imagemin,img-loader,gulp-imagemin,imagemin-svgo,imagemin-mozjpeg",
     "update-dependencies:root": "npm-check-updates -u"
   },
   "keywords": [
@@ -42,7 +42,7 @@
     "cz-conventional-changelog": "3.3.0",
     "lerna": "4.0.0",
     "markdownlint-cli": "0.31.1",
-    "npm-check-updates": "12.5.11",
+    "npm-check-updates": "13.0.3",
     "npm-run-all": "4.1.5",
     "rimraf": "3.0.2"
   }

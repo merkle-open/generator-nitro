@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "array-unique": "0.3.2",
-    "del": "6.1.0",
+    "del": "6.1.1",
     "delete-empty": "3.0.0",
     "glob": "8.0.3",
     "gulp-filter": "7.0.0",

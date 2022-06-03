@@ -6,9 +6,9 @@ End to end testing with cypress.
 
 ## Directories
 
-We use the [default configuration](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Folder-Structure)
+We use the [default configuration](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests)
 
-- `./cypress/integration` ist the place for your tests
+- `./cypress/e2e` ist the place for your tests
 - `./cypress/screenshots` and `./cypress/videos` directories are excluded from git
 
 ## Scripts
@@ -22,4 +22,4 @@ Use following npm scripts for your test workflow:
 
 Add `CI=true` as environment variable to avoid tons of log lines by installing cypress.
 
-More on [configuation for continous integration](https://docs.cypress.io/guides/guides/continuous-integration.html)
+More on [configuation for continous integration](https://docs.cypress.io/guides/continuous-integration/introduction)

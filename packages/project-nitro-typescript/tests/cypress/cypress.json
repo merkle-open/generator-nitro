@@ -1,5 +1,0 @@
-{
-	"integrationFolder": "cypress/integration",
-	"reporter": "dot",
-	"video": false
-}

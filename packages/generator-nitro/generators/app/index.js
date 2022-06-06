@@ -312,7 +312,7 @@ module.exports = class extends Generator {
 			'src/ui.ts',
 			'src/proto.js',
 			'src/proto.ts',
-			'tests/cypress/cypress/integration/examples/index.spec.js',
+			'tests/cypress/cypress/e2e/examples/index.cy.js',
 			'.eslintrc.js',
 			'docker-compose.yml',
 			'docker-compose-dev.yml',
@@ -402,7 +402,7 @@ module.exports = class extends Generator {
 			'src/patterns/',
 			'src/proto/utils/',
 			'src/shared/',
-			'tests/cypress/cypress/integration/examples/',
+			'tests/cypress/cypress/e2e/examples/',
 		];
 		const exampleIncludeAnyway = [
 			// example file "parts" included for this.options.exampleCode===false

@@ -104,7 +104,7 @@
     "commitizen": "4.2.4",
     "config": "3.3.7",
     "cross-env": "7.0.3",
-    "cypress": "10.0.2",
+    "cypress": "10.0.3",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "1.0.0",
     "eslint": "7.32.0",

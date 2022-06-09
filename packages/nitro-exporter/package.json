@@ -1,6 +1,6 @@
 {
   "name": "@nitro/exporter",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "An exporting package for nitro. Generate static packages with ease.",
   "license": "MIT",
   "repository": "merkle-open/generator-nitro",
@@ -25,15 +25,15 @@
     "exporter"
   ],
   "peerDependencies": {
-    "@nitro/app": ">=7.0.0",
-    "@nitro/gulp": ">=7.0.0"
+    "@nitro/app": ">=7.0.1",
+    "@nitro/gulp": ">=7.0.1"
   },
   "dependencies": {
     "array-unique": "0.3.2",
     "del": "6.1.1",
     "delete-empty": "3.0.0",
     "glob": "8.0.3",
-    "gulp-filter": "7.0.0",
+    "gulp-filter": "7.0.1",
     "gulp-html-minifier-terser": "6.0.1",
     "gulp-vinyl-zip": "2.5.0"
   },

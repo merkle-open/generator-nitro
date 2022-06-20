@@ -46,7 +46,7 @@
     "i18next-http-middleware": "3.2.1",
     "i18next-fs-backend": "1.1.4",
     "i18next-sprintf-postprocessor": "0.2.2",
-    "jasmine": "4.2.0",
+    "jasmine": "4.2.1",
     "jasmine-core": "4.2.0",
     "lodash": "4.17.21",
     "twig": "1.13.3",

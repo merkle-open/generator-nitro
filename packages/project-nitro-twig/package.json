@@ -91,6 +91,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "7.18.2",
     "@khanacademy/tota11y": "0.2.0",
+    "@merkle-open/html-validate-config": "0.1.0",
     "@namics/eslint-config": "9.1.1",
     "@namics/prettier-config": "2.0.1",
     "@namics/stylelint-config": "1.1.2",

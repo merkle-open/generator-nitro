@@ -89,7 +89,7 @@
     "handlebars": "4.7.7",
     "jquery": "3.6.0",
     "lazysizes": "5.3.2",
-    "lottie-web": "5.9.4",
+    "lottie-web": "5.9.5",
     "prevent-window-opener-attacks": "0.3.0"<% } %><% if (options.jsCompiler === 'js') { %>,
     "regenerator-runtime": "0.13.9"<% } %><% if (options.exampleCode) { %>,
     "svg4everybody": "2.1.9"<% } %>
@@ -115,7 +115,7 @@
     "commitizen": "4.2.4",
     "config": "3.3.7",
     "cross-env": "7.0.3",
-    "cypress": "10.2.0",
+    "cypress": "10.3.0",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "1.0.0",
     "eslint": "7.32.0",
@@ -125,7 +125,7 @@
     "gulp": "4.0.2",
     "husky": "8.0.1",
     "license-checker": "25.0.1",
-    "lighthouse": "9.6.2",
+    "lighthouse": "9.6.3",
     "lint-staged": "13.0.3",<% if (options.themes) { %>
     "node-sass": "6.0.1",<% } %>
     "npm-check-updates": "14.1.1",

@@ -32,7 +32,7 @@
     "config": "3.3.7",
     "del": "6.1.1",
     "get-port": "5.1.1",
-    "globby": "11.0.4",
+    "globby": "11.1.0",
     "gulp": "4.0.2",
     "gulp-html-validate": "0.2.0",
     "gulp-imagemin": "7.1.0",

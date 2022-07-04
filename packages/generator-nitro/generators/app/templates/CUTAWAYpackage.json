@@ -89,7 +89,7 @@
     "handlebars": "4.7.7",
     "jquery": "3.6.0",
     "lazysizes": "5.3.2",
-    "lottie-web": "5.9.5",
+    "lottie-web": "5.9.6",
     "prevent-window-opener-attacks": "0.3.0"<% } %><% if (options.jsCompiler === 'js') { %>,
     "regenerator-runtime": "0.13.9"<% } %><% if (options.exampleCode) { %>,
     "svg4everybody": "2.1.9"<% } %>
@@ -128,7 +128,7 @@
     "lighthouse": "9.6.3",
     "lint-staged": "13.0.3",<% if (options.themes) { %>
     "node-sass": "6.0.1",<% } %>
-    "npm-check-updates": "14.1.1",
+    "npm-check-updates": "15.0.1",
     "npm-run-all": "4.1.5",
     "prettier": "2.7.1",
     "rimraf": "3.0.2",

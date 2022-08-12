@@ -38,7 +38,7 @@
     "find-git-root": "1.0.4",
     "git-config": "0.0.7",
     "glob": "8.0.3",
-    "got": "11.8.3",
+    "got": "11.8.5",
     "lodash": "4.17.21",
     "yeoman-generator": "5.7.0",
     "yosay": "2.0.2"

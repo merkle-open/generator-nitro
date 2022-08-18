@@ -106,16 +106,16 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",<% if (options.jsCompiler === 'ts') { %>
-    "@types/bootstrap": "5.2.1",<% if (options.exampleCode ) { %>
+    "@types/bootstrap": "5.2.2",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.5.14",<% } %>
     "@types/svg4everybody": "2.1.2",
-    "@types/webpack-env": "1.17.0",<% } %>
+    "@types/webpack-env": "1.18.0",<% } %>
     "backstopjs": "6.1.1",
     "check-node-version": "4.2.1",
     "commitizen": "4.2.5",
     "config": "3.3.7",
     "cross-env": "7.0.3",
-    "cypress": "10.4.0",
+    "cypress": "10.6.0",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "1.0.0",
     "eslint": "7.32.0",
@@ -125,7 +125,7 @@
     "gulp": "4.0.2",
     "husky": "8.0.1",
     "license-checker": "25.0.1",
-    "lighthouse": "9.6.5",
+    "lighthouse": "9.6.6",
     "lint-staged": "13.0.3",<% if (options.themes) { %>
     "node-sass": "6.0.1",<% } %>
     "npm-check-updates": "16.0.5",

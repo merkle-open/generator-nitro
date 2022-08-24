@@ -23,7 +23,7 @@
     "nitro"
   ],
   "dependencies": {
-    "@babel/core": "7.18.10",
+    "@babel/core": "7.18.13",
     "@babel/preset-env": "7.18.10",
     "@babel/preset-react": "7.18.6",
     "@babel/plugin-proposal-decorators": "7.18.10",
@@ -46,7 +46,7 @@
     "postcss": "8.4.16",
     "postcss-loader": "4.3.0",
     "resolve-url-loader": "5.0.0",
-    "sass": "1.54.4",
+    "sass": "1.54.5",
     "sass-loader": "10.2.1",
     "stylelint": "13.13.1",
     "stylelint-webpack-plugin": "2.2.2",
@@ -56,7 +56,7 @@
     "url-loader": "4.1.1",
     "webpack": "4.46.0",
     "webpackbar": "5.0.2",
-    "webpack-bundle-analyzer": "4.6.0"
+    "webpack-bundle-analyzer": "4.6.1"
   },
   "optionalDependencies": {
     "imagemin-mozjpeg": "9.0.0",

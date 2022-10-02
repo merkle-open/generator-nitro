@@ -46,7 +46,7 @@
     "gulp-svgstore": "9.0.0",
     "html-validate": "7.5.0",
     "merge-stream": "2.0.0",
-    "yargs": "17.5.1"
+    "yargs": "17.6.0"
   },
   "optionalDependencies": {
     "imagemin-pngquant": "9.0.2"

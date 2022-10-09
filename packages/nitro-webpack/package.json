@@ -39,7 +39,7 @@
     "handlebars-loader": "1.7.2",
     "iconfont-webpack-plugin": "5.0.1",
     "imagemin": "7.0.1",
-    "img-loader": "3.0.2",
+    "img-loader": "4.0.0",
     "js-config-webpack-plugin": "2.0.3",
     "mini-css-extract-plugin": "1.6.2",
     "optimize-css-assets-webpack-plugin": "6.0.1",

@@ -13,6 +13,12 @@ Run:
 npm install
 ```
 
+On Mac you need to make sure that githooks are executable:
+
+```
+chmod +x .husky/pre-commit
+```
+
 and start in development mode
 
 ```

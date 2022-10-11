@@ -31,6 +31,12 @@ Install the project dependencies in the project root:
 npm install
 ```
 
+On Mac you need to make sure that githooks are executable, e.g.
+
+```
+chmod +x .husky/pre-commit
+```
+
 ## Starting the app
 
 Use

@@ -24,7 +24,7 @@ const viewports = [
 module.exports = {
 	host,
 	baseConfig: {
-		id: 'nitro-twig_test',
+		id: 'Screen',
 		viewports,
 		onBeforeScript: 'puppet/onBefore.js',
 		onReadyScript: 'puppet/onReady.js',
@@ -66,7 +66,7 @@ module.exports = {
 		selectors: [],
 		selectorExpansion: false,
 		expect: 0,
-		misMatchThreshold: 0.1,
+		misMatchThreshold: 0.01,
 		requireSameDimensions: true,
 	},
 };

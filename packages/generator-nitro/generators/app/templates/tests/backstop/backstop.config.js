@@ -5,13 +5,15 @@
  * requires a build
  */
 
-const backstopConfig = require('./config/basic');
+const utils = require('./config/utils');
+
+const baseScenario = utils.getBaseScenario();
 
 const scenarios = [
 	{
-		...backstopConfig.baseScenario,
-		label: 'Homepage',
-		url: `${backstopConfig.host}/index`,
+		baseScenario,
+		label: 'Example',
+		url: 'index',
 		removeSelectors: ['.m-example--blue'],
 		selectors: ['.m-example'],
 		selectorExpansion: true,
@@ -19,6 +21,6 @@ const scenarios = [
 ];
 
 module.exports = {
-	...backstopConfig.baseConfig,
-	scenarios,
+	...utils.getBaseConfig(),
+	scenarios: utils.getFinalScenarios(scenarios),
 };

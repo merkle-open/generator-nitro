@@ -11,7 +11,7 @@ const baseScenario = utils.getBaseScenario();
 
 const scenarios = [
 	{
-		baseScenario,
+		...baseScenario,
 		label: 'Example',
 		url: 'index',
 		removeSelectors: ['.m-example--blue'],

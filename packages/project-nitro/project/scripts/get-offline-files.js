@@ -9,7 +9,7 @@
  * yarn get-offline-files
  *
  */
-const chalk = require('chalk');
+const clc = require('cli-color');
 const del = require('del');
 const path = require('path');
 const scrape = require('website-scraper');
@@ -26,10 +26,10 @@ const options = {
 del(target).then(() => {
 	scrape(options)
 		.then(() => {
-			console.log(`${chalk.green('Success:')} All data was downloaded successfully!`);
+			console.log(`${clc.green('Success:')} All data was downloaded successfully!`);
 		})
 		.catch((err) => {
-			console.log(`${chalk.red('Error:')} There was an error downloading files!`);
+			console.log(`${clc.red('Error:')} There was an error downloading files!`);
 			console.log(err.message);
 		});
 });

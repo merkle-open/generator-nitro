@@ -22,7 +22,7 @@
  * }
  *
  */
-const chalk = require('chalk');
+const clc = require('cli-color');
 const fs = require('fs');
 const globby = require('globby');
 const Ajv = require('ajv');
@@ -72,12 +72,12 @@ globby.sync(patternGlobs, { onlyFiles: false }).forEach((patternPath) => {
 
 	if (!fs.existsSync(schemaFilePath)) {
 		if (logMissingSchemaAsError) {
-			console.log(`${chalk.red('Error')} (${patternPath}): no schema file found`);
+			console.log(`${clc.red('Error')} (${patternPath}): no schema file found`);
 			errorCouter += 1;
 			return true;
 		}
 		if (logMissingSchemaAsWarning) {
-			console.log(`${chalk.yellow('Warn')} (${patternPath}): no schema file found`);
+			console.log(`${clc.yellow('Warn')} (${patternPath}): no schema file found`);
 		}
 		return true;
 	}
@@ -91,14 +91,14 @@ globby.sync(patternGlobs, { onlyFiles: false }).forEach((patternPath) => {
 		const valid = ajv.validate(schemaToUse, patternData);
 		if (!valid) {
 			errorCouter += 1;
-			console.log(`${chalk.red('Error')} (${patternDataFilePath}): ${ajv.errorsText()}`);
+			console.log(`${clc.red('Error')} (${patternDataFilePath}): ${ajv.errorsText()}`);
 		}
 	});
 });
 
 if (errorCouter <= 0) {
-	console.log(`${chalk.green('Success:')} all data from each of the ${patternCouter} patterns are valid!\n`);
+	console.log(`${clc.green('Success:')} all data from each of the ${patternCouter} patterns are valid!\n`);
 } else {
-	console.log(`${chalk.red('Error:')} we detected ${errorCouter} errors in your data.\n`);
+	console.log(`${clc.red('Error:')} we detected ${errorCouter} errors in your data.\n`);
 	process.exitCode = 1;
 }

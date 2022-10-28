@@ -3,7 +3,7 @@
 /* eslint-disable max-len, complexity, no-else-return, require-jsdoc */
 
 const Generator = require('yeoman-generator');
-const chalk = require('chalk');
+const clc = require('cli-color');
 const yosay = require('yosay');
 const got = require('got');
 const path = require('path');
@@ -119,12 +119,12 @@ module.exports = class extends Generator {
 			this._git.root = gitPath;
 			this._git.project = projectPath;
 		} catch (e) {
-			this.log(chalk.red(e.message));
+			this.log(clc.red(e.message));
 		}
 	}
 
 	prompting() {
-		this.log(yosay(`Welcome to the awe-inspiring ${chalk.cyan('Nitro')} generator!`));
+		this.log(yosay(`Welcome to the awe-inspiring ${clc.cyan('Nitro')} generator!`));
 
 		// check whether there is already a nitro application in place and we only have to update the application
 		const json = this.fs.readJSON(this.destinationPath('.yo-rc.json'), { new: true });
@@ -135,7 +135,7 @@ module.exports = class extends Generator {
 				{
 					name: 'update',
 					type: 'confirm',
-					message: `There is already a ${chalk.cyan(
+					message: `There is already a ${clc.cyan(
 						'Nitro'
 					)} application in place! Should I serve you an update?`,
 					default: true,
@@ -560,13 +560,13 @@ module.exports = class extends Generator {
 				}
 			});
 		} catch (e) {
-			this.log(chalk.red(e.message));
+			this.log(clc.red(e.message));
 		}
 
 		if (this._update) {
 			this.log(yosay(`All done – Check local changes and then\nrun \`npm install\` to update your project.`));
 		} else {
-			this.log(yosay(`All done –\nrun \`npm start\` to start ${chalk.cyan('Nitro')} in development mode.`));
+			this.log(yosay(`All done –\nrun \`npm start\` to start ${clc.cyan('Nitro')} in development mode.`));
 		}
 	}
 };

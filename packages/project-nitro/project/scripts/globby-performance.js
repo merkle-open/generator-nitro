@@ -9,7 +9,7 @@
  */
 const globby = require('globby');
 const config = require('config');
-const chalk = require('chalk');
+const clc = require('cli-color');
 
 (function globTest() {
 	const folder = 'Ex-link';
@@ -26,10 +26,10 @@ const chalk = require('chalk');
 	const timer1 = new Date();
 
 	globby.sync(elementGlobs).forEach((templatePath) => {
-		console.log(`${chalk.green('Success:')} Element ${folder} found in ${templatePath}`);
+		console.log(`${clc.green('Success:')} Element ${folder} found in ${templatePath}`);
 	});
 
 	const timer2 = new Date();
 	const diff = timer2 - timer1;
-	console.log(`${chalk.yellow('Time for globby:')} ${diff} ms`);
+	console.log(`${clc.yellow('Time for globby:')} ${diff} ms`);
 })();

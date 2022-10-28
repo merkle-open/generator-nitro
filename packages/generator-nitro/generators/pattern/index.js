@@ -7,7 +7,7 @@
 /* eslint-disable no-inline-comments, max-len, complexity, global-require, require-jsdoc */
 
 const Generator = require('yeoman-generator');
-const chalk = require('chalk');
+const clc = require('cli-color');
 const yosay = require('yosay');
 const path = require('path');
 const fs = require('fs');
@@ -149,14 +149,14 @@ module.exports = class extends Generator {
 	writing() {
 		const hasModifier = !_.isEmpty(this.options.modifier);
 		const hasDecorator = !_.isEmpty(this.options.decorator);
-		let msg = `Creating ${chalk.cyan(this.name)} ${this.options.type}`;
+		let msg = `Creating ${clc.cyan(this.name)} ${this.options.type}`;
 
 		if (hasModifier || hasDecorator) {
 			msg += ' with ';
 		}
 
 		if (hasModifier) {
-			msg += `CSS modifier ${chalk.cyan(this.options.modifier)}`;
+			msg += `CSS modifier ${clc.cyan(this.options.modifier)}`;
 
 			if (hasDecorator) {
 				msg += ' and ';
@@ -164,7 +164,7 @@ module.exports = class extends Generator {
 		}
 
 		if (hasDecorator) {
-			msg += `JS decorator ${chalk.cyan(this.options.decorator)}`;
+			msg += `JS decorator ${clc.cyan(this.options.decorator)}`;
 		}
 
 		this.log(msg);

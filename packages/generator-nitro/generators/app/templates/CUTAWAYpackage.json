@@ -124,6 +124,7 @@
     "generator-nitro": "<%= version %>",
     "gulp": "4.0.2",
     "husky": "8.0.1",
+	"html-validate": "7.7.1",
     "license-checker": "25.0.1",
     "lighthouse": "9.6.7",
     "lint-staged": "13.0.3",<% if (options.themes) { %>

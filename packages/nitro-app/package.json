@@ -52,7 +52,7 @@
     "twig": "1.13.3",
     "webpack": "4.46.0",
     "webpack-dev-middleware": "5.3.3",
-    "webpack-hot-middleware": "2.25.2"
+    "webpack-hot-middleware": "2.25.3"
   },
   "devDependencies": {
     "@namics/eslint-config": "9.1.1",

@@ -29,7 +29,7 @@
     "nitro"
   ],
   "dependencies": {
-    "ajv": "8.11.0",
+    "ajv": "8.11.2",
     "body-parser": "1.20.1",
     "cli-color": "2.0.3",
     "compression": "1.7.4",
@@ -41,8 +41,8 @@
     "globby": "11.1.0",
     "hbs": "4.2.0",
     "hbs-utils": "0.0.4",
-    "html-validate": "7.8.0",
-    "i18next": "22.0.4",
+    "html-validate": "7.9.0",
+    "i18next": "22.0.5",
     "i18next-http-middleware": "3.2.1",
     "i18next-fs-backend": "2.0.0",
     "i18next-sprintf-postprocessor": "0.2.2",

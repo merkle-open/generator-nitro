@@ -91,17 +91,17 @@
     "lazysizes": "5.3.2",
     "lottie-web": "5.9.6",
     "prevent-window-opener-attacks": "0.3.0"<% } %><% if (options.jsCompiler === 'js') { %>,
-    "regenerator-runtime": "0.13.10"<% } %><% if (options.exampleCode) { %>,
+    "regenerator-runtime": "0.13.11"<% } %><% if (options.exampleCode) { %>,
     "svg4everybody": "2.1.9"<% } %>
   },
   "devDependencies": {<% if (options.jsCompiler === 'js') { %>
     "@babel/eslint-parser": "7.19.1",<% } %>
     "@khanacademy/tota11y": "0.2.0",
-    "@merkle-open/html-validate-config": "0.1.1",
+    "@merkle-open/html-validate-config": "0.1.2",
     "@namics/eslint-config": "9.1.1",
-    "@namics/prettier-config": "3.0.0",
-    "@namics/stylelint-config": "2.0.0",
-    "@namics/ts-config": "2.0.0",
+    "@namics/prettier-config": "3.0.1",
+    "@namics/stylelint-config": "3.0.0",
+    "@namics/ts-config": "2.0.1",
     "@nitro/app": "<%= version %>",
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
@@ -124,7 +124,7 @@
     "generator-nitro": "<%= version %>",
     "gulp": "4.0.2",
     "husky": "8.0.2",
-    "html-validate": "7.9.0",
+    "html-validate": "7.10.0",
     "license-checker": "25.0.1",
     "lighthouse": "9.6.8",
     "lint-staged": "13.0.3",<% if (options.themes) { %>
@@ -133,7 +133,7 @@
     "npm-run-all": "4.1.5",
     "prettier": "2.7.1",
     "rimraf": "3.0.2",
-    "stylelint": "13.13.1",<% if (options.jsCompiler === 'ts') { %>
+    "stylelint": "14.15.0",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "4.9.3",<% } %>
     "webpack-cli": "4.10.0",
     "yo": "4.3.1"

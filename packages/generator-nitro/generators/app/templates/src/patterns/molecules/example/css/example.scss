@@ -1,5 +1,5 @@
-@import '../../../../shared/utils/colors/css/colors.scss';<% if (options.themes) { %>
-@import './theme/light.scss';<% } %>
+@import '../../../../shared/utils/colors/css/colors';<% if (options.themes) { %>
+@import './theme/light';<% } %>
 
 .m-example {
 	margin: 1em 0;

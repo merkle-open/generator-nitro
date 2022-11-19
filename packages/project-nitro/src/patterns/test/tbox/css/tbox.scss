@@ -1,9 +1,9 @@
-@import '../../../../shared/utils/colors2/css/colors2.scss';
+@import '../../../../shared/utils/colors2/css/colors2';
 
 .t-tbox {
 	position: relative;
 	margin: 2rem 2rem 2rem 0;
-	padding: 2rem 2rem 1.5rem 2rem;
+	padding: 2rem 2rem 1.5rem;
 	color: $color-gray-1;
 	background-color: $color-gray-8;
 	min-height: 5em;
@@ -27,12 +27,14 @@
 @mixin tbox-mixin() {
 	display: block;
 }
+/* stylelint-disable-next-line  no-duplicate-selectors */
 .t-tbox {
 	@include tbox-mixin();
 }
 @mixin tbox-mixin-alternative($display: block) {
 	display: $display;
 }
+/* stylelint-disable-next-line  no-duplicate-selectors */
 .t-tbox {
 	@include tbox-mixin-alternative();
 	@include tbox-mixin-alternative(block);

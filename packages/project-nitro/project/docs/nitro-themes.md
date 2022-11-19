@@ -139,7 +139,7 @@ Abstraction for themed colors as an example:
 
 ```
 // colors.scss
-@import './theme/light.scss';
+@import './theme/light';
 
 $color-base-font: $foreground;
 $color-base-background: $background;
@@ -152,8 +152,8 @@ The pattern.scss uses the themed colors and a themed pattern import with variabl
 
 ```
 // pattern.scss
-@import '../../../../shared/utils/colors/css/colors.scss';
-@import './theme/light.scss';
+@import '../../../../shared/utils/colors/css/colors';
+@import './theme/light';
 
 .m-example {
 	margin: 1em 0;

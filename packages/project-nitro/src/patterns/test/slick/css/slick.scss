@@ -1,13 +1,13 @@
-@import '../../../../shared/utils/colors2/css/colors2.scss';
-@import '../../../../shared/utils/breakpoints/css/breakpoints.scss';
+@import '../../../../shared/utils/colors2/css/colors2';
+@import '../../../../shared/utils/breakpoints/css/breakpoints';
 
 $slick-font-path: '~slick-carousel/slick/fonts/';
 $slick-font-family: 'slick';
 $slick-loader-path: '~slick-carousel/slick/';
 $slick-arrow-color: $color-brand-1;
 
-@import '~slick-carousel/slick/slick.scss';
-@import '~slick-carousel/slick/slick-theme.scss';
+@import '~slick-carousel/slick/slick';
+@import '~slick-carousel/slick/slick-theme';
 
 .t-slick {
 	position: relative;
@@ -25,5 +25,4 @@ $slick-arrow-color: $color-brand-1;
 		}
 		/* stylelint-enable plugin/stylelint-bem-namics */
 	}
-
 }

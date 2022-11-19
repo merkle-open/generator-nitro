@@ -1,8 +1,8 @@
-@import '../../../../shared/utils/colors2/css/colors2.scss';
-@import '../../../../shared/utils/hidden/css/hidden.scss';
+@import '../../../../shared/utils/colors2/css/colors2';
+@import '../../../../shared/utils/hidden/css/hidden';
 
 $checkbox-border: 2px;
-$checkbox-size : 1.3em;
+$checkbox-size: 1.3em;
 $checkbox-color: $color-gray-5;
 
 .a-tcheckbox {
@@ -39,7 +39,7 @@ $checkbox-color: $color-gray-5;
 
 	label {
 		display: inline-block;
-		padding: 0.2em 1em 0.2em (1 + $checkbox-size) ;
+		padding: 0.2em 1em 0.2em (1 + $checkbox-size);
 
 		cursor: pointer;
 		user-select: none;

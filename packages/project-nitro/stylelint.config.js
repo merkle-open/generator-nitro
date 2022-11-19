@@ -5,4 +5,7 @@ lintConfig.rules['plugin/stylelint-bem-namics'] = {
 	helperPrefixes: ['state'],
 };
 
+// node-sass can't handle modern color function notation
+lintConfig.rules['color-function-notation'] = null;
+
 module.exports = lintConfig;

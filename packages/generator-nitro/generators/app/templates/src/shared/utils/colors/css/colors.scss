@@ -1,6 +1,6 @@
 // colors<% if (options.themes) { %>
-@import './theme/light.scss';<% } else { %>
-@import './variables/colors.scss';<% } %>
+@import './theme/light';<% } else { %>
+@import './variables/colors';<% } %>
 
 $color-base-font: $foreground;
 $color-base-background: $background;

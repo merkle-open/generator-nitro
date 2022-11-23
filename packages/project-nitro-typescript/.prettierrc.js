@@ -1,3 +1,3 @@
-const config = require('@namics/prettier-config');
+const config = require('@merkle-open/prettier-config');
 
 module.exports = config;

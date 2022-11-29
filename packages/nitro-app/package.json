@@ -44,7 +44,7 @@
     "html-validate": "7.10.0",
     "i18next": "22.0.6",
     "i18next-http-middleware": "3.2.1",
-    "i18next-fs-backend": "2.0.0",
+    "i18next-fs-backend": "2.0.1",
     "i18next-sprintf-postprocessor": "0.2.2",
     "jasmine": "4.5.0",
     "jasmine-core": "4.5.0",

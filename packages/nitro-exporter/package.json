@@ -34,7 +34,7 @@
     "delete-empty": "3.0.0",
     "glob": "8.0.3",
     "gulp-filter": "7.0.0",
-    "gulp-html-minifier-terser": "6.0.1",
+    "gulp-html-minifier-terser": "7.1.0",
     "gulp-vinyl-zip": "2.5.0"
   },
   "devDependencies": {

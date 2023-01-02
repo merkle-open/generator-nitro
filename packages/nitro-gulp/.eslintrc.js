@@ -1,7 +1,7 @@
 module.exports = {
 	extends: [
-		'@namics/eslint-config/configurations/es8-node.js',
-		'@namics/eslint-config/configurations/es8-node-disable-styles.js',
+		'@merkle-open/eslint-config/configurations/es8-node.js',
+		'@merkle-open/eslint-config/configurations/es8-node-disable-styles.js',
 	].map(require.resolve),
 	rules: {
 		'require-jsdoc': 'off',

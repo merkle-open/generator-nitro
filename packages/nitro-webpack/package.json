@@ -65,7 +65,7 @@
     "imagemin-svgo": "9.0.0"
   },
   "devDependencies": {
-    "@namics/eslint-config": "10.0.0"
+    "@merkle-open/eslint-config": "1.0.0"
   },
   "publishConfig": {
     "access": "public"

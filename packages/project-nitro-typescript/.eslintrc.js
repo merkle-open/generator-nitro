@@ -2,8 +2,8 @@
 
 module.exports = {
 	extends: [
-		'@namics/eslint-config/configurations/typescript-browser.js',
-		'@namics/eslint-config/configurations/typescript-browser-disable-styles.js',
+		'@merkle-open/eslint-config/configurations/typescript-browser.js',
+		'@merkle-open/eslint-config/configurations/typescript-browser-disable-styles.js',
 	].map(require.resolve),
 	rules: {
 		'no-restricted-syntax': ['error', 'LabeledStatement', 'WithStatement'],

@@ -55,7 +55,7 @@
     "webpack-hot-middleware": "2.25.3"
   },
   "devDependencies": {
-    "@namics/eslint-config": "10.0.0",
+    "@merkle-open/eslint-config": "1.0.0",
     "eslint": "7.32.0",
     "eslint-plugin-import": "2.26.0"
   },

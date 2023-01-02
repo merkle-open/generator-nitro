@@ -90,11 +90,11 @@
   },
   "devDependencies": {
     "@khanacademy/tota11y": "0.2.0",
+    "@merkle-open/eslint-config": "1.0.0",
     "@merkle-open/html-validate-config": "1.0.0",
     "@merkle-open/prettier-config": "1.0.0",
     "@merkle-open/stylelint-config": "1.0.0",
     "@merkle-open/ts-config": "1.0.0",
-    "@namics/eslint-config": "10.0.0",
     "@nitro/app": "*",
     "@nitro/exporter": "*",
     "@nitro/gulp": "*",

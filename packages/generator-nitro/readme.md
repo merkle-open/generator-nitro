@@ -29,6 +29,12 @@ using [npx](https://www.npmjs.com/package/npx) (npm >= 5.2):
 npx -p yo -p generator-nitro@latest -- yo nitro
 ```
 
+then install with desired node version
+
+```
+npm install
+```
+
 ### Update a project
 
 Updating a project to the newest nitro version is quite simple:

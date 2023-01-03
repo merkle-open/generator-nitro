@@ -229,6 +229,8 @@ module.exports = class extends Generator {
 					when: () => !this._skipQuestions && typeof this._passedInOptions.exporter !== 'boolean',
 				},
 			]).then((answers) => {
+				this.options.skipInstall = true;
+
 				this.options.name = answers.name || this.options.name;
 				this.options.templateEngine = answers.templateEngine || this.options.templateEngine;
 				this.options.jsCompiler = answers.jsCompiler || this.options.jsCompiler;
@@ -564,9 +566,9 @@ module.exports = class extends Generator {
 		}
 
 		if (this._update) {
-			this.log(yosay(`All done – Check local changes and then\nrun \`npm install\` to update your project.`));
+			this.log(yosay(`All done – check local changes, \nuse desired node version and then\nrun \`npm install\` to update your project.`));
 		} else {
-			this.log(yosay(`All done –\nrun \`npm start\` to start ${clc.cyan('Nitro')} in development mode.`));
+			this.log(yosay(`All done – use desired node version, \nrun \`npm install\` \nand run \`npm start\` to start ${clc.cyan('Nitro')} in development mode.`));
 		}
 	}
 };

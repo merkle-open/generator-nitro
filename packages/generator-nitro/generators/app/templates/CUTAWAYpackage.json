@@ -18,7 +18,7 @@
     "nitro:pattern": "yo nitro:pattern",
     "nitro:server": "npm run build && rimraf dist/ && yo nitro:server --folder=dist",
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
-    "update-dependencies": "npm-check-updates -u",
+    "update-dependencies": "npm-check-updates -u --deprecated",
     "\n# MISC ------- ": "",
     "postinstall": "<% if (git.root) { %>cd <%= git.root %> && husky install <% if (git.project) { %><%= git.project %>/.husky && cd <%= git.project %> <% } %>&& <% } %><% if (options.themes) { %>npm rebuild node-sass && <% } %>env-linter<% if (git.root) { %> --hooksInstalled<% } %> --saveExact --dependenciesExactVersion --lts",
     "\n# LINT/TEST ------- ": "",

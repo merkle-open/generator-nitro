@@ -10,7 +10,7 @@ Ensure correct [node-version](./.node-version)
 Run:
 
 ```
-npm install
+npm ci
 ```
 
 On Mac you need to make sure that githooks are executable:

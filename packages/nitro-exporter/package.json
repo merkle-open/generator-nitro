@@ -32,7 +32,7 @@
     "array-unique": "0.3.2",
     "del": "6.1.1",
     "delete-empty": "3.0.0",
-    "glob": "8.0.3",
+    "glob": "8.1.0",
     "gulp-filter": "7.0.0",
     "gulp-html-minifier-terser": "7.1.0",
     "gulp-vinyl-zip": "2.5.0"
@@ -41,7 +41,7 @@
     "@merkle-open/eslint-config": "1.0.0",
     "@nitro/app": "*",
     "eslint": "7.32.0",
-    "eslint-plugin-import": "2.26.0"
+    "eslint-plugin-import": "2.27.4"
   },
   "publishConfig": {
     "access": "public"

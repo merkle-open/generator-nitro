@@ -34,7 +34,7 @@
     "css-loader": "5.2.7",
     "eslint": "7.32.0",
     "eslint-webpack-plugin": "2.7.0",
-    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-import": "2.27.4",
     "file-loader": "6.2.0",
     "handlebars-loader": "1.7.3",
     "iconfont-webpack-plugin": "5.0.1",

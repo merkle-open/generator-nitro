@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "cli-color": "2.0.3",
-    "config": "3.3.8",
+    "config": "3.3.9",
     "find-git-root": "1.0.4",
     "git-config": "0.0.7",
     "glob": "8.1.0",
@@ -47,7 +47,7 @@
     "@merkle-open/eslint-config": "1.0.0",
     "ejs": "3.1.8",
     "eslint": "7.32.0",
-    "eslint-plugin-import": "2.27.4",
+    "eslint-plugin-import": "2.27.5",
     "fs-extra": "11.1.0",
     "jasmine": "4.5.0",
     "yeoman-assert": "3.1.1",

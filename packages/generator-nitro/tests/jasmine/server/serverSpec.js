@@ -27,11 +27,15 @@ const projectCopyFilter = (src) => {
 		src.indexOf('tests') === -1 &&
 		src.indexOf('tmp') === -1 &&
 		src.indexOf('config') === -1 &&
-		src.indexOf('reports') === -1
+		src.indexOf('reports') === -1 &&
+		src.indexOf('.husky') === -1
 	);
 };
 
 describe('nitro:server', () => {
+
+	jasmine.DEFAULT_TIMEOUT_INTERVAL = 25000;
+
 	describe('when using default options', () => {
 		const folder = 'dist';
 

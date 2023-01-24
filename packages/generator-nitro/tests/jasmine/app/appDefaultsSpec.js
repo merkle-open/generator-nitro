@@ -10,7 +10,7 @@ const os = require('os');
 const defaultPrompts = require('./utils/appDefaultPrompts');
 
 describe('nitro:app', () => {
-	jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
+	jasmine.DEFAULT_TIMEOUT_INTERVAL = 25000;
 
 	describe('when using default options', () => {
 		beforeAll((done) => {

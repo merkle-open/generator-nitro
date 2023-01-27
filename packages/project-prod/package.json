@@ -1,7 +1,7 @@
 {
   "name": "nitro-project-prod",
   "version": "0.0.0",
-  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 7.2.3",
+  "description": "Nitro is a Node.js application for simple and complex frontend development with a tiny footprint. This app is based on generator-nitro 7.2.4",
   "license": "UNLICENSED",
   "private": true,
   "author": "The Nitro Team",

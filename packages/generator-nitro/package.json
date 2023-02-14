@@ -40,7 +40,7 @@
     "glob": "8.1.0",
     "got": "11.8.5",
     "lodash": "4.17.21",
-    "yeoman-generator": "5.7.0",
+    "yeoman-generator": "5.7.1",
     "yosay": "2.0.2"
   },
   "devDependencies": {

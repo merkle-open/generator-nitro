@@ -27,7 +27,7 @@
     "gulp": ">=4.0.2"
   },
   "dependencies": {
-    "browser-sync": "2.27.11",
+    "browser-sync": "2.27.12",
     "compression": "1.7.4",
     "config": "3.3.9",
     "del": "6.1.1",
@@ -46,7 +46,7 @@
     "gulp-svgstore": "9.0.0",
     "html-validate": "7.13.2",
     "merge-stream": "2.0.0",
-    "yargs": "17.7.0"
+    "yargs": "17.7.1"
   },
   "optionalDependencies": {
     "imagemin-pngquant": "9.0.2"

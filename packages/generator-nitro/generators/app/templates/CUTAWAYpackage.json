@@ -98,10 +98,10 @@
     "@babel/eslint-parser": "7.19.1",<% } %>
     "@khanacademy/tota11y": "0.2.0",
     "@merkle-open/eslint-config": "1.0.0",
-    "@merkle-open/html-validate-config": "1.0.0",
-    "@merkle-open/prettier-config": "1.0.0",
+    "@merkle-open/html-validate-config": "1.0.1",
+    "@merkle-open/prettier-config": "1.0.1",
     "@merkle-open/stylelint-config": "1.0.0",
-    "@merkle-open/ts-config": "1.0.0",
+    "@merkle-open/ts-config": "1.0.1",
     "@nitro/app": "<%= version %>",
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
@@ -129,7 +129,7 @@
     "lighthouse": "10.0.1",
     "lint-staged": "13.1.2",<% if (options.themes) { %>
     "node-sass": "8.0.0",<% } %>
-    "npm-check-updates": "16.7.5",
+    "npm-check-updates": "16.7.9",
     "npm-run-all": "4.1.5",
     "prettier": "2.8.4",
     "rimraf": "4.1.2",

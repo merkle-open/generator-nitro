@@ -6,20 +6,20 @@
 const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
-const os = require('os');
-const defaultPrompts = require('./utils/appDefaultPrompts');
+const utils = require('../../helpers/utils');
+
+const folder = 'temp-test-app';
 
 describe('nitro:app', () => {
 	jasmine.DEFAULT_TIMEOUT_INTERVAL = 25000;
 
 	describe('when using custom name', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/app'))
+				.inDir(utils.getTempFolder(folder))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ name: 'my Project' })
-				.on('end', done);
+				.withPrompts({ name: 'my Project' });
 		});
 
 		it('package.json contains project name', () => {
@@ -28,13 +28,12 @@ describe('nitro:app', () => {
 	});
 
 	describe('when using template engine hbs', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/app'))
+				.inDir(utils.getTempFolder(folder))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ ...defaultPrompts, ...{ templateEngine: 'hbs' } })
-				.on('end', done);
+				.withPrompts({ ...utils.defaultPrompts, ...{ templateEngine: 'hbs' } });
 		});
 
 		it('view files have the .hbs file extension', () => {
@@ -53,13 +52,12 @@ describe('nitro:app', () => {
 	});
 
 	describe('when using template engine twig', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/app'))
+				.inDir(utils.getTempFolder(folder))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ ...defaultPrompts, ...{ templateEngine: 'twig' } })
-				.on('end', done);
+				.withPrompts({ ...utils.defaultPrompts, ...{ templateEngine: 'twig' } });
 		});
 
 		it('view files have the .twig file extension', () => {
@@ -78,13 +76,12 @@ describe('nitro:app', () => {
 	});
 
 	describe('when using js compiler typescript', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/app'))
+				.inDir(utils.getTempFolder(folder))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ ...defaultPrompts, ...{ jsCompiler: 'ts' } })
-				.on('end', done);
+				.withPrompts({ ...utils.defaultPrompts, ...{ jsCompiler: 'ts' } });
 		});
 
 		it('javascript files have the .ts file extension', () => {
@@ -100,13 +97,12 @@ describe('nitro:app', () => {
 	});
 
 	describe('when using js compiler javascript', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/app'))
+				.inDir(utils.getTempFolder(folder))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ ...defaultPrompts, ...{ jsCompiler: 'js' } })
-				.on('end', done);
+				.withPrompts({ ...utils.defaultPrompts, ...{ jsCompiler: 'js' } });
 		});
 
 		it('javascript files have the .js file extension', () => {
@@ -122,13 +118,12 @@ describe('nitro:app', () => {
 	});
 
 	describe('when including themes feature', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/app'))
+				.inDir(utils.getTempFolder(folder))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ ...defaultPrompts, ...{ themes: true } })
-				.on('end', done);
+				.withPrompts({ ...utils.defaultPrompts, ...{ themes: true } });
 		});
 
 		it('theme files are generated', () => {
@@ -150,13 +145,12 @@ describe('nitro:app', () => {
 	});
 
 	describe('when not including themes feature', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/app'))
+				.inDir(utils.getTempFolder(folder))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ ...defaultPrompts, ...{ themes: false } })
-				.on('end', done);
+				.withPrompts({ ...utils.defaultPrompts, ...{ themes: false } });
 		});
 
 		it('theme files are not generated', () => {
@@ -179,13 +173,12 @@ describe('nitro:app', () => {
 	});
 
 	describe('when including client templates', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/app'))
+				.inDir(utils.getTempFolder(folder))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ ...defaultPrompts, ...{ clientTpl: true } })
-				.on('end', done);
+				.withPrompts({ ...utils.defaultPrompts, ...{ clientTpl: true } });
 		});
 
 		it('pattern blueprint contains template file', () => {
@@ -198,13 +191,12 @@ describe('nitro:app', () => {
 	});
 
 	describe('when not including client templates', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/app'))
+				.inDir(utils.getTempFolder(folder))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ ...defaultPrompts, ...{ clientTpl: false } })
-				.on('end', done);
+				.withPrompts({ ...utils.defaultPrompts, ...{ clientTpl: false } });
 		});
 
 		it('pattern blueprint does not contain template file', () => {
@@ -217,13 +209,12 @@ describe('nitro:app', () => {
 	});
 
 	describe('when including example files', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/app'))
+				.inDir(utils.getTempFolder(folder))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ ...defaultPrompts, ...{ exampleCode: true } })
-				.on('end', done);
+				.withPrompts({ ...utils.defaultPrompts, ...{ exampleCode: true } });
 		});
 
 		it('example pattern is present', () => {
@@ -284,13 +275,12 @@ describe('nitro:app', () => {
 	});
 
 	describe('when not including example files', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/app'))
+				.inDir(utils.getTempFolder(folder))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ ...defaultPrompts, ...{ exampleCode: false } })
-				.on('end', done);
+				.withPrompts({ ...utils.defaultPrompts, ...{ exampleCode: false } });
 		});
 
 		it('example pattern is not present', () => {
@@ -357,13 +347,12 @@ describe('nitro:app', () => {
 	});
 
 	describe('when including static exporter', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/app'))
+				.inDir(utils.getTempFolder(folder))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ ...defaultPrompts, ...{ exporter: true } })
-				.on('end', done);
+				.withPrompts({ ...utils.defaultPrompts, ...{ exporter: true } });
 		});
 
 		it('config contains default exporter properties', () => {
@@ -372,13 +361,12 @@ describe('nitro:app', () => {
 	});
 
 	describe('when not including static exporter', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/app'))
+				.inDir(utils.getTempFolder(folder))
 				.withOptions({ 'skip-install': true })
-				.withPrompts({ ...defaultPrompts, ...{ exporter: false } })
-				.on('end', done);
+				.withPrompts({ ...utils.defaultPrompts, ...{ exporter: false } });
 		});
 
 		it('config does not contain default exporter properties', () => {

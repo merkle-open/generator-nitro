@@ -14,7 +14,7 @@
     "lint": "eslint .",
     "prepublishOnly": "npx -y pkg-ok@2.3.1",
     "pretest": "npm run lint",
-    "test": "jasmine --config=tests/jasmine/support/jasmine.json"
+    "test": "jasmine --config=tests/jasmine/jasmine.json"
   },
   "files": [
     "generators/app",

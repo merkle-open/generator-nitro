@@ -7,23 +7,22 @@ const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const fs = require('fs-extra');
-const patternConfig = require(path.join(__dirname, '../../../generators/app/templates/config/default/patterns.js'));
+const patternConfig = require(path.join(__dirname, '../../../../generators/app/templates/config/default/patterns.js'));
 
 describe('nitro:pattern', () => {
 	describe('when creating a pattern "Test" (organism)', () => {
 		describe('but no modifier is given', () => {
-			beforeAll((done) => {
-				helpers
-					.run(path.join(__dirname, '../../../generators/pattern'))
+			beforeAll(() => {
+				return helpers
+					.run(path.join(__dirname, '../../../../generators/pattern'))
 					.inTmpDir((dir) => {
 						fs.copySync(
-							path.join(__dirname, '../../../generators/app/templates/project/blueprints'),
+							path.join(__dirname, '../../../../generators/app/templates/project/blueprints'),
 							path.join(dir, 'project/blueprints')
 						);
 						fs.writeJsonSync(path.join(dir, 'config.json'), { nitro: { patterns: patternConfig } });
 					})
-					.withPrompts({ name: 'Test', type: 'organism' })
-					.on('end', done);
+					.withPrompts({ name: 'Test', type: 'organism' });
 			});
 
 			it('the modifier files are not created', () => {
@@ -42,18 +41,17 @@ describe('nitro:pattern', () => {
 		});
 
 		describe('and a modifier "More" is given', () => {
-			beforeAll((done) => {
-				helpers
-					.run(path.join(__dirname, '../../../generators/pattern'))
+			beforeAll(() => {
+				return helpers
+					.run(path.join(__dirname, '../../../../generators/pattern'))
 					.inTmpDir((dir) => {
 						fs.copySync(
-							path.join(__dirname, '../../../generators/app/templates/project/blueprints'),
+							path.join(__dirname, '../../../../generators/app/templates/project/blueprints'),
 							path.join(dir, 'project/blueprints')
 						);
 						fs.writeJsonSync(path.join(dir, 'config.json'), { nitro: { patterns: patternConfig } });
 					})
-					.withPrompts({ name: 'Test', type: 'organism', modifier: 'More' })
-					.on('end', done);
+					.withPrompts({ name: 'Test', type: 'organism', modifier: 'More' });
 			});
 
 			it('the pattern and modifier files are created', () => {
@@ -79,18 +77,17 @@ describe('nitro:pattern', () => {
 	});
 
 	describe('when creating a pattern "NavMain" (molecule) with a modifier "SpecialCase"', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/pattern'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/pattern'))
 				.inTmpDir((dir) => {
 					fs.copySync(
-						path.join(__dirname, '../../../generators/app/templates/project/blueprints'),
+						path.join(__dirname, '../../../../generators/app/templates/project/blueprints'),
 						path.join(dir, 'project/blueprints')
 					);
 					fs.writeJsonSync(path.join(dir, 'config.json'), { nitro: { patterns: patternConfig } });
 				})
-				.withPrompts({ name: 'NavMain', type: 'molecule', modifier: 'SpecialCase' })
-				.on('end', done);
+				.withPrompts({ name: 'NavMain', type: 'molecule', modifier: 'SpecialCase' });
 		});
 
 		it('the pattern and modifier files are created', () => {
@@ -124,18 +121,17 @@ describe('nitro:pattern', () => {
 	});
 
 	describe('when creating a pattern "nav-main" (molecule) with a modifier "special-case"', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/pattern'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/pattern'))
 				.inTmpDir((dir) => {
 					fs.copySync(
-						path.join(__dirname, '../../../generators/app/templates/project/blueprints'),
+						path.join(__dirname, '../../../../generators/app/templates/project/blueprints'),
 						path.join(dir, 'project/blueprints')
 					);
 					fs.writeJsonSync(path.join(dir, 'config.json'), { nitro: { patterns: patternConfig } });
 				})
-				.withPrompts({ name: 'nav-main', type: 'molecule', modifier: 'special-case' })
-				.on('end', done);
+				.withPrompts({ name: 'nav-main', type: 'molecule', modifier: 'special-case' });
 		});
 
 		it('the pattern and modifier files are created', () => {
@@ -169,18 +165,17 @@ describe('nitro:pattern', () => {
 	});
 
 	describe('when creating a pattern "Nav Main" (molecule) with a modifier "Light.Blue"', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/pattern'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/pattern'))
 				.inTmpDir((dir) => {
 					fs.copySync(
-						path.join(__dirname, '../../../generators/app/templates/project/blueprints'),
+						path.join(__dirname, '../../../../generators/app/templates/project/blueprints'),
 						path.join(dir, 'project/blueprints')
 					);
 					fs.writeJsonSync(path.join(dir, 'config.json'), { nitro: { patterns: patternConfig } });
 				})
-				.withPrompts({ name: 'Nav Main', type: 'molecule', modifier: 'Light.Blue' })
-				.on('end', done);
+				.withPrompts({ name: 'Nav Main', type: 'molecule', modifier: 'Light.Blue' });
 		});
 
 		it('the pattern and modifier files are created', () => {

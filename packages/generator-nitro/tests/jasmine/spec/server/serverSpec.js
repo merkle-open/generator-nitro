@@ -39,16 +39,15 @@ describe('nitro:server', () => {
 	describe('when using default options', () => {
 		const folder = 'dist';
 
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/server'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/server'))
 				.inTmpDir((dir) => {
 					// we need a valid project as playground
-					fs.copySync(path.join(__dirname, '../../../../project-nitro'), dir, { filter: projectCopyFilter });
+					fs.copySync(path.join(__dirname, '../../../../../project-nitro'), dir, { filter: projectCopyFilter });
 					fs.emptyDirSync(path.join(dir, 'config'));
 					fs.writeJsonSync(path.join(dir, 'config', 'default.json'), { server: { projectPaths } });
-				})
-				.on('end', done);
+				});
 		});
 
 		// base files
@@ -90,17 +89,16 @@ describe('nitro:server', () => {
 	describe('when using custom dist folder', () => {
 		const folder = 'distribution';
 
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/server'))
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/server'))
 				.inTmpDir((dir) => {
 					// we need a valid project as playground
-					fs.copySync(path.join(__dirname, '../../../../project-nitro'), dir, { filter: projectCopyFilter });
+					fs.copySync(path.join(__dirname, '../../../../../project-nitro'), dir, { filter: projectCopyFilter });
 					fs.emptyDirSync(path.join(dir, 'config'));
 					fs.writeJsonSync(path.join(dir, 'config', 'default.json'), { server: { projectPaths } });
 				})
-				.withOptions({ folder }) // Mock options passed in
-				.on('end', done);
+				.withOptions({ folder }); // Mock options passed in
 		});
 
 		// base files

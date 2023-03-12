@@ -6,15 +6,15 @@
   "repository": "merkle-open/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=14.15.0 <17",
-    "npm": ">=6.14.8 <9"
+    "node": ">=14.15.0 <19",
+    "npm": ">=6.14.8 <10"
   },
   "main": "generators/app/index.js",
   "scripts": {
     "lint": "eslint .",
     "prepublishOnly": "npx -y pkg-ok@2.3.1",
     "pretest": "npm run lint",
-    "test": "jasmine --config=tests/jasmine/support/jasmine.json"
+    "test": "jasmine --config=tests/jasmine/jasmine.json"
   },
   "files": [
     "generators/app",

@@ -6,8 +6,8 @@
   "repository": "merkle-open/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=14.15.0 <17",
-    "npm": ">=6.14.8 <9"
+    "node": ">=14.15.0 <19",
+    "npm": ">=6.14.8 <10"
   },
   "bin": {
     "nitro-app-validate-pattern-data": "./bin/validate-pattern-data.js",
@@ -41,9 +41,9 @@
     "globby": "11.1.0",
     "hbs": "4.2.0",
     "hbs-utils": "0.0.4",
-    "html-validate": "7.13.2",
-    "i18next": "22.4.10",
-    "i18next-http-middleware": "3.2.2",
+    "html-validate": "7.13.3",
+    "i18next": "22.4.11",
+    "i18next-http-middleware": "3.3.0",
     "i18next-fs-backend": "2.1.1",
     "i18next-sprintf-postprocessor": "0.2.2",
     "jasmine": "4.5.0",

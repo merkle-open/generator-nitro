@@ -6,20 +6,20 @@
 const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
-const os = require('os');
-const defaultPrompts = require('./utils/appDefaultPrompts');
+const utils = require('../../helpers/utils');
+
+const folder = 'temp-test-default-app';
 
 describe('nitro:app', () => {
 	jasmine.DEFAULT_TIMEOUT_INTERVAL = 25000;
 
 	describe('when using default options', () => {
-		beforeAll((done) => {
-			helpers
-				.run(path.join(__dirname, '../../../generators/app'))
-				.inDir(path.join(os.tmpdir(), './temp-test')) // Clear the directory and set it as the CWD
-				.withOptions({ 'skip-install': true, 'skip-questions': true }) // Mock options passed in
-				.withPrompts(defaultPrompts)
-				.on('end', done);
+		beforeAll(() => {
+			return helpers
+				.run(path.join(__dirname, '../../../../generators/app'))
+				.inDir(utils.getTempFolder(folder, false))
+				.withOptions({ 'skip-install': true, 'skip-questions': true })
+				.withPrompts(utils.defaultPrompts);
 		});
 
 		// base files
@@ -56,7 +56,7 @@ describe('nitro:app', () => {
 		});
 
 		it('package.json contains project name', () => {
-			assert.fileContent([['package.json', '"name": "temp-test",']]);
+			assert.fileContent([['package.json', `"name": "${folder}",`]]);
 		});
 
 		it('package.json contains @nitro dependencies', () => {

@@ -82,7 +82,7 @@
     "@gondel/core": "1.2.7",
     "@gondel/plugin-hot": "1.2.7",
     "bootstrap": "5.2.3",
-    "core-js": "3.29.0",
+    "core-js": "3.29.1",
     "flatpickr": "4.6.13",
     "handlebars": "4.7.7",
     "jquery": "3.6.4",
@@ -94,7 +94,7 @@
     "svg4everybody": "2.1.9"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.19.1",
+    "@babel/eslint-parser": "7.21.3",
     "@khanacademy/tota11y": "0.2.0",
     "@merkle-open/eslint-config": "1.0.0",
     "@merkle-open/html-validate-config": "1.0.1",
@@ -110,7 +110,7 @@
     "commitizen": "4.3.0",
     "config": "3.3.9",
     "cross-env": "7.0.3",
-    "cypress": "12.7.0",
+    "cypress": "12.8.1",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "1.0.0",
     "eslint": "7.32.0",

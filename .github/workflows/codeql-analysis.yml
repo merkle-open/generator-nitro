@@ -3,16 +3,13 @@
 #
 # You may wish to alter this file to override the set of languages analyzed,
 # or to provide custom queries or build logic.
-name: "CodeQL"
+name: CodeQL
 
 on:
   push:
-    branches:
-      - develop
+    branches: [ main, master, develop ]
   pull_request:
-    # The branches below must be a subset of the branches above
-    branches:
-      - develop
+    branches: [ main, master, develop ]
   schedule:
     - cron: '39 7 * * 0'
 

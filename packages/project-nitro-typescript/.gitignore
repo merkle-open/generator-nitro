@@ -40,7 +40,8 @@ debug.log
 /project/tmp
 /public/assets
 /public/proto
-/public/reports
+/public/reports/**/*
+!/public/reports/lighthouse/
 /src/patterns/**/template/*.js
 /src/patterns/**/template/partial/*.js
 /tests/cypress/cypress/screenshots

@@ -46,6 +46,7 @@ debug.log
 /src/patterns/**/template/partial/*.js
 /tests/cypress/cypress/screenshots
 /tests/cypress/cypress/videos
+/tests/playwright/test-results/
 
 # allow
 !.gitkeep

@@ -1,6 +1,6 @@
 # Cypress e2e Tests
 
-End to end testing with cypress.
+End-to-end testing with cypress.
 
 [More about cypress](https://www.npmjs.com/package/cypress)
 
@@ -16,7 +16,7 @@ We use the [default configuration](https://docs.cypress.io/guides/core-concepts/
 Use following npm scripts for your test workflow:
 
 - `npm run cypress-test` to run full cypress test suite (use this to set up your tests)
-- `npm run test:cypress` to run cypress tests in headless mode (use this for ci)
+- `npm test` cypress tests are run in the test chain
 
 ## CI setup
 

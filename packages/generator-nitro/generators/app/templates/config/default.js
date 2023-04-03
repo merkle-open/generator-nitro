@@ -10,9 +10,6 @@ const baseConfig = require('@nitro/app/app/core/config');
 const defaultConfig = {
 	code: {
 		validation: {
-			eslint: {
-				live: false,
-			},
 			htmllint: {
 				// enabling this live validation slows down rendering
 				live: false,
@@ -21,9 +18,6 @@ const defaultConfig = {
 				live: true,
 				logMissingSchemaAsError: false,
 				logMissingSchemaAsWarning: true,
-			},
-			stylelint: {
-				live: false,
 			},
 		},
 	},

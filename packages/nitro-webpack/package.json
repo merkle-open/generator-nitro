@@ -32,9 +32,6 @@
     "autoprefixer": "10.4.14",
     "case-sensitive-paths-webpack-plugin": "2.4.0",
     "css-loader": "5.2.7",
-    "eslint": "7.32.0",
-    "eslint-webpack-plugin": "2.7.0",
-    "eslint-plugin-import": "2.27.5",
     "file-loader": "6.2.0",
     "handlebars-loader": "1.7.3",
     "iconfont-webpack-plugin": "5.0.1",
@@ -48,8 +45,6 @@
     "resolve-url-loader": "5.0.0",
     "sass": "1.60.0",
     "sass-loader": "10.4.1",
-    "stylelint": "14.16.1",
-    "stylelint-webpack-plugin": "2.4.0",
     "svgo": "3.0.2",
     "ts-config-webpack-plugin": "2.0.3",
     "typescript": "4.9.5",
@@ -65,7 +60,9 @@
     "imagemin-svgo": "9.0.0"
   },
   "devDependencies": {
-    "@merkle-open/eslint-config": "1.0.0"
+    "@merkle-open/eslint-config": "1.0.0",
+    "eslint": "7.32.0",
+    "eslint-plugin-import": "2.27.5"
   },
   "publishConfig": {
     "access": "public"

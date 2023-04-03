@@ -3,9 +3,7 @@ const options = {
 	rules: {
 		js: false,
 		ts: true,
-		scss: {
-			stylelint: config.get('code.validation.stylelint.live'),
-		},
+		scss: true,
 		hbs: true,
 		woff: true,
 		image: true,

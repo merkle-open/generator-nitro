@@ -3,12 +3,9 @@ const validThemes = config.has('themes') && Array.isArray(config.get('themes')) 
 const theme = process.env.THEME ? process.env.THEME : validThemes.find((theme) => theme.isDefault).id;
 const options = {
 	rules: {
-		js: {
-			eslint: config.get('code.validation.eslint.live'),
-		},
+		js: true,
 		ts: false,
 		scss: {
-			stylelint: config.get('code.validation.stylelint.live'),
 			publicPath: '../',
 			implementation: require('node-sass'),
 		},

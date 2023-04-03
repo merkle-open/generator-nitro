@@ -4,12 +4,9 @@ const theme = process.env.THEME ? process.env.THEME : validThemes.find((theme) =
 const options = {
 	rules: {
 		<% if (options.jsCompiler === 'ts') { %>js: false,
-		ts: true,<% } else { %>js: {
-			eslint: config.get('code.validation.eslint.live'),
-		},
+		ts: true,<% } else { %>js: true,
 		ts: false,<% } %>
-		scss: {
-			stylelint: config.get('code.validation.stylelint.live'),<% if (options.themes) { %>
+		scss: {<% if (options.themes) { %>
 			implementation: require('node-sass'),<% } %>
 		},
 		hbs: <% if (options.clientTpl) { %>true<% } else { %>false<% } %>,

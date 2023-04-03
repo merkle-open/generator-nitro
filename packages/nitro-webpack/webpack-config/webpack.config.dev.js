@@ -4,10 +4,8 @@ const crypto = require('crypto');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
 const JsConfigWebpackPlugin = require('js-config-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 const TsConfigWebpackPlugin = require('ts-config-webpack-plugin');
 const DynamicAliasResolverPlugin = require('../plugins/dynamicAliasResolver');
 const utils = require('../lib/utils');
@@ -108,14 +106,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	// js
 	if (options.rules.js) {
 		webpackConfig.plugins.push(new JsConfigWebpackPlugin({ babelConfigFile: './babel.config.js' }));
-
-		// eslint live validation
-		if (options.rules.js.eslint) {
-			const esLintPluginOptions = {
-				lintDirtyModulesOnly: true,
-			};
-			webpackConfig.plugins.push(new ESLintPlugin(esLintPluginOptions));
-		}
 	}
 
 	// typescript
@@ -182,20 +172,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				filename: '[file].map',
 			})
 		);
-
-		// stylelint live validation
-		if (options.rules.scss.stylelint) {
-			webpackConfig.plugins.push(
-				new StyleLintPlugin({
-					files: ['src/**/*.?(s)css'],
-					// lintDirtyModulesOnly: true,
-					syntax: 'scss',
-					quiet: false,
-					failOnError: false,
-					emitErrors: true,
-				})
-			);
-		}
 	}
 
 	// handlebars precompiled templates

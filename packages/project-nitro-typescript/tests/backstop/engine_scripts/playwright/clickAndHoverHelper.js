@@ -27,12 +27,16 @@ module.exports = async (page, scenario) => {
 	}
 
 	if (postInteractionWait) {
-		await page.waitForTimeout(postInteractionWait);
+		if (parseInt(postInteractionWait) > 0) {
+			await page.waitForTimeout(postInteractionWait);
+		} else {
+			await page.waitForSelector(postInteractionWait);
+		}
 	}
 
 	if (scrollToSelector) {
 		await page.waitForSelector(scrollToSelector);
-		await page.evaluate((scrollToSelector) => {
+		await page.evaluate(scrollToSelector => {
 			document.querySelector(scrollToSelector).scrollIntoView();
 		}, scrollToSelector);
 	}

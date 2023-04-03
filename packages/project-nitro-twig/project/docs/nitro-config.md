@@ -12,14 +12,6 @@ the main nodes from nitro: `code`, `nitro`,`server`, `gulp`, `feature`, `exporte
 
 ### Validation
 
-#### `code.validation.eslint`
-
-Type: Object
-
-- `code.validation.eslint.live` - default: false
-
-Enable/disable JavaScript linting on change.
-
 #### `code.validation.htmllint`
 
 Type: Object
@@ -36,14 +28,6 @@ Type: Object
   Enable/disable JSON-Schema validation on change.
 - `code.validation.jsonSchema.logMissingSchemaAsError` - default: false
 - `code.validation.jsonSchema.logMissingSchemaAsWarning` - default: true
-
-#### `code.validation.stylelint`
-
-Type: Object
-
-- `code.validation.stylelint.live` - default: false
-
-Enable/disable CSS linting on change.
 
 ## Nitro
 

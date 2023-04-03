@@ -30,16 +30,10 @@ const defaultConfig = {
 	},
 	code: {
 		validation: {
-			eslint: {
-				live: true,
-			},
 			htmllint: {
 				live: true,
 			},
 			jsonSchema: {
-				live: true,
-			},
-			stylelint: {
 				live: true,
 			},
 		},

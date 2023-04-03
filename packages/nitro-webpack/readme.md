@@ -11,13 +11,9 @@ Configurable and easy to use webpack 4 config for nitro projects.
 ```
 const options = {
     rules: {
-        js: {
-            eslint: false,
-        },
+        js: true,
         ts: false,
-        scss: {
-            stylelint: false,
-        },
+        scss: true,
         hbs: true,
         woff: true,
         font: false,
@@ -50,7 +46,6 @@ No loader rule is enabled by default. Activate following prepared rules you need
 Config:
 
 - `true` or `{}` activates JavaScript support
-- `{ eslint: true }` additionally adds eslint live linting feature (only relevant for development build)
 
 #### `options.rules.ts`
 
@@ -71,7 +66,6 @@ Config:
 Config:
 
 - `true` or `{}` will activate scss support
-- `{ stylelint: true }` additionally adds stylelint live linting feature (only relevant for development build)
 - `{ publicPath: '../' }` provide a separate public path for stylesheets. By default, webpack uses the value from 'output.publicPath'. (only relevant for production build)
 - `{ implementation: require('node-sass') }` gives the possibility to use 'node-sass' as sass implementation. (you have to add 'node-sass' as a dev-dependency in your project)
 
@@ -112,7 +106,7 @@ Config:
 - `{ exclude: [] }` additionally adds exclude config to rule
 
 ⚠ Please use this rule with care. You have to configure includes and exclude when you also use woff and/or image loader.
-Otherwise svg or woff files are processed with multiple configurations.
+Otherwise, svg or woff files are processed with multiple configurations.
 
 #### `options.rules.image`
 

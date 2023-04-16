@@ -19,7 +19,7 @@
     "lint": "lerna run lint --parallel",
     "lint:md": "markdownlint ./readme.md ./.github",
     "update-dependencies": "npm-run-all --parallel update-dependencies:*",
-    "update-dependencies:packages": "lerna exec -- npm-check-updates -u --deprecated -x twig,webpack,css-loader,postcss-loader,sass-loader,eslint-webpack-plugin,mini-css-extract-plugin,stylelint-webpack-plugin,webpack-cli,webpack-dev-middleware,eslint,del,globby,get-port,got,imagemin,gulp-imagemin,imagemin-svgo,imagemin-mozjpeg",
+    "update-dependencies:packages": "lerna exec -- npm-check-updates -u --deprecated -x twig,webpack,css-loader,postcss-loader,sass-loader,mini-css-extract-plugin,webpack-cli,webpack-dev-middleware,eslint,del,globby,get-port,got,imagemin,gulp-imagemin,imagemin-svgo,imagemin-mozjpeg",
     "update-dependencies:root": "npm-check-updates -u --deprecated"
   },
   "keywords": [

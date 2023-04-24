@@ -99,7 +99,7 @@
     "@merkle-open/eslint-config": "1.0.0",
     "@merkle-open/html-validate-config": "1.0.1",
     "@merkle-open/prettier-config": "1.1.0",
-    "@merkle-open/stylelint-config": "1.0.0",
+    "@merkle-open/stylelint-config": "2.1.0",
     "@merkle-open/ts-config": "1.1.0",
     "@nitro/app": "*",
     "@nitro/exporter": "*",
@@ -126,9 +126,9 @@
     "lint-staged": "13.2.1",
     "npm-check-updates": "16.10.9",
     "npm-run-all": "4.1.5",
-    "prettier": "2.8.7",
+    "prettier": "2.8.8",
     "rimraf": "5.0.0",
-    "stylelint": "14.16.1",
+    "stylelint": "15.6.0",
     "webpack-cli": "4.10.0",
     "yo": "4.3.1"
   },
@@ -145,6 +145,7 @@
   },
   "lint-staged": {
     "src/**/*.{css,scss}": [
+      "prettier --write",
       "stylelint --allow-empty-input"
     ],
     "**/*.json": [

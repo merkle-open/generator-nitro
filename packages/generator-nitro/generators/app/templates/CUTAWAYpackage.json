@@ -36,7 +36,7 @@
     "playwright-test": "cross-env PORT=8890 NITRO_MODE=test playwright test --config=tests/playwright/playwright.config.ts",
     "playwright-test-generate": "cross-env PORT=8891 NITRO_MODE=test npm-run-all --parallel --race prod:serve playwright-test-generate:codegen",
     "playwright-test-generate:codegen": "playwright codegen http://localhost:8891",
-    "prettier": "prettier --write \"**/*.*(js|jsx|ts|tsx|json|md|mdx|graphql|gql|yml|yaml)\"",
+    "prettier": "prettier --write \"**/*.*(js|jsx|ts|tsx|json|css|scss|md|mdx|graphql|gql|yml|yaml)\"",
     "test": "npm-run-all test:*",
     "test:lint": "npm run lint",
     "test:build": "npm run build",
@@ -105,7 +105,7 @@
     "@merkle-open/eslint-config": "1.0.0",
     "@merkle-open/html-validate-config": "1.0.1",
     "@merkle-open/prettier-config": "1.1.0",
-    "@merkle-open/stylelint-config": "1.0.0",
+    "@merkle-open/stylelint-config": "2.1.0",
     "@merkle-open/ts-config": "1.1.0",
     "@nitro/app": "<%= version %>",
     "@nitro/exporter": "<%= version %>",
@@ -137,9 +137,9 @@
     "node-sass": "8.0.0",<% } %>
     "npm-check-updates": "16.10.9",
     "npm-run-all": "4.1.5",
-    "prettier": "2.8.7",
+    "prettier": "2.8.8",
     "rimraf": "5.0.0",
-    "stylelint": "14.16.1",<% if (options.jsCompiler === 'ts') { %>
+    "stylelint": "15.6.0",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "5.0.4",<% } %>
     "webpack-cli": "4.10.0",
     "yo": "4.3.1"
@@ -157,6 +157,7 @@
   },
   "lint-staged": {
     "src/**/*.{css,scss}": [
+      "prettier --write",
       "stylelint --allow-empty-input"
     ],
     "**/*.json": [

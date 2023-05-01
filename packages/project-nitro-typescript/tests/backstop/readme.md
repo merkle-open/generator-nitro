@@ -19,5 +19,5 @@ Use following npm scripts for your test workflow:
 
 - `npm run visual-test` runs the tests, compares the results against the reference screenshots
   and generates a report under '/public/reports/backstop/html/'
-  - use this also for creating new reference screenshots, ignore the failed tests and approve with npm script `npm run visual-approve`)
+  (use this also for creating new reference screenshots, ignore the failed tests and approve with `npm run visual-approve`)
 - `npm run visual-approve` updates the references with results from last test

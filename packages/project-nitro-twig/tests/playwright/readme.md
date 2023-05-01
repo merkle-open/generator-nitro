@@ -12,9 +12,8 @@ End-to-end testing with playwright.
 
 Use following npm scripts for your test workflow:
 
+- `npm run playwright-test` to run playwright ui-mode (use this to set up your tests)
 - `npm test` playwright tests run in the test chain (this also works well in ci environments)
-- `npm run playwright-test` to run all tests on your local machine
-- `npm run playwright-test-generate` to open the playwright generator (use this to set up your tests)
 
 or [run and generate playwright tests directly in VS Code](https://playwright.dev/docs/codegen#generate-tests-in-vs-code)
 

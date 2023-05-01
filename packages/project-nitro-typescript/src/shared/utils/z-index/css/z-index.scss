@@ -10,6 +10,7 @@
 // the first element in $layers is on the top (high z-index)
 // The last element in $layers list is on the bottom (low z-index)
 
+/* prettier-ignore */
 $layers: (
 	'overlay',       // overlay content incl. image overlay, ...
 	'offcanvas',     // off-canvas

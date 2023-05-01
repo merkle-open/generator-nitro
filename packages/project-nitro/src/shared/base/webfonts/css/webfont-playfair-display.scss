@@ -4,11 +4,9 @@
 	font-style: normal;
 	font-weight: 400;
 	font-display: fallback;
-	src:
-		local('Playfair Display Regular'),
-		local('PlayfairDisplay-Regular'),
-		url('../fonts/playfair-display-v13-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-		url('../fonts/playfair-display-v13-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	src: local('Playfair Display Regular'), local('PlayfairDisplay-Regular'),
+		url('../fonts/playfair-display-v13-latin-regular.woff2') format('woff2'),
+		url('../fonts/playfair-display-v13-latin-regular.woff') format('woff');
 }
 
 /* playfair-display-italic - latin */
@@ -17,11 +15,9 @@
 	font-style: italic;
 	font-weight: 400;
 	font-display: fallback;
-	src:
-		local('Playfair Display Italic'),
-		local('PlayfairDisplay-Italic'),
-		url('../fonts/playfair-display-v13-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-		url('../fonts/playfair-display-v13-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	src: local('Playfair Display Italic'), local('PlayfairDisplay-Italic'),
+		url('../fonts/playfair-display-v13-latin-italic.woff2') format('woff2'),
+		url('../fonts/playfair-display-v13-latin-italic.woff') format('woff');
 }
 
 /* playfair-display-700 - latin */
@@ -30,11 +26,9 @@
 	font-style: normal;
 	font-weight: 700;
 	font-display: fallback;
-	src:
-		local('Playfair Display Bold'),
-		local('PlayfairDisplay-Bold'),
-		url('../fonts/playfair-display-v13-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-		url('../fonts/playfair-display-v13-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold'),
+		url('../fonts/playfair-display-v13-latin-700.woff2') format('woff2'),
+		url('../fonts/playfair-display-v13-latin-700.woff') format('woff');
 }
 
 /* playfair-display-900 - latin */
@@ -43,9 +37,7 @@
 	font-style: normal;
 	font-weight: 900;
 	font-display: fallback;
-	src:
-		local('Playfair Display Black'),
-		local('PlayfairDisplay-Black'),
-		url('../fonts/playfair-display-v13-latin-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-		url('../fonts/playfair-display-v13-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+	src: local('Playfair Display Black'), local('PlayfairDisplay-Black'),
+		url('../fonts/playfair-display-v13-latin-900.woff2') format('woff2'),
+		url('../fonts/playfair-display-v13-latin-900.woff') format('woff');
 }

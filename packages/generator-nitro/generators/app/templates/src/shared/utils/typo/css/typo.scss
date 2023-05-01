@@ -23,13 +23,13 @@ $typography-definitions: (
 		mobile: (
 			'font-size': 16px,
 			'line-height': 24px,
-			'letter-spacing': 0.3px
+			'letter-spacing': 0.3px,
 		),
 		desktop: (
 			'font-size': 24px,
 			'line-height': 32px,
-			'letter-spacing': 0.75px
-		)
+			'letter-spacing': 0.75px,
+		),
 	),
 	body-small: (
 		all: (
@@ -38,13 +38,13 @@ $typography-definitions: (
 		mobile: (
 			'font-size': 12px,
 			'line-height': 24px,
-			'letter-spacing': 0.3px
+			'letter-spacing': 0.3px,
 		),
 		desktop: (
 			'font-size': 18px,
 			'line-height': 32px,
-			'letter-spacing': 0.75px
-		)
+			'letter-spacing': 0.75px,
+		),
 	),
 	h1: (
 		all: (
@@ -54,13 +54,13 @@ $typography-definitions: (
 		mobile: (
 			'font-size': 32px,
 			'line-height': 44px,
-			'letter-spacing': 0.3px
+			'letter-spacing': 0.3px,
 		),
 		desktop: (
 			'font-size': 44px,
 			'line-height': 56px,
-			'letter-spacing': 0.3px
-		)
+			'letter-spacing': 0.3px,
+		),
 	),
 	h2: (
 		all: (
@@ -70,13 +70,13 @@ $typography-definitions: (
 		mobile: (
 			'font-size': 24px,
 			'line-height': 32px,
-			'letter-spacing': 0.3px
+			'letter-spacing': 0.3px,
 		),
 		desktop: (
 			'font-size': 32px,
 			'line-height': 44px,
-			'letter-spacing': 0.3px
-		)
+			'letter-spacing': 0.3px,
+		),
 	),
 	button: (
 		all: (
@@ -85,13 +85,13 @@ $typography-definitions: (
 		mobile: (
 			'font-size': 18px,
 			'line-height': 18px,
-			'letter-spacing': 0.3px
+			'letter-spacing': 0.3px,
 		),
 		desktop: (
 			'font-size': 20px,
 			'line-height': 20px,
-			'letter-spacing': 0.3px
-		)
+			'letter-spacing': 0.3px,
+		),
 	),
 );
 
@@ -129,7 +129,10 @@ $typography-definitions: (
 	@if (map-has-key(map-get($typography-definitions, $font-bundle), 'all')) {
 		$all-font-definition: map-get(map-get($typography-definitions, $font-bundle), 'all');
 	}
-	$font-definition: map-merge($all-font-definition, map-get(map-get($typography-definitions, $font-bundle), $viewport));
+	$font-definition: map-merge(
+		$all-font-definition,
+		map-get(map-get($typography-definitions, $font-bundle), $viewport)
+	);
 
 	@return $font-definition;
 }

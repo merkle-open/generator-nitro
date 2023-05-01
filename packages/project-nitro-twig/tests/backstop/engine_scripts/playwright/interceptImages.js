@@ -21,11 +21,11 @@ const IMAGE_DATA_BUFFER = fs.readFileSync(IMAGE_STUB_URL);
 const HEADERS_STUB = {};
 
 module.exports = async function (page, scenario) {
-	page.route(IMAGE_URL_RE, route => {
+	page.route(IMAGE_URL_RE, (route) => {
 		route.fulfill({
 			body: IMAGE_DATA_BUFFER,
 			headers: HEADERS_STUB,
-			status: 200
+			status: 200,
 		});
 	});
 };

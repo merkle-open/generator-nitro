@@ -17,6 +17,7 @@ module.exports = () => {
 			},
 			port: Number(port),
 			online: !config.get('nitro.mode.offline'),
+			ghostMode: false,
 		};
 
 		if (config.has('server.proxy.https')) {

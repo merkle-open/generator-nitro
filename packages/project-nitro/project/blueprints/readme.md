@@ -41,8 +41,10 @@ $decorator$             // Decorator filename part, eg. highlight
 
 `npm run nitro:server` uses 'server/package.json' if present
 
+```
 <%= nitroAppVersion %>     // Version of devDependency '@nitro/app' from project package.json
 <%= nodeVersion %>         // 'engines/node' from project package.json
 <%= npmVersion %>          // 'engines/npm' from project package.json
 <%= projectName %>         // 'name' from project package.json
 <%= projectVersion %>      // 'version' from project package.json
+```

@@ -84,8 +84,8 @@
     "modular"
   ],
   "dependencies": {<% if (options.exampleCode) { %>
-    "@gondel/core": "1.2.7",
-    "@gondel/plugin-hot": "1.2.7",
+    "@gondel/core": "1.2.8",
+    "@gondel/plugin-hot": "1.2.8",
     "bootstrap": "5.2.3",<% } %>
     "core-js": "3.30.2"<% if (options.exampleCode) { %>,
     "flatpickr": "4.6.13",

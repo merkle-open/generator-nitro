@@ -8,7 +8,7 @@ End-to-end testing with cypress.
 
 We use the [default configuration](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests)
 
-- `./cypress/e2e` ist the place for your tests
+- `./cypress/e2e` is the place for your tests
 - `./cypress/screenshots` and `./cypress/videos` directories are excluded from git
 
 ## Scripts

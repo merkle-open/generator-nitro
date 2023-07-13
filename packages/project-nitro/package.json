@@ -97,7 +97,7 @@
     "svg4everybody": "2.1.9"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.22.7",
+    "@babel/eslint-parser": "7.22.9",
     "@khanacademy/tota11y": "0.2.0",
     "@merkle-open/eslint-config": "1.0.0",
     "@merkle-open/html-validate-config": "1.0.1",
@@ -108,7 +108,7 @@
     "@nitro/exporter": "*",
     "@nitro/gulp": "*",
     "@nitro/webpack": "*",
-    "@playwright/test": "1.35.1",
+    "@playwright/test": "1.36.0",
     "backstopjs": "6.2.2",
     "check-node-version": "4.2.1",
     "commitizen": "4.3.0",

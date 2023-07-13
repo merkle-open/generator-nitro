@@ -98,7 +98,7 @@
     "svg4everybody": "2.1.9"<% } %>
   },
   "devDependencies": {<% if (options.jsCompiler === 'js') { %>
-    "@babel/eslint-parser": "7.22.7",<% } %>
+    "@babel/eslint-parser": "7.22.9",<% } %>
     "@khanacademy/tota11y": "0.2.0",
     "@merkle-open/eslint-config": "1.0.0",
     "@merkle-open/html-validate-config": "1.0.1",
@@ -109,7 +109,7 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",
-    "@playwright/test": "1.35.1",<% if (options.jsCompiler === 'ts') { %>
+    "@playwright/test": "1.36.0",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "5.2.6",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.5.16",<% } %>
     "@types/svg4everybody": "2.1.2",

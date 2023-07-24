@@ -1,6 +1,6 @@
 # Working with this repo
 
-This repository is based on the multi-package tool [lerna](https://github.com/lerna/lerna).
+This repository is based on npm workspaces.
 
 Always run `npm install` in the root of this repository to ensure proper dependency installation.
 

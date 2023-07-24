@@ -20,7 +20,6 @@
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
     "update-dependencies": "npm-check-updates -u --deprecated",
     "\n# MISC ------- ": "",
-    "postinstall": "env-linter --saveExact --lts",
     "\n# LINT/TEST ------- ": "",
     "check-node-version": "check-node-version --print --package",
     "cypress-test": "npm run build && cross-env PORT=8888 NITRO_MODE=test npm-run-all --parallel --race prod:serve cypress-test:open",

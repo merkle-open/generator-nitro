@@ -1,6 +1,5 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](http://opensource.org/licenses/MIT)
 [![Build Status](https://github.com/merkle-open/generator-nitro/workflows/ci/badge.svg?branch=master)](https://github.com/merkle-open/generator-nitro/actions)
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 # Nitro

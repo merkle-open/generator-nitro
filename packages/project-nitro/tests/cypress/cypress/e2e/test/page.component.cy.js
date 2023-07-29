@@ -47,22 +47,22 @@ context('Test Components', () => {
 	describe('Pattern Failures', () => {
 		it('pattern 1 gives correct error message', () => {
 			cy.get('.col-md-8 > :nth-child(15)').contains(
-				'Pattern `Ex` with template file `XXX.hbs` not found in folder `Ex`.'
+				'Pattern `Ex` with template file `XXX.hbs` not found in folder `Ex`.',
 			);
 		});
 		it('pattern 2 gives correct error message', () => {
 			cy.get('.col-md-8 > :nth-child(16)').contains(
-				'Pattern `Ex` with template file `other-ex.hbs` not found in folder `Ex`.'
+				'Pattern `Ex` with template file `other-ex.hbs` not found in folder `Ex`.',
 			);
 		});
 		it('pattern 3 gives correct error message', () => {
 			cy.get('.col-md-8 > :nth-child(17)').contains(
-				'Pattern `Ex` within pattern type `atom` with template file `ex.hbs` not found in folder `Ex`'
+				'Pattern `Ex` within pattern type `atom` with template file `ex.hbs` not found in folder `Ex`',
 			);
 		});
 		it('pattern 5 gives correct error message', () => {
 			cy.get('.col-md-8 > :nth-child(19)').contains(
-				'Pattern `btn` with template file `btn.hbs` not found in folder `btn`.'
+				'Pattern `btn` with template file `btn.hbs` not found in folder `btn`.',
 			);
 		});
 	});

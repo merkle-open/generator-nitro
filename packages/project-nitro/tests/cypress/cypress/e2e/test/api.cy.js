@@ -94,7 +94,7 @@ context('Test Jobs API', () => {
 				expect(response.body.jobs[0]).to.have.property('profile');
 				expect(response.body.jobs[0].profile).to.have.property(
 					'title',
-					'<mark>Aus</mark>bildung als Versicherungsassistent/in VBV'
+					'<mark>Aus</mark>bildung als Versicherungsassistent/in VBV',
 				);
 			});
 		});

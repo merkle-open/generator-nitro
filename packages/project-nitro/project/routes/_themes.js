@@ -52,7 +52,7 @@ module.exports = (app) => {
 				cookieSession({
 					name: 'theme',
 					keys: ['keeeeeeeeeeey', 'schlüssel'],
-				})
+				}),
 			);
 
 			for (const theme of validThemes) {

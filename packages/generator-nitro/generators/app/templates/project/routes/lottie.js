@@ -19,9 +19,12 @@ function animation(req, res, next) {
 		data = JSON.parse(fs.readFileSync(file));
 	}
 
-	setTimeout(() => {
-		return res.json(data);
-	}, utils.getRandomInt(250, 1000));
+	setTimeout(
+		() => {
+			return res.json(data);
+		},
+		utils.getRandomInt(250, 1000),
+	);
 }
 
 module.exports = (app) => {

@@ -42,7 +42,7 @@
     "hbs": "4.2.0",
     "hbs-utils": "0.0.4",
     "html-validate": "7.18.1",
-    "i18next": "23.3.0",
+    "i18next": "23.4.1",
     "i18next-http-middleware": "3.3.2",
     "i18next-fs-backend": "2.1.5",
     "i18next-sprintf-postprocessor": "0.2.2",

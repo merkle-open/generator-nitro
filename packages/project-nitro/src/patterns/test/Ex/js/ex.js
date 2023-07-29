@@ -17,7 +17,7 @@ class Ex extends GondelBaseComponent {
 		/* eslint-disable no-console */
 		console.warn('Ex #start(): remove or implement component');
 		console.log(
-			'alles gut so?'.startsWith('alles') ? 'ES2015.startWith feature works' : 'broken ES2015.startWith feature'
+			'alles gut so?'.startsWith('alles') ? 'ES2015.startWith feature works' : 'broken ES2015.startWith feature',
 		);
 		/* eslint-enable no-console */
 	}

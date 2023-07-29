@@ -35,7 +35,7 @@ const gridMarkup = [
 			'bottom: 0',
 			'pointer-events:none',
 			'z-index: 2147483647',
-		].join(';')
+		].join(';'),
 	);
 	document.body.appendChild(div);
 	function toggleGrid() {

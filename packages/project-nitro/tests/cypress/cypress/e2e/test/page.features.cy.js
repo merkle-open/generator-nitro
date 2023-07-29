@@ -11,7 +11,7 @@ context('Test Page Tests (features)', () => {
 			cy.get('.t-t > :nth-child(2) > :nth-child(1)').contains('app.company.name');
 
 			cy.get('.t-t > :nth-child(2) > :nth-child(3)').contains(
-				'The first three letters of alphabet are: a, l and p'
+				'The first three letters of alphabet are: a, l and p',
 			);
 
 			cy.get('.t-t > :nth-child(4) > :nth-child(2)').contains('test.text (t) = test.text (t)');

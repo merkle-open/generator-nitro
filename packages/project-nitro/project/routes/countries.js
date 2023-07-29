@@ -28,9 +28,12 @@ function search(req, res, next) {
 		items = items.filter((item) => regex.test(item.name) || regex.test(item.code));
 	}
 
-	setTimeout(() => {
-		return res.json(items);
-	}, utils.getRandomInt(250, 1000));
+	setTimeout(
+		() => {
+			return res.json(items);
+		},
+		utils.getRandomInt(250, 1000),
+	);
 }
 
 module.exports = (app) => {

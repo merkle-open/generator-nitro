@@ -19,7 +19,7 @@ context('Test Page Tests in default language', () => {
 			cy.get('.t-t > :nth-child(2) > :nth-child(2)').contains('All that glitters is not gold.');
 
 			cy.get('.t-t > :nth-child(2) > :nth-child(3)').contains(
-				'The first three letters of alphabet are: a, l and p'
+				'The first three letters of alphabet are: a, l and p',
 			);
 
 			cy.get('.t-t > :nth-child(2) > :nth-child(4)').contains('Hello');
@@ -47,13 +47,13 @@ context('Test Page Tests in german (with language query)', () => {
 			cy.get('.t-t > :nth-child(2) > :nth-child(2)').contains('Nicht alles was glänzt ist Gold');
 
 			cy.get('.t-t > :nth-child(2) > :nth-child(3)').contains(
-				'Die ersten drei Buchstaben von alphabet sind: a, l und p'
+				'Die ersten drei Buchstaben von alphabet sind: a, l und p',
 			);
 
 			cy.get('.t-t > :nth-child(2) > :nth-child(4)').contains('Hallo developer & developer');
 
 			cy.get('.t-t > :nth-child(2) > :nth-child(5)').contains(
-				'Die letzten zwei Buchstaben von alphabet sind: t und e'
+				'Die letzten zwei Buchstaben von alphabet sind: t und e',
 			);
 		});
 	});
@@ -75,7 +75,7 @@ context('Test Page Tests in english (with language query)', () => {
 			cy.get('.t-t > :nth-child(2) > :nth-child(1)').contains('my "first" company');
 			cy.get('.t-t > :nth-child(2) > :nth-child(2)').contains('All that glitters is not gold.');
 			cy.get('.t-t > :nth-child(2) > :nth-child(3)').contains(
-				'The first three letters of alphabet are: a, l and p'
+				'The first three letters of alphabet are: a, l and p',
 			);
 			cy.get('.t-t > :nth-child(2) > :nth-child(4)').contains('Hello developer & developer');
 			cy.get('.t-t > :nth-child(2) > :nth-child(5)').contains('The last two letters of alphabet are: t and e');

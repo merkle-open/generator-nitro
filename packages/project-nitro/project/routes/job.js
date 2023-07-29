@@ -60,7 +60,7 @@ function search(req, res, next) {
 						// mark matched substring in title
 						job.profile.title = job.profile.title.replace(
 							activeFilters[filter],
-							'<mark>' + activeFilters[filter] + '</mark>'
+							'<mark>' + activeFilters[filter] + '</mark>',
 						);
 						return true;
 					}
@@ -97,9 +97,12 @@ function search(req, res, next) {
 		filter: filters,
 	};
 
-	setTimeout(function () {
-		return res.json(response);
-	}, utils.getRandomInt(250, 2000));
+	setTimeout(
+		() => {
+			return res.json(response);
+		},
+		utils.getRandomInt(250, 2000),
+	);
 }
 
 module.exports = function (app) {

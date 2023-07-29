@@ -28,7 +28,7 @@ const breakpointMarkup = [
 			'opacity:0.8',
 			'background:rgba(200,200,200,0.9)',
 			'border:1px solid rgba(200,200,200,1)',
-		].join(';')
+		].join(';'),
 	);
 	document.body.appendChild(div);
 	function toggleBreakpointHelper() {

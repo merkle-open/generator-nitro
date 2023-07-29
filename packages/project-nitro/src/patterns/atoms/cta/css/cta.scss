@@ -84,7 +84,9 @@
 	bottom: -1.3em;
 	width: 100%;
 
-	transition: color 0.3s ease-in, opacity 0.3s ease-in;
+	transition:
+		color 0.3s ease-in,
+		opacity 0.3s ease-in;
 }
 
 @keyframes animation-a-cta--pulse-m {

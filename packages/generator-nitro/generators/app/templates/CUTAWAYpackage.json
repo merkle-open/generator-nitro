@@ -99,7 +99,6 @@
   },
   "devDependencies": {<% if (options.jsCompiler === 'js') { %>
     "@babel/eslint-parser": "7.22.9",<% } %>
-    "@khanacademy/tota11y": "0.2.0",
     "@merkle-open/eslint-config": "1.0.0",
     "@merkle-open/html-validate-config": "1.0.1",
     "@merkle-open/prettier-config": "1.2.0",

@@ -5,8 +5,8 @@
   "license": "MIT",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=14.15.0 <19",
-    "npm": ">=6.14.8 <10"
+    "node": ">=16.13.0 <19",
+    "npm": ">=8.1.0 <10"
   },
   "scripts": {
     "lint": "eslint .",
@@ -60,7 +60,7 @@
     "imagemin-svgo": "9.0.0"
   },
   "devDependencies": {
-    "@merkle-open/eslint-config": "1.0.0",
+    "@merkle-open/eslint-config": "2.0.0",
     "eslint": "7.32.0",
     "eslint-plugin-import": "2.28.0"
   },

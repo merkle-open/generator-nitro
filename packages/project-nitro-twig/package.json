@@ -6,8 +6,8 @@
   "private": true,
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=14.15.0 <19",
-    "npm": ">=6.14.8 <10"
+    "node": ">=16.13.0 <19",
+    "npm": ">=8.1.0 <10"
   },
   "scripts": {
     "\n# PROJECT ------- ": "",
@@ -93,7 +93,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "7.22.9",
     "@khanacademy/tota11y": "0.2.0",
-    "@merkle-open/eslint-config": "1.0.0",
+    "@merkle-open/eslint-config": "2.0.0",
     "@merkle-open/html-validate-config": "1.0.1",
     "@merkle-open/prettier-config": "1.2.0",
     "@merkle-open/stylelint-config": "3.1.0",

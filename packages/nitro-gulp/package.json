@@ -52,9 +52,9 @@
     "imagemin-pngquant": "9.0.2"
   },
   "devDependencies": {
-    "@merkle-open/eslint-config": "2.0.0",
+    "@merkle-open/eslint-config": "3.0.0",
     "@nitro/app": "*",
-    "eslint": "7.32.0",
+    "eslint": "8.46.0",
     "eslint-plugin-import": "2.28.0"
   },
   "publishConfig": {

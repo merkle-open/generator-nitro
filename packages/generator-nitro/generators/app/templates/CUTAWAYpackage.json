@@ -99,7 +99,7 @@
   },
   "devDependencies": {<% if (options.jsCompiler === 'js') { %>
     "@babel/eslint-parser": "7.22.9",<% } %>
-    "@merkle-open/eslint-config": "1.0.0",
+    "@merkle-open/eslint-config": "3.0.0",
     "@merkle-open/html-validate-config": "1.0.1",
     "@merkle-open/prettier-config": "1.2.0",
     "@merkle-open/stylelint-config": "3.1.0",
@@ -121,7 +121,7 @@
     "cypress": "12.17.2",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "1.0.0",
-    "eslint": "7.32.0",
+    "eslint": "8.46.0",
     "eslint-plugin-import": "2.28.0",
     "extend": "3.0.2",
     "generator-nitro": "<%= version %>",

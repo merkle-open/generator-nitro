@@ -94,11 +94,11 @@
     "lazysizes": "5.3.2",
     "lottie-web": "5.12.2",
     "prevent-window-opener-attacks": "0.3.1"<% } %><% if (options.jsCompiler === 'js') { %>,
-    "regenerator-runtime": "0.13.11"<% } %><% if (options.exampleCode) { %>,
+    "regenerator-runtime": "0.14.0"<% } %><% if (options.exampleCode) { %>,
     "svg4everybody": "2.1.9"<% } %>
   },
   "devDependencies": {<% if (options.jsCompiler === 'js') { %>
-    "@babel/eslint-parser": "7.22.9",<% } %>
+    "@babel/eslint-parser": "7.22.10",<% } %>
     "@merkle-open/eslint-config": "3.0.0",
     "@merkle-open/html-validate-config": "1.0.1",
     "@merkle-open/prettier-config": "1.2.0",
@@ -132,7 +132,7 @@
     "lighthouse": "11.0.0",
     "lint-staged": "13.2.3",<% if (options.themes) { %>
     "node-sass": "8.0.0",<% } %>
-    "npm-check-updates": "16.10.17",
+    "npm-check-updates": "16.10.18",
     "npm-run-all": "4.1.5",
     "prettier": "3.0.1",
     "rimraf": "5.0.1",

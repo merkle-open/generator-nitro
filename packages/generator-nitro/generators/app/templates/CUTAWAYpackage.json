@@ -66,14 +66,8 @@
     "prod:serve": "cross-env NODE_ENV=production nitro-app-serve",<% if (options.themes) { %>
     "start": "npm run start:light",
     "start:light": "cross-env THEME=light PORT=8081 PROXY=8082 npm run dev",
-    "start:dark": "cross-env THEME=dark PORT=8083 PROXY=8084 npm run dev",<% } else { %>
-    "start": "npm run dev",<% } %>
-    "\n# DOCKER ------- ": "",
-    "docker:update": "docker-compose build",
-    "docker:start": "npm run docker:dev:start",
-    "docker:dev:start": "docker-compose -f docker-compose-dev.yml up",
-    "docker:dev:console": "docker exec -it <%= name %>_server-dev bash",
-    "docker:prod": "docker-compose up"
+    "start:dark": "cross-env THEME=dark PORT=8083 PROXY=8084 npm run dev"<% } else { %>
+    "start": "npm run dev"<% } %>
   },
   "keywords": [
     "frontend",

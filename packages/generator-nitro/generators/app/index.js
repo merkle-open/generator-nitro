@@ -316,8 +316,6 @@ module.exports = class extends Generator {
 			'src/proto.ts',
 			'tests/cypress/cypress/e2e/examples/index.cy.js',
 			'.eslintrc.js',
-			'docker-compose.yml',
-			'docker-compose-dev.yml',
 			'gulpfile.js',
 			'CUTAWAYpackage.json',
 		];

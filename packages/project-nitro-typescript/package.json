@@ -60,13 +60,7 @@
     "prod:check": "npm run check-node-version",
     "prod:build": "npm run build",
     "prod:serve": "cross-env NODE_ENV=production nitro-app-serve",
-    "start": "npm run dev",
-    "\n# DOCKER ------- ": "",
-    "docker:update": "docker-compose build",
-    "docker:start": "npm run docker:dev:start",
-    "docker:dev:start": "docker-compose -f docker-compose-dev.yml up",
-    "docker:dev:console": "docker exec -it project-nitro-typescript_server-dev bash",
-    "docker:prod": "docker-compose up"
+    "start": "npm run dev"
   },
   "keywords": [
     "frontend",

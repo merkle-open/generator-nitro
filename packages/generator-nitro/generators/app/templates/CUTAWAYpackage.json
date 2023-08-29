@@ -84,7 +84,7 @@
     "core-js": "3.32.1"<% if (options.exampleCode) { %>,
     "flatpickr": "4.6.13",
     "handlebars": "4.7.8",
-    "jquery": "3.7.0",
+    "jquery": "3.7.1",
     "lazysizes": "5.3.2",
     "lottie-web": "5.12.2",
     "prevent-window-opener-attacks": "0.3.1"<% } %><% if (options.jsCompiler === 'js') { %>,
@@ -126,7 +126,7 @@
     "lighthouse": "11.0.0",
     "lint-staged": "14.0.1",<% if (options.themes) { %>
     "node-sass": "8.0.0",<% } %>
-    "npm-check-updates": "16.13.1",
+    "npm-check-updates": "16.13.2",
     "npm-run-all": "4.1.5",
     "prettier": "3.0.2",
     "rimraf": "5.0.1",

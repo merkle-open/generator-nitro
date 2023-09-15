@@ -73,7 +73,7 @@
   "dependencies": {
     "@gondel/core": "1.2.8",
     "@gondel/plugin-hot": "1.2.8",
-    "bootstrap": "5.3.1",
+    "bootstrap": "5.3.2",
     "core-js": "3.32.2",
     "flatpickr": "4.6.13",
     "handlebars": "4.7.8",
@@ -93,7 +93,7 @@
     "@nitro/exporter": "*",
     "@nitro/gulp": "*",
     "@nitro/webpack": "*",
-    "@playwright/test": "1.37.1",
+    "@playwright/test": "1.38.0",
     "@types/bootstrap": "5.2.6",
     "@types/jquery": "3.5.18",
     "@types/svg4everybody": "2.1.2",

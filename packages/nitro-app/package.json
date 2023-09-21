@@ -17,7 +17,7 @@
     "lint": "eslint .",
     "prepublishOnly": "npx -y pkg-ok@2.3.1",
     "pretest": "npm run lint",
-    "test": "jasmine --config=./tests/jasmine/support/jasmine.json"
+    "test": "jasmine --config=./tests/jasmine/jasmine.json"
   },
   "files": [
     "app",
@@ -46,8 +46,8 @@
     "i18next-http-middleware": "3.3.2",
     "i18next-fs-backend": "2.2.0",
     "i18next-sprintf-postprocessor": "0.2.2",
-    "jasmine": "4.6.0",
-    "jasmine-core": "4.6.0",
+    "jasmine": "5.1.0",
+    "jasmine-core": "5.1.1",
     "lodash": "4.17.21",
     "twig": "1.13.3",
     "webpack": "4.46.0",

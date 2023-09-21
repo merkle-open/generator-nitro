@@ -93,7 +93,7 @@
     "@nitro/exporter": "*",
     "@nitro/gulp": "*",
     "@nitro/webpack": "*",
-    "@playwright/test": "1.38.0",
+    "@playwright/test": "1.38.1",
     "@types/bootstrap": "5.2.7",
     "@types/jquery": "3.5.19",
     "@types/svg4everybody": "2.1.2",

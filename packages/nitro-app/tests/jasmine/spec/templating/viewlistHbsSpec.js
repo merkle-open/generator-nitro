@@ -1,7 +1,7 @@
 'use strict';
 
 // const config = require('config');
-const helper = require('../../../app/templating/hbs/helpers/viewlist');
+const helper = require('../../../../app/templating/hbs/helpers/viewlist');
 
 describe('Hbs Viewlist Helper', () => {
 	it('returns the full list', () => {

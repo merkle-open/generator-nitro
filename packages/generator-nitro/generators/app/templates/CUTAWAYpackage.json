@@ -20,7 +20,7 @@
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
     "update-dependencies": "npm-check-updates -u --deprecated",
     "\n# MISC ------- ": "",
-    "postinstall": "<% if (git.root) { %>cd <%= git.root %> && husky install <% if (git.project) { %><%= git.project %>/.husky && cd <%= git.project %> <% } %>&& <% } %><% if (options.themes) { %>npm rebuild node-sass && <% } %>env-linter<% if (git.root) { %> --hooksInstalled<% } %> --saveExact --dependenciesExactVersion --lts",
+    "postinstall": "<% if (git.root) { %>cd <%= git.root %> && husky install <% if (git.project) { %><%= git.project %>/.husky && cd <%= git.project %> <% } %>&& <% } %>npx playwright install --with-deps && <% if (options.themes) { %>npm rebuild node-sass && <% } %>env-linter<% if (git.root) { %> --hooksInstalled<% } %> --saveExact --dependenciesExactVersion --lts",
     "\n# LINT/TEST ------- ": "",
     "check-node-version": "check-node-version --print --package",
     "cypress-test": "npm run build && cross-env PORT=8888 NITRO_MODE=test npm-run-all --parallel --race prod:serve cypress-test:open",
@@ -80,7 +80,7 @@
   "dependencies": {<% if (options.exampleCode) { %>
     "@gondel/core": "1.2.8",
     "@gondel/plugin-hot": "1.2.8",
-    "bootstrap": "5.3.1",<% } %>
+    "bootstrap": "5.3.2",<% } %>
     "core-js": "3.32.2"<% if (options.exampleCode) { %>,
     "flatpickr": "4.6.13",
     "handlebars": "4.7.8",
@@ -102,7 +102,7 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",
-    "@playwright/test": "1.37.1",<% if (options.jsCompiler === 'ts') { %>
+    "@playwright/test": "1.38.1",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "5.2.7",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.5.19",<% } %>
     "@types/svg4everybody": "2.1.2",

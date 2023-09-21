@@ -1,6 +1,6 @@
 'use strict';
 
-const Twig = require('../../../app/templating/twig/engine');
+const Twig = require('../../../../app/templating/twig/engine');
 
 describe('Twig Pattern Helper', () => {
 	// it('returns an error message if module is unknown', () => {

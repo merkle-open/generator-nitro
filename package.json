@@ -5,7 +5,7 @@
   "repository": "merkle-open/generator-nitro",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=16.13.0 <19",
+    "node": ">=16.13.0 <21",
     "npm": ">=8.1.0 <10"
   },
   "workspaces": [

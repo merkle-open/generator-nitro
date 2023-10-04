@@ -15,8 +15,8 @@ function readRoutes(routes) {
 	});
 }
 
-readRoutes(routePath);
 readRoutes(viewDataPath);
+readRoutes(routePath);
 
 module.exports = function (app) {
 	routers.forEach((routedefinition) => {

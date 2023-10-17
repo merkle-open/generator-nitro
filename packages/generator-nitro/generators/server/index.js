@@ -6,7 +6,7 @@ const Generator = require('yeoman-generator');
 const yosay = require('yosay');
 const path = require('path');
 const fs = require('fs');
-const glob = require('glob');
+const { globSync } = require('glob');
 const _ = require('lodash');
 
 module.exports = class extends Generator {
@@ -43,7 +43,7 @@ module.exports = class extends Generator {
 
 		// eslint-disable-next-line global-require
 		const config = require('config');
-		const files = glob.sync('**/*', { cwd: this._tplRoot, nodir: true, dot: true });
+		const files = globSync('**/*', { cwd: this._tplRoot, nodir: true, dot: true, posix: true });
 
 		const tplFiles = [
 			// files to process with copyTpl

@@ -12,7 +12,7 @@ const yosay = require('yosay');
 const path = require('path');
 const fs = require('fs');
 const gitconfig = require('git-config');
-const glob = require('glob');
+const { globSync } = require('glob');
 const _ = require('lodash');
 
 module.exports = class extends Generator {
@@ -171,7 +171,7 @@ module.exports = class extends Generator {
 
 		const pattern = this._pattern.node[this.options.type];
 		const folder = this.name.replace(/[^A-Za-z0-9-]/g, '');
-		const files = glob.sync('**/*', { cwd: this.destinationPath(pattern.template), nodir: true, dot: true });
+		const files = globSync('**/*', { cwd: this.destinationPath(pattern.template), nodir: true, dot: true, posix: true });
 		const ignores = [
 			// files to ignore
 			'.DS_Store',

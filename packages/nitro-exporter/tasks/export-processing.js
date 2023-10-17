@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const gulpZip = require('gulp-vinyl-zip').zip;
 const htmlmin = require('gulp-html-minifier-terser');
-const glob = require('glob');
+const { globSync } = require('glob');
 const unique = require('array-unique');
 const deleteEmpty = require('delete-empty');
 const utils = require('../lib/utils.js');
@@ -118,7 +118,7 @@ module.exports = function (gulp, config) {
 							replacements.forEach((replacement) => {
 								let files = [];
 								replacement.glob.forEach((g) => {
-									files = files.concat(glob.sync(g));
+									files = files.concat(globSync(g));
 								});
 								unique(files);
 								files.forEach((f) => {

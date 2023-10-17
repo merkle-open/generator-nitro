@@ -10,7 +10,7 @@ const path = require('path');
 const fs = require('fs');
 const childProcess = require('child_process');
 const findGitRoot = require('find-git-root')
-const glob = require('glob');
+const { globSync } = require('glob');
 const _ = require('lodash');
 
 module.exports = class extends Generator {
@@ -282,7 +282,7 @@ module.exports = class extends Generator {
 	writing() {
 		this.log('Scaffolding your app');
 
-		const files = glob.sync('**/*', { cwd: this.sourceRoot(), nodir: true, dot: true });
+		const files = globSync('**/*', { cwd: this.sourceRoot(), nodir: true, dot: true, posix: true});
 
 		const tplFiles = [
 			// files to process with copyTpl

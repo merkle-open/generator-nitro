@@ -6,7 +6,7 @@
   "author": "The Nitro Team",
   "engines": {
     "node": ">=16.13.0 <21",
-    "npm": ">=8.1.0 <10"
+    "npm": ">=8.1.0 <11"
   },
   "scripts": {
     "lint": "eslint .",
@@ -43,7 +43,7 @@
     "postcss": "8.4.31",
     "postcss-loader": "4.3.0",
     "resolve-url-loader": "5.0.0",
-    "sass": "1.69.3",
+    "sass": "1.69.4",
     "sass-loader": "10.4.1",
     "svgo": "3.0.2",
     "ts-config-webpack-plugin": "2.0.3",

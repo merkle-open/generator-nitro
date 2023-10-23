@@ -81,7 +81,7 @@
     "@gondel/core": "1.2.8",
     "@gondel/plugin-hot": "1.2.8",
     "bootstrap": "5.3.2",<% } %>
-    "core-js": "3.33.0"<% if (options.exampleCode) { %>,
+    "core-js": "3.33.1"<% if (options.exampleCode) { %>,
     "flatpickr": "4.6.13",
     "handlebars": "4.7.8",
     "jquery": "3.7.1",
@@ -104,19 +104,19 @@
     "@nitro/webpack": "<%= version %>",
     "@playwright/test": "1.39.0",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "5.2.8",<% if (options.exampleCode ) { %>
-    "@types/jquery": "3.5.23",<% } %>
-    "@types/svg4everybody": "2.1.3",
-    "@types/webpack-env": "1.18.2",<% } %>
+    "@types/jquery": "3.5.24",<% } %>
+    "@types/svg4everybody": "2.1.4",
+    "@types/webpack-env": "1.18.3",<% } %>
     "backstopjs": "6.2.2",
     "check-node-version": "4.2.1",
     "commitizen": "4.3.0",
     "config": "3.3.9",
     "cross-env": "7.0.3",
-    "cypress": "13.3.1",
+    "cypress": "13.3.2",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "1.0.0",
     "eslint": "8.46.0",
-    "eslint-plugin-import": "2.28.1",
+    "eslint-plugin-import": "2.29.0",
     "extend": "3.0.2",
     "generator-nitro": "<%= version %>",
     "gulp": "4.0.2",

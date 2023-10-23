@@ -3,15 +3,18 @@
   "version": "8.1.1",
   "description": "Nitro server",
   "license": "MIT",
-  "repository": "merkle-open/generator-nitro",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/merkle-open/generator-nitro.git"
+  },
   "author": "The Nitro Team",
   "engines": {
     "node": ">=16.13.0 <21",
     "npm": ">=8.1.0 <11"
   },
   "bin": {
-    "nitro-app-validate-pattern-data": "./bin/validate-pattern-data.js",
-    "nitro-app-serve": "./bin/serve.js"
+    "nitro-app-validate-pattern-data": "bin/validate-pattern-data.js",
+    "nitro-app-serve": "bin/serve.js"
   },
   "scripts": {
     "lint": "eslint .",

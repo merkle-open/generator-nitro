@@ -3,7 +3,10 @@
   "version": "8.1.1",
   "description": "An exporting package for nitro. Generate static packages with ease.",
   "license": "MIT",
-  "repository": "merkle-open/generator-nitro",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/merkle-open/generator-nitro.git"
+  },
   "author": "The Nitro Team",
   "engines": {
     "node": ">=16.13.0 <21",

@@ -15,8 +15,13 @@ function readRoutes(routes) {
 	});
 }
 
-readRoutes(viewDataPath);
-readRoutes(routePath);
+if (config.get('server.loadViewDataBeforeRoutes')) {
+	readRoutes(viewDataPath);
+	readRoutes(routePath);
+} else {
+	readRoutes(routePath);
+	readRoutes(viewDataPath);
+}
 
 module.exports = function (app) {
 	routers.forEach((routedefinition) => {

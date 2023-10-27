@@ -9,8 +9,8 @@
   },
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=16.13.0 <21",
-    "npm": ">=8.1.0 <11"
+    "node": ">=18.12.0 <21",
+    "npm": ">=8.19.2 <11"
   },
   "bin": {
     "nitro-app-validate-pattern-data": "bin/validate-pattern-data.js",

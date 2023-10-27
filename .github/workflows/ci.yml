@@ -12,7 +12,7 @@ jobs:
     name: Test - ${{ matrix.platform }} - Node v${{ matrix.node-version }}
     strategy:
       matrix:
-        node-version: [ 16.x, 18.x, 20.x ]
+        node-version: [ 18.x, 20.x ]
         platform: [ ubuntu-latest, windows-latest ]
     runs-on: ${{ matrix.platform }}
     steps:

@@ -343,6 +343,7 @@ module.exports = class extends Generator {
 			'config/default/themes.js',
 			'project/docs/nitro-themes.md',
 			'project/routes/_themes.js',
+			'project/viewData/_themes.js',
 			'src/patterns/molecules/example/css/theme/dark.scss',
 			'src/patterns/molecules/example/css/theme/light.scss',
 			'src/shared/utils/colors/css/theme/dark.scss',

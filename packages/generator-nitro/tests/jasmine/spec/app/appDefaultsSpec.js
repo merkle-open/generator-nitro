@@ -101,7 +101,7 @@ describe('nitro:app', () => {
 
 		// themes (false)
 		it('theme feature is not included', () => {
-			assert.noFile(['config/default/themes.js', 'project/routes/_themes.js', 'src/ui.dark.ts']);
+			assert.noFile(['config/default/themes.js', 'project/routes/_themes.js', 'project/viewData/_themes.js', 'src/ui.dark.ts']);
 		});
 
 		// clientTemplates (false)

@@ -110,7 +110,23 @@ function getViewCombinations(action) {
 	return pathes;
 }
 
+/**
+ *
+ * @param req the express request object
+ * @returns {boolean}
+ */
+function isView(req) {
+	return !req.path.match(/^\/favicon.ico/) &&
+		!req.path.match(/^\/api\//) &&
+		!req.path.match(/^\/assets\//) &&
+		!req.path.match(/^\/content\//) &&
+		!req.path.match(/^\/proto\//) &&
+		!req.path.match(/^\/reports\//) &&
+		!req.path.match(/^\/static\//);
+}
+
 module.exports = {
 	getViews,
 	getViewCombinations,
+	isView,
 };

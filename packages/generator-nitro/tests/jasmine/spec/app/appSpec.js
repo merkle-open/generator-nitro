@@ -131,6 +131,7 @@ describe('nitro:app', () => {
 				'config/default/themes.js',
 				'project/docs/nitro-themes.md',
 				'project/routes/_themes.js',
+				'project/viewData/_themes.js',
 				'src/ui.dark.ts',
 				'src/ui.light.ts',
 			]);
@@ -158,6 +159,7 @@ describe('nitro:app', () => {
 				'config/default/themes.js',
 				'project/docs/nitro-themes.md',
 				'project/routes/_themes.js',
+				'project/viewData/_themes.js',
 				'src/patterns/molecules/example/css/theme/dark.scss',
 				'src/ui.dark.ts',
 				'src/ui.light.ts',

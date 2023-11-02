@@ -1,5 +1,6 @@
 'use strict';
 
+const cookieSession = require('cookie-session');
 const extend = require('extend');
 const utils = require('@nitro/app/app/lib/utils');
 const view = require('@nitro/app/app/lib/view');
@@ -35,6 +36,14 @@ function theme(req, res, next) {
 
 module.exports = (app) => {
 	if (validThemes) {
+		if (app.get('env') === 'production') {
+			app.use(
+				cookieSession({
+					name: 'theme',
+					keys: ['keeeeeeeeeeey', 'schlüssel'],
+				}),
+			);
+		}
 		app.route('*').all(theme);
 	}
 };

@@ -198,6 +198,14 @@ server: {
 
 If set to `true`, all requests through express will be compressed.
 
+### `server.loadViewDataBeforeRoutes`
+
+- Type: Boolean
+- Default: true
+
+If set to `true`, viewData is processed before all routes.  
+For backwards compatibility, you can set it to `false`, to get the loading behavior before Nitro version 9.
+
 ## Gulp
 
 ### `gulp.dumpViews`

@@ -58,7 +58,7 @@ const defaultConfig = {
 			'src/patterns/',
 			'.node-version',
 		],
-		loadViewDataBeforeRoutes: false,
+		loadViewDataBeforeRoutes: true,
 	},
 	gulp: {
 		dumpViews: {

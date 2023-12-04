@@ -45,7 +45,7 @@
     "hbs": "4.2.0",
     "hbs-utils": "0.0.4",
     "html-validate": "7.18.1",
-    "i18next": "23.7.6",
+    "i18next": "23.7.7",
     "i18next-http-middleware": "3.5.0",
     "i18next-fs-backend": "2.3.0",
     "i18next-sprintf-postprocessor": "0.2.2",
@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@merkle-open/eslint-config": "3.0.0",
-    "eslint": "8.54.0",
+    "eslint": "8.55.0",
     "eslint-plugin-import": "2.29.0"
   },
   "publishConfig": {

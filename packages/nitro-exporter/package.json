@@ -1,6 +1,6 @@
 {
   "name": "@nitro/exporter",
-  "version": "9.0.2",
+  "version": "9.0.3",
   "description": "An exporting package for nitro. Generate static packages with ease.",
   "license": "MIT",
   "repository": {
@@ -28,8 +28,8 @@
     "exporter"
   ],
   "peerDependencies": {
-    "@nitro/app": ">=9.0.2",
-    "@nitro/gulp": ">=9.0.2"
+    "@nitro/app": ">=9.0.3",
+    "@nitro/gulp": ">=9.0.3"
   },
   "dependencies": {
     "array-unique": "0.3.2",

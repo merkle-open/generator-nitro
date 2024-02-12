@@ -17,7 +17,7 @@ function getUser(req, res, next) {
 }
 
 module.exports = (app) => {
-  app.route('/').get(getUser);
+  app.route('/').all(getUser);
 };
 ```
 

@@ -4,6 +4,6 @@ function getUser(req, res, next) {
 }
 
 exports = module.exports = function (app) {
-	app.route('*') // all routes
-		.get(getUser);
+	// all routes
+	app.route('*').all(getUser);
 };

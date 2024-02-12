@@ -102,7 +102,7 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",
-    "@playwright/test": "1.41.1",<% if (options.jsCompiler === 'ts') { %>
+    "@playwright/test": "1.41.2",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "5.2.10",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.5.29",<% } %>
     "@types/svg4everybody": "2.1.5",
@@ -110,11 +110,11 @@
     "backstopjs": "6.3.3",
     "check-node-version": "4.2.1",
     "commitizen": "4.3.0",
-    "config": "3.3.10",
+    "config": "3.3.11",
     "cross-env": "7.0.3",
     "cypress": "13.6.4",
     "cz-conventional-changelog": "3.3.0",
-    "env-linter": "1.0.0",
+    "env-linter": "2.0.0",
     "eslint": "8.56.0",
     "eslint-plugin-import": "2.29.1",
     "extend": "3.0.2",
@@ -124,13 +124,13 @@
     "husky": "8.0.3",
     "license-checker": "25.0.1",
     "lighthouse": "11.5.0",
-    "lint-staged": "15.2.1",<% if (options.themes) { %>
+    "lint-staged": "15.2.2",<% if (options.themes) { %>
     "node-sass": "8.0.0",<% } %>
-    "npm-check-updates": "16.14.14",
+    "npm-check-updates": "16.14.15",
     "npm-run-all": "4.1.5",
-    "prettier": "3.2.4",
+    "prettier": "3.2.5",
     "rimraf": "5.0.5",
-    "stylelint": "16.2.0",<% if (options.jsCompiler === 'ts') { %>
+    "stylelint": "16.2.1",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "5.3.3",<% } %>
     "webpack-cli": "4.10.0",
     "yo": "5.0.0"

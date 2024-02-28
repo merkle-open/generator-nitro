@@ -102,12 +102,12 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",
-    "@playwright/test": "1.41.2",<% if (options.jsCompiler === 'ts') { %>
+    "@playwright/test": "1.42.0",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "5.2.10",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.5.29",<% } %>
     "@types/svg4everybody": "2.1.5",
     "@types/webpack-env": "1.18.4",<% } %>
-    "backstopjs": "6.3.19",
+    "backstopjs": "6.3.21",
     "check-node-version": "4.2.1",
     "commitizen": "4.3.0",
     "config": "3.3.11",

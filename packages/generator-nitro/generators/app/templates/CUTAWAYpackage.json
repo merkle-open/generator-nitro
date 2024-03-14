@@ -110,7 +110,8 @@
     "backstopjs": "6.3.21",
     "check-node-version": "4.2.1",
     "commitizen": "4.3.0",
-    "config": "3.3.11",
+    "config": "3.3.11",<% if (options.themes) { %>
+	"cookie-session": "2.1.0",<% } %>
     "cross-env": "7.0.3",
     "cypress": "13.6.6",
     "cz-conventional-changelog": "3.3.0",

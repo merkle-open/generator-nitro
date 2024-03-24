@@ -36,7 +36,7 @@
     "modular"
   ],
   "dependencies": {
-    "cli-color": "2.0.3",
+    "cli-color": "2.0.4",
     "config": "3.3.11",
     "find-git-root": "1.0.4",
     "git-config": "0.0.7",

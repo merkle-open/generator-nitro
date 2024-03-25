@@ -6,7 +6,6 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const JsConfigWebpackPlugin = require('js-config-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TsConfigWebpackPlugin = require('ts-config-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const DynamicAliasResolverPlugin = require('../plugins/dynamicAliasResolver');
@@ -143,6 +142,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 										// grid: 'autoplace': enable autoprefixer grid translations and include autoplacement support.
 										// not enabled - use `/* autoprefixer grid: autoplace */` in your css file
 									}),
+									require('cssnano'),
 								],
 							};
 						},
@@ -163,13 +163,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				filename: 'css/[name].min.css',
 				chunkFilename: 'css/[name]-[contenthash:7].min.css',
 			}),
-			new OptimizeCSSAssetsPlugin({
-				cssProcessorOptions: {
-					map: {
-						inline: false,
-					},
-				},
-			})
 		);
 	}
 

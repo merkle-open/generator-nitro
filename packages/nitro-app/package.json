@@ -39,7 +39,7 @@
     "cookie-session": "2.1.0",
     "config": "3.3.11",
     "dot-object": "2.1.4",
-    "express": "4.19.1",
+    "express": "4.19.2",
     "extend": "3.0.2",
     "globby": "11.1.0",
     "hbs": "4.2.0",

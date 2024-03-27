@@ -32,7 +32,7 @@
     "autoprefixer": "10.4.19",
     "case-sensitive-paths-webpack-plugin": "2.4.0",
     "css-loader": "5.2.7",
-    "cssnano": "6.1.1",
+    "cssnano": "6.1.2",
     "file-loader": "6.2.0",
     "handlebars-loader": "1.7.3",
     "iconfont-webpack-plugin": "5.0.1",

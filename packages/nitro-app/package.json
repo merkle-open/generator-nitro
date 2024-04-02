@@ -54,7 +54,7 @@
     "lodash": "4.17.21",
     "twig": "1.13.3",
     "webpack": "4.47.0",
-    "webpack-dev-middleware": "5.3.3",
+    "webpack-dev-middleware": "5.3.4",
     "webpack-hot-middleware": "2.26.1"
   },
   "devDependencies": {

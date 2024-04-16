@@ -102,7 +102,7 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",
-    "@playwright/test": "1.42.1",<% if (options.jsCompiler === 'ts') { %>
+    "@playwright/test": "1.43.1",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "5.2.10",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.5.29",<% } %>
     "@types/svg4everybody": "2.1.5",
@@ -113,7 +113,7 @@
     "config": "3.3.11",<% if (options.themes) { %>
     "cookie-session": "2.1.0",<% } %>
     "cross-env": "7.0.3",
-    "cypress": "13.7.1",
+    "cypress": "13.7.3",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "2.0.0",
     "eslint": "8.57.0",
@@ -124,7 +124,7 @@
     "html-validate": "7.18.1",
     "husky": "9.0.11",
     "license-checker": "25.0.1",
-    "lighthouse": "11.7.0",
+    "lighthouse": "11.7.1",
     "lint-staged": "15.2.2",<% if (options.themes) { %>
     "node-sass": "9.0.0",<% } %>
     "npm-check-updates": "16.14.18",
@@ -132,7 +132,7 @@
     "prettier": "3.2.5",
     "rimraf": "5.0.5",
     "stylelint": "16.3.1",<% if (options.jsCompiler === 'ts') { %>
-    "typescript": "5.4.3",<% } %>
+    "typescript": "5.4.5",<% } %>
     "webpack-cli": "4.10.0",
     "yo": "5.0.0"
   },

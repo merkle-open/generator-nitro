@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@merkle-open/eslint-config": "3.0.0",
-    "ejs": "3.1.9",
+    "ejs": "3.1.10",
     "eslint": "8.57.0",
     "eslint-plugin-import": "2.29.1",
     "fs-extra": "11.2.0",

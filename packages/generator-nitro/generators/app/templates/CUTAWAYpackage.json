@@ -81,7 +81,7 @@
     "@gondel/core": "1.2.8",
     "@gondel/plugin-hot": "1.2.8",
     "bootstrap": "5.3.3",<% } %>
-    "core-js": "3.36.1"<% if (options.exampleCode) { %>,
+    "core-js": "3.37.0"<% if (options.exampleCode) { %>,
     "flatpickr": "4.6.13",
     "handlebars": "4.7.8",
     "jquery": "3.7.1",
@@ -113,7 +113,7 @@
     "config": "3.3.11",<% if (options.themes) { %>
     "cookie-session": "2.1.0",<% } %>
     "cross-env": "7.0.3",
-    "cypress": "13.7.3",
+    "cypress": "13.8.1",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "2.0.0",
     "eslint": "8.57.0",
@@ -124,14 +124,14 @@
     "html-validate": "7.18.1",
     "husky": "9.0.11",
     "license-checker": "25.0.1",
-    "lighthouse": "11.7.1",
+    "lighthouse": "12.0.0",
     "lint-staged": "15.2.2",<% if (options.themes) { %>
     "node-sass": "9.0.0",<% } %>
-    "npm-check-updates": "16.14.18",
+    "npm-check-updates": "16.14.20",
     "npm-run-all": "4.1.5",
     "prettier": "3.2.5",
     "rimraf": "5.0.5",
-    "stylelint": "16.3.1",<% if (options.jsCompiler === 'ts') { %>
+    "stylelint": "16.4.0",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "5.4.5",<% } %>
     "webpack-cli": "4.10.0",
     "yo": "5.0.0"

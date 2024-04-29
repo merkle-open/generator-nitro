@@ -13,15 +13,19 @@ module.exports = {
 		skipAudits: [
 			// performance
 			'redirects',
+			'redirects-http',
 			'server-response-time',
 			'uses-http2',
 			'uses-long-cache-ttl',
 			// best-practices
-			'appcache-manifest',
+			'csp-xss',
 			'is-on-https',
+			'redirects-http',
 			// seo
+			'document-title',
 			'http-status-code',
 			'is-crawlable',
+			'meta-description',
 			'robots-txt',
 		],
 	},

@@ -21,20 +21,24 @@
 		border-left: 2rem solid transparent;
 		border-right: 2rem solid $color-gray-8;
 	}
+
+	a {
+		padding: 0.5em 0;
+	}
 }
 
 // inline mixin examples
 @mixin box-mixin() {
 	display: block;
 }
-/* stylelint-disable-next-line  no-duplicate-selectors */
+/* stylelint-disable-next-line no-duplicate-selectors */
 .a-box {
 	@include box-mixin();
 }
 @mixin box-mixin-alternative($display: block) {
 	display: $display;
 }
-/* stylelint-disable-next-line  no-duplicate-selectors */
+/* stylelint-disable-next-line no-duplicate-selectors */
 .a-box {
 	@include box-mixin-alternative();
 	@include box-mixin-alternative(block);

@@ -1,2 +1,27 @@
 @import 'variables/grid';
-@import '~bootstrap/scss/bootstrap-grid';
+
+// please note:
+// the following was copied from '~bootstrap/scss/bootstrap-grid'
+// to be able to remove the unneeded classes
+// https://getbootstrap.com/docs/5.3/layout/grid/
+
+// configuration
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/maps';
+@import '~bootstrap/scss/vendor/rfs';
+
+// mixins
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~bootstrap/scss/mixins/container';
+@import '~bootstrap/scss/mixins/grid';
+@import '~bootstrap/scss/mixins/utilities';
+
+// layout
+@import '~bootstrap/scss/containers';
+@import '~bootstrap/scss/grid';
+
+// utilities
+@import '~bootstrap/scss/utilities';
+$utilities: map-get-multiple($utilities, ('align-items', 'justify-content'));
+@import '~bootstrap/scss/utilities/api';

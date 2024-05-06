@@ -20,6 +20,6 @@
 }
 
 @mixin fluid-height($x, $y) {
-	padding: 0 0 percentage($y / $x) 0;
+	padding: 0 0 percentage($y / $x);
 	height: 0;
 }

@@ -92,7 +92,7 @@
     "svg4everybody": "2.1.9"<% } %>
   },
   "devDependencies": {<% if (options.jsCompiler === 'js') { %>
-    "@babel/eslint-parser": "7.24.5",<% } %>
+    "@babel/eslint-parser": "7.24.6",<% } %>
     "@merkle-open/eslint-config": "3.0.0",
     "@merkle-open/html-validate-config": "1.0.1",
     "@merkle-open/prettier-config": "1.2.0",
@@ -125,13 +125,13 @@
     "husky": "9.0.11",
     "license-checker": "25.0.1",
     "lighthouse": "12.0.0",
-    "lint-staged": "15.2.4",<% if (options.themes) { %>
+    "lint-staged": "15.2.5",<% if (options.themes) { %>
     "node-sass": "9.0.0",<% } %>
     "npm-check-updates": "16.14.20",
     "npm-run-all": "4.1.5",
     "prettier": "3.2.5",
     "rimraf": "5.0.7",
-    "stylelint": "16.5.0",<% if (options.jsCompiler === 'ts') { %>
+    "stylelint": "16.6.0",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "5.4.5",<% } %>
     "webpack-cli": "4.10.0",
     "yo": "5.0.0"

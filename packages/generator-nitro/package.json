@@ -40,7 +40,7 @@
     "config": "3.3.11",
     "find-git-root": "1.0.4",
     "git-config": "0.0.7",
-    "glob": "10.4.1",
+    "glob": "10.4.2",
     "got": "11.8.5",
     "lodash": "4.17.21",
     "yeoman-generator": "5.10.0",

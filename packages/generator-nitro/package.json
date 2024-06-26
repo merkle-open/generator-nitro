@@ -37,7 +37,7 @@
   ],
   "dependencies": {
     "cli-color": "2.0.4",
-    "config": "3.3.11",
+    "config": "3.3.12",
     "find-git-root": "1.0.4",
     "git-config": "0.0.7",
     "glob": "10.4.2",

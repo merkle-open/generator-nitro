@@ -99,7 +99,7 @@
     "backstopjs": "6.3.23",
     "check-node-version": "4.2.1",
     "commitizen": "4.3.0",
-    "config": "3.3.11",
+    "config": "3.3.12",
     "cross-env": "7.0.3",
     "cypress": "13.12.0",
     "cz-conventional-changelog": "3.3.0",

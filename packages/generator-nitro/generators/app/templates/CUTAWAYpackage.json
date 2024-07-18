@@ -92,7 +92,7 @@
     "svg4everybody": "2.1.9"<% } %>
   },
   "devDependencies": {<% if (options.jsCompiler === 'js') { %>
-    "@babel/eslint-parser": "7.24.7",<% } %>
+    "@babel/eslint-parser": "7.24.8",<% } %>
     "@merkle-open/eslint-config": "3.0.0",
     "@merkle-open/html-validate-config": "1.0.1",
     "@merkle-open/prettier-config": "1.2.0",
@@ -102,7 +102,7 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",
-    "@playwright/test": "1.45.0",<% if (options.jsCompiler === 'ts') { %>
+    "@playwright/test": "1.45.2",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "5.2.10",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.5.30",<% } %>
     "@types/svg4everybody": "2.1.5",
@@ -113,7 +113,7 @@
     "config": "3.3.12",<% if (options.themes) { %>
     "cookie-session": "2.1.0",<% } %>
     "cross-env": "7.0.3",
-    "cypress": "13.12.0",
+    "cypress": "13.13.1",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "2.0.0",
     "eslint": "8.57.0",
@@ -122,16 +122,16 @@
     "generator-nitro": "<%= version %>",
     "gulp": "4.0.2",
     "html-validate": "7.18.1",
-    "husky": "9.0.11",
+    "husky": "9.1.0",
     "license-checker": "25.0.1",
     "lighthouse": "12.1.0",
     "lint-staged": "15.2.7",<% if (options.themes) { %>
     "node-sass": "9.0.0",<% } %>
     "npm-check-updates": "16.14.20",
     "npm-run-all": "4.1.5",
-    "prettier": "3.3.2",
+    "prettier": "3.3.3",
     "rimraf": "5.0.7",
-    "stylelint": "16.6.1",<% if (options.jsCompiler === 'ts') { %>
+    "stylelint": "16.7.0",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "5.5.2",<% } %>
     "webpack-cli": "4.10.0",
     "yo": "5.0.0"

@@ -47,7 +47,7 @@
     "yosay": "2.0.2"
   },
   "devDependencies": {
-    "@merkle-open/eslint-config": "3.0.0",
+    "@merkle-open/eslint-config": "4.0.0",
     "ejs": "3.1.10",
     "eslint": "8.57.0",
     "eslint-plugin-import": "2.29.1",

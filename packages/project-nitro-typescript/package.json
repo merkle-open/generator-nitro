@@ -84,7 +84,7 @@
     "svg4everybody": "2.1.9"
   },
   "devDependencies": {
-    "@merkle-open/eslint-config": "3.0.0",
+    "@merkle-open/eslint-config": "4.0.0",
     "@merkle-open/html-validate-config": "1.0.1",
     "@merkle-open/prettier-config": "1.2.0",
     "@merkle-open/stylelint-config": "4.0.0",
@@ -93,7 +93,7 @@
     "@nitro/exporter": "*",
     "@nitro/gulp": "*",
     "@nitro/webpack": "*",
-    "@playwright/test": "1.45.2",
+    "@playwright/test": "1.45.3",
     "@types/bootstrap": "5.2.10",
     "@types/jquery": "3.5.30",
     "@types/svg4everybody": "2.1.5",
@@ -121,7 +121,7 @@
     "prettier": "3.3.3",
     "rimraf": "5.0.9",
     "stylelint": "16.7.0",
-    "typescript": "5.5.3",
+    "typescript": "5.5.4",
     "webpack-cli": "4.10.0",
     "yo": "5.0.0"
   },

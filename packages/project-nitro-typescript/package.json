@@ -112,7 +112,7 @@
     "generator-nitro": "*",
     "gulp": "4.0.2",
     "html-validate": "7.18.1",
-    "husky": "9.1.0",
+    "husky": "9.1.2",
     "license-checker": "25.0.1",
     "lighthouse": "12.1.0",
     "lint-staged": "15.2.7",

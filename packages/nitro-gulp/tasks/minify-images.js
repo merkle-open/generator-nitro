@@ -53,7 +53,7 @@ module.exports = (gulp, plugins) => {
 			if (minifyImagesConfig && minifyImagesConfig.src && minifyImagesConfig.dest) {
 				streams.push(
 					gulp
-						.src(minifyImagesConfig.src)
+						.src(minifyImagesConfig.src, { encoding: false })
 						.pipe(plugins.newer(minifyImagesConfig.dest))
 						.pipe(
 							plugins.imagemin(imageminPluginsConfig)

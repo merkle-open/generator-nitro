@@ -23,5 +23,5 @@
 
 // utilities
 @import '~bootstrap/scss/utilities';
-$utilities: map-get-multiple($utilities, ('align-items', 'justify-content'));
+$utilities: map-get-multiple($utilities, ('display', 'align-items', 'justify-content'));
 @import '~bootstrap/scss/utilities/api';

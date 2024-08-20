@@ -102,7 +102,7 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",
-    "@playwright/test": "1.46.0",<% if (options.jsCompiler === 'ts') { %>
+    "@playwright/test": "1.46.1",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "5.2.10",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.5.30",<% } %>
     "@types/svg4everybody": "2.1.5",

@@ -101,7 +101,7 @@
     "@nitro/exporter": "*",
     "@nitro/gulp": "*",
     "@nitro/webpack": "*",
-    "@playwright/test": "1.46.0",
+    "@playwright/test": "1.46.1",
     "backstopjs": "6.3.23",
     "check-node-version": "4.2.1",
     "commitizen": "4.3.0",

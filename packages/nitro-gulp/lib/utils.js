@@ -35,7 +35,7 @@ function getOptionalPackage(x) {
 }
 
 function each(cfgs, fn) {
-	if (cfgs.length) {
+	if (Array.isArray(cfgs)) {
 		cfgs.forEach((cfg) => {
 			fn(cfg);
 		});

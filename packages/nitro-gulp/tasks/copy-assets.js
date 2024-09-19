@@ -1,7 +1,7 @@
 'use strict';
 
 const config = require('config');
-const merge = require('merge-stream');
+const ordered = require('ordered-read-streams');
 const utils = require('../lib/utils');
 
 module.exports = (gulp, plugins) => {
@@ -20,6 +20,6 @@ module.exports = (gulp, plugins) => {
 			}
 		});
 
-		return streams.length ? merge(...streams) : Promise.resolve('resolved');
+		return streams.length ? ordered(streams) : Promise.resolve('resolved');
 	};
 };

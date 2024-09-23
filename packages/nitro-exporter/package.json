@@ -36,6 +36,7 @@
     "del": "6.1.1",
     "delete-empty": "3.0.0",
     "glob": "10.4.5",
+    "glob-parent": "6.0.2",
     "gulp-filter": "7.0.0",
     "gulp-html-minifier-terser": "7.1.0",
     "gulp-vinyl-zip": "2.5.0"

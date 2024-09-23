@@ -1,13 +1,15 @@
 'use strict';
 
 const del = require('del');
+const deleteEmpty = require('delete-empty');
 const fs = require('fs');
-const path = require('path');
+const globParent = require('glob-parent');
+const { globSync } = require('glob');
 const gulpZip = require('gulp-vinyl-zip').zip;
 const htmlmin = require('gulp-html-minifier-terser');
-const { globSync } = require('glob');
+const path = require('path');
 const unique = require('array-unique');
-const deleteEmpty = require('delete-empty');
+
 const utils = require('../lib/utils.js');
 
 module.exports = function (gulp, config) {
@@ -54,7 +56,9 @@ module.exports = function (gulp, config) {
 										return false;
 									}
 									if (typeof pattern === 'string') {
-										src.push(pattern);
+										if (fs.existsSync(globParent(pattern))) {
+											src.push(pattern);
+										}
 									}
 									return true;
 								});
@@ -68,7 +72,7 @@ module.exports = function (gulp, config) {
 					getPublicsPromise = function () {
 						return new Promise((resolve) =>
 							gulp
-								.src(src, { base: 'public' })
+								.src(src, { base: 'public', allowEmpty: true })
 								.pipe(gulp.dest(configEntry.dest + path.sep))
 								.on('end', () => {
 									resolve();
@@ -96,7 +100,7 @@ module.exports = function (gulp, config) {
 							 * @returns {null} No return value.
 							 */
 							function move() {
-								gulp.src(renames[i].src, { base: renames[i].base })
+								gulp.src(renames[i].src, { base: renames[i].base, allowEmpty: true })
 									.pipe(gulp.dest(renames[i].dest))
 									.on('end', () => {
 										del.sync(renames[i++].src);

@@ -9,7 +9,7 @@ const config = {
 		{
 			dest: 'export',
 			i18n: ['default', 'dark'],
-			publics: ['public/*', 'public/assets/**/*', 'public/content/**/*'],
+			publics: ['public/*', 'public/assets/**/*', 'public/notavailable/**/*', 'public/content/**/*'],
 			renames: [
 				{
 					src: 'export/assets/**',

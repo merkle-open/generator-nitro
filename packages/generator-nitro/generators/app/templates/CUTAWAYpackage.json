@@ -102,7 +102,7 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",
-    "@playwright/test": "1.47.1",<% if (options.jsCompiler === 'ts') { %>
+    "@playwright/test": "1.47.2",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "5.2.10",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.5.30",<% } %>
     "@types/svg4everybody": "2.1.5",
@@ -127,7 +127,7 @@
     "lighthouse": "12.2.1",
     "lint-staged": "15.2.10",<% if (options.themes) { %>
     "node-sass": "9.0.0",<% } %>
-    "npm-check-updates": "17.1.2",
+    "npm-check-updates": "17.1.3",
     "npm-run-all": "4.1.5",
     "prettier": "3.3.3",
     "rimraf": "5.0.10",

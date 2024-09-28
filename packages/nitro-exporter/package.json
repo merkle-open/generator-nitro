@@ -39,7 +39,7 @@
     "glob-parent": "6.0.2",
     "gulp-filter": "7.0.0",
     "gulp-html-minifier-terser": "7.1.0",
-    "gulp-vinyl-zip": "2.5.0"
+    "gulp-zip": "5.1.0"
   },
   "devDependencies": {
     "@merkle-open/eslint-config": "4.0.0",

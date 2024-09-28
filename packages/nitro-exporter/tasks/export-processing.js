@@ -5,7 +5,7 @@ const deleteEmpty = require('delete-empty');
 const fs = require('fs');
 const globParent = require('glob-parent');
 const { globSync } = require('glob');
-const gulpZip = require('gulp-vinyl-zip').zip;
+const gulpZip = require('gulp-zip');
 const htmlmin = require('gulp-html-minifier-terser');
 const path = require('path');
 const unique = require('array-unique');
@@ -168,7 +168,7 @@ module.exports = function (gulp, config) {
 									flag: 'r',
 								})
 							);
-							gulp.src(`${configEntry.dest}/**/*`)
+							gulp.src(`${configEntry.dest}/**/*`, { encoding: false })
 								.pipe(gulpZip(`${pkg.name}-${pkg.version}.zip`))
 								.pipe(gulp.dest(configEntry.dest))
 								.on('end', () => {

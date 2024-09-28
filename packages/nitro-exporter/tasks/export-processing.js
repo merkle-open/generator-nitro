@@ -168,7 +168,7 @@ module.exports = function (gulp, config) {
 									flag: 'r',
 								})
 							);
-							gulp.src(`${configEntry.dest}/**/*`, { encoding: false })
+							gulp.src(`${configEntry.dest}/**/*`)
 								.pipe(gulpZip(`${pkg.name}-${pkg.version}.zip`))
 								.pipe(gulp.dest(configEntry.dest))
 								.on('end', () => {

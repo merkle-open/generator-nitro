@@ -23,11 +23,11 @@
     "nitro"
   ],
   "dependencies": {
-    "@babel/core": "7.25.2",
-    "@babel/preset-env": "7.25.4",
-    "@babel/preset-react": "7.24.7",
-    "@babel/plugin-proposal-decorators": "7.24.7",
-    "@babel/plugin-transform-class-properties": "7.25.4",
+    "@babel/core": "7.25.7",
+    "@babel/preset-env": "7.25.7",
+    "@babel/preset-react": "7.25.7",
+    "@babel/plugin-proposal-decorators": "7.25.7",
+    "@babel/plugin-transform-class-properties": "7.25.7",
     "autoprefixer": "10.4.20",
     "case-sensitive-paths-webpack-plugin": "2.4.0",
     "css-loader": "5.2.7",
@@ -60,8 +60,8 @@
   },
   "devDependencies": {
     "@merkle-open/eslint-config": "4.0.0",
-    "eslint": "8.57.0",
-    "eslint-plugin-import": "2.30.0"
+    "eslint": "8.57.1",
+    "eslint-plugin-import": "2.31.0"
   },
   "publishConfig": {
     "access": "public"

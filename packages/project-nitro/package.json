@@ -91,7 +91,7 @@
     "svg4everybody": "2.1.9"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.25.7",
+    "@babel/eslint-parser": "7.25.8",
     "@merkle-open/eslint-config": "4.0.0",
     "@merkle-open/html-validate-config": "1.0.2",
     "@merkle-open/prettier-config": "1.2.1",
@@ -101,7 +101,7 @@
     "@nitro/exporter": "*",
     "@nitro/gulp": "*",
     "@nitro/webpack": "*",
-    "@playwright/test": "1.47.2",
+    "@playwright/test": "1.48.0",
     "backstopjs": "6.3.25",
     "check-node-version": "4.2.1",
     "commitizen": "4.3.1",
@@ -126,7 +126,7 @@
     "npm-run-all": "4.1.5",
     "prettier": "3.3.3",
     "rimraf": "5.0.10",
-    "stylelint": "16.9.0",
+    "stylelint": "16.10.0",
     "webpack-cli": "4.10.0",
     "yo": "5.0.0"
   },

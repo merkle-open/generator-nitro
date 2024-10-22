@@ -109,7 +109,7 @@
     "@types/webpack-env": "1.18.5",<% } %>
     "backstopjs": "6.3.25",
     "check-node-version": "4.2.1",
-    "commitizen": "4.3.1,
+    "commitizen": "4.3.1",
     "config": "3.3.12",<% if (options.themes) { %>
     "cookie-session": "2.1.0",<% } %>
     "cross-env": "7.0.3",

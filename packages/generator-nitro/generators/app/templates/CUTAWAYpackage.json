@@ -92,7 +92,7 @@
     "svg4everybody": "2.1.9"<% } %>
   },
   "devDependencies": {<% if (options.jsCompiler === 'js') { %>
-    "@babel/eslint-parser": "7.25.8",<% } %>
+    "@babel/eslint-parser": "7.25.9",<% } %>
     "@merkle-open/eslint-config": "4.0.0",
     "@merkle-open/html-validate-config": "1.0.2",
     "@merkle-open/prettier-config": "1.2.1",

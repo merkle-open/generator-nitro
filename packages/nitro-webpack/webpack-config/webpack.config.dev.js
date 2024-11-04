@@ -116,7 +116,8 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	// css & scss
 	if (options.rules.scss) {
 		const scssLoaderOptions = {
-			...(options.rules.scss.implementation && { implementation: options.rules.scss.implementation })
+			...(options.rules.scss.implementation && { implementation: options.rules.scss.implementation }),
+			...(options.rules.scss.sassOptions && { sassOptions: options.rules.scss.sassOptions }),
 		};
 		webpackConfig.module.rules.push({
 			test: /\.s?css$/,

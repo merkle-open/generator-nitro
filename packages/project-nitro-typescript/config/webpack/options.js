@@ -3,7 +3,12 @@ const options = {
 	rules: {
 		js: false,
 		ts: true,
-		scss: true,
+		scss: {
+			sassOptions: {
+				quietDeps: true,
+				silenceDeprecations: ['color-functions', 'global-builtin', 'import', 'legacy-js-api'],
+			},
+		},
 		hbs: true,
 		woff: true,
 		image: true,

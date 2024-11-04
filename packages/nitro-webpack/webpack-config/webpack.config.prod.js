@@ -111,7 +111,8 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			...(options.rules.scss.publicPath && { publicPath: options.rules.scss.publicPath })
 		};
 		const scssLoaderOptions = {
-			...(options.rules.scss.implementation && { implementation: options.rules.scss.implementation })
+			...(options.rules.scss.implementation && { implementation: options.rules.scss.implementation }),
+			...(options.rules.scss.sassOptions && { sassOptions: options.rules.scss.sassOptions }),
 		};
 		webpackConfig.module.rules.push({
 			test: /\.s?css$/,

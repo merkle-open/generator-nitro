@@ -81,7 +81,7 @@
     "@gondel/core": "1.2.8",
     "@gondel/plugin-hot": "1.2.8",
     "bootstrap": "5.3.3",<% } %>
-    "core-js": "3.38.1"<% if (options.exampleCode) { %>,
+    "core-js": "3.39.0"<% if (options.exampleCode) { %>,
     "flatpickr": "4.6.13",
     "handlebars": "4.7.8",
     "jquery": "3.7.1",
@@ -102,9 +102,9 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",
-    "@playwright/test": "1.48.1",<% if (options.jsCompiler === 'ts') { %>
+    "@playwright/test": "1.48.2",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "5.2.10",<% if (options.exampleCode ) { %>
-    "@types/jquery": "3.5.31",<% } %>
+    "@types/jquery": "3.5.32",<% } %>
     "@types/svg4everybody": "2.1.5",
     "@types/webpack-env": "1.18.5",<% } %>
     "backstopjs": "6.3.25",
@@ -113,7 +113,7 @@
     "config": "3.3.12",<% if (options.themes) { %>
     "cookie-session": "2.1.0",<% } %>
     "cross-env": "7.0.3",
-    "cypress": "13.15.0",
+    "cypress": "13.15.1",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "2.0.0",
     "eslint": "8.57.1",
@@ -127,7 +127,7 @@
     "lighthouse": "12.2.1",
     "lint-staged": "15.2.10",<% if (options.themes) { %>
     "node-sass": "9.0.0",<% } %>
-    "npm-check-updates": "17.1.4",
+    "npm-check-updates": "17.1.10",
     "npm-run-all": "4.1.5",
     "prettier": "3.3.3",
     "rimraf": "5.0.10",

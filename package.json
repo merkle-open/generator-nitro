@@ -20,8 +20,8 @@
     "lint": "lerna run lint",
     "lint:md": "markdownlint ./readme.md ./.github",
     "update-dependencies": "npm-run-all --parallel update-dependencies:*",
-    "update-dependencies:packages": "npm exec --workspaces -- npm-check-updates -u --deprecated -x twig,webpack,css-loader,postcss-loader,sass-loader,node-sass,mini-css-extract-plugin,webpack-cli,webpack-dev-middleware,del,globby,get-port,got,yosay,gulp-filter,imagemin,gulp-imagemin,imagemin-svgo,imagemin-mozjpeg,glob,rimraf",
-    "update-dependencies:root": "npm-check-updates -u --deprecated"
+    "update-dependencies:packages": "npm exec --workspaces -- npm-check-updates -u --deprecated -x twig,webpack,css-loader,postcss-loader,sass-loader,node-sass,mini-css-extract-plugin,webpack-cli,webpack-dev-middleware,del,globby,get-port,got,yosay,gulp-filter,gulp-zip,imagemin,gulp-imagemin,imagemin-svgo,imagemin-mozjpeg,glob,rimraf",
+    "update-dependencies:root": "npm-check-updates -u --deprecated -x rimraf"
   },
   "keywords": [
     "yeoman-generator",
@@ -41,9 +41,9 @@
   "devDependencies": {
     "commitizen": "4.3.1",
     "cz-conventional-changelog": "3.3.0",
-    "lerna": "8.1.8",
+    "lerna": "8.1.9",
     "markdownlint-cli": "0.42.0",
-    "npm-check-updates": "17.1.4",
+    "npm-check-updates": "17.1.10",
     "npm-run-all": "4.1.5",
     "rimraf": "5.0.10"
   }

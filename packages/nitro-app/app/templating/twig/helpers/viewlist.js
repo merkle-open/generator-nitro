@@ -82,6 +82,8 @@ module.exports = function (Twig) {
 					markup.push('<li>For this include / exclude term, no pages where found</li>');
 				}
 
+				markup.push('</ul>');
+
 				// return the markup
 				return {
 					chain,

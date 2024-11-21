@@ -58,7 +58,7 @@ module.exports = function (Twig) {
 
 				if (include !== '') {
 					const includeArray = include.split(',');
-					filteredViews = views.filter((viewItem) => {
+					filteredViews = filteredViews.filter((viewItem) => {
 						return includeArray.some((includeString) => {
 							return viewItem.url.indexOf(includeString) >= 0;
 						});
@@ -67,7 +67,7 @@ module.exports = function (Twig) {
 
 				if (exclude !== '') {
 					const excludeArray = exclude.split(',');
-					filteredViews = views.filter((viewItem) => {
+					filteredViews = filteredViews.filter((viewItem) => {
 						return excludeArray.every((excludeString) => {
 							return viewItem.url.indexOf(excludeString) === -1;
 						});

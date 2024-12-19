@@ -42,7 +42,7 @@
     "postcss": "8.4.49",
     "postcss-loader": "4.3.0",
     "resolve-url-loader": "5.0.0",
-    "sass": "1.82.0",
+    "sass": "1.83.0",
     "sass-loader": "10.5.2",
     "svgo": "3.3.2",
     "ts-config-webpack-plugin": "2.0.3",

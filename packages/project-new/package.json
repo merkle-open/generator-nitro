@@ -15,6 +15,6 @@
   },
   "devDependencies": {
     "generator-nitro": "*",
-    "yo": "5.0.0"
+    "yo": "5.1.0"
   }
 }

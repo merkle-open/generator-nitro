@@ -27,7 +27,7 @@
     "gulp": ">=5.0.0"
   },
   "dependencies": {
-    "browser-sync": "3.0.3",
+    "browser-sync": "3.0.4",
     "compression": "1.8.0",
     "config": "3.3.12",
     "del": "6.1.1",

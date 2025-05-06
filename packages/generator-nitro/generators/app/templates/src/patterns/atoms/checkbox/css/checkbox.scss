@@ -28,13 +28,13 @@ $checkbox-color: $color-gray-5;
 		border-radius: 4px;
 	}
 
-	// Checkbox Replacement - checked state: Check-Icon
+	// Checkbox Replacement - checked state:  check char
 	&:checked + .a-checkbox__label::after {
-		font-icon: -0.4 + $checkbox-size url('../img/check.svg');
+		content: '✔';
 		color: $color-gray-4;
 		position: absolute;
-		top: 32%;
-		left: 4px;
+		top: 20%;
+		left: 5px;
 	}
 
 	&:focus,

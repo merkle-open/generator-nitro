@@ -130,12 +130,9 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				{
 					loader: require.resolve('postcss-loader'),
 					options: {
-						postcssOptions: (loader) => {
+						postcssOptions: () => {
 							return {
 								plugins: [
-									require('iconfont-webpack-plugin')({
-										resolve: loader.resolve,
-									}),
 									require('autoprefixer')({
 										// @see autoprefixer options: https://github.com/postcss/autoprefixer#options
 										// flexbox: 'no-2009' will add prefixes only for final and IE versions of specification.

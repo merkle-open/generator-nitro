@@ -9,8 +9,11 @@ $a-list-size: 2rem;
 	margin: 0.3 * $a-list-size 0;
 	&::before {
 		position: absolute;
+		content: '';
+		width: 1em;
+		height: 1em;
 		margin-top: 0.1 * $a-list-size;
-		margin-left: -1.8 * $a-list-size;
-		font-icon: url('../img/check.svg');
+		margin-left: -1.6 * $a-list-size;
+		background: center / contain no-repeat url('../img/check.svg');
 	}
 }

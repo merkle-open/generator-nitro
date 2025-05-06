@@ -34,7 +34,6 @@
     "cssnano": "7.0.6",
     "file-loader": "6.2.0",
     "handlebars-loader": "1.7.3",
-    "iconfont-webpack-plugin": "5.0.1",
     "imagemin": "7.0.1",
     "img-loader": "4.0.0",
     "js-config-webpack-plugin": "2.0.3",

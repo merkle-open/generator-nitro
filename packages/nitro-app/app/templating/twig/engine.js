@@ -31,11 +31,21 @@ Object.keys(files).forEach((key) => {
 	const helperTagFactory = require(files[key]);
 
 	// expose helper as custom tag
-	/* eslint-disable-next-line */
-	Twig.extend(function (Twig) {
-		Twig.exports.extendTag(helperTagFactory(Twig));
+	Twig.extend((TwigInstance) => {
+		const result = helperTagFactory(TwigInstance);
+
+		// if the helper returned a tag (i.e., a config object), register it
+		if (result && result.type && result.parse) {
+			TwigInstance.exports.extendTag(result);
+		}
+
+		// if it didn’t return anything, it’s probably a filter or global setup
+		// Nothing else to do here
 	});
 });
+
+// register t filter
+require('./filters/t')(Twig);
 
 // eslint-disable-next-line
 Twig.renderWithLayout = (viewPath, options, fn) => {

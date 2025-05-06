@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Simple Handlebars Translation Filter
+ * Simple Twig Translation Filter
  *
  * @dependency: https://www.npmjs.com/package/i18next
  * http://i18next.com/

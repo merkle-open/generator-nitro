@@ -288,8 +288,8 @@ The pattern helper will find also pattern elements.
 
 - Pattern with name `example-sub`: `<type>/example-sub/example-sub.<%= options.viewExt %>`
 - Element with name `example-sub`: `<type>/*/elements/example-sub/example-sub.<%= options.viewExt %>`
-
-<% if (options.templateEngine === 'hbs') { %>Please note:
+<% if (options.templateEngine === 'hbs') { %>
+Please note:
 The parameter `type` is also available for rendering pattern elements the same as for normal patterns. Therefore, the same
 rules and restrictions regarding unique names apply. Additionally, for pattern elements, their name should also be unique
 within a certain pattern type as otherwise, the pattern helper would just return the first found match.
@@ -299,7 +299,8 @@ within a certain pattern type as otherwise, the pattern helper would just return
 Render a partial (<%= options.viewExt %> snippet). Partials are placed in `src/views/_partials/` as `*.<%= options.viewExt %>` files (e.g. `head.<%= options.viewExt %>`).
 
 ```<% if (options.templateEngine === 'twig') { %>
-{% partial 'head' %}<% } else { %>
+{% partial 'head' %}
+```<% } else { %>
 {{> head}}
 ```
 

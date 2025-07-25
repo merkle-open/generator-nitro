@@ -27,7 +27,7 @@
     "cypress-test:open": "cypress open --project ./tests/cypress/ --e2e --browser chrome",
     "lighthouse-test": "npm run build && cross-env PORT=8889 NITRO_MODE=test npm-run-all --parallel --race prod:serve lighthouse-test:run",
     "lighthouse-test:run": "lighthouse http://localhost:8889/<% if (options.exampleCode) { %>example-patterns<% } else { %>index<% } %> --quiet --configPath=./tests/lighthouse/lighthouse.config.js --output-path=./public/reports/lighthouse/report.html --view",
-    "lint": "npm-run-all lint:*",
+    "lint": "npm-run-all --parallel lint:*",
     "lint:css": "stylelint src/**/*.*ss --allow-empty-input",
     "lint:data": "nitro-app-validate-pattern-data",
     "lint:html": "gulp lint-html",

@@ -35,9 +35,9 @@
     "ajv": "8.17.1",
     "body-parser": "2.2.0",
     "cli-color": "2.0.4",
-    "compression": "1.8.0",
-    "cookie-session": "2.1.0",
-    "config": "3.3.12",
+    "compression": "1.8.1",
+    "cookie-session": "2.1.1",
+    "config": "4.1.0",
     "dot-object": "2.1.5",
     "express": "4.21.2",
     "extend": "3.0.2",
@@ -45,12 +45,12 @@
     "hbs": "4.2.0",
     "hbs-utils": "0.0.4",
     "html-validate": "7.18.1",
-    "i18next": "24.2.3",
-    "i18next-http-middleware": "3.7.4",
+    "i18next": "25.3.2",
+    "i18next-http-middleware": "3.8.0",
     "i18next-fs-backend": "2.6.0",
     "i18next-sprintf-postprocessor": "0.2.2",
-    "jasmine": "5.7.1",
-    "jasmine-core": "5.7.1",
+    "jasmine": "5.9.0",
+    "jasmine-core": "5.9.0",
     "lodash": "4.17.21",
     "twig": "1.13.3",
     "webpack": "4.47.0",
@@ -60,7 +60,7 @@
   "devDependencies": {
     "@merkle-open/eslint-config": "4.0.0",
     "eslint": "8.57.1",
-    "eslint-plugin-import": "2.31.0"
+    "eslint-plugin-import": "2.32.0"
   },
   "publishConfig": {
     "access": "public"

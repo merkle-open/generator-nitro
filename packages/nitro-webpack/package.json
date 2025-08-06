@@ -23,25 +23,25 @@
     "nitro"
   ],
   "dependencies": {
-    "@babel/core": "7.27.1",
-    "@babel/preset-env": "7.27.2",
+    "@babel/core": "7.28.0",
+    "@babel/preset-env": "7.28.0",
     "@babel/preset-react": "7.27.1",
-    "@babel/plugin-proposal-decorators": "7.27.1",
+    "@babel/plugin-proposal-decorators": "7.28.0",
     "@babel/plugin-transform-class-properties": "7.27.1",
     "autoprefixer": "10.4.21",
     "case-sensitive-paths-webpack-plugin": "2.4.0",
     "css-loader": "5.2.7",
-    "cssnano": "7.0.7",
+    "cssnano": "7.1.0",
     "file-loader": "6.2.0",
     "handlebars-loader": "1.7.3",
     "imagemin": "7.0.1",
     "img-loader": "4.0.0",
     "js-config-webpack-plugin": "2.0.3",
     "mini-css-extract-plugin": "1.6.2",
-    "postcss": "8.5.3",
+    "postcss": "8.5.6",
     "postcss-loader": "4.3.0",
     "resolve-url-loader": "5.0.0",
-    "sass": "1.87.0",
+    "sass": "1.90.0",
     "sass-loader": "10.5.2",
     "svgo": "3.3.2",
     "ts-config-webpack-plugin": "2.0.3",
@@ -60,7 +60,7 @@
   "devDependencies": {
     "@merkle-open/eslint-config": "4.0.0",
     "eslint": "8.57.1",
-    "eslint-plugin-import": "2.31.0"
+    "eslint-plugin-import": "2.32.0"
   },
   "publishConfig": {
     "access": "public"

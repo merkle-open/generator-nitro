@@ -45,7 +45,7 @@
     "@merkle-open/eslint-config": "4.0.0",
     "@nitro/app": "*",
     "eslint": "8.57.1",
-    "eslint-plugin-import": "2.31.0"
+    "eslint-plugin-import": "2.32.0"
   },
   "publishConfig": {
     "access": "public"

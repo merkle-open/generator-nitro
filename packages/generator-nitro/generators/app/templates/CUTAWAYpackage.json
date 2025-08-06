@@ -86,8 +86,7 @@
     "handlebars": "4.7.8",
     "jquery": "3.7.1",
     "lazysizes": "5.3.2",
-    "lottie-web": "5.12.2",
-    "prevent-window-opener-attacks": "0.3.1"<% } %><% if (options.jsCompiler === 'js') { %>,
+    "lottie-web": "5.12.2"<% } %><% if (options.jsCompiler === 'js') { %>,
     "regenerator-runtime": "0.14.1"<% } %><% if (options.exampleCode) { %>,
     "svg4everybody": "2.1.9"<% } %>
   },

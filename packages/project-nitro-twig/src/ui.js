@@ -2,7 +2,6 @@
 
 import { hot } from '@gondel/plugin-hot';
 
-import './shared/base/security/js/security';
 import './shared/base/reset/css/reset.scss';
 import './shared/base/grid/css/grid.scss';
 import './shared/base/document/css/document.scss';

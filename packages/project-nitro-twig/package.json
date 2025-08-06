@@ -80,7 +80,6 @@
     "jquery": "3.7.1",
     "lazysizes": "5.3.2",
     "lottie-web": "5.12.2",
-    "prevent-window-opener-attacks": "0.3.1",
     "regenerator-runtime": "0.14.1",
     "svg4everybody": "2.1.9"
   },

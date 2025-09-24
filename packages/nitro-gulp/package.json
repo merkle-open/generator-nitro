@@ -29,7 +29,7 @@
   "dependencies": {
     "browser-sync": "3.0.4",
     "compression": "1.8.1",
-    "config": "4.1.0",
+    "config": "4.1.1",
     "del": "6.1.1",
     "get-port": "5.1.1",
     "globby": "11.1.0",
@@ -46,7 +46,7 @@
     "gulp-svgstore": "9.0.0",
     "html-validate": "7.18.1",
     "ordered-read-streams": "2.0.0",
-    "yargs": "17.7.2"
+    "yargs": "18.0.0"
   },
   "optionalDependencies": {
     "imagemin-pngquant": "9.0.2"

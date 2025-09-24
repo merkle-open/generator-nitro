@@ -15,12 +15,14 @@
  * If you specify languages, your HTML views will be suffixed with the provided locale, e.g. index-en.html
  */
 
-const argv = require('yargs').argv;
+const yargs = require('yargs');
+const { hideBin } = require('yargs/helpers');
 const config = require('config');
 const view = require('@nitro/app/app/lib/view');
 const del = require('del');
 const getPort = require('get-port');
 
+const argv = yargs(hideBin(process.argv)).argv;
 const serverPath = require('@nitro/app/app/lib/utils').getServerPath();
 const tmpDirectory = `${config.get('nitro.tmpDirectory')}/views`;
 const viewFilter = (viewItem) => {

@@ -92,16 +92,16 @@
   },
   "devDependencies": {<% if (options.jsCompiler === 'js') { %>
     "@babel/eslint-parser": "7.28.4",<% } %>
-    "@merkle-open/eslint-config": "4.0.0",
-    "@merkle-open/html-validate-config": "1.0.2",
+    "@merkle-open/eslint-config": "4.0.1",
+    "@merkle-open/html-validate-config": "1.0.3",
     "@merkle-open/prettier-config": "1.2.1",
-    "@merkle-open/stylelint-config": "4.0.3",
+    "@merkle-open/stylelint-config": "4.0.4",
     "@merkle-open/ts-config": "1.1.1",
     "@nitro/app": "<%= version %>",
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",
-    "@playwright/test": "1.55.1",<% if (options.jsCompiler === 'ts') { %>
+    "@playwright/test": "1.56.0",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "5.2.10",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.5.32",<% } %>
     "@types/svg4everybody": "2.1.5",
@@ -112,7 +112,7 @@
     "config": "4.1.1",<% if (options.themes) { %>
     "cookie-session": "2.1.1",<% } %>
     "cross-env": "10.1.0",
-    "cypress": "15.3.0",
+    "cypress": "15.4.0",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "2.0.0",
     "eslint": "8.57.1",

@@ -79,8 +79,7 @@
     "handlebars": "4.7.8",
     "jquery": "3.7.1",
     "lazysizes": "5.3.2",
-    "lottie-web": "5.13.0",
-    "svg4everybody": "2.1.9"
+    "lottie-web": "5.13.0"
   },
   "devDependencies": {
     "@merkle-open/eslint-config": "4.0.1",
@@ -95,7 +94,6 @@
     "@playwright/test": "1.56.1",
     "@types/bootstrap": "5.2.10",
     "@types/jquery": "3.5.33",
-    "@types/svg4everybody": "2.1.5",
     "@types/webpack-env": "1.18.8",
     "backstopjs": "6.3.25",
     "check-node-version": "4.2.1",
@@ -115,10 +113,10 @@
     "license-checker": "25.0.1",
     "lighthouse": "12.8.2",
     "lint-staged": "16.2.6",
-    "npm-check-updates": "19.1.1",
+    "npm-check-updates": "19.1.2",
     "npm-run-all": "4.1.5",
     "prettier": "3.6.2",
-    "rimraf": "6.0.1",
+    "rimraf": "6.1.0",
     "stylelint": "16.25.0",
     "typescript": "5.9.3",
     "webpack-cli": "4.10.0",

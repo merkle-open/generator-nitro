@@ -99,7 +99,7 @@
     "commitizen": "4.3.1",
     "config": "4.1.1",
     "cross-env": "10.1.0",
-    "cypress": "15.5.0",
+    "cypress": "15.6.0",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "2.0.0",
     "eslint": "8.57.1",
@@ -118,7 +118,7 @@
     "rimraf": "6.1.0",
     "stylelint": "16.25.0",
     "webpack-cli": "4.10.0",
-    "yo": "5.1.0"
+    "yo": "6.0.0"
   },
   "browserslist": [
     "> 0.2%",

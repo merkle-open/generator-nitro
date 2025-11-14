@@ -35,7 +35,7 @@
     "globby": "11.1.0",
     "gulp": "5.0.1",
     "gulp-html-validate": "0.2.0",
-    "gulp-imagemin": "7.1.0",
+    "gulp-imagemin": "8.0.0",
     "gulp-live-server": "0.0.31",
     "gulp-load-plugins": "2.0.8",
     "gulp-newer": "1.4.0",

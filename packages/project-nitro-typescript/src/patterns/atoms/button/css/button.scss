@@ -1,21 +1,26 @@
-@import '../../../../shared/utils/colors2/css/colors2';
+@use 'sass:color';
+
+@use '../../../../shared/utils/colors/css/colors';
+@use '../../../../shared/utils/colors2/css/colors2';
 
 .a-button {
 	cursor: pointer;
 
 	font-size: 24px;
 	font-weight: bold;
-	text-shadow: 1px 0 $color-gray-1;
-	background-color: darken($color-brand-1, 10%);
-	border: 0 solid $color-gray-5;
+	text-shadow: 1px 0 colors2.$color-gray-1;
+	background-color: color.scale(colors.$color-brand-1, $lightness: -10%);
+	border: 0 solid colors2.$color-gray-5;
 	border-bottom-width: 5px;
 	padding: 10px 20px;
 	display: inline-block;
-	color: $color-white;
+	color: colors2.$color-white;
 	margin: 1rem 0;
 	outline: none;
 	position: relative;
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
 
 	&[disabled] {
 		opacity: 0.4;

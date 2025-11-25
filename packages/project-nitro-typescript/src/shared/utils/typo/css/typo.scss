@@ -1,4 +1,4 @@
-@import '../../breakpoints/css/breakpoints';
+@use '../../breakpoints/css/breakpoints';
 
 $typography-family-sans: 'Arial', sans-serif;
 $typography-family-serif: 'Times New Roman', serif;
@@ -130,8 +130,8 @@ $typography-definitions: (
 		$all-font-definition: map-get(map-get($typography-definitions, $font-bundle), 'all');
 	}
 	$font-definition: map-merge(
-		$all-font-definition,
-		map-get(map-get($typography-definitions, $font-bundle), $viewport)
+			$all-font-definition,
+			map-get(map-get($typography-definitions, $font-bundle), $viewport)
 	);
 
 	@return $font-definition;
@@ -142,7 +142,7 @@ $typography-definitions: (
 	@if ($viewport == 'all') {
 		@include _generate-font-size(get-font-definition($font-bundle: $font-bundle, $viewport: 'mobile'));
 
-		@media (min-width: $size-md-min) {
+		@media (min-width: breakpoints.$size-md-min) {
 			@include _generate-font-size(get-font-definition($font-bundle: $font-bundle, $viewport: 'desktop'));
 		}
 	} @else {

@@ -1,11 +1,11 @@
-@import '../../../../shared/utils/colors/css/colors';<% if (options.themes) { %>
-@import './theme/light';<% } %>
+@use '../../../../shared/utils/colors/css/colors';<% if (options.themes) { %>
+@use './theme/light' as theme;<% } %>
 
 .m-example {
 	margin: 1em 0;
-	padding: <% if (options.themes) { %>$example-padding<% } else { %>1.8em 2.2em<% } %>;
-	background-color: $color-area-background;
-	border-radius: <% if (options.themes) { %>$example-border-radius<% } else { %>0.5em<% } %>;
+	padding: <% if (options.themes) { %>theme.$example-padding<% } else { %>1.8em 2.2em<% } %>;
+	background-color: colors.$color-area-background;
+	border-radius: <% if (options.themes) { %>theme.$example-border-radius<% } else { %>0.5em<% } %>;
 }
 .m-example__headline {
 	font-size: 1.6em;

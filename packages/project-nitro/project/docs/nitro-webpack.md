@@ -27,7 +27,6 @@ const options = {
         banner: true,
         bundleAnalyzer: false,
         theme: false,
-        dynamicAlias: false,
     },
 };
 const webpackConfig = require('@nitro/webpack/webpack-config/webpack.config.dev')(options);
@@ -72,8 +71,7 @@ Config:
 
 - `true` or `{}` will activate scss support
 - `{ publicPath: '../' }` provide a separate public path for stylesheets. By default, webpack uses the value from 'output.publicPath'. (only relevant for production build)
-- `{ implementation: require('node-sass') }` gives the possibility to use 'node-sass' as sass implementation. (you have to add 'node-sass' as a dev-dependency in your project)
-- `{ sassOptions: { ... } }` gives the possibility to add options for the ['dart-sass'](https://sass-lang.com/documentation/js-api/interfaces/options/) or ['node-sass'](https://github.com/sass/node-sass/#options) implementation (e.g. ignore some deprecations for dart-sass with `silenceDeprecations: [...]`)
+- `{ sassOptions: { ... } }` gives the possibility to add options for the ['dart-sass'](https://sass-lang.com/documentation/js-api/interfaces/options/))
 
 #### `options.rules.hbs`
 
@@ -157,21 +155,6 @@ A string will activate theming support:
 - a subfolder within assets is used for the output path and publicPath (`/assets/${theme}/`)
 
 It makes sense to use a dynamic value e.g. an environment variable, as shown in the example configuration.
-
-#### `options.features.dynamicAlias`
-
-- Type: object || false
-- default: false
-
-A proper configured dynamicAlias feature will activate the DynamicAliasResolverPlugin
-which can change import paths in source files dynamically on compile time as desired.
-
-Properties:
-
-- `options.features.dynamicAlias.search` (string || RegExp)
-  search term to be replaced (e.g. '/theme/light')
-- `options.features.dynamicAlias.replace` (string)
-  string as replacement (e.g. `/theme/${theme}`)
 
 ## Extending Configuration
 

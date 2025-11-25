@@ -1,9 +1,9 @@
-@import '../../../../shared/utils/colors/css/colors';
+@use '../../../../shared/utils/colors/css/colors';
 
 .m-example {
 	margin: 1em 0;
 	padding: 1.8em 2.2em;
-	background-color: $color-area-background;
+	background-color: colors.$color-area-background;
 	border-radius: 0.5em;
 }
 .m-example__headline {

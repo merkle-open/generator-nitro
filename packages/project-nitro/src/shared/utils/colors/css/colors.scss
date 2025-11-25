@@ -1,12 +1,12 @@
 // colors
-@import './theme/light';
+@use './theme/light' as colors;
 
-$color-base-font: $foreground;
-$color-base-background: $background;
-$color-area-background: $area;
+$color-base-font: colors.$foreground;
+$color-base-background: colors.$background;
+$color-area-background: colors.$area;
 
 // brand colors
-$color-brand-font: $white;
-$color-brand-1: $blue;
-$color-brand-2: $purple;
-$color-brand-3: $yellow;
+$color-brand-font: colors.$white;
+$color-brand-1: colors.$blue;
+$color-brand-2: colors.$purple;
+$color-brand-3: colors.$yellow;

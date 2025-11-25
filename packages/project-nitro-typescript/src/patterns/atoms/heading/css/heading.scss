@@ -1,4 +1,4 @@
-@import '../../../../shared/utils/webfonts/css/webfonts';
+@use '../../../../shared/utils/webfonts/css/webfonts';
 
 .a-heading {
 	margin-bottom: 2em;
@@ -7,7 +7,7 @@
 
 .a-heading__title {
 	font-size: 2.4em;
-	font-family: $font-family-playfair, sans-serif;
+	font-family: webfonts.$font-family-playfair, sans-serif;
 	padding: 0.2em 0;
 }
 
@@ -15,5 +15,5 @@
 	display: block;
 	margin-top: -0.3em;
 	font-size: 1.4em;
-	font-family: $font-family-gaegu, sans-serif;
+	font-family: webfonts.$font-family-gaegu, sans-serif;
 }

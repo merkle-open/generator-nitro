@@ -1,4 +1,4 @@
-@import '../../../../shared/utils/colors2/css/colors2';
+@use '../../../../shared/utils/colors2/css/colors2';
 
 @keyframes a-loader-loading {
 	0% {
@@ -42,7 +42,7 @@
 	height: 10px;
 	border-radius: 50%;
 	display: inline-block;
-	background-color: $color-gray-5;
+	background-color: colors2.$color-gray-5;
 	opacity: 0;
 	margin-right: 3px;
 
@@ -67,6 +67,6 @@
 
 .a-loader--white {
 	.a-loader__dot {
-		background-color: $color-white;
+		background-color: colors2.$color-white;
 	}
 }

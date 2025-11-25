@@ -1,11 +1,11 @@
-@import '../../../../shared/utils/colors2/css/colors2';
+@use '../../../../shared/utils/colors2/css/colors2';
 
 .a-box {
 	position: relative;
 	margin: 2rem 0 2rem 2rem;
 	padding: 2rem 2rem 1.5rem;
-	color: $color-gray-1;
-	background-color: $color-gray-8;
+	color: colors2.$color-gray-1;
+	background-color: colors2.$color-gray-8;
 	min-height: 5em;
 
 	&::after {
@@ -19,7 +19,7 @@
 
 		border-bottom: 2rem solid transparent;
 		border-left: 2rem solid transparent;
-		border-right: 2rem solid $color-gray-8;
+		border-right: 2rem solid colors2.$color-gray-8;
 	}
 
 	a {

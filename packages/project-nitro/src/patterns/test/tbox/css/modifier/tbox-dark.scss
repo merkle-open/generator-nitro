@@ -1,8 +1,8 @@
-@import '../../../../../shared/utils/colors2/css/colors2';
+@use '../../../../../shared/utils/colors2/css/colors2';
 
 .t-tbox--dark {
-	color: $color-gray-8;
-	background-color: $color-gray-1;
+	color: colors2.$color-gray-8;
+	background-color: colors2.$color-gray-1;
 
 	&::after {
 		content: '';
@@ -13,6 +13,6 @@
 		width: 0;
 		height: 0;
 
-		border-left-color: $color-gray-1;
+		border-left-color: colors2.$color-gray-1;
 	}
 }

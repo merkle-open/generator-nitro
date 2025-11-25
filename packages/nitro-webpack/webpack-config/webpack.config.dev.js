@@ -7,7 +7,6 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const JsConfigWebpackPlugin = require('js-config-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TsConfigWebpackPlugin = require('ts-config-webpack-plugin');
-const DynamicAliasResolverPlugin = require('../plugins/dynamicAliasResolver');
 const utils = require('../lib/utils');
 
 const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
@@ -116,7 +115,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	// css & scss
 	if (options.rules.scss) {
 		const scssLoaderOptions = {
-			...(options.rules.scss.implementation && { implementation: options.rules.scss.implementation }),
 			...(options.rules.scss.sassOptions && { sassOptions: options.rules.scss.sassOptions }),
 		};
 		webpackConfig.module.rules.push({
@@ -234,15 +232,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	// feature bundle analyzer
 	if (options.features.bundleAnalyzer) {
 		webpackConfig.plugins.push(new BundleAnalyzerPlugin());
-	}
-
-	// feature dynamic alias
-	if (
-		options.features.dynamicAlias &&
-		options.features.dynamicAlias.search &&
-		options.features.dynamicAlias.replace
-	) {
-		webpackConfig.resolve.plugins = [new DynamicAliasResolverPlugin(options.features.dynamicAlias)];
 	}
 
 	return webpackConfig;

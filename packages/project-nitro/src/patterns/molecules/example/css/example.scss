@@ -1,11 +1,11 @@
-@import '../../../../shared/utils/colors/css/colors';
-@import './theme/light';
+@use '../../../../shared/utils/colors/css/colors';
+@use './theme/light' as theme;
 
 .m-example {
 	margin: 1em 0;
-	padding: $example-padding;
-	background-color: $color-area-background;
-	border-radius: $example-border-radius;
+	padding: theme.$example-padding;
+	background-color: colors.$color-area-background;
+	border-radius: theme.$example-border-radius;
 }
 .m-example__headline {
 	font-size: 1.6rem;

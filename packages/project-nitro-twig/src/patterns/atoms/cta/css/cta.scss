@@ -1,4 +1,5 @@
-@import '../../../../shared/utils/colors2/css/colors2';
+@use '../../../../shared/utils/colors/css/colors';
+@use '../../../../shared/utils/colors2/css/colors2';
 
 .a-cta {
 	display: block;
@@ -10,23 +11,23 @@
 	width: 80px;
 	height: 80px;
 
-	color: $color-gray-4;
+	color: colors2.$color-gray-4;
 
 	&:hover,
 	&:focus {
-		color: $color-brand-1;
+		color: colors.$color-brand-1;
 
 		.a-cta__circle--size-s {
-			background-color: rgba($color-brand-1, 1);
+			background-color: rgba(colors.$color-brand-1, 1);
 		}
 		.a-cta__circle--size-m {
-			background-color: rgba($color-brand-1, 0.6);
+			background-color: rgba(colors.$color-brand-1, 0.6);
 		}
 		.a-cta__circle--size-l {
-			background-color: rgba($color-brand-1, 0.75);
+			background-color: rgba(colors.$color-brand-1, 0.75);
 		}
 		.a-cta__text {
-			color: $color-brand-1;
+			color: colors.$color-brand-1;
 		}
 	}
 	&:focus {
@@ -42,7 +43,7 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	color: $color-white;
+	color: colors2.$color-white;
 }
 
 .a-cta__circle {
@@ -52,7 +53,7 @@
 	left: 50%;
 	width: 48px;
 	height: 48px;
-	background-color: rgba($color-gray-6, 1);
+	background-color: rgba(colors2.$color-gray-6, 1);
 
 	transform: translate(-50%, -50%);
 	transition: background-color 0.3s ease;
@@ -61,7 +62,7 @@
 .a-cta__circle--size-m {
 	width: 64px;
 	height: 64px;
-	background-color: rgba($color-gray-6, 0.45);
+	background-color: rgba(colors2.$color-gray-6, 0.45);
 	opacity: 0;
 	animation: animation-a-cta--pulse-m 2.25s 0.25s linear infinite;
 }
@@ -69,7 +70,7 @@
 .a-cta__circle--size-l {
 	width: 80px;
 	height: 80px;
-	background-color: rgba($color-gray-6, 0.3);
+	background-color: rgba(colors2.$color-gray-6, 0.3);
 	opacity: 0;
 	animation: animation-a-cta--pulse-l 2.25s 0.25s linear infinite;
 }

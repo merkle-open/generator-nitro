@@ -7,7 +7,12 @@ const options = {
 		ts: false,
 		scss: {
 			publicPath: '../',
-			implementation: require('node-sass'),
+			sassOptions: {
+				quietDeps: true,
+				// color-function and import are muted due to issues in twitter bootstrap scss
+				// todo: https://sass-lang.com/documentation/breaking-changes/legacy-js-api/
+				silenceDeprecations: ['color-functions', 'import', 'legacy-js-api'],
+			},
 		},
 		hbs: true,
 		woff: {
@@ -26,10 +31,6 @@ const options = {
 		banner: true,
 		bundleAnalyzer: false,
 		theme: theme,
-		dynamicAlias: {
-			search: '/theme/light',
-			replace: `/theme/${theme}`,
-		},
 	},
 };
 

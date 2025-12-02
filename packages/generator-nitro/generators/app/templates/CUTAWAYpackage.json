@@ -81,7 +81,7 @@
     "@gondel/core": "1.2.9",
     "@gondel/plugin-hot": "1.2.9",
     "bootstrap": "5.3.8",<% } %>
-    "core-js": "3.46.0"<% if (options.exampleCode) { %>,
+    "core-js": "3.47.0"<% if (options.exampleCode) { %>,
     "flatpickr": "4.6.13",
     "handlebars": "4.7.8",
     "jquery": "3.7.1",
@@ -100,7 +100,7 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",
-    "@playwright/test": "1.56.1",<% if (options.jsCompiler === 'ts') { %>
+    "@playwright/test": "1.57.0",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "5.2.10",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.5.32",<% } %>
     "@types/webpack-env": "1.18.8",<% } %>
@@ -110,7 +110,7 @@
     "config": "4.1.1",<% if (options.themes) { %>
     "cookie-session": "2.1.1",<% } %>
     "cross-env": "10.1.0",
-    "cypress": "15.6.0",
+    "cypress": "15.7.0",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "2.0.0",
     "eslint": "8.57.1",
@@ -122,13 +122,13 @@
     "husky": "9.1.7",
     "license-checker": "25.0.1",
     "lighthouse": "12.8.2",
-    "lint-staged": "16.2.6",<% if (options.themes) { %>
+    "lint-staged": "16.2.7",<% if (options.themes) { %>
     "node-sass": "9.0.0",<% } %>
     "npm-check-updates": "19.1.2",
     "npm-run-all": "4.1.5",
-    "prettier": "3.6.2",
-    "rimraf": "6.1.0",
-    "stylelint": "16.25.0",<% if (options.jsCompiler === 'ts') { %>
+    "prettier": "3.7.3",
+    "rimraf": "6.1.2",
+    "stylelint": "16.26.1",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "5.9.3",<% } %>
     "webpack-cli": "4.10.0",
     "yo": "6.0.0"

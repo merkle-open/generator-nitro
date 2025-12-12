@@ -1,8 +1,8 @@
-@use '../../../../../shared/utils/colors2/css/colors2';
+@use '../../../../../shared/utils/token/css/semantic-color';
 
 .t-tbox--dark {
-	color: colors2.$color-gray-8;
-	background-color: colors2.$color-gray-1;
+	color: semantic-color.$color-solid-grey-8;
+	background-color: semantic-color.$color-solid-grey-1;
 
 	&::after {
 		content: '';
@@ -13,6 +13,6 @@
 		width: 0;
 		height: 0;
 
-		border-left-color: colors2.$color-gray-1;
+		border-left-color: semantic-color.$color-solid-grey-1;
 	}
 }

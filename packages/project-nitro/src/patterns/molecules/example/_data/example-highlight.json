@@ -1,0 +1,19 @@
+{
+	"$schema": "../schema.json",
+	"modifier": "highlight",
+	"title": "Example Module with Modifier Highlight",
+	"links": [
+		{
+			"uri": "index",
+			"text": "Link One"
+		},
+		{
+			"uri": "index",
+			"text": "Link Two"
+		},
+		{
+			"uri": "index",
+			"text": "Link Three"
+		}
+	]
+}

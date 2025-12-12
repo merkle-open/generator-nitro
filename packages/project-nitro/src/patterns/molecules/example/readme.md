@@ -3,5 +3,5 @@
 This is an example.
 It shows a basic example of a pattern:
 
-- with a [visual modifier](./css/modifier/example-blue.scss)
+- with a [visual modifier](./css/modifier/example-highlight.scss)
 - with example usage of clientside templates with handlebarsJS

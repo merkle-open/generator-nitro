@@ -7,7 +7,7 @@
 	"properties": {
 		"modifier": {
 			"description": "A pattern modifier",
-			"enum": ["", "dark"]
+			"enum": ["", "invert"]
 		},
 		"children": { "type": "string" },
 		"content": { "type": "string" }

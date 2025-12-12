@@ -1,6 +1,0 @@
-@use '../../colors/css/colors';
-
-// brand color themes
-$brand-gradient-1: linear-gradient(0deg, colors.$color-brand-1, mix(colors.$color-brand-1, #fff, 80%));
-$brand-gradient-2: linear-gradient(0deg, colors.$color-brand-2, mix(colors.$color-brand-2, #fff, 80%));
-$brand-gradient-3: linear-gradient(0deg, colors.$color-brand-3, mix(colors.$scolor-brand-3, #fff, 80%));

@@ -1,7 +1,5 @@
-@use '../../../../shared/utils/colors2/css/colors2';
+@use '../../../../shared/utils/token/css/semantic-color';
 @use '../../../../shared/utils/hidden/css/hidden';
-
-@import '~flatpickr/dist/flatpickr.css';
 
 .a-datepicker {
 	width: 100%;
@@ -26,8 +24,8 @@
 .a-datepicker__input {
 	width: 100%;
 	padding: 0.5em 2em 0.3em 0.3em;
-	border: 2px solid colors2.$color-gray-5;
+	border: 2px solid semantic-color.$color-solid-grey-5;
 	border-radius: 4px;
-	color: colors2.$color-gray-3;
-	background-color: colors2.$color-gray-10;
+	color: semantic-color.$color-solid-black;
+	background-color: semantic-color.$color-solid-grey-2;
 }

@@ -1,5 +1,5 @@
 @use '../../../../shared/utils/webfonts/css/webfonts';
-@use '../../../../shared/utils/colors2/css/colors2';
+@use '../../../../shared/utils/token/css/semantic-color';
 @use '../../../../shared/utils/breakpoints/css/breakpoints';
 
 .a-quote {
@@ -8,8 +8,8 @@
 	width: 100%;
 	margin: 0;
 	padding: 1.2rem 4rem;
-	color: colors2.$color-gray-3;
-	background: colors2.$color-gray-9;
+	color: semantic-color.$color-area-foreground;
+	background: semantic-color.$color-area-background;
 	font-size: 20px;
 
 	@media (min-width: breakpoints.$size-md-min) {
@@ -29,9 +29,9 @@
 	&::before,
 	&::after {
 		position: absolute;
-		color: colors2.$color-white;
+		color: semantic-color.$color-area-border;
 		font-size: 4em;
-		text-shadow: -3px 0 colors2.$color-gray-9;
+		text-shadow: -3px 0 semantic-color.$color-solid-grey-1;
 	}
 	&::before {
 		top: -0.39em;

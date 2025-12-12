@@ -1,10 +1,12 @@
-@use '../../../../shared/utils/colors/css/colors';
+@use '../../../../shared/utils/token/css/component';
+@use '../../../../shared/utils/token/css/semantic-dimension';
 
 .m-example {
-	margin: 1em 0;
-	padding: 1.8em 2.2em;
-	background-color: colors.$color-area-background;
-	border-radius: 0.5em;
+	margin: semantic-dimension.$spacing-s2 0;
+	padding: component.$example-padding;
+	color: component.$example-color-foreground;
+	background-color: component.$example-color-background;
+	border-radius: component.$example-border-radius;
 }
 .m-example__headline {
 	font-size: 1.6rem;

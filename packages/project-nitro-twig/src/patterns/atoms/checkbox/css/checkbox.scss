@@ -1,9 +1,8 @@
-@use '../../../../shared/utils/colors2/css/colors2';
+@use '../../../../shared/utils/token/css/semantic-color';
 @use '../../../../shared/utils/hidden/css/hidden';
 
 $checkbox-border: 2px;
 $checkbox-size: 1.3em;
-$checkbox-color: colors2.$color-gray-5;
 
 .a-checkbox {
 	color: inherit;
@@ -24,14 +23,14 @@ $checkbox-color: colors2.$color-gray-5;
 		width: $checkbox-size;
 		height: $checkbox-size;
 
-		border: $checkbox-border solid $checkbox-color;
+		border: $checkbox-border solid semantic-color.$color-area-foreground;
 		border-radius: 4px;
 	}
 
 	// Checkbox Replacement - checked state: check char
 	&:checked + .a-checkbox__label::after {
 		content: '✔';
-		color: colors2.$color-gray-4;
+		color: inherit;
 		position: absolute;
 		top: 20%;
 		left: 5px;
@@ -40,7 +39,7 @@ $checkbox-color: colors2.$color-gray-5;
 	&:focus,
 	&:active {
 		+ .a-checkbox__label::before {
-			border-color: colors2.$color-orange;
+			border-color: semantic-color.$color-accent-2;
 		}
 	}
 }

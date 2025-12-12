@@ -4,7 +4,6 @@ import { Component, EventListener, GondelBaseComponent } from '@gondel/core';
 
 /**
  * <%= pattern.name %> module implementation.
- * @author <%= user.name %> <<%= user.email %>>
  */
 
 // const selectors = { button: '.js-<%= pattern.css %>__button' };

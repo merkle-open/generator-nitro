@@ -4,6 +4,11 @@ import { hot } from '@gondel/plugin-hot';
 
 import 'core-js/features/promise/index';
 
+import './shared/props/token/css/00-core.css';
+import './shared/props/token/css/10-semantic.css';
+import './shared/props/token/css/10-semantic-dimension.css';
+import './shared/props/token/css/20-component.css';
+
 import './shared/base/reset/css/reset.scss';
 import './shared/base/grid/css/grid.scss';
 import './shared/base/document/css/document.scss';

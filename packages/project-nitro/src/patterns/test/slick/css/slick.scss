@@ -1,11 +1,10 @@
-@use '../../../../shared/utils/colors/css/colors';
-@use '../../../../shared/utils/colors2/css/colors2';
+@use '../../../../shared/utils/token/css/semantic-color';
 @use '../../../../shared/utils/breakpoints/css/breakpoints';
 
 $slick-font-path: '~slick-carousel/slick/fonts/';
 $slick-font-family: 'slick';
 $slick-loader-path: '~slick-carousel/slick/';
-$slick-arrow-color: colors.$color-brand-1;
+$slick-arrow-color: semantic-color.$color-accent-1;
 
 @import '~slick-carousel/slick/slick';
 @import '~slick-carousel/slick/slick-theme';

@@ -17,10 +17,6 @@ It can be used as a pattern with a content string:
 {{/pattern}}
 ```
 
-## API
-
-modifier `a-box--dark` for dark background
-
 ## Testing
 
 [Example page](http://localhost:8081/example-patterns)

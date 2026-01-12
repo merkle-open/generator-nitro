@@ -1,6 +1,6 @@
-# Production Server Example
+# Production Server
 
-This is the place to test the "production" environment.
+This folder ca be used as "production" environment.
 
 ## Usage
 

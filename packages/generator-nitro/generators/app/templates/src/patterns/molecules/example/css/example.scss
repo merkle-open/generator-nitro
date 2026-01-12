@@ -1,14 +1,15 @@
-@use '../../../../shared/utils/colors/css/colors';<% if (options.themes) { %>
-@use './theme/light' as theme;<% } %>
+@use '../../../../shared/utils/token/css/component';
+@use '../../../../shared/utils/token/css/semantic-dimension';
 
 .m-example {
-	margin: 1em 0;
-	padding: <% if (options.themes) { %>theme.$example-padding<% } else { %>1.8em 2.2em<% } %>;
-	background-color: colors.$color-area-background;
-	border-radius: <% if (options.themes) { %>theme.$example-border-radius<% } else { %>0.5em<% } %>;
+	margin: semantic-dimension.$spacing-s2 0;
+	padding: component.$example-padding;
+	color: component.$example-color-foreground;
+	background-color: component.$example-color-background;
+	border-radius: component.$example-border-radius;
 }
 .m-example__headline {
-	font-size: 1.6em;
+	font-size: 1.6rem;
 	margin-bottom: 0.6rem;
 }
 .m-example__link {

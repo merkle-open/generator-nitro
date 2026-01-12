@@ -300,12 +300,10 @@ module.exports = class extends Generator {
 			'src/patterns/molecules/example/schema.json',
 			'src/patterns/molecules/example/index.js',
 			'src/patterns/molecules/example/index.ts',
-			'src/patterns/molecules/example/css/example.scss',
 			'src/patterns/molecules/example/js/example.js',
 			'src/patterns/molecules/example/js/example.ts',
 			'src/proto/js/prototype.js',
 			'src/proto/js/prototype.ts',
-			'src/shared/utils/colors/css/colors.scss',
 			'src/views/index.hbs',
 			'src/views/index.twig',
 			'src/views/_partials/head.hbs',
@@ -344,15 +342,17 @@ module.exports = class extends Generator {
 			'project/docs/nitro-themes.md',
 			'project/routes/_themes.js',
 			'project/viewData/_themes.js',
-			'src/patterns/molecules/example/css/theme/dark.scss',
-			'src/patterns/molecules/example/css/theme/light.scss',
-			'src/shared/utils/colors/css/theme/dark.scss',
-			'src/shared/utils/colors/css/theme/light.scss',
+			'props/token/css/theme/dark.css',
+			'props/token/css/theme/light.css',
 			'src/proto/css/themelist/themelist.scss',
 			'src/ui.dark.js',
 			'src/ui.dark.ts',
 			'src/ui.light.js',
 			'src/ui.light.ts',
+		];
+		const noThemesFiles = [
+			// files only for this.options.themes===false
+			'props/token/css/10-semantic.css',
 		];
 		const clientTplFiles = [
 			// files only for this.options.clientTpl===true
@@ -441,21 +441,24 @@ module.exports = class extends Generator {
 				}
 			}
 
-			// Themes only Files
-			if (!this.options.themes) {
-				if (_.indexOf(themesFiles, file) !== -1) {
+			// Theme files
+			if (this.options.themes) {
+				if (_.indexOf(noThemesFiles, file) !== -1) {
 					return;
 				}
 			}
+			else if (_.indexOf(themesFiles, file) !== -1) {
+				return;
+			}
 
-			// Client side templates only Files
+			// Client side templates only files
 			if (!this.options.clientTpl) {
 				if (_.indexOf(clientTplFiles, file) !== -1) {
 					return;
 				}
 			}
 
-			// Example only Files
+			// Example only files
 			if (!this.options.exampleCode) {
 				if (
 					examplePaths.some((v) => file.indexOf(v) >= 0) &&

@@ -1,7 +1,7 @@
 {
 	"$schema": "../schema.json",
-	"modifier": "blue",
-	"title": "Example Module with Modifier Blue",
+	"modifier": "highlight",
+	"title": "Example Module with Modifier Highlight",
 	"links": [
 		{
 			"uri": "index",

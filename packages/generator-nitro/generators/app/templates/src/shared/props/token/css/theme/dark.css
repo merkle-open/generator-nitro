@@ -1,0 +1,16 @@
+/* ⚠️ core theme variables */
+:root {
+	--color-brand-1: #61afef;
+	--color-brand-2: #c678dd;
+	--color-brand-3: #e5c07b;
+
+	--color-foreground: var(--color-solid-grey-1);
+	--color-background: var(--color-solid-grey-8);
+	--color-area-foreground: var(--color-solid-grey-1);
+	--color-area-background: var(--color-solid-grey-9);
+	--color-area-border: var(--color-solid-grey-7);
+
+	--border-radius-box: 0 var(--dimension-30);
+	--padding-area: var(--dimension-30);
+}
+/* ⚠️ end core theme variables */

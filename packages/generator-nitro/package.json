@@ -37,18 +37,18 @@
   ],
   "dependencies": {
     "cli-color": "2.0.4",
-    "config": "4.1.1",
+    "config": "4.2.0",
     "find-git-root": "1.0.4",
     "git-config": "0.0.7",
     "glob": "10.4.5",
     "got": "11.8.5",
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "yeoman-generator": "5.10.0",
     "yosay": "2.0.2"
   },
   "devDependencies": {
     "@merkle-open/eslint-config": "4.0.1",
-    "ejs": "3.1.10",
+    "ejs": "4.0.1",
     "eslint": "8.57.1",
     "eslint-plugin-import": "2.32.0",
     "fs-extra": "11.3.3",

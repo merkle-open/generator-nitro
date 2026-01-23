@@ -20,7 +20,7 @@
     "lint": "lerna run lint",
     "lint:md": "markdownlint ./readme.md ./.github",
     "update-dependencies": "npm-run-all --parallel update-dependencies:*",
-    "update-dependencies:packages": "npm exec --workspaces -- npm-check-updates -u --deprecated -x twig,webpack,css-loader,postcss-loader,sass-loader,node-sass,mini-css-extract-plugin,webpack-cli,webpack-dev-middleware,del,globby,get-port,got,yosay,gulp-filter,gulp-zip,imagemin,gulp-imagemin,imagemin-svgo,imagemin-mozjpeg,glob,lighthouse",
+    "update-dependencies:packages": "npm exec --workspaces -- npm-check-updates -u --deprecated -x twig,webpack,css-loader,postcss-loader,sass-loader,node-sass,mini-css-extract-plugin,webpack-cli,webpack-dev-middleware,eslint,html-validate,del,globby,get-port,got,yosay,gulp-filter,gulp-zip,imagemin,gulp-imagemin,imagemin-svgo,imagemin-mozjpeg,glob,lighthouse",
     "update-dependencies:root": "npm-check-updates -u --deprecated -x rimraf"
   },
   "keywords": [

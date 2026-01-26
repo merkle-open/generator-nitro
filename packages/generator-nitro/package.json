@@ -9,8 +9,8 @@
   },
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=20.18.1 <21",
-    "npm": ">=10.8.2 <11"
+    "node": ">=22.11.0 <25",
+    "npm": ">=10.9.0 <12"
   },
   "main": "generators/app/index.js",
   "scripts": {

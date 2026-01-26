@@ -53,14 +53,17 @@
     "jasmine-core": "5.12.1",
     "lodash": "4.17.21",
     "twig": "1.13.3",
-    "webpack": "4.47.0",
-    "webpack-dev-middleware": "5.3.4",
+    "webpack-dev-middleware": "6.1.1",
     "webpack-hot-middleware": "2.26.1"
+  },
+  "peerDependencies": {
+    "webpack": "^5"
   },
   "devDependencies": {
     "@merkle-open/eslint-config": "4.0.1",
     "eslint": "8.57.1",
-    "eslint-plugin-import": "2.32.0"
+    "eslint-plugin-import": "2.32.0",
+    "webpack": "5.104.1"
   },
   "publishConfig": {
     "access": "public"

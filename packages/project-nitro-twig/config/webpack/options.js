@@ -1,14 +1,11 @@
-const config = require('config');
 const options = {
 	rules: {
-		js: true,
-		ts: false,
-		scss: {
+		script: true,
+		style: {
 			sassOptions: {
 				quietDeps: true,
 				// color-function and import are muted due to issues in twitter bootstrap scss
-				// todo: https://sass-lang.com/documentation/breaking-changes/legacy-js-api/
-				silenceDeprecations: ['color-functions', 'import', 'legacy-js-api'],
+				silenceDeprecations: ['color-functions', 'import'],
 			},
 		},
 		hbs: true,
@@ -18,6 +15,7 @@ const options = {
 	features: {
 		banner: true,
 		bundleAnalyzer: false,
+		imageMinimizer: true,
 	},
 };
 

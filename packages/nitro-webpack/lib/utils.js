@@ -23,7 +23,10 @@ function getOptionalPackage(x) {
 	} catch (error) {
 		mod = null;
 	}
-	return mod;
+	if (!mod) {
+		return null;
+	}
+	return mod.default ? mod.default : mod;
 }
 
 module.exports = {

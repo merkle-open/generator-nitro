@@ -1,18 +1,14 @@
 const path = require('path');
 const fs = require('fs');
-const crypto = require('crypto');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const JsConfigWebpackPlugin = require('js-config-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TsConfigWebpackPlugin = require('ts-config-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const WebpackBar = require('webpackbar');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const utils = require('../lib/utils');
-
-// hack: OpenSSL 3 does not support md4 anymore, but legacy webpack 4 hardcoded it: https://github.com/webpack/webpack/issues/13572
-const crypto_orig_createHash = crypto.createHash;
-crypto.createHash = algorithm => crypto_orig_createHash(algorithm === 'md4' ? 'sha256' : algorithm);
+const webpackRules = require('../lib/webpack-rules');
 
 const appDirectory = fs.realpathSync(process.cwd());
 
@@ -26,6 +22,70 @@ const banner = `${bannerData.pkg.name}
 @date ${bannerData.date}`;
 
 module.exports = (options = { rules: {}, features: {} }) => {
+	const imageMinimizerPlugins = [];
+	const imageminMozjpeg = utils.getOptionalPackage('imagemin-mozjpeg');
+	const imageminOptipng = utils.getOptionalPackage('imagemin-optipng');
+	const imageminPngquant = utils.getOptionalPackage('imagemin-pngquant');
+	const imageminSvgo = utils.getOptionalPackage('imagemin-svgo');
+
+	if (imageminMozjpeg) {
+		imageMinimizerPlugins.push(
+			[
+				'mozjpeg',
+				{
+					quality: 75,
+					progressive: true,
+				},
+			]
+		);
+	}
+	if (imageminOptipng) {
+		imageMinimizerPlugins.push(
+			[
+				'optipng',
+				{
+					optimizationLevel: 7,
+				},
+			]
+		);
+	}
+	if (imageminPngquant) {
+		imageMinimizerPlugins.push('pngquant');
+	}
+	if (imageminSvgo) {
+		imageMinimizerPlugins.push(
+			[
+				'svgo',
+				{
+					plugins: [
+						{
+							name: 'preset-default',
+							params: {
+								overrides: {
+									removeViewBox: false,
+								},
+							},
+						},
+					],
+				},
+			]
+		);
+	}
+
+	const minimizerPlugins = [new TerserPlugin({ extractComments: false })];
+	if (!(options.features.imageMinimizer === false || imageMinimizerPlugins.length === 0)) {
+		minimizerPlugins.push(
+			new ImageMinimizerPlugin({
+				minimizer: {
+					implementation: ImageMinimizerPlugin.imageminMinify,
+					options: {
+						plugins: imageMinimizerPlugins,
+					},
+				},
+			})
+		);
+	}
+
 	const webpackConfig = {
 		mode: 'production',
 		devtool: 'hidden-source-map',
@@ -37,7 +97,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		output: {
 			path: path.resolve(appDirectory, 'public', 'assets'),
 			filename: 'js/[name].min.js',
-			chunkFilename: 'js/[name]-[contenthash:7].min.js',
+			chunkFilename: 'js/chunks/[name]-[contenthash:7].min.js',
 			publicPath: '/assets/',
 		},
 		resolve: {
@@ -48,43 +108,46 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		},
 		plugins: [new CaseSensitivePathsPlugin({ debug: false }), new WebpackBar()],
 		optimization: {
+			moduleIds: 'deterministic',
+			chunkIds: 'deterministic',
+			runtimeChunk: false,
 			splitChunks: {
-				name: true,
-				automaticNameDelimiter: '/',
+				chunks: 'all',
+				minSize: 3000,
 				cacheGroups: {
-					// allow dynamic imports for node_modules also
-					dynamic: {
-						minSize: 3000,
-						chunks: 'async',
-						priority: 0,
-					},
-					// extract js node_modules to vendors file
+					default: false,
+					defaultVendors: false,
 					vendors: {
 						test: /[\\/]node_modules[\\/].*\.(js|jsx|mjs|ts|tsx)$/,
-						// use fix filename for usage in view
-						filename: 'js/vendors.min.js',
-						// Exclude proto dependencies going into vendors
-						chunks: (chunk) => chunk.name !== 'proto',
-						priority: -10,
+						chunks: (chunk) => chunk.canBeInitial() && chunk.name && chunk.name !== 'proto',
+						name: 'vendors',
 						enforce: true,
 					},
 				},
 			},
+			minimizer: minimizerPlugins,
 		},
 		stats: {
-			all: undefined,
+			preset: 'errors-warnings',
 			assets: true,
+			assetsSort: 'size',
 			children: false,
 			chunks: false,
 			modules: false,
 			colors: true,
-			depth: false,
-			entrypoints: false,
+			entrypoints: true,
 			errors: true,
 			errorDetails: true,
 			hash: false,
+			builtAt: false,
+			timings: true,
 			performance: true,
-			warnings: false,
+			warnings: true,
+		},
+		performance: {
+			hints: 'warning',
+			maxEntrypointSize: 380 * 1024,
+			maxAssetSize: 380 * 1024,
 		},
 	};
 	const theme = options.features.theme ? options.features.theme : false;
@@ -94,23 +157,23 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.output.publicPath = `${webpackConfig.output.publicPath}${theme}/`;
 	}
 
-	// js
-	if (options.rules.js) {
-		webpackConfig.plugins.push(new JsConfigWebpackPlugin({ babelConfigFile: './babel.config.js' }));
-	}
-
-	// typescript
-	if (options.rules.ts) {
-		webpackConfig.plugins.push(new TsConfigWebpackPlugin());
+	// scripts (js/ts via babel)
+	if (options.rules.script) {
+		const scriptOptions = typeof options.rules.script === 'object' ? options.rules.script : null;
+		webpackRules.addJSConfig(webpackConfig, appDirectory, scriptOptions);
+		if (scriptOptions && scriptOptions.typescript) {
+			webpackRules.addTsConfig(webpackConfig, appDirectory, scriptOptions, { isProduction: true });
+		}
 	}
 
 	// css & scss
-	if (options.rules.scss) {
+	if (options.rules.style) {
 		const scssMiniCSSExtractOptions = {
-			...(options.rules.scss.publicPath && { publicPath: options.rules.scss.publicPath })
+			...(options.rules.style.publicPath && { publicPath: options.rules.style.publicPath })
 		};
 		const scssLoaderOptions = {
-			...(options.rules.scss.sassOptions && { sassOptions: options.rules.scss.sassOptions }),
+			sourceMap: true,
+			...(options.rules.style.sassOptions && { sassOptions: options.rules.style.sassOptions }),
 		};
 		webpackConfig.module.rules.push({
 			test: /\.s?css$/,
@@ -123,11 +186,13 @@ module.exports = (options = { rules: {}, features: {} }) => {
 					loader: require.resolve('css-loader'),
 					options: {
 						importLoaders: 2,
+						sourceMap: true,
 					},
 				},
 				{
 					loader: require.resolve('postcss-loader'),
 					options: {
+						sourceMap: true,
 						postcssOptions: () => {
 							return {
 								plugins: [
@@ -146,6 +211,9 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				},
 				{
 					loader: require.resolve('resolve-url-loader'),
+					options: {
+						sourceMap: true,
+					},
 				},
 				{
 					loader: require.resolve('sass-loader'),
@@ -157,7 +225,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.plugins.push(
 			new MiniCssExtractPlugin({
 				filename: 'css/[name].min.css',
-				chunkFilename: 'css/[name]-[contenthash:7].min.css',
+				chunkFilename: 'css/chunks/[name]-[contenthash:7].min.css',
 			}),
 		);
 	}
@@ -185,11 +253,9 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	if (options.rules.woff) {
 		const woffRule = {
 			test: /.(woff(2)?)(\?[a-z0-9]+)?$/,
-			use: {
-				loader: require.resolve('file-loader'),
-				options: {
-					name: 'media/fonts/[name]-[hash:7].[ext]',
-				},
+			type: 'asset/resource',
+			generator: {
+				filename: 'media/fonts/[name]-[hash:7].[ext]',
 			},
 		};
 		webpackConfig.module.rules.push(utils.getEnrichedConfig(woffRule, options.rules.woff));
@@ -199,12 +265,14 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	if (options.rules.font) {
 		const fontRule = {
 			test: /\.(eot|svg|ttf|woff|woff2)([?#]+[A-Za-z0-9-_]*)*$/,
-			use: {
-				loader: require.resolve('url-loader'),
-				options: {
-					limit: 2 * 1028,
-					name: 'media/font/[name]-[hash:7].[ext]',
+			type: 'asset',
+			parser: {
+				dataUrlCondition: {
+					maxSize: 2 * 1028,
 				},
+			},
+			generator: {
+				filename: 'media/font/[name]-[hash:7].[ext]',
 			},
 		};
 		webpackConfig.module.rules.push(utils.getEnrichedConfig(fontRule, options.rules.font));
@@ -212,89 +280,25 @@ module.exports = (options = { rules: {}, features: {} }) => {
 
 	// images
 	if (options.rules.image) {
-
-		const imageminMozjpeg = utils.getOptionalPackage('imagemin-mozjpeg');
-		const imageminOptipng = utils.getOptionalPackage('imagemin-optipng');
-		const imageminPngquant = utils.getOptionalPackage('imagemin-pngquant');
-		const imageminSvgo = utils.getOptionalPackage('imagemin-svgo');
-
-		// console.log('imagemin-mozjpeg: ', imageminMozjpeg ? 'installed' : 'NOT');
-		// console.log('imagemin-optipng: ', imageminOptipng ? 'installed' : 'NOT');
-		// console.log('imagemin-pngquant: ', imageminPngquant ? 'installed' : 'NOT');
-		// console.log('imagemin-svgo: ', imageminSvgo ? 'installed' : 'NOT');
-
-		// image loader & minification
-		const imageMinificationRule = {
-			test: /\.(png|jpg|svg)$/,
-			// Specify enforce: 'pre' to apply the loader before url-loader
-			enforce: 'pre',
-			use: {
-				loader: require.resolve('img-loader'),
-				options: {
-					plugins: [],
-				},
-			},
-		};
-
-		if (imageminMozjpeg) {
-			imageMinificationRule.use.options.plugins.push(
-				imageminMozjpeg({
-					quality: 75,
-					progressive: true,
-				})
-			);
-		}
-		if (imageminOptipng) {
-			imageMinificationRule.use.options.plugins.push(
-				imageminOptipng({
-					optimizationLevel: 7,
-				})
-			);
-		}
-		if (imageminPngquant) {
-			imageMinificationRule.use.options.plugins.push(
-				imageminPngquant({
-					// floyd: 0.5,
-					// speed: 2
-				})
-			);
-		}
-		if (imageminSvgo) {
-			imageMinificationRule.use.options.plugins.push(
-				imageminSvgo({
-					plugins: [
-						{
-							name: 'preset-default',
-							params: {
-								overrides: {
-									removeViewBox: false,
-								},
-							},
-						},
-					],
-				})
-			);
-		}
-
-		// url loader for images (for example, in CSS files)
-		// inlines assets below a limit
 		const imageRule = {
 			test: /\.(png|jpg|gif|svg)$/,
-			use: {
-				loader: require.resolve('url-loader'),
-				options: {
-					limit: 3 * 1028,
-					name: 'media/[ext]/[name]-[hash:7].[ext]',
+			type: 'asset',
+			parser: {
+				dataUrlCondition: {
+					maxSize: 1028,
 				},
+			},
+			generator: {
+				filename: 'media/[ext]/[name]-[hash:7].[ext]',
 			},
 		};
 
-		webpackConfig.module.rules.push(imageMinificationRule, utils.getEnrichedConfig(imageRule, options.rules.image));
+		webpackConfig.module.rules.push(utils.getEnrichedConfig(imageRule, options.rules.image));
 	}
 
 	// feature banner (enabled by default)
 	if (!options.features.banner === false) {
-		webpackConfig.plugins.push(new webpack.BannerPlugin({ banner }));
+		webpackConfig.plugins.push(new webpack.BannerPlugin({ banner, entryOnly: true }));
 	}
 
 	// feature bundle analyzer

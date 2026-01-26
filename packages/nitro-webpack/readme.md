@@ -4,16 +4,15 @@
 
 # Nitro Webpack
 
-Configurable and easy to use webpack 4 config for nitro projects.
+Configurable and easy to use webpack 5 config for nitro projects.
 
 ## Usage
 
 ```
 const options = {
     rules: {
-        js: true,
-        ts: false,
-        scss: true,
+        script: true,
+        style: true,
         hbs: true,
         woff: true,
         font: false,
@@ -22,6 +21,7 @@ const options = {
     features: {
         banner: true,
         bundleAnalyzer: false,
+        imageMinimizer: true,
         theme: false,
     },
 };
@@ -36,27 +36,20 @@ module.exports = webpackConfig;
 
 No loader rule is enabled by default. Activate following prepared rules you need in `options.rules`
 
-#### `options.rules.js`
+#### `options.rules.script`
 
 - Type: boolean || object
 - default: false
-- file types: js, jsx, mjs
+- file types: js, jsx, mjs, cjs (and optional ts, tsx, mts, cts)
 
 Config:
 
-- `true` or `{}` activates JavaScript support
+- `true` or `{}` activates JavaScript support (via Babel)
+- `{ typescript: true }` adds TypeScript support
+- `{ babelConfigFile: 'path/to/babel.config.js' }` will be used as Babel config (default: auto-detect)
+- `{ tsConfigFile: 'path/to/tsconfig.json' }` is used for type-checking with ForkTsCheckerWebpackPlugin (default: auto-detect)
 
-#### `options.rules.ts`
-
-- Type: boolean
-- default: false
-- file types: ts, tsx
-
-Config:
-
-- `true` will activate TypeScript support
-
-#### `options.rules.scss`
+#### `options.rules.style`
 
 - Type: boolean || object
 - default: false
@@ -64,7 +57,7 @@ Config:
 
 Config:
 
-- `true` or `{}` will activate scss support
+- `true` or `{}` will activate css & scss support
 - `{ publicPath: '../' }` provide a separate public path for stylesheets. By default, webpack uses the value from 'output.publicPath'. (only relevant for production build)
 - `{ sassOptions: { ... } }` gives the possibility to add options for the ['dart-sass'](https://sass-lang.com/documentation/js-api/interfaces/options/)
 
@@ -138,6 +131,13 @@ Enable some additional features
 - default: false
 
 `true` will add the bundleAnalyser plugin and opens a browser window with the stats
+
+#### `options.features.imageMinimizer`
+
+- Type: boolean
+- default: true
+
+`false` will disable image minifaction functionality
 
 #### `options.features.theme`
 

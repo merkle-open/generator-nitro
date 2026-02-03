@@ -16,6 +16,7 @@
  */
 
 const yargs = require('yargs');
+// eslint-disable-next-line import/no-unresolved -- yargs exposes helpers via package "exports" map.
 const { hideBin } = require('yargs/helpers');
 const config = require('config');
 const view = require('@nitro/app/app/lib/view');

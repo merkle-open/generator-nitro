@@ -9,11 +9,6 @@ module.exports = (gulp) => {
 	const projectPath = utils.getProjectPath();
 
 	return () => {
-		const browserSync = utils.getBrowserSyncInstance();
-		const reloadBrowser = (done) => {
-			browserSync.reload('*.html');
-			done();
-		};
 		const options = {
 			delay,
 			cwd: projectPath,
@@ -36,21 +31,6 @@ module.exports = (gulp) => {
 					.flatMap((o) => o.src)
 					.filter(Boolean)
 			: [];
-
-		if (config.get('nitro.mode.livereload')) {
-			gulp.watch(
-				[
-					`src/views/**/*.${config.get('nitro.viewFileExtension')}`,
-					`${config.get('nitro.viewDataDirectory')}/**/*.json`,
-					`src/patterns/**/*.${config.get('nitro.viewFileExtension')}`,
-					'!src/patterns/**/template/**/*.hbs',
-					'src/patterns/**/schema.json',
-					'src/patterns/**/_data/*.json',
-				],
-				options,
-				reloadBrowser
-			);
-		}
 
 		if (copyAssetsSrc.length) {
 			gulp.watch(copyAssetsSrc, options, gulp.series('copy-assets'));

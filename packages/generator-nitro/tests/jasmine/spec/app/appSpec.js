@@ -139,8 +139,7 @@ describe('nitro:app', () => {
 
 		it('themes feature is configured', () => {
 			assert.fileContent([
-				['config/webpack/options.js', /search: '\/theme\/light',/],
-				// ['config/default.js', /themes: require('\.\/default\/themes'),/],
+				['config/webpack/options.js', /theme: theme,/],
 			]);
 		});
 	});

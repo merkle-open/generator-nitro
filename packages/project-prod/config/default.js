@@ -26,7 +26,6 @@ const defaultConfig = {
 		patterns: require('./default/patterns'),
 		mode: {
 			livereload: true,
-			offline: false,
 		},
 		watch: {
 			partials: true,

@@ -88,15 +88,7 @@ const config = {
 - Type: Boolean
 - Default: true
 
-Browser livereload on changes (develop mode only)
-
-#### `nitro.mode.offline`
-
-- Type: Boolean
-- Default: false
-
-If set to true, browsersync will be loaded in offline mode.  
-This property is passed as `_nitro.offline` to handlebars views.
+Asset livereload on changes (develop mode only)
 
 ### Watch
 

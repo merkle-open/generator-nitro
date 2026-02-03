@@ -19,7 +19,6 @@ const defaultConfig = {
 		templateEngine: 'hbs',
 		mode: {
 			livereload: true,
-			offline: false,
 			test: !!(process.env.NITRO_MODE && process.env.NITRO_MODE.replace(/\s/g, '') === 'test'),
 		},
 		watch: {

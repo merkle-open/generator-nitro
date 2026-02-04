@@ -2,7 +2,8 @@
 
 /* eslint-disable max-len, complexity, no-else-return, require-jsdoc */
 
-const Generator = require('yeoman-generator');
+const _yeomanGenerator = require('yeoman-generator');
+const Generator = _yeomanGenerator && _yeomanGenerator.default ? _yeomanGenerator.default : _yeomanGenerator;
 const yosay = require('yosay');
 const path = require('path');
 const fs = require('fs');
@@ -21,7 +22,7 @@ module.exports = class extends Generator {
 		this.option('folder', {
 			desc: 'the folder for your distribution',
 			type: String,
-			defaults: this._passedInOptions.folder || 'dist',
+			default: this._passedInOptions.folder || 'dist',
 		});
 	}
 

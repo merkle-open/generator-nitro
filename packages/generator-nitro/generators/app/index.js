@@ -2,7 +2,8 @@
 
 /* eslint-disable max-len, complexity, no-else-return, require-jsdoc */
 
-const Generator = require('yeoman-generator');
+const _yeomanGenerator = require('yeoman-generator');
+const Generator = _yeomanGenerator && _yeomanGenerator.default ? _yeomanGenerator.default : _yeomanGenerator;
 const clc = require('cli-color');
 const yosay = require('yosay');
 const got = require('got');
@@ -39,7 +40,7 @@ module.exports = class extends Generator {
 		this.option('name', {
 			desc: 'the name of your app',
 			type: String,
-			defaults: this._passedInOptions.name || path.basename(process.cwd()),
+			default: this._passedInOptions.name || path.basename(process.cwd()),
 		});
 		this.options.name = _.kebabCase(this.options.name);
 
@@ -47,51 +48,51 @@ module.exports = class extends Generator {
 		this.option('templateEngine', {
 			desc: `your desired template engine [${this._templateEngineOptions.join('|')}]`,
 			type: String,
-			defaults: this._passedInOptions.templateEngine || this._templateEngineOptions[0],
+			default: this._passedInOptions.templateEngine || this._templateEngineOptions[0],
 		});
 
 		this._jsCompilerOptions = ['ts', 'js'];
 		this.option('jsCompiler', {
 			desc: `your desired javascript js compiler [${this._jsCompilerOptions.join('|')}]`,
 			type: String,
-			defaults: this._passedInOptions.jsCompiler || this._jsCompilerOptions[0],
+			default: this._passedInOptions.jsCompiler || this._jsCompilerOptions[0],
 		});
 
 		this._viewExtOptions = ['hbs', 'twig'];
 		this.option('viewExt', {
 			desc: `your desired view file extension [${this._viewExtOptions.join('|')}]`,
 			type: String,
-			defaults: this._passedInOptions.viewExt || this._viewExtOptions[0],
+			default: this._passedInOptions.viewExt || this._viewExtOptions[0],
 		});
 
 		this.option('themes', {
 			desc: 'do you need theme support',
 			type: Boolean,
-			defaults: this._passedInOptions.themes || false,
+			default: this._passedInOptions.themes || false,
 		});
 
 		this.option('clientTpl', {
 			desc: 'do you need client side templates',
 			type: Boolean,
-			defaults: this._passedInOptions.clientTpl || false,
+			default: this._passedInOptions.clientTpl || false,
 		});
 
 		this.option('exampleCode', {
 			desc: 'do you want to include the example code',
 			type: Boolean,
-			defaults: this._passedInOptions.exampleCode || false,
+			default: this._passedInOptions.exampleCode || false,
 		});
 
 		this.option('exporter', {
 			desc: 'do you need static exporting functionalities',
 			type: Boolean,
-			defaults: this._passedInOptions.exporter || false,
+			default: this._passedInOptions.exporter || false,
 		});
 
 		this.option('skipQuestions', {
 			desc: 'use default for not specified options and skip questions',
 			type: Boolean,
-			defaults: false,
+			default: false,
 		});
 
 		this._skipQuestions = this.options.skipQuestions;

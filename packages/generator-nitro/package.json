@@ -17,7 +17,7 @@
     "lint": "eslint .",
     "prepublishOnly": "npx -y pkg-ok@2.3.1",
     "pretest": "npm run lint",
-    "test": "jasmine --config=tests/jasmine/jasmine.json"
+    "test": "mocha tests/mocha/test/**/*.test.js"
   },
   "files": [
     "generators/app",
@@ -52,7 +52,7 @@
     "eslint": "8.57.1",
     "eslint-plugin-import": "2.32.0",
     "fs-extra": "11.3.3",
-    "jasmine": "5.12.0",
+    "mocha": "11.7.5",
     "yeoman-assert": "3.1.1",
     "yeoman-test": "11.2.0"
   }

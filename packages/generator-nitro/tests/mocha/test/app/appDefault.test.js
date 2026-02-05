@@ -1,28 +1,25 @@
-'use strict';
-
-/* eslint-env jasmine */
-/* eslint-disable no-inline-comments */
-
 const path = require('path');
+const helpers = require('yeoman-test').default;
 const assert = require('yeoman-assert');
-const helpers = require('yeoman-test');
 const utils = require('../../helpers/utils');
 
 const folder = 'temp-test-default-app';
 
-describe('nitro:app', () => {
-	jasmine.DEFAULT_TIMEOUT_INTERVAL = 25000;
+function runGenerator(options = {}, prompts = {}) {
+	return helpers
+		.run(path.join(__dirname, '../../../../generators/app'))
+		.inDir(utils.getTempFolder(folder, false))
+		.withOptions({ 'skip-install': true, ...options })
+		.withPrompts(prompts);
+}
+
+describe('nitro:app', function () {
+	this.timeout(20000);
 
 	describe('when using default options', () => {
-		beforeAll(() => {
-			return helpers
-				.run(path.join(__dirname, '../../../../generators/app'))
-				.inDir(utils.getTempFolder(folder, false))
-				.withOptions({ 'skip-install': true, 'skip-questions': true })
-				.withPrompts(utils.defaultPrompts);
-		});
 
-		// base files
+		before(() => runGenerator({}, utils.defaultPrompts));
+
 		it('creates blueprint files', () => {
 			assert.file([
 				'config',
@@ -56,7 +53,9 @@ describe('nitro:app', () => {
 		});
 
 		it('package.json contains project name', () => {
-			assert.fileContent([['package.json', `"name": "${folder}",`]]);
+			assert.fileContent([
+				['package.json', `"name": "${folder}",`]
+			]);
 		});
 
 		it('package.json contains @nitro dependencies', () => {

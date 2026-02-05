@@ -21,31 +21,31 @@ const config = {
 		minifyImages: [
 			// copies and minifies all source images to dest folder<% if (options.themes) { %>
 			{
-				src: 'src/shared/assets/img/**/*',
-				dest: 'public/assets/light/img',
+				src: '<% if (options.exampleCode) { %>src/shared/assets/img/**/*<% } %>',
+				dest: '<% if (options.exampleCode) { %>public/assets/light/img<% } %>',
 			},
 			{
-				src: 'src/shared/assets/img/**/*',
-				dest: 'public/assets/dark/img',
+				src: '<% if (options.exampleCode) { %>src/shared/assets/img/**/*<% } %>',
+				dest: '<% if (options.exampleCode) { %>public/assets/dark/img<% } %>',
 			},<% } else { %>
 			{
-				src: 'src/shared/assets/img/**/*',
-				dest: 'public/assets/img',
+				src: '<% if (options.exampleCode) { %>src/shared/assets/img/**/*<% } %>',
+				dest: '<% if (options.exampleCode) { %>public/assets/img<% } %>',
 			},<% } %>
 		],
 		svgSprites: [
 			// generates icon sprite with the name of the last folder in src<% if (options.themes) { %>
 			{
-				src: 'src/patterns/atoms/icon/img/icons/*.svg',
-				dest: 'public/assets/light/svg',
+				src: '<% if (options.exampleCode) { %>src/patterns/atoms/icon/img/icons/*.svg<% } %>',
+				dest: '<% if (options.exampleCode) { %>public/assets/light/svg<% } %>',
 			},
 			{
-				src: 'src/patterns/atoms/icon/img/icons/*.svg',
-				dest: 'public/assets/dark/svg',
+				src: '<% if (options.exampleCode) { %>src/patterns/atoms/icon/img/icons/*.svg<% } %>',
+				dest: '<% if (options.exampleCode) { %>public/assets/dark/svg<% } %>',
 			},<% } else { %>
 			{
-				src: 'src/patterns/atoms/icon/img/icons/*.svg',
-				dest: 'public/assets/svg',
+				src: '<% if (options.exampleCode) { %>src/patterns/atoms/icon/img/icons/*.svg<% } %>',
+				dest: '<% if (options.exampleCode) { %>public/assets/svg<% } %>',
 			},<% } %>
 		],
 	},

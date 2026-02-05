@@ -13,7 +13,7 @@ module.exports = (gulp, plugins) => {
 			if (copyAssetsConfig && copyAssetsConfig.src && copyAssetsConfig.dest) {
 				streams.push(
 					gulp
-						.src(copyAssetsConfig.src)
+						.src(copyAssetsConfig.src, { encoding: false })
 						.pipe(plugins.newer(copyAssetsConfig.dest))
 						.pipe(gulp.dest(copyAssetsConfig.dest))
 				);

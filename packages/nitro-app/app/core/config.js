@@ -124,6 +124,7 @@ const defaultConfig = {
 					lookupQuerystring: 'lang',
 				},
 				// compatibilityJSON: 'v3',
+				showSupportNotice: false,
 				debug: false
 			},
 			middlewareOptions: {

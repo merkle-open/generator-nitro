@@ -4,50 +4,47 @@ const config = require('config');
 const ordered = require('ordered-read-streams');
 const utils = require('../lib/utils');
 
+async function loadImageminPlugins() {
+	const plugins = [];
+
+	try {
+		const mozjpeg = (await import('imagemin-mozjpeg')).default;
+		plugins.push(mozjpeg({ quality: 75, progressive: true }));
+	} catch { /* empty */ }
+
+	try {
+		const optipng = (await import('imagemin-optipng')).default;
+		plugins.push(optipng({ optimizationLevel: 7 }));
+	} catch { /* empty */ }
+
+	try {
+		const pngquant = (await import('imagemin-pngquant')).default;
+		plugins.push(pngquant());
+	} catch { /* empty */ }
+
+	try {
+		const svgo = (await import('imagemin-svgo')).default;
+		plugins.push(svgo({
+			plugins: [
+				{ name: 'collapseGroups', active: false },
+				// { name: 'cleanupIDs', active: false },
+				{ name: 'removeUnknownsAndDefaults', active: false },
+				{ name: 'removeViewBox', active: false },
+			],
+		}));
+	} catch { /* empty */ }
+
+	return plugins;
+}
+
 module.exports = (gulp, plugins) => {
-	/* eslint-disable complexity */
-	return () => {
+
+	return async () => {
 		const minifyImagesConfigs = config.has('gulp.minifyImages') ? config.get('gulp.minifyImages') : {};
+		const imageminPlugins = await loadImageminPlugins();
+		const imagemin = (await import('gulp-imagemin')).default;
+
 		const streams = [];
-
-		const imageminMozjpeg = utils.getOptionalPackage('imagemin-mozjpeg');
-		const imageminOptipng = utils.getOptionalPackage('imagemin-optipng');
-		const imageminPngquant = utils.getOptionalPackage('imagemin-pngquant');
-		const imageminSvgo = utils.getOptionalPackage('imagemin-svgo');
-		const imageminPluginsConfig = [];
-
-		// console.log('imagemin-mozjpeg: ', imageminMozjpeg ? 'installed' : 'NOT');
-		// console.log('imagemin-optipng: ', imageminOptipng ? 'installed' : 'NOT');
-		// console.log('imagemin-pngquant: ', imageminPngquant ? 'installed' : 'NOT');
-		// console.log('imagemin-svgo: ', imageminSvgo ? 'installed' : 'NOT');
-
-		if (imageminMozjpeg) {
-			imageminPluginsConfig.push(
-				plugins.imagemin.mozjpeg({ quality: 75, progressive: true })
-			);
-		}
-		if (imageminOptipng) {
-			imageminPluginsConfig.push(
-				plugins.imagemin.optipng({ optimizationLevel: 7 })
-			);
-		}
-		if (imageminSvgo) {
-			imageminPluginsConfig.push(
-				plugins.imagemin.svgo({
-					plugins: [
-						{ collapseGroups: false },
-						{ cleanupIDs: false },
-						{ removeUnknownsAndDefaults: false },
-						{ removeViewBox: false },
-					],
-				})
-			);
-		}
-		if (imageminPngquant) {
-			imageminPluginsConfig.push(
-				imageminPngquant()
-			);
-		}
 
 		utils.each(minifyImagesConfigs, (minifyImagesConfig) => {
 			if (minifyImagesConfig && minifyImagesConfig.src && minifyImagesConfig.dest) {
@@ -56,7 +53,7 @@ module.exports = (gulp, plugins) => {
 						.src(minifyImagesConfig.src, { encoding: false })
 						.pipe(plugins.newer(minifyImagesConfig.dest))
 						.pipe(
-							plugins.imagemin(imageminPluginsConfig)
+							imagemin(imageminPlugins)
 						)
 						.pipe(gulp.dest(minifyImagesConfig.dest))
 				);
@@ -65,5 +62,4 @@ module.exports = (gulp, plugins) => {
 
 		return streams.length ? ordered(streams) : Promise.resolve('resolved');
 	};
-	/* eslint-enable complexity */
 };

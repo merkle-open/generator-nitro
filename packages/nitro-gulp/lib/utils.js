@@ -14,17 +14,6 @@ function getProjectPath() {
 	return config.get('nitro.basePath');
 }
 
-// load optional package
-function getOptionalPackage(x) {
-	let mod;
-	try {
-		mod = require(x);
-	} catch (error) {
-		mod = null;
-	}
-	return mod;
-}
-
 function each(cfgs, fn) {
 	if (Array.isArray(cfgs)) {
 		cfgs.forEach((cfg) => {
@@ -38,6 +27,5 @@ function each(cfgs, fn) {
 module.exports = {
 	getTask,
 	getProjectPath,
-	getOptionalPackage,
 	each,
 };

@@ -34,7 +34,7 @@
     "globby": "11.1.0",
     "gulp": "5.0.1",
     "gulp-html-validate": "0.2.0",
-    "gulp-imagemin": "7.1.0",
+    "gulp-imagemin": "9.2.0",
     "gulp-live-server": "0.0.31",
     "gulp-load-plugins": "2.0.8",
     "gulp-newer": "1.4.0",
@@ -48,7 +48,7 @@
     "yargs": "18.0.0"
   },
   "optionalDependencies": {
-    "imagemin-pngquant": "9.0.2"
+    "imagemin-pngquant": "10.0.0"
   },
   "devDependencies": {
     "@merkle-open/eslint-config": "4.0.1",

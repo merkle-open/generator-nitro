@@ -20,7 +20,7 @@
     "lint": "lerna run lint",
     "lint:md": "markdownlint ./readme.md ./.github",
     "update-dependencies": "npm-run-all --parallel update-dependencies:*",
-    "update-dependencies:packages": "npm exec --workspaces -- npm-check-updates -u --deprecated -x twig,del,globby,get-port,got,yosay,glob,eslint",
+    "update-dependencies:packages": "npm exec --workspaces -- npm-check-updates -u --deprecated -x twig,del,globby,get-port,got,yosay,eslint",
     "update-dependencies:root": "npm-check-updates -u --deprecated -x rimraf"
   },
   "keywords": [

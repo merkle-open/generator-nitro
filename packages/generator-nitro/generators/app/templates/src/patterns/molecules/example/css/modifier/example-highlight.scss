@@ -6,7 +6,7 @@
 	animation: example-background-change 10s infinite;
 }
 
-@keyframes example-background-change  {
+@keyframes example-background-change {
 	0%,
 	100% {
 		background-color: component.$example-color-background-highlight-1;

@@ -32,7 +32,6 @@ describe('nitro:app', function () {
 				'src/views/index.hbs',
 				'src/views/404.hbs',
 				'src/views/_partials/head.hbs',
-				'src/views/_partials/foot.hbs',
 				'project/blueprints/pattern/$pattern$.hbs',
 			]);
 		});
@@ -50,7 +49,6 @@ describe('nitro:app', function () {
 				'src/views/index.twig',
 				'src/views/404.twig',
 				'src/views/_partials/head.twig',
-				'src/views/_partials/foot.twig',
 				'project/blueprints/pattern/$pattern$.twig',
 			]);
 		});

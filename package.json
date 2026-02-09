@@ -16,11 +16,11 @@
     "clean:lock": "npx -y rimraf --glob **/package-lock.json",
     "clean:modules": "npm exec --workspaces -- npx -y rimraf node_modules && npx -y rimraf node_modules",
     "commit": "git-cz",
-    "test": "lerna run test",
-    "lint": "lerna run lint",
+    "test": "lerna run test --concurrency 1 --stream",
+    "lint": "lerna run lint --concurrency 1 --stream",
     "lint:md": "markdownlint ./readme.md ./.github",
     "update-dependencies": "npm-run-all --parallel update-dependencies:*",
-    "update-dependencies:packages": "npm exec --workspaces -- npm-check-updates -u --deprecated -x twig,del,globby,get-port,got,yosay,eslint",
+    "update-dependencies:packages": "npm exec --workspaces -- npm-check-updates -u --deprecated -x twig,del,globby,get-port,got,yosay,eslint,express,html-validate,stylelint",
     "update-dependencies:root": "npm-check-updates -u --deprecated -x rimraf"
   },
   "keywords": [

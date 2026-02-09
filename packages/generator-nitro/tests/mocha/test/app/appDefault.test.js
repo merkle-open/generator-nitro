@@ -73,7 +73,6 @@ describe('nitro:app', function () {
 				'src/views/index.hbs',
 				'src/views/404.hbs',
 				'src/views/_partials/head.hbs',
-				'src/views/_partials/foot.hbs',
 				'project/blueprints/pattern/$pattern$.hbs',
 			]);
 		});

@@ -20,8 +20,8 @@ const yargs = require('yargs');
 const { hideBin } = require('yargs/helpers');
 const config = require('config');
 const view = require('@nitro/app/app/lib/view');
-const del = require('del');
-const getPort = require('get-port');
+const del = (...args) => import('del').then(mod => mod.deleteAsync(...args));
+const getPort = () => import('get-port').then(mod => mod.default());
 
 const argv = yargs(hideBin(process.argv)).argv;
 const serverPath = require('@nitro/app/app/lib/utils').getServerPath();

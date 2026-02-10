@@ -41,10 +41,10 @@
     "find-git-root": "1.1.0",
     "git-config": "0.0.7",
     "glob": "13.0.1",
-    "got": "11.8.5",
+    "got": "14.6.6",
     "lodash": "4.17.23",
     "yeoman-generator": "7.5.1",
-    "yosay": "2.0.2"
+    "yosay": "3.0.0"
   },
   "devDependencies": {
     "@merkle-open/eslint-config": "4.0.1",

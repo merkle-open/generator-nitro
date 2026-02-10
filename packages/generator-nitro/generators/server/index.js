@@ -4,11 +4,12 @@
 
 const _yeomanGenerator = require('yeoman-generator');
 const Generator = _yeomanGenerator && _yeomanGenerator.default ? _yeomanGenerator.default : _yeomanGenerator;
-const yosay = require('yosay');
 const path = require('path');
 const fs = require('fs');
 const { globSync } = require('glob');
 const _ = require('lodash');
+
+const yosayPromise = import('yosay');
 
 module.exports = class extends Generator {
 	constructor(args, opts) {
@@ -88,6 +89,13 @@ module.exports = class extends Generator {
 	}
 
 	end() {
-		this.log(yosay(`All done - your light server is ready`));
+		(async () => {
+			try {
+				const { default: yosay } = await yosayPromise;
+				this.log(yosay(`All done - your light server is ready`));
+			} catch (err) {
+				this.log(`All done - your light server is ready`);
+			}
+		})();
 	}
 };

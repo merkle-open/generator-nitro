@@ -1,11 +1,10 @@
 'use strict';
 
-const del = require('del');
+const del = (...args) => import('del').then(m => m.deleteAsync(...args));
 const deleteEmpty = require('delete-empty');
 const fs = require('fs');
 const globParent = require('glob-parent');
 const { globSync } = require('glob');
-const gulpZip = require('gulp-zip');
 const htmlmin = require('gulp-html-minifier-terser');
 const path = require('path');
 const unique = require('array-unique');
@@ -102,8 +101,8 @@ module.exports = function (gulp, config) {
 							function move() {
 								gulp.src(renames[i].src, { base: renames[i].base, encoding: false, allowEmpty: true })
 									.pipe(gulp.dest(renames[i].dest))
-									.on('end', () => {
-										del.sync(renames[i++].src);
+									.on('end', async () => {
+										await del(renames[i++].src);
 										if (i < renames.length) {
 											move();
 										} else {
@@ -161,21 +160,26 @@ module.exports = function (gulp, config) {
 
 				if (configEntry.zip) {
 					getZipPromise = function () {
-						return new Promise((resolve) => {
-							const pkg = JSON.parse(
-								fs.readFileSync(`${config.nitro.basePath}package.json`, {
-									encoding: 'utf-8',
-									flag: 'r',
-								})
-							);
-							gulp.src(`${configEntry.dest}/**/*`, { encoding: false })
-								.pipe(gulpZip(`${pkg.name}-${pkg.version}.zip`))
-								.pipe(gulp.dest(configEntry.dest))
-								.on('end', () => {
-									del(`${configEntry.dest}${path.sep}!(*.zip)`).then(() => {
+						return new Promise(async (resolve, reject) => {
+							try {
+								const { default: gulpZip } = await import('gulp-zip');
+								const pkg = JSON.parse(
+									fs.readFileSync(`${config.nitro.basePath}package.json`, {
+										encoding: 'utf-8',
+										flag: 'r',
+									})
+								);
+								gulp.src(`${configEntry.dest}/**/*`, {encoding: false})
+									.pipe(gulpZip(`${pkg.name}-${pkg.version}.zip`))
+									.pipe(gulp.dest(configEntry.dest))
+									.on('error', reject)
+									.on('end', async () => {
+										await del(['**/*', '!*.zip'], { cwd: configEntry.dest, dot: true });
 										resolve();
 									});
-								});
+							} catch (err) {
+								reject(err);
+							}
 						});
 					};
 				}

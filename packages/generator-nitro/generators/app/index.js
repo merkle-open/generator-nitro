@@ -5,14 +5,16 @@
 const _yeomanGenerator = require('yeoman-generator');
 const Generator = _yeomanGenerator && _yeomanGenerator.default ? _yeomanGenerator.default : _yeomanGenerator;
 const clc = require('cli-color');
-const yosay = require('yosay');
-const got = require('got');
 const path = require('path');
 const fs = require('fs');
 const childProcess = require('child_process');
 const findGitRoot = require('find-git-root')
 const { globSync } = require('glob');
 const _ = require('lodash');
+
+// eslint-disable-next-line import/no-unresolved
+const gotPromise = import('got');
+const yosayPromise = import('yosay');
 
 module.exports = class extends Generator {
 	constructor(args, opts) {
@@ -125,7 +127,14 @@ module.exports = class extends Generator {
 	}
 
 	prompting() {
-		this.log(yosay(`Welcome to the awe-inspiring ${clc.cyan('Nitro')} generator!`));
+		(async () => {
+			try {
+				const { default: yosay } = await yosayPromise;
+				this.log(yosay(`Welcome to the awe-inspiring ${clc.cyan('Nitro')} generator!`));
+			} catch (err) {
+				this.log(`Welcome to the awe-inspiring Nitro generator`);
+			}
+		})();
 
 		// check whether there is already a nitro application in place and we only have to update the application
 		const json = this.fs.readJSON(this.destinationPath('.yo-rc.json'), { new: true });
@@ -554,24 +563,54 @@ module.exports = class extends Generator {
 		];
 		try {
 			filesToCopy.forEach((file) => {
-				if (file.do) {
-					if (!this.options.skipInstall) {
-						// get readme from current package version
-						this.fs.copy(this.destinationPath(file.src), this.destinationPath(file.dest));
-					} else {
-						// get readme from github master branch
-						got.stream(file.srcWeb).pipe(fs.createWriteStream(this.destinationPath(file.dest)));
-					}
+				if (!file.do) { return; }
+
+				const destPath = this.destinationPath(file.dest);
+
+				if (!this.options.skipInstall) {
+					// get readme from current package version
+					this.fs.copy(this.destinationPath(file.src), destPath);
+				} else {
+					// get readme from github master branch
+					(async () => {
+						try {
+							const { default: got } = await gotPromise;
+							const writeStream = fs.createWriteStream(destPath);
+							const readStream = got.stream.get(file.srcWeb);
+
+							readStream.on('error', () => {
+								if (!writeStream.destroyed) writeStream.destroy();
+							});
+
+							writeStream.on('error', () => {
+								if (!readStream.destroyed) readStream.destroy();
+							});
+
+							readStream.pipe(writeStream);
+						} catch (err) { /* empty */ }
+					})();
 				}
+
 			});
 		} catch (e) {
 			this.log(clc.red(e.message));
 		}
 
-		if (this._update) {
-			this.log(yosay(`All done – check local changes, \nuse desired node version and then\nrun \`npm install\` to update your project.`));
-		} else {
-			this.log(yosay(`All done – use desired node version, \nrun \`npm install\` \nand run \`npm start\` to start ${clc.cyan('Nitro')} in development mode.`));
-		}
+		(async () => {
+			try {
+				const { default: yosay } = await yosayPromise;
+				if (this._update) {
+					this.log(yosay(`All done – check local changes, \nuse desired node version and then\nrun \`npm install\` to update your project.`));
+				} else {
+					this.log(yosay(`All done – use desired node version, \nrun \`npm install\` \nand run \`npm start\` to start ${clc.cyan('Nitro')} in development mode.`));
+				}
+			} catch (err) {
+				this.log(
+					this._update
+						? `All done – check local changes, use desired node version and then run "npm install" to update your project.`
+						: `All done – use desired node version, run "npm install" and then run "npm start" to start Nitro in development mode.`
+				);
+			}
+		})();
 	}
 };

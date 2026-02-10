@@ -9,12 +9,13 @@
 const _yeomanGenerator = require('yeoman-generator');
 const Generator = _yeomanGenerator && _yeomanGenerator.default ? _yeomanGenerator.default : _yeomanGenerator;
 const clc = require('cli-color');
-const yosay = require('yosay');
 const path = require('path');
 const fs = require('fs');
 const gitconfig = require('git-config');
 const { globSync } = require('glob');
 const _ = require('lodash');
+
+const yosayPromise = import('yosay');
 
 module.exports = class extends Generator {
 	constructor(args, opts) {
@@ -87,7 +88,14 @@ module.exports = class extends Generator {
 	}
 
 	prompting() {
-		this.log(yosay(`Let me help you to create your ${this._pattern.name}…`));
+		(async () => {
+			try {
+				const { default: yosay } = await yosayPromise;
+				this.log(yosay(`Let me help you to create your ${this._pattern.name}…`));
+			} catch (err) {
+				this.log(`Let me help you to create your pattern`);
+			}
+		})();
 
 		return this.prompt([
 			{

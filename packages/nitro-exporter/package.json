@@ -33,13 +33,13 @@
   },
   "dependencies": {
     "array-unique": "0.3.2",
-    "del": "6.1.1",
+    "del": "8.0.1",
     "delete-empty": "3.0.0",
     "glob": "13.0.1",
     "glob-parent": "6.0.2",
     "gulp-filter": "7.0.0",
     "gulp-html-minifier-terser": "7.1.0",
-    "gulp-zip": "5.1.0"
+    "gulp-zip": "6.1.0"
   },
   "devDependencies": {
     "@merkle-open/eslint-config": "4.0.1",

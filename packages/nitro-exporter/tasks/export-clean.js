@@ -1,6 +1,6 @@
 'use strict';
 
-const del = require('del');
+const del = (...args) => import('del').then(mod => mod.deleteAsync(...args));
 const utils = require('../lib/utils.js');
 
 module.exports = (config) =>

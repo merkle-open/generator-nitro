@@ -29,9 +29,8 @@
   "dependencies": {
     "compression": "1.8.1",
     "config": "4.2.0",
-    "del": "6.1.1",
-    "get-port": "5.1.1",
-    "globby": "11.1.0",
+    "del": "8.0.1",
+    "get-port": "7.1.0",
     "gulp": "5.0.1",
     "gulp-html-validate": "0.2.0",
     "gulp-imagemin": "9.2.0",

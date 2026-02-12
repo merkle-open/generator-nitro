@@ -7,29 +7,31 @@
  * node project/scripts/globby-performance.js
  *
  */
-const globby = require('globby');
 const config = require('config');
 const clc = require('cli-color');
 
-(function globTest() {
+(async function globTest() {
+	const { globbySync } = await import('globby');
+
 	const folder = 'Ex-link';
 	const templateFile = 'ex-link';
+
 	const patternBasePaths = Object.keys(config.get('nitro.patterns')).map((key) => {
 		const configKey = `nitro.patterns.${key}.path`;
-		const patternPath = config.has(configKey) ? config.get(configKey) : false;
-		return patternPath;
-	});
-	const elementGlobs = patternBasePaths.map((patternBasePath) => {
-		return `${patternBasePath}/*/elements/${folder}/${templateFile}.${config.get('nitro.viewFileExtension')}`;
+		return config.has(configKey) ? config.get(configKey) : false;
 	});
 
-	const timer1 = new Date();
+	const elementGlobs = patternBasePaths.map((basePath) => {
+		return `${basePath}/*/elements/${folder}/${templateFile}.${config.get('nitro.viewFileExtension')}`;
+	});
 
-	globby.sync(elementGlobs).forEach((templatePath) => {
+	const timer1 = Date.now();
+
+	globbySync(elementGlobs).forEach((templatePath) => {
 		console.log(`${clc.green('Success:')} Element ${folder} found in ${templatePath}`);
 	});
 
-	const timer2 = new Date();
-	const diff = timer2 - timer1;
+	const diff = Date.now() - timer1;
+
 	console.log(`${clc.yellow('Time for globby:')} ${diff} ms`);
 })();

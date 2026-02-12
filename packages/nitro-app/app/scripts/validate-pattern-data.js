@@ -24,81 +24,86 @@
  */
 const clc = require('cli-color');
 const fs = require('fs');
-const globby = require('globby');
 const Ajv = require('ajv');
-const ajv = new Ajv({ allErrors: true });
 const config = require('config');
-const wildcard = '*';
-const patternBasePaths = Object.keys(config.get('nitro.patterns')).map((key) => {
-	return config.get(`nitro.patterns.${key}.path`);
-});
-const patternGlobs = patternBasePaths
-	.map((patternBasePath) => {
-		return `${patternBasePath}/${wildcard}`;
-	})
-	.concat(
-		patternBasePaths.map((patternBasePath) => {
-			return `${patternBasePath}/${wildcard}/elements/${wildcard}`;
-		})
+
+(async () => {
+
+	const { globbySync } = await import('globby');
+
+	const ajv = new Ajv({ allErrors: true });
+	const wildcard = '*';
+
+	const patternBasePaths = Object.keys(config.get('nitro.patterns')).map((key) =>
+		config.get(`nitro.patterns.${key}.path`)
 	);
-const logMissingSchemaAsError = config.has('code.validation.jsonSchema.logMissingSchemaAsError')
-	? config.get('code.validation.jsonSchema.logMissingSchemaAsError')
-	: false;
-const logMissingSchemaAsWarning = config.has('code.validation.jsonSchema.logMissingSchemaAsWarning')
-	? config.get('code.validation.jsonSchema.logMissingSchemaAsWarning')
-	: true;
 
-let errorCouter = 0;
-let patternCouter = 0;
+	const patternGlobs = patternBasePaths
+		.map((p) => `${p}/${wildcard}`)
+		.concat(patternBasePaths.map((p) => `${p}/${wildcard}/elements/${wildcard}`));
 
-// collect all schemas
-globby.sync(patternGlobs, { onlyFiles: false }).forEach((patternPath) => {
-	const schemaFilePath = `${patternPath}/schema.json`;
+	const logMissingSchemaAsError = config.has('code.validation.jsonSchema.logMissingSchemaAsError')
+		? config.get('code.validation.jsonSchema.logMissingSchemaAsError')
+		: false;
 
-	if (fs.existsSync(schemaFilePath)) {
-		// console.log(`Add ${schemaFilePath}`);
-		const schema = JSON.parse(fs.readFileSync(schemaFilePath, 'utf8'));
-		if (schema.$id) {
-			// ajv.addSchema(schema);
-			ajv.addMetaSchema(schema);
-		}
-	}
-});
+	const logMissingSchemaAsWarning = config.has('code.validation.jsonSchema.logMissingSchemaAsWarning')
+		? config.get('code.validation.jsonSchema.logMissingSchemaAsWarning')
+		: true;
 
-// validate pattern data
-globby.sync(patternGlobs, { onlyFiles: false }).forEach((patternPath) => {
-	const schemaFilePath = `${patternPath}/schema.json`;
-	patternCouter += 1;
+	let errorCounter = 0;
+	let patternCounter = 0;
 
-	if (!fs.existsSync(schemaFilePath)) {
-		if (logMissingSchemaAsError) {
-			console.log(`${clc.red('Error')} (${patternPath}): no schema file found`);
-			errorCouter += 1;
-			return true;
-		}
-		if (logMissingSchemaAsWarning) {
-			console.log(`${clc.yellow('Warn')} (${patternPath}): no schema file found`);
-		}
-		return true;
-	}
+	// collect all schemas
+	globbySync(patternGlobs, { onlyFiles: false }).forEach((patternPath) => {
+		const schemaFilePath = `${patternPath}/schema.json`;
 
-	globby.sync([`${patternPath}/_data/${wildcard}.json`]).forEach((patternDataFilePath) => {
-		const patternData = JSON.parse(fs.readFileSync(patternDataFilePath, 'utf8'));
-		const schema = JSON.parse(fs.readFileSync(schemaFilePath, 'utf8'));
-
-		// console.log(`validate ${schemaFilePath} with ${patternDataFilePath}`);
-		const schemaToUse = schema.$id || schema;
-		const valid = ajv.validate(schemaToUse, patternData);
-		if (!valid) {
-			errorCouter += 1;
-			console.log(`${clc.red('Error')} (${patternDataFilePath}): ${ajv.errorsText()}`);
+		if (fs.existsSync(schemaFilePath)) {
+			// console.log(`Add ${schemaFilePath}`);
+			const schema = JSON.parse(fs.readFileSync(schemaFilePath, 'utf8'));
+			if (schema.$id) {
+				// ajv.addSchema(schema);
+				ajv.addMetaSchema(schema);
+			}
 		}
 	});
-});
 
-if (errorCouter <= 0) {
-	console.log(`${clc.green('Success:')} all data from each of the ${patternCouter} patterns are valid!\n`);
-} else {
-	console.log(`${clc.red('Error:')} we detected ${errorCouter} errors in your data.\n`);
-	process.exitCode = 1;
-}
+	// validate pattern data
+	globbySync(patternGlobs, { onlyFiles: false }).forEach((patternPath) => {
+		const schemaFilePath = `${patternPath}/schema.json`;
+		patternCounter++;
+
+		if (!fs.existsSync(schemaFilePath)) {
+			if (logMissingSchemaAsError) {
+				console.log(`${clc.red('Error')} (${patternPath}): no schema file found`);
+				errorCounter++;
+				return;
+			}
+			if (logMissingSchemaAsWarning) {
+				console.log(`${clc.yellow('Warn')} (${patternPath}): no schema file found`);
+			}
+			return;
+		}
+
+		globbySync([`${patternPath}/_data/${wildcard}.json`]).forEach((dataPath) => {
+			const patternData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+			const schema = JSON.parse(fs.readFileSync(schemaFilePath, 'utf8'));
+			const schemaToApply = schema.$id || schema;
+
+			// console.log(`validate ${schemaFilePath} with ${dataPath}`);
+			const valid = ajv.validate(schemaToApply, patternData);
+			if (!valid) {
+				errorCounter++;
+				console.log(`${clc.red('Error')} (${dataPath}): ${ajv.errorsText()}`);
+			}
+		});
+	});
+
+	// summary
+	if (errorCounter === 0) {
+		console.log(`${clc.green('Success:')} all data from each of the ${patternCounter} patterns are valid!\n`);
+	} else {
+		console.log(`${clc.red('Error:')} we detected ${errorCounter} errors in your data.\n`);
+		process.exitCode = 1;
+	}
+
+})();

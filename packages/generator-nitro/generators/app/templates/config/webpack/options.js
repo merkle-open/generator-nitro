@@ -5,8 +5,15 @@ const options = {
 	rules: {
 		script: <% if (options.jsCompiler === 'ts') { %>{
 			typescript: true,
-		}{{else}}true<% } %>,
-		style: true,
+		}<% } else { %>true<% } %>,
+		style: {
+			publicPath: '../',
+			sassOptions: {<% if (options.exampleCode) { %>
+				quietDeps: true,
+				// color-function and import are muted due to issues in twitter bootstrap scss
+				silenceDeprecations: ['color-functions', 'import'],<% } %>
+			},
+		},
 		hbs: <% if (options.clientTpl) { %>true<% } else { %>false<% } %>,
 		woff: true,
 		image: true,

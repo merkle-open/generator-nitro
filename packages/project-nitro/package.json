@@ -57,15 +57,15 @@
     "export": "npm run build && gulp export",
     "\n# RUN ------- ": "",
     "dev": "npm-run-all check-node-version --parallel --race dev:*",
-    "dev:serve": "cross-env NODE_ENV=development nitro-app-serve",
+    "dev:serve": "cross-env NODE_ENV=development nitro-app-serve --open",
     "dev:watch": "gulp develop",
     "prod": "npm-run-all prod:*",
     "prod:check": "npm run check-node-version",
     "prod:build": "npm run build",
     "prod:serve": "cross-env NODE_ENV=production nitro-app-serve",
     "start": "npm run start:light",
-    "start:light": "cross-env THEME=light PORT=8081 PROXY=8082 npm run dev",
-    "start:dark": "cross-env THEME=dark PORT=8083 PROXY=8084 npm run dev"
+    "start:light": "cross-env THEME=light PORT=8080 npm run dev",
+    "start:dark": "cross-env THEME=dark PORT=8081 npm run dev"
   },
   "keywords": [
     "frontend",

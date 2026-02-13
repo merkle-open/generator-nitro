@@ -7,9 +7,14 @@ const router = require('../core/router');
 const compression = require('compression');
 const bodyParser = require('body-parser');
 
+// CLI flags (only --open[=URL] or --open URL)
+const { parseOpenArg } = require('./util/cliOpen');
+const { open } = parseOpenArg(process.argv.slice(2));
+
 const isProduction = config.get('server.production');
 const useCompression = config.get('server.compression');
 const isTwig = config.get('nitro.templateEngine') === 'twig';
+
 let engine;
 
 // webpack
@@ -47,4 +52,4 @@ if (isTwig) {
 	app.engine(config.get('nitro.viewFileExtension'), engine.__express);
 }
 
-require('../core/listen')(app);
+require('../core/listen')(app, { open });

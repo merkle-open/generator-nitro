@@ -47,7 +47,6 @@ const defaultConfig = {
 			'project/helpers',
 			'project/locales',
 			'project/routes',
-			'project/server',
 			'project/viewData',
 			'public',
 			'src/views',

@@ -83,8 +83,9 @@ module.exports = class extends Generator {
 		projectPaths.forEach((file) => {
 			const sourcePath = this.destinationPath(file);
 			const destinationPath = this.destinationPath(`${this.options.folder}/${file}`);
-
-			this.fs.copy(sourcePath, destinationPath);
+			if (fs.existsSync(sourcePath)) {
+				this.fs.copy(sourcePath, destinationPath);
+			}
 		}, this);
 	}
 

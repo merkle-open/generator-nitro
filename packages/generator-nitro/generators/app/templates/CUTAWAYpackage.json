@@ -92,25 +92,25 @@
   "devDependencies": {<% if (options.jsCompiler === 'js') { %>
     "@babel/eslint-parser": "7.28.6",<% } %>
     "@merkle-open/eslint-config": "4.0.1",
-    "@merkle-open/html-validate-config": "2.0.0",
-    "@merkle-open/prettier-config": "2.0.0",
-    "@merkle-open/stylelint-config": "5.0.0",
-    "@merkle-open/ts-config": "1.1.1",
+    "@merkle-open/html-validate-config": "2.0.1",
+    "@merkle-open/prettier-config": "2.0.1",
+    "@merkle-open/stylelint-config": "5.0.1",
+    "@merkle-open/ts-config": "1.1.2",
     "@nitro/app": "<%= version %>",
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",
-    "@playwright/test": "1.58.0",<% if (options.jsCompiler === 'ts') { %>
+    "@playwright/test": "1.58.2",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "5.2.10",<% if (options.exampleCode ) { %>
     "@types/jquery": "3.5.32",<% } %>
     "@types/webpack-env": "1.18.8",<% } %>
     "backstopjs": "6.3.25",
     "check-node-version": "4.2.1",
     "commitizen": "4.3.1",
-    "config": "4.2.0",<% if (options.themes) { %>
+    "config": "4.3.0",<% if (options.themes) { %>
     "cookie-session": "2.1.1",<% } %>
     "cross-env": "10.1.0",
-    "cypress": "15.9.0",
+    "cypress": "15.10.0",
     "cz-conventional-changelog": "3.3.0",
     "env-linter": "2.0.0",
     "eslint": "8.57.1",
@@ -124,7 +124,7 @@
     "lighthouse": "12.8.2",
     "lint-staged": "16.2.7",<% if (options.themes) { %>
     "node-sass": "9.0.0",<% } %>
-    "npm-check-updates": "19.3.1",
+    "npm-check-updates": "19.3.2",
     "npm-run-all": "4.1.5",
     "prettier": "3.8.1",
     "rimraf": "6.1.2",

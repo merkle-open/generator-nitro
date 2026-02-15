@@ -37,8 +37,8 @@
   ],
   "dependencies": {
     "cli-color": "2.0.4",
-    "config": "4.2.0",
-    "find-git-root": "1.0.4",
+    "config": "4.3.0",
+    "find-git-root": "1.1.0",
     "git-config": "0.0.7",
     "glob": "10.4.5",
     "got": "11.8.5",
@@ -54,6 +54,6 @@
     "fs-extra": "11.3.3",
     "jasmine": "5.13.0",
     "yeoman-assert": "3.1.1",
-    "yeoman-test": "6.3.0"
+    "yeoman-test": "11.2.0"
   }
 }

@@ -39,27 +39,40 @@ async function loadImageminPlugins() {
 
 module.exports = (gulp, plugins) => {
 
-	return async () => {
+	return (done) => {
 		const minifyImagesConfigs = config.has('gulp.minifyImages') ? config.get('gulp.minifyImages') : {};
-		const imageminPlugins = await loadImageminPlugins();
-		const imagemin = (await import('gulp-imagemin')).default;
 
-		const streams = [];
+		Promise.all([loadImageminPlugins(), import('gulp-imagemin')])
+			.then(([imageminPlugins, imageminModule]) => {
+				const imagemin = imageminModule.default;
+				const streams = [];
 
-		utils.each(minifyImagesConfigs, (minifyImagesConfig) => {
-			if (minifyImagesConfig && minifyImagesConfig.src && minifyImagesConfig.dest) {
-				streams.push(
-					gulp
-						.src(minifyImagesConfig.src, { encoding: false })
-						.pipe(plugins.newer(minifyImagesConfig.dest))
-						.pipe(
-							imagemin(imageminPlugins)
-						)
-						.pipe(gulp.dest(minifyImagesConfig.dest))
-				);
-			}
-		});
+				utils.each(minifyImagesConfigs, (minifyImagesConfig) => {
+					if (minifyImagesConfig && minifyImagesConfig.src && minifyImagesConfig.dest) {
+						const srcStream = gulp.src(minifyImagesConfig.src, { encoding: false, allowEmpty: true });
 
-		return streams.length ? ordered(streams) : Promise.resolve('resolved');
+						streams.push(
+							srcStream
+								.pipe(plugins.newer(minifyImagesConfig.dest))
+								.pipe(
+									imagemin(imageminPlugins)
+								)
+								.pipe(gulp.dest(minifyImagesConfig.dest))
+						);
+					}
+				});
+
+				if (!streams.length) {
+					done();
+					return;
+				}
+
+				const merged = ordered(streams);
+				merged.on('error', done);
+				merged.on('finish', done);
+				merged.on('end', done);
+				merged.resume();
+			})
+			.catch(done);
 	};
 };

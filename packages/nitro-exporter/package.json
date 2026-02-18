@@ -37,7 +37,7 @@
     "delete-empty": "3.0.0",
     "glob": "13.0.2",
     "glob-parent": "6.0.2",
-    "gulp-filter": "7.0.0",
+    "gulp-filter": "9.0.1",
     "gulp-html-minifier-terser": "7.1.0",
     "gulp-zip": "6.1.0"
   },

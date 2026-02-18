@@ -1,9 +1,9 @@
-const filter = require('gulp-filter');
 const utils = require('../lib/utils.js');
 
-module.exports = function (gulp, config) {
+module.exports = async function (gulp, config) {
 	'use strict';
 
+	const { default: filter } = await import('gulp-filter');
 	const nitroTmpDirectory = `${config.get('nitro.tmpDirectory')}/views`;
 	const processes = [];
 
@@ -43,9 +43,5 @@ module.exports = function (gulp, config) {
 		);
 	});
 
-	return new Promise((resolve) => {
-		Promise.all(processes).then(() => {
-			resolve();
-		});
-	});
+	return Promise.all(processes);
 };

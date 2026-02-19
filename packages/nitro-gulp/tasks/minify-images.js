@@ -26,10 +26,37 @@ async function loadImageminPlugins() {
 		const svgo = (await import('imagemin-svgo')).default;
 		plugins.push(svgo({
 			plugins: [
+				// deactivate preset
+				{ name: 'preset-default', active: false },
+
+				// optimize
+				{ name: 'cleanupAttrs', active: true },
+				{ name: 'cleanupNumericValues', active: true },
+				{ name: 'convertColors', active: true },
+				{ name: 'convertPathData', active: true },
+				{ name: 'convertShapeToPath', active: true },
+				{ name: 'convertStyleToAttrs', active: true },
+				{ name: 'convertTransform', active: true },
+				{ name: 'mergePaths', active: true },
+				{ name: 'minifyStyles', active: true },
+				{ name: 'removeDoctype', active: true },
+				{ name: 'removeEditorsNSData', active: true },
+				{ name: 'removeEmptyAttrs', active: true },
+				{ name: 'removeEmptyContainers', active: true },
+				{ name: 'removeEmptyText', active: true },
+				{ name: 'removeMetadata', active: true },
+				{ name: 'removeTitle', active: true },
+				{ name: 'removeDesc', active: true },
+				{ name: 'removeDimensions', active: true },
+				{ name: 'removeUselessStrokeAndFill', active: true },
+				{ name: 'removeXMLNS', active: true },
+
 				{ name: 'collapseGroups', active: false },
-				// { name: 'cleanupIDs', active: false },
 				{ name: 'removeUnknownsAndDefaults', active: false },
 				{ name: 'removeViewBox', active: false },
+
+				// for icons/sprites with <symbol>
+				{ name: 'removeUselessDefs', active: false },
 			],
 		}));
 	} catch { /* empty */ }

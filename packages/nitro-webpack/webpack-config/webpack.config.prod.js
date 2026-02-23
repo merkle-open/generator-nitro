@@ -53,6 +53,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		imageMinimizerPlugins.push('pngquant');
 	}
 	if (imageminSvgo) {
+		// svgo configuration: https://github.com/svg/svgo#configuration
 		imageMinimizerPlugins.push(
 			[
 				'svgo',

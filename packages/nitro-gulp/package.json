@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "compression": "1.8.1",
-    "config": "4.3.0",
+    "config": "4.4.0",
     "del": "8.0.1",
     "get-port": "7.1.0",
     "gulp": "5.0.1",

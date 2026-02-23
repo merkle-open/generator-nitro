@@ -4,66 +4,102 @@ const config = require('config');
 const ordered = require('ordered-read-streams');
 const utils = require('../lib/utils');
 
+async function loadImageminPlugins() {
+	const plugins = [];
+
+	try {
+		const mozjpeg = (await import('imagemin-mozjpeg')).default;
+		plugins.push(mozjpeg({ quality: 75, progressive: true }));
+	} catch { /* empty */ }
+
+	try {
+		const optipng = (await import('imagemin-optipng')).default;
+		plugins.push(optipng({ optimizationLevel: 7 }));
+	} catch { /* empty */ }
+
+	try {
+		const pngquant = (await import('imagemin-pngquant')).default;
+		plugins.push(pngquant());
+	} catch { /* empty */ }
+
+	try {
+		const svgo = (await import('imagemin-svgo')).default;
+		plugins.push(svgo({
+			plugins: [
+				// deactivate preset
+				{ name: 'preset-default', active: false },
+
+				// optimize
+				{ name: 'cleanupAttrs', active: true },
+				{ name: 'cleanupNumericValues', active: true },
+				{ name: 'convertColors', active: true },
+				{ name: 'convertPathData', active: true },
+				{ name: 'convertShapeToPath', active: true },
+				{ name: 'convertStyleToAttrs', active: true },
+				{ name: 'convertTransform', active: true },
+				{ name: 'mergePaths', active: true },
+				{ name: 'minifyStyles', active: true },
+				{ name: 'removeDoctype', active: true },
+				{ name: 'removeEditorsNSData', active: true },
+				{ name: 'removeEmptyAttrs', active: true },
+				{ name: 'removeEmptyContainers', active: true },
+				{ name: 'removeEmptyText', active: true },
+				{ name: 'removeMetadata', active: true },
+				{ name: 'removeTitle', active: true },
+				{ name: 'removeDesc', active: true },
+				{ name: 'removeDimensions', active: true },
+				{ name: 'removeUselessStrokeAndFill', active: true },
+				{ name: 'removeXMLNS', active: true },
+
+				{ name: 'collapseGroups', active: false },
+				{ name: 'removeUnknownsAndDefaults', active: false },
+				{ name: 'removeViewBox', active: false },
+
+				// for icons/sprites with <symbol>
+				{ name: 'removeUselessDefs', active: false },
+			],
+		}));
+	} catch { /* empty */ }
+
+	return plugins;
+}
+
 module.exports = (gulp, plugins) => {
-	/* eslint-disable complexity */
-	return () => {
+
+	return (done) => {
 		const minifyImagesConfigs = config.has('gulp.minifyImages') ? config.get('gulp.minifyImages') : {};
-		const streams = [];
 
-		const imageminMozjpeg = utils.getOptionalPackage('imagemin-mozjpeg');
-		const imageminOptipng = utils.getOptionalPackage('imagemin-optipng');
-		const imageminPngquant = utils.getOptionalPackage('imagemin-pngquant');
-		const imageminSvgo = utils.getOptionalPackage('imagemin-svgo');
-		const imageminPluginsConfig = [];
+		Promise.all([loadImageminPlugins(), import('gulp-imagemin')])
+			.then(([imageminPlugins, imageminModule]) => {
+				const imagemin = imageminModule.default;
+				const streams = [];
 
-		// console.log('imagemin-mozjpeg: ', imageminMozjpeg ? 'installed' : 'NOT');
-		// console.log('imagemin-optipng: ', imageminOptipng ? 'installed' : 'NOT');
-		// console.log('imagemin-pngquant: ', imageminPngquant ? 'installed' : 'NOT');
-		// console.log('imagemin-svgo: ', imageminSvgo ? 'installed' : 'NOT');
+				utils.each(minifyImagesConfigs, (minifyImagesConfig) => {
+					if (minifyImagesConfig && minifyImagesConfig.src && minifyImagesConfig.dest) {
+						const srcStream = gulp.src(minifyImagesConfig.src, { encoding: false, allowEmpty: true });
 
-		if (imageminMozjpeg) {
-			imageminPluginsConfig.push(
-				plugins.imagemin.mozjpeg({ quality: 75, progressive: true })
-			);
-		}
-		if (imageminOptipng) {
-			imageminPluginsConfig.push(
-				plugins.imagemin.optipng({ optimizationLevel: 7 })
-			);
-		}
-		if (imageminSvgo) {
-			imageminPluginsConfig.push(
-				plugins.imagemin.svgo({
-					plugins: [
-						{ collapseGroups: false },
-						{ cleanupIDs: false },
-						{ removeUnknownsAndDefaults: false },
-						{ removeViewBox: false },
-					],
-				})
-			);
-		}
-		if (imageminPngquant) {
-			imageminPluginsConfig.push(
-				imageminPngquant()
-			);
-		}
+						streams.push(
+							srcStream
+								.pipe(plugins.newer(minifyImagesConfig.dest))
+								.pipe(
+									imagemin(imageminPlugins)
+								)
+								.pipe(gulp.dest(minifyImagesConfig.dest))
+						);
+					}
+				});
 
-		utils.each(minifyImagesConfigs, (minifyImagesConfig) => {
-			if (minifyImagesConfig && minifyImagesConfig.src && minifyImagesConfig.dest) {
-				streams.push(
-					gulp
-						.src(minifyImagesConfig.src, { encoding: false })
-						.pipe(plugins.newer(minifyImagesConfig.dest))
-						.pipe(
-							plugins.imagemin(imageminPluginsConfig)
-						)
-						.pipe(gulp.dest(minifyImagesConfig.dest))
-				);
-			}
-		});
+				if (!streams.length) {
+					done();
+					return;
+				}
 
-		return streams.length ? ordered(streams) : Promise.resolve('resolved');
+				const merged = ordered(streams);
+				merged.on('error', done);
+				merged.on('finish', done);
+				merged.on('end', done);
+				merged.resume();
+			})
+			.catch(done);
 	};
-	/* eslint-enable complexity */
 };

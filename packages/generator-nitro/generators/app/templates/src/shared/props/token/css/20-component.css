@@ -1,0 +1,14 @@
+/* ⚠️ component variables */
+:root {
+	--body-foreground: var(--color-foreground);
+	--body-background: var(--color-background);
+
+	--example-color-foreground: var(--color-area-foreground);
+	--example-color-background: var(--color-area-background);
+	--example-color-foreground-highlight: var(--color-solid-white);
+	--example-color-background-highlight-1: var(--color-brand-1);
+	--example-color-background-highlight-2: var(--color-brand-2);
+	--example-border-radius: var(--border-radius-box);
+	--example-padding: var(--padding-area);
+}
+/* ⚠️ end component variables */

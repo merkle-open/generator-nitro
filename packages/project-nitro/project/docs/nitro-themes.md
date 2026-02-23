@@ -1,6 +1,6 @@
 # Nitro Themes
 
-Nitro offers extensive configuration possibilities and features for the development
+Nitro offers configuration possibilities and features for the development
 of different themes/skins (or whatever you would name them).
 
 ## Usage
@@ -75,8 +75,7 @@ They will be available in your views.
 
 ### Webpack Configuration
 
-Configure 'options.features.theme' and `options.features.dynamicAlias` in your
-[webpack configuration](./nitro-webpack.md) to enable themes functionality.
+Configure 'options.features.theme' in your [webpack configuration](./nitro-webpack.md) to enable themes functionality.
 
 And add an entry file per theme in the src folder ('ui.<theme-id>.js|ts')
 
@@ -89,7 +88,7 @@ Run modes and build tasks are configured in 'package.json'
 For development mode you need a start script for each theme:
 
 ```
-"start:<theme-id>": "cross-env THEME=<theme-id> PORT=8081 PROXY=8082 npm run dev",
+"start:<theme-id>": "cross-env THEME=<theme-id> PORT=8081 npm run dev",
 ```
 
 Use different ports for each theme to be able to run them in parallel.
@@ -127,41 +126,6 @@ Below are the main functionalities:
 
 The starting point is the entry file. For each theme there is an entry file in the format: 'src/ui.\<theme\>.js|ts'
 Import the code you need for a specific theme.
-
-### Webpack path resolving
-
-Theming is especially useful for loading different styles per theme.
-Always import the soure file with the code for the default theme.
-The Dynamic Alias Resolver plugin will exchange the configured path (e.g. `/theme/light`)
-with the path to the correct theme when compiling.
-
-Abstraction for themed colors as an example:
-
-```
-// colors.scss
-@import './theme/light';
-
-$color-base-font: $foreground;
-$color-base-background: $background;
-$color-area-background: $area;
-
-$color-brand-font: $white;
-```
-
-The pattern.scss uses the themed colors and a themed pattern import with variables for padding and border radius:
-
-```
-// pattern.scss
-@import '../../../../shared/utils/colors/css/colors';
-@import './theme/light';
-
-.m-example {
-	margin: 1em 0;
-	padding: $example-padding;
-	background-color: $color-area-background;
-	border-radius: $example-border-radius;
-}
-```
 
 ### Handlebars Helpers
 

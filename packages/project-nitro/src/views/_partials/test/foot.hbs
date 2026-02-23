@@ -1,3 +1,4 @@
+{{#unless _nitro.production}}<script src="{{asset name='/js/runtime.min.js'}}"></script>{{/unless}}
 <script src="{{asset name='/js/vendors.min.js'}}"></script>
 <script src="{{asset name='/js/ui.min.js'}}"></script>
 {{#unless _nitro.test}}<script src="{{asset name='/js/proto.min.js'}}"></script>{{/unless}}

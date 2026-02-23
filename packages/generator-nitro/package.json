@@ -1,6 +1,6 @@
 {
   "name": "generator-nitro",
-  "version": "10.0.4",
+  "version": "11.0.0",
   "description": "Yeoman generator for the nitro frontend framework",
   "license": "MIT",
   "repository": {
@@ -9,15 +9,15 @@
   },
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=20.18.1 <21",
-    "npm": ">=10.8.2 <11"
+    "node": ">=22.11.0 <25",
+    "npm": ">=10.9.0 <12"
   },
   "main": "generators/app/index.js",
   "scripts": {
     "lint": "eslint .",
     "prepublishOnly": "npx -y pkg-ok@2.3.1",
     "pretest": "npm run lint",
-    "test": "jasmine --config=tests/jasmine/jasmine.json"
+    "test": "mocha tests/mocha/test/**/*.test.js"
   },
   "files": [
     "generators/app",
@@ -37,22 +37,21 @@
   ],
   "dependencies": {
     "cli-color": "2.0.4",
-    "config": "4.3.0",
+    "config": "4.4.0",
     "find-git-root": "1.1.0",
     "git-config": "0.0.7",
-    "glob": "10.4.5",
-    "got": "11.8.5",
+    "glob": "13.0.6",
+    "got": "14.6.6",
     "lodash": "4.17.23",
-    "yeoman-generator": "5.10.0",
-    "yosay": "2.0.2"
+    "yeoman-generator": "7.5.1",
+    "yosay": "3.0.0"
   },
   "devDependencies": {
     "@merkle-open/eslint-config": "4.0.1",
-    "ejs": "4.0.1",
     "eslint": "8.57.1",
     "eslint-plugin-import": "2.32.0",
     "fs-extra": "11.3.3",
-    "jasmine": "5.13.0",
+    "mocha": "11.7.5",
     "yeoman-assert": "3.1.1",
     "yeoman-test": "11.2.0"
   }

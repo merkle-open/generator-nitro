@@ -12,7 +12,6 @@ import templateExampleLinks from '../template/example.links.hbs';
 
 /**
  * Example module implementation.
- * @author Pre Name <pre.name@domain.com>
  */
 
 enum Selectors {

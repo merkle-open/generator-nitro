@@ -19,12 +19,17 @@ const fs = require('fs');
 const hbs = require('hbs');
 const path = require('path');
 const extend = require('extend');
-const globby = require('globby');
 const Ajv = require('ajv');
 const ajv = new Ajv({ allErrors: true });
 const config = require('config');
 const hbsUtils = require('../utils');
 const lint = require('../../../lib/lint');
+
+let globbySync;
+(async () => {
+	const globbyMod = await import('globby');
+	globbySync = globbyMod.globbySync;
+})();
 
 function getPatternBasePaths(type) {
 	let patternTypeKeys;
@@ -96,7 +101,7 @@ function getPattern(folder, templateFile, dataFile, type) {
 			return `${patternBasePath}/*/elements/${folder}/${templateFile}.${config.get('nitro.viewFileExtension')}`;
 		});
 
-		globby.sync(elementGlobs).forEach((templatePath) => {
+		globbySync(elementGlobs).forEach((templatePath) => {
 			if (!pattern) {
 				pattern = {
 					templateFilePath: templatePath,

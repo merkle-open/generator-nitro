@@ -1,10 +1,10 @@
-@import '../../../../shared/utils/colors/css/colors';
+@use '../../../../shared/utils/token/css/component';
 
 html {
 	font-family: Arial, sans-serif;
 	line-height: 1.2;
-	color: $color-base-font;
-	background-color: $color-base-background;
+	color: component.$body-foreground;
+	background-color: component.$body-background;
 	@media print {
 		background-color: transparent;
 	}

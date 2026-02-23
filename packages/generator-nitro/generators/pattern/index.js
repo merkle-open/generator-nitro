@@ -6,14 +6,16 @@
 
 /* eslint-disable no-inline-comments, max-len, complexity, global-require, require-jsdoc */
 
-const Generator = require('yeoman-generator');
+const _yeomanGenerator = require('yeoman-generator');
+const Generator = _yeomanGenerator && _yeomanGenerator.default ? _yeomanGenerator.default : _yeomanGenerator;
 const clc = require('cli-color');
-const yosay = require('yosay');
 const path = require('path');
 const fs = require('fs');
 const gitconfig = require('git-config');
 const { globSync } = require('glob');
 const _ = require('lodash');
+
+const yosayPromise = import('yosay');
 
 module.exports = class extends Generator {
 	constructor(args, opts) {
@@ -22,7 +24,7 @@ module.exports = class extends Generator {
 		super(args, opts);
 
 		// Pattern name
-		this.argument('name', { desc: 'the name of your pattern?', type: String, required: false, defaults: '' });
+		this.argument('name', { desc: 'the name of your pattern?', type: String, required: false, default: '' });
 
 		this.passedInOptions = {
 			name: this.options.name,
@@ -57,27 +59,27 @@ module.exports = class extends Generator {
 		this.option('name', {
 			desc: `the name of your ${this._pattern.Name}`,
 			type: String,
-			defaults: this.passedInOptions.name || '',
+			default: this.passedInOptions.name || '',
 		});
 
 		this.option('type', {
 			desc: `your desired type [${this.types.join('|')}]`,
 			type: String,
-			defaults: this.passedInOptions.type || this.types[0],
+			default: this.passedInOptions.type || this.types[0],
 		});
 
 		// Pattern modifier
 		this.option('modifier', {
 			desc: 'the name of your modifier',
 			type: String,
-			defaults: this.passedInOptions.modifier || '',
+			default: this.passedInOptions.modifier || '',
 		});
 
 		// Pattern decorator
 		this.option('decorator', {
 			desc: 'the name of your decorator',
 			type: String,
-			defaults: this.passedInOptions.decorator || '',
+			default: this.passedInOptions.decorator || '',
 		});
 	}
 
@@ -86,7 +88,14 @@ module.exports = class extends Generator {
 	}
 
 	prompting() {
-		this.log(yosay(`Let me help you to create your ${this._pattern.name}…`));
+		(async () => {
+			try {
+				const { default: yosay } = await yosayPromise;
+				this.log(yosay(`Let me help you to create your ${this._pattern.name}…`));
+			} catch (err) {
+				this.log(`Let me help you to create your pattern`);
+			}
+		})();
 
 		return this.prompt([
 			{

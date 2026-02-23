@@ -1,9 +1,9 @@
-@import '../../../../shared/utils/colors2/css/colors2';
-@import '../../../../shared/utils/hidden/css/hidden';
+@use '../../../../shared/utils/token/css/semantic-color';
+@use '../../../../shared/utils/hidden/css/hidden';
 
 $checkbox-border: 2px;
 $checkbox-size: 1.3em;
-$checkbox-color: $color-gray-5;
+$checkbox-color: semantic-color.$color-solid-grey-5;
 
 .a-tcheckbox {
 	color: inherit;
@@ -11,7 +11,7 @@ $checkbox-color: $color-gray-5;
 
 	input[type='checkbox'] {
 		// Checkbox Replacement: Hide default
-		@include input-visually-hidden();
+		@include hidden.visually-hidden();
 
 		// Checkbox Replacement: Box
 		+ label::before {
@@ -30,7 +30,7 @@ $checkbox-color: $color-gray-5;
 		// Checkbox Replacement - checked state: check char
 		&:checked + label::after {
 			content: '✔';
-			color: $color-gray-4;
+			color: semantic-color.$color-solid-grey-4;
 			position: absolute;
 			top: 20%;
 			left: 5px;

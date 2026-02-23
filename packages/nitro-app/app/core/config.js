@@ -19,7 +19,6 @@ const defaultConfig = {
 		templateEngine: 'hbs',
 		mode: {
 			livereload: true,
-			offline: false,
 			test: !!(process.env.NITRO_MODE && process.env.NITRO_MODE.replace(/\s/g, '') === 'test'),
 		},
 		watch: {
@@ -40,18 +39,15 @@ const defaultConfig = {
 	},
 	server: {
 		port: 8080,
-		proxy: {
-			port: 8081,
-			https: false,
-		},
+		host: 'localhost',
 		production: !!(process.env.NODE_ENV && process.env.NODE_ENV.replace(/\s/g, '') === 'production'),
 		compression: true,
 		projectPaths: [
 			'config',
+			'project/docker',
 			'project/helpers',
 			'project/locales',
 			'project/routes',
-			'project/server',
 			'project/viewData',
 			'public',
 			'src/views',
@@ -125,6 +121,7 @@ const defaultConfig = {
 					lookupQuerystring: 'lang',
 				},
 				// compatibilityJSON: 'v3',
+				showSupportNotice: false,
 				debug: false
 			},
 			middlewareOptions: {

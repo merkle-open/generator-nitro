@@ -2,16 +2,19 @@
 
 /* eslint-disable max-len, complexity, no-else-return, require-jsdoc */
 
-const Generator = require('yeoman-generator');
+const _yeomanGenerator = require('yeoman-generator');
+const Generator = _yeomanGenerator && _yeomanGenerator.default ? _yeomanGenerator.default : _yeomanGenerator;
 const clc = require('cli-color');
-const yosay = require('yosay');
-const got = require('got');
 const path = require('path');
 const fs = require('fs');
 const childProcess = require('child_process');
 const findGitRoot = require('find-git-root')
 const { globSync } = require('glob');
 const _ = require('lodash');
+
+// eslint-disable-next-line import/no-unresolved
+const gotPromise = import('got');
+const yosayPromise = import('yosay');
 
 module.exports = class extends Generator {
 	constructor(args, opts) {
@@ -39,7 +42,7 @@ module.exports = class extends Generator {
 		this.option('name', {
 			desc: 'the name of your app',
 			type: String,
-			defaults: this._passedInOptions.name || path.basename(process.cwd()),
+			default: this._passedInOptions.name || path.basename(process.cwd()),
 		});
 		this.options.name = _.kebabCase(this.options.name);
 
@@ -47,51 +50,51 @@ module.exports = class extends Generator {
 		this.option('templateEngine', {
 			desc: `your desired template engine [${this._templateEngineOptions.join('|')}]`,
 			type: String,
-			defaults: this._passedInOptions.templateEngine || this._templateEngineOptions[0],
+			default: this._passedInOptions.templateEngine || this._templateEngineOptions[0],
 		});
 
 		this._jsCompilerOptions = ['ts', 'js'];
 		this.option('jsCompiler', {
 			desc: `your desired javascript js compiler [${this._jsCompilerOptions.join('|')}]`,
 			type: String,
-			defaults: this._passedInOptions.jsCompiler || this._jsCompilerOptions[0],
+			default: this._passedInOptions.jsCompiler || this._jsCompilerOptions[0],
 		});
 
 		this._viewExtOptions = ['hbs', 'twig'];
 		this.option('viewExt', {
 			desc: `your desired view file extension [${this._viewExtOptions.join('|')}]`,
 			type: String,
-			defaults: this._passedInOptions.viewExt || this._viewExtOptions[0],
+			default: this._passedInOptions.viewExt || this._viewExtOptions[0],
 		});
 
 		this.option('themes', {
 			desc: 'do you need theme support',
 			type: Boolean,
-			defaults: this._passedInOptions.themes || false,
+			default: this._passedInOptions.themes || false,
 		});
 
 		this.option('clientTpl', {
 			desc: 'do you need client side templates',
 			type: Boolean,
-			defaults: this._passedInOptions.clientTpl || false,
+			default: this._passedInOptions.clientTpl || false,
 		});
 
 		this.option('exampleCode', {
 			desc: 'do you want to include the example code',
 			type: Boolean,
-			defaults: this._passedInOptions.exampleCode || false,
+			default: this._passedInOptions.exampleCode || false,
 		});
 
 		this.option('exporter', {
 			desc: 'do you need static exporting functionalities',
 			type: Boolean,
-			defaults: this._passedInOptions.exporter || false,
+			default: this._passedInOptions.exporter || false,
 		});
 
 		this.option('skipQuestions', {
 			desc: 'use default for not specified options and skip questions',
 			type: Boolean,
-			defaults: false,
+			default: false,
 		});
 
 		this._skipQuestions = this.options.skipQuestions;
@@ -124,7 +127,14 @@ module.exports = class extends Generator {
 	}
 
 	prompting() {
-		this.log(yosay(`Welcome to the awe-inspiring ${clc.cyan('Nitro')} generator!`));
+		(async () => {
+			try {
+				const { default: yosay } = await yosayPromise;
+				this.log(yosay(`Welcome to the awe-inspiring ${clc.cyan('Nitro')} generator!`));
+			} catch (err) {
+				this.log(`Welcome to the awe-inspiring Nitro generator`);
+			}
+		})();
 
 		// check whether there is already a nitro application in place and we only have to update the application
 		const json = this.fs.readJSON(this.destinationPath('.yo-rc.json'), { new: true });
@@ -300,12 +310,10 @@ module.exports = class extends Generator {
 			'src/patterns/molecules/example/schema.json',
 			'src/patterns/molecules/example/index.js',
 			'src/patterns/molecules/example/index.ts',
-			'src/patterns/molecules/example/css/example.scss',
 			'src/patterns/molecules/example/js/example.js',
 			'src/patterns/molecules/example/js/example.ts',
 			'src/proto/js/prototype.js',
 			'src/proto/js/prototype.ts',
-			'src/shared/utils/colors/css/colors.scss',
 			'src/views/index.hbs',
 			'src/views/index.twig',
 			'src/views/_partials/head.hbs',
@@ -344,15 +352,17 @@ module.exports = class extends Generator {
 			'project/docs/nitro-themes.md',
 			'project/routes/_themes.js',
 			'project/viewData/_themes.js',
-			'src/patterns/molecules/example/css/theme/dark.scss',
-			'src/patterns/molecules/example/css/theme/light.scss',
-			'src/shared/utils/colors/css/theme/dark.scss',
-			'src/shared/utils/colors/css/theme/light.scss',
+			'props/token/css/theme/dark.css',
+			'props/token/css/theme/light.css',
 			'src/proto/css/themelist/themelist.scss',
 			'src/ui.dark.js',
 			'src/ui.dark.ts',
 			'src/ui.light.js',
 			'src/ui.light.ts',
+		];
+		const noThemesFiles = [
+			// files only for this.options.themes===false
+			'props/token/css/10-semantic.css',
 		];
 		const clientTplFiles = [
 			// files only for this.options.clientTpl===true
@@ -441,21 +451,24 @@ module.exports = class extends Generator {
 				}
 			}
 
-			// Themes only Files
-			if (!this.options.themes) {
-				if (_.indexOf(themesFiles, file) !== -1) {
+			// Theme files
+			if (this.options.themes) {
+				if (_.indexOf(noThemesFiles, file) !== -1) {
 					return;
 				}
 			}
+			else if (_.indexOf(themesFiles, file) !== -1) {
+				return;
+			}
 
-			// Client side templates only Files
+			// Client side templates only files
 			if (!this.options.clientTpl) {
 				if (_.indexOf(clientTplFiles, file) !== -1) {
 					return;
 				}
 			}
 
-			// Example only Files
+			// Example only files
 			if (!this.options.exampleCode) {
 				if (
 					examplePaths.some((v) => file.indexOf(v) >= 0) &&
@@ -550,24 +563,54 @@ module.exports = class extends Generator {
 		];
 		try {
 			filesToCopy.forEach((file) => {
-				if (file.do) {
-					if (!this.options.skipInstall) {
-						// get readme from current package version
-						this.fs.copy(this.destinationPath(file.src), this.destinationPath(file.dest));
-					} else {
-						// get readme from github master branch
-						got.stream(file.srcWeb).pipe(fs.createWriteStream(this.destinationPath(file.dest)));
-					}
+				if (!file.do) { return; }
+
+				const destPath = this.destinationPath(file.dest);
+
+				if (!this.options.skipInstall) {
+					// get readme from current package version
+					this.fs.copy(this.destinationPath(file.src), destPath);
+				} else {
+					// get readme from github master branch
+					(async () => {
+						try {
+							const { default: got } = await gotPromise;
+							const writeStream = fs.createWriteStream(destPath);
+							const readStream = got.stream.get(file.srcWeb);
+
+							readStream.on('error', () => {
+								if (!writeStream.destroyed) writeStream.destroy();
+							});
+
+							writeStream.on('error', () => {
+								if (!readStream.destroyed) readStream.destroy();
+							});
+
+							readStream.pipe(writeStream);
+						} catch (err) { /* empty */ }
+					})();
 				}
+
 			});
 		} catch (e) {
 			this.log(clc.red(e.message));
 		}
 
-		if (this._update) {
-			this.log(yosay(`All done – check local changes, \nuse desired node version and then\nrun \`npm install\` to update your project.`));
-		} else {
-			this.log(yosay(`All done – use desired node version, \nrun \`npm install\` \nand run \`npm start\` to start ${clc.cyan('Nitro')} in development mode.`));
-		}
+		(async () => {
+			try {
+				const { default: yosay } = await yosayPromise;
+				if (this._update) {
+					this.log(yosay(`All done – check local changes, \nuse desired node version and then\nrun \`npm install\` to update your project.`));
+				} else {
+					this.log(yosay(`All done – use desired node version, \nrun \`npm install\` \nand run \`npm start\` to start ${clc.cyan('Nitro')} in development mode.`));
+				}
+			} catch (err) {
+				this.log(
+					this._update
+						? `All done – check local changes, use desired node version and then run "npm install" to update your project.`
+						: `All done – use desired node version, run "npm install" and then run "npm start" to start Nitro in development mode.`
+				);
+			}
+		})();
 	}
 };

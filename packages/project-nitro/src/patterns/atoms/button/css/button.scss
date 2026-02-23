@@ -1,17 +1,17 @@
-@import '../../../../shared/utils/colors2/css/colors2';
+@use '../../../../shared/utils/token/css/semantic-color';
 
 .a-button {
 	cursor: pointer;
 
 	font-size: 24px;
 	font-weight: bold;
-	text-shadow: 1px 0 $color-gray-1;
-	background-color: darken($color-brand-1, 10%);
-	border: 0 solid $color-gray-5;
+	text-shadow: 1px 0 semantic-color.$color-solid-grey-1;
+	background-color: semantic-color.$color-accent-1;
+	border: 0 solid semantic-color.$color-solid-grey-5;
 	border-bottom-width: 5px;
 	padding: 10px 20px;
 	display: inline-block;
-	color: $color-white;
+	color: semantic-color.$color-solid-white;
 	margin: 1rem 0;
 	outline: none;
 	position: relative;

@@ -12,11 +12,12 @@ module.exports = {
 		onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
 		skipAudits: [
 			// performance
+			'document-latency-insight',
+			'modern-http-insight',
 			'redirects',
 			'redirects-http',
 			'server-response-time',
-			'uses-http2',
-			'uses-long-cache-ttl',
+			'use-cache-insight',
 			// best-practices
 			'csp-xss',
 			'is-on-https',

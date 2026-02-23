@@ -6,6 +6,8 @@ import { Russian } from 'flatpickr/dist/l10n/ru';
 // import { Options as FlatpickrOptions } from 'flatpickr/dist/types/options';
 // import { Instance as FlatpickrInstance } from 'flatpickr/dist/types/instance';
 
+import 'flatpickr/dist/flatpickr.css';
+
 const getLocale = (localeKey: string) => {
 	switch (localeKey.toLowerCase()) {
 		case 'de':

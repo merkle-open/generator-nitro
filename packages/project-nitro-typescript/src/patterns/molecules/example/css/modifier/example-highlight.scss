@@ -1,0 +1,17 @@
+@use '../../../../../shared/utils/token/css/component';
+
+.m-example--highlight {
+	color: component.$example-color-foreground-highlight;
+	background-color: component.$example-color-background-highlight-1;
+	animation: example-background-change 10s infinite;
+}
+
+@keyframes example-background-change {
+	0%,
+	100% {
+		background-color: component.$example-color-background-highlight-1;
+	}
+	50% {
+		background-color: component.$example-color-background-highlight-2;
+	}
+}

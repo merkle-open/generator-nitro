@@ -21,7 +21,7 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 This application was created by the yeoman generator for nitro.  
 Before using, you need of course [node](https://nodejs.org/) installed.  
-Nitro is currently only tested with node 20.
+Nitro is currently tested with the node LTS versions 22 and 24.
 
 Install the project dependencies in the project root:
 
@@ -45,11 +45,11 @@ For production (prototype server) mode use:
 npm run prod
 ```
 
-The Nitro app will run on port `8080` by default, the proxy on `8081` (only runs in develpment mode).  
+The Nitro app will run on port `8080` by default.  
 If you want the app to run on another port use [config](./nitro-config.md) or add env vars to the tasks:
 
 ```
-PORT=8000 PROXY=8001 npm start
+PORT=8000 npm start
 ```
 
 The port to be used in production can be set the same way:
@@ -61,7 +61,7 @@ PORT=3000 npm run prod
 This works a bit different on **Windows**. Use the following commands in prompt:
 
 ```
-set PORT=8000 && set PROXY=8001 && npm start
+set PORT=8000 && npm start
 set PORT=3001 && npm run prod
 ```
 
@@ -421,7 +421,6 @@ By default Nitro provides some data to be used in your views:
 - `{{ _nitro.pageTitle }}` (String) outputs string generated from the view name by default
 - `<% if (options.templateEngine === 'twig') { %>{% if _nitro.production %}{% endif %}<% } else { %>{{#if _nitro.production}}{{/if}}<% } %>` (Boolean) is true when environment variable `NODE_ENV` is set to `production`
 - `<% if (options.templateEngine === 'twig') { %>{% if _nitro.test %}{% endif %}<% } else { %>{{#if _nitro.test}}{{/if}}<% } %>` (Boolean) is true when environment variable `NITRO_MODE` ist set to `test`
-- `<% if (options.templateEngine === 'twig') { %>{% if _nitro.offline %}{% endif %}<% } else { %>{{#if _nitro.offline}}{{/if}}<% } %>` (Boolean) is true when config param 'nitro.mode.offline' is true
 
 ## Assets
 

@@ -4,16 +4,15 @@
 
 # Nitro Webpack
 
-Configurable and easy to use webpack 4 config for nitro projects.
+Configurable and easy to use webpack 5 config for nitro projects.
 
 ## Usage
 
 ```
 const options = {
     rules: {
-        js: true,
-        ts: false,
-        scss: true,
+        script: true,
+        style: true,
         hbs: true,
         woff: true,
         font: false,
@@ -22,8 +21,8 @@ const options = {
     features: {
         banner: true,
         bundleAnalyzer: false,
+        imageMinimizer: true,
         theme: false,
-        dynamicAlias: false,
     },
 };
 const webpackConfig = require('@nitro/webpack/webpack-config/webpack.config.dev')(options);
@@ -37,27 +36,20 @@ module.exports = webpackConfig;
 
 No loader rule is enabled by default. Activate following prepared rules you need in `options.rules`
 
-#### `options.rules.js`
+#### `options.rules.script`
 
 - Type: boolean || object
 - default: false
-- file types: js, jsx, mjs
+- file types: js, jsx, mjs, cjs (and optional ts, tsx, mts, cts)
 
 Config:
 
-- `true` or `{}` activates JavaScript support
+- `true` or `{}` activates JavaScript support (via Babel)
+- `{ typescript: true }` adds TypeScript support
+- `{ babelConfigFile: 'path/to/babel.config.js' }` will be used as Babel config (default: auto-detect)
+- `{ tsConfigFile: 'path/to/tsconfig.json' }` is used for type-checking with ForkTsCheckerWebpackPlugin (default: auto-detect)
 
-#### `options.rules.ts`
-
-- Type: boolean
-- default: false
-- file types: ts, tsx
-
-Config:
-
-- `true` will activate TypeScript support
-
-#### `options.rules.scss`
+#### `options.rules.style`
 
 - Type: boolean || object
 - default: false
@@ -65,10 +57,9 @@ Config:
 
 Config:
 
-- `true` or `{}` will activate scss support
+- `true` or `{}` will activate css & scss support
 - `{ publicPath: '../' }` provide a separate public path for stylesheets. By default, webpack uses the value from 'output.publicPath'. (only relevant for production build)
-- `{ implementation: require('node-sass') }` gives the possibility to use 'node-sass' as sass implementation. (you have to add 'node-sass' as a dev-dependency in your project)
-- `{ sassOptions: { ... } }` gives the possibility to add options for the ['dart-sass'](https://sass-lang.com/documentation/js-api/interfaces/options/) or ['node-sass'](https://github.com/sass/node-sass/#options) implementation (e.g. ignore some deprecations for dart-sass with `silenceDeprecations: [...]`)
+- `{ sassOptions: { ... } }` gives the possibility to add options for the ['dart-sass'](https://sass-lang.com/documentation/js-api/interfaces/options/)
 
 #### `options.rules.hbs`
 
@@ -141,6 +132,13 @@ Enable some additional features
 
 `true` will add the bundleAnalyser plugin and opens a browser window with the stats
 
+#### `options.features.imageMinimizer`
+
+- Type: boolean
+- default: true
+
+`false` will disable image minifaction functionality
+
 #### `options.features.theme`
 
 - Type: string || false
@@ -153,28 +151,13 @@ A string will activate theming support:
 
 It makes sense to use a dynamic value e.g. an environment variable, as shown in the example configuration.
 
-#### `options.features.dynamicAlias`
-
-- Type: object || false
-- default: false
-
-A proper configured dynamicAlias feature will activate the DynamicAliasResolverPlugin
-which can change import paths in source files dynamically on compile time as desired.
-
-Properties:
-
-- `options.features.dynamicAlias.search` (string || RegExp)
-  search term to be replaced (e.g. '/theme/light')
-- `options.features.dynamicAlias.replace` (string)
-  string as replacement (e.g. `/theme/${theme}`)
-
 ## Extending Configuration
 
 ### Code Splitting
 
 By default, all js imports from 'node_modules' are extracted to a 'vendors.js' to use in your view files.
 
-Dynamically imported js files will be extracted to `public/js/dynamic/`.
+Dynamically imported js files will be extracted to `public/js/chunk/`.
 You may use them in a promise chain.
 
 ```js

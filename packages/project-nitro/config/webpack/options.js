@@ -3,11 +3,14 @@ const validThemes = config.has('themes') && Array.isArray(config.get('themes')) 
 const theme = process.env.THEME ? process.env.THEME : validThemes.find((theme) => theme.isDefault).id;
 const options = {
 	rules: {
-		js: true,
-		ts: false,
-		scss: {
+		script: true,
+		style: {
 			publicPath: '../',
-			implementation: require('node-sass'),
+			sassOptions: {
+				quietDeps: true,
+				// color-function and import are muted due to issues in twitter bootstrap scss
+				silenceDeprecations: ['color-functions', 'import'],
+			},
 		},
 		hbs: true,
 		woff: {
@@ -25,11 +28,8 @@ const options = {
 	features: {
 		banner: true,
 		bundleAnalyzer: false,
+		imageMinimizer: true,
 		theme: theme,
-		dynamicAlias: {
-			search: '/theme/light',
-			replace: `/theme/${theme}`,
-		},
 	},
 };
 

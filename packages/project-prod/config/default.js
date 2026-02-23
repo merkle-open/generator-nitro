@@ -26,7 +26,6 @@ const defaultConfig = {
 		patterns: require('./default/patterns'),
 		mode: {
 			livereload: true,
-			offline: false,
 		},
 		watch: {
 			partials: true,
@@ -35,18 +34,7 @@ const defaultConfig = {
 	},
 	server: {
 		port: 8080,
-		proxy: {
-			port: 8081,
-			https: false,
-			// example config for https:
-			// tip: generate your own certificate with https://github.com/FiloSottile/mkcert
-			// https: {
-			// 	cert: './project/server/localhost.pem',
-			// 	key: './project/server/localhost-key.pem',
-			// },
-			// host: 'nitro.dev',
-			// open: 'external',
-		},
+		// host: 'localhost',
 	},
 	gulp: require('./default/gulp'),
 	feature: {

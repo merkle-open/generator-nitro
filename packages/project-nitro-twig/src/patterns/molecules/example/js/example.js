@@ -7,7 +7,6 @@ const templateExampleLinks = require('../template/example.links.hbs');
 
 /**
  * Example module implementation.
- * @author Pre Name <pre.name@domain.com>
  */
 
 const Selectors = {

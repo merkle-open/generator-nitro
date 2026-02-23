@@ -90,14 +90,6 @@ const config = {
 
 Browser livereload on changes (develop mode only)
 
-#### `nitro.mode.offline`
-
-- Type: Boolean
-- Default: false
-
-If set to true, browsersync will be loaded in offline mode.  
-This property is passed as `_nitro.offline` to handlebars views.
-
 ### Watch
 
 #### `nitro.watch.partials`
@@ -124,72 +116,20 @@ The millisecond 'delay' between a file change and task execution.
 The express server runs on this port.  
 An environment variable PORT will overwrite this property.
 
-### `server.proxy`
+#### Example config
 
-- Type: Object
+```
+server: {
+  port: 8080,
+}
+```
 
-The proxy server config with livereload functionality. (Used in develop mode only)
-
-#### `server.proxy.port`
-
-- Type: Integer
-- Default: 8081
-
-An environment variable PROXY will overwrite this property.
-
-#### `server.proxy.https`
-
-- Type: Object | false
-- Default: false
-
-Enabling the https mode requires an ssl certificate:
-
-- `server.proxy.https.cert` (path to the certificate file)
-- `server.proxy.https.key` (path to the certificate key)
-
-#### `server.proxy.host`
+### `server.host`
 
 - Type: String
+- Default: 'localhost'
 
-Defines a custom host for your external url (e.g. nitro.local)
-
-#### `server.proxy.open`
-
-- Type: Boolean | String
-
-Decide [which URL to open automatically in your browser](https://www.browsersync.io/docs/options#option-open) when proxy server starts.  
-Possible values: false, 'local', 'external'
-
-#### Example config for http proxy (default)
-
-```js
-server: {
-    port: 8080,
-    proxy: {
-        port: 8081,
-        https: false,
-    },
-}
-```
-
-#### Example config for https proxy
-
-Generate your own certificate e.g. with [mkcert](https://github.com/FiloSottile/mkcert)
-
-```js
-server: {
-    port: 8080,
-    proxy: {
-        port: 8081,
-        https: {
-            cert: './project/server/localhost.pem',
-            key: './project/server/localhost-key.pem',
-        },
-        host: 'nitro.dev',
-        open: 'external',
-    },
-}
-```
+Defines a custom host.
 
 ### `server.compression`
 

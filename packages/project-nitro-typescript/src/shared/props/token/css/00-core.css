@@ -1,0 +1,32 @@
+/* ⚠️ core global variables */
+:root {
+	--color-solid-white: #ffffff;
+	--color-solid-grey-1: #f2f2f2;
+	--color-solid-grey-2: #e5e5e5;
+	--color-solid-grey-3: #ccc;
+	--color-solid-grey-4: #b2b2b2;
+	--color-solid-grey-5: #999;
+	--color-solid-grey-6: #7f7f7f;
+	--color-solid-grey-7: #666;
+	--color-solid-grey-8: #434343;
+	--color-solid-grey-9: #333;
+	--color-solid-black: #010101;
+	--color-solid-orange: #fa8a1a;
+	--color-solid-orange-clear: #efc389;
+	--color-solid-brown: #3e2f19;
+	--color-solid-brow-variant: #4f3f34;
+
+	--dimension-0: 0;
+	--dimension-2: 0.2rem;
+	--dimension-4: 0.4rem;
+	--dimension-5: 0.5rem;
+	--dimension-8: 0.8rem;
+	--dimension-10: 1rem;
+	--dimension-16: 1.6rem;
+	--dimension-20: 2rem;
+	--dimension-24: 2.4rem;
+	--dimension-30: 3rem;
+	--dimension-32: 3.2rem;
+	--dimension-40: 4rem;
+}
+/* ⚠️ end core global variables */

@@ -1,12 +1,12 @@
 {
   "name": "@nitro/gulp",
-  "version": "10.0.4",
+  "version": "11.0.0",
   "description": "Nitro gulp",
   "license": "MIT",
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=20.18.1 <21",
-    "npm": ">=10.8.2 <11"
+    "node": ">=22.11.0 <25",
+    "npm": ">=10.9.0 <12"
   },
   "scripts": {
     "lint": "eslint .",
@@ -23,19 +23,17 @@
     "gulp"
   ],
   "peerDependencies": {
-    "@nitro/app": ">=10.0.4",
+    "@nitro/app": ">=11.0.0",
     "gulp": ">=5.0.0"
   },
   "dependencies": {
-    "browser-sync": "3.0.4",
     "compression": "1.8.1",
-    "config": "4.3.0",
-    "del": "6.1.1",
-    "get-port": "5.1.1",
-    "globby": "11.1.0",
+    "config": "4.4.0",
+    "del": "8.0.1",
+    "get-port": "7.1.0",
     "gulp": "5.0.1",
     "gulp-html-validate": "0.2.0",
-    "gulp-imagemin": "7.1.0",
+    "gulp-imagemin": "9.2.0",
     "gulp-live-server": "0.0.31",
     "gulp-load-plugins": "2.0.8",
     "gulp-newer": "1.4.0",
@@ -49,7 +47,7 @@
     "yargs": "18.0.0"
   },
   "optionalDependencies": {
-    "imagemin-pngquant": "9.0.2"
+    "imagemin-pngquant": "10.0.0"
   },
   "devDependencies": {
     "@merkle-open/eslint-config": "4.0.1",

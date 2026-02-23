@@ -2,12 +2,14 @@
 
 /* eslint-disable max-len, complexity, no-else-return, require-jsdoc */
 
-const Generator = require('yeoman-generator');
-const yosay = require('yosay');
+const _yeomanGenerator = require('yeoman-generator');
+const Generator = _yeomanGenerator && _yeomanGenerator.default ? _yeomanGenerator.default : _yeomanGenerator;
 const path = require('path');
 const fs = require('fs');
 const { globSync } = require('glob');
 const _ = require('lodash');
+
+const yosayPromise = import('yosay');
 
 module.exports = class extends Generator {
 	constructor(args, opts) {
@@ -21,7 +23,7 @@ module.exports = class extends Generator {
 		this.option('folder', {
 			desc: 'the folder for your distribution',
 			type: String,
-			defaults: this._passedInOptions.folder || 'dist',
+			default: this._passedInOptions.folder || 'dist',
 		});
 	}
 
@@ -81,12 +83,20 @@ module.exports = class extends Generator {
 		projectPaths.forEach((file) => {
 			const sourcePath = this.destinationPath(file);
 			const destinationPath = this.destinationPath(`${this.options.folder}/${file}`);
-
-			this.fs.copy(sourcePath, destinationPath);
+			if (fs.existsSync(sourcePath)) {
+				this.fs.copy(sourcePath, destinationPath);
+			}
 		}, this);
 	}
 
 	end() {
-		this.log(yosay(`All done - your light server is ready`));
+		(async () => {
+			try {
+				const { default: yosay } = await yosayPromise;
+				this.log(yosay(`All done - your light server is ready`));
+			} catch (err) {
+				this.log(`All done - your light server is ready`);
+			}
+		})();
 	}
 };

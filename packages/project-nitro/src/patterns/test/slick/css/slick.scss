@@ -1,10 +1,10 @@
-@import '../../../../shared/utils/colors2/css/colors2';
-@import '../../../../shared/utils/breakpoints/css/breakpoints';
+@use '../../../../shared/utils/token/css/semantic-color';
+@use '../../../../shared/utils/breakpoints/css/breakpoints';
 
 $slick-font-path: '~slick-carousel/slick/fonts/';
 $slick-font-family: 'slick';
 $slick-loader-path: '~slick-carousel/slick/';
-$slick-arrow-color: $color-brand-1;
+$slick-arrow-color: semantic-color.$color-accent-1;
 
 @import '~slick-carousel/slick/slick';
 @import '~slick-carousel/slick/slick-theme';
@@ -13,7 +13,7 @@ $slick-arrow-color: $color-brand-1;
 	position: relative;
 	margin: 30px 0;
 
-	@media (max-width: $size-sm-max) {
+	@media (max-width: breakpoints.$size-sm-max) {
 		/* stylelint-disable plugin/stylelint-bem-namics */
 		.slick-prev {
 			left: 10px;

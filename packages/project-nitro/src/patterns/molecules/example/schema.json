@@ -7,7 +7,7 @@
 	"properties": {
 		"modifier": {
 			"description": "A pattern modifier",
-			"enum": ["", "blue"]
+			"enum": ["", "highlight"]
 		},
 		"title": {
 			"description": "Title of the pattern",

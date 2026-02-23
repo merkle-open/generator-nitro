@@ -21,6 +21,10 @@ Use for "base patterns" like:
 - webfonts definition
 - ...
 
+##`props/`
+
+Place all your CSS custom properties here
+
 ##`utils/`
 
 Mainly for mixins and variable definitions. Every concept

@@ -1,3 +1,4 @@
+import './shared/props/token/css/theme/dark.css';
 import './ui';
 
 // custom code

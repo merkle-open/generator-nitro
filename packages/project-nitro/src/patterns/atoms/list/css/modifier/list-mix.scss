@@ -3,12 +3,12 @@
 		/* stylelint-disable max-nesting-depth */
 		&:nth-child(2n) {
 			&::before {
-				background-image: url('../../img/arrow.svg');
+				mask-image: url('../../img/arrow.svg');
 			}
 		}
 		&:nth-child(3n) {
 			&::before {
-				background-image: url('../../img/nitro.svg');
+				mask-image: url('../../img/nitro.svg');
 			}
 		}
 		/* stylelint-enable max-nesting-depth */

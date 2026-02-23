@@ -5,7 +5,8 @@ lintConfig.rules['plugin/stylelint-bem-namics'] = {
 	helperPrefixes: ['state'],
 };
 
-// node-sass can't handle modern color function notation
-lintConfig.rules['color-function-notation'] = null;
+lintConfig.rules['comment-empty-line-before'] = null;
+lintConfig.rules['custom-property-empty-line-before'] = null;
+lintConfig.rules['media-feature-range-notation'] = ['context', { severity: 'warning' }];
 
 module.exports = lintConfig;

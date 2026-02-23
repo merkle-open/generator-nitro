@@ -1,0 +1,168 @@
+const path = require('path');
+const helpers = require('yeoman-test').default;
+const assert = require('yeoman-assert');
+const utils = require('../../helpers/utils');
+
+const folder = 'temp-test-default-app';
+
+function runGenerator(options = {}, prompts = {}) {
+	return helpers
+		.run(path.join(__dirname, '../../../../generators/app'))
+		.inDir(utils.getTempFolder(folder, false))
+		.withOptions({ 'skip-install': true, ...options })
+		.withPrompts(prompts);
+}
+
+describe('nitro:app', function () {
+	this.timeout(20000);
+
+	describe('when using default options', () => {
+
+		before(() => runGenerator({}, utils.defaultPrompts));
+
+		it('creates blueprint files', () => {
+			assert.file([
+				'config',
+				'project',
+				'public',
+				'.node-version',
+				'gulpfile.js',
+				'package.json',
+				'readme.md',
+				'src/patterns',
+				'src/proto',
+				'src/shared',
+				'src/views',
+				'src/proto.ts',
+				'src/ui.ts',
+			]);
+		});
+
+		it('includes project config files', () => {
+			assert.file([
+				'.editorconfig',
+				'.eslintignore',
+				'.eslintrc.js',
+				'.gitattributes',
+				'.gitignore',
+				'.prettierignore',
+				'.prettierrc.js',
+				'.stylelintignore',
+				'stylelint.config.js',
+			]);
+		});
+
+		it('package.json contains project name', () => {
+			assert.fileContent([
+				['package.json', `"name": "${folder}",`]
+			]);
+		});
+
+		it('package.json contains @nitro dependencies', () => {
+			assert.fileContent([
+				['package.json', '@nitro/app'],
+				['package.json', '@nitro/exporter'],
+				['package.json', '@nitro/gulp'],
+				['package.json', '@nitro/webpack'],
+			]);
+		});
+
+		// viewFileExtension (hbs)
+		it('view files have the .hbs file extension', () => {
+			assert.file([
+				'src/views/index.hbs',
+				'src/views/404.hbs',
+				'src/views/_partials/head.hbs',
+				'project/blueprints/pattern/$pattern$.hbs',
+			]);
+		});
+
+		it('config contains the correct view file extension', () => {
+			assert.fileContent('config/default.js', /viewFileExtension: 'hbs'/);
+		});
+
+		// jsCompiler (ts)
+		it('javascript files have the .ts file extension', () => {
+			assert.file([
+				'src/ui.ts',
+				'src/proto.ts',
+				'src/proto/js/prototype.ts',
+				'project/blueprints/pattern/js/$pattern$.ts',
+			]);
+			assert.noFile([
+				'src/ui.js',
+				'src/proto.js',
+				'src/proto/js/prototype.js',
+				'project/blueprints/pattern/js/$pattern$.js',
+			]);
+		});
+
+		// themes (false)
+		it('theme feature is not included', () => {
+			assert.noFile(['config/default/themes.js', 'project/routes/_themes.js', 'project/viewData/_themes.js', 'src/ui.dark.ts']);
+		});
+
+		// clientTemplates (false)
+		it('pattern blueprint does not contain template file', () => {
+			assert.noFile('project/blueprints/pattern/template/$pattern$.hbs');
+		});
+
+		it('webpack config disables hbs loader', () => {
+			assert.fileContent('config/webpack/options.js', /hbs: false,/);
+		});
+
+		// exampleCode (false)
+		it('example pattern is not present', () => {
+			assert.noFile([
+				'src/patterns/molecules/example/readme.md',
+				'src/patterns/molecules/example/schema.json',
+				'src/patterns/molecules/example/js/example.js',
+				'src/patterns/molecules/example/_data/example.json',
+			]);
+		});
+
+		it('icon pattern is not present', () => {
+			assert.noFile([
+				'src/patterns/atoms/icon/readme.md',
+				'src/patterns/atoms/icon/schema.json',
+				'src/patterns/atoms/icon/_data/icon.json',
+			]);
+		});
+
+		it('more example files are not present', () => {
+			assert.noFile([
+				'src/patterns/atoms/box/box.hbs',
+				'src/patterns/atoms/button/button.hbs',
+				'src/patterns/atoms/checkbox/checkbox.hbs',
+				'src/shared/base/document/css/document.scss',
+				'src/shared/utils/breakpoints/css/breakpoints.scss',
+				'src/views/example/patterns.hbs',
+			]);
+		});
+
+		it('example icons are not present', () => {
+			assert.noFile([
+				'src/shared/assets/img/icon/favicon.ico',
+				'src/shared/assets/img/icon/favicon.svg',
+				'src/shared/assets/img/icon/apple-touch-icon.png',
+			]);
+		});
+
+		it('country project route is not present', () => {
+			assert.noFile([
+				'project/routes/countries.js',
+				'project/routes/data/countries.json',
+				'project/routes/helpers/utils.js',
+			]);
+		});
+
+		it('but project route readme.md is present', () => {
+			assert.file(['project/routes/readme.md']);
+		});
+
+		// not including exporter
+		it('config does not contain default exporter properties', () => {
+			assert.noFileContent([['config/default.js', /exporter:/]]);
+		});
+	});
+});

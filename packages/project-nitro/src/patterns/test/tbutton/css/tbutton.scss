@@ -1,15 +1,15 @@
-@import '../../../../shared/utils/colors2/css/colors2';
+@use '../../../../shared/utils/token/css/semantic-color';
 
 .t-tbutton {
 	cursor: pointer;
 
 	font-size: 24px;
 	background-color: #ff4500;
-	border: 0 solid $color-gray-5;
+	border: 0 solid semantic-color.$color-solid-grey-5;
 	border-bottom-width: 5px;
 	padding: 10px 20px;
 	display: inline-block;
-	color: $color-white;
+	color: semantic-color.$color-solid-white;
 	margin: 1rem 0;
 	outline: none;
 	position: relative;

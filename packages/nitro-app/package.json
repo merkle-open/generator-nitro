@@ -1,6 +1,6 @@
 {
   "name": "@nitro/app",
-  "version": "10.0.4",
+  "version": "11.0.0",
   "description": "Nitro server",
   "license": "MIT",
   "repository": {
@@ -9,8 +9,8 @@
   },
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=20.18.1 <21",
-    "npm": ">=10.8.2 <11"
+    "node": ">=22.11.0 <25",
+    "npm": ">=10.9.0 <12"
   },
   "bin": {
     "nitro-app-validate-pattern-data": "bin/validate-pattern-data.js",
@@ -37,30 +37,33 @@
     "cli-color": "2.0.4",
     "compression": "1.8.1",
     "cookie-session": "2.1.1",
-    "config": "4.3.0",
+    "config": "4.4.0",
     "dot-object": "2.1.5",
     "express": "4.22.1",
     "extend": "3.0.2",
-    "globby": "11.1.0",
+    "globby": "16.1.1",
     "hbs": "4.2.0",
     "hbs-utils": "0.0.4",
     "html-validate": "7.18.1",
-    "i18next": "25.8.7",
+    "i18next": "25.8.13",
     "i18next-http-middleware": "3.9.2",
     "i18next-fs-backend": "2.6.1",
     "i18next-sprintf-postprocessor": "0.2.2",
-    "jasmine": "5.13.0",
-    "jasmine-core": "5.13.0",
+    "jasmine": "6.1.0",
     "lodash": "4.17.23",
+    "open": "11.0.0",
     "twig": "1.13.3",
-    "webpack": "4.47.0",
-    "webpack-dev-middleware": "5.3.4",
+    "webpack-dev-middleware": "7.4.5",
     "webpack-hot-middleware": "2.26.1"
+  },
+  "peerDependencies": {
+    "webpack": "^5"
   },
   "devDependencies": {
     "@merkle-open/eslint-config": "4.0.1",
     "eslint": "8.57.1",
-    "eslint-plugin-import": "2.32.0"
+    "eslint-plugin-import": "2.32.0",
+    "webpack": "5.105.2"
   },
   "publishConfig": {
     "access": "public"

@@ -15,7 +15,6 @@ const router = express.Router({
 });
 const isProduction = config.get('server.production');
 const isTest = config.get('nitro.mode.test');
-const isOffline = config.get('nitro.mode.offline');
 const view404 = config.get('nitro.view404');
 
 /**
@@ -34,7 +33,6 @@ function getNitroViewData(pageTitle, req) {
 			pageTitle,
 			production: isProduction,
 			test: isTest,
-			offline: isOffline,
 		},
 	};
 }

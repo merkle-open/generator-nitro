@@ -1,0 +1,16 @@
+/* ⚠️ core semantic variables */
+:root {
+	--color-brand-1: #0184bc;
+	--color-brand-2: #a626a4;
+	--color-brand-3: #c18301;
+
+	--color-foreground: var(--color-solid-grey-9);
+	--color-background: var(--color-solid-grey-1);
+	--color-area-foreground: var(--color-solid-grey-9);
+	--color-area-background: var(--color-solid-grey-2);
+	--color-area-border: var(--color-solid-grey-3);
+
+	--border-radius-box: var(--dimension-16);
+	--padding-area: var(--dimension-20) var(--dimension-24);
+}
+/* ⚠️ end core theme variables */

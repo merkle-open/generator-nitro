@@ -6,7 +6,6 @@ import Example from "../../../../src/patterns/molecules/example/js/example";
 
 /**
  * <%= pattern.name %> module implementation.
- * @author <%= user.name %> <<%= user.email %>>
  */
 
 // const selectors = { button: '.js-<%= pattern.css %>__button' };

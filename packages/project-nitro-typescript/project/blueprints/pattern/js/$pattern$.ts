@@ -3,7 +3,6 @@ import { Component, GondelBaseComponent } from '@gondel/core';
 
 /**
  * <%= pattern.name %> module implementation.
- * @author <%= user.name %> <<%= user.email %>>
  */
 
 // enum Selectors { Button = '.js-<%= pattern.css %>__button', }

@@ -2,24 +2,23 @@
 
 This repository is based on npm workspaces.
 
-Always run `npm install` in the root of this repository to ensure proper dependency installation.
+Always run `npm ci` in the root of this repository to ensure proper dependency installation.
 
 ## Quick start
 
 Before using, you need of course [node](https://nodejs.org/) installed ([Version](.node-version)).  
-Nitro and the Nitro generator are currently only tested with node 20.
+Nitro and the Nitro generator are currently tested with the node LTS versions 22 and 24.
 
 1.  Install base project:
 
 ```
-npm install
+npm ci
 ```
 
 2.  Start example project:
 
 ```
-cd packages/project-nitro
-npm start
+npm start --workspace=project-nitro
 ```
 
 ## Sample projects

@@ -1,26 +1,19 @@
 const path = require('path');
 const fs = require('fs');
-const crypto = require('crypto');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const JsConfigWebpackPlugin = require('js-config-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TsConfigWebpackPlugin = require('ts-config-webpack-plugin');
-const DynamicAliasResolverPlugin = require('../plugins/dynamicAliasResolver');
 const utils = require('../lib/utils');
+const webpackRules = require('../lib/webpack-rules');
 
 const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 const appDirectory = fs.realpathSync(process.cwd());
 
-// hack: OpenSSL 3 does not support md4 anymore, but legacy webpack 4 hardcoded it: https://github.com/webpack/webpack/issues/13572
-const crypto_orig_createHash = crypto.createHash;
-crypto.createHash = algorithm => crypto_orig_createHash(algorithm === 'md4' ? 'sha256' : algorithm);
-
 module.exports = (options = { rules: {}, features: {} }) => {
 	const webpackConfig = {
 		mode: 'development',
-		devtool: 'eval-source-map',
+		devtool: 'source-map',
 		context: appDirectory,
 		entry: {
 			ui: ['./src/ui', hotMiddlewareScript],
@@ -29,7 +22,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		output: {
 			path: path.resolve(appDirectory, 'public', 'assets'),
 			filename: 'js/[name].js',
-			chunkFilename: 'js/[name]-[hash:7].js',
+			chunkFilename: 'js/[name]-[contenthash:7].js',
 			publicPath: '/assets/',
 			pathinfo: false,
 		},
@@ -52,47 +45,43 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			],
 		},
 		optimization: {
-			noEmitOnErrors: true,
+			emitOnErrors: false,
+			moduleIds: 'deterministic',
+			chunkIds: 'deterministic',
+			runtimeChunk: 'single',
 			splitChunks: {
-				name: true,
-				automaticNameDelimiter: '/',
+				chunks: 'all',
+				minSize: 3000,
 				cacheGroups: {
-					// allow dynamic imports for node_modules also
-					dynamic: {
-						minSize: 3000,
-						chunks: 'async',
-						priority: 0,
-					},
-					// extract js node_modules to vendors file
+					default: false,
+					defaultVendors: false,
 					vendors: {
 						test: /[\\/]node_modules[\\/].*\.(js|jsx|mjs|ts|tsx)$/,
-						// use fix filename for usage in view
-						filename: 'js/vendors.js',
-						// Exclude proto dependencies going into vendors
-						chunks: (chunk) => chunk.name !== 'proto',
-						priority: -10,
+						chunks: (chunk) => chunk.canBeInitial() && chunk.name && chunk.name !== 'proto',
+						name: 'vendors',
 						enforce: true,
 					},
 				},
 			},
 		},
 		stats: {
-			all: undefined,
+			preset: 'errors-warnings',
 			assets: false,
 			children: false,
 			chunks: false,
 			modules: false,
 			colors: true,
-			depth: false,
 			entrypoints: false,
 			errors: true,
 			errorDetails: false,
 			hash: false,
+			builtAt: false,
+			timings: false,
 			performance: true,
 			warnings: true,
 		},
 		infrastructureLogging: {
-			level: 'warn'
+			level: 'warn',
 		}
 	};
 	const theme = options.features.theme ? options.features.theme : false;
@@ -103,21 +92,20 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		webpackConfig.output.publicPath = `${webpackConfig.output.publicPath}${theme}/`;
 	}
 
-	// js
-	if (options.rules.js) {
-		webpackConfig.plugins.push(new JsConfigWebpackPlugin({ babelConfigFile: './babel.config.js' }));
-	}
-
-	// typescript
-	if (options.rules.ts) {
-		webpackConfig.plugins.push(new TsConfigWebpackPlugin());
+	// scripts (js/ts via babel)
+	if (options.rules.script) {
+		const scriptOptions = typeof options.rules.script === 'object' ? options.rules.script : null;
+		webpackRules.addJSConfig(webpackConfig, appDirectory, scriptOptions);
+		if (scriptOptions && scriptOptions.typescript) {
+			webpackRules.addTsConfig(webpackConfig, appDirectory, scriptOptions, { isProduction: false });
+		}
 	}
 
 	// css & scss
-	if (options.rules.scss) {
+	if (options.rules.style) {
 		const scssLoaderOptions = {
-			...(options.rules.scss.implementation && { implementation: options.rules.scss.implementation }),
-			...(options.rules.scss.sassOptions && { sassOptions: options.rules.scss.sassOptions }),
+			sourceMap: true,
+			...(options.rules.style.sassOptions && { sassOptions: options.rules.style.sassOptions }),
 		};
 		webpackConfig.module.rules.push({
 			test: /\.s?css$/,
@@ -129,11 +117,13 @@ module.exports = (options = { rules: {}, features: {} }) => {
 					loader: require.resolve('css-loader'),
 					options: {
 						importLoaders: 2,
+						sourceMap: true,
 					},
 				},
 				{
 					loader: require.resolve('postcss-loader'),
 					options: {
+						sourceMap: true,
 						postcssOptions: () => {
 							return {
 								plugins: [
@@ -151,6 +141,9 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				},
 				{
 					loader: require.resolve('resolve-url-loader'),
+					options: {
+						sourceMap: true,
+					},
 				},
 				{
 					loader: require.resolve('sass-loader'),
@@ -163,12 +156,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			new MiniCssExtractPlugin({
 				filename: 'css/[name].css',
 			}),
-			// we need SourceMapDevToolPlugin to make sourcemaps work
-			// with MiniCSSExtractPlugin hmr mode
-			// related: https://github.com/webpack-contrib/mini-css-extract-plugin/issues/29
-			new webpack.SourceMapDevToolPlugin({
-				filename: '[file].map',
-			})
 		);
 	}
 
@@ -195,11 +182,9 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	if (options.rules.woff) {
 		const woffRule = {
 			test: /.(woff(2)?)(\?[a-z0-9]+)?$/,
-			use: {
-				loader: require.resolve('file-loader'),
-				options: {
-					name: 'media/fonts/[name]-[hash:7].[ext]',
-				},
+			type: 'asset/resource',
+			generator: {
+				filename: 'media/fonts/[name]-[contenthash:7].[ext]',
 			},
 		};
 		webpackConfig.module.rules.push(utils.getEnrichedConfig(woffRule, options.rules.woff));
@@ -209,12 +194,14 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	if (options.rules.font) {
 		const fontRule = {
 			test: /\.(eot|svg|ttf|woff|woff2)([?#]+[A-Za-z0-9-_]*)*$/,
-			use: {
-				loader: require.resolve('url-loader'),
-				options: {
-					limit: 2 * 1028,
-					name: 'media/font/[name]-[hash:7].[ext]',
+			type: 'asset',
+			parser: {
+				dataUrlCondition: {
+					maxSize: 2 * 1028,
 				},
+			},
+			generator: {
+				filename: 'media/font/[name]-[contenthash:7].[ext]',
 			},
 		};
 		webpackConfig.module.rules.push(utils.getEnrichedConfig(fontRule, options.rules.font));
@@ -224,8 +211,14 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	if (options.rules.image) {
 		const imageRule = {
 			test: /\.(png|jpg|gif|svg)$/,
-			use: {
-				loader: require.resolve('file-loader'),
+			type: 'asset',
+			parser: {
+				dataUrlCondition: {
+					maxSize: 3 * 1028,
+				},
+			},
+			generator: {
+				filename: 'media/[ext]/[name]-[contenthash:7].[ext]',
 			},
 		};
 		webpackConfig.module.rules.push(utils.getEnrichedConfig(imageRule, options.rules.image));
@@ -234,15 +227,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	// feature bundle analyzer
 	if (options.features.bundleAnalyzer) {
 		webpackConfig.plugins.push(new BundleAnalyzerPlugin());
-	}
-
-	// feature dynamic alias
-	if (
-		options.features.dynamicAlias &&
-		options.features.dynamicAlias.search &&
-		options.features.dynamicAlias.replace
-	) {
-		webpackConfig.resolve.plugins = [new DynamicAliasResolverPlugin(options.features.dynamicAlias)];
 	}
 
 	return webpackConfig;

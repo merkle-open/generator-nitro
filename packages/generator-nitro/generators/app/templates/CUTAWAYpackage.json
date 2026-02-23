@@ -6,8 +6,8 @@
   "private": true,
   "author": "The Nitro Team",
   "engines": {
-    "node": ">=20.18.1 <21",
-    "npm": ">=10.8.2 <11"
+	  "node": ">=22.11.0 <25",
+	  "npm": ">=10.9.0 <12"
   },
   "scripts": {
     "\n# PROJECT ------- ": "",
@@ -20,13 +20,13 @@
     "nitro:update": "npm uninstall generator-nitro && npm install generator-nitro@latest --save-dev --save-exact && yo nitro",
     "update-dependencies": "npm-check-updates -u --deprecated",
     "\n# MISC ------- ": "",
-    "postinstall": "<% if (git.root) { %>cd <%= git.root %> && husky <% if (git.project) { %><%= git.project %>/.husky && cd <%= git.project %> <% } %>&& <% } %>npx playwright install && <% if (options.themes) { %>npm rebuild node-sass && <% } %>env-linter<% if (git.root) { %> --hooksInstalled<% } %> --saveExact --dependenciesExactVersion --lts",
+    "postinstall": "<% if (git.root) { %>cd <%= git.root %> && husky <% if (git.project) { %><%= git.project %>/.husky && cd <%= git.project %> <% } %>&& <% } %>npx playwright install && env-linter<% if (git.root) { %> --hooksInstalled<% } %> --saveExact --dependenciesExactVersion --lts",
     "\n# LINT/TEST ------- ": "",
     "check-node-version": "check-node-version --print --package",
     "cypress-test": "npm run build && cross-env PORT=8888 NITRO_MODE=test npm-run-all --parallel --race prod:serve cypress-test:open",
     "cypress-test:open": "cypress open --project ./tests/cypress/ --e2e --browser chrome",
     "lighthouse-test": "npm run build && cross-env PORT=8889 NITRO_MODE=test npm-run-all --parallel --race prod:serve lighthouse-test:run",
-    "lighthouse-test:run": "lighthouse http://localhost:8889/<% if (options.exampleCode) { %>example-patterns<% } else { %>index<% } %> --quiet --configPath=./tests/lighthouse/lighthouse.config.js --output-path=./public/reports/lighthouse/report.html --view",
+    "lighthouse-test:run": "lighthouse http://localhost:8889/<% if (options.exampleCode) { %>example-patterns<% } else { %>index<% } %> --quiet --config-path=./tests/lighthouse/lighthouse.config.js --output-path=./public/reports/lighthouse/report.html --view",
     "lint": "npm-run-all --parallel lint:*",
     "lint:css": "stylelint src/**/*.*ss --allow-empty-input",
     "lint:data": "nitro-app-validate-pattern-data",
@@ -58,15 +58,15 @@
     "export": "npm run build && gulp export",<% } %>
     "\n# RUN ------- ": "",
     "dev": "npm-run-all check-node-version --parallel --race dev:*",
-    "dev:serve": "cross-env NODE_ENV=development nitro-app-serve",
+    "dev:serve": "cross-env NODE_ENV=development nitro-app-serve --open",
     "dev:watch": "gulp develop",
     "prod": "npm-run-all prod:*",
     "prod:check": "npm run check-node-version",
     "prod:build": "npm run build",
     "prod:serve": "cross-env NODE_ENV=production nitro-app-serve",<% if (options.themes) { %>
     "start": "npm run start:light",
-    "start:light": "cross-env THEME=light PORT=8081 PROXY=8082 npm run dev",
-    "start:dark": "cross-env THEME=dark PORT=8083 PROXY=8084 npm run dev"<% } else { %>
+    "start:light": "cross-env THEME=light PORT=8080 npm run dev",
+    "start:dark": "cross-env THEME=dark PORT=8081 npm run dev"<% } else { %>
     "start": "npm run dev"<% } %>
   },
   "keywords": [
@@ -106,12 +106,10 @@
     "@types/webpack-env": "1.18.8",<% } %>
     "backstopjs": "6.3.25",
     "check-node-version": "4.2.1",
-    "commitizen": "4.3.1",
-    "config": "4.3.0",<% if (options.themes) { %>
+    "config": "4.4.0",<% if (options.themes) { %>
     "cookie-session": "2.1.1",<% } %>
     "cross-env": "10.1.0",
     "cypress": "15.10.0",
-    "cz-conventional-changelog": "3.3.0",
     "env-linter": "2.0.0",
     "eslint": "8.57.1",
     "eslint-plugin-import": "2.32.0",
@@ -121,16 +119,16 @@
     "html-validate": "7.18.1",
     "husky": "9.1.7",
     "license-checker": "25.0.1",
-    "lighthouse": "12.8.2",
-    "lint-staged": "16.2.7",<% if (options.themes) { %>
-    "node-sass": "9.0.0",<% } %>
-    "npm-check-updates": "19.3.2",
+    "lighthouse": "13.0.3",
+    "lint-staged": "16.2.7",
+    "npm-check-updates": "19.4.1",
     "npm-run-all": "4.1.5",
     "prettier": "3.8.1",
-    "rimraf": "6.1.2",
+    "rimraf": "6.1.3",
     "stylelint": "16.26.1",<% if (options.jsCompiler === 'ts') { %>
     "typescript": "5.9.3",<% } %>
-    "webpack-cli": "4.10.0",
+    "webpack": "5.105.2",
+    "webpack-cli": "6.0.1",
     "yo": "6.0.0"
   },
   "browserslist": [
@@ -139,11 +137,6 @@
     "not dead"
   ],
   "postcss": {},
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
-  },
   "lint-staged": {
     "src/**/*.{css,scss}": [
       "prettier --write",

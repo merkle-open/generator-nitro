@@ -44,6 +44,7 @@ const defaultConfig = {
 		compression: true,
 		projectPaths: [
 			'config',
+			'project/docker',
 			'project/helpers',
 			'project/locales',
 			'project/routes',

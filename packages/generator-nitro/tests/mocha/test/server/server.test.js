@@ -5,6 +5,7 @@ const assert = require('yeoman-assert');
 
 const projectPaths = [
 	'config',
+	'project/docker',
 	'project/helpers',
 	'project/locales',
 	'project/routes',

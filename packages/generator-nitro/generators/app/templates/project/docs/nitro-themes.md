@@ -1,6 +1,6 @@
 # Nitro Themes
 
-Nitro offers extensive configuration possibilities and features for the development
+Nitro offers configuration possibilities and features for the development
 of different themes/skins (or whatever you would name them).
 
 ## Usage
@@ -126,41 +126,6 @@ Below are the main functionalities:
 
 The starting point is the entry file. For each theme there is an entry file in the format: 'src/ui.\<theme\>.js|ts'
 Import the code you need for a specific theme.
-
-### Webpack path resolving
-
-Theming is especially useful for loading different styles per theme.
-Always import the soure file with the code for the default theme.
-The Dynamic Alias Resolver plugin will exchange the configured path (e.g. `/theme/light`)
-with the path to the correct theme when compiling.
-
-Abstraction for themed colors as an example:
-
-```
-// colors.scss
-@import './theme/light';
-
-$color-base-font: $foreground;
-$color-base-background: $background;
-$color-area-background: $area;
-
-$color-brand-font: $white;
-```
-
-The pattern.scss uses the themed colors and a themed pattern import with variables for padding and border radius:
-
-```
-// pattern.scss
-@import '../../../../shared/utils/colors/css/colors';
-@import './theme/light';
-
-.m-example {
-	margin: 1em 0;
-	padding: $example-padding;
-	background-color: $color-area-background;
-	border-radius: $example-border-radius;
-}
-```
 
 ### Handlebars Helpers
 

@@ -157,7 +157,7 @@ It makes sense to use a dynamic value e.g. an environment variable, as shown in 
 
 By default, all js imports from 'node_modules' are extracted to a 'vendors.js' to use in your view files.
 
-Dynamically imported js files will be extracted to `public/js/dynamic/`.
+Dynamically imported js files will be extracted to `public/js/chunk/`.
 You may use them in a promise chain.
 
 ```js

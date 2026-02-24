@@ -76,7 +76,11 @@ module.exports = (gulp, plugins) => {
 
 				utils.each(minifyImagesConfigs, (minifyImagesConfig) => {
 					if (minifyImagesConfig && minifyImagesConfig.src && minifyImagesConfig.dest) {
-						const srcStream = gulp.src(minifyImagesConfig.src, { encoding: false, allowEmpty: true });
+						const srcStream = gulp.src(minifyImagesConfig.src, {
+							encoding: false,
+							allowEmpty: true,
+							dot: true,
+						});
 
 						streams.push(
 							srcStream

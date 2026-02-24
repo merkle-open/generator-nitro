@@ -71,7 +71,7 @@ module.exports = function (gulp, config) {
 					getPublicsPromise = function () {
 						return new Promise((resolve) =>
 							gulp
-								.src(src, { base: 'public', encoding: false, allowEmpty: true })
+								.src(src, { base: 'public', encoding: false, allowEmpty: true, dot: true })
 								.pipe(gulp.dest(configEntry.dest + path.sep))
 								.on('end', () => {
 									resolve();
@@ -99,7 +99,7 @@ module.exports = function (gulp, config) {
 							 * @returns {null} No return value.
 							 */
 							function move() {
-								gulp.src(renames[i].src, { base: renames[i].base, encoding: false, allowEmpty: true })
+								gulp.src(renames[i].src, { base: renames[i].base, encoding: false, allowEmpty: true, dot: true })
 									.pipe(gulp.dest(renames[i].dest))
 									.on('end', async () => {
 										await del(renames[i++].src);

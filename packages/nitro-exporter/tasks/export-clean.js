@@ -1,13 +1,14 @@
 'use strict';
 
-const del = (...args) => import('del').then(mod => mod.deleteAsync(...args));
+const fs = require('fs/promises');
 const utils = require('../lib/utils.js');
 
 module.exports = (config) =>
-	function () {
-		const dest = [];
-		utils.each(config.exporter, (entry) => {
-			dest.push(`${entry.dest}/**/*`);
+	async function clean() {
+		await utils.each(config.exporter, async (entry) => {
+			await fs.rm(entry.dest, {
+				recursive: true,
+				force: true,
+			});
 		});
-		return del(dest);
 	};

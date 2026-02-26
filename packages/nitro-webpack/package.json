@@ -1,6 +1,6 @@
 {
   "name": "@nitro/webpack",
-  "version": "11.0.2",
+  "version": "11.0.3",
   "description": "nitro webpack",
   "license": "MIT",
   "author": "The Nitro Team",
@@ -22,7 +22,7 @@
     "nitro"
   ],
   "peerDependencies": {
-    "@nitro/app": ">=11.0.2",
+    "@nitro/app": ">=11.0.3",
     "webpack": "^5"
   },
   "dependencies": {

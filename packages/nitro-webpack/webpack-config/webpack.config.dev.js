@@ -184,7 +184,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			test: /.(woff(2)?)(\?[a-z0-9]+)?$/,
 			type: 'asset/resource',
 			generator: {
-				filename: 'media/fonts/[name]-[contenthash:7].[ext]',
+				filename: 'media/fonts/[name]-[contenthash:7][ext]',
 			},
 		};
 		webpackConfig.module.rules.push(utils.getEnrichedConfig(woffRule, options.rules.woff));
@@ -201,7 +201,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				},
 			},
 			generator: {
-				filename: 'media/font/[name]-[contenthash:7].[ext]',
+				filename: 'media/font/[name]-[contenthash:7][ext]',
 			},
 		};
 		webpackConfig.module.rules.push(utils.getEnrichedConfig(fontRule, options.rules.font));
@@ -218,7 +218,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				},
 			},
 			generator: {
-				filename: 'media/[ext]/[name]-[contenthash:7].[ext]',
+				filename: 'media/[ext]/[name]-[contenthash:7][ext]',
 			},
 		};
 		webpackConfig.module.rules.push(utils.getEnrichedConfig(imageRule, options.rules.image));

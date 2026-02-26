@@ -61,11 +61,6 @@ module.exports = (options = { rules: {}, features: {} }) => {
 					plugins: [
 						{
 							name: 'preset-default',
-							params: {
-								overrides: {
-									removeViewBox: false,
-								},
-							},
 						},
 					],
 				},

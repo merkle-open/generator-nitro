@@ -27,7 +27,7 @@
   "dependencies": {
     "@nitro/app": "*",
     "check-node-version": "4.2.1",
-    "config": "4.4.0",
+    "config": "4.4.1",
     "cookie-session": "2.1.1",
     "cross-env": "10.1.0",
     "extend": "3.0.2",

@@ -64,7 +64,7 @@ On creating a new project, you will be guided through some configuration options
 - Using theming feature `--themes` (default: false)
 - Using client side templates `--clientTpl` (default: false)
 - Including example code `--exampleCode` (default: false)
-- Installing nitro-exporter" `--exporter` (default: false)
+- Installing nitro-exporter `--exporter` (default: false)
 
 It's possible to pass in these options through the command line:
 
@@ -98,7 +98,7 @@ Note: Generators are to be run from the root directory of your project.
 ## Generated app
 
 Have a look at the [sample project](https://nitro-project-test.netlify.app/)
-which contains the examples of a generated project and was statified with the default configuration of the "nitro-exporter".
+which contains the examples of a generated project and was statified with the default configuration of the nitro-exporter.
 
 See how to use the [generated app](https://github.com/merkle-open/generator-nitro/blob/master/packages/project-nitro/project/docs/nitro.md)
 

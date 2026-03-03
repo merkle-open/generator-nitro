@@ -53,6 +53,6 @@
     "fs-extra": "11.3.3",
     "mocha": "11.7.5",
     "yeoman-assert": "3.1.1",
-    "yeoman-test": "11.2.0"
+    "yeoman-test": "11.3.1"
   }
 }

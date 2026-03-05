@@ -36,6 +36,7 @@
     "case-sensitive-paths-webpack-plugin": "2.4.0",
     "css-loader": "7.1.4",
     "cssnano": "7.1.2",
+    "config": "4.4.1",
     "image-minimizer-webpack-plugin": "5.0.0",
     "fork-ts-checker-webpack-plugin": "9.1.0",
     "handlebars-loader": "1.7.3",

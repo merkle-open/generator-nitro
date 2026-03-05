@@ -4,6 +4,13 @@ const fs = require('fs');
 const path = require('path');
 const config = require('config');
 
+function getServerBaseUrl(port) {
+	port = port || config.get('server.port');
+	const rawHost = (config.has('server.host')) ? config.get('server.host') : 'localhost';
+	const host = ['0.0.0.0', '::', '::0'].includes(String(rawHost)) ? 'localhost' : rawHost;
+	return `http://${host}:${port}`;
+}
+
 function getLayoutName(layoutPath) {
 	const layoutPathWithoutViewPath = config
 		.get('nitro.viewLayoutsDirectory')
@@ -27,6 +34,7 @@ function layoutExists(layoutName) {
 }
 
 module.exports = {
+	getServerBaseUrl,
 	getLayoutName,
 	getLayoutPath,
 	layoutExists,

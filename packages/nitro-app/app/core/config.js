@@ -39,6 +39,7 @@ const defaultConfig = {
 	},
 	server: {
 		port: 8080,
+		hmrPort: 3000,
 		host: 'localhost',
 		production: !!(process.env.NODE_ENV && process.env.NODE_ENV.replace(/\s/g, '') === 'production'),
 		compression: true,

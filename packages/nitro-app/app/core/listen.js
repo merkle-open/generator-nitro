@@ -1,14 +1,15 @@
 'use strict';
 
 const config = require('config');
+const utils = require('./utils');
+
 const mode = config.get('server.production') ? 'production' : 'development';
 const port = config.get('server.port');
+const hmrPort = config.get('server.hmrPort');
 
 /* eslint-disable no-console */
-module.exports = function (app, opts = {}) {
-	const rawHost = (config.has('server.host')) ? config.get('server.host') : 'localhost';
-	const host = ['0.0.0.0', '::', '::0'].includes(String(rawHost)) ? 'localhost' : rawHost;
-	const url = `http://${host}:${port}`;
+module.exports = function (app, hmrApp, opts = {}) {
+	const url = utils.getServerBaseUrl(port);
 	const openBrowser = opts.open; // true | false | string (URL)
 
 	const server = app
@@ -36,6 +37,19 @@ module.exports = function (app, opts = {}) {
 			}
 			process.exit(1);
 		});
+
+	if (hmrApp && mode === 'development') {
+		hmrApp
+			.listen(hmrPort)
+			.on('error', (err) => {
+				if (err && err.errno === 'EADDRINUSE') {
+					console.error('Proxy Port *:%s already in use.', hmrPort);
+				} else {
+					console.error(err);
+				}
+				process.exit(1);
+			});
+	}
 
 	return server;
 };

@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const config = require('config');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
@@ -7,7 +8,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const utils = require('../lib/utils');
 const webpackRules = require('../lib/webpack-rules');
 
-const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
+const hmrPort = config.get('server.hmrPort');
+const hotMiddlewareScript = `webpack-hot-middleware/client?path=http://localhost:${hmrPort}/__webpack_hmr&timeout=20000&reload=true`;
 const appDirectory = fs.realpathSync(process.cwd());
 
 module.exports = (options = { rules: {}, features: {} }) => {
@@ -16,8 +18,8 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		devtool: 'source-map',
 		context: appDirectory,
 		entry: {
-			ui: ['./src/ui', hotMiddlewareScript],
-			proto: ['./src/proto', hotMiddlewareScript],
+			ui: [hotMiddlewareScript, './src/ui'],
+			proto: [hotMiddlewareScript, './src/proto'],
 		},
 		output: {
 			path: path.resolve(appDirectory, 'public', 'assets'),
@@ -87,7 +89,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	const theme = options.features.theme ? options.features.theme : false;
 
 	if (theme) {
-		webpackConfig.entry.ui = [`./src/ui.${theme}`, hotMiddlewareScript];
+		webpackConfig.entry.ui = [hotMiddlewareScript, `./src/ui.${theme}`];
 		webpackConfig.output.path = path.resolve(webpackConfig.output.path, theme);
 		webpackConfig.output.publicPath = `${webpackConfig.output.publicPath}${theme}/`;
 	}

@@ -34,6 +34,7 @@ const defaultConfig = {
 	},
 	server: {
 		port: 8080,
+		hmrPort: 3000,
 		// host: 'localhost',
 	},
 	gulp: require('./default/gulp'),

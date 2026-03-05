@@ -5,6 +5,9 @@ const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('config');
+const utils = require('./utils');
+
+const url = utils.getServerBaseUrl();
 const webpackConfig = require(process.env.WEBPACK_CONFIG
 	? path.join(config.get('nitro.basePath'), process.env.WEBPACK_CONFIG)
 	: path.normalize(path.join(config.get('nitro.basePath'), 'config', 'webpack', 'webpack.config.dev')));
@@ -18,9 +21,13 @@ const wphm = webpackHotMiddleware(webpackCompiler, {
 	heartbeat: 10 * 1000,
 });
 
-module.exports = function (app) {
+module.exports = function (app, hmrApp) {
 	app.use(wpm);
-	if (config.get('nitro.mode.livereload')) {
-		app.use(wphm);
+	if (hmrApp && config.get('nitro.mode.livereload')) {
+		hmrApp.use((req, res, next) => {
+			res.setHeader('Access-Control-Allow-Origin', url);
+			next();
+		});
+		hmrApp.use(wphm);
 	}
 };

@@ -88,7 +88,7 @@ Run modes and build tasks are configured in 'package.json'
 For development mode you need a start script for each theme:
 
 ```
-"start:<theme-id>": "cross-env THEME=<theme-id> PORT=8081 npm run dev",
+"start:<theme-id>": "cross-env THEME=<theme-id> PORT=8081 HMR_PORT=3000 npm run dev",
 ```
 
 Use different ports for each theme to be able to run them in parallel.

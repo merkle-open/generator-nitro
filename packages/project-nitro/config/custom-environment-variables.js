@@ -8,6 +8,7 @@
 const config = {
 	server: {
 		port: 'PORT',
+		hmrPort: 'HMR_PORT',
 	},
 };
 

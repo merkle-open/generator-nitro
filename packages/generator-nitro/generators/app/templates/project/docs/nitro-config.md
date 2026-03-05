@@ -114,15 +114,16 @@ The millisecond 'delay' between a file change and task execution.
 - Default: 8080
 
 The express server runs on this port.  
-An environment variable PORT will overwrite this property.
+An environment variable `PORT` will overwrite this property.
 
-#### Example config
+### `server.hmrPort`
 
-```
-server: {
-  port: 8080,
-}
-```
+- Type: Integer
+- Default: 3000
+
+The hot module reload feature runs on this port in development environments.
+
+An environment variable `HMR_PORT` will overwrite this property.
 
 ### `server.host`
 
@@ -145,6 +146,16 @@ If set to `true`, all requests through express will be compressed.
 
 If set to `true`, viewData is processed before all routes.  
 For backwards compatibility, you can set it to `false`, to get the loading behavior before Nitro version 9.
+
+#### Example config
+
+```
+server: {
+  port: 8080,
+  hmrPort: 3000,
+  host: 'dev.local',
+}
+```
 
 ## Gulp
 

@@ -15,11 +15,13 @@ const isProduction = config.get('server.production');
 const useCompression = config.get('server.compression');
 const isTwig = config.get('nitro.templateEngine') === 'twig';
 
+let hmrApp;
 let engine;
 
 // webpack
 if (!isProduction) {
-	require('../core/webpack')(app);
+	hmrApp = express();
+	require('../core/webpack')(app, hmrApp);
 }
 
 if (isTwig) {
@@ -52,4 +54,4 @@ if (isTwig) {
 	app.engine(config.get('nitro.viewFileExtension'), engine.__express);
 }
 
-require('../core/listen')(app, { open });
+require('../core/listen')(app, hmrApp, { open });

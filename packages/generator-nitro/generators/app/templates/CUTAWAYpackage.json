@@ -65,8 +65,8 @@
     "prod:build": "npm run build",
     "prod:serve": "cross-env NODE_ENV=production nitro-app-serve",<% if (options.themes) { %>
     "start": "npm run start:light",
-    "start:light": "cross-env THEME=light PORT=8080 npm run dev",
-    "start:dark": "cross-env THEME=dark PORT=8081 npm run dev"<% } else { %>
+    "start:light": "cross-env THEME=light PORT=8080 HMR_PORT=3000 npm run dev",
+    "start:dark": "cross-env THEME=dark PORT=8081 HMR_PORT=3001 npm run dev"<% } else { %>
     "start": "npm run dev"<% } %>
   },
   "keywords": [

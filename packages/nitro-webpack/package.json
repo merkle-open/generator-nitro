@@ -36,12 +36,12 @@
     "case-sensitive-paths-webpack-plugin": "2.4.0",
     "css-loader": "7.1.4",
     "cssnano": "7.1.2",
-    "image-minimizer-webpack-plugin": "4.1.4",
+    "image-minimizer-webpack-plugin": "5.0.0",
     "fork-ts-checker-webpack-plugin": "9.1.0",
     "handlebars-loader": "1.7.3",
     "imagemin": "9.0.1",
     "mini-css-extract-plugin": "2.10.0",
-    "postcss": "8.5.6",
+    "postcss": "8.5.8",
     "postcss-loader": "8.2.1",
     "resolve-url-loader": "5.0.0",
     "sass": "1.97.3",
@@ -62,7 +62,7 @@
     "@merkle-open/eslint-config": "4.0.1",
     "eslint": "8.57.1",
     "eslint-plugin-import": "2.32.0",
-    "webpack": "5.105.3"
+    "webpack": "5.105.4"
   },
   "publishConfig": {
     "access": "public"

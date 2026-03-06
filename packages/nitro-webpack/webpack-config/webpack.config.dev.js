@@ -212,7 +212,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	// images
 	if (options.rules.image) {
 		const imageRule = {
-			test: /\.(png|jpg|gif|svg)$/,
+			test: /\.(png|jpe?g|gif|svg|webp)$/i,
 			type: 'asset',
 			parser: {
 				dataUrlCondition: {
@@ -220,7 +220,11 @@ module.exports = (options = { rules: {}, features: {} }) => {
 				},
 			},
 			generator: {
-				filename: 'media/[ext]/[name]-[contenthash:7][ext]',
+				filename: (pathData) => {
+					const match = pathData.filename.match(/\.([^.?#]+)(?:[?#].*)?$/);
+					const extNoDot = match ? match[1] : 'asset';
+					return `media/${extNoDot}/[name]-[contenthash:7][ext]`;
+				},
 			},
 		};
 		webpackConfig.module.rules.push(utils.getEnrichedConfig(imageRule, options.rules.image));

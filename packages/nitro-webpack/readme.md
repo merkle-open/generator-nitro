@@ -8,7 +8,7 @@ Configurable and easy to use webpack 5 config for nitro projects.
 
 ## Usage
 
-```
+```js
 const options = {
     rules: {
         script: true,

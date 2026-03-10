@@ -15,10 +15,10 @@ The template name has not to contain slashes or special characters. Use only nam
 
 The following js code shows an example how to use a precompiled template.
 
-```
+```js
 const templateExample = require('../../template/example.hbs');
 const tplData = {
-    title: 'Client Side Rendered Example Module',
+  title: 'Client Side Rendered Example Module',
 }
 const pattern = templateExample(tplData);
 
@@ -37,7 +37,7 @@ in your `.hbs` file (e.g. `{{> partial/example.link}}`)
 ### Helpers
 
 Require clientside handlebars helpers in your pattern source. You may place them in `template/helper`
-or in a shared pattern (e.g in `sr/shared/utils/hbs-helpers`)
+or in a shared pattern (e.g in `src/shared/utils/hbs-helpers`)
 
 ## Handlebars versions
 

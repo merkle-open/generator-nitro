@@ -54,7 +54,7 @@ The 'themes' node contains an array of theme objects. A theme object contains fo
 
 #### Example Themes Configuration
 
-```
+```js
 themes: [
     {
         id: 'light',

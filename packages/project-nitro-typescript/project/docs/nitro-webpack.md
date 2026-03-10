@@ -8,7 +8,7 @@ Configurable and easy to use webpack 5 config for nitro projects.
 
 ## Usage
 
-```
+```js
 const options = {
     rules: {
         script: true,
@@ -98,7 +98,7 @@ Config:
 - `{ exclude: [] }` additionally adds exclude config to rule
 
 ⚠ Please use this rule with care. You have to configure includes and exclude when you also use woff and/or image loader.
-Otherwise svg or woff files are processed with multiple configurations.
+Otherwise, svg or woff files are processed with multiple configurations.
 
 #### `options.rules.image`
 
@@ -167,7 +167,7 @@ import('package-name').then((pack) => {
 
 import(
   /* webpackChunkName: "mychunk" */ 'package-name'
-  ).then((pack) => {
+).then((pack) => {
   // do something with 'pack'
 });
 ```

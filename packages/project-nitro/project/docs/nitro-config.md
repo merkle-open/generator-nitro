@@ -149,11 +149,13 @@ For backwards compatibility, you can set it to `false`, to get the loading behav
 
 #### Example config
 
-```
-server: {
-  port: 8080,
-  hmrPort: 3000,
-  host: 'dev.local',
+```js
+const config = {
+  server: {
+    port: 8080,
+    hmrPort: 3000,
+    host: 'dev.local',
+  },
 }
 ```
 

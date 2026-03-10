@@ -50,7 +50,7 @@ Renaming is used with native `gulp.src(...).pipe(gulp.dest(...))`.
 
 example:
 
-```
+```js
 [
     {
         src: 'export/assets/**',
@@ -69,7 +69,7 @@ Defines string replacements. Takes an array of objects with `glob` and `replace`
 
 example:
 
-```
+```js
 [
     {
         glob: ['export/*.html', 'export/css/*.css'],
@@ -113,79 +113,78 @@ example: `false`
 
 ## Example Exporter Config
 
-```
-"exporter": [
-    {
-        "dest": "export",
-        "i18n": [],
-        "publics": true,
-        "renames": [
-            {
-                "src": "export/assets/**",
-                "base": "export/assets",
-                "dest": "export/"
-            }
-        ],
-        "replacements": [
-            {
-                glob: ['export/*.html'],
-                replace: [
-                    {
-                        from: '/assets/',
-                        to: '',
-                    },
-                    {
-                        from: '/content/',
-                        to: 'content/',
-                    },
-                    {
-                        from: ' href="/?([a-z0-9-]+)"',
-                        to: ' href="$1.html"',
-                    },
-                ],
-            },
-            {
-                glob: ['export/css/*.css'],
-                replace: [
-                    {
-                        from: '/assets/',
-                        to: '../',
-                    },
-                    {
-                        from: '/content/',
-                        to: '../content/',
-                    },
-                ],
-            },
-            {
-                "glob": ["export/js/*.js"],
-                "replace": [
-                    {
-                        from: '/assets/',
-                        to: '',
-                    },
-                    {
-                        "from": "/api",
-                        "to": "api"
-                    }
-                ]
-            },
-        ],
-        "views": true,
-        "minifyHtml": false,
-        "zip": false,
-    }
-]
+```js
+{
+    dest: 'export',
+    i18n: [],
+    publics: true,
+    renames: [
+        {
+            src: 'export/assets/**',
+            base: 'export/assets',
+            dest: 'export/',
+        },
+    ],
+    'replacements': [
+        {
+            glob: ['export/*.html'],
+            replace: [
+                {
+                    from: '/assets/',
+                    to: '',
+                },
+                {
+                    from: '/content/',
+                    to: 'content/',
+                },
+                {
+                    from: ' href="/?([a-z0-9-]+)"',
+                    to: ' href="$1.html"',
+                },
+            ],
+        },
+        {
+            glob: ['export/css/*.css'],
+            replace: [
+                {
+                    from: '/assets/',
+                    to: '../',
+                },
+                {
+                    from: '/content/',
+                    to: '../content/',
+                },
+            ],
+        },
+        {
+            glob: ['export/js/*.js'],
+            replace: [
+                {
+                    from: '/assets/',
+                    to: '',
+                },
+                {
+                    from: '/api',
+                    to: 'api'
+                }
+            ]
+        },
+    ],
+    views: true,
+    minifyHtml: false,
+    zip: false,
+}
+
 ```
 
 ## Multiple Exporter configurations
 
-You can define multiple exporter configuration objects, by setting the `exporter` to an array.
+You can define multiple exporter configuration objects, by setting the `exporter` node to an array.
 
 ### Example
 
-```
-exporter: [
+```js
+[
     {
         dest: 'export',
         i18n: [],

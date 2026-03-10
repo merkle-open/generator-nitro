@@ -20,9 +20,9 @@ The exporter configuration can be found in your [config](../../config).
 
 ### exporter.dest (String)
 
-The distribution folder for your static export. This is where all your static files will go.
+The export folder for your static export. This is where all your static files will go.
 
-example: `'dist'`
+example: `'export'`
 
 ### exporter.i18n (Array)
 
@@ -50,12 +50,12 @@ Renaming is used with native `gulp.src(...).pipe(gulp.dest(...))`.
 
 example:
 
-```
+```js
 [
     {
-        src: 'dist/assets/**',
-        base: 'dist/assets',
-        dest: 'dist/',
+        src: 'export/assets/**',
+        base: 'export/assets',
+        dest: 'export/',
     },
 ]
 ```
@@ -69,10 +69,10 @@ Defines string replacements. Takes an array of objects with `glob` and `replace`
 
 example:
 
-```
+```js
 [
     {
-        glob: ['dist/*.html', 'dist/css/*.css'],
+        glob: ['export/*.html', 'export/css/*.css'],
         replace: [
             {
                 from: '/assets',
@@ -113,81 +113,80 @@ example: `false`
 
 ## Example Exporter Config
 
-```
-"exporter": [
-    {
-        "dest": "dist",
-        "i18n": [],
-        "publics": true,
-        "renames": [
-            {
-                "src": "dist/assets/**",
-                "base": "dist/assets",
-                "dest": "dist/"
-            }
-        ],
-        "replacements": [
-            {
-                glob: ['dist/*.html'],
-                replace: [
-                    {
-                        from: '/assets/',
-                        to: '',
-                    },
-                    {
-                        from: '/content/',
-                        to: 'content/',
-                    },
-                    {
-                        from: ' href="/?([a-z0-9-]+)"',
-                        to: ' href="$1.html"',
-                    },
-                ],
-            },
-            {
-                glob: ['dist/css/*.css'],
-                replace: [
-                    {
-                        from: '/assets/',
-                        to: '../',
-                    },
-                    {
-                        from: '/content/',
-                        to: '../content/',
-                    },
-                ],
-            },
-            {
-                "glob": ["dist/js/*.js"],
-                "replace": [
-                    {
-                        from: '/assets/',
-                        to: '',
-                    },
-                    {
-                        "from": "/api",
-                        "to": "api"
-                    }
-                ]
-            },
-        ],
-        "views": true,
-        "minifyHtml": false,
-        "zip": false,
-    }
-]
+```js
+{
+    dest: 'export',
+    i18n: [],
+    publics: true,
+    renames: [
+        {
+            src: 'export/assets/**',
+            base: 'export/assets',
+            dest: 'export/',
+        },
+    ],
+    'replacements': [
+        {
+            glob: ['export/*.html'],
+            replace: [
+                {
+                    from: '/assets/',
+                    to: '',
+                },
+                {
+                    from: '/content/',
+                    to: 'content/',
+                },
+                {
+                    from: ' href="/?([a-z0-9-]+)"',
+                    to: ' href="$1.html"',
+                },
+            ],
+        },
+        {
+            glob: ['export/css/*.css'],
+            replace: [
+                {
+                    from: '/assets/',
+                    to: '../',
+                },
+                {
+                    from: '/content/',
+                    to: '../content/',
+                },
+            ],
+        },
+        {
+            glob: ['export/js/*.js'],
+            replace: [
+                {
+                    from: '/assets/',
+                    to: '',
+                },
+                {
+                    from: '/api',
+                    to: 'api'
+                }
+            ]
+        },
+    ],
+    views: true,
+    minifyHtml: false,
+    zip: false,
+}
+
 ```
 
 ## Multiple Exporter configurations
 
-You can define multiple exporter configuration objects, by setting the `exporter` to an array.
+You can define multiple exporter configuration objects, by setting the `exporter` node to an array.
 
 ### Example
 
-```
-exporter: [
+```js
+[
     {
-        dest: 'dist',
+        dest: 'export',
         i18n: [],
         publics: true,
         renames: [],

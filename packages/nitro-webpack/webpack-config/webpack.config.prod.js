@@ -17,9 +17,11 @@ const bannerData = {
 	pkg: require(`${appDirectory}/package.json`),
 };
 
-const banner = `${bannerData.pkg.name}
-@version v${bannerData.pkg.version}
-@date ${bannerData.date}`;
+const bannerContent = `/**
+ * ${bannerData.pkg.name}
+ * @version v${bannerData.pkg.version}
+ * @date ${bannerData.date}
+ */`;
 
 module.exports = (options = { rules: {}, features: {} }) => {
 	const imageMinimizerPlugins = [];
@@ -68,7 +70,32 @@ module.exports = (options = { rules: {}, features: {} }) => {
 		);
 	}
 
-	const minimizerPlugins = [new TerserPlugin({ extractComments: false })];
+	const escapedPackageName = bannerData.pkg.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+	const minimizerPlugins = [
+		new TerserPlugin({
+			extractComments: {
+				condition: /@license|@preserve|^!/i,
+				filename: (file) => {
+					const entryName = file.basename
+						.replace(/\.min/, '')
+						.replace(/\.js$/, '');
+
+					return `${entryName}.license.txt`;
+				},
+				banner: (licenseFile) => `See ../${licenseFile} for license information`,
+			},
+			terserOptions: {
+				format: {
+					// comments: (node, comment) => /@projectBanner/.test(comment.value),
+					comments: new RegExp(escapedPackageName),
+				},
+				// compress: true,
+				// mangle: true,
+			},
+			parallel: true,
+		})
+	];
 	if (!(options.features.imageMinimizer === false || imageMinimizerPlugins.length === 0)) {
 		minimizerPlugins.push(
 			new ImageMinimizerPlugin({
@@ -298,7 +325,11 @@ module.exports = (options = { rules: {}, features: {} }) => {
 
 	// feature banner (enabled by default)
 	if (!options.features.banner === false) {
-		webpackConfig.plugins.push(new webpack.BannerPlugin({ banner, entryOnly: true }));
+		webpackConfig.plugins.push(new webpack.BannerPlugin({
+			banner: bannerContent.trim(),
+			raw: true,
+			entryOnly: true,
+		}));
 	}
 
 	// feature bundle analyzer

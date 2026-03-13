@@ -3,6 +3,7 @@ const fs = require('fs');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const WebpackBar = require('webpackbar');
@@ -71,6 +72,7 @@ module.exports = (options = { rules: {}, features: {} }) => {
 	}
 
 	const escapedPackageName = bannerData.pkg.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+	const packageNameRegExp = new RegExp(escapedPackageName);
 
 	const minimizerPlugins = [
 		new TerserPlugin({
@@ -87,15 +89,30 @@ module.exports = (options = { rules: {}, features: {} }) => {
 			},
 			terserOptions: {
 				format: {
-					// comments: (node, comment) => /@projectBanner/.test(comment.value),
-					comments: new RegExp(escapedPackageName),
+					comments: packageNameRegExp,
 				},
 				// compress: true,
 				// mangle: true,
 			},
 			parallel: true,
-		})
+		}),
+		new CssMinimizerPlugin({
+			parallel: false,
+			minimizerOptions: {
+				preset: [
+					'default',
+					{
+						discardComments: {
+							remove: (comment) => {
+								return !packageNameRegExp.test(comment);
+							},
+						},
+					},
+				],
+			},
+		}),
 	];
+
 	if (!(options.features.imageMinimizer === false || imageMinimizerPlugins.length === 0)) {
 		minimizerPlugins.push(
 			new ImageMinimizerPlugin({

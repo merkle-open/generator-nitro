@@ -52,7 +52,7 @@
     "jasmine": "6.1.0",
     "lodash": "4.17.23",
     "open": "11.0.0",
-    "twig": "1.13.3",
+    "twig": "2.0.0",
     "webpack-dev-middleware": "7.4.5",
     "webpack-hot-middleware": "2.26.1"
   },

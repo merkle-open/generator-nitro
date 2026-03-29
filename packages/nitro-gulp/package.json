@@ -30,7 +30,7 @@
     "compression": "1.8.1",
     "config": "4.4.1",
     "del": "8.0.1",
-    "get-port": "7.1.0",
+    "get-port": "7.2.0",
     "gulp": "5.0.1",
     "gulp-html-validate": "0.2.0",
     "gulp-imagemin": "9.2.0",

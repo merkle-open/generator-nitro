@@ -120,7 +120,7 @@
     "typescript": "5.9.3",
     "webpack": "5.105.4",
     "webpack-cli": "7.0.2",
-    "yo": "6.0.0"
+    "yo": "7.0.0"
   },
   "browserslist": [
     "> 0.2%",

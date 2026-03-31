@@ -45,15 +45,15 @@
     "hbs": "4.2.0",
     "hbs-utils": "0.0.4",
     "html-validate": "7.18.1",
-    "i18next": "25.8.18",
+    "i18next": "26.0.3",
     "i18next-http-middleware": "3.9.2",
-    "i18next-fs-backend": "2.6.1",
+    "i18next-fs-backend": "2.6.3",
     "i18next-sprintf-postprocessor": "0.2.2",
     "jasmine": "6.1.0",
     "lodash": "4.17.23",
     "open": "11.0.0",
     "twig": "1.13.3",
-    "webpack-dev-middleware": "7.4.5",
+    "webpack-dev-middleware": "8.0.2",
     "webpack-hot-middleware": "2.26.1"
   },
   "peerDependencies": {

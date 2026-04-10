@@ -43,14 +43,14 @@
     "handlebars-loader": "1.7.3",
     "imagemin": "9.0.1",
     "mini-css-extract-plugin": "2.10.2",
-    "postcss": "8.5.8",
+    "postcss": "8.5.9",
     "postcss-loader": "8.2.1",
     "resolve-url-loader": "5.0.0",
-    "sass": "1.98.0",
+    "sass": "1.99.0",
     "sass-loader": "16.0.7",
     "terser-webpack-plugin": "5.4.0",
     "thread-loader": "4.0.4",
-    "ts-loader": "9.5.4",
+    "ts-loader": "9.5.7",
     "typescript": "5.9.3",
     "webpackbar": "7.0.0",
     "webpack-bundle-analyzer": "5.3.0"
@@ -65,7 +65,7 @@
     "@merkle-open/eslint-config": "4.0.1",
     "eslint": "8.57.1",
     "eslint-plugin-import": "2.32.0",
-    "webpack": "5.105.4"
+    "webpack": "5.106.0"
   },
   "publishConfig": {
     "access": "public"

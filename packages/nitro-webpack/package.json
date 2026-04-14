@@ -31,12 +31,12 @@
     "@babel/preset-react": "7.28.5",
     "@babel/plugin-proposal-decorators": "7.29.0",
     "@babel/plugin-transform-class-properties": "7.28.6",
-    "autoprefixer": "10.4.27",
+    "autoprefixer": "10.5.0",
     "babel-loader": "10.1.1",
     "case-sensitive-paths-webpack-plugin": "2.4.0",
     "css-loader": "7.1.4",
     "css-minimizer-webpack-plugin": "8.0.0",
-    "cssnano": "7.1.4",
+    "cssnano": "7.1.5",
     "config": "4.4.1",
     "image-minimizer-webpack-plugin": "5.0.0",
     "fork-ts-checker-webpack-plugin": "9.1.0",
@@ -65,7 +65,7 @@
     "@merkle-open/eslint-config": "4.0.1",
     "eslint": "8.57.1",
     "eslint-plugin-import": "2.32.0",
-    "webpack": "5.106.0"
+    "webpack": "5.106.1"
   },
   "publishConfig": {
     "access": "public"

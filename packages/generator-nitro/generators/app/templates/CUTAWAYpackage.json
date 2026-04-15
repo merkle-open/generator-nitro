@@ -30,7 +30,7 @@
     "lint": "npm-run-all --parallel lint:*",
     "lint:css": "stylelint src/**/*.*ss --allow-empty-input",
     "lint:data": "nitro-app-validate-pattern-data",
-    "lint:html": "gulp lint-html",
+    "lint:html": "gulp dump-views && html-validate --formatter stylish ./project/tmp/views/*.html",
     "lint:js": "eslint ./src --ext <% if (options.jsCompiler === 'js') { %>.js,.jsx<% } else { %>.ts,.tsx<% } %>",
     "lint:license": "license-checker --production --summary --exclude \"Apache-2.0, BSD, ISC, LGPL, MIT, MPL\" --failOn \"AGPL; EPL; GPL\"",
     "playwright-test": "cross-env PORT=8890 NITRO_MODE=test playwright test --config=tests/playwright/playwright.config.ts --ui",

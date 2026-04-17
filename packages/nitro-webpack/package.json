@@ -43,7 +43,7 @@
     "handlebars-loader": "1.7.3",
     "imagemin": "9.0.1",
     "mini-css-extract-plugin": "2.10.2",
-    "postcss": "8.5.9",
+    "postcss": "8.5.10",
     "postcss-loader": "8.2.1",
     "resolve-url-loader": "5.0.0",
     "sass": "1.99.0",
@@ -65,7 +65,7 @@
     "@merkle-open/eslint-config": "4.0.1",
     "eslint": "8.57.1",
     "eslint-plugin-import": "2.32.0",
-    "webpack": "5.106.1"
+    "webpack": "5.106.2"
   },
   "publishConfig": {
     "access": "public"

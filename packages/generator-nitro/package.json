@@ -51,7 +51,7 @@
     "eslint": "8.57.1",
     "eslint-plugin-import": "2.32.0",
     "fs-extra": "11.3.5",
-    "mocha": "11.7.5",
+    "mocha": "11.7.6",
     "yeoman-assert": "3.1.1",
     "yeoman-test": "11.5.2"
   }

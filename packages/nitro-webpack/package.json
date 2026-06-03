@@ -26,11 +26,11 @@
     "webpack": "^5"
   },
   "dependencies": {
-    "@babel/core": "7.29.0",
-    "@babel/preset-env": "7.29.5",
-    "@babel/preset-react": "7.28.5",
-    "@babel/plugin-proposal-decorators": "7.29.0",
-    "@babel/plugin-transform-class-properties": "7.28.6",
+    "@babel/core": "7.29.7",
+    "@babel/preset-env": "7.29.7",
+    "@babel/preset-react": "7.29.7",
+    "@babel/plugin-proposal-decorators": "7.29.7",
+    "@babel/plugin-transform-class-properties": "7.29.7",
     "autoprefixer": "10.5.0",
     "babel-loader": "10.1.1",
     "case-sensitive-paths-webpack-plugin": "2.4.0",
@@ -43,14 +43,14 @@
     "handlebars-loader": "1.7.3",
     "imagemin": "9.0.1",
     "mini-css-extract-plugin": "2.10.2",
-    "postcss": "8.5.14",
+    "postcss": "8.5.15",
     "postcss-loader": "8.2.1",
     "resolve-url-loader": "5.0.0",
-    "sass": "1.99.0",
-    "sass-loader": "16.0.8",
-    "terser-webpack-plugin": "5.6.0",
+    "sass": "1.100.0",
+    "sass-loader": "17.0.0",
+    "terser-webpack-plugin": "5.6.1",
     "thread-loader": "4.0.4",
-    "ts-loader": "9.5.7",
+    "ts-loader": "9.6.0",
     "typescript": "5.9.3",
     "webpackbar": "7.0.0",
     "webpack-bundle-analyzer": "5.3.0"
@@ -65,7 +65,7 @@
     "@merkle-open/eslint-config": "4.0.1",
     "eslint": "8.57.1",
     "eslint-plugin-import": "2.32.0",
-    "webpack": "5.106.2"
+    "webpack": "5.107.2"
   },
   "publishConfig": {
     "access": "public"

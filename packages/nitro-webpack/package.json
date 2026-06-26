@@ -31,7 +31,7 @@
     "@babel/preset-react": "7.29.7",
     "@babel/plugin-proposal-decorators": "7.29.7",
     "@babel/plugin-transform-class-properties": "7.29.7",
-    "autoprefixer": "10.5.0",
+    "autoprefixer": "10.5.2",
     "babel-loader": "10.1.1",
     "case-sensitive-paths-webpack-plugin": "2.4.0",
     "css-loader": "7.1.4",
@@ -50,7 +50,7 @@
     "sass-loader": "17.0.0",
     "terser-webpack-plugin": "5.6.1",
     "thread-loader": "4.0.4",
-    "ts-loader": "9.6.1",
+    "ts-loader": "9.6.2",
     "typescript": "5.9.3",
     "webpackbar": "7.0.0",
     "webpack-bundle-analyzer": "5.3.0"
@@ -65,7 +65,7 @@
     "@merkle-open/eslint-config": "4.0.1",
     "eslint": "8.57.1",
     "eslint-plugin-import": "2.32.0",
-    "webpack": "5.107.2"
+    "webpack": "5.108.1"
   },
   "publishConfig": {
     "access": "public"

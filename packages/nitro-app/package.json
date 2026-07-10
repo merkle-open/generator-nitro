@@ -37,15 +37,15 @@
     "cli-color": "2.0.4",
     "compression": "1.8.1",
     "cookie-session": "2.1.1",
-    "config": "4.4.1",
+    "config": "4.4.2",
     "dot-object": "2.1.5",
     "express": "4.22.1",
     "extend": "3.0.2",
-    "globby": "16.2.0",
+    "globby": "16.2.1",
     "hbs": "4.2.1",
     "hbs-utils": "0.0.4",
     "html-validate": "7.18.1",
-    "i18next": "26.3.3",
+    "i18next": "26.3.6",
     "i18next-http-middleware": "3.9.7",
     "i18next-fs-backend": "2.6.6",
     "i18next-sprintf-postprocessor": "0.2.2",
@@ -63,7 +63,7 @@
     "@merkle-open/eslint-config": "4.0.1",
     "eslint": "8.57.1",
     "eslint-plugin-import": "2.32.0",
-    "webpack": "5.108.1"
+    "webpack": "5.108.4"
   },
   "publishConfig": {
     "access": "public"

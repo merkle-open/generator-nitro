@@ -43,7 +43,7 @@
     "handlebars-loader": "1.7.3",
     "imagemin": "9.0.1",
     "mini-css-extract-plugin": "2.10.2",
-    "postcss": "8.5.16",
+    "postcss": "8.5.19",
     "postcss-loader": "8.2.1",
     "resolve-url-loader": "5.0.0",
     "sass": "1.101.0",

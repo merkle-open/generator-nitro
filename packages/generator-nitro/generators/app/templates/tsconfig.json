@@ -2,8 +2,10 @@
 	"extends": "@merkle-open/ts-config",
 	"include": ["src/**/*"],
 	"compilerOptions": {
+		"target": "es2020",
 		"baseUrl": "./src",
-		"rootDir": "."
+		"rootDir": ".",
+		"lib": ["dom", "es2021"]
 	},
 	"exclude": ["dist", "build", "public", "project", "node_modules"]
 }

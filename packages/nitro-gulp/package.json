@@ -43,7 +43,7 @@
     "gulp-svgstore": "9.0.0",
     "html-validate": "7.18.1",
     "ordered-read-streams": "2.0.0",
-    "yargs": "18.0.0"
+    "yargs": "18.1.0"
   },
   "optionalDependencies": {
     "imagemin-pngquant": "10.0.0"

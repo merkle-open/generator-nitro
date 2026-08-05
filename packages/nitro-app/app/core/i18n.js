@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Init Translation Library i18next
  * Documentation: https://github.com/i18next/i18next-http-middleware

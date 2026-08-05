@@ -1,5 +1,3 @@
-'use strict';
-
 const utils = require('@nitro/app/app/lib/utils');
 
 const validThemes = utils.getValidThemes();

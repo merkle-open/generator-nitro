@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * lighthouse configuration
  * test requires a build

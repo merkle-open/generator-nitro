@@ -1,5 +1,3 @@
-'use strict';
-
 const config = require('config');
 const utils = require('./utils');
 
@@ -7,7 +5,6 @@ const mode = config.get('server.production') ? 'production' : 'development';
 const port = config.get('server.port');
 const hmrPort = config.get('server.hmrPort');
 
-/* eslint-disable no-console */
 module.exports = function (app, hmrApp, opts = {}) {
 	const url = utils.getServerBaseUrl(port);
 	const openBrowser = opts.open; // true | false | string (URL)
@@ -25,7 +22,7 @@ module.exports = function (app, hmrApp, opts = {}) {
 						const mod = await import('open');
 						const open = mod.default;
 						await open(openUrl, { wait: false });
-					} catch (e) { /* empty */}
+					} catch { /* empty */ }
 				})();
 			}
 		})
@@ -53,4 +50,3 @@ module.exports = function (app, hmrApp, opts = {}) {
 
 	return server;
 };
-/* eslint-enable no-console */

@@ -1,5 +1,3 @@
-'use strict';
-
 import flatpickr from 'flatpickr';
 import { German } from 'flatpickr/dist/l10n/de';
 import { French } from 'flatpickr/dist/l10n/fr';

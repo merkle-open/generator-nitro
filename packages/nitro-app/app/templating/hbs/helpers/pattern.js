@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * handlebars helper: {{pattern PatternName Data Variation}}
  *

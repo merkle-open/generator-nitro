@@ -1,5 +1,3 @@
-'use strict';
-
 // add optional include or exclude configs to rule
 function getEnrichedConfig(rule, config) {
 	if (!config) {
@@ -20,7 +18,7 @@ function getOptionalPackage(x) {
 	let mod;
 	try {
 		mod = require(x);
-	} catch (error) {
+	} catch {
 		mod = null;
 	}
 	if (!mod) {

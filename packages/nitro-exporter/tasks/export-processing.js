@@ -1,5 +1,3 @@
-'use strict';
-
 const del = (...args) => import('del').then(m => m.deleteAsync(...args));
 const deleteEmpty = require('delete-empty');
 const fs = require('fs');
@@ -12,8 +10,6 @@ const unique = require('array-unique');
 const utils = require('../lib/utils.js');
 
 module.exports = function (gulp, config) {
-	'use strict';
-
 	const processes = [];
 
 	utils.each(config.exporter, (configEntry) => {
@@ -160,6 +156,7 @@ module.exports = function (gulp, config) {
 
 				if (configEntry.zip) {
 					getZipPromise = function () {
+						// eslint-disable-next-line no-async-promise-executor
 						return new Promise(async (resolve, reject) => {
 							try {
 								const { default: gulpZip } = await import('gulp-zip');

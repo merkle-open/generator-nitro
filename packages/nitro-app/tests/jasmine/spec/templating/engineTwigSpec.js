@@ -1,5 +1,3 @@
-'use strict';
-
 const Twig = require('../../../../app/templating/twig/engine');
 
 describe("Nitro's Twig helper loader", () => {

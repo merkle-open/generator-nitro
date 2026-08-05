@@ -1,7 +1,3 @@
-'use strict';
-
-/* eslint-disable max-len, complexity, no-else-return, require-jsdoc */
-
 const _yeomanGenerator = require('yeoman-generator');
 const Generator = _yeomanGenerator && _yeomanGenerator.default ? _yeomanGenerator.default : _yeomanGenerator;
 const clc = require('cli-color');
@@ -12,7 +8,6 @@ const findGitRoot = require('find-git-root')
 const { globSync } = require('glob');
 const _ = require('lodash');
 
-// eslint-disable-next-line import/no-unresolved
 const gotPromise = import('got');
 const yosayPromise = import('yosay');
 
@@ -131,7 +126,7 @@ module.exports = class extends Generator {
 			try {
 				const { default: yosay } = await yosayPromise;
 				this.log(yosay(`Welcome to the awe-inspiring ${clc.cyan('Nitro')} generator!`));
-			} catch (err) {
+			} catch {
 				this.log(`Welcome to the awe-inspiring Nitro generator`);
 			}
 		})();
@@ -176,6 +171,7 @@ module.exports = class extends Generator {
 					this.options.name = _.kebabCase(this.options.name);
 				}
 			});
+		//eslint-disable-next-line no-else-return
 		} else {
 			// create new application
 			return this.prompt([
@@ -323,7 +319,7 @@ module.exports = class extends Generator {
 			'src/proto.js',
 			'src/proto.ts',
 			'tests/cypress/cypress/e2e/examples/index.cy.js',
-			'.eslintrc.js',
+			'eslint.config.mjs',
 			'gulpfile.js',
 			'CUTAWAYpackage.json',
 		];
@@ -587,7 +583,7 @@ module.exports = class extends Generator {
 							});
 
 							readStream.pipe(writeStream);
-						} catch (err) { /* empty */ }
+						} catch { /* empty */ }
 					})();
 				}
 
@@ -604,7 +600,7 @@ module.exports = class extends Generator {
 				} else {
 					this.log(yosay(`All done – use desired node version, \nrun \`npm install\` \nand run \`npm start\` to start ${clc.cyan('Nitro')} in development mode.`));
 				}
-			} catch (err) {
+			} catch {
 				this.log(
 					this._update
 						? `All done – check local changes, use desired node version and then run "npm install" to update your project.`

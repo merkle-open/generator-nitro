@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Local Config
  * should not be tracked in vcs

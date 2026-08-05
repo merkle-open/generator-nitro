@@ -1,9 +1,7 @@
-'use strict';
-
 import { Component, EventListener, GondelBaseComponent, startComponents } from '@gondel/core';
 import $ from 'jquery';
-const templateExample = require('../template/example.hbs');
-const templateExampleLinks = require('../template/example.links.hbs');
+import templateExample from '../template/example.hbs';
+import templateExampleLinks from '../template/example.links.hbs';
 
 /**
  * Example module implementation.

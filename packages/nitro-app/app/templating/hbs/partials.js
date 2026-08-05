@@ -1,5 +1,3 @@
-'use strict';
-
 const config = require('config');
 // eslint-disable-next-line
 const partialMatch = new RegExp(`\.${config.get('nitro.viewFileExtension')}$`);

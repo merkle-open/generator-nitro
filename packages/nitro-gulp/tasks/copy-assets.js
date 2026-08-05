@@ -1,5 +1,3 @@
-'use strict';
-
 const config = require('config');
 const ordered = require('ordered-read-streams');
 const utils = require('../lib/utils');

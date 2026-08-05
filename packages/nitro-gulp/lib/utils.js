@@ -1,5 +1,3 @@
-'use strict';
-
 const config = require('config');
 const gulp = require('gulp');
 const plugins = require('gulp-load-plugins')();

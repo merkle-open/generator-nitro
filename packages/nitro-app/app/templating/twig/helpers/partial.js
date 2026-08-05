@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * twig helper: {% partial Partial Name %}
  *
@@ -45,6 +43,7 @@ module.exports = function (Twig) {
 
 				// TODO CHECK WHAT THIS IF SHOULD DO
 				if (partial instanceof Twig.Template) {
+					// eslint-disable-next-line
 					template = name;
 				} else if (fs.existsSync(templateFilePath)) {
 					// Import file

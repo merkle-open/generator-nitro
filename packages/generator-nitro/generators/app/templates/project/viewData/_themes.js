@@ -1,5 +1,3 @@
-'use strict';
-
 const cookieSession = require('cookie-session');
 const extend = require('extend');
 const utils = require('@nitro/app/app/lib/utils');

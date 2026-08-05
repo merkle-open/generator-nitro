@@ -1,5 +1,3 @@
-'use strict';
-
 const config = require('config');
 const { HtmlValidate, formatterFactory } = require('html-validate');
 
@@ -9,7 +7,7 @@ const format = formatterFactory('stylish');
 function _getHtmlvalidateConfig() {
 	try {
 		return require(`${config.get('nitro.basePath')}.htmlvalidate.js`);
-	} catch (e) {
+	} catch {
 		return {};
 	}
 }

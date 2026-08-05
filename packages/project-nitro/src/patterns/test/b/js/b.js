@@ -1,5 +1,3 @@
-'use strict';
-
 import { Component, GondelBaseComponent } from '@gondel/core';
 
 @Component('B')

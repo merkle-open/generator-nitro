@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Nitro Themes Config
  */

@@ -1,9 +1,7 @@
-'use strict';
-
 import { Component, EventListener, GondelBaseComponent, startComponents } from '@gondel/core';
 import $ from 'jquery';
-const templateExample = require('../template/ex.hbs');
-const templateExampleLinks = require('../template/ex.links.hbs');
+import templateExample from '../template/ex.hbs';
+import templateExampleLinks from '../template/ex.links.hbs';
 
 const Selectors = {
 	Add: '.js-t-ex__add',

@@ -1,5 +1,3 @@
-/* eslint-disable max-len, no-inline-comments, no-empty, require-jsdoc */
-
 const keys = (function () {
 	const controlKeys = {
 		17: false, // ctrl
@@ -34,16 +32,16 @@ export function addKeyboardAction(key, method) {
 	keys[key] = method;
 }
 
+/* eslint-disable no-empty */
 export function getFromLocalStorage(key) {
 	try {
 		return window.JSON.parse(localStorage.getItem(key));
-	} catch (e) {}
+	} catch {}
 }
 
 export function setToLocalStorage(key, value) {
 	try {
 		return localStorage.setItem(key, window.JSON.stringify(value));
-	} catch (e) {}
+	} catch {}
 }
-
-/* eslint-enable max-len, no-inline-comments, no-empty, require-jsdoc */
+/* eslint-enable no-empty */

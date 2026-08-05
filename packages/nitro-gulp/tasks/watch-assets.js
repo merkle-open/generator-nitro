@@ -1,9 +1,6 @@
-'use strict';
-
 const config = require('config');
 const utils = require('../lib/utils');
 
-/* eslint-disable complexity */
 module.exports = (gulp) => {
 	const delay = config.get('nitro.watch.delay');
 	const projectPath = utils.getProjectPath();
@@ -45,4 +42,3 @@ module.exports = (gulp) => {
 		}
 	};
 };
-/* eslint-enable complexity */

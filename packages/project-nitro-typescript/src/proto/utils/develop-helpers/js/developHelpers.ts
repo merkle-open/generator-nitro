@@ -1,4 +1,4 @@
-/* eslint-disable max-len, no-inline-comments, no-empty, require-jsdoc */
+/* eslint-disable no-empty */
 
 const keys = (function (): { [key: string]: any } {
 	const controlKeys = {
@@ -42,13 +42,13 @@ export function getFromLocalStorage<TObj = unknown>(key: number | string): TObj 
 		const item = localStorage.getItem(`${key}`);
 		if (!item) return;
 		return window.JSON.parse(item);
-	} catch (e) {}
+	} catch {}
 }
 
 export function setToLocalStorage(key: number | string, value: any): void {
 	try {
 		return localStorage.setItem(`${key}`, (window as any).JSON.stringify(value));
-	} catch (e) {}
+	} catch {}
 }
 
-/* eslint-enable max-len, no-inline-comments, no-empty, require-jsdoc */
+/* eslint-enable no-empty */

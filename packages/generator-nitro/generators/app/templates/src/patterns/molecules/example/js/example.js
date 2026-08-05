@@ -1,5 +1,3 @@
-'use strict';
-
 import { Component, EventListener, GondelBaseComponent, startComponents } from '@gondel/core';<% if (options.clientTpl) { %>
 import $ from 'jquery';
 const templateExample = require('../template/example.hbs');

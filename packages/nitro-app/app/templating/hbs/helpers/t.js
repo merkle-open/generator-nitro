@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Simple Handlebars Translation Helper
  *

@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const extend = require('extend');
 const basePath = `${path.normalize(process.cwd())}/`;
@@ -135,7 +133,6 @@ const defaultConfig = {
 };
 const warnings = [];
 
-/* eslint-disable no-console */
 function checkConfig(config) {
 	if (config.code.compatibility) {
 		warnings.push('Browserslist configuration has to be placed in `package.json`');
@@ -147,7 +144,6 @@ function checkConfig(config) {
 		console.warn('-------------------------------------------------------');
 	}
 }
-/* eslint-enable no-console */
 
 // merge with default config
 const config = extend(true, {}, defaultConfig);

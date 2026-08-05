@@ -81,7 +81,7 @@
     "@gondel/core": "1.2.9",
     "@gondel/plugin-hot": "1.2.9",
     "bootstrap": "5.3.8",<% } %>
-    "core-js": "3.49.0"<% if (options.exampleCode) { %>,
+    "core-js": "3.50.0"<% if (options.exampleCode) { %>,
     "flatpickr": "4.6.13",
     "handlebars": "4.7.9",
     "jquery": "4.0.0",
@@ -100,7 +100,7 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",
-    "@playwright/test": "1.62.0",<% if (options.jsCompiler === 'ts') { %>
+    "@playwright/test": "1.62.1",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "5.2.11",<% if (options.exampleCode ) { %>
     "@types/jquery": "4.0.1",<% } %>
     "@types/webpack-env": "1.18.8",<% } %>
@@ -109,7 +109,7 @@
     "config": "4.4.2",<% if (options.themes) { %>
     "cookie-session": "2.1.1",<% } %>
     "cross-env": "10.1.0",
-    "cypress": "15.19.0",
+    "cypress": "15.20.0",
     "env-linter": "2.0.0",
     "eslint": "8.57.1",
     "eslint-plugin-import": "2.32.0",
@@ -120,8 +120,8 @@
     "husky": "9.1.7",
     "license-checker": "25.0.1",
     "lighthouse": "13.4.1",
-    "lint-staged": "17.2.0",
-    "npm-check-updates": "23.0.0",
+    "lint-staged": "17.3.0",
+    "npm-check-updates": "23.0.1",
     "npm-run-all": "4.1.5",
     "prettier": "3.9.6",
     "rimraf": "6.1.3",

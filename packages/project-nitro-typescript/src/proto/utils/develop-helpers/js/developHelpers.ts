@@ -1,41 +1,28 @@
 /* eslint-disable no-empty */
 
-const keys = (function (): { [key: string]: any } {
-	const controlKeys = {
-		17: false, // ctrl
-		18: false, // alt
-	};
+type KeyboardAction = () => void;
 
-	const _keys = {};
+const actions: Record<string, KeyboardAction> = {};
 
-	function isControlKeyPressed(): boolean {
-		return (
-			Object.keys(controlKeys).filter((keyCode): string => {
-				return controlKeys[keyCode];
-			}).length > 0
-		);
+export function addKeyboardAction(
+	key: string,
+	action: KeyboardAction
+): void {
+	actions[key.toLowerCase()] = action;
+}
+
+document.addEventListener('keydown', (e) => {
+	const modifierPressed =
+		e.ctrlKey ||
+		e.metaKey ||
+		e.altKey;
+
+	if (!modifierPressed) {
+		return;
 	}
 
-	document.documentElement.addEventListener('keydown', (e: KeyboardEvent): void => {
-		if (controlKeys[e.which] === false) {
-			controlKeys[e.which] = true;
-		} else if (isControlKeyPressed() && _keys[e.which]) {
-			_keys[e.which]();
-		}
-	});
-
-	document.documentElement.addEventListener('keyup', (e: KeyboardEvent): void => {
-		if (controlKeys[e.which] === true) {
-			controlKeys[e.which] = false;
-		}
-	});
-
-	return _keys;
-})();
-
-export function addKeyboardAction(key: number | string, method: () => void): void {
-	keys[key] = method;
-}
+	actions[e.key.toLowerCase()]?.();
+});
 
 export function getFromLocalStorage<TObj = unknown>(key: number | string): TObj | void {
 	try {

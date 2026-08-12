@@ -1,38 +1,21 @@
-const keys = (function () {
-	const controlKeys = {
-		17: false, // ctrl
-		18: false, // alt
-	};
-	const _keys = {};
+/* eslint-disable no-empty */
 
-	function isControlKeyPressed() {
-		return (
-			Object.keys(controlKeys).filter((keyCode) => {
-				return controlKeys[keyCode];
-			}).length > 0
-		);
-	}
+const actions = {};
 
-	document.documentElement.addEventListener('keydown', (e) => {
-		if (controlKeys[e.which] === false) {
-			controlKeys[e.which] = true;
-		} else if (isControlKeyPressed() && _keys[e.which]) {
-			_keys[e.which]();
-		}
-	});
-	document.documentElement.addEventListener('keyup', (e) => {
-		if (controlKeys[e.which] === true) {
-			controlKeys[e.which] = false;
-		}
-	});
-	return _keys;
-})();
-
-export function addKeyboardAction(key, method) {
-	keys[key] = method;
+export function addKeyboardAction(key, action) {
+	actions[key.toLowerCase()] = action;
 }
 
-/* eslint-disable no-empty */
+document.addEventListener('keydown', (e) => {
+	const modifierPressed = e.ctrlKey || e.metaKey || e.altKey;
+
+	if (!modifierPressed) {
+		return;
+	}
+
+	actions[e.key.toLowerCase()]?.();
+});
+
 export function getFromLocalStorage(key) {
 	try {
 		return window.JSON.parse(localStorage.getItem(key));
@@ -44,4 +27,5 @@ export function setToLocalStorage(key, value) {
 		return localStorage.setItem(key, window.JSON.stringify(value));
 	} catch {}
 }
+
 /* eslint-enable no-empty */

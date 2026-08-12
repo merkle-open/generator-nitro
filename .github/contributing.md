@@ -25,7 +25,7 @@ In order for us to help you please check that you've completed the following ste
 
 - Please check to make sure that there aren't existing pull requests attempting to address the issue mentioned. We also recommend checking for issues related to the issue on the tracker, as a team member may be working on the issue in a branch or fork.
 - Non-trivial changes should be discussed in an issue first
-- Please check project guidelines from `.editorconfig` & `.eslintrc`
+- Please check project guidelines from `.editorconfig` & `eslint.config.mjs`
 - Develop in a topic branch
 - Make sure test-suite passes: `npm run test` (This includes linting).
 - Push to your fork and submit a pull request to the development branch
@@ -39,7 +39,7 @@ Some things that will increase the chance that your pull request is accepted:
 #### Quick Start
 
 - You need [node](../.node-version) of course
-- Fork, then clone the generator-nitro repo and then run `npm install` in them
+- Fork, then clone the generator-nitro repo and then run `npm ci` in them
 - Start hacking ;-)
 
 You can keep your repo up to date by running `git pull --rebase upstream master`.

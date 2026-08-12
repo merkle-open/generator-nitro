@@ -1,11 +1,11 @@
 {
-	"extends": "@merkle-open/ts-config",
+	"extends": "@merkle-open/ts-config/browser",
 	"include": ["src/**/*"],
 	"compilerOptions": {
-		"target": "es2020",
-		"baseUrl": "./src",
 		"rootDir": ".",
-		"lib": ["dom", "es2021"]
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"types": ["node", "webpack-env"]
 	},
 	"exclude": ["dist", "build", "public", "project", "node_modules"]
 }

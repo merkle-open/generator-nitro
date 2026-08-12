@@ -23,7 +23,7 @@ const getLocale = (localeKey: string) => {
 	}
 };
 
-const initPicker = (element) => {
+const initPicker = (element: any) => {
 	const localeKey = document.documentElement.lang || '';
 	const getData = (data: string): string | undefined => element.dataset[data];
 	const options: any = {
@@ -42,7 +42,7 @@ const initPicker = (element) => {
 		options.altFormat = altFormat;
 
 		// improve accessibility
-		options.onReady = (a, b, fp: any) => {
+		options.onReady = (a: any, b: any, fp: any) => {
 			if (fp.altInput) {
 				fp.altInput.setAttribute('aria-hidden', 'true');
 			}

@@ -1,7 +1,4 @@
-// @ts-check
-/* global module */
-<% if (options.exampleCode) { %>
-import { hot } from '@gondel/plugin-hot';
+<% if (options.exampleCode) { %>import { hot } from '@gondel/plugin-hot';
 
 // hot module reloading
 hot(module);
@@ -11,12 +8,10 @@ hot(module);
 // hot module reloading
 if (module.hot) { module.hot.accept() }
 <% } %>
-/* eslint-disable no-useless-escape */
-/* eslint-disable @typescript-eslint/no-require-imports */
 
-function requireAll(requireContext) {
-	return requireContext.keys().map(requireContext);
-}
+const requireAll = (
+	requireContext: __WebpackModuleApi.RequireContext
+) => requireContext.keys().map(requireContext);
 
 // require all ts files from 'proto/js' and'patterns/*/proto'
 requireAll(require.context('./proto/js', true, /^.*(ts)$/));
@@ -28,6 +23,3 @@ requireAll(require.context('./patterns', true, /[\/\\]proto[\/\\](?:[a-z0-9\-]+)
 
 // require develop helpers
 require('./proto/utils/develop-helpers');<% } %>
-
-/* eslint-enable @typescript-eslint/no-require-imports */
-/* eslint-enable no-useless-escape */

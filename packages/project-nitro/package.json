@@ -97,7 +97,6 @@
     "@merkle-open/html-validate-config": "2.0.1",
     "@merkle-open/prettier-config": "2.0.1",
     "@merkle-open/stylelint-config": "5.0.1",
-    "@merkle-open/ts-config": "1.1.2",
     "@nitro/app": "*",
     "@nitro/exporter": "*",
     "@nitro/gulp": "*",

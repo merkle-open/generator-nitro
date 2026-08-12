@@ -372,6 +372,7 @@ module.exports = class extends Generator {
 		const jsCompilerTsFiles = [
 			// files only for this.options.jsCompiler==='ts'
 			'tsconfig.json',
+			'src/types/global.d.ts',
 		];
 		const jsCompilerJsFiles = [
 			// files only for this.options.jsCompiler==='js'

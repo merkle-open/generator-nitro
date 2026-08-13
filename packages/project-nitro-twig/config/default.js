@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Main Project Config
  * see '/project/docs/nitro-config.md'

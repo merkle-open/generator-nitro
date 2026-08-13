@@ -44,8 +44,7 @@ const gridMarkup = [
 		setToLocalStorage('dev-helper-grid', visible);
 	}
 
-	// 50 = keycode for 2
-	addKeyboardAction(50, toggleGrid);
+	addKeyboardAction('2', toggleGrid);
 	// Local Storage
 	if (getFromLocalStorage('dev-helper-grid')) {
 		toggleGrid();

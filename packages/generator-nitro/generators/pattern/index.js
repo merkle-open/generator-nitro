@@ -1,10 +1,6 @@
-'use strict';
-
 /**
  * this generator is used as subgenerator nitro:pattern (and nitro:component)
  */
-
-/* eslint-disable no-inline-comments, max-len, complexity, global-require, require-jsdoc */
 
 const _yeomanGenerator = require('yeoman-generator');
 const Generator = _yeomanGenerator && _yeomanGenerator.default ? _yeomanGenerator.default : _yeomanGenerator;
@@ -20,7 +16,6 @@ const yosayPromise = import('yosay');
 module.exports = class extends Generator {
 	constructor(args, opts) {
 		// Calling the super constructor
-		// eslint-disable-next-line prefer-rest-params
 		super(args, opts);
 
 		// Pattern name
@@ -92,7 +87,7 @@ module.exports = class extends Generator {
 			try {
 				const { default: yosay } = await yosayPromise;
 				this.log(yosay(`Let me help you to create your ${this._pattern.name}…`));
-			} catch (err) {
+			} catch {
 				this.log(`Let me help you to create your pattern`);
 			}
 		})();

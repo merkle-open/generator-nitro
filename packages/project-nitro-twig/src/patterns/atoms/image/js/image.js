@@ -1,5 +1,3 @@
-'use strict';
-
 import lazySizes from 'lazysizes';
 import 'lazysizes/plugins/respimg/ls.respimg';
 import 'lazysizes/plugins/object-fit/ls.object-fit';

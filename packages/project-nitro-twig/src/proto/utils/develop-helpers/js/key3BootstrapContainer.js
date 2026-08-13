@@ -31,8 +31,7 @@ import { addKeyboardAction, getFromLocalStorage, setToLocalStorage } from './dev
 			setToLocalStorage('dev-helper-bootstrap-grid', Boolean(style.parentElement));
 		}
 
-		// 51 = keycode for 3
-		addKeyboardAction(51, toggleBootstrapOutlines);
+		addKeyboardAction('3', toggleBootstrapOutlines);
 		// Local Storage
 		if (getFromLocalStorage('dev-helper-bootstrap-grid')) {
 			toggleBootstrapOutlines();

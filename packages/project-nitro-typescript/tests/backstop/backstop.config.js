@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * backstop configuration
  * requires a build

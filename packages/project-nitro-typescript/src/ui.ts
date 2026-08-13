@@ -1,5 +1,3 @@
-/* global module */
-
 import { hot } from '@gondel/plugin-hot';
 
 import 'core-js/features/promise/index';

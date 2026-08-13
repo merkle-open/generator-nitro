@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Nitro Exporter Config
  */

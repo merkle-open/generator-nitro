@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Viewlist helper, can be used to display lists of views filtered by specific include / exclude terms
  *

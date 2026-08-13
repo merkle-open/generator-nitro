@@ -1,7 +1,3 @@
-'use strict';
-
-/* eslint-disable max-len, complexity, no-else-return, require-jsdoc */
-
 const _yeomanGenerator = require('yeoman-generator');
 const Generator = _yeomanGenerator && _yeomanGenerator.default ? _yeomanGenerator.default : _yeomanGenerator;
 const path = require('path');
@@ -43,7 +39,6 @@ module.exports = class extends Generator {
 	writing() {
 		this.log('Scaffolding your light server');
 
-		// eslint-disable-next-line global-require
 		const config = require('config');
 		const files = globSync('**/*', { cwd: this._tplRoot, nodir: true, dot: true, posix: true });
 
@@ -94,7 +89,7 @@ module.exports = class extends Generator {
 			try {
 				const { default: yosay } = await yosayPromise;
 				this.log(yosay(`All done - your light server is ready`));
-			} catch (err) {
+			} catch {
 				this.log(`All done - your light server is ready`);
 			}
 		})();

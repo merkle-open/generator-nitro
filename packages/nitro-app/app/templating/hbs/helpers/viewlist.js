@@ -17,8 +17,6 @@
  *
  */
 
-'use strict';
-
 const hbs = require('hbs');
 const config = require('config');
 const view = require('../../../lib/view.js');

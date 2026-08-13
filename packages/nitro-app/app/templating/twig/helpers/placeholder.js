@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * twig helper: {% placeholder name='PlaceholderName' template='TemplateName' %}
  *

@@ -17,7 +17,7 @@
     "nitro-app-serve": "bin/serve.js"
   },
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint app",
     "prepublishOnly": "npx -y pkg-ok@2.3.1",
     "pretest": "npm run lint",
     "test": "jasmine --config=./tests/jasmine/jasmine.json"
@@ -60,9 +60,8 @@
     "webpack": "^5"
   },
   "devDependencies": {
-    "@merkle-open/eslint-config": "4.0.1",
-    "eslint": "8.57.1",
-    "eslint-plugin-import": "2.32.0",
+    "@merkle-open/eslint-config": "5.0.0",
+    "eslint": "9.39.5",
     "webpack": "5.109.2"
   },
   "publishConfig": {

@@ -1,5 +1,3 @@
-'use strict';
-
 describe('Nitro Router', () => {
 	const router = require('../../../../app/core/router');
 

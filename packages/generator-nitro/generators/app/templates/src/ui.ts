@@ -1,5 +1,3 @@
-/* global module */
-
 <% if (options.exampleCode) { %>import { hot } from '@gondel/plugin-hot';
 
 import 'core-js/features/promise/index';

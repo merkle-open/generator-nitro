@@ -1,5 +1,3 @@
-'use strict';
-
 const gulp = require('gulp');
 const getTask = require('@nitro/gulp/lib/utils').getTask;<% if (options.exporter) { %>
 const config = require('config');<% } %>

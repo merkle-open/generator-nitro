@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Simple Twig Translation Filter
  *

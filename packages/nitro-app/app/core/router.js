@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const fs = require('fs');
 const config = require('config');
@@ -8,7 +6,6 @@ const view = require('../lib/view');
 const dot = require('dot-object');
 const extend = require('extend');
 const express = require('express');
-// eslint-disable-next-line
 const router = express.Router({
 	caseSensitive: false,
 	strict: false,

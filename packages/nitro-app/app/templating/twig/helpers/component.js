@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * twig helper: {% component name='component-name' data='data-variation' template='template-variation' additionalData={ param1: 'value', param2: true } %}
  *

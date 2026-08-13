@@ -41,13 +41,12 @@ describe('nitro:app', function () {
 		it('includes project config files', () => {
 			assert.file([
 				'.editorconfig',
-				'.eslintignore',
-				'.eslintrc.js',
 				'.gitattributes',
 				'.gitignore',
 				'.prettierignore',
 				'.prettierrc.js',
 				'.stylelintignore',
+				'eslint.config.mjs',
 				'stylelint.config.js',
 			]);
 		});

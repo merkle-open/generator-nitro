@@ -1,5 +1,3 @@
-'use strict';
-
 import { Component, EventListener, GondelBaseComponent } from '@gondel/core';
 
 /**

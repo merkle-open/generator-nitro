@@ -1,5 +1,3 @@
-'use strict';
-
 const port = process.env.PORT || '8892';
 const hostName = process.env.HOST_NAME || 'http://host.docker.internal';
 const host = `${hostName}:${port}`;

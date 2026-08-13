@@ -1,5 +1,3 @@
-'use strict';
-
 function strip(s) {
 	return s.replace(/^['"]|['"]$/g, '');
 }

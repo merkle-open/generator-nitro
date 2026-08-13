@@ -37,8 +37,7 @@ const breakpointMarkup = [
 		setToLocalStorage('dev-helper-breakpoints', showEvents);
 	}
 
-	// 49 = keyCode for 1
-	addKeyboardAction(49, toggleBreakpointHelper);
+	addKeyboardAction('1', toggleBreakpointHelper);
 	// Local Storage
 	if (getFromLocalStorage('dev-helper-breakpoints')) {
 		toggleBreakpointHelper();

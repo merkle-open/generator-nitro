@@ -7,8 +7,6 @@
  *
  */
 
-'use strict';
-
 const hbs = require('hbs');
 const config = require('config');
 const themes = config.has('themes') && Array.isArray(config.get('themes')) ? config.get('themes') : false;

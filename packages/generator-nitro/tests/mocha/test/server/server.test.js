@@ -16,7 +16,7 @@ const projectPaths = [
 	'src/patterns/',
 	'.node-version',
 ];
-// eslint-disable-next-line complexity
+
 const projectCopyFilter = (src) => {
 	return (
 		src.indexOf('node_modules') === -1 &&
@@ -76,11 +76,10 @@ describe('nitro:server', function () {
 		it('does not include project config files', () => {
 			assert.noFile([
 				`${folder}/.editorconfig`,
-				`${folder}/.eslintignore`,
-				`${folder}/.eslintrc.js`,
 				`${folder}/.gitattributes`,
 				`${folder}/.gitignore`,
 				`${folder}/.prettierignore`,
+				`${folder}/eslint.config.mjs`,
 			]);
 		});
 

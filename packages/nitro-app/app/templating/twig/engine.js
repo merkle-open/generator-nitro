@@ -2,8 +2,6 @@
  * This is a wrapper for the Twig.js engine.
  */
 
-'use strict';
-
 const fs = require('fs');
 const path = require('path');
 const Twig = require('twig');
@@ -47,7 +45,6 @@ Object.keys(files).forEach((key) => {
 // register t filter
 require('./filters/t')(Twig);
 
-// eslint-disable-next-line
 Twig.renderWithLayout = (viewPath, options, fn) => {
 	const layoutPath = path.join(options.settings.views, `${options.layout}.${options.settings['view engine']}`);
 

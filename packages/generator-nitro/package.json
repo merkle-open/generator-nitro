@@ -14,7 +14,7 @@
   },
   "main": "generators/app/index.js",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint generators tests",
     "prepublishOnly": "npx -y pkg-ok@2.3.1",
     "pretest": "npm run lint",
     "test": "mocha tests/mocha/test/**/*.test.js"
@@ -47,9 +47,8 @@
     "yosay": "3.0.0"
   },
   "devDependencies": {
-    "@merkle-open/eslint-config": "4.0.1",
-    "eslint": "8.57.1",
-    "eslint-plugin-import": "2.32.0",
+    "@merkle-open/eslint-config": "5.0.0",
+    "eslint": "9.39.5",
     "fs-extra": "11.4.0",
     "mocha": "11.8.0",
     "yeoman-assert": "3.1.1",

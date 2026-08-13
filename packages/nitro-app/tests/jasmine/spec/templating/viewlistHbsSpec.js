@@ -1,5 +1,3 @@
-'use strict';
-
 // const config = require('config');
 const helper = require('../../../../app/templating/hbs/helpers/viewlist');
 

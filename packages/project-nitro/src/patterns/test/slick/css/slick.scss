@@ -13,7 +13,8 @@ $slick-arrow-color: semantic-color.$color-accent-1;
 	position: relative;
 	margin: 30px 0;
 
-	@media (max-width: breakpoints.$size-sm-max) {
+	// stylelint-disable-next-line media-feature-name-no-unknown
+	@media (width < breakpoints.$size-sm) {
 		/* stylelint-disable plugin/stylelint-bem-namics */
 		.slick-prev {
 			left: 10px;

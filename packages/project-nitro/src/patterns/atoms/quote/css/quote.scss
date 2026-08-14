@@ -12,11 +12,13 @@
 	background: semantic-color.$color-area-background;
 	font-size: 20px;
 
-	@media (min-width: breakpoints.$size-md-min) {
+	// stylelint-disable-next-line media-feature-name-no-unknown
+	@media (width >= breakpoints.$size-md) {
 		padding: 2rem 4rem;
 		font-size: 28px;
 	}
-	@media (min-width: breakpoints.$size-lg-min) {
+	// stylelint-disable-next-line media-feature-name-no-unknown
+	@media (width >= breakpoints.$size-lg) {
 		padding: 3rem 10rem;
 		font-size: 34px;
 	}
@@ -37,7 +39,8 @@
 		top: -0.39em;
 		left: 1rem;
 		content: '“';
-		@media (min-width: breakpoints.$size-lg-min) {
+		// stylelint-disable-next-line media-feature-name-no-unknown
+		@media (width >= breakpoints.$size-lg) {
 			left: 4rem;
 		}
 	}
@@ -45,7 +48,8 @@
 		bottom: -0.75em;
 		right: 1rem;
 		content: '”';
-		@media (min-width: breakpoints.$size-lg-min) {
+		// stylelint-disable-next-line media-feature-name-no-unknown
+		@media (width >= breakpoints.$size-lg) {
 			right: 4rem;
 		}
 	}

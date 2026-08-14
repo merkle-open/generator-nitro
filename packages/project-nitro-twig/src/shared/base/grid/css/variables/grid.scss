@@ -5,16 +5,16 @@ $grid-columns: 12;
 $grid-gutter-width: 20px;
 $grid-breakpoints: (
 	xs: 0,
-	sm: breakpoints.$size-sm-min,
-	md: breakpoints.$size-md-min,
-	lg: breakpoints.$size-lg-min,
-	xl: breakpoints.$size-xl-min,
-	xxl: breakpoints.$size-xxl-min,
+	sm: breakpoints.$size-sm,
+	md: breakpoints.$size-md,
+	lg: breakpoints.$size-lg,
+	xl: breakpoints.$size-xl,
+	xxl: breakpoints.$size-xxl,
 );
 $container-max-widths: (
-	sm: breakpoints.$size-sm-max,
-	md: breakpoints.$size-md-max,
-	lg: breakpoints.$size-lg-max,
-	xl: breakpoints.$size-xl-max,
-	xxl: breakpoints.$size-xl-max + 1,
+	sm: (breakpoints.$size-md - 1),
+	md: (breakpoints.$size-lg - 1),
+	lg: (breakpoints.$size-xl - 1),
+	xl: (breakpoints.$size-xxl - 1),
+	xxl: breakpoints.$size-xxl,
 );

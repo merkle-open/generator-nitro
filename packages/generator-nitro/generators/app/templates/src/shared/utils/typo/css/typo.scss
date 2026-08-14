@@ -141,8 +141,8 @@ $typography-definitions: (
 @mixin typography($font-bundle, $viewport: 'all') {
 	@if ($viewport == 'all') {
 		@include _generate-font-size(get-font-definition($font-bundle: $font-bundle, $viewport: 'mobile'));
-
-		@media (min-width: breakpoints.$size-md-min) {
+		// stylelint-disable-next-line media-feature-name-no-unknown
+		@media (width >= breakpoints.$size-md) {
 			@include _generate-font-size(get-font-definition($font-bundle: $font-bundle, $viewport: 'desktop'));
 		}
 	} @else {

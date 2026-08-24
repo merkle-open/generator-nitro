@@ -4,6 +4,9 @@ const config = require('config');
 const router = require('../core/router');
 const compression = require('compression');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const csurf = require('csurf');
+const csrfProtection = csurf({ cookie: true });
 
 // CLI flags (only --open[=URL] or --open URL)
 const { parseOpenArg } = require('./util/cliOpen');
@@ -34,6 +37,10 @@ if (isTwig) {
 if (useCompression) {
 	app.use(compression());
 }
+
+// CSRF protection
+app.use(cookieParser());
+app.use(csrfProtection);
 
 // translations
 require('../core/i18n')(app);

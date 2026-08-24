@@ -97,7 +97,7 @@
     "@types/webpack-env": "1.18.8",
     "backstopjs": "6.3.25",
     "check-node-version": "4.2.1",
-    "config": "4.4.2",
+    "config": "5.0.1",
     "cross-env": "10.1.0",
     "cypress": "15.21.0",
     "env-linter": "2.0.0",

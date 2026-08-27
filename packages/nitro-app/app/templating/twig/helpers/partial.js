@@ -31,7 +31,7 @@ module.exports = function (Twig) {
 		parse(token, context, chain) {
 			try {
 				const partial = Twig.expression.parse.apply(this, [token.name, context]);
-				const innerContext = Twig.ChildContext(context);
+				const innerContext = { ...context };
 				let template;
 				const templateFile = `${partial}.${config.get('nitro.viewFileExtension')}`;
 
@@ -42,18 +42,10 @@ module.exports = function (Twig) {
 				);
 
 				// TODO CHECK WHAT THIS IF SHOULD DO
-				if (partial instanceof Twig.Template) {
-					// eslint-disable-next-line
-					template = name;
+				if (typeof partial === 'object' && partial && typeof partial.render === 'function') {
+					template = partial;
 				} else if (fs.existsSync(templateFilePath)) {
-					// Import file
-					template = Twig.Templates.loadRemote(templateFilePath, {
-						method: 'fs',
-						base: '',
-						async: false,
-						options: this.options,
-						id: templateFilePath,
-					});
+					template = Twig.exports.loadRemoteTemplate(templateFilePath);
 				} else {
 					return {
 						chain,

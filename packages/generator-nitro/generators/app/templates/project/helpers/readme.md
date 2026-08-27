@@ -27,12 +27,12 @@ module.exports = function(Twig) {
 
         // return the markup
         return {
-          chain: chain,
+          chain,
           output: 'Output Markup',
         };
       } catch (e) {
         return {
-          chain: chain,
+          chain,
           output: twigUtils.logAndRenderError(e),
         };
       }
@@ -44,7 +44,7 @@ module.exports = function (foo) {
 };<% } %>
 ```
 <% if (options.templateEngine === 'twig') { %>
-The helper name get's defined in the type property above.
+The helper's name is defined in the type property mentioned above.
 The regex property needs to be extended to contain any possible arguments of the helper.
-For more complex example's please check out the core helpers.<% } else { %>
+For more complex examples, check out the core helpers.<% } else { %>
 The helper name will automatically match the filename, so if you name your file `foo.js` your helper will be called `foo`.<% } %>

@@ -27,12 +27,12 @@ module.exports = function (Twig) {
 
         // return the markup
         return {
-          chain: chain,
+          chain,
           output: 'Output Markup',
         };
       } catch (e) {
         return {
-          chain: chain,
+          chain,
           output: twigUtils.logAndRenderError(e),
         };
       }
@@ -41,6 +41,6 @@ module.exports = function (Twig) {
 };
 ```
 
-The helper name get's defined in the type property above.
+The helper's name is defined in the type property mentioned above.
 The regex property needs to be extended to contain any possible arguments of the helper.
-For more complex example's please check out the core helpers.
+For more complex examples, check out the core helpers.

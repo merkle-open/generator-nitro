@@ -107,25 +107,15 @@ module.exports = function (Twig) {
 				);
 
 				// TODO CHECK WHAT THIS IF SHOULD DO
-				if (name instanceof Twig.Template) {
+				if (typeof name === 'object' && name && typeof name.render === 'function') {
 					template = name;
 				} else if (fs.existsSync(templateFilePath)) {
-					// otherwise try to load it
 					try {
-						// Import file
-						template = Twig.Templates.loadRemote(templateFilePath, {
-							method: 'fs',
-							base: '',
-							async: false,
-							options: this.options,
-							id: templateFilePath,
-						});
+						template = Twig.exports.loadRemoteTemplate(templateFilePath);
 					} catch (e) {
 						return {
 							chain,
-							output: twigUtils.logAndRenderError(
-								new Error(`Parse Error for Placeholder ${name}: ${e.message}`)
-							),
+							output: twigUtils.logAndRenderError(new Error(`Parse Error for Placeholder ${name}: ${e.message}`)),
 						};
 					}
 				} else {

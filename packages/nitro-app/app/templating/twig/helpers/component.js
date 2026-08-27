@@ -217,25 +217,15 @@ module.exports = function (Twig) {
 					}
 
 					// TODO CHECK WHAT THIS IF SHOULD DO
-					if (name instanceof Twig.Template) {
+					if (typeof name === 'object' && name && typeof name.render === 'function') {
 						template = name;
 					} else {
-						// otherwise try to load it
 						try {
-							// Import file
-							template = Twig.Templates.loadRemote(pattern.templateFilePath, {
-								method: 'fs',
-								base: '',
-								async: false,
-								options: this.options,
-								id: pattern.templateFilePath,
-							});
+							template = Twig.exports.loadRemoteTemplate(pattern.templateFilePath);
 						} catch (e) {
 							return {
 								chain,
-								output: twigUtils.logAndRenderError(
-									new Error(`Parse Error in Pattern ${name}: ${e.message}`)
-								),
+								output: twigUtils.logAndRenderError(new Error(`Parse Error in Pattern ${name}: ${e.message}`)),
 							};
 						}
 					}

@@ -42,6 +42,18 @@ Object.keys(files).forEach((key) => {
 	});
 });
 
+const TwigExports = Twig.exports || Twig;
+Twig.loadRemoteTemplate = (templatePath, options = {}) => {
+	return TwigExports.twig({
+		path: templatePath,
+		method: 'fs',
+		base: '',
+		async: false,
+		id: templatePath,
+		...options,
+	});
+};
+
 // register t filter
 require('./filters/t')(Twig);
 

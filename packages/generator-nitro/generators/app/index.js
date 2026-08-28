@@ -310,6 +310,7 @@ module.exports = class extends Generator {
 			'src/patterns/molecules/example/js/example.ts',
 			'src/proto/js/prototype.js',
 			'src/proto/js/prototype.ts',
+			'src/proto/readme.md',
 			'src/views/index.hbs',
 			'src/views/index.twig',
 			'src/views/_partials/head.hbs',

@@ -44,6 +44,6 @@ module.exports = (app) => {
 				}),
 			);
 		}
-		app.route('*').all(theme);
+		app.use(theme);
 	}
 };

@@ -13,7 +13,7 @@ function _getHtmlvalidateConfig() {
 }
 
 function lintSnippet(templatePath, markup) {
-	const report = htmlvalidate.validateString(markup, _getHtmlvalidateConfig());
+	const report = htmlvalidate.validateStringSync(markup, _getHtmlvalidateConfig());
 	const filePath = templatePath.replace(config.get('nitro.basePath'), '');
 	if (!report.valid) {
 		console.log(`\nMarkup error in: ${filePath}`);

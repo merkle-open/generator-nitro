@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Usage:
  *  /api/countries/search

@@ -121,12 +121,12 @@ function getView(req, res, next) {
 router.all('/', getView);
 router.all('/:view', getView);
 // subpathes will be routed to the main view if it exists
-router.all('/:view/*', getView);
+router.all('/:view/*rest', getView);
 
 /**
  * everything else gets a 404
  */
-router.use((req, res) => {
+router.use((req, res, next) => {
 	const data = getNitroViewData('404 - Not Found', req);
 	extend(true, data, res.locals);
 
@@ -138,7 +138,7 @@ router.use((req, res) => {
 	res.status(404);
 	res.render(view404, (err, html) => {
 		if (err) {
-			res.send('404 - Not Found');
+			return next(err);
 		}
 		res.send(html);
 	});

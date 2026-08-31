@@ -5,5 +5,5 @@ function getUser(req, res, next) {
 
 exports = module.exports = function (app) {
 	// all routes
-	app.route('*').all(getUser);
+	app.use(getUser);
 };

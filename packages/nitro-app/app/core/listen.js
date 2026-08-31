@@ -27,7 +27,7 @@ module.exports = function (app, hmrApp, opts = {}) {
 			}
 		})
 		.on('error', (err) => {
-			if (err && err.errno === 'EADDRINUSE') {
+			if (err && err.code === 'EADDRINUSE') {
 				console.error('Port *:%s already in use.', port);
 			} else {
 				console.error(err);
@@ -39,7 +39,7 @@ module.exports = function (app, hmrApp, opts = {}) {
 		hmrApp
 			.listen(hmrPort)
 			.on('error', (err) => {
-				if (err && err.errno === 'EADDRINUSE') {
+				if (err && err.code === 'EADDRINUSE') {
 					console.error('Proxy Port *:%s already in use.', hmrPort);
 				} else {
 					console.error(err);

@@ -52,4 +52,6 @@ if (isTwig) {
 	app.engine(config.get('nitro.viewFileExtension'), engine.__express);
 }
 
+app.set('view cache', config.get('server.production'));
+
 require('../core/listen')(app, hmrApp, { open });

@@ -31,7 +31,7 @@
     "cookie-session": "2.1.1",
     "cross-env": "10.1.0",
     "extend": "3.0.2",
-    "hbs": "4.2.1",
+    "hbs": "4.3.0",
     "i18next": "26.4.0",
     "npm-run-all": "4.1.5"
   }

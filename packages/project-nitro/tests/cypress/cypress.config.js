@@ -1,7 +1,7 @@
 const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
-	allowCypressEnv: false,
+	defaultBrowser: 'chrome',
 	e2e: {
 		// specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}', // default specPattern
 		video: false,

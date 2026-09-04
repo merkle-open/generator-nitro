@@ -101,7 +101,7 @@
     "check-node-version": "4.2.1",
     "config": "5.0.1",
     "cross-env": "10.1.0",
-    "cypress": "15.21.1",
+    "cypress": "16.0.0",
     "env-linter": "2.0.0",
     "eslint": "9.39.5",
     "extend": "3.0.2",

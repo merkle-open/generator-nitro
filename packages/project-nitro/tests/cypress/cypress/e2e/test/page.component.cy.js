@@ -19,7 +19,7 @@ context('Test Components', () => {
 		it('pattern 2 contains correct title', () => {
 			cy.get(':nth-child(3) > .t-ex__headline').contains('Ex Module with Skin Blue (data: ex-blue.json)');
 		});
-		it('pattern 2 contains correct title', () => {
+		it('pattern 3 contains correct title', () => {
 			cy.get(':nth-child(4) > .t-ex__headline').contains('Ex Module (data: ex.json)');
 		});
 	});
@@ -34,7 +34,7 @@ context('Test Components', () => {
 		});
 		it('pattern 4 contains correct title and content', () => {
 			cy.get(':nth-child(9) > .t-ex__headline').contains('Ex Module (data: ex.json)');
-			cy.get(':nth-child(7) > ul > li').should('have.length', 5);
+			cy.get(':nth-child(9) > ul > li').should('have.length', 5);
 		});
 	});
 

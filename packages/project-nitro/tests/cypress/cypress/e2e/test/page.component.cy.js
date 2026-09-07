@@ -25,8 +25,9 @@ context('Test Components', () => {
 	});
 
 	describe('Pattern Ex Variants', () => {
-		it('pattern 1 contains correct title', () => {
+		it('pattern 1 contains correct title and content', () => {
 			cy.get(':nth-child(6) > .t-ex__headline').contains('Ex Module with Skin Blue (data: ex-blue.json)');
+			cy.get(':nth-child(6) > ul > li').should('have.length', 3);
 		});
 		it('pattern 2 contains correct title and content', () => {
 			cy.get(':nth-child(7) > .t-ex__headline').contains('2. Template - Ex Module (data: ex.json)');

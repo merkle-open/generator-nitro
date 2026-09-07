@@ -6,7 +6,7 @@ import 'slick-carousel';
 class Slick extends GondelBaseComponent {
 	start() {
 		$(this._ctx).slick({
-			slidesToshow: 1,
+			slidesToShow: 1,
 			slidesToScroll: 1,
 			arrows: true,
 			dots: true,

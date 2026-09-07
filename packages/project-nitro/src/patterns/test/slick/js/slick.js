@@ -2,6 +2,11 @@ import { Component, GondelBaseComponent } from '@gondel/core';
 import $ from 'jquery';
 import 'slick-carousel';
 
+// Workaround for issue with slick carousel and jQuery 4
+$.type = function (value) {
+	return typeof value;
+};
+
 @Component('Slick')
 class Slick extends GondelBaseComponent {
 	start() {

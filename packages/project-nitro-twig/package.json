@@ -107,7 +107,7 @@
     "extend": "3.0.2",
     "generator-nitro": "*",
     "gulp": "5.0.1",
-    "html-validate": "11.14.0",
+    "html-validate": "11.15.0",
     "husky": "9.1.7",
     "license-checker": "25.0.1",
     "lighthouse": "13.4.1",

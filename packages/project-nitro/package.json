@@ -89,10 +89,10 @@
     "slick-carousel": "1.8.1"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "8.0.1",
+    "@babel/eslint-parser": "8.0.5",
     "@babel/plugin-proposal-decorators": "8.0.2",
     "@babel/plugin-transform-class-properties": "8.0.1",
-    "@babel/preset-env": "8.0.2",
+    "@babel/preset-env": "8.0.5",
     "@merkle-open/eslint-config": "5.0.0",
     "@merkle-open/html-validate-config": "3.0.0",
     "@merkle-open/prettier-config": "2.0.1",

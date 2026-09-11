@@ -109,7 +109,7 @@
     "husky": "9.1.7",
     "license-checker": "25.0.1",
     "lighthouse": "13.4.1",
-    "lint-staged": "17.5.0",
+    "lint-staged": "17.5.1",
     "npm-check-updates": "23.1.0",
     "npm-run-all": "4.1.5",
     "prettier": "3.9.6",

@@ -2,9 +2,10 @@
 import merkleConfig from '@merkle-open/eslint-config/typescript-browser-disable-styles';
 
 const IgnorePatterns = [
-	'src/views/**',
-	'src/proto.ts',
 	'**/*.d.ts',
+	'*.js',
+	'src/proto.ts',
+	'src/views/**',
 ];
 
 export default [

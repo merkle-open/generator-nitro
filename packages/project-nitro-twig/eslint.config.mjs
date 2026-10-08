@@ -5,6 +5,10 @@ import babelParser from '@babel/eslint-parser';
 const IgnorePatterns = [
 	'**/*.d.ts',
 	'*.js',
+	'config/**',
+	'project/**',
+	'public/**',
+	'tests/**',
 	'src/proto.js',
 	'src/views/**',
 ];

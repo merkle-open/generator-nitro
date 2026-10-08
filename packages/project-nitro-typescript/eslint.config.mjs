@@ -4,6 +4,10 @@ import merkleConfig from '@merkle-open/eslint-config/typescript-browser-disable-
 const IgnorePatterns = [
 	'**/*.d.ts',
 	'*.js',
+	'config/**',
+	'project/**',
+	'public/**',
+	'tests/**',
 	'src/proto.ts',
 	'src/views/**',
 ];

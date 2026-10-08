@@ -17,7 +17,7 @@
     "lint": "eslint generators tests",
     "prepublishOnly": "npx -y pkg-ok@2.3.1",
     "pretest": "npm run lint",
-    "test": "mocha tests/mocha/test/**/*.test.js"
+    "test": "mocha --require ./tests/mocha/setup.js tests/mocha/test/**/*.test.js"
   },
   "files": [
     "generators/app",

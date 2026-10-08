@@ -3,9 +3,14 @@ import merkleConfig from '@merkle-open/eslint-config/es2025-browser-disable-styl
 import babelParser from '@babel/eslint-parser';
 
 const IgnorePatterns = [
-	'src/views/**',
-	'src/proto.js',
 	'**/*.d.ts',
+	'*.js',
+	'config/**',
+	'project/**',
+	'public/**',
+	'tests/**',
+	'src/proto.js',
+	'src/views/**',
 ];
 
 export default [

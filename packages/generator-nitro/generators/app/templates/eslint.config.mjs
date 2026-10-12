@@ -2,9 +2,14 @@
 <% if (options.jsCompiler === 'ts') { %>import merkleConfig from '@merkle-open/eslint-config/typescript-browser-disable-styles';
 
 const IgnorePatterns = [
-	'src/views/**',
-	'src/proto.ts',
 	'**/*.d.ts',
+	'*.js',
+	'config/**',
+	'project/**',
+	'public/**',
+	'tests/**',
+	'src/proto.ts',
+	'src/views/**',
 ];
 
 export default [
@@ -23,9 +28,14 @@ export default [
 import babelParser from '@babel/eslint-parser';
 
 const IgnorePatterns = [
-	'src/views/**',
-	'src/proto.js',
 	'**/*.d.ts',
+	'*.js',
+	'config/**',
+	'project/**',
+	'public/**',
+	'tests/**',
+	'src/proto.js',
+	'src/views/**',
 ];
 
 export default [

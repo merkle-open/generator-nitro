@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "array-unique": "0.3.2",
-    "del": "8.0.1",
+    "del": "9.0.1",
     "delete-empty": "3.0.0",
     "glob": "13.0.6",
     "glob-parent": "6.0.2",

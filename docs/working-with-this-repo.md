@@ -37,3 +37,22 @@ yeoman generator in the package 'packages/generator-nitro'.
    2. Run `npm start` and use the yeoman config you adjusted / enhanced
    3. The generator runs with your local recent changes
    4. Compare the output with your change in the sample project
+
+## Git rules
+
+Use a prefix from [Conventional Commits](https://www.conventionalcommits.org/), such as `feat`, `fix`, `ci`, `test`,
+`chore`, or `docs`. Add a scope only when it meaningfully identifies the affected area; otherwise, omit it.
+
+Use these scopes:
+
+- `generator` for changes to `generator-nitro`
+- `app` for `@nitro/app`
+- `exporter` for `@nitro/exporter`
+- `gulp` for `@nitro/gulp`
+- `webpack` for the `@nitro` webpack config
+- `project` for the example Nitro projects (`project-nitro`, `project-nitro-twig`, and `project-nitro-typescript`)
+- `server` for the example project using the "light" server for production preview (`project-prod`)
+
+Changes to the generator's project templates generally use the `project` scope rather than `generator`.
+
+For example: `feat(project): add support for ...`

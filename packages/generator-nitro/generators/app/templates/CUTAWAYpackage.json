@@ -103,7 +103,7 @@
     "@nitro/exporter": "<%= version %>",
     "@nitro/gulp": "<%= version %>",
     "@nitro/webpack": "<%= version %>",
-    "@playwright/test": "1.64.0",<% if (options.jsCompiler === 'ts') { %>
+    "@playwright/test": "1.64.1",<% if (options.jsCompiler === 'ts') { %>
     "@types/bootstrap": "5.2.11",<% if (options.exampleCode ) { %>
     "@types/jquery": "4.0.1",<% } %>
     "@types/webpack-env": "1.18.8",<% } %><% if (options.jsCompiler === 'js') { %>

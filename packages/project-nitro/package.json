@@ -101,7 +101,7 @@
     "@nitro/exporter": "*",
     "@nitro/gulp": "*",
     "@nitro/webpack": "*",
-    "@playwright/test": "1.64.0",
+    "@playwright/test": "1.64.1",
     "babel-plugin-polyfill-corejs3": "1.0.0",
     "backstopjs": "6.3.25",
     "check-node-version": "4.2.1",

@@ -5,9 +5,7 @@ hot(module);
 // only necessary if we don't use gondel hot reloading
 // if (module.hot) { module.hot.accept() }
 
-const requireAll = (
-	requireContext: __WebpackModuleApi.RequireContext
-) => requireContext.keys().map(requireContext);
+const requireAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().map(requireContext);
 
 // require all ts files from 'proto/js' and'patterns/*/proto'
 requireAll(require.context('./proto/js', true, /^.*(ts)$/));

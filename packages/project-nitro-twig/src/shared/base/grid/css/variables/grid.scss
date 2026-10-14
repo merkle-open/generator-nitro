@@ -12,9 +12,9 @@ $grid-breakpoints: (
 	xxl: breakpoints.$size-xxl,
 );
 $container-max-widths: (
-	sm: (breakpoints.$size-md - 1),
-	md: (breakpoints.$size-lg - 1),
-	lg: (breakpoints.$size-xl - 1),
-	xl: (breakpoints.$size-xxl - 1),
+	sm: breakpoints.$size-md - 1,
+	md: breakpoints.$size-lg - 1,
+	lg: breakpoints.$size-xl - 1,
+	xl: breakpoints.$size-xxl - 1,
 	xxl: breakpoints.$size-xxl,
 );

@@ -4,18 +4,12 @@ type KeyboardAction = () => void;
 
 const actions: Record<string, KeyboardAction> = {};
 
-export function addKeyboardAction(
-	key: string,
-	action: KeyboardAction
-): void {
+export function addKeyboardAction(key: string, action: KeyboardAction): void {
 	actions[key.toLowerCase()] = action;
 }
 
 document.addEventListener('keydown', (e) => {
-	const modifierPressed =
-		e.ctrlKey ||
-		e.metaKey ||
-		e.altKey;
+	const modifierPressed = e.ctrlKey || e.metaKey || e.altKey;
 
 	if (!modifierPressed) {
 		return;

@@ -9,9 +9,10 @@ For running these tests you need docker installed.
 
 default configuration:
 
-- this directory is meant to be the place to setup your tests and to have a place for your reference screenshots.
+- this directory is meant to be the place to setup your tests and to have a place for your reference screenshots
 - test results are placed in the '/project/tmp/reports' folder
 - the reports are generated inside '/public/reports/backstop'
+- `scripts/run.js` loads the configuration on the host and passes it to Docker as JSON
 
 ## Scripts
 

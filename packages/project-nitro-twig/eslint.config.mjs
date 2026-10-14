@@ -8,9 +8,9 @@ const IgnorePatterns = [
 	'config/**',
 	'project/**',
 	'public/**',
-	'tests/**',
 	'src/proto.js',
 	'src/views/**',
+	'tests/**',
 ];
 
 export default [

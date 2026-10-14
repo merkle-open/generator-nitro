@@ -7,9 +7,9 @@ const IgnorePatterns = [
 	'config/**',
 	'project/**',
 	'public/**',
-	'tests/**',
 	'src/proto.ts',
 	'src/views/**',
+	'tests/**',
 ];
 
 export default [
@@ -33,9 +33,9 @@ const IgnorePatterns = [
 	'config/**',
 	'project/**',
 	'public/**',
-	'tests/**',
 	'src/proto.js',
 	'src/views/**',
+	'tests/**',
 ];
 
 export default [

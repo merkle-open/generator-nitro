@@ -1,4 +1,3 @@
-// eslint.config.mjs
 <% if (options.jsCompiler === 'ts') { %>import merkleConfig from '@merkle-open/eslint-config/typescript-browser-disable-styles';
 
 const IgnorePatterns = [

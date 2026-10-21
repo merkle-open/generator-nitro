@@ -8,7 +8,6 @@ hot(module);
 // hot module reloading
 if (module.hot) { module.hot.accept() }
 <% } %>
-
 const requireAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().map(requireContext);
 
 // require all ts files from 'proto/js' and'patterns/*/proto'

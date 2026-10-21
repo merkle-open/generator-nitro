@@ -1,4 +1,3 @@
-// eslint.config.mjs
 import merkleConfig from '@merkle-open/eslint-config/es2025-browser-disable-styles';
 import babelParser from '@babel/eslint-parser';
 

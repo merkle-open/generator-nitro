@@ -5,6 +5,7 @@ $slick-font-path: '~slick-carousel/slick/fonts/';
 $slick-font-family: 'slick';
 $slick-loader-path: '~slick-carousel/slick/';
 $slick-arrow-color: semantic-color.$color-accent-1;
+$slick-opacity-default: 0.6;
 
 @import '~slick-carousel/slick/slick';
 @import '~slick-carousel/slick/slick-theme';

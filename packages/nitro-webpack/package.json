@@ -41,7 +41,7 @@
     "postcss": "8.5.31",
     "postcss-loader": "8.2.1",
     "resolve-url-loader": "5.0.0",
-    "sass": "1.106.0",
+    "sass": "1.106.1",
     "sass-loader": "17.0.1",
     "terser-webpack-plugin": "5.6.1",
     "thread-loader": "4.0.4",
@@ -59,7 +59,7 @@
   "devDependencies": {
     "@merkle-open/eslint-config": "5.0.0",
     "eslint": "9.39.5",
-    "webpack": "5.112.0"
+    "webpack": "5.112.1"
   },
   "publishConfig": {
     "access": "public"

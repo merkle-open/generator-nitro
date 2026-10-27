@@ -26,7 +26,7 @@
     "webpack": "^5"
   },
   "dependencies": {
-    "autoprefixer": "10.6.1",
+    "autoprefixer": "10.6.2",
     "babel-loader": "10.1.1",
     "case-sensitive-paths-webpack-plugin": "2.4.0",
     "css-loader": "7.1.5",
@@ -38,7 +38,7 @@
     "handlebars-loader": "1.7.3",
     "imagemin": "9.0.1",
     "mini-css-extract-plugin": "2.10.2",
-    "postcss": "8.5.31",
+    "postcss": "8.5.32",
     "postcss-loader": "8.2.1",
     "resolve-url-loader": "5.0.0",
     "sass": "1.106.1",
@@ -59,7 +59,7 @@
   "devDependencies": {
     "@merkle-open/eslint-config": "5.0.0",
     "eslint": "9.39.5",
-    "webpack": "5.112.1"
+    "webpack": "5.112.2"
   },
   "publishConfig": {
     "access": "public"

@@ -21,7 +21,7 @@ Nitro is simple, fast and flexible. Use this app for all your frontend work.
 
 This application was created by the yeoman generator for nitro.  
 Before using, you need of course [node](https://nodejs.org/) installed.  
-Nitro is currently tested with the node LTS versions 22 and 24
+Nitro is currently tested with the node LTS versions 22, 24 and 26
 
 Install the project dependencies in the project root:
 

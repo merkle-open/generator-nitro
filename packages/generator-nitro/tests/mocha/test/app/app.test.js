@@ -9,7 +9,7 @@ function runGenerator(options = {}, prompts = {}) {
 	return helpers
 		.run(path.join(__dirname, '../../../../generators/app'))
 		.inDir(utils.getTempFolder(folder, true))
-		.withOptions({ 'skip-install': true, ...options })
+		.withOptions(options)
 		.withPrompts(prompts);
 }
 

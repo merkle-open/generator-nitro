@@ -46,8 +46,8 @@ npm run nitro:update
 ... then
 
 - validate all local changes
-- run the 'clean' task to remove the package-lock and the 'node_modules' folder
-- run 'install'
+- run the clean task to remove the 'package-lock.json' and the 'node_modules' folder
+- and install project dependencies
 
 ```
 npm run clean

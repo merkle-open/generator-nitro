@@ -3,7 +3,6 @@ const Generator = _yeomanGenerator && _yeomanGenerator.default ? _yeomanGenerato
 const clc = require('cli-color');
 const path = require('path');
 const fs = require('fs');
-const childProcess = require('child_process');
 const findGitRoot = require('find-git-root')
 const { globSync } = require('glob');
 const _ = require('lodash');
@@ -14,7 +13,7 @@ const yosayPromise = import('yosay');
 module.exports = class extends Generator {
 	constructor(args, opts) {
 		// Calling the super constructor
-		super(args, opts);
+		super(args, opts, { customInstallTask: true });
 
 		this._pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../../package.json'), 'utf8'));
 
@@ -147,8 +146,6 @@ module.exports = class extends Generator {
 				},
 			]).then((answers) => {
 				this._update = answers.update;
-				this.options.skipInstall = true;
-
 				if (!this._update) {
 					return;
 				}
@@ -235,8 +232,6 @@ module.exports = class extends Generator {
 					when: () => !this._skipQuestions && typeof this._passedInOptions.exporter !== 'boolean',
 				},
 			]).then((answers) => {
-				this.options.skipInstall = true;
-
 				this.options.name = answers.name || this.options.name;
 				this.options.templateEngine = answers.templateEngine || this.options.templateEngine;
 				this.options.jsCompiler = answers.jsCompiler || this.options.jsCompiler;
@@ -275,12 +270,9 @@ module.exports = class extends Generator {
 		if (this._update) {
 			const pkgProject = JSON.parse(fs.readFileSync(this.destinationPath('package.json'), 'utf8'));
 
-			// uninstall outdated githooks in older projects
 			const huskyVersion = pkgProject.devDependencies ? pkgProject.devDependencies.husky : undefined;
 			if (huskyVersion && huskyVersion.startsWith('4.')) {
-				// eslint-disable-next-line no-unused-vars
-				const result = childProcess.execSync('npm uninstall husky').toString();
-				this.log('Outdated husky githooks successfully removed.');
+				this.log('Husky 4 git hooks may remain in .git/hooks; check and remove outdated hooks manually after updating.');
 			}
 		}
 	}
@@ -546,14 +538,12 @@ module.exports = class extends Generator {
 		const filesToCopy = [
 			{
 				do: this.options.exporter,
-				src: 'node_modules/@nitro/exporter/readme.md',
 				srcWeb:
 					'https://raw.githubusercontent.com/merkle-open/generator-nitro/master/packages/nitro-exporter/readme.md',
 				dest: 'project/docs/nitro-exporter.md',
 			},
 			{
 				do: true,
-				src: 'node_modules/@nitro/webpack/readme.md',
 				srcWeb:
 					'https://raw.githubusercontent.com/merkle-open/generator-nitro/master/packages/nitro-webpack/readme.md',
 				dest: 'project/docs/nitro-webpack.md',
@@ -565,29 +555,24 @@ module.exports = class extends Generator {
 
 				const destPath = this.destinationPath(file.dest);
 
-				if (!this.options.skipInstall) {
-					// get readme from current package version
-					this.fs.copy(this.destinationPath(file.src), destPath);
-				} else {
-					// get readme from github master branch
-					(async () => {
-						try {
-							const { default: got } = await gotPromise;
-							const writeStream = fs.createWriteStream(destPath);
-							const readStream = got.stream.get(file.srcWeb);
+				// Get additional readme files from GitHub.
+				(async () => {
+					try {
+						const { default: got } = await gotPromise;
+						const writeStream = fs.createWriteStream(destPath);
+						const readStream = got.stream.get(file.srcWeb);
 
-							readStream.on('error', () => {
-								if (!writeStream.destroyed) writeStream.destroy();
-							});
+						readStream.on('error', () => {
+							if (!writeStream.destroyed) writeStream.destroy();
+						});
 
-							writeStream.on('error', () => {
-								if (!readStream.destroyed) readStream.destroy();
-							});
+						writeStream.on('error', () => {
+							if (!readStream.destroyed) readStream.destroy();
+						});
 
-							readStream.pipe(writeStream);
-						} catch { /* empty */ }
-					})();
-				}
+						readStream.pipe(writeStream);
+					} catch { /* empty */ }
+				})();
 
 			});
 		} catch (e) {

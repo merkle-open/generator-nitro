@@ -5,7 +5,7 @@ Introduction …
 ## Usage
 
 Before using, you need of course [node](https://nodejs.org/) installed.  
-Ensure correct [node-version](./.node-version)
+Ensure correct [node-version](./.node-version).
 
 Run:
 

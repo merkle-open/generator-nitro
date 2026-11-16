@@ -38,7 +38,7 @@
     "handlebars-loader": "1.7.3",
     "imagemin": "9.0.1",
     "mini-css-extract-plugin": "2.10.2",
-    "postcss": "8.5.32",
+    "postcss": "8.5.33",
     "postcss-loader": "8.2.1",
     "resolve-url-loader": "5.0.0",
     "sass": "1.108.2",
@@ -48,7 +48,7 @@
     "ts-loader": "9.6.2",
     "typescript": "6.0.3",
     "webpackbar": "7.0.0",
-    "webpack-bundle-analyzer": "5.4.2"
+    "webpack-bundle-analyzer": "5.4.3"
   },
   "optionalDependencies": {
     "imagemin-mozjpeg": "10.0.0",

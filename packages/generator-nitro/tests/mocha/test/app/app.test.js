@@ -296,4 +296,52 @@ describe('nitro:app', function () {
 			assert.noFileContent([['config/default.js', /exporter:/]]);
 		});
 	});
+
+	describe('when including themes feature with example code', () => {
+		before(() => runGenerator({}, { ...utils.defaultPrompts, ...{ themes: true, exampleCode: true } }));
+
+		it('theme token files are generated', () => {
+			assert.file([
+				'src/shared/props/token/css/theme/dark.css',
+				'src/shared/props/token/css/theme/light.css',
+			]);
+		});
+
+		it('non-theme semantic token file is not generated', () => {
+			assert.noFile(['src/shared/props/token/css/10-semantic.css']);
+		});
+	});
+
+	describe('when not including themes feature with example code', () => {
+		before(() => runGenerator({}, { ...utils.defaultPrompts, ...{ themes: false, exampleCode: true } }));
+
+		it('theme token files are not generated', () => {
+			assert.noFile([
+				'src/shared/props/token/css/theme/dark.css',
+				'src/shared/props/token/css/theme/light.css',
+			]);
+		});
+
+		it('non-theme semantic token file is generated', () => {
+			assert.file(['src/shared/props/token/css/10-semantic.css']);
+		});
+	});
+
+	describe('when using template engine hbs with example code', () => {
+		before(() => runGenerator({}, { ...utils.defaultPrompts, ...{ templateEngine: 'hbs', exampleCode: true } }));
+
+		it('quote pattern only contains the hbs view', () => {
+			assert.file(['src/patterns/atoms/quote/quote.hbs']);
+			assert.noFile(['src/patterns/atoms/quote/quote.twig']);
+		});
+	});
+
+	describe('when using template engine twig with example code', () => {
+		before(() => runGenerator({}, { ...utils.defaultPrompts, ...{ templateEngine: 'twig', exampleCode: true } }));
+
+		it('quote pattern only contains the twig view', () => {
+			assert.file(['src/patterns/atoms/quote/quote.twig']);
+			assert.noFile(['src/patterns/atoms/quote/quote.hbs']);
+		});
+	});
 });

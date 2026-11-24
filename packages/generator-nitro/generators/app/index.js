@@ -30,7 +30,7 @@ module.exports = class extends Generator {
 
 		this._git = {
 			root: false,
-			projet: false,
+			project: false,
 		}
 
 		this.option('name', {
@@ -341,8 +341,8 @@ module.exports = class extends Generator {
 			'project/docs/nitro-themes.md',
 			'project/routes/_themes.js',
 			'project/viewData/_themes.js',
-			'props/token/css/theme/dark.css',
-			'props/token/css/theme/light.css',
+			'src/shared/props/token/css/theme/dark.css',
+			'src/shared/props/token/css/theme/light.css',
 			'src/proto/css/themelist/themelist.scss',
 			'src/ui.dark.js',
 			'src/ui.dark.ts',
@@ -351,7 +351,7 @@ module.exports = class extends Generator {
 		];
 		const noThemesFiles = [
 			// files only for this.options.themes===false
-			'props/token/css/10-semantic.css',
+			'src/shared/props/token/css/10-semantic.css',
 		];
 		const clientTplFiles = [
 			// files only for this.options.clientTpl===true
@@ -391,6 +391,7 @@ module.exports = class extends Generator {
 			'src/patterns/atoms/list/list',
 			'src/patterns/atoms/loader/loader',
 			'src/patterns/atoms/lottie/lottie',
+			'src/patterns/atoms/quote/quote',
 			'src/patterns/atoms/stage/stage',
 			'src/patterns/molecules/example/example',
 			'project/blueprints/pattern/$pattern$',

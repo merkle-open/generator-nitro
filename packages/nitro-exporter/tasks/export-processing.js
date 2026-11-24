@@ -1,7 +1,7 @@
 const del = (...args) => import('del').then(m => m.deleteAsync(...args));
 const deleteEmpty = require('delete-empty');
 const fs = require('fs');
-const globParent = require('glob-parent');
+const globParent = require('glob-parent').default;
 const { globSync } = require('glob');
 const htmlmin = require('gulp-html-minifier-terser');
 const path = require('path');

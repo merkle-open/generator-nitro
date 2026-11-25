@@ -154,7 +154,7 @@ module.exports = class extends Generator {
 				if (config) {
 					this.options.name = config.name || this.options.name;
 					this.options.viewExt =
-						config.viewExtension || config.templateEngine ? config.templateEngine : this.options.viewExt;
+						config.viewExtension || config.templateEngine || this.options.viewExt;
 					this.options.templateEngine = config.templateEngine || this.options.templateEngine;
 					this.options.jsCompiler = config.jsCompiler || this.options.jsCompiler;
 					this.options.themes = typeof config.themes === 'boolean' ? config.themes : this.options.themes;
@@ -491,7 +491,7 @@ module.exports = class extends Generator {
 				}
 				if (this.options.viewExt !== this.options.templateEngine) {
 					// sanity check for update case of old generated app's having viewExt other than hbs
-					const targetExt = `.${this.options.viewExt !== 0 ? this.options.viewExt : this._viewExtOptions[0]}`;
+					const targetExt = `.${this.options.viewExt || this._viewExtOptions[0]}`;
 					destinationPath = destinationPath.replace(path.extname(destinationPath), targetExt);
 				}
 			}

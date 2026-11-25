@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const helpers = require('yeoman-test').default;
 const assert = require('yeoman-assert');
@@ -342,6 +343,27 @@ describe('nitro:app', function () {
 		it('quote pattern only contains the twig view', () => {
 			assert.file(['src/patterns/atoms/quote/quote.twig']);
 			assert.noFile(['src/patterns/atoms/quote/quote.hbs']);
+		});
+	});
+
+	describe('when updating a legacy project with a custom view extension', () => {
+		before(() =>
+			helpers
+				.run(path.join(__dirname, '../../../../generators/app'))
+				.inTmpDir((dir) => {
+					fs.writeFileSync(
+						path.join(dir, '.yo-rc.json'),
+						JSON.stringify({
+							'generator-nitro': { name: 'legacy-project', templateEngine: 'hbs', viewExtension: 'html' },
+						})
+					);
+					fs.writeFileSync(path.join(dir, 'package.json'), JSON.stringify({ name: 'legacy-project' }));
+				})
+				.withPrompts({ update: true })
+		);
+
+		it('config keeps the custom view file extension', () => {
+			assert.fileContent('config/default.js', /viewFileExtension: 'html'/);
 		});
 	});
 });

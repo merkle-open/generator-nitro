@@ -1,12 +1,13 @@
 const express = require('express');
-const app = express();
 const config = require('config');
 const router = require('../core/router');
 const compression = require('compression');
 const bodyParser = require('body-parser');
-
-// CLI flags (only --open[=URL] or --open URL)
 const { parseOpenArg } = require('./util/cliOpen');
+
+const app = express();
+
+// Accept --open, --open=<url>, and --open <url>.
 const { open } = parseOpenArg(process.argv.slice(2));
 
 const isProduction = config.get('server.production');
@@ -16,7 +17,6 @@ const isTwig = config.get('nitro.templateEngine') === 'twig';
 let hmrApp;
 let engine;
 
-// webpack
 if (!isProduction) {
 	hmrApp = express();
 	require('../core/webpack')(app, hmrApp);
@@ -30,19 +30,18 @@ if (isTwig) {
 	require('../templating/hbs/partials')(engine);
 }
 
-// compress all requests
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 if (useCompression) {
 	app.use(compression());
 }
 
-// translations
 require('../core/i18n')(app);
 
-// Loads custom project routes
 require('../core/routeLoader')(app);
-
 app.use(router);
-app.use(bodyParser.urlencoded({ extended: true }));
+
 app.set('view engine', config.get('nitro.viewFileExtension'));
 app.set('views', config.get('nitro.basePath') + config.get('nitro.viewDirectory'));
 
@@ -51,7 +50,6 @@ if (isTwig) {
 } else {
 	app.engine(config.get('nitro.viewFileExtension'), engine.__express);
 }
-
 app.set('view cache', config.get('server.production'));
 
 require('../core/listen')(app, hmrApp, { open });
